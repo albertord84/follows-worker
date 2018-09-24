@@ -1,7 +1,7 @@
 <?php
     require_once '../class/system_config.php';
-    require_once '../class/Gmail.php';
     $GLOBALS['sistem_config'] = new follows\cls\system_config();
+    require_once '../class/Gmail.php';
     $Gmail = new follows\cls\Gmail();
     
     $username = urldecode($_POST['username']);
@@ -10,6 +10,6 @@
     $usercompany = urldecode($_POST['usercompany']);
     $userphone = urldecode($_POST['userphone']); 
     
-    $result = $Gmail->send_client_contact_form($useremail,$username,$usermsg,$usercompany,$userphone);
+    $result = $Gmail->send_client_contact_form($username, $useremail,$usermsg,$usercompany,$userphone);
     echo json_encode($result);    
  ?>

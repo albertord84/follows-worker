@@ -235,6 +235,7 @@ namespace follows\cls {
             $this->mail->smtpClose();
             return $result;
         }
+        
         public function send_client_contact_form($username, $useremail, $usermsg, $usercompany = NULL, $userphone = NULL) {
             //Set an alternative reply-to address
             //$mail->addReplyTo('albertord@ic.uff.br', 'First Last');
