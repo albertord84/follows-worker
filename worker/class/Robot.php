@@ -9,7 +9,7 @@ namespace follows\cls {
     require_once 'system_config.php';
     require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/externals/utils.php';
     require_once 'InstaAPI.php';
-    require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/externals/vendor/autoload.php';
+    //require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/externals/vendor/autoload.php';
 
 //    require_once '../libraries/webdriver/phpwebdriver/WebDriver.php';
 //    echo $_SERVER['DOCUMENT_ROOT'];
