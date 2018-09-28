@@ -20,11 +20,14 @@ class Payment extends CI_Controller {
         $GLOBALS['sistem_config'] = new follows\cls\system_config();
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/PaymentVindi.php';
         $Vindi = new \follows\cls\Payment\Vindi();
-
         $user_id = urldecode($_POST['user_id']);
-        $datas = json_decode(urldecode($_POST['datas']));
+        $datas = (array) json_decode(urldecode($_POST['datas']));
+        
+//        $user_id = 30359;
+//        $datas = json_decode(urldecode('%7B%22client_email%22%3A%22josergm86%40gmail.com%22%2C%22credit_card_number%22%3A%225162202091174685%22%2C%22credit_card_cvc%22%3A%22302%22%2C%22credit_card_name%22%3A%22PEDRO+BASTOS+PETTI%22%2C%22credit_card_exp_month%22%3A%2204%22%2C%22credit_card_exp_year%22%3A%222021%22%2C%22client_update_plane%22%3A%225%22%7D'));
 
-        $result = $Vindi->addClientPayment($pk, $datas);
+        
+        $result = $Vindi->addClientPayment($user_id, $datas);
         echo json_encode($result);
     }
 
