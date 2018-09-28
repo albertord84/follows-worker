@@ -20,12 +20,11 @@ class Payment extends CI_Controller {
         $GLOBALS['sistem_config'] = new follows\cls\system_config();
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/PaymentVindi.php';
         $Vindi = new \follows\cls\Payment\Vindi();
-        $user_id = urldecode($_POST['user_id']);
-        $datas = (array) json_decode(urldecode($_POST['datas']));
         
+        $user_id = urldecode($_POST['user_id']);
+        $datas = (array) json_decode(urldecode($_POST['datas']));        
 //        $user_id = 30359;
 //        $datas = json_decode(urldecode('%7B%22client_email%22%3A%22josergm86%40gmail.com%22%2C%22credit_card_number%22%3A%225162202091174685%22%2C%22credit_card_cvc%22%3A%22302%22%2C%22credit_card_name%22%3A%22PEDRO+BASTOS+PETTI%22%2C%22credit_card_exp_month%22%3A%2204%22%2C%22credit_card_exp_year%22%3A%222021%22%2C%22client_update_plane%22%3A%225%22%7D'));
-
         
         $result = $Vindi->addClientPayment($user_id, $datas);
         echo json_encode($result);
@@ -36,9 +35,7 @@ class Payment extends CI_Controller {
         $GLOBALS['sistem_config'] = new follows\cls\system_config();
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/PaymentVindi.php';
         $Vindi = new \follows\cls\Payment\Vindi();
-
         $client_payment_key = urldecode($_POST['client_payment_key']);
-
         $result = $Vindi->cancel_recurrency_payment($client_payment_key);
         echo json_encode($result);
     }
@@ -51,9 +48,12 @@ class Payment extends CI_Controller {
 
         $user_id = urldecode($_POST['user_id']);
         $prod_1real_id = urldecode($_POST['prod_1real_id']);
-        $amount = urldecode($_POST['amount']);
+        $amount = urldecode($_POST['amount']);        
+//        $user_id = urldecode('30359');
+//        $prod_1real_id = urldecode('231526');
+//        $amount = urldecode('140');
 
-        $result = $Vindi->create_recurrency_payment($user_id, $prod_1real_id, $amount);
+        $result = $Vindi->create_payment($user_id, $prod_1real_id, $amount);
         echo json_encode($result);
     }
 
@@ -64,9 +64,11 @@ class Payment extends CI_Controller {
         $Vindi = new \follows\cls\Payment\Vindi();
 
         $user_id = urldecode($_POST['user_id']);
-        $pay_day = urldecode($_POST['pay_day']);
-        $plane_type = urldecode($_POST['plane_type']);
-
+        $pay_day = json_decode(urldecode($_POST['pay_day']));
+        $plane_type = json_decode(urldecode($_POST['plane_type']));
+//        $user_id = urldecode('30359');
+//        $pay_day = urldecode('1539394550');
+//        $plane_type = urldecode('223');
         $result = $Vindi->create_recurrency_payment($user_id, $pay_day, $plane_type);
         echo json_encode($result);
     }
