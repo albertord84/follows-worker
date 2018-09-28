@@ -5,7 +5,7 @@ ini_set('xdebug.var_display_max_children', 256);
 ini_set('xdebug.var_display_max_data', 1024);
 
 class Gmail extends CI_Controller {
-
+    
     public function send_new_client_payment_done() {
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/system_config.php';
         $GLOBALS['sistem_config'] = new follows\cls\system_config();
