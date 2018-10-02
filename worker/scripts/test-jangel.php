@@ -9,7 +9,7 @@ require_once '../class/Client.php';
 require_once '../class/Reference_profile.php';
 require_once '../class/PaymentCielo3.0.php';
 require_once '../class/Tester.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/follows/worker/externals/utils.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/externals/utils.php';
 
 $GLOBALS['sistem_config'] = new follows\cls\system_config();
 /*

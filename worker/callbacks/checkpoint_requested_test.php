@@ -1,6 +1,6 @@
 <?php
 
-    //ps4633.publiccloud.com.br/follows/worker/callbakcks/checkpoint_requested_test.php
+    //ps4633.publiccloud.com.br/follows-worker/worker/callbakcks/checkpoint_requested_test.php
 
     require_once '../class/Worker.php';
     require_once '../class/Robot.php';

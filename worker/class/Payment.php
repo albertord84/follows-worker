@@ -14,7 +14,7 @@ namespace follows\cls {
     ini_set('xdebug.var_display_max_children', 256);
     ini_set('xdebug.var_display_max_data', 1024);    
     
-    require_once $_SERVER['DOCUMENT_ROOT'] . '/follows/worker/externals/mundipagg/init.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/externals/mundipagg/init.php';
     require_once 'system_config.php';
     
     class Payment {
@@ -132,7 +132,7 @@ namespace follows\cls {
         public function create_boleto_payment($payment_data) {
             try {
                 // Carrega dependências
-                require_once $_SERVER['DOCUMENT_ROOT'] . '/follows/worker/externals/MundiAPI-PHP/vendor/autoload.php';
+                require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/externals/MundiAPI-PHP/vendor/autoload.php';
                 // Define a url utilizada
                 \Gateway\ApiClient::setBaseUrl("https://transactionv2.mundipaggone.com/"); 
 

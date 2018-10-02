@@ -9,7 +9,7 @@
  */
 
 namespace follows\cls {
-    require_once $_SERVER['DOCUMENT_ROOT'] . '/follows/worker/externals/APICIELO3.0/vendor/autoload.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/externals/APICIELO3.0/vendor/autoload.php';
     require_once 'system_config.php';
 
     use Cielo\API30\Merchant;
@@ -84,7 +84,7 @@ namespace follows\cls {
 
             // Defina a URL de retorno para que o cliente possa voltar para a loja
             // após a autenticação do cartão
-            $payment->setReturnUrl('http://localhost/follows/src/?777');
+            $payment->setReturnUrl('http://localhost/follows-worker/src/?777');
 
             // Crie uma instância de Debit Card utilizando os dados de teste
             // esses dados estão disponíveis no manual de integração
