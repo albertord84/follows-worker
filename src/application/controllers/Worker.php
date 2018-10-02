@@ -19,9 +19,9 @@ class Worker extends CI_Controller {
         $pass = urldecode($_POST['pass']);
         $force = urldecode($_POST['force_login']);
         
-        $login = "douglasvaldeswalker";
-        $pass = "dvw250803+01";
-        $force = "";
+//        $login = "douglasvaldeswalker";
+//        $pass = "dvw250803+01";
+//        $force = "";
         
         ($force == '') ? $force = FALSE : $force = TRUE;
         if ($login != '' && $login != FALSE && $login != NULL && $pass != '' && $pass != FALSE && $pass != NULL) {
