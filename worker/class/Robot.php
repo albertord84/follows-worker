@@ -208,16 +208,16 @@ namespace follows\cls {
                                     var_dump($curl_str);
                                     var_dump("Error in do_follow_unfollow_work!!! follow");
                                 }
-                                if ($daily_work->like_first /*&& count($Profile_data->graphql->user->media->nodes)*/) {
+                                if ($daily_work->like_first /* && count($Profile_data->graphql->user->media->nodes) */) {
                                     //$json_response_like = $this->make_insta_friendships_command($login_data, $Profile_data->user->media->nodes[0]->id, 'like', 'web/likes');
-                                  $json_response_like =   $this->like_fist_post($login_data, $Profile->id, $Client);
+                                    $json_response_like = $this->like_fist_post($login_data, $Profile->id, $Client);
                                     if (!is_object($json_response_like) || !isset($json_response_like->status) || $json_response_like->status != 'ok') {
                                         $error = $this->process_follow_error($json_response_like);
                                         var_dump($json_response_like);
                                         $error = TRUE;
                                         if ($error == 10) {
                                             (new Gmail())->sendAuthenticationErrorMail($Client->name, $Client->email);
-                                       }
+                                        }
                                         break;
                                     }
                                 }
@@ -394,13 +394,12 @@ namespace follows\cls {
             $error = TRUE;
             $login_data = json_decode($daily_work->cookies);
             $quantity = min(array($daily_work->to_follow, $GLOBALS['sistem_config']->REQUESTS_AT_SAME_TIME));
-            $page_info = new \stdClass();            
+            $page_info = new \stdClass();
             $Client = (new \follows\cls\Client())->get_client($daily_work->client_id);
             $proxy = $this->get_proxy_str($Client);
             if ($daily_work->rp_type == 0) {
                 $json_response = $this->get_insta_followers(
-                        $login_data, $daily_work->rp_insta_id, $quantity, $daily_work->insta_follower_cursor,
-                        $proxy
+                        $login_data, $daily_work->rp_insta_id, $quantity, $daily_work->insta_follower_cursor, $proxy
                 );
                 //var_dump($json_response);
                 if ($json_response === NULL) {
@@ -465,7 +464,7 @@ namespace follows\cls {
                         $page_info = $json_response->data->hashtag->edge_hashtag_to_media->page_info;
                         foreach ($json_response->data->hashtag->edge_hashtag_to_media->edges as $Edge) {
                             $profile = new \stdClass();
-                            $profile->node = $this->get_tag_post_user_info($login_data, $Edge->node->shortcode,$proxy);
+                            $profile->node = $this->get_tag_post_user_info($login_data, $Edge->node->shortcode, $proxy);
                             array_push($Profiles, $profile);
                         }
                         $error = FALSE;
@@ -612,8 +611,8 @@ namespace follows\cls {
 
             while ($ip_count < 0) {
                 $ip_count++;
-                $proxy = $this->get_proxy_str($Client);                
-                $curl_str = $this->make_curl_friendships_command_str("'https://www.instagram.com/$objetive_url/$resource_id/$command/'", $login_data, $proxy,$Client, $ip);
+                $proxy = $this->get_proxy_str($Client);
+                $curl_str = $this->make_curl_friendships_command_str("'https://www.instagram.com/$objetive_url/$resource_id/$command/'", $login_data, $proxy, $Client, $ip);
                 //print("<br><br>$curl_str<br><br>");
                 //echo "<br><br><br>O seguidor ".$user." foi requisitado. Resultado: ";
                 if ($curl_str === NULL) {
@@ -677,10 +676,10 @@ namespace follows\cls {
         }
 
         public function make_insta_friendships_command_client($Client, $resource_id, $command = 'follow', $objetive_url = 'web/friendships') {
-            $login_data = json_decode($Client->login_data);            
-            
+            $login_data = json_decode($Client->login_data);
+
             $proxy = $this->get_proxy_str($Client);
-            
+
             $curl_str = $this->make_curl_friendships_command_str("'https://www.instagram.com/$objetive_url/$resource_id/$command/'", $login_data, $proxy);
             if ($curl_str === NULL)
                 return NULL;
@@ -728,7 +727,7 @@ namespace follows\cls {
             if (($csrftoken === NULL || $csrftoken === "") && ($ds_user_id === NULL || $ds_user_id === "") &&
                     ($sessionid === NULL || sessionid === "") && ($mid === NULL || $mid === ""))
                 return NULL;
-     
+
             $curl_str = "curl $proxy $url ";
             $curl_str .= "-X POST ";
             $curl_str .= "-H 'Cookie: mid=$mid; sessionid=$sessionid;  csrftoken=$csrftoken; ds_user_id=$ds_user_id' ";
@@ -1010,7 +1009,7 @@ namespace follows\cls {
 
         public function make_curl_followers_query($query, $variables, $login_data = NULL, $proxy = "") {
 
-           $variables = urlencode($variables);
+            $variables = urlencode($variables);
             $url = "https://www.instagram.com/graphql/query/?query_hash=$query&variables=$variables";
             $curl_str = "curl $proxy '$url' ";
             if ($login_data !== NULL) {
@@ -1035,7 +1034,7 @@ namespace follows\cls {
             return $curl_str;
         }
 
-        public function make_curl_followers_str($url, $login_data, $user, $N, $cursor = NULL, $proxy="") {
+        public function make_curl_followers_str($url, $login_data, $user, $N, $cursor = NULL, $proxy = "") {
 //            if (isset($login_data->csrftoken) && isset($login_data->ds_user_id) && isset($login_data->ds_user_id) && isset($login_data->sessionid)) {
             $csrftoken = $login_data->csrftoken;
             $ds_user_id = $login_data->ds_user_id;
@@ -1137,18 +1136,18 @@ namespace follows\cls {
                     ($sessionid === NULL || $sessionid === "") && ($mid === NULL || $mid === ""))
                 return NULL;
             //$url .= "?query_id=17880160963012870&id=$ds_user_id&first=$N";
-            
-            
+
+
             $url = "bd0d6d184eefd4d0ce7036c11ae58ed9";
             $variables = "{\"id\":\"$user\",\"first\":$N";
             if ($cursor) {
                 $variables .= ",\"after\"=\"$cursor\"";
             }
             $variables .= "}";
-            
-             
-             $curl_str = $this->make_curl_followers_query($url, $variables, $login_data, $proxy);
-                     
+
+
+            $curl_str = $this->make_curl_followers_query($url, $variables, $login_data, $proxy);
+
 //            $curl_str = "curl '$url' ";
 //            //$curl_str .= "-H 'Cookie: mid=$mid; sessionid=$sessionid; s_network=; ig_pr=1; ig_vw=1855; csrftoken=$csrftoken; ds_user_id=$ds_user_id' ";
 //            $curl_str .= "-H 'Cookie: mid=$mid; sessionid=$sessionid; csrftoken=$csrftoken; ds_user_id=$ds_user_id' ";
@@ -1163,7 +1162,6 @@ namespace follows\cls {
 //            $curl_str .= "-H 'Accept: */*' ";
 //            $curl_str .= "-H 'Referer: https://www.instagram.com' ";
 //            $curl_str .= "-H 'Authority: www.instagram.com' ";
-            
 //            if ($cursor === NULL || $cursor === '') {
 //                $curl_str .= "--data "
 //                        . "'q=ig_user($user)+%7B+media.first($N)+%7B%0A++count%2C%0A++nodes+%7B%0A++++__typename%2C%0A++++caption%2C%0A++++code%2C%0A++++comments+%7B%0A++++++count%0A++++%7D%2C%0A++++comments_disabled%2C%0A++++date%2C%0A++++dimensions+%7B%0A++++++height%2C%0A++++++width%0A++++%7D%2C%0A++++display_src%2C%0A++++id%2C%0A++++is_video%2C%0A++++likes+%7B%0A++++++count%0A++++%7D%2C%0A++++owner+%7B%0A++++++id%0A++++%7D%2C%0A++++thumbnail_src%2C%0A++++video_views%0A++%7D%2C%0A++page_info%0A%7D%0A+%7D' ";
@@ -1196,7 +1194,7 @@ namespace follows\cls {
                 $variables .= ",\"after\":\"$cursor\"";
             }
             $variables .= "}";
-            $url .=  urlencode($variables);
+            $url .= urlencode($variables);
             $curl_str = "curl $proxy '$url' ";
             $curl_str .= "-H 'Cookie: mid=$mid; sessionid=$sessionid; csrftoken=$csrftoken; ds_user_id=$ds_user_id' ";
             $curl_str .= "-H 'Origin: https://www.instagram.com' ";
@@ -1463,8 +1461,7 @@ namespace follows\cls {
                 $pos = strpos($cookie[1], $key);
                 if ($pos !== FALSE) {
                     $value = explode("=", $cookie[1]);
-                    if($value[1] != "\"\"" && $value[1] != "" && $value[1] != NULL)
-                    {
+                    if ($value[1] != "\"\"" && $value[1] != "" && $value[1] != NULL) {
                         $value = $value[1];
                         break;
                     }
@@ -1512,7 +1509,6 @@ namespace follows\cls {
             curl_close($ch);
             return $content;
         }
-        
 
         public function get_insta_data_from_client($ref_prof, $cookies, $proxy = NULL) {
             if ($ref_prof == "" || $ref_prof == NULL) {
@@ -1537,8 +1533,7 @@ namespace follows\cls {
 //                    $headers[] = "Content-Type: application/json";
             $headers[] = "X-Requested-With: XMLHttpRequest";
             $headers[] = "Authority: www.instagram.com";
-            if($cookies != NULL)
-            {                
+            if ($cookies != NULL) {
                 $headers[] = "X-CSRFToken: $csrftoken";
                 $headers[] = "Cookie: mid=$mid; sessionid=$sessionid; s_network=; ig_pr=1; ig_vw=1855; csrftoken=$csrftoken; ds_user_id=$ds_user_id";
             }
@@ -1550,11 +1545,10 @@ namespace follows\cls {
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
             curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-            
-            if($proxy != NULL)
-            {
+
+            if ($proxy != NULL) {
                 //$proxy->proxy, $proxy->port, $proxy->proxy_user, $proxy->proxy_password
-            //adding proxy
+                //adding proxy
                 curl_setopt($ch, CURLOPT_PROXY, $proxy->proxy);
                 curl_setopt($ch, CURLOPT_PROXYPORT, $proxy->port);
 
@@ -1567,10 +1561,10 @@ namespace follows\cls {
             curl_close($ch);
             return json_decode($output);
         }
-        
-        public function get_insta_account_edit_data_from_client($client_uname, $cookies){
+
+        public function get_insta_account_edit_data_from_client($client_uname, $cookies) {
             if ($client_uname == "" || $client_uname == NULL) {
-                throw new \Exception("This was and empty or null referece profile ($client_uname)");    
+                throw new \Exception("This was and empty or null referece profile ($client_uname)");
             }
             $csrftoken = isset($cookies->csrftoken) ? $cookies->csrftoken : 0;
             $ds_user_id = isset($cookies->ds_user_id) ? $cookies->ds_user_id : 0;
@@ -1610,7 +1604,7 @@ namespace follows\cls {
             print $output;
             return $output;
         }
-        
+
         public function get_insta_ref_prof_data($ref_prof, $ref_prof_id = NULL) {
             try {
                 $Profile = NULL;
@@ -1657,12 +1651,11 @@ namespace follows\cls {
                 //using proxy
                 $proxy = NULL;
                 if ($user_id != NULL) {
-                     $myDB = new \follows\cls\DB();
+                    $myDB = new \follows\cls\DB();
                     $proxy = $myDB->get_client_proxy($user_id);
-                
                 }
                 if ($ref_prof != "") {
-                    $content = $this->get_insta_data_from_client($ref_prof, $cookies, $proxy);                    
+                    $content = $this->get_insta_data_from_client($ref_prof, $cookies, $proxy);
                     //var_dump($content);
                     $Profile = $this->process_get_insta_geolocalization_data($content, $ref_prof, $ref_prof_id);
                 }
@@ -1677,10 +1670,9 @@ namespace follows\cls {
             try {
                 $Profile = NULL;
                 $proxy = NULL;
-                if ($user_id != NULL) {                
-                     $myDB = new \follows\cls\DB();
+                if ($user_id != NULL) {
+                    $myDB = new \follows\cls\DB();
                     $proxy = $myDB->get_client_proxy($user_id);
-                
                 }
                 if ($ref_prof != "") {
                     $content = $this->get_insta_data_from_client($ref_prof, $cookies, $proxy);
@@ -1698,16 +1690,15 @@ namespace follows\cls {
                 //using proxy
                 $proxy = NULL;
                 if ($user_id != NULL) {
-                
+
                     $myDB = new \follows\cls\DB();
                     $proxy = $myDB->get_client_proxy($user_id);
-                
                 }
                 $content = $this->get_insta_data_from_client($ref_prof, $cookies, $proxy);
 //                  $content = $this->get_insta_data_from_client($ref_prof, NULL);
 //                  var_dump($content);                    
                 $Profile = $this->process_get_insta_tag_data($content, $ref_prof, $ref_prof_id);
-                
+
                 return $Profile;
             } catch (\Exception $ex) {
                 print_r($ex->message);
@@ -1790,7 +1781,7 @@ namespace follows\cls {
         }
 
         function process_get_insta_tag_data($content, $ref_prof, $ref_prof_id) {
-                
+
             $Profile = NULL;
             if (is_object($content) && $content->status === 'ok') {
                 $tags = $content->hashtags;
@@ -1799,8 +1790,7 @@ namespace follows\cls {
                     for ($i = 0; $i < count($tags); $i++) {
                         if ($tags[$i]->hashtag->name === $ref_prof) {
                             $Profile = $tags[$i]->hashtag;
-                            if($ref_prof != NULL)
-                            {
+                            if ($ref_prof != NULL) {
                                 $Profile->follows = $this->get_insta_ref_prof_follows($ref_prof_id);
                             }
                             break;
@@ -1913,11 +1903,10 @@ namespace follows\cls {
                 }
             }
             // Try new API login
-            try {             
+            try {
                 $proxy = $myDB->get_client_proxy($Client->id);
-                if($proxy === NULL)
-                {                   
-                    $proxy_id = $GLOBALS['sistem_config']->DEFAULT_PROXY;   
+                if ($proxy === NULL) {
+                    $proxy_id = $GLOBALS['sistem_config']->DEFAULT_PROXY;
                     $proxy = $myDB->GetProxy($proxy_id);
                 }
                 $result = $this->make_login($login, $pass, $proxy->proxy, $proxy->port, $proxy->proxy_user, $proxy->proxy_password);
@@ -2051,11 +2040,11 @@ namespace follows\cls {
             }
         }
 
-        public function make_login($login, $pass, $ip='207.188.155.18', $port='21316', $proxyuser='albertreye9917', $proxypass='3r4rcz0b1v') {
+        public function make_login($login, $pass, $ip = '207.188.155.18', $port = '21316', $proxyuser = 'albertreye9917', $proxypass = '3r4rcz0b1v') {
             $instaAPI = new \follows\cls\InstaAPI();
             //TODO: capturar excepcion e dar tratamiento cuando usuario y senha no existe en IG
             try {
-                $result = $instaAPI->login($login, $pass,$ip,$port,$proxyuser,$proxypass);
+                $result = $instaAPI->login($login, $pass, $ip, $port, $proxyuser, $proxypass);
             } catch (\Exception $exc) {
                 throw $exc;
             }
@@ -2064,9 +2053,9 @@ namespace follows\cls {
         }
 
         public function like_fist_post($client_cookies, $client_insta_id, $Client = NULL) {
-            
-             $proxy = $this->get_proxy_str($Client);
-            $result = $this->get_insta_chaining($client_cookies, $client_insta_id,1,NULL,$proxy);
+
+            $proxy = $this->get_proxy_str($Client);
+            $result = $this->get_insta_chaining($client_cookies, $client_insta_id, 1, NULL, $proxy);
             //print_r($result);
             if ($result) {
                 $result = $this->make_insta_friendships_command($client_cookies, $result[0]->node->id, 'like', 'web/likes');
@@ -2197,13 +2186,16 @@ namespace follows\cls {
                 $instaAPI = new \follows\cls\InstaAPI();
                 $Client = $DB->get_client_data_bylogin($login);
                 $Proxy = $DB->get_client_proxy($Client->id);
-                if($Proxy == NULL)
+                if ($Proxy == NULL)
                     $Proxy = $DB->GetProxy(8);
                 $result2 = $instaAPI->login($login, $pass, $Proxy->proxy, $Proxy->port, $Proxy->proxy_user, $Proxy->proxy_password);
                 return $result2;
             } catch (\InstagramAPI\Exception\ChallengeRequiredException $exc) {
                 $res = $exc->getResponse()->getChallenge()->getApiPath();
                 $response = $this->get_challenge_data($res, $login, $Client);
+                if (strpos($response, "SelectVerificationMethodForm") > 0) {
+                    $response = $this->get_challenge_data($res, $login, $Client, 0);
+                }
                 return $response;
             }
         }
@@ -2493,25 +2485,22 @@ namespace follows\cls {
           }
           }
          */
-        
-        
-        public function get_proxy_str($Client)
-        {
-            if($Client != NULL)
-            {
-                 $myDB = new \follows\cls\DB();
-                 $proxy =  $myDB->get_client_proxy($Client->id);    
-                if($proxy === NULL)
-                {                   
-                    $proxy_id = $GLOBALS['sistem_config']->DEFAULT_PROXY;   
+
+        public function get_proxy_str($Client) {
+            if ($Client != NULL) {
+                $myDB = new \follows\cls\DB();
+                $proxy = $myDB->get_client_proxy($Client->id);
+                if ($proxy === NULL) {
+                    $proxy_id = $GLOBALS['sistem_config']->DEFAULT_PROXY;
                     $proxy = $myDB->GetProxy($proxy_id);
-                }                               
-                $proxy = "--proxy '$proxy->proxy_user:$proxy->proxy_password@$proxy->proxy:$proxy->port'"; 
+                }
+                $proxy = "--proxy '$proxy->proxy_user:$proxy->proxy_password@$proxy->proxy:$proxy->port'";
                 return $proxy;
             }
             return "";
         }
-    }  
+
+    }
 
 // end of Robot
 }
