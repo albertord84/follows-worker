@@ -18,11 +18,11 @@ class Worker extends CI_Controller {
         $login = urldecode($_POST['login']);
         $pass = urldecode($_POST['pass']);
         $force = urldecode($_POST['force_login']);
-        
+
 //        $login = "douglasvaldeswalker";
 //        $pass = "dvw250803+01";
 //        $force = "";
-        
+
         ($force == '') ? $force = FALSE : $force = TRUE;
         if ($login != '' && $login != FALSE && $login != NULL && $pass != '' && $pass != FALSE && $pass != NULL) {
             $result = $Robot->bot_login($login, $pass, $force);
@@ -50,8 +50,8 @@ class Worker extends CI_Controller {
         //    $dumbu_id_profile = "";
         //    if($dumbu_id_profile=="")
         //        $dumbu_id_profile = NULL;
-            $result = $Robot->get_insta_ref_prof_data_from_client($cookies, $profile_name, $dumbu_id_profile);
-            echo json_encode($result);
+        $result = $Robot->get_insta_ref_prof_data_from_client($cookies, $profile_name, $dumbu_id_profile);
+        echo json_encode($result);
 //        echo json_encode($profile_name);
     }
 
@@ -87,7 +87,7 @@ class Worker extends CI_Controller {
         $result = $Robot->get_insta_tag_data_from_client($cookies, $profile_name, $dumbu_id_profile);
         echo json_encode($result);
     }
-    
+
     public function get_insta_geolocalization_data_from_client() {
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/system_config.php';
         $GLOBALS['sistem_config'] = new follows\cls\system_config();
@@ -95,11 +95,11 @@ class Worker extends CI_Controller {
         $Worker = new \follows\cls\Worker();
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/Robot.php';
         $Robot = new \follows\cls\Robot();
-        
-        $cookies = json_decode(urldecode($_POST['cookies']));    
+
+        $cookies = json_decode(urldecode($_POST['cookies']));
         $profile_name = urldecode($_POST['profile_name']);
         $dumbu_id_profile = urldecode($_POST['dumbu_id_profile']);
-        if($dumbu_id_profile=="")
+        if ($dumbu_id_profile == "")
             $dumbu_id_profile = NULL;
         $result = $Robot->get_insta_geolocalization_data_from_client($cookies, $profile_name, $dumbu_id_profile);
         echo json_encode($result);
@@ -127,7 +127,10 @@ class Worker extends CI_Controller {
         $GLOBALS['sistem_config'] = new follows\cls\system_config();
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/Robot.php';
         $Robot = new \follows\cls\Robot();
-        
+
+        $client_login = urldecode($_POST['client_login']);
+        $client_pass = urldecode($_POST['client_pass']);
+
         $result = $Robot->checkpoint_requested($client_login, $client_pass);
         echo json_encode($result);
     }
@@ -147,6 +150,5 @@ class Worker extends CI_Controller {
         }
 //        var_dump($daily_work);
     }
-    
 
 }
