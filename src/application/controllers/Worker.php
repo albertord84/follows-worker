@@ -122,15 +122,12 @@ class Worker extends CI_Controller {
         echo json_encode($result);
     }
 
-    public function checkpoint_requested_test() {
+    public function checkpoint_requested() {
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/system_config.php';
         $GLOBALS['sistem_config'] = new follows\cls\system_config();
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/Robot.php';
         $Robot = new \follows\cls\Robot();
-
-        $client_login = 'marcosp.medina';
-        $client_pass = 'Marcos*01+123';
-
+        
         $result = $Robot->checkpoint_requested($client_login, $client_pass);
         echo json_encode($result);
     }
