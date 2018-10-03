@@ -135,13 +135,27 @@ class Worker extends CI_Controller {
         $result = $Robot->checkpoint_requested($client_login, $client_pass);
         echo json_encode($result);
     }
+    
+    public function set_client_cookies_by_curl() {
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/system_config.php';
+        $GLOBALS['sistem_config'] = new follows\cls\system_config();
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/Robot.php';
+        $Robot = new \follows\cls\Robot();
+        $client_id = urldecode($_POST['client_id']);
+        $curl = urldecode($_POST['curl']);
+        if (isset($_POST['robot_id']))
+            $robot_id = urldecode($_POST['robot_id']);
+        else
+            $robot_id = NULL;
+        $result = $Robot->set_client_cookies_by_curl($client_id, $curl, $robot_id);
+        echo json_encode($result);
+    }
 
     public function do_work_by_reference_id() {
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/system_config.php';
         $GLOBALS['sistem_config'] = new follows\cls\system_config();
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/Worker.php';
         $Worker = new \follows\cls\Worker();
-//        $daily_work = $Worker->get_work();
         $reference_id = $_GET['reference_id'];
         if ($reference_id) {
             $daily_work = $Worker->get_work_by_id($reference_id);
@@ -149,7 +163,7 @@ class Worker extends CI_Controller {
         } else {
             print "Missing Refence Id...!!!";
         }
-//        var_dump($daily_work);
     }
+    
 
 }
