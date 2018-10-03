@@ -45,7 +45,7 @@ namespace follows\cls {
                 $loginResponse = $ig->login($username, $password);
                 
                 $ig->client->loadCookieJar();
-                var_dump($ig);
+                //var_dump($ig);
 
                 if ($loginResponse !== null && $loginResponse->isTwoFactorRequired()) {
                     $twoFactorIdentifier = $loginResponse->getTwoFactorInfo()->getTwoFactorIdentifier();
