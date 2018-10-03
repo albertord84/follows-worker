@@ -184,7 +184,7 @@ namespace follows\cls {
                             $is_private = isset($Profile_data->user->is_private) ? $Profile_data->user->is_private : false;
                             $posts_count = isset($Profile_data->user->media->count) ? $Profile_data->user->media->count : 0;
                             $MIN_FOLLOWER_POSTS = $GLOBALS['sistem_config']->MIN_FOLLOWER_POSTS;
-                            $valid_profile = $posts_count >= $MIN_FOLLOWER_POSTS;
+                            $valid_profile = true;//$posts_count >= $MIN_FOLLOWER_POSTS;
                             if (isset($Profile->id) && $Profile->id != "") {
                                 //check if the profile is in the black list
                                 if (isset($daily_work->black_list) && str_binary_search($Profile->id, $daily_work->black_list)) {
