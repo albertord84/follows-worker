@@ -1928,6 +1928,7 @@ namespace follows\cls {
 
                 return $result;
             } catch (\Exception $e) {
+                //var_dump($e);
                 // did by Jose R (si el cliente pone mal la senha por motivo X, el login va a dar una excepcion, y no le devemos cambiar las cookies, imagina que fue uno que e copio el curl a mano)
                 //$myDB->set_cookies_to_null($Client->id);
                 $source = 0;
@@ -1940,6 +1941,9 @@ namespace follows\cls {
                 if ((strpos($e->getMessage(), 'Challenge required') !== FALSE) || (strpos($e->getMessage(), 'Checkpoint required') !== FALSE) || (strpos($e->getMessage(), 'challenge_required') !== FALSE)) {
                     $result->json_response->message = 'checkpoint_required';
                     $result->json_response->verify_link = '/challenge/';
+                } else if (strpos($e->getMessage(), 'Network: CURL error 28') !== FALSE) { // Time out by bad proxy
+                    $proxy_id = ($proxy->idProxy) % 8 + 1;
+                    $myDB->SetProxyToClient($Client->id, $proxy_id);
                 } else if (strpos($e->getMessage(), 'password you entered is incorrect') !== FALSE)
                     $result->json_response->message = 'incorrect_password';
                 else if (strpos($e->getMessage(), 'there was a problem with your request') !== FALSE)
