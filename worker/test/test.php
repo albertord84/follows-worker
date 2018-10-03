@@ -281,7 +281,7 @@ $Gmail = new \follows\cls\Gmail();
 //$result = $Gmail->send_client_login_error("albertord84@gmail.com", "Teste", "Teste...", "Alberto Reyes teste");
 //$result = $Gmail->send_client_login_error("pedro@seiva.pro", "Teste", "Teste...", "Alberto Reyes teste");
 //$Gmail->send_new_client_payment_done("Alberto Reyes", "albertord84@gmail.com", 4);
-var_dump($result);
+//var_dump($result);
 
 $Robot = new \follows\cls\Robot();
 //var_dump($Robot->IPS);
@@ -357,8 +357,8 @@ $Robot = new follows\cls\Robot();
 //var_dump($response);
 //$result = $Robot->bot_login("riveauxmerino", "Notredame88");
 //var_dump($result);
-$result = $Robot->bot_login("alberto_test", "alberto");
-var_dump($result);
+//$result = $Robot->bot_login("alberto_test", "alberto");
+//var_dump($result);
 //
 //$mid = "WdJCIgAEAAH8jG4L-TEtJUTVmQpu";
 //$csrftoken = "lT29VKGJfD2vbglPsLLKNfW22qDH1Pp5";
@@ -400,12 +400,12 @@ var_dump($result);
 //
 // WORKER
 $Worker = new follows\cls\Worker();
-//$daily_work = $Worker->get_work_by_id(44870);
+$daily_work = $Worker->get_work_by_id(48607);
 //$Worker->do_follow_unfollow_work($daily_work);
-//$error = NULL; $page_info = NULL;
+$error = NULL; $page_info = NULL;
 //var_dump($daily_work->rp_insta_id);
-//$profiles = $Robot->get_profiles_to_follow($daily_work, $error, $page_info);
-//var_dump($profiles);
+$profiles = $Robot->get_profiles_to_follow($daily_work, $error, $page_info);
+var_dump($profiles);
 //
 ////$Worker->check_daily_work();
 //$Worker->truncate_daily_work();

@@ -2068,7 +2068,6 @@ namespace follows\cls {
             if ($result) {
                 $result = $this->make_insta_friendships_command($client_cookies, $result[0]->node->id, 'like', 'web/likes', $Client);
                 return $result;
-//              re
             }
         }
 
@@ -2136,7 +2135,7 @@ namespace follows\cls {
             $sessionid = isset($cookies->sessionid) ? $cookies->sessionid : 0;
             $mid = isset($cookies->mid) ? $cookies->mid : 0;
             $url = "https://www.instagram.com/p/$post_reference/?__a=1";
-            $curl_str = "curl  $proxy '$url'";
+            $curl_str = "curl $proxy '$url' ";
             $curl_str .= "-H 'Accept-Encoding: gzip, deflate, br' ";
             $curl_str .= "-H 'X-Requested-With: XMLHttpRequest' ";
             $curl_str .= "-H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' ";
