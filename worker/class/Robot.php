@@ -2066,7 +2066,7 @@ namespace follows\cls {
             $result = $this->get_insta_chaining($client_cookies, $client_insta_id, 1, NULL, $proxy);
             //print_r($result);
             if ($result) {
-                $result = $this->make_insta_friendships_command($client_cookies, $result[0]->node->id, 'like', 'web/likes');
+                $result = $this->make_insta_friendships_command($client_cookies, $result[0]->node->id, 'like', 'web/likes', $Client);
                 return $result;
 //              re
             }
