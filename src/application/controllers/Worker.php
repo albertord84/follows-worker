@@ -112,6 +112,7 @@ class Worker extends CI_Controller {
         $Worker = new \follows\cls\Worker();
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/Robot.php';
         $Robot = new \follows\cls\Robot();
+        
 
         $profile_name = urldecode($_POST['profile_name']);
         if (isset($_POST['ref_prof_id']))

@@ -357,8 +357,8 @@ $Robot = new follows\cls\Robot();
 //var_dump($response);
 //$result = $Robot->bot_login("riveauxmerino", "Notredame88");
 //var_dump($result);
-//$result = $Robot->bot_login("ruslan.guerra88", "*R5sl@n#");
-//var_dump($result);
+$result = $Robot->bot_login("alberto_test", "alberto");
+var_dump($result);
 //
 //$mid = "WdJCIgAEAAH8jG4L-TEtJUTVmQpu";
 //$csrftoken = "lT29VKGJfD2vbglPsLLKNfW22qDH1Pp5";

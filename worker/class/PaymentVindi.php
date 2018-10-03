@@ -11,7 +11,7 @@
 namespace follows\cls\Payment {
 
 //    require __DIR__ . '/vendor/autoload.php';
-    require_once $_SERVER['DOCUMENT_ROOT'] . '/follows/worker/externals/vendor/autoload.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/externals/vendor/autoload.php';
     require_once 'system_config.php';
 
     class Vindi {

@@ -12,7 +12,7 @@ require_once '../class/system_config.php';
 require_once '../class/user_role.php';
 require_once '../class/user_status.php';
 require_once '../class/Gmail.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/follows/worker/libraries/utils.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/libraries/utils.php';
 
 echo "RECOVERING Inited...!<br>\n";
 echo date("Y-m-d h:i:sa") . "<br>\n";
