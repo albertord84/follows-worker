@@ -67,7 +67,8 @@ namespace follows\cls {
                             print("<br>\nAutenticated Client: $Client->login <br>\n<br>\n");
                             $Client->set_client_status($Client->id, user_status::ACTIVE);
                             // Distribute work between clients
-                            $RPWC = $Client->rp_workable_count();
+                            $RPWC = $Client->rp_workable_count();                            
+                            print("<br>\nWorkable Referenc Profile: $RPWC <br>\n<br>\n");
                             if(strtotime("today") - $Client->init_date < 40*24*60*60 )
                             {
                                 $DIALY_REQUESTS_BY_CLIENT = 480;
@@ -162,7 +163,8 @@ namespace follows\cls {
                             print("<br>\nAutenticated Client: $Client->login <br>\n<br>\n");
                             $Client->set_client_status($Client->id, user_status::ACTIVE);
                             // Distribute work between clients
-                            $RPWC = $Client->rp_workable_count();
+                            $RPWC = $Client->rp_workable_count();                            
+                            print("<br>\nWorkable Referenc Profile: $RPWC <br>\n<br>\n");
                             if(strtotime("today") - $Client->init_date < 40*24*60*60 )
                             {
                                 $DIALY_REQUESTS_BY_CLIENT = 480;
