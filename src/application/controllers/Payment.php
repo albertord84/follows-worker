@@ -45,6 +45,7 @@ class Payment extends CI_Controller {
             }
         } catch (\Exception $exc) {
             echo $exc->getTraceAsString();
+            $result = file_put_contents($file, "$client_id: ". $exc->getTraceAsString() . "\n\r\n\r", FILE_APPEND);
             return;
         }
 
