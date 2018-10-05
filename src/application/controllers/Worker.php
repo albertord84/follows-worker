@@ -167,6 +167,5 @@ class Worker extends CI_Controller {
             print "Missing Refence Id...!!!";
         }
     }
-    
 
 }
