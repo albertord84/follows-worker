@@ -54,6 +54,13 @@ namespace follows\cls {
 //            $this->mail->setFrom($GLOBALS['sistem_config']->SYSTEM_EMAIL3, 'DUMBU');
            
             $result = $this->mail->setFrom($GLOBALS['sistem_config']->SYSTEM_EMAIL, 'DUMBU');
+            
+            
+            
+            // Ojoooooooooo
+                        
+            // @TUDO -> Trapo ate habilitar peticoes locais no immotion hosting...
+            $_SERVER['SERVER_NAME'] = $GLOBALS['sistem_config']->SERVER_NAME === "ONE"? "dumbu.one" : $_SERVER['SERVER_NAME'];
         }
         
         public function send_mail($useremail, $username, $subject, $mail) {
@@ -181,7 +188,7 @@ namespace follows\cls {
             //echo "http://" . $_SERVER['SERVER_NAME'] . "<br><br>";
             $lang = $GLOBALS['sistem_config']->LANGUAGE;
             
-            // @TUDO -> Trapo ate habilitar peticoes locais no immotion hosting...
+            // @TUDO -> Trapo ate
             $_SERVER['SERVER_NAME'] = $GLOBALS['sistem_config']->SERVER_NAME === "ONE"? "dumbu.one" : $_SERVER['SERVER_NAME'];
             
             $this->mail->msgHTML(@file_get_contents("http://" . $_SERVER['SERVER_NAME'] . "/follows-worker/worker/resources/$lang/emails/payment_error.php?username=$username&instaname=$instaname&instapass=$instapass&diff_days=$diff_days"), dirname(__FILE__));
