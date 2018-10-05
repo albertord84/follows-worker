@@ -1,11 +1,10 @@
 <?php
 
 class Payment extends CI_Controller {
-    
 
     public function check_payment_vindi() {
-        require_once $_SERVER['DOCUMENT_ROOT'] . '/follows/worker/class/Gmail.php';
-        require_once $_SERVER['DOCUMENT_ROOT'] . '/follows/worker/class/system_config.php';
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/Gmail.php';
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/system_config.php';
         $GLOBALS['sistem_config'] = new follows\cls\system_config();
         echo "Check Payment Inited...!<br>\n";
         echo date("Y-m-d h:i:sa");
@@ -47,6 +46,8 @@ class Payment extends CI_Controller {
                 //$payday = strtotime($client['pay_day']);
                 $payday = new DateTime();
                 $payday->setTimestamp($client['pay_day']);
+                $diff_info = $payday->diff($now);
+                $diff_days = $diff_info->days;
                 $today = strtotime("today");
                 if ($now > $payday && $client['status_id'] != user_status::BLOCKED_BY_PAYMENT) { // wheter not have order key
                     print "\n<br>Client pay data data expired!!!: $clientname (id: $clientid)<br>\n";
@@ -58,6 +59,7 @@ class Payment extends CI_Controller {
         }
         try {
             $Gmail = new follows\cls\Gmail();
+            $Gmail->send_mail("albertord84@gmail.com", "Alberto Reyes", 'DUMBU VINVI payment checked!!! ', 'DUMBU VINVI payment checked!!! ');
             $Gmail->send_mail("josergm86@gmail.com", "Jose Ramon ", 'DUMBU VINVI payment checked!!! ', 'DUMBU VINVI payment checked!!! ');
             $Gmail->send_mail("jangel.riveaux@gmail.com", "Jose Angel Riveaux ", 'DUMBU VINVI payment checked!!! ', 'DUMBU VINVI payment checked!!! ');
         } catch (Exception $ex) {
@@ -67,8 +69,8 @@ class Payment extends CI_Controller {
     }
 
     public function send_payment_email($client, $diff_days = 0) {
-        require_once $_SERVER['DOCUMENT_ROOT'] . '/follows/worker/class/Gmail.php';
-        require_once $_SERVER['DOCUMENT_ROOT'] . '/follows/worker/class/system_config.php';
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/Gmail.php';
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/system_config.php';
         $GLOBALS['sistem_config'] = new \follows\cls\system_config();
         $this->Gmail = new \follows\cls\Gmail();
         //$datas = $this->input->post();
@@ -83,7 +85,7 @@ class Payment extends CI_Controller {
     }
 
     public function test_check_payment() {
-        require_once $_SERVER['DOCUMENT_ROOT'] . '/follows/worker/class/system_config.php';
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/system_config.php';
         $GLOBALS['sistem_config'] = new follows\cls\system_config();
         echo "Check Payment Inited...!<br>\n";
         echo date("Y-m-d h:i:sa");
@@ -174,8 +176,8 @@ class Payment extends CI_Controller {
     }
 
     public function check_payment() {
-        require_once $_SERVER['DOCUMENT_ROOT'] . '/follows/worker/class/Gmail.php';
-        require_once $_SERVER['DOCUMENT_ROOT'] . '/follows/worker/class/system_config.php';
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/Gmail.php';
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/system_config.php';
         $GLOBALS['sistem_config'] = new follows\cls\system_config();
         echo "Check Payment Inited...!<br>\n";
         echo date("Y-m-d h:i:sa");
@@ -219,6 +221,8 @@ class Payment extends CI_Controller {
                 $payday = strtotime($client['pay_day']);
                 $payday = new DateTime();
                 $payday->setTimestamp($client['pay_day']);
+                $diff_info = $pay_day->diff($now);
+                $diff_days = $diff_info->days;
                 $today = strtotime("today");
                 if (new DateTime("now") > $payday) {
                     $promotional_days = $GLOBALS['sistem_config']->PROMOTION_N_FREE_DAYS;
@@ -273,7 +277,7 @@ class Payment extends CI_Controller {
         }
         echo "\n\n<br>Job Done!" . date("Y-m-d h:i:sa") . "\n\n";
     }
-    
+
     // No final deste arquivo estao exemplos de posts de notificação para teste
     public function vindi_notif_post() {
         try {
@@ -317,7 +321,7 @@ class Payment extends CI_Controller {
             }
         } catch (\Exception $exc) {
             echo $exc->getTraceAsString();
-            $result = file_put_contents($file, "$client_id: ". $exc->getTraceAsString() . "\n\r\n\r", FILE_APPEND);
+            $result = file_put_contents($file, "$client_id: " . $exc->getTraceAsString() . "\n\r\n\r", FILE_APPEND);
             return;
         }
 
@@ -409,7 +413,7 @@ class Payment extends CI_Controller {
         // Save Order Key
         var_dump($response->Data->OrderResult->OrderKey);
     }
-    
+
     public function is_client_vindi($client_id) {
         $client = NULL;
         try {
