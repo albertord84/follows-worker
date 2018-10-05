@@ -180,6 +180,10 @@ namespace follows\cls {
 //            $this->mail->msgHTML(file_get_contents("http://localhost/follows-worker/worker/resources/emails/login_error.php?username=$username&instaname=$instaname&instapass=$instapass"), dirname(__FILE__));
             //echo "http://" . $_SERVER['SERVER_NAME'] . "<br><br>";
             $lang = $GLOBALS['sistem_config']->LANGUAGE;
+            
+            // @TUDO -> Trapo ate habilitar peticoes locais no immotion hosting...
+            $_SERVER['SERVER_NAME'] = $GLOBALS['sistem_config']->SERVER_NAME === "ONE"? "dumbu.one" : $_SERVER['SERVER_NAME'];
+            
             $this->mail->msgHTML(@file_get_contents("http://" . $_SERVER['SERVER_NAME'] . "/follows-worker/worker/resources/$lang/emails/payment_error.php?username=$username&instaname=$instaname&instapass=$instapass&diff_days=$diff_days"), dirname(__FILE__));
 //Replace the plain text body with one created manually
 //            $this->mail->AltBody = 'DUMBU Problemas de pagamento';
