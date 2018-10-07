@@ -173,8 +173,8 @@ class Worker extends CI_Controller {
         $GLOBALS['sistem_config'] = new follows\cls\system_config();
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/DB.php';
         $DB = new \follows\cls\DB();
-        $reference_id = $_POST['reference_id'];
-        $result = $DB->get_work_by_id($reference_id);
+        $client_id = $_POST['client_id'];
+        $result = $DB->get_number_followed_today($client_id);
         echo json_encode($result);
     }
     
