@@ -53144,3 +53144,263 @@ Followed ID: 7433589578<br>
 object(stdClass)#507 (1) {
   ["status"]=>
   string(2) "ok"
+}
+Followed ID: 5437589210<br>
+object(stdClass)#712 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 5958631482<br>
+object(stdClass)#507 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 8663564895<br>
+object(stdClass)#712 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 22913198<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 71 <br>
+<br>
+Ref Profil: dietadosonho (id: 51330 | type: 0)<br>
+<br>
+Ref Profil: dietadosonho<br>
+Nodes: 5 <br>
+Profil name: darllane09 FOLLOWING <br>
+Profil name: natalia_hyrlla FOLLOWING <br>
+Profil name: isab.ils FOLLOWING <br>
+Profil name: bellalima_s.o FOLLOWING <br>
+NULL
+Not error code found!<br>
+ Client (id: 31576) not error code found (-1)!!! <br>
+NULL
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 3 | unfollows: 5 <br>get follow workget follow work done<br>_________ELAPSED TIME (498): <br>
+Client: 30536 <br>
+<br>
+nRef Profil: trilheiros_do_brasil<br>
+ Count: 1 Hasnext: 1 - 2018-10-07 01:56:23am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#490 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 3184993420<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 34 <br>
+<br>
+Ref Profil: trilheiros_do_brasil (id: 48739 | type: 0)<br>
+<br>
+Ref Profil: trilheiros_do_brasil<br>
+Nodes: 5 <br>
+Profil name: eduardohalima FOLLOWING <br>
+NULL
+Not error code found!<br>
+ Client (id: 30536) not error code found (-1)!!! <br>
+NULL
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 1 <br>get follow workget follow work done<br>_________ELAPSED TIME (438): <br>
+Client: 29968 <br>
+<br>
+nRef Profil: versatilly_festas<br>
+ Count: 5 Hasnext: 5 - 2018-10-07 01:59:13am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#747 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 6730308109<br>
+object(stdClass)#840 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 1910433787<br>
+object(stdClass)#747 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 295159950<br>
+object(stdClass)#840 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 1630752461<br>
+object(stdClass)#747 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 2289759518<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 33 <br>
+<br>
+Ref Profil: versatilly_festas (id: 47530 | type: 0)<br>
+<br>
+Ref Profil: versatilly_festas<br>
+Nodes: 5 <br>
+Profil name: elisdrodrigues FOLLOWING <br>
+Profil name: myllenacorreia FOLLOWING <br>
+NULL
+Not error code found!<br>
+ Client (id: 29968) not error code found (-1)!!! <br>
+NULL
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 1 | unfollows: 5 <br>get follow workget follow work done<br>_________ELAPSED TIME (559): <br>
+Client: 31600 <br>
+<br>
+nRef Profil: liveoficial<br>
+ Count: 0 Hasnext: 0 - 2018-10-07 02:00:17am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 0 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>_________ELAPSED TIME (431): <br>
+Client: 19923 <br>
+<br>
+nRef Profil: robertamichele<br>
+ Count: 0 Hasnext: 0 - 2018-10-07 02:03:06am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 0 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>_________ELAPSED TIME (575): <br>
+Client: 28712 <br>
+<br>
+nRef Profil: franciscolainsta<br>
+ Count: 5 Hasnext: 5 - 2018-10-07 02:03:31am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#678 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 1022641735<br>
+object(stdClass)#532 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 414414297<br>
+object(stdClass)#678 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 26220918<br>
+object(stdClass)#532 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 1453270506<br>
+object(stdClass)#678 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 200304440<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 13 <br>
+<br>
+Ref Profil: franciscolainsta (id: 43985 | type: 0)<br>
+<br>
+Ref Profil: franciscolainsta<br>
+Nodes: 5 <br>
+Profil name: jaad.are FOLLOWING <br>
+Profil name: johnnycarvalh0 FOLLOWING <br>
+Profil name: maduuaguiar FOLLOWING <br>
+Profil name: krugermind FOLLOWING <br>
+Profil name: juliananr NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+<br>
+Ref Profil: franciscolainsta (id: 43985 | type: 0)<br>
+<br>
+Ref Profil: franciscolainsta<br>
+Nodes: 5 <br>
+Profil name: grazi_martins NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+Profil name: kkkoschinski FOLLOWING <br>
+NULL
+Not error code found!<br>
+ Client (id: 28712) not error code found (-1)!!! <br>
+NULL
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 4 | unfollows: 5 <br>get follow workget follow work done<br>_________ELAPSED TIME (504): <br>
+Client: 30248 <br>
+<br>
+nRef Profil: cachoeirinha-rio-grande-do-sul<br>
+ Count: 0 Hasnext: 0 - 2018-10-07 02:05:55am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 17 <br>
+<br>
+Ref Profil: cachoeirinha-rio-grande-do-sul (id: 48091 | type: 1)<br>
+Nodes: 5 <br>
+Profil name: deiadamiani FOLLOWING <br>
+Profil name: barcelloslopes NOT FOLLOWING: followed_in_db(2) following_me() valid_profile(1)<br>
+Profil name: barcelloslopes NOT FOLLOWING: followed_in_db(2) following_me() valid_profile(1)<br>
+Profil name: barcelloslopes NOT FOLLOWING: followed_in_db(2) following_me() valid_profile(1)<br>
+Profil name: barcelloslopes NOT FOLLOWING: followed_in_db(2) following_me() valid_profile(1)<br>
+<br>
+Ref Profil: cachoeirinha-rio-grande-do-sul (id: 48091 | type: 1)<br>
+Nodes: 5 <br>
+Profil name: barcelloslopes NOT FOLLOWING: followed_in_db(2) following_me() valid_profile(1)<br>
+Profil name: barcelloslopes NOT FOLLOWING: followed_in_db(2) following_me() valid_profile(1)<br>
+Profil name: barcelloslopes NOT FOLLOWING: followed_in_db(2) following_me() valid_profile(1)<br>
+Profil name: barcelloslopes NOT FOLLOWING: followed_in_db(2) following_me() valid_profile(1)<br>
+Profil name: manucunha21 FOLLOWING <br>
+<br>
+Ref Profil: cachoeirinha-rio-grande-do-sul (id: 48091 | type: 1)<br>
+Nodes: 5 <br>
+Profil name: barcelloslopes NOT FOLLOWING: followed_in_db(2) following_me() valid_profile(1)<br>
+Profil name: barcelloslopes NOT FOLLOWING: followed_in_db(2) following_me() valid_profile(1)<br>
+Profil name: barcelloslopes NOT FOLLOWING: followed_in_db(2) following_me() valid_profile(1)<br>
+Profil name: ingrid.pinheiro0208 FOLLOWING <br>
+Profil name: barcelloslopes NOT FOLLOWING: followed_in_db(2) following_me() valid_profile(1)<br>
+<br>
+Ref Profil: cachoeirinha-rio-grande-do-sul (id: 48091 | type: 1)<br>
+Nodes: 5 <br>
+Profil name: lacosdamanula NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+Profil name: koppbruna NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+Profil name: jeruzas2 FOLLOWING <br>
+Profil name: lucas_rusty FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 5 | unfollows: 0 <br>get follow workget follow work done<br>_________ELAPSED TIME (461): <br>
+Client: 29968 <br>
+<br>
+nRef Profil: castelodeitaipava<br>
+ Count: 0 Hasnext: 0 - 2018-10-07 02:09:36am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 34 <br>
+<br>
+Ref Profil: castelodeitaipava (id: 50396 | type: 0)<br>
+<br>
+Ref Profil: castelodeitaipava<br>
+Nodes: 5 <br>
+Profil name: diegoyasmin4 FOLLOWING <br>
+Profil name: deivdson_carlos FOLLOWING <br>
+Profil name: rafellapacheco_dn FOLLOWING <br>
+Profil name: thatapedrinho FOLLOWING <br>
+NULL
+Not error code found!<br>
+ Client (id: 29968) not error code found (-1)!!! <br>
+NULL
+<br><br>
+
+____________________________

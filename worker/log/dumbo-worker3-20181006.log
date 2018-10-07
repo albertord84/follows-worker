@@ -51223,4 +51223,251 @@ nRef Profil: nike<br>
  Count: 0 Hasnext: 0 - 2018-10-07 01:43:51am<br>
  make_insta_friendships_command UNFOLLOW <br>
 <br>
-make_insta_friendships_comman
+make_insta_friendships_command FOLLOW (like firsts = 1): 6 <br>
+<br>
+Ref Profil: nike (id: 51341 | type: 0)<br>
+<br>
+Ref Profil: nike<br>
+Nodes: 5 <br>
+Profil name: claudia_raffaelli FOLLOWING <br>
+Profil name: thagononky FOLLOWING <br>
+NULL
+Not error code found!<br>
+ Client (id: 30359) not error code found (-1)!!! <br>
+NULL
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 1 | unfollows: 0 <br>get follow workget follow work done<br>_________ELAPSED TIME (492): <br>
+Client: 29663 <br>
+<br>
+nRef Profil: julianapippi<br>
+ Count: 0 Hasnext: 0 - 2018-10-07 01:45:51am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 32 <br>
+<br>
+Ref Profil: julianapippi (id: 49807 | type: 0)<br>
+<br>
+Ref Profil: julianapippi<br>
+Nodes: 5 <br>
+Profil name: concretizeprojeco FOLLOWING <br>
+Profil name: matheusbruncosta FOLLOWING <br>
+Profil name: casa_top_lagoa FOLLOWING <br>
+Profil name: designdayssc FOLLOWING <br>
+Profil name: juliana.accurso FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 5 | unfollows: 0 <br>get follow workget follow work done<br>_________ELAPSED TIME (445): <br>
+Client: 29968 <br>
+<br>
+nRef Profil: internovias<br>
+ Count: 2 Hasnext: 2 - 2018-10-07 01:48:56am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#178 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 600431247<br>
+object(stdClass)#350 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 5239712715<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 42 <br>
+<br>
+Ref Profil: internovias (id: 48147 | type: 0)<br>
+<br>
+Ref Profil: internovias<br>
+Nodes: 5 <br>
+Profil name: thayy_santos_sillva FOLLOWING <br>
+Profil name: f.roberta7 FOLLOWING <br>
+NULL
+Not error code found!<br>
+ Client (id: 29968) not error code found (-1)!!! <br>
+NULL
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 1 | unfollows: 2 <br>get follow workget follow work done<br>_________ELAPSED TIME (537): <br>
+Client: 31272 <br>
+<br>
+nRef Profil: california<br>
+ Count: 0 Hasnext: 0 - 2018-10-07 01:50:16am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 75 <br>
+<br>
+Ref Profil: california (id: 50654 | type: 0)<br>
+<br>
+Ref Profil: california<br>
+Nodes: 4 <br>
+Profil name: anea13 FOLLOWING <br>
+NULL
+Not error code found!<br>
+ Client (id: 31272) not error code found (-1)!!! <br>
+NULL
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>_________ELAPSED TIME (434): <br>
+Client: 62 <br>
+<br>
+nRef Profil: endeavorbrasil<br>
+ Count: 0 Hasnext: 0 - 2018-10-07 01:53:07am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 0 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>_________ELAPSED TIME (579): <br>
+Client: 27093 <br>
+<br>
+nRef Profil: dresscorte<br>
+ Count: 0 Hasnext: 0 - 2018-10-07 01:53:28am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 0 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>_________ELAPSED TIME (574): <br>
+Client: 31693 <br>
+<br>
+nRef Profil: juliavgalvao<br>
+ Count: 0 Hasnext: 0 - 2018-10-07 01:53:54am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 33 <br>
+<br>
+Ref Profil: juliavgalvao (id: 51472 | type: 0)<br>
+<br>
+Ref Profil: juliavgalvao<br>
+Nodes: 4 <br>
+Profil name: caioc.fernandes NOT FOLLOWING: requested_by_viewer() followed_by_viewer() null_picture(97)<br>
+Profil name: jessica_meirelles0 FOLLOWING <br>
+Profil name: loladolls8 FOLLOWING <br>
+Profil name: biaz_oliveira FOLLOWING <br>
+NULL
+Not error code found!<br>
+ Client (id: 31693) not error code found (-1)!!! <br>
+NULL
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 2 | unfollows: 0 <br>get follow workget follow work done<br>_________ELAPSED TIME (470): <br>
+Client: 29663 <br>
+<br>
+nRef Profil: viajareviver<br>
+ Count: 0 Hasnext: 0 - 2018-10-07 01:56:21am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 15 <br>
+<br>
+Ref Profil: viajareviver (id: 49585 | type: 2)<br>
+Nodes: 6 <br>
+Profil name: marcinhagobato FOLLOWING <br>
+Profil name: sissyviaja FOLLOWING <br>
+Profil name: casalforadacaixa NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+Profil name: ferrotur NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+Profil name: salaodointercambio.cxs NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+Profil name: who_knows_cassandra FOLLOWING <br>
+<br>
+Ref Profil: viajareviver (id: 49585 | type: 2)<br>
+Nodes: 6 <br>
+Profil name: aissatour_ NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+Profil name: voyage.turismo NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+Profil name: baru.pt FOLLOWING <br>
+Profil name: gavassamiriam FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 5 | unfollows: 0 <br>get follow workget follow work done<br>_________ELAPSED TIME (449): <br>
+Client: 31150 <br>
+<br>
+nRef Profil: jcrmkt<br>
+ Count: 0 Hasnext: 0 - 2018-10-07 01:59:47am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 96 <br>
+<br>
+Ref Profil: jcrmkt (id: 50513 | type: 0)<br>
+<br>
+Ref Profil: jcrmkt<br>
+Nodes: 5 <br>
+Profil name: brurizzo FOLLOWING <br>
+NULL
+Not error code found!<br>
+ Client (id: 31150) not error code found (-1)!!! <br>
+NULL
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>_________ELAPSED TIME (522): <br>
+Client: 29138 <br>
+<br>
+nRef Profil: colegiodomrafael<br>
+ Count: 0 Hasnext: 0 - 2018-10-07 02:01:10am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 0 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>_________ELAPSED TIME (463): <br>
+Client: 20818 <br>
+<br>
+nRef Profil: barbarabozan<br>
+ Count: 0 Hasnext: 0 - 2018-10-07 02:03:27am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 0 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>_________ELAPSED TIME (571): <br>
+Client: 27432 <br>
+<br>
+nRef Profil: rio-de-janeiro-rio-de-janeiro<br>
+ Count: 0 Hasnext: 0 - 2018-10-07 02:03:56am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 7 <br>
+<br>
+Ref Profil: rio-de-janeiro-rio-de-janeiro (id: 39014 | type: 1)<br>
+Nodes: 5 <br>
+Profil name: brunosouza8083 FOLLOWING <br>
+Profil name: solucaopromotora FOLLOWING <br>
+Profil name: joaoa_percussa FOLLOWING <br>
+Profil name: lepremiercoiffeur FOLLOWING <br>
+Profil name: filosofianossavida NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+<br>
+Ref Profil: rio-de-janeiro-rio-de-janeiro (id: 39014 | type: 1)<br>
+Nodes: 5 <br>
+Profil name: meneeezesju FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 5 | unfollows: 0 <br>get follow workget follow work done<br>_________ELAPSED TIME (505): <br>
+Client: 30536 <br>
+<br>
+nRef Profil: praiasexoticas<br>
+ Count: 0 Hasnext: 0 - 2018-10-07 02:06:31am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendsh

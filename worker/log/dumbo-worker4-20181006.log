@@ -50041,4 +50041,245 @@ ________________________________________________<br><br>
 Client: 30442 <br>
 <br>
 nRef Profil: vila-nova-conceicao-sp<br>
- Count: 0 Hasnext: 0 - 2018-10-07 02:01
+ Count: 0 Hasnext: 0 - 2018-10-07 02:01:20am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 20 <br>
+<br>
+Ref Profil: vila-nova-conceicao-sp (id: 48794 | type: 1)<br>
+Nodes: 5 <br>
+Profil name: powerplace NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+Profil name: quichesetc NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+Profil name: mustachecars FOLLOWING <br>
+Profil name: dr.ivanrollemberg FOLLOWING <br>
+Profil name: toniafilhos FOLLOWING <br>
+<br>
+Ref Profil: vila-nova-conceicao-sp (id: 48794 | type: 1)<br>
+Nodes: 5 <br>
+Profil name: jabontorim NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+Profil name: dany.cristina.07 FOLLOWING <br>
+Profil name: isabellavorccaro NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+Profil name: renato_podavi FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 5 | unfollows: 0 <br>get follow workget follow work done<br>_________ELAPSED TIME (519): <br>
+Client: 27093 <br>
+<br>
+nRef Profil: dresscorte<br>
+ Count: 0 Hasnext: 0 - 2018-10-07 02:03:28am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 0 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>_________ELAPSED TIME (560): <br>
+Client: 30359 <br>
+<br>
+nRef Profil: nike<br>
+ Count: 0 Hasnext: 0 - 2018-10-07 02:04:08am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 5 <br>
+<br>
+Ref Profil: nike (id: 51341 | type: 0)<br>
+<br>
+Ref Profil: nike<br>
+Nodes: 5 <br>
+Profil name: mamedoff_594 FOLLOWING <br>
+NULL
+Not error code found!<br>
+ Client (id: 30359) not error code found (-1)!!! <br>
+NULL
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>_________ELAPSED TIME (573): <br>
+Client: 31576 <br>
+<br>
+nRef Profil: madrugaosuplementos<br>
+ Count: 3 Hasnext: 3 - 2018-10-07 02:04:41am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#150 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 1922720637<br>
+object(stdClass)#85 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 303595464<br>
+object(stdClass)#150 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 1581836514<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 64 <br>
+<br>
+Ref Profil: madrugaosuplementos (id: 51410 | type: 0)<br>
+<br>
+Ref Profil: madrugaosuplementos<br>
+Nodes: 5 <br>
+Profil name: lucasmelo.l FOLLOWING <br>
+Profil name: green.coffee.max FOLLOWING <br>
+Profil name: reginaldo.erica FOLLOWING <br>
+NULL
+Not error code found!<br>
+ Client (id: 31576) not error code found (-1)!!! <br>
+NULL
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 2 | unfollows: 3 <br>get follow workget follow work done<br>_________ELAPSED TIME (493): <br>
+Client: 31433 <br>
+<br>
+nRef Profil: fofochic<br>
+ Count: 0 Hasnext: 0 - 2018-10-07 02:06:50am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 44 <br>
+<br>
+Ref Profil: fofochic (id: 51265 | type: 0)<br>
+<br>
+Ref Profil: fofochic<br>
+Nodes: 5 <br>
+Profil name: r.emodasoficial FOLLOWING <br>
+Profil name: solsticioblog FOLLOWING <br>
+Profil name: silvia_amamente_florianopolis FOLLOWING <br>
+Profil name: kezialiberatofoto FOLLOWING <br>
+Profil name: clairappel FOLLOWING <br>
+NULL
+Not error code found!<br>
+ Client (id: 31433) not error code found (-1)!!! <br>
+NULL
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 4 | unfollows: 0 <br>get follow workget follow work done<br>_________ELAPSED TIME (454): <br>
+Client: 13426 <br>
+<br>
+nRef Profil: recordtvoficial<br>
+ Count: 0 Hasnext: 0 - 2018-10-07 02:09:43am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 116 <br>
+<br>
+Ref Profil: recordtvoficial (id: 50549 | type: 0)<br>
+<br>
+Ref Profil: recordtvoficial<br>
+Nodes: 5 <br>
+Profil name: fernandasilva9485 FOLLOWING <br>
+NULL
+Not error code found!<br>
+ Client (id: 13426) not error code found (-1)!!! <br>
+NULL
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>_________ELAPSED TIME (573): <br>
+Client: 31600 <br>
+<br>
+nRef Profil: odmgt<br>
+ Count: 0 Hasnext: 0 - 2018-10-07 02:10:17am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 0 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>_________ELAPSED TIME (490): <br>
+Client: 30442 <br>
+<br>
+nRef Profil: tatuape<br>
+ Count: 0 Hasnext: 0 - 2018-10-07 02:12:07am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 20 <br>
+<br>
+Ref Profil: tatuape (id: 48600 | type: 1)<br>
+Nodes: 5 <br>
+Profil name: a_sarahsilva FOLLOWING <br>
+Profil name: srafaxx_ FOLLOWING <br>
+Profil name: mvscorreia FOLLOWING <br>
+Profil name: temakeriatuiuti NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+Profil name: _nillsouza_ FOLLOWING <br>
+<br>
+Ref Profil: tatuape (id: 48600 | type: 1)<br>
+Nodes: 5 <br>
+Profil name: fagatasso FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 5 | unfollows: 0 <br>get follow workget follow work done<br>_________ELAPSED TIME (566): <br>
+Client: 27093 <br>
+<br>
+nRef Profil: dresscorte<br>
+ Count: 0 Hasnext: 0 - 2018-10-07 02:13:28am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 0 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>_________ELAPSED TIME (549): <br>
+Client: 28712 <br>
+<br>
+nRef Profil: lisbon-portugal<br>
+ Count: 0 Hasnext: 0 - 2018-10-07 02:14:19am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 0 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>_________ELAPSED TIME (556): <br>
+Client: 31576 <br>
+<br>
+nRef Profil: karinapeloinutricionista<br>
+ Count: 0 Hasnext: 0 - 2018-10-07 02:15:03am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 62 <br>
+<br>
+Ref Profil: karinapeloinutricionista (id: 51411 | type: 0)<br>
+<br>
+Ref Profil: karinapeloinutricionista<br>
+Nodes: 5 <br>
+Profil name: e.clee NOT FOLLOWING: requested_by_viewer() followed_by_viewer() null_picture(98)<br>
+Profil name: dorafarias8 FOLLOWING <br>
+NULL
+Not error code found!<br>
+ Client (id: 31576) not error code found (-1)!!! <br>
+NULL
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>_________ELAPSED TIME (471): <br>
+Client: 30248 <br>
+<br>
+nRef Profil: barrasdeaccess<br>
+ Count: 0 Hasnext: 0 - 2018-10-07 02:17:17am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 27 <br>
+<br>
+Ref Profil: barrasdeaccess (id: 48093 | type: 2)<br>
+array(1) {
+  [0]=>
+  string(138) "{"message": "execution failure", "errors": [{"message": "execution error", "locations": []}], "data": {"hashtag": null}, "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@207.188.155.18:21316' 'https://www.instagram.com/graphql/query/?query_hash=ded47faa9a1aaded10161a2ff32abb6b&variables=%7B%22tag_name%22%3A%22barrasdeaccess%22%2C%22first%22%3A2%2C%22after%22%3A%22AQBD1nyP6hfRYLxZPDYzRD0syAnG-pgahsNboWHk3uUD
