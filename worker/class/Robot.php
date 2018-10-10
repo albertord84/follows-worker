@@ -125,12 +125,12 @@ namespace follows\cls {
                 } else if (is_object($json_response) && $json_response->status == 'ok') { // if unfollowed 
                     $Profile->unfollowed = TRUE;
                     var_dump($json_response);
-                    echo "Followed ID: $Profile->followed_id<br>\n";
+                    echo "Followed ID: $Profile->followed_id ($Profile->insta_name)<br>\n";
                     // Mark it unfollowed and send back to queue
                     // If have some Profile to unfollow
                     $has_next = count($Followeds_to_unfollow) && !$Followeds_to_unfollow[0]->unfollowed;
                 } else {
-                    echo "ID: $Profile->followed_id<br>\n";
+                    echo "ID: $Profile->followed_id ($Profile->insta_name)<br>\n";
 //                    var_dump($json_response);
                     $error = $this->process_follow_error($json_response);
                     // TODO: Class for error messages
@@ -578,16 +578,22 @@ namespace follows\cls {
                     break;
                 case 10:
                     print "<br> Empty response from instagram</br>";
-                    $result = $this->DB->delete_daily_work_client($client_id);
-                    $this->DB->set_client_cookies($client_id);
-                    $this->DB->set_client_status($client_id, user_status::VERIFY_ACCOUNT);
-                    $this->DB->InsertEventToWashdog($client_id, washdog_type::ROBOT_VERIFY_ACCOUNT, 1, $this->id, "Error 10: Empty response from instagram with RP ($ref_prof_id)");
-                    break;
+                    $time = $GLOBALS['sistem_config']->INCREASE_CLIENT_LAST_ACCESS;
+                    $this->DB->InsertEventToWashdog($client_id, washdog_type::BLOCKED_BY_TIME, 1, $this->id, "access incresed in $time");
+
+                    $this->DB->Increase_Client_Last_Access($client_id, $GLOBALS['sistem_config']->INCREASE_CLIENT_LAST_ACCESS);
+
+                    $result = $this->DB->get_clients_by_status(user_status::BLOCKED_BY_TIME);
+                   break;
                 case 11:
                     print "<br> se ha bloqueado. Vuelve a intentarlo</br>";
                     $result = $this->DB->delete_daily_work_client($client_id);
                     //$this->DB->set_client_cookies($client_id);                    
                     $this->DB->set_client_status($client_id, user_status::BLOCKED_BY_TIME);
+                    break;
+                case 12:
+                    $result = $this->DB->update_reference_cursor($ref_prof_id,NULL);
+                    print "<br>$ref_prof_id set to null<br>\n";
                     break;
                 default:
                     print "<br>\n Client (id: $client_id) not error code found ($error)!!! <br>\n";
@@ -845,7 +851,7 @@ namespace follows\cls {
                 } else {
                     var_dump($output);
                     print_r($curl_str);
-                    if (isset($json->data) && ($json->data->user == null)) {
+                    /*if (isset($json->data) && ($json->data->user == null)) {
                         //$this->DB->update_reference_cursor($this->daily_work->reference_id, NULL);
                         //echo ("<br>\n Updated Reference Cursor to NULL!!");
                         $result = $this->DB->delete_daily_work($this->daily_work->reference_id);
@@ -854,7 +860,7 @@ namespace follows\cls {
                         } else {
                             var_dump($result);
                         }
-                    }
+                    }*/
                 }
                 return $json;
             } catch (\Exception $exc) {
