@@ -578,11 +578,13 @@ namespace follows\cls {
                     break;
                 case 10:
                     print "<br> Empty response from instagram</br>";
-                    $result = $this->DB->delete_daily_work_client($client_id);
-                    $this->DB->set_client_cookies($client_id);
-                    $this->DB->set_client_status($client_id, user_status::VERIFY_ACCOUNT);
-                    $this->DB->InsertEventToWashdog($client_id, washdog_type::ROBOT_VERIFY_ACCOUNT, 1, $this->id, "Error 10: Empty response from instagram with RP ($ref_prof_id)");
-                    break;
+                    $time = $GLOBALS['sistem_config']->INCREASE_CLIENT_LAST_ACCESS;
+                    $this->DB->InsertEventToWashdog($client_id, washdog_type::BLOCKED_BY_TIME, 1, $this->id, "access incresed in $time");
+
+                    $this->DB->Increase_Client_Last_Access($client_id, $GLOBALS['sistem_config']->INCREASE_CLIENT_LAST_ACCESS);
+
+                    $result = $this->DB->get_clients_by_status(user_status::BLOCKED_BY_TIME);
+                   break;
                 case 11:
                     print "<br> se ha bloqueado. Vuelve a intentarlo</br>";
                     $result = $this->DB->delete_daily_work_client($client_id);
