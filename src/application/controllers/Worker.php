@@ -168,5 +168,15 @@ class Worker extends CI_Controller {
         }
     }
     
+    public function get_number_followed_today() {
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/system_config.php';
+        $GLOBALS['sistem_config'] = new follows\cls\system_config();
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/DB.php';
+        $DB = new \follows\cls\DB();
+        $client_id = $_POST['client_id'];
+        $result = $DB->get_number_followed_today($client_id);
+        echo json_encode($result);
+    }
+    
 
 }
