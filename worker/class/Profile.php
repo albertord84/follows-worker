@@ -85,6 +85,10 @@ namespace follows\cls {
                 } else if ($response->message === '') {
                     $error = 6; // Empty message
                 }
+                else if (strpos($response->message,'execution error') !== FALSE)
+                {
+                    $error = 12;
+                }
                 else{
                     $error = -1;
                     var_dump($response);

@@ -31,7 +31,7 @@ curl_setopt($ch, CURLOPT_HTTPPROXYTUNNEL, 1);
 
 $DB = new follows\cls\DB();
 $Robot = new \follows\cls\Robot();
-$Client = (new \follows\cls\Client())->get_client(20565);
+$Client = (new \follows\cls\Client())->get_client(29193);
 //$res = $Robot->get_insta_follows(json_decode($Client->cookies),$Client->insta_id,15);
   /*$daily_work.cookies as cookies, "
                         . "   users.id as users_id, "
@@ -43,9 +43,9 @@ $daily_work = new \stdClass();
 $daily_work->cookies = $Client->cookies;
 $daily_work->login_data = json_decode($Client->cookies);
 $daily_work->users_id = $Client->id;
-$daily_work->rp_insta_id = '2023444583';
+$daily_work->rp_insta_id = '';
 //$daily_work->rp_insta_name = 'lovecats';
-$daily_work->insta_name = 'daylipadron';
+$daily_work->insta_name = 'vicente.felipe';
 $daily_work->rp_type = 0;
 $daily_work->rp_id = 49843; 
 $daily_work->client_id = $Client->id;
