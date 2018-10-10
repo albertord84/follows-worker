@@ -88,7 +88,7 @@ namespace follows\cls {
          * @return void
          * @access public
          */
-        public function do_follow_unfollow_work($Followeds_to_unfollow, $daily_work, $error = FALSE) {
+        public function do_follow_unfollow_work($Followeds_to_unfollow, $daily_work, &$error = FALSE) {
             //$this->Day_client_work = $Day_client_work;
             //$this->Ref_profile = $Ref_profile;
             //$DB = new DB();
