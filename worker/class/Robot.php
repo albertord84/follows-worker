@@ -307,7 +307,7 @@ namespace follows\cls {
           {}
          */
 
-        public function get_profiles_to_follow_without_log($daily_work, $error, &$page_info) {
+        public function get_profiles_to_follow_without_log($daily_work, $error, &$page_info, $proxy="" ) {
             $Profiles = array();
             $error = TRUE;
             $login_data = json_decode($daily_work->cookies);
@@ -315,7 +315,7 @@ namespace follows\cls {
             $page_info = new \stdClass();
             if ($daily_work->rp_type == 0) {
                 $json_response = $this->get_insta_followers(
-                        $login_data, $daily_work->rp_insta_id, $quantity, $daily_work->insta_follower_cursor
+                        $login_data, $daily_work->rp_insta_id, $quantity, $daily_work->insta_follower_cursor,$proxy
                 );
                 //var_dump($json_response);
                 if ($json_response === NULL) {
@@ -1886,9 +1886,10 @@ namespace follows\cls {
                             $daily_work->insta_name = 'cuba';
                             $daily_work->rp_insta_id = 220021938;
                             $error = NULL;
-                            $page_info = 0;
-
-                            $res = $this->get_profiles_to_follow_without_log($daily_work, $error, $page_info);
+                            $page_info = 0;                           
+                            $proxy = $this->get_proxy_str($Client);
+            
+                            $res = $this->get_profiles_to_follow_without_log($daily_work, $error, $page_info, $proxy);
                             try {
                                 if (count($res) > 0) {
                                     $result->json_response->status = 'ok';
