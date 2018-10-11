@@ -401,7 +401,7 @@ $Robot = new follows\cls\Robot();
 // WORKER
 $Worker = new follows\cls\Worker();
 //$daily_work = $Worker->get_work_by_id(2);
-$daily_work = $Worker->get_work_by_id(51816);
+$daily_work = $Worker->get_work_by_id(51774);
 $Worker->do_follow_unfollow_work($daily_work);
 //$error = NULL; $page_info = NULL;
 //var_dump($daily_work->rp_insta_id);
