@@ -31,7 +31,7 @@ curl_setopt($ch, CURLOPT_HTTPPROXYTUNNEL, 1);
 
 $DB = new follows\cls\DB();
 $Robot = new \follows\cls\Robot();
-$Client = (new \follows\cls\Client())->get_client(31800);
+$Client = (new \follows\cls\Client())->get_client(30864);
 //$res = $Robot->get_insta_follows(json_decode($Client->cookies),$Client->insta_id,15);
   /*$daily_work.cookies as cookies, "
                         . "   users.id as users_id, "
@@ -52,6 +52,18 @@ $daily_work->client_id = $Client->id;
 $daily_work->like_first = true;
 $daily_work->to_follow = 5;
 $Followeds_to_unfollow = array();
+$unfollow_work =  $DB->get_unfollow_work($daily_work->client_id);
+
+if(is_object($unfollow_work) && !is_bool($unfollow_work))
+    {
+        while($Followed = $unfollow_work->fetch_object()) {
+            $To_Unfollow = new \follows\cls\Followed();// Update Ref Prof Data
+            $To_Unfollow->id = $Followed->id;
+            $To_Unfollow->followed_id = $Followed->followed_id;
+            array_push($Followeds_to_unfollow, $To_Unfollow);
+        }
+    }
+
 $error = NULL; $page_info = NULL;
 //var_dump($daily_work->rp_insta_id);
 //$profiles = $Robot->get_profiles_to_follow($daily_work, $error, $page_info);
@@ -70,7 +82,7 @@ while ($Followed = $unfollow_work->fetch_object()) { //
  * 
  */
  $errors = false;
- $Followeds_to_unfollow = NULL;
+// $Followeds_to_unfollow = NULL;
  $Ref_profile_follows = $Robot->do_follow_unfollow_work($Followeds_to_unfollow, $daily_work, $errors);
  var_dump($Ref_profile_follows);
  var_dump($errors);
