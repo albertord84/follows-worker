@@ -400,12 +400,13 @@ $Robot = new follows\cls\Robot();
 //
 // WORKER
 $Worker = new follows\cls\Worker();
-$daily_work = $Worker->get_work_by_id(48607);
-//$Worker->do_follow_unfollow_work($daily_work);
-$error = NULL; $page_info = NULL;
+//$daily_work = $Worker->get_work_by_id(2);
+$daily_work = $Worker->get_work_by_id(51816);
+$Worker->do_follow_unfollow_work($daily_work);
+//$error = NULL; $page_info = NULL;
 //var_dump($daily_work->rp_insta_id);
-$profiles = $Robot->get_profiles_to_follow($daily_work, $error, $page_info);
-var_dump($profiles);
+//$profiles = $Robot->get_profiles_to_follow($daily_work, $error, $page_info);
+//var_dump($profiles);
 //
 ////$Worker->check_daily_work();
 //$Worker->truncate_daily_work();
