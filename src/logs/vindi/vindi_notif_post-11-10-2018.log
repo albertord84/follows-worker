@@ -1,0 +1,2 @@
+{"event":{"type":"message_seen","created_at":"2018-10-11T00:44:43.840-03:00","data":{"message":{"id":17985167,"notification_type":"email","seen_at":"2018-10-11T00:44:43.828-03:00","created_at":"2018-10-10T11:20:43.000-03:00","customer":{"id":7401094,"name":"KARLA MACHADO ANDRADE","email":"km.andrade@hotmail.com","code":null},"charge":{"id":28656859},"notification":{"id":39905,"notification_type":"email"}}}}}
+
