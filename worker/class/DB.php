@@ -1143,7 +1143,27 @@ namespace follows\cls {
                 echo $exc->getTraceAsString();
             }
         }
-
+        
+        public function get_dumbu_statistics() {
+            try {
+                $str = "SELECT status_id,count(*) as cnt FROM dumbudb.users GROUP BY status_id;";
+                $result = mysqli_query($this->connection, $str);
+                return $result;
+            } catch (\Exception $exc) {
+                echo $exc->getTraceAsString();
+            }
+        }
+        
+        public function insert_dumbu_statistics($cols,$arr) {
+            try {
+                $sql = "INSERT INTO dumbudb.dumbu_statistic ".$cols." VALUE ".$arr.";";
+                $result = mysqli_query($this->connection, $sql);
+                return $result;
+            } catch (\Exception $exc) {
+                echo $exc->getTraceAsString();
+            }
+        }
+        
     }
 
 }

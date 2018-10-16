@@ -367,6 +367,28 @@ namespace follows\cls {
             return $result;
         }
         
+        public function send_link_ticket_bank_in_update($useremail, $username, $ticket_link){      
+            $this->mail->clearAddresses();
+            $this->mail->addAddress($useremail);
+            $this->mail->addCC($GLOBALS['sistem_config']->ATENDENT_EMAIL, $GLOBALS['sistem_config']->ATENDENT_USER_LOGIN);
+            $this->mail->addReplyTo($GLOBALS['sistem_config']->ATENDENT_EMAIL, $GLOBALS['sistem_config']->ATENDENT_USER_LOGIN);
+            $this->mail->clearReplyTos();
+            $this->mail->isHTML(true);
+            $this->mail->Subject = "Ticket bank generated successfully!!";
+            $username = urlencode($username);
+            $ticket_link = urlencode($ticket_link);
+            $this->mail->msgHTML(@file_get_contents("http://". $_SERVER['SERVER_NAME'] ."/follows-worker/worker/resources/emails/update_tiket_bank.php?username=$username&ticket_link=$ticket_link"), dirname(__FILE__));
+            if (!$this->mail->send()) {
+                $result['success'] = false;
+                $result['message'] = "Mailer Error: " . $this->mail->ErrorInfo;
+            } else {
+                $result['success'] = true;
+                $result['message'] = "Message sent!" . $this->mail->ErrorInfo;
+            }
+            $this->mail->smtpClose();
+            return $result;
+        }
+        
         public function send_user_to_purchase_step($useremail, $username, $instaname, $purchase_access_token) {
             //Set an alternative reply-to address
             //$mail->addReplyTo('albertord@ic.uff.br', 'First Last');
