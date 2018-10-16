@@ -37,8 +37,8 @@ class Payment extends CI_Controller {
                         $result = file_put_contents($file, "$client_id: ACTIVED" . "\n\r", FILE_APPEND);
                         //2. pay_day un mes para el frente
                         $this->client_model->update_client(
-                                $client_id, array('pay_day' => strtotime("+30 days", time())));
-                        $result = file_put_contents($file, "$client_id: +30 pay day" . "\n\r\n\r", FILE_APPEND);
+                                $client_id, array('pay_day' => strtotime("+1 month", time())));
+                        $result = file_put_contents($file, "$client_id: +1 month from now" . "\n\r\n\r", FILE_APPEND);
                     }
                     //die("Activate client -> Payment done!! -> Dia da cobrança um mês para frente");
                 }
