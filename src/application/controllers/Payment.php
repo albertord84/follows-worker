@@ -5,15 +5,31 @@ class Payment extends CI_Controller {
     // ACESSADOS EXTERNAMENTE POR CURL
     public function vindi_notif_post() {
         try {
-            $post = urldecode($_POST['post_str']);
+            $post_str = urldecode($_POST['post_str']);
             //var_dump($post_str);
-            //$post = unserialize($post_str);
-            $post = json_decode($post);
+            $post_un = unserialize($post_str);
+            $post_de = json_decode($post_un);
             //var_dump(unserialize($post_str));
             // Write the contents back to the file
             $path = __dir__ . '/../../logs/vindi/';
             $file = $path . "vindi_notif_post-" . date("d-m-Y") . ".log";
-            $result = file_put_contents($file, $post . "\n\n", FILE_APPEND);
+            $result = file_put_contents($file, serialize($post_str), FILE_APPEND);
+            $result = file_put_contents($file, "\n\n", FILE_APPEND);
+            if (isset($post_str->event) && isset($post_str->event->type)) {
+                $result = file_put_contents($file, "post_str is object!!! \n\n", FILE_APPEND);
+            } else
+            if (isset($post_un->event) && isset($post_un->event->type)) {
+                $result = file_put_contents($file, "post_un is object!!! \n\n", FILE_APPEND);
+            } else
+            if (isset($post_de->event) && isset($post_de->event->type)) {
+                $result = file_put_contents($file, "post_de is object!!! \n\n", FILE_APPEND);
+            } else {
+                $result = file_put_contents($file, "\nERROR:\n", FILE_APPEND);
+                $result = file_put_contents($file, serialize($post), FILE_APPEND);
+                $result = file_put_contents($file, "\nERROR END\n", FILE_APPEND);
+                echo "FAIL";
+                return;
+            }
             if (isset($post->event) && isset($post->event->type)) {
                 // Recurrence created succefully
                 if ($post->event->type == "charge_created") {
@@ -44,7 +60,9 @@ class Payment extends CI_Controller {
                     }
                 }
             } else {
-                $result = file_put_contents($file, "\nERROR:\n" . $post . "\n\n", FILE_APPEND);
+                $result = file_put_contents($file, "\nERROR:\n", FILE_APPEND);
+                $result = file_put_contents($file, serialize($post), FILE_APPEND);
+                $result = file_put_contents($file, "\nERROR END\n", FILE_APPEND);
                 echo "FAIL";
             }
         } catch (\Exception $exc) {
@@ -133,7 +151,7 @@ class Payment extends CI_Controller {
         $GLOBALS['sistem_config'] = new follows\cls\system_config();
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/Payment.php';
         $Payment = new \follows\cls\Payment();
-        $payment_data = (array)json_decode(urldecode($_POST['payment_data']));
+        $payment_data = (array) json_decode(urldecode($_POST['payment_data']));
         $result = $Payment->create_boleto_payment($payment_data);
         echo json_encode($result);
     }
