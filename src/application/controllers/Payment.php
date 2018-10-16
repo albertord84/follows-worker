@@ -133,12 +133,9 @@ class Payment extends CI_Controller {
         $GLOBALS['sistem_config'] = new follows\cls\system_config();
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/Payment.php';
         $Payment = new \follows\cls\Payment();
-        $payment_data = (array) json_decode(urldecode($_POST['payment_data']));
-        var_dump($_POST['payment_data']);
-//        $a="%7B%22AmountInCents%22%3A20374%2C%22DocumentNumber%22%3A15402%2C%22OrderReference%22%3A15402%2C%22id%22%3A%2230359%22%2C%22name%22%3A%22JOSE+R+G+MONTERO%22%2C%22cpf%22%3A%2207367014196%22%2C%22cep%22%3A%2224020206%22%2C%22street_address%22%3A%22Rua+Visconde+de+Sepetiba%22%2C%22house_number%22%3A%22223%22%2C%22neighborhood_address%22%3A%22Centro%22%2C%22municipality_address%22%3A%22Niter%5Cu00f3i%22%2C%22state_address%22%3A%22RJ%22%7D";
-//        $payment_data = (array)json_decode(urldecode($a));
-        //$result = $Payment->create_boleto_payment($payment_data);
-        //echo json_encode($result);
+        $payment_data = (array)json_decode(urldecode($_POST['payment_data']));
+        $result = $Payment->create_boleto_payment($payment_data);
+        echo json_encode($result);
     }
 
     // USADOS INTERNAMENTE PELOS ROBOTS DE PAGAMENTO

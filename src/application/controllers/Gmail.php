@@ -40,11 +40,9 @@ class Gmail extends CI_Controller {
         $GLOBALS['sistem_config'] = new follows\cls\system_config();
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/Gmail.php';
         $Gmail = new follows\cls\Gmail();
-
-        $useremail = urldecode($_POST['useremail']);
         $username = urldecode($_POST['username']);
+        $useremail = urldecode($_POST['useremail']);
         $ticket_link = urldecode($_POST['ticket_link']);
-
         $result = $Gmail->send_link_ticket_bank_in_update($useremail, $username, $ticket_link);
         echo json_encode($result);
     }

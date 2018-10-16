@@ -383,7 +383,7 @@ namespace follows\cls {
                 $result['message'] = "Mailer Error: " . $this->mail->ErrorInfo;
             } else {
                 $result['success'] = true;
-                $result['message'] = "Message sent!" . $this->mail->ErrorInfo;
+                $result['message'] = "Message sent!";
             }
             $this->mail->smtpClose();
             return $result;
