@@ -88,7 +88,7 @@ namespace follows\cls {
          * @return void
          * @access public
          */
-        public function do_follow_unfollow_work($Followeds_to_unfollow, $daily_work, $error = FALSE) {
+        public function do_follow_unfollow_work($Followeds_to_unfollow, $daily_work, &$error = FALSE) {
             //$this->Day_client_work = $Day_client_work;
             //$this->Ref_profile = $Ref_profile;
             //$DB = new DB();
@@ -307,7 +307,7 @@ namespace follows\cls {
           {}
          */
 
-        public function get_profiles_to_follow_without_log($daily_work, $error, &$page_info) {
+        public function get_profiles_to_follow_without_log($daily_work, $error, &$page_info, $proxy="" ) {
             $Profiles = array();
             $error = TRUE;
             $login_data = json_decode($daily_work->cookies);
@@ -315,7 +315,7 @@ namespace follows\cls {
             $page_info = new \stdClass();
             if ($daily_work->rp_type == 0) {
                 $json_response = $this->get_insta_followers(
-                        $login_data, $daily_work->rp_insta_id, $quantity, $daily_work->insta_follower_cursor
+                        $login_data, $daily_work->rp_insta_id, $quantity, $daily_work->insta_follower_cursor,$proxy
                 );
                 //var_dump($json_response);
                 if ($json_response === NULL) {
@@ -508,14 +508,7 @@ namespace follows\cls {
                     break;
                 case 3: // "Unautorized"
                     $result = $this->DB->delete_daily_work_client($client_id);
-                    if (isset($json_response->message))
-                        $this->DB->InsertEventToWashdog($client_id, washdog_type::BLOCKED_BY_TIME, 1, $this->id, $json_response->message);
-                    else {
-                        $this->DB->InsertEventToWashdog($client_id, washdog_type::BLOCKED_BY_TIME, 1, $this->id);
-                    }
-                    //var_dump($result);
-                    $this->DB->set_client_status($client_id, user_status::BLOCKED_BY_TIME);
-                    //$this->DB->set_client_cookies($client_id, NULL);
+                    $this->SetUnautorizedClientStatus($client_id);                    
                     print "<br>\n Unautorized Client (id: $client_id) set to BLOCKED_BY_INSTA!!! <br>\n";
                     break;
                 case 4: // "Parece que você estava usando este recurso de forma indevida"
@@ -1886,9 +1879,10 @@ namespace follows\cls {
                             $daily_work->insta_name = 'cuba';
                             $daily_work->rp_insta_id = 220021938;
                             $error = NULL;
-                            $page_info = 0;
-
-                            $res = $this->get_profiles_to_follow_without_log($daily_work, $error, $page_info);
+                            $page_info = 0;                           
+                            $proxy = $this->get_proxy_str($Client);
+            
+                            $res = $this->get_profiles_to_follow_without_log($daily_work, $error, $page_info, $proxy);
                             try {
                                 if (count($res) > 0) {
                                     $result->json_response->status = 'ok';
@@ -2512,9 +2506,26 @@ namespace follows\cls {
             }
             return "";
         }
-
+        
+        public function  SetUnautorizedClientStatus($client_id){
+            $this->DB->set_cookies_to_null($client_id);                    
+            $client = (new \follows\cls\Client())->get_client($client_id);
+            $result = $this->bot_login($client->login, $client->pass);
+            if(isset($result->json_response->message))
+            {
+                if($result->json_response->message == 'checkpoint_required')
+                {
+                    $this->DB->set_client_status($client_id, user_status::VERIFY_ACCOUNT);
+                    $this->DB->InsertEventToWashdog($client_id, washdog_type::ROBOT_VERIFY_ACCOUNT, 1, $this->id);                    
+                }
+                else if($result->json_response->message == 'incorrect_password')
+                {
+                    $this->DB->set_client_status($client_id, user_status::BLOCKED_BY_INSTA);
+                    $this->DB->InsertEventToWashdog($client_id, washdog_type::BLOCKED_BY_INSTA, 1, $this->id);                                           
+                }
+            } 
+        }
     }
-
 // end of Robot
 }
 ?>
