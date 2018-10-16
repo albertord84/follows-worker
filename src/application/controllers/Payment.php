@@ -8,7 +8,7 @@ class Payment extends CI_Controller {
             $post = urldecode($_POST['post_str']);
             //var_dump($post_str);
             //$post = unserialize($post_str);
-            //$post = json_decode($post);
+            $post = json_decode($post);
             //var_dump(unserialize($post_str));
             // Write the contents back to the file
             $path = __dir__ . '/../../logs/vindi/';
