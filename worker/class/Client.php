@@ -99,7 +99,7 @@ namespace follows\cls {
          * @access public
          */
         public $reference_profiles = array();
-        
+
         /**
          *
          * @var type 
@@ -131,7 +131,7 @@ namespace follows\cls {
                     if ($profile_data) {
                         $result = $DB->insert_client_daily_report($client_data->id, $profile_data);
                         var_dump($client_data->login);
-                        var_dump("Cantidad de follows = ".$profile_data->follower_count);
+                        var_dump("Cantidad de follows = " . $profile_data->follower_count);
                         echo '<br><br><br>';
                     } else {
                         var_dump($client_data);
@@ -142,53 +142,53 @@ namespace follows\cls {
                 echo $exc->getTraceAsString();
             }
         }
-        
+
         public function dumbu_statistics() {
             try {
                 $Clients = array();
                 $DB = new \follows\cls\DB();
                 $time = strtotime(date("Y-m-d H:00:00"));
                 $datas = $DB->get_dumbu_statistics();
-                $arr ='(';
-                $cols='(';
+                $arr = '(';
+                $cols = '(';
                 foreach ($datas as $value) {
                     switch ($value['status_id']) {
                         case "1":
-                            $cols.="ACTIVE,";
+                            $cols .= "ACTIVE,";
                             break;
                         case "2":
-                            $cols.="BLOCKED_BY_PAYMENT,";
+                            $cols .= "BLOCKED_BY_PAYMENT,";
                             break;
                         case "3":
-                            $cols.="BLOCKED_BY_INSTA,";
+                            $cols .= "BLOCKED_BY_INSTA,";
                             break;
                         case "4":
-                            $cols.="DELETED,";
+                            $cols .= "DELETED,";
                             break;
                         case "5":
-                            $cols.="INACTIVE,";
+                            $cols .= "INACTIVE,";
                             break;
                         case "6":
-                            $cols.="PENDING,";
+                            $cols .= "PENDING,";
                             break;
                         case "7":
-                            $cols.="UNFOLLOW,";
+                            $cols .= "UNFOLLOW,";
                             break;
                         case "8":
-                            $cols.="BEGINNER,";
+                            $cols .= "BEGINNER,";
                             break;
                         case "9":
-                            $cols.="VERIFY_ACCOUNT,";
+                            $cols .= "VERIFY_ACCOUNT,";
                             break;
                         case "10":
-                            $cols.="BLOCKED_BY_TIME,";
-                            break;                        
-                    }                    
-                    $arr.=$value['cnt'].',';
-                }        
-                $cols.='date)';
-                $arr.=$time.')';
-                $DB->insert_dumbu_statistics($cols,$arr);
+                            $cols .= "BLOCKED_BY_TIME,";
+                            break;
+                    }
+                    $arr .= $value['cnt'] . ',';
+                }
+                $cols .= 'date)';
+                $arr .= $time . ')';
+                $DB->insert_dumbu_statistics($cols, $arr);
             } catch (Exception $exc) {
                 echo $exc->getTraceAsString();
             }
@@ -229,7 +229,7 @@ namespace follows\cls {
                 echo $exc->getTraceAsString();
             }
         }
-        
+
         public function get_begginer_client($client_id) {
             try {
                 $DB = new DB();
@@ -290,6 +290,7 @@ namespace follows\cls {
          * @return logindata or NULL
          */
         public function sign_in($Client) {
+            $DB = new DB();
             $login_data = (new Robot())->bot_login($Client->login, $Client->pass);
             if (is_object($login_data) && isset($login_data->json_response->authenticated) && $login_data->json_response->authenticated) {
                 $this->set_client_cookies($Client->id, json_encode($login_data));
@@ -298,11 +299,22 @@ namespace follows\cls {
             } else {
                 echo "<br>\n NOT Autenticated Client!!!: $Client->login <br>\n<br>\n";
                 // Chague client status
-                if (isset($login_data->json_response) && $login_data->json_response->status == 'fail' && $login_data->json_response->message == 'checkpoint_required' && $Client->status_id != user_status::VERIFY_ACCOUNT) {
-                    $this->set_client_status($Client->id, user_status::VERIFY_ACCOUNT);
-                }
-                if (isset($login_data->json_response) && $login_data->json_response->status == 'ok' && !$login_data->json_response->authenticated && $Client->status_id != user_status::BLOCKED_BY_INSTA) {
-                    $this->set_client_status($Client->id, user_status::BLOCKED_BY_INSTA);
+                if (isset($login_data->json_response) && $login_data->json_response->status == 'ok') {
+                    if ($login_data->json_response->message == 'checkpoint_required') {
+                        if ($Client->status_id != user_status::VERIFY_ACCOUNT) {
+                            $this->set_client_status($Client->id, user_status::VERIFY_ACCOUNT);
+                        }
+                    } else
+                    if ($login_data->json_response->message == 'incorrect_password') {
+                        if ($Client->status_id != user_status::BLOCKED_BY_INSTA) {
+                            $this->set_client_status($Client->id, user_status::BLOCKED_BY_INSTA);
+                        }
+                    } else
+                    if ($login_data->json_response->message == 'problem_with_your_request') {
+                        $DB->InsertEventToWashdog($Client->id, washdog_type::PROBLEM_WITH_YOUR_REQUEST, 1, 0, "Unknow error with your request");
+                    } else {
+                        $DB->InsertEventToWashdog($Client->id, washdog_type::PROBLEM_WITH_YOUR_REQUEST, 1, 0, $login_data->json_response->message);
+                    }
                 }
                 $this->set_client_cookies($Client->id, NULL);
                 return NULL;
@@ -327,11 +339,11 @@ namespace follows\cls {
                 $cookies = $cookies ? $cookies : $this->cookies;
                 $DB = new \follows\cls\DB();
                 $result = $DB->set_client_cookies($client_id, $cookies);
-                /*if ($result) {
-                    //print "Client $client_id cookies changed!!!";
-                } else {
-                    print "FAIL CHANGING Client $client_id cookies!!!";
-                }*/
+                /* if ($result) {
+                  //print "Client $client_id cookies changed!!!";
+                  } else {
+                  print "FAIL CHANGING Client $client_id cookies!!!";
+                  } */
                 return $result;
             } catch (Exception $exc) {
                 echo $exc->getTraceAsString();
@@ -377,7 +389,7 @@ namespace follows\cls {
                     $Ref_Prof->insta_id = $prof_data->insta_id;
                     $Ref_Prof->insta_name = $prof_data->insta_name;
                     $Ref_Prof->insta_follower_cursor = $prof_data->insta_follower_cursor;
-                    $Ref_Prof->deleted = ($prof_data->deleted || ($prof_data->deleted == "1"))? true : false;
+                    $Ref_Prof->deleted = ($prof_data->deleted || ($prof_data->deleted == "1")) ? true : false;
                     $Ref_Prof->type = $prof_data->type;
                     $Ref_Prof->end_date = $prof_data->end_date;
                     array_push($this->reference_profiles, $Ref_Prof);
