@@ -34,6 +34,20 @@ class Gmail extends CI_Controller {
         $result = $Gmail->send_link_ticket_bank_and_access_link($useremail, $username, $access_link, $ticket_link);
         echo json_encode($result);
     }
+    
+    public function send_link_ticket_bank_in_update() {
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/system_config.php';
+        $GLOBALS['sistem_config'] = new follows\cls\system_config();
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/Gmail.php';
+        $Gmail = new follows\cls\Gmail();
+
+        $useremail = urldecode($_POST['useremail']);
+        $username = urldecode($_POST['username']);
+        $ticket_link = urldecode($_POST['ticket_link']);
+
+        $result = $Gmail->send_link_ticket_bank_in_update($useremail, $username, $ticket_link);
+        echo json_encode($result);
+    }
 
     public function send_client_payment_success() {
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/system_config.php';
