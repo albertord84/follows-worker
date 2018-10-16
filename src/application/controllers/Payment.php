@@ -44,7 +44,7 @@ class Payment extends CI_Controller {
                     }
                 }
             } else {
-                $result = file_put_contents($file, "\nERROR\n" . $post . "\n\n", FILE_APPEND);
+                $result = file_put_contents($file, "\nERROR:\n" . $post . "\n\n", FILE_APPEND);
                 echo "FAIL";
             }
         } catch (\Exception $exc) {
