@@ -9,27 +9,26 @@ class Payment extends CI_Controller {
             //var_dump($post_str);
             //$post_un = unserialize($post_str);
             $post = urldecode($post_str);
-            $result = file_put_contents($file, serialize($post), FILE_APPEND);
-            $result = file_put_contents($file, "URLDECODED post_str\n\n", FILE_APPEND);
+//            $result = file_put_contents($file, serialize($post), FILE_APPEND);
+//            $result = file_put_contents($file, "URLDECODED post_str\n\n", FILE_APPEND);
             $post = json_decode($post);
-            //var_dump(unserialize($post_str));
             // Write the contents back to the file
             $path = __dir__ . '/../../logs/vindi/';
             $file = $path . "vindi_notif_post-" . date("d-m-Y") . ".log";
             $result = file_put_contents($file, serialize($post_str), FILE_APPEND);
-            $result = file_put_contents($file, "SERIALIZED post_str\n\n", FILE_APPEND);
-            if (isset($post_str->event) && isset($post_str->event->type)) {
-                $result = file_put_contents($file, "post_str is object!!! \n\n", FILE_APPEND);
-            } else
-            if (isset($post->event) && isset($post->event->type)) {
-                $result = file_put_contents($file, "post_de is object!!! \n\n", FILE_APPEND);
-            } else {
-                $result = file_put_contents($file, "\nERROR:\n", FILE_APPEND);
-                $result = file_put_contents($file, $post, FILE_APPEND);
-                $result = file_put_contents($file, "\nERROR END\n", FILE_APPEND);
-                echo "FAIL";
-                return;
-            }
+            $result = file_put_contents($file, "\n\n", FILE_APPEND);
+//            if (isset($post_str->event) && isset($post_str->event->type)) {
+//                $result = file_put_contents($file, "post_str is object!!! \n\n", FILE_APPEND);
+//            } else
+//            if (isset($post->event) && isset($post->event->type)) {
+//                $result = file_put_contents($file, "post_de is object!!! \n\n", FILE_APPEND);
+//            } else {
+//                $result = file_put_contents($file, "\nERROR:\n", FILE_APPEND);
+//                $result = file_put_contents($file, $post, FILE_APPEND);
+//                $result = file_put_contents($file, "\nERROR END\n", FILE_APPEND);
+//                echo "FAIL";
+//                return;
+//            }
             if (isset($post->event) && isset($post->event->type)) {
                 // Recurrence created succefully
                 if ($post->event->type == "charge_created") {
@@ -61,7 +60,7 @@ class Payment extends CI_Controller {
                 }
             } else {
                 $result = file_put_contents($file, "\nERROR:\n", FILE_APPEND);
-                $result = file_put_contents($file, serialize($post), FILE_APPEND);
+                $result = file_put_contents($file, $post, FILE_APPEND);
                 $result = file_put_contents($file, "\nERROR END\n", FILE_APPEND);
                 echo "FAIL";
             }
