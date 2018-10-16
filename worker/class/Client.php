@@ -142,6 +142,57 @@ namespace follows\cls {
                 echo $exc->getTraceAsString();
             }
         }
+        
+        public function dumbu_statistics() {
+            try {
+                $Clients = array();
+                $DB = new \follows\cls\DB();
+                $time = strtotime(date("Y-m-d H:00:00"));
+                $datas = $DB->get_dumbu_statistics();
+                $arr ='(';
+                $cols='(';
+                foreach ($datas as $value) {
+                    switch ($value['status_id']) {
+                        case "1":
+                            $cols.="ACTIVE,";
+                            break;
+                        case "2":
+                            $cols.="BLOCKED_BY_PAYMENT,";
+                            break;
+                        case "3":
+                            $cols.="BLOCKED_BY_INSTA,";
+                            break;
+                        case "4":
+                            $cols.="DELETED,";
+                            break;
+                        case "5":
+                            $cols.="INACTIVE,";
+                            break;
+                        case "6":
+                            $cols.="PENDING,";
+                            break;
+                        case "7":
+                            $cols.="UNFOLLOW,";
+                            break;
+                        case "8":
+                            $cols.="BEGINNER,";
+                            break;
+                        case "9":
+                            $cols.="VERIFY_ACCOUNT,";
+                            break;
+                        case "10":
+                            $cols.="BLOCKED_BY_TIME,";
+                            break;                        
+                    }                    
+                    $arr.=$value['cnt'].',';
+                }        
+                $cols.='date)';
+                $arr.=$time.')';
+                $DB->insert_dumbu_statistics($cols,$arr);
+            } catch (Exception $exc) {
+                echo $exc->getTraceAsString();
+            }
+        }
 
         public function fill_client_data($client_data) {
             $Client = NULL;

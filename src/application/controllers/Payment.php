@@ -2,7 +2,7 @@
 
 class Payment extends CI_Controller {
 
-    // recursos a serem acessados externamente por curl
+    // ACESSADOS EXTERNAMENTE POR CURL
     public function vindi_notif_post() {
         try {
             $post_str = urldecode($_POST['post_str']);
@@ -63,10 +63,8 @@ class Payment extends CI_Controller {
         $GLOBALS['sistem_config'] = new follows\cls\system_config();
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/PaymentVindi.php';
         $Vindi = new \follows\cls\Payment\Vindi();
-
         $credit_card_name = urldecode($_POST['credit_card_name']);
         $user_email = urldecode($_POST['user_email']);
-
         $result = $Vindi->addClient($credit_card_name, $user_email);
         echo json_encode($result);
     }
@@ -76,12 +74,8 @@ class Payment extends CI_Controller {
         $GLOBALS['sistem_config'] = new follows\cls\system_config();
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/PaymentVindi.php';
         $Vindi = new \follows\cls\Payment\Vindi();
-
         $user_id = urldecode($_POST['user_id']);
         $datas = (array) json_decode(urldecode($_POST['datas']));
-//        $user_id = 30359;
-//        $datas = json_decode(urldecode('%7B%22client_email%22%3A%22josergm86%40gmail.com%22%2C%22credit_card_number%22%3A%225162202091174685%22%2C%22credit_card_cvc%22%3A%22302%22%2C%22credit_card_name%22%3A%22PEDRO+BASTOS+PETTI%22%2C%22credit_card_exp_month%22%3A%2204%22%2C%22credit_card_exp_year%22%3A%222021%22%2C%22client_update_plane%22%3A%225%22%7D'));
-
         $result = $Vindi->addClientPayment($user_id, $datas);
         echo json_encode($result);
     }
@@ -101,14 +95,9 @@ class Payment extends CI_Controller {
         $GLOBALS['sistem_config'] = new follows\cls\system_config();
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/PaymentVindi.php';
         $Vindi = new \follows\cls\Payment\Vindi();
-
         $user_id = urldecode($_POST['user_id']);
         $prod_1real_id = urldecode($_POST['prod_1real_id']);
         $amount = urldecode($_POST['amount']);
-//        $user_id = urldecode('30359');
-//        $prod_1real_id = urldecode('231526');
-//        $amount = urldecode('140');
-
         $result = $Vindi->create_payment($user_id, $prod_1real_id, $amount);
         echo json_encode($result);
     }
@@ -118,13 +107,9 @@ class Payment extends CI_Controller {
         $GLOBALS['sistem_config'] = new follows\cls\system_config();
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/PaymentVindi.php';
         $Vindi = new \follows\cls\Payment\Vindi();
-
         $user_id = urldecode($_POST['user_id']);
         $pay_day = json_decode(urldecode($_POST['pay_day']));
         $plane_type = json_decode(urldecode($_POST['plane_type']));
-//        $user_id = urldecode('30359');
-//        $pay_day = urldecode('1539394550');
-//        $plane_type = urldecode('223');
         $result = $Vindi->create_recurrency_payment($user_id, $pay_day, $plane_type);
         echo json_encode($result);
     }
@@ -139,15 +124,25 @@ class Payment extends CI_Controller {
         echo json_encode($result);
     }
     
+    public function mundi_create_boleto_payment() {
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/system_config.php';
+        $GLOBALS['sistem_config'] = new follows\cls\system_config();
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/Payment.php';
+        $Payment = new \follows\cls\Payment();
+        $payment_data = (array)json_decode(urldecode($_POST['payment_data']));
+        $result = $Payment->create_boleto_payment($payment_data);
+        echo json_encode($result);
+    }
     
-    // recursos a serem acessados internamente pelor rotos de pagamento
+    
+    
+    // USADOS INTERNAMENTE PELOS ROBOTS DE PAGAMENTO
     public function check_payment_vindi() {
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/Gmail.php';
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/system_config.php';
         $GLOBALS['sistem_config'] = new follows\cls\system_config();
         echo "Check Payment Inited...!<br>\n";
         echo date("Y-m-d h:i:sa");
-
         $this->load->model('class/user_model');
         $this->load->model('class/client_model');
         $this->load->model('class/user_role');
@@ -157,7 +152,6 @@ class Payment extends CI_Controller {
         $this->db->from('clients');
         $this->db->join('users', 'clients.user_id = users.id');
         $this->db->join('client_payment', 'clients.user_id = client_payment.dumbu_client_id');
-        // TODO: COMENT
         //$this->db->where('id', "1");
         $this->db->where('role_id', user_role::CLIENT);
         $this->db->where('status_id <>', user_status::DELETED);
@@ -212,7 +206,6 @@ class Payment extends CI_Controller {
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/system_config.php';
         $GLOBALS['sistem_config'] = new \follows\cls\system_config();
         $this->Gmail = new \follows\cls\Gmail();
-        //$datas = $this->input->post();
         $result = $this->Gmail->send_client_payment_error($client['email'], $client['name'], $client['login'], $client['pass'], $diff_days);
         if ($result['success']) {
             $clientname = $client['name'];
@@ -228,7 +221,6 @@ class Payment extends CI_Controller {
         $GLOBALS['sistem_config'] = new follows\cls\system_config();
         echo "Check Payment Inited...!<br>\n";
         echo date("Y-m-d h:i:sa");
-
         $this->load->model('class/user_model');
         $this->load->model('class/client_model');
         $this->load->model('class/user_role');
@@ -609,7 +601,6 @@ class Payment extends CI_Controller {
     public function check_initial_payment($client) {
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows/worker/class/DB.php';
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows/worker/class/Payment.php';
-
         $today = strtotime("today");
         $payment_data['credit_card_number'] = $client['credit_card_number'];
         $payment_data['credit_card_name'] = $client['credit_card_name'];
@@ -618,11 +609,9 @@ class Payment extends CI_Controller {
         $payment_data['credit_card_cvc'] = $client['credit_card_cvc'];
         $payment_data['amount_in_cents'] = $client['actual_payment_value'];
         $payment_data['pay_day'] = $client['pay_day'];
-
         //Verificar que tenha asignado 24 horas antes
         $payment = new \follows\cls\Payment();
         $res_pay_now = $payment->create_payment($payment_data);
-
         if (is_object($resp_pay_now) && $resp_pay_now->isSuccess() && $resp_pay_now->getData()->CreditCardTransactionResultCollection[0]->CapturedAmountInCents > 0) {
             //Tentar crear a recurrencia
             $payment_data['pay_day'] = strtotime("+1 month", $client->pay_day);
