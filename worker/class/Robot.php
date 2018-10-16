@@ -184,7 +184,7 @@ namespace follows\cls {
                             $is_private = isset($Profile_data->user->is_private) ? $Profile_data->user->is_private : false;
                             $posts_count = isset($Profile_data->user->media->count) ? $Profile_data->user->media->count : 0;
                             $MIN_FOLLOWER_POSTS = $GLOBALS['sistem_config']->MIN_FOLLOWER_POSTS;
-                            $valid_profile = true;//$posts_count >= $MIN_FOLLOWER_POSTS;
+                            $valid_profile = true; //$posts_count >= $MIN_FOLLOWER_POSTS;
                             if (isset($Profile->id) && $Profile->id != "") {
                                 //check if the profile is in the black list
                                 if (isset($daily_work->black_list) && str_binary_search($Profile->id, $daily_work->black_list)) {
@@ -307,92 +307,6 @@ namespace follows\cls {
           {}
          */
 
-        public function get_profiles_to_follow_without_log($daily_work, $error, &$page_info, $proxy="" ) {
-            $Profiles = array();
-            $error = TRUE;
-            $login_data = json_decode($daily_work->cookies);
-            $quantity = min(array($daily_work->to_follow, $GLOBALS['sistem_config']->REQUESTS_AT_SAME_TIME));
-            $page_info = new \stdClass();
-            if ($daily_work->rp_type == 0) {
-                $json_response = $this->get_insta_followers(
-                        $login_data, $daily_work->rp_insta_id, $quantity, $daily_work->insta_follower_cursor,$proxy
-                );
-                //var_dump($json_response);
-                if ($json_response === NULL) {
-                    $result = $this->DB->delete_daily_work_client($daily_work->users_id);
-                    $this->DB->set_client_status($daily_work->users_id, user_status::VERIFY_ACCOUNT);
-                    $this->DB->InsertEventToWashdog($daily_work->users_id, washdog_type::ROBOT_VERIFY_ACCOUNT, 1, $this->id, "Cookies incompleta when funtion get_profiles_to_follow");
-                    $this->DB->set_client_cookies($daily_work->users_id, NULL);
-                }
-                //echo "<br>\nRef Profil: $daily_work->insta_name<br>\n";
-                if (is_object($json_response) && $json_response->status == 'ok') {
-                    if (isset($json_response->data->user->edge_followed_by)) { // if response is ok
-                        // echo "Nodes: " . count($json_response->data->user->edge_followed_by->edges) . " <br>\n";
-                        $page_info = $json_response->data->user->edge_followed_by->page_info;
-                        $Profiles = $json_response->data->user->edge_followed_by->edges;
-                        //$DB = new DB();
-                        if ($page_info->has_next_page === FALSE && $page_info->end_cursor != NULL) { // Solo qdo es <> de null es que llego al final
-                            $this->DB->update_reference_cursor($daily_work->reference_id, NULL);
-                            //echo ("<br>\n Updated Reference Cursor to NULL!!");
-                            $result = $this->DB->delete_daily_work($daily_work->reference_id);
-                            if ($result) {
-                                // echo ("<br>\n Deleted Daily work!! Ref $daily_work->reference_id");
-                            }
-                        } else if ($page_info->has_next_page === FALSE && $page_info->end_cursor === NULL) {
-//                            $Client = new Client();
-//                            $Client = $Client->get_client($daily_work->user_id);
-//                            $login_result = $Client->sign_in($Client);
-                            $this->DB->update_reference_cursor($daily_work->reference_id, NULL);
-                            //echo ("<br>\n Updated Reference Cursor to NULL!!");
-                            $result = $this->DB->delete_daily_work($daily_work->reference_id);
-                            if ($result) {
-                                // echo ("<br>\n Deleted Daily work!! Ref $daily_work->reference_id");
-                            }
-                        }
-                        $error = FALSE;
-                    } else {
-                        $page_info->end_cursor = NULL;
-                        $page_info->has_next_page = false;
-                    }
-                }
-            } else if ($daily_work->rp_type == 1) {
-                $json_response = $this->get_insta_geomedia_without_log($login_data, $daily_work->rp_insta_id, $quantity, $daily_work->insta_follower_cursor);
-                if (is_object($json_response) && $json_response->status == 'ok') {
-                    if (isset($json_response->data->location->edge_location_to_media)) { // if response is ok
-                        // echo "Nodes: " . count($json_response->data->location->edge_location_to_media->edges) . " <br>\n";
-                        $page_info = $json_response->data->location->edge_location_to_media->page_info;
-                        foreach ($json_response->data->location->edge_location_to_media->edges as $Edge) {
-                            $profile = new \stdClass();
-                            $profile->node = $this->get_geo_post_user_info($login_data, $daily_work->rp_insta_id, $Edge->node->shortcode);
-                            array_push($Profiles, $profile);
-                        }
-                        $error = FALSE;
-                    } else {
-                        $page_info->end_cursor = NULL;
-                        $page_info->has_next_page = false;
-                    }
-                }
-            } else if ($daily_work->rp_type == 2) {
-                $json_response = $this->get_insta_tagmedia($login_data, $daily_work->insta_name, $quantity, $daily_work->insta_follower_cursor);
-                if (is_object($json_response)) {
-                    if (isset($json_response->data->hashtag->edge_hashtag_to_media)) { // if response is ok
-                        // echo "Nodes: " . count($json_response->data->hashtag->edge_hashtag_to_media->edges) . " <br>\n";
-                        $page_info = $json_response->data->hashtag->edge_hashtag_to_media->page_info;
-                        foreach ($json_response->data->hashtag->edge_hashtag_to_media->edges as $Edge) {
-                            $profile = new \stdClass();
-                            $profile->node = $this->get_tag_post_user_info($login_data, $Edge->node->shortcode);
-                            array_push($Profiles, $profile);
-                        }
-                        $error = FALSE;
-                    } else {
-                        $page_info->end_cursor = NULL;
-                        $page_info->has_next_page = false;
-                    }
-                }
-            }
-            return $Profiles;
-        }
-
         public function get_profiles_to_follow($daily_work, $error, &$page_info) {
             $Profiles = array();
             $error = TRUE;
@@ -508,7 +422,7 @@ namespace follows\cls {
                     break;
                 case 3: // "Unautorized"
                     $result = $this->DB->delete_daily_work_client($client_id);
-                    $this->SetUnautorizedClientStatus($client_id);                    
+                    $this->SetUnautorizedClientStatus($client_id);
                     print "<br>\n Unautorized Client (id: $client_id) set to BLOCKED_BY_INSTA!!! <br>\n";
                     break;
                 case 4: // "Parece que você estava usando este recurso de forma indevida"
@@ -577,7 +491,7 @@ namespace follows\cls {
                     $this->DB->Increase_Client_Last_Access($client_id, $GLOBALS['sistem_config']->INCREASE_CLIENT_LAST_ACCESS);
 
                     $result = $this->DB->get_clients_by_status(user_status::BLOCKED_BY_TIME);
-                   break;
+                    break;
                 case 11:
                     print "<br> se ha bloqueado. Vuelve a intentarlo</br>";
                     $result = $this->DB->delete_daily_work_client($client_id);
@@ -585,7 +499,7 @@ namespace follows\cls {
                     $this->DB->set_client_status($client_id, user_status::BLOCKED_BY_TIME);
                     break;
                 case 12:
-                    $result = $this->DB->update_reference_cursor($ref_prof_id,NULL);
+                    $result = $this->DB->update_reference_cursor($ref_prof_id, NULL);
                     print "<br>$ref_prof_id set to null<br>\n";
                     break;
                 default:
@@ -844,16 +758,16 @@ namespace follows\cls {
                 } else {
                     var_dump($output);
                     print_r($curl_str);
-                    /*if (isset($json->data) && ($json->data->user == null)) {
-                        //$this->DB->update_reference_cursor($this->daily_work->reference_id, NULL);
-                        //echo ("<br>\n Updated Reference Cursor to NULL!!");
-                        $result = $this->DB->delete_daily_work($this->daily_work->reference_id);
-                        if ($result) {
-                            echo ("<br>\n Deleted Daily work!!<br>\n ");
-                        } else {
-                            var_dump($result);
-                        }
-                    }*/
+                    /* if (isset($json->data) && ($json->data->user == null)) {
+                      //$this->DB->update_reference_cursor($this->daily_work->reference_id, NULL);
+                      //echo ("<br>\n Updated Reference Cursor to NULL!!");
+                      $result = $this->DB->delete_daily_work($this->daily_work->reference_id);
+                      if ($result) {
+                      echo ("<br>\n Deleted Daily work!!<br>\n ");
+                      } else {
+                      var_dump($result);
+                      }
+                      } */
                 }
                 return $json;
             } catch (\Exception $exc) {
@@ -896,7 +810,7 @@ namespace follows\cls {
             }
         }
 
-        public function get_insta_geomedia($login_data, $location, $N, &$cursor = NULL, $proxy = "") {
+        public function get_insta_geomedia($login_data, $location, $N, &$cursor = NULL, $proxy = "", $without_log = false) {
             try {
 
                 $tag_query = 'ac38b90f0f3981c42092016a37c59bf7';
@@ -913,64 +827,35 @@ namespace follows\cls {
                         //echo '<pre>'.json_encode($json, JSON_PRETTY_PRINT).'</pre>';
                         //var_dump($json);
 //                        var_dump($curl_str);
-                        echo ("<br>\n No nodes!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                        if (!$without_log)
+                            echo ("<br>\n No nodes!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                         $this->DB->update_reference_cursor($this->daily_work->reference_id, NULL);
                         $result = $this->DB->delete_daily_work($this->daily_work->reference_id);
-                        echo ("<br>\n Set end cursor to NULL!!!!!!!! Deleted daily work!!!!!!!!!!!!");
+                        if (!$without_log)
+                            echo ("<br>\n Set end cursor to NULL!!!!!!!! Deleted daily work!!!!!!!!!!!!");
                     }
                 } else if (isset($json->data) && $json->data->location == NULL) {
                     //var_dump($output);
-                    print_r($curl_str);
+                    if (!$without_log)
+                        print_r($curl_str);
                     $this->DB->update_reference_cursor($this->daily_work->reference_id, NULL);
                     $result = $this->DB->delete_daily_work($this->daily_work->reference_id);
-                    echo ("<br>\n Set end cursor to NULL!!!!!!!! Deleted daily work!!!!!!!!!!!!");
+                    if (!$without_log)
+                        echo ("<br>\n Set end cursor to NULL!!!!!!!! Deleted daily work!!!!!!!!!!!!");
                 } else {
                     var_dump($output);
                     print_r($curl_str);
-                    echo ("<br>\n Untrated error!!!");
+                    if (!$without_log)
+                        echo ("<br>\n Untrated error!!!");
                 }
                 return $json;
             } catch (\Exception $exc) {
-                echo $exc->getTraceAsString();
+                if (!$without_log)
+                    echo $exc->getTraceAsString();
             }
         }
 
-        public function get_insta_geomedia_without_log($login_data, $location, $N, &$cursor = NULL) {
-            try {
-
-                $tag_query = 'ac38b90f0f3981c42092016a37c59bf7';
-                $variables = "{\"id\":\"$location\",\"first\":$N,\"after\":\"$cursor\"}";
-                $curl_str = $this->make_curl_followers_query($tag_query, $variables, $login_data);
-                if ($curl_str === NULL)
-                    return NULL;
-                exec($curl_str, $output, $status);
-                $json = json_decode($output[0]);
-                //var_dump($output);
-                if (isset($json->data->location->edge_location_to_media) && isset($json->data->location->edge_location_to_media->page_info)) {
-                    $cursor = $json->data->location->edge_location_to_media->page_info->end_cursor;
-                    if (count($json->data->location->edge_location_to_media->edges) == 0) {
-                        //echo '<pre>'.json_encode($json, JSON_PRETTY_PRINT).'</pre>';
-                        //var_dump($json);
-//                        var_dump($curl_str);
-                        //echo ("<br>\n No nodes!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                        $this->DB->update_reference_cursor($this->daily_work->reference_id, NULL);
-                        $result = $this->DB->delete_daily_work($this->daily_work->reference_id);
-                        //echo ("<br>\n Set end cursor to NULL!!!!!!!! Deleted daily work!!!!!!!!!!!!");
-                    }
-                } else if (isset($json->data) && $json->data->location == NULL) {
-                    //var_dump($output);
-                    print_r($curl_str);
-                    $this->DB->update_reference_cursor($this->daily_work->reference_id, NULL);
-                    $result = $this->DB->delete_daily_work($this->daily_work->reference_id);
-                    //echo ("<br>\n Set end cursor to NULL!!!!!!!! Deleted daily work!!!!!!!!!!!!");
-                }
-                return $json;
-            } catch (\Exception $exc) {
-                //echo $exc->getTraceAsString();
-            }
-        }
-
-        public function get_insta_tagmedia($login_data, $tag, $N, &$cursor = NULL, $proxy = "") {
+        public function get_insta_tagmedia($login_data, $tag, $N, &$cursor = NULL, $proxy = "", $without_log = false) {
             try {
                 $tag_query = 'ded47faa9a1aaded10161a2ff32abb6b';
                 $variables = "{\"tag_name\":\"$tag\",\"first\":2,\"after\":\"$cursor\"}";
@@ -987,10 +872,12 @@ namespace follows\cls {
                             //echo '<pre>'.json_encode($json, JSON_PRETTY_PRINT).'</pre>';
                             //var_dump($json);
                             //                        var_dump($curl_str);
-                            echo ("<br>\n No nodes!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                            if (!$without_log)
+                                echo ("<br>\n No nodes!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                             $this->DB->update_reference_cursor($this->daily_work->reference_id, NULL);
                             $result = $this->DB->delete_daily_work($this->daily_work->reference_id);
-                            echo ("<br>\n Set end cursor to NULL!!!!!!!! Deleted daily work!!!!!!!!!!!!");
+                            if (!$without_log)
+                                echo ("<br>\n Set end cursor to NULL!!!!!!!! Deleted daily work!!!!!!!!!!!!");
                         }
                     }
                 }/* else if (isset($json->data) && $json->data->location == NULL) {
@@ -1000,13 +887,17 @@ namespace follows\cls {
                   $result = $this->DB->delete_daily_work($this->daily_work->reference_id);
                   echo ("<br>\n Set end cursor to NULL!!!!!!!! Deleted daily work!!!!!!!!!!!!");
                   } */ else {
-                    var_dump($output);
-                    print_r($curl_str);
-                    echo ("<br>\n Untrated error!!!");
+                    if (!$without_log)
+                        var_dump($output);
+                    if (!$without_log)
+                        print_r($curl_str);
+                    if (!$without_log)
+                        echo ("<br>\n Untrated error!!!");
                 }
                 return $json;
             } catch (\Exception $exc) {
-                echo $exc->getTraceAsString();
+                if (!$without_log)
+                    echo $exc->getTraceAsString();
             }
         }
 
@@ -1879,12 +1770,13 @@ namespace follows\cls {
                             $daily_work->insta_name = 'cuba';
                             $daily_work->rp_insta_id = 220021938;
                             $error = NULL;
-                            $page_info = 0;                           
+                            $page_info = 0;
                             $proxy = $this->get_proxy_str($Client);
-            
-                            $res = $this->get_profiles_to_follow_without_log($daily_work, $error, $page_info, $proxy);
+
+                            //$res = $this->get_profiles_to_follow_without_log($daily_work, $error, $page_info, $proxy);
                             try {
-                                if (count($res) > 0) {
+                                $json_response = $this->get_insta_geomedia($cookies, $daily_work->rp_insta_id, $daily_work->to_follow, $daily_work->insta_follower_cursor, $proxy, true);
+                                if (count($json_response->data->location->edge_location_to_media->edges) > 0) {
                                     $result->json_response->status = 'ok';
                                     $result->json_response->authenticated = TRUE;
                                 }
@@ -2506,26 +2398,24 @@ namespace follows\cls {
             }
             return "";
         }
-        
-        public function  SetUnautorizedClientStatus($client_id){
-            $this->DB->set_cookies_to_null($client_id);                    
+
+        public function SetUnautorizedClientStatus($client_id) {
+            $this->DB->set_cookies_to_null($client_id);
             $client = (new \follows\cls\Client())->get_client($client_id);
             $result = $this->bot_login($client->login, $client->pass);
-            if(isset($result->json_response->message))
-            {
-                if($result->json_response->message == 'checkpoint_required')
-                {
+            if (isset($result->json_response->message)) {
+                if ($result->json_response->message == 'checkpoint_required') {
                     $this->DB->set_client_status($client_id, user_status::VERIFY_ACCOUNT);
-                    $this->DB->InsertEventToWashdog($client_id, washdog_type::ROBOT_VERIFY_ACCOUNT, 1, $this->id);                    
-                }
-                else if($result->json_response->message == 'incorrect_password')
-                {
+                    $this->DB->InsertEventToWashdog($client_id, washdog_type::ROBOT_VERIFY_ACCOUNT, 1, $this->id);
+                } else if ($result->json_response->message == 'incorrect_password') {
                     $this->DB->set_client_status($client_id, user_status::BLOCKED_BY_INSTA);
-                    $this->DB->InsertEventToWashdog($client_id, washdog_type::BLOCKED_BY_INSTA, 1, $this->id);                                           
+                    $this->DB->InsertEventToWashdog($client_id, washdog_type::BLOCKED_BY_INSTA, 1, $this->id);
                 }
-            } 
+            }
         }
+
     }
+
 // end of Robot
 }
 ?>

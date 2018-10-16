@@ -34,7 +34,7 @@ namespace follows\cls {
             
         }
 
-        function prepare_daily_work() {
+        function prepare_daily_work($not_mail = false) {
             // Get Users Info
             $Clients = (new Client())->get_clients();
             
@@ -97,7 +97,7 @@ namespace follows\cls {
                                 if (count($Client->reference_profiles)) { // To keep unfollow
                                     $this->DB->insert_daily_work($Client->reference_profiles[0]->id, 0, $DIALY_REQUESTS_BY_CLIENT, $Client->cookies);
                                 }
-                                $this->Gmail->send_client_not_rps($Client->email, $Client->name, $Client->login, $Client->pass);
+                                if (!$not_mail) $this->Gmail->send_client_not_rps($Client->email, $Client->name, $Client->login, $Client->pass);
                             }
                         }
                         else if($Client->status_id === user_status::ACTIVE)
@@ -118,7 +118,7 @@ namespace follows\cls {
                         var_dump($diff_info->days);
                         //if ($diff_info->days <= 3) {
                             // TODO, UNCOMMENT
-                            $this->Gmail->send_client_login_error($Client->email, $Client->name, $Client->login, $Client->pass);
+                            if (!$not_mail) $this->Gmail->send_client_login_error($Client->email, $Client->name, $Client->login, $Client->pass);
                         //}Jose 
                     }
                     //die("Alberto");
