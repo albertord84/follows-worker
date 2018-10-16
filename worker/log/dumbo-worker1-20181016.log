@@ -1,0 +1,467 @@
+Worker Inited...!<br>
+2018-10-16 07:30:01amget follow workget follow work done<br>
+Client: 25268 <br>
+<br>
+nRef Profil: djfilipeguerra<br>
+ Count: 0 Hasnext: 0 - 2018-10-16 07:30:01am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 233 <br>
+<br>
+Ref Profil: djfilipeguerra (id: 37152 | type: 0)<br>
+array(0) {
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@207.108.155.225:21248' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%2213337405%22%2C%22first%22%3A5%2C%22after%22%3A%22%22%7D' -H 'Cookie: mid=Wl5cMAALAAG1ftK6e168D8J6iUQL; sessionid=IGSC1ea3d8fcdb5786b0d8352f301db4232563fb786543c2474140a036279da25108%3ApYId2j0FYLKaGgbqBWiQbcnqErMpmIBi%3A%7B%22_auth_user_id%22%3A16079446%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%2216079446%3AzBPJTtTzbqVciwUh92RmFA7Ufe41B20V%3A26d537f58be47350eb7d9747bbfde525cfd0072049eb6097edf7d7eeb086bd6d%22%2C%22last_refreshed%22%3A1516133522.5135290623%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=zzLxte8GDgW3aYUISRv6MzFc9o8cpwZP; ds_user_id=16079446' -H 'X-CSRFToken: zzLxte8GDgW3aYUISRv6MzFc9o8cpwZP' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed <br>
+Ref Profil: djfilipeguerra<br>
+NULL
+Not error code found!<br>
+ Client (id: 25268) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>
+Client: 27750 <br>
+<br>
+nRef Profil: gioserrano<br>
+ Count: 0 Hasnext: 0 - 2018-10-16 07:32:08am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 21 <br>
+<br>
+Ref Profil: gioserrano (id: 43811 | type: 0)<br>
+array(0) {
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@158.115.228.147:21252' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%223733575%22%2C%22first%22%3A5%2C%22after%22%3A%22AQC_u2HFxHC9casFyDSp9uhsZbu84_rUWroVw2xOEYrVGWRhvmv1YS29AZ16PoYX25Ur1mIj_pXGQQnsunBXL1EPfHiqYuyDpT-UkI5CvsT5hw%22%7D' -H 'Cookie: mid=Wt3l4QABAAFm82M50ashiNJhOZB0; sessionid=IGSC7d36af0fbda7e1c45b6fbeb886fe2098490045097586948a12e118937af3c8e9%3Aqoug1ANUtwjNn75oPUw1xS17ziEF2WGo%3A%7B%22_auth_user_id%22%3A216398199%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A1%2C%22_token_ver%22%3A2%2C%22_token%22%3A%22216398199%3AxM7ZbxzZiVTkTLORO7wRARGI2fMXNDtL%3A78b4b46041be34d26dfd2e03283ce92cd047c11737297bf17a42b1183ec73bf6%22%2C%22last_refreshed%22%3A1539241951.6777544022%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=GZvDQaJ04hI2kPWMojAfbUcu7zu6wpyb; ds_user_id=216398199' -H 'X-CSRFToken: GZvDQaJ04hI2kPWMojAfbUcu7zu6wpyb' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed <br>
+Ref Profil: gioserrano<br>
+NULL
+Not error code found!<br>
+ Client (id: 27750) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>
+Client: 28022 <br>
+<br>
+nRef Profil: kimonosaraujo<br>
+ Count: 0 Hasnext: 0 - 2018-10-16 07:32:10am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 21 <br>
+<br>
+Ref Profil: kimonosaraujo (id: 48456 | type: 0)<br>
+array(1) {
+  [0]=>
+  string(135) "{"message": "execution failure", "errors": [{"message": "execution error", "locations": []}], "data": {"user": null}, "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@172.84.87.200:21254' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%221692963370%22%2C%22first%22%3A5%2C%22after%22%3A%22AQAE6PjLl-jY3SnqscMKp6ls3OwH7R71-IKoGVbFR0qZx0pT0TZCUC1Jv5t64qWvyOqpzBgYke3GczTjqvspBi8jRnV8gtCvM7oNOKLGqaoZr8PnevE0U0FofsfGInlwUys%22%7D' -H 'Cookie: mid=WuazngABAAEs-fToQj1lUTiqaq57; sessionid=IGSC1973dab1fef5d5f9ab8e53f1c8209525a97e5eae38ab2c3a75579bbeac560d0d%3ApGtQoqBpfxlFsMMcCqF7zWDzuc4TLzla%3A%7B%22_auth_user_id%22%3A4355650531%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A1%2C%22_token_ver%22%3A2%2C%22_token%22%3A%224355650531%3Ag5ixPzbOqPJCgFf6Dmt8FVyvMcSqLCk9%3A6053c51e910352dfb0e61298cdbd58743aef34004e9e20de28665b154254dc17%22%2C%22last_refreshed%22%3A1539242005.1131968498%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=OJYGsBga5XjSyOAs6ooVUwM2u1QskjzX; ds_user_id=4355650531' -H 'X-CSRFToken: OJYGsBga5XjSyOAs6ooVUwM2u1QskjzX' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed <br>
+Ref Profil: kimonosaraujo<br>
+object(stdClass)#33 (4) {
+  ["message"]=>
+  string(17) "execution failure"
+  ["errors"]=>
+  array(1) {
+    [0]=>
+    object(stdClass)#41 (2) {
+      ["message"]=>
+      string(15) "execution error"
+      ["locations"]=>
+      array(0) {
+      }
+    }
+  }
+  ["data"]=>
+  object(stdClass)#36 (1) {
+    ["user"]=>
+    NULL
+  }
+  ["status"]=>
+  string(4) "fail"
+}
+Not message found!<br>
+ Client (id: 28022) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>
+Client: 31076 <br>
+<br>
+nRef Profil: oficialprisimoes<br>
+ Count: 0 Hasnext: 0 - 2018-10-16 07:32:12am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 160 <br>
+<br>
+Ref Profil: oficialprisimoes (id: 50301 | type: 0)<br>
+array(1) {
+  [0]=>
+  string(135) "{"message": "execution failure", "errors": [{"message": "execution error", "locations": []}], "data": {"user": null}, "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@207.188.155.18:21316' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%22272740852%22%2C%22first%22%3A5%2C%22after%22%3A%22AQAyONcGws5nQCRxRp-OjIawBMRpYwqdiGEoXWmxJqA6aEYeUAhtrhZx3nnBhyDlXW09Q3wEHq11GhyKjEpgtah8OKU-0UrVLhkB2plEBH4Eg7YkY3CKmgM9-ZUxeD62Fh0%22%7D' -H 'Cookie: mid=W5aJSgABAAF8nJ0Y3KrALnqZUNWn; sessionid=IGSCb8efa2288a791d168d6a963e69bebc4c289933dd1db6fb2733ee687ca856f9eb%3A9n1YS8sS7Bl2Ap930eO5N5WMAOsl6RPp%3A%7B%22_auth_user_id%22%3A8365352486%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A1%2C%22_token_ver%22%3A2%2C%22_token%22%3A%228365352486%3ATvU49geDzx9mjxoKBsVhJnjQM7SBwpAl%3A74f85f5cd75ed413360f7223eb1528e9ca5678ef253fe1f0365722661e6cd16e%22%2C%22last_refreshed%22%3A1539242729.5002174377%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=BKlc59x4VNNF22IeMbBajfkQIO3ftcsX; ds_user_id=8365352486' -H 'X-CSRFToken: BKlc59x4VNNF22IeMbBajfkQIO3ftcsX' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed <br>
+Ref Profil: oficialprisimoes<br>
+object(stdClass)#20 (4) {
+  ["message"]=>
+  string(17) "execution failure"
+  ["errors"]=>
+  array(1) {
+    [0]=>
+    object(stdClass)#28 (2) {
+      ["message"]=>
+      string(15) "execution error"
+      ["locations"]=>
+      array(0) {
+      }
+    }
+  }
+  ["data"]=>
+  object(stdClass)#38 (1) {
+    ["user"]=>
+    NULL
+  }
+  ["status"]=>
+  string(4) "fail"
+}
+Not message found!<br>
+ Client (id: 31076) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>
+Client: 31383 <br>
+<br>
+nRef Profil: paulapache<br>
+ Count: 5 Hasnext: 5 - 2018-10-16 07:32:14am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+array(1) {
+  [0]=>
+  string(124) "{"message": "unauthorized", "redirect_url": "/accounts/login/?next=/web/friendships/3117765467/unfollow/", "status": "fail"}"
+}
+string(1272) "curl --proxy 'albertreye9917:3r4rcz0b1v@207.188.155.18:21316' 'https://www.instagram.com/web/friendships/3117765467/unfollow/' -X POST -H 'Cookie: mid=W7a5ygAEAAHK0Yqk2rbKAk16DgCL; sessionid=IGSCff91e7803928bf95b7d029f633d7ab5b5645342b33e74f10050c87da570be733%3AAdpaSrr1Y2sLiyvwelnRXWHuDle9VZnX%3A%7B%22_auth_user_id%22%3A4122443102%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%224122443102%3A4LtD1DujDEW8l8tRe0dek2KVZxnD7TH0%3A9a32ac12252849f8b0482d1567e0f928d95f8101cd0b358538934e840f4d8727%22%2C%22last_refreshed%22%3A1538701781.7610516548%7D;  csrftoken=f4V2Rw5qB5A7uliIP7oEMgT3X2JI2sho; ds_user_id=4122443102' -H 'origin: www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:49.0) Gecko/20100101 Firefox/49.0' -H 'X-Requested-with: XMLHttpRequest' -H 'X-CSRFToken: f4V2Rw5qB5A7uliIP7oEMgT3X2JI2sho' -H 'X-Instagram-Ajax: dad8d866382b' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' -H 'Content-Length: 0' --compressed "
+ID: 3117765467 ()<br>
+<br>
+ Unautorized Client (id: 31383) set to BLOCKED_BY_INSTA!!! <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 80 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>
+Client: 1 <br>
+<br>
+nRef Profil: teatropopular<br>
+ Count: 5 Hasnext: 5 - 2018-10-16 07:32:19am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+array(1) {
+  [0]=>
+  string(123) "{"message": "unauthorized", "redirect_url": "/accounts/login/?next=/web/friendships/185298353/unfollow/", "status": "fail"}"
+}
+string(1271) "curl --proxy 'albertreye9917:3r4rcz0b1v@207.188.155.18:21316' 'https://www.instagram.com/web/friendships/185298353/unfollow/' -X POST -H 'Cookie: mid=WuCyJwABAAG01caY9gau_c1x_cFc; sessionid=IGSCffd4d01b33f4b09eb6d6be00f2d8f6f8b8f40b24356a9d574e387bb9c9a0394f%3Aya0KUIrPPYf8Utrkszao8twsFlsVvHG4%3A%7B%22_auth_user_id%22%3A3916799608%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A1%2C%22_token_ver%22%3A2%2C%22_token%22%3A%223916799608%3Arz8It8diH9nADRovUIvQtWqJdE7uDILs%3Ae20c514358626db64f5637b945f10416bed32f056c14e97bf7d8277179f5f89a%22%2C%22last_refreshed%22%3A1535785207.1655752659%7D;  csrftoken=JyKbOgltMDypVfLhyd8YO2P8fwFSH4VA; ds_user_id=3916799608' -H 'origin: www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:49.0) Gecko/20100101 Firefox/49.0' -H 'X-Requested-with: XMLHttpRequest' -H 'X-CSRFToken: JyKbOgltMDypVfLhyd8YO2P8fwFSH4VA' -H 'X-Instagram-Ajax: dad8d866382b' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' -H 'Content-Length: 0' --compressed "
+ID: 185298353 ()<br>
+<br>
+ Unautorized Client (id: 1) set to BLOCKED_BY_INSTA!!! <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 80 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>
+Client: 17484 <br>
+<br>
+nRef Profil: ritzlagoadaanta<br>
+ Count: 5 Hasnext: 5 - 2018-10-16 07:32:25am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+array(1) {
+  [0]=>
+  string(124) "{"message": "unauthorized", "redirect_url": "/accounts/login/?next=/web/friendships/5586814671/unfollow/", "status": "fail"}"
+}
+string(1270) "curl --proxy 'albertreye9917:3r4rcz0b1v@172.84.73.14:21286' 'https://www.instagram.com/web/friendships/5586814671/unfollow/' -X POST -H 'Cookie: mid=WyObAAAEAAGK_J1aPfJhG2FHK_v9; sessionid=IGSCf09480f0d8a4c84708f8e05ddfaf67e9e5bbc13223193ec917f7bdc4e9ca5c63%3AfnjdtoPKAAdXlWqZ5yj5OJGiXq1W3dwL%3A%7B%22_auth_user_id%22%3A1046667244%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%221046667244%3ARQnysw5Zo9isWnQPVfzhPiTCaAQZVLrE%3A9da4bf643fd5c3d5ffab9aae750939ed9d83d80bbff6d03d3d60946e76878656%22%2C%22last_refreshed%22%3A1529060113.8655335903%7D;  csrftoken=2u1oF8yont11v0HGUzYNMmJ3akYAQHJP; ds_user_id=1046667244' -H 'origin: www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:49.0) Gecko/20100101 Firefox/49.0' -H 'X-Requested-with: XMLHttpRequest' -H 'X-CSRFToken: 2u1oF8yont11v0HGUzYNMmJ3akYAQHJP' -H 'X-Instagram-Ajax: dad8d866382b' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' -H 'Content-Length: 0' --compressed "
+ID: 5586814671 ()<br>
+<br>
+ Unautorized Client (id: 17484) set to BLOCKED_BY_INSTA!!! <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 50 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>
+Client: 22368 <br>
+<br>
+nRef Profil: jolistore_<br>
+ Count: 5 Hasnext: 5 - 2018-10-16 07:32:31am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+array(1) {
+  [0]=>
+  string(123) "{"message": "unauthorized", "redirect_url": "/accounts/login/?next=/web/friendships/357158512/unfollow/", "status": "fail"}"
+}
+string(1266) "curl --proxy 'albertreye9917:3r4rcz0b1v@64.44.63.127:21290' 'https://www.instagram.com/web/friendships/357158512/unfollow/' -X POST -H 'Cookie: mid=WtWPqAABAAFW3mP7yDhI3Qzp0MJm; sessionid=IGSC423948ee9882b2a0e3331e53004dab3774daa9eaa5605301445656dea2693fc1%3AMT0dfcCrNNGJO09Ep13bbhYTvWlijdz0%3A%7B%22_auth_user_id%22%3A307988224%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A1%2C%22_token_ver%22%3A2%2C%22_token%22%3A%22307988224%3AUq4Ju9joqDUdQIjUwo5KS3dQFt6tezas%3Ab69dad6f433c23198c1b1ce6c5d26fe4d291b16b0b4bd4969054e361118119af%22%2C%22last_refreshed%22%3A1527142215.6160173416%7D;  csrftoken=WjZaSuWBVjSyAAhHYhUkEidz95Ql0M0a; ds_user_id=307988224' -H 'origin: www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:49.0) Gecko/20100101 Firefox/49.0' -H 'X-Requested-with: XMLHttpRequest' -H 'X-CSRFToken: WjZaSuWBVjSyAAhHYhUkEidz95Ql0M0a' -H 'X-Instagram-Ajax: dad8d866382b' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' -H 'Content-Length: 0' --compressed "
+ID: 357158512 ()<br>
+<br>
+ Unautorized Client (id: 22368) set to BLOCKED_BY_INSTA!!! <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 120 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>
+Client: 28915 <br>
+<br>
+nRef Profil: alagoa-grande<br>
+ Count: 5 Hasnext: 5 - 2018-10-16 07:32:37am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+array(1) {
+  [0]=>
+  string(124) "{"message": "unauthorized", "redirect_url": "/accounts/login/?next=/web/friendships/1930617771/unfollow/", "status": "fail"}"
+}
+string(1271) "curl --proxy 'albertreye9917:3r4rcz0b1v@172.84.73.213:21287' 'https://www.instagram.com/web/friendships/1930617771/unfollow/' -X POST -H 'Cookie: mid=Ww3tNQAEAAGJKyFx0zBLrynz5PGA; sessionid=IGSCcd5d49c88c28ca15abad49073aa60f3d5fa7b819dcb8b4dfdd8c9d2505195273%3A1FWFny69UDt2SVWY2NJB7tWR0xHsMaGv%3A%7B%22_auth_user_id%22%3A2229537803%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%222229537803%3AuyZpi7pAkvuxY4M7LDC2nafapsZ6X8fx%3A9f7d6f9080a5a1c8928116813a5bb1cd9fb288f25328934ccf7fec55d706480e%22%2C%22last_refreshed%22%3A1527639366.0813946724%7D;  csrftoken=JPWg7dbrfPk8ZimCrZYs7kTbe3yqRze7; ds_user_id=2229537803' -H 'origin: www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:49.0) Gecko/20100101 Firefox/49.0' -H 'X-Requested-with: XMLHttpRequest' -H 'X-CSRFToken: JPWg7dbrfPk8ZimCrZYs7kTbe3yqRze7' -H 'X-Instagram-Ajax: dad8d866382b' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' -H 'Content-Length: 0' --compressed "
+ID: 1930617771 ()<br>
+<br>
+ Unautorized Client (id: 28915) set to BLOCKED_BY_INSTA!!! <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 39 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>
+Client: 29541 <br>
+<br>
+nRef Profil: calvinklyn<br>
+ Count: 5 Hasnext: 5 - 2018-10-16 07:32:43am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+array(1) {
+  [0]=>
+  string(124) "{"message": "unauthorized", "redirect_url": "/accounts/login/?next=/web/friendships/1655892530/unfollow/", "status": "fail"}"
+}
+string(1266) "curl --proxy 'albertreye9917:3r4rcz0b1v@207.188.155.18:21316' 'https://www.instagram.com/web/friendships/1655892530/unfollow/' -X POST -H 'Cookie: mid=W08VKwABAAF5APIgvltpfOTmy-sH; sessionid=IGSC6acca7ce56a1a2f0a3eede55dad5dfc7216226a19879a45a8faf7c021456c83c%3AE6GnT4Io427JPxZI7jfvSa8k1uHADqGS%3A%7B%22_auth_user_id%22%3A15117394%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A1%2C%22_token_ver%22%3A2%2C%22_token%22%3A%2215117394%3ABqdv4COyHxVw7neUDCM1ZUN6awIVFcP7%3Ad3127601f7316543b9255ef85a98d386b47a4bbffc5027a69fbb6da45c797cab%22%2C%22last_refreshed%22%3A1531909509.7790267467%7D;  csrftoken=Y4cnfLbJah71XjKvTYtDSyA4iMaUrBfC; ds_user_id=15117394' -H 'origin: www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:49.0) Gecko/20100101 Firefox/49.0' -H 'X-Requested-with: XMLHttpRequest' -H 'X-CSRFToken: Y4cnfLbJah71XjKvTYtDSyA4iMaUrBfC' -H 'X-Instagram-Ajax: dad8d866382b' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' -H 'Content-Length: 0' --compressed "
+ID: 1655892530 ()<br>
+<br>
+ Unautorized Client (id: 29541) set to BLOCKED_BY_INSTA!!! <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 21 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>
+Client: 22725 <br>
+<br>
+nRef Profil: escollectionbr<br>
+ Count: 5 Hasnext: 5 - 2018-10-16 07:32:49am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+array(1) {
+  [0]=>
+  string(123) "{"message": "unauthorized", "redirect_url": "/accounts/login/?next=/web/friendships/525878250/unfollow/", "status": "fail"}"
+}
+string(1266) "curl --proxy 'albertreye9917:3r4rcz0b1v@172.84.73.14:21286' 'https://www.instagram.com/web/friendships/525878250/unfollow/' -X POST -H 'Cookie: mid=WmiMEQALAAH2F-ZZSDyKL-gm3k3T; sessionid=IGSC1229d430b399cdd15e70cab24c5cee6d9a3fff108691fc4e82106464d952068b%3Aqu7GuwBEDcWR6m3sA2YMzLQtq2ClZxrX%3A%7B%22_auth_user_id%22%3A188247606%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%22188247606%3A7Ol22hLKn3UoVhrjm7wfqRtpifAE5D4m%3Ab90623af7b101e0ab651a9b3abf89b3e40314bfa28e4b6881c23f44c1b3cc7c0%22%2C%22last_refreshed%22%3A1516801460.9055638313%7D;  csrftoken=0985JBKTcsgcWRZdUufBqyycd5apMf3s; ds_user_id=188247606' -H 'origin: www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:49.0) Gecko/20100101 Firefox/49.0' -H 'X-Requested-with: XMLHttpRequest' -H 'X-CSRFToken: 0985JBKTcsgcWRZdUufBqyycd5apMf3s' -H 'X-Instagram-Ajax: dad8d866382b' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' -H 'Content-Length: 0' --compressed "
+ID: 525878250 ()<br>
+<br>
+ Unautorized Client (id: 22725) set to BLOCKED_BY_INSTA!!! <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 117 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>
+Client: 20559 <br>
+<br>
+nRef Profil: laletloja<br>
+ Count: 5 Hasnext: 5 - 2018-10-16 07:32:55am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+array(1) {
+  [0]=>
+  string(124) "{"message": "unauthorized", "redirect_url": "/accounts/login/?next=/web/friendships/5714260053/unfollow/", "status": "fail"}"
+}
+string(1271) "curl --proxy 'albertreye9917:3r4rcz0b1v@207.188.155.18:21316' 'https://www.instagram.com/web/friendships/5714260053/unfollow/' -X POST -H 'Cookie: mid=Wza9PgABAAHKONnXr8twNC0y0M9W; sessionid=IGSC769e3e1daaf423cfbf751fb58313b355a2cedc4a571e11f0e1be8e47ad73ec0f%3AnpVVvOQgdj5I4J3R14QmzoZnQhNZRpnl%3A%7B%22_auth_user_id%22%3A5852629244%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A1%2C%22_token_ver%22%3A2%2C%22_token%22%3A%225852629244%3AUubvur7Q48VXYHNi1PXH1mGkd8lVY1Nd%3A54c0f23a6a952d48175d0cef9082f4673b882dc8acf0c493a914fc10e19b3b6c%22%2C%22last_refreshed%22%3A1535526599.244682312%7D;  csrftoken=10Q9Mk52R1mygLi1kP4KeUEMJU0a4MDn; ds_user_id=5852629244' -H 'origin: www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:49.0) Gecko/20100101 Firefox/49.0' -H 'X-Requested-with: XMLHttpRequest' -H 'X-CSRFToken: 10Q9Mk52R1mygLi1kP4KeUEMJU0a4MDn' -H 'X-Instagram-Ajax: dad8d866382b' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' -H 'Content-Length: 0' --compressed "
+ID: 5714260053 ()<br>
+<br>
+ Unautorized Client (id: 20559) set to BLOCKED_BY_INSTA!!! <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 100 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>
+Client: 29946 <br>
+<br>
+nRef Profil: riachuelo<br>
+ Count: 5 Hasnext: 5 - 2018-10-16 07:33:00am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+array(1) {
+  [0]=>
+  string(124) "{"message": "unauthorized", "redirect_url": "/accounts/login/?next=/web/friendships/1686785449/unfollow/", "status": "fail"}"
+}
+string(1272) "curl --proxy 'albertreye9917:3r4rcz0b1v@207.188.155.18:21316' 'https://www.instagram.com/web/friendships/1686785449/unfollow/' -X POST -H 'Cookie: mid=W6LhawAEAAHi3o1LKvOadkEVzPRz; sessionid=IGSC75e283640f4066e6ce60f3e1fe603168de60a4a8b5f1b56479a56cdef53481fc%3AEEZCrDCCzNGQLiSb5x91kogs7Rn0rovd%3A%7B%22_auth_user_id%22%3A8041105209%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%228041105209%3Am41PyNM8UztfWKxn62B29PmImIlFVqNf%3A29d3a52d38f75e1c48845f2fa1b6d01e84a43c09008777b9b9441fe467e12143%22%2C%22last_refreshed%22%3A1537401205.5276796818%7D;  csrftoken=gEKNvPqIj2U4Q58td5eOnFPJFCRrcW10; ds_user_id=8041105209' -H 'origin: www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:49.0) Gecko/20100101 Firefox/49.0' -H 'X-Requested-with: XMLHttpRequest' -H 'X-CSRFToken: gEKNvPqIj2U4Q58td5eOnFPJFCRrcW10' -H 'X-Instagram-Ajax: dad8d866382b' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' -H 'Content-Length: 0' --compressed "
+ID: 1686785449 ()<br>
+<br>
+ Unautorized Client (id: 29946) set to BLOCKED_BY_INSTA!!! <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 25 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>
+Client: 30233 <br>
+<br>
+nRef Profil: aryoficial<br>
+ Count: 5 Hasnext: 5 - 2018-10-16 07:33:06am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+array(1) {
+  [0]=>
+  string(124) "{"message": "unauthorized", "redirect_url": "/accounts/login/?next=/web/friendships/1518351073/unfollow/", "status": "fail"}"
+}
+string(1269) "curl --proxy 'albertreye9917:3r4rcz0b1v@207.188.155.18:21316' 'https://www.instagram.com/web/friendships/1518351073/unfollow/' -X POST -H 'Cookie: mid=W40PGwAEAAHiRC0msViFkh6WPhpp; sessionid=IGSCcea06fa0e79dcffd4568fbdd4d35ca45ee775a49f02c53263b39b60e880b5362%3AtgZcTXfy64AXZZ6NrUWNczKbHGYxeLp0%3A%7B%22_auth_user_id%22%3A210598802%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%22210598802%3AZbhLi7g3I2My7bNh5dctQoVA499LwxWq%3Aacd218beaa2342f54dba01c27ed92b9c9c3ef9f9735f7da14c97818297d3b5a2%22%2C%22last_refreshed%22%3A1535971118.6515111923%7D;  csrftoken=QRi9Ilb5OTKp4SZmQhWZRByXBqhMVEez; ds_user_id=210598802' -H 'origin: www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:49.0) Gecko/20100101 Firefox/49.0' -H 'X-Requested-with: XMLHttpRequest' -H 'X-CSRFToken: QRi9Ilb5OTKp4SZmQhWZRByXBqhMVEez' -H 'X-Instagram-Ajax: dad8d866382b' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' -H 'Content-Length: 0' --compressed "
+ID: 1518351073 ()<br>
+<br>
+ Unautorized Client (id: 30233) set to BLOCKED_BY_INSTA!!! <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 80 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>
+Client: 29023 <br>
+<br>
+nRef Profil: plazashoppingniteroi<br>
+ Count: 5 Hasnext: 5 - 2018-10-16 07:33:10am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+array(1) {
+  [0]=>
+  string(123) "{"message": "unauthorized", "redirect_url": "/accounts/login/?next=/web/friendships/418753892/unfollow/", "status": "fail"}"
+}
+string(1269) "curl --proxy 'albertreye9917:3r4rcz0b1v@64.44.63.127:21290' 'https://www.instagram.com/web/friendships/418753892/unfollow/' -X POST -H 'Cookie: mid=W5hVMgAEAAEEMumaBEIP3Z6zK7cF; sessionid=IGSC9e7b5d155adc0e06140ca7592839d23dc4e9c80db45d2f69177102991a0c171b%3AmLcbhI1IXPD2nCrO1Suo8Kzk2KcbyMhQ%3A%7B%22_auth_user_id%22%3A7711227104%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%227711227104%3APoUtO4YxyWMp4AoTuvzpdNebFk94yVkq%3Acd44ef45406a6bd9c38978342c72f38ab89e4df8cf4eef641f67babfa7202304%22%2C%22last_refreshed%22%3A1536709951.5079298019%7D;  csrftoken=oQq6XaAAJaPCCxxN8jtsMlreXodMjkTr; ds_user_id=7711227104' -H 'origin: www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:49.0) Gecko/20100101 Firefox/49.0' -H 'X-Requested-with: XMLHttpRequest' -H 'X-CSRFToken: oQq6XaAAJaPCCxxN8jtsMlreXodMjkTr' -H 'X-Instagram-Ajax: dad8d866382b' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' -H 'Content-Length: 0' --compressed "
+ID: 418753892 ()<br>
+<br>
+ Unautorized Client (id: 29023) set to BLOCKED_BY_INSTA!!! <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 37 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>
+Client: 93 <br>
+<br>
+nRef Profil: macetesdemae<br>
+ Count: 5 Hasnext: 5 - 2018-10-16 07:33:16am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+array(1) {
+  [0]=>
+  string(124) "{"message": "unauthorized", "redirect_url": "/accounts/login/?next=/web/friendships/4001598243/unfollow/", "status": "fail"}"
+}
+string(1271) "curl --proxy 'albertreye9917:3r4rcz0b1v@172.84.87.200:21254' 'https://www.instagram.com/web/friendships/4001598243/unfollow/' -X POST -H 'Cookie: mid=W7ar5gAEAAGa-2KxLi-q-0smBjAa; sessionid=IGSC0283f6bd03ecf3a9dc7f0406a05329ddd85086c3c017fca9939465ef5ea03f22%3AIJ1f7iuhXKMxzqHc53ejVMjyaNMSPPyu%3A%7B%22_auth_user_id%22%3A1983505190%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%221983505190%3ApwcLX08UB90TcAgr0J9DIYahCcEfpuOZ%3Abbe15bc7f3e84c2e8e6dd9c5fa996a0faecfa90be6b306985e3608ccb8fe22cd%22%2C%22last_refreshed%22%3A1538698230.3052880764%7D;  csrftoken=thcnTyNzk03xte7Pj3LWMJey6O97h1pp; ds_user_id=1983505190' -H 'origin: www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:49.0) Gecko/20100101 Firefox/49.0' -H 'X-Requested-with: XMLHttpRequest' -H 'X-CSRFToken: thcnTyNzk03xte7Pj3LWMJey6O97h1pp' -H 'X-Instagram-Ajax: dad8d866382b' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' -H 'Content-Length: 0' --compressed "
+ID: 4001598243 ()<br>
+<br>
+ Unautorized Client (id: 93) set to BLOCKED_BY_INSTA!!! <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 125 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>
+Client: 23480 <br>
+<br>
+nRef Profil: rio-de-janeiro<br>
+ Count: 5 Hasnext: 5 - 2018-10-16 07:33:23am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+array(1) {
+  [0]=>
+  string(123) "{"message": "unauthorized", "redirect_url": "/accounts/login/?next=/web/friendships/562787109/unfollow/", "status": "fail"}"
+}
+string(1270) "curl --proxy 'albertreye9917:3r4rcz0b1v@172.84.87.200:21254' 'https://www.instagram.com/web/friendships/562787109/unfollow/' -X POST -H 'Cookie: mid=W7bVZwAEAAEmRAvjkbHv3C1MY1NL; sessionid=IGSC1d385e608527389954e009c6a42dd6ff88b761dc49c7cfef7c9c65a42d69d0af%3AagA6FwhEDSuCfIfBITFrC5552xcSwZl8%3A%7B%22_auth_user_id%22%3A3428304731%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%223428304731%3AcbojB5dUsvg0LAT16bDkY6ozCRBAM62x%3A6b320feb7e6f6bfe0e6ffbedd17cc40689363e3232f837d99811be53c3e88626%22%2C%22last_refreshed%22%3A1538708851.9129061699%7D;  csrftoken=Kpw3w1GDAj3RatxzZGoEZDq9IOLG9XxO; ds_user_id=3428304731' -H 'origin: www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:49.0) Gecko/20100101 Firefox/49.0' -H 'X-Requested-with: XMLHttpRequest' -H 'X-CSRFToken: Kpw3w1GDAj3RatxzZGoEZDq9IOLG9XxO' -H 'X-Instagram-Ajax: dad8d866382b' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' -H 'Content-Length: 0' --compressed "
+ID: 562787109 ()<br>
+<br>
+ Unautorized Client (id: 23480) set to BLOCKED_BY_INSTA!!! <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 54 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>
+Client: 30723 <br>
+<br>
+nRef Profil: analiafranco<br>
+ Count: 5 Hasnext: 5 - 2018-10-16 07:33:30am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+array(1) {
+  [0]=>
+  string(124) "{"message": "unauthorized", "redirect_url": "/accounts/login/?next=/web/friendships/7694917273/unfollow/", "status": "fail"}"
+}
+string(796) "curl --proxy 'albertreye9917:3r4rcz0b1v@207.188.155.18:21316' 'https://www.instagram.com/web/friendships/7694917273/unfollow/' -X POST -H 'Cookie: mid=W7w7ugALAAGefnAnLr75WXBfiUjT; sessionid=4151019129;  csrftoken=QIe4bNlA8Z2Ll2uNJhW23bgRZ1SG9to5; ds_user_id=4151019129' -H 'origin: www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:49.0) Gecko/20100101 Firefox/49.0' -H 'X-Requested-with: XMLHttpRequest' -H 'X-CSRFToken: QIe4bNlA8Z2Ll2uNJhW23bgRZ1SG9to5' -H 'X-Instagram-Ajax: dad8d866382b' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' -H 'Content-Length: 0' --compressed "
+ID: 7694917273 ()<br>
+<br>
+ Unautorized Client (id: 30723) set to BLOCKED_BY_INSTA!!! <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 31 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>
+Client: 31484 <br>
+<br>
+nRef Profil: drake<br>
+ Count: 5 Hasnext: 5 - 2018-10-16 07:33:34am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+array(1) {
+  [0]=>
+  string(124) "{"message": "unauthorized", "redirect_url": "/accounts/login/?next=/web/friendships/5664959849/unfollow/", "status": "fail"}"
+}
+string(1272) "curl --proxy 'albertreye9917:3r4rcz0b1v@207.188.155.18:21316' 'https://www.instagram.com/web/friendships/5664959849/unfollow/' -X POST -H 'Cookie: mid=W6w-uAAEAAGIfytyyb7jZTXtUDg0; sessionid=IGSC179cf547ecbec7b439359735728b1f152aadaea02638b50b7b9d6e5acf61b3f8%3AcfGxTLGqOhEeeiWRZ7CeqbYbLAvKM8ue%3A%7B%22_auth_user_id%22%3A6846785408%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%226846785408%3ADkVVGNyhS2efCjtkQT8G4eCt7r7iOHpZ%3Ae1a9758a849231b5c02590e47d8a559e242380c869da5df3556023bec7a2bbad%22%2C%22last_refreshed%22%3A1538014933.0972254276%7D;  csrftoken=nTnO07napPUlCuJAAJAdQ5hXI5JLskhN; ds_user_id=6846785408' -H 'origin: www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:49.0) Gecko/20100101 Firefox/49.0' -H 'X-Requested-with: XMLHttpRequest' -H 'X-CSRFToken: nTnO07napPUlCuJAAJAdQ5hXI5JLskhN' -H 'X-Instagram-Ajax: dad8d866382b' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' -H 'Content-Length: 0' --compressed "
+ID: 5664959849 ()<br>
+<br>
+ Unautorized Client (id: 31484) set to BLOCKED_BY_INSTA!!! <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 160 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>
+Client: 31474 <br>
+<br>
+nRef Profil: lima-peru<br>
+ Count: 5 Hasnext: 5 - 2018-10-16 07:33:39am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+array(1) {
+  [0]=>
+  string(124) "{"message": "unauthorized", "redirect_url": "/accounts/login/?next=/web/friendships/1277883680/unfollow/", "status": "fail"}"
+}
+string(1271) "curl --proxy 'albertreye9917:3r4rcz0b1v@207.188.155.18:21316' 'https://www.instagram.com/web/friendships/1277883680/unfollow/' -X POST -H 'Cookie: mid=W6v02wABAAGb6Mxz89FiCc5yOEXC; sessionid=IGSCb7939c0b9521a0fcc17ee463a1884e5a75380fd6795af617e41542274190136e%3AQQjyIR2qLcezQ5jG3X0lUIWcAYNz5WBT%3A%7B%22_auth_user_id%22%3A8567095183%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A1%2C%22_token_ver%22%3A2%2C%22_token%22%3A%228567095183%3A6Co9hYlPn9oMJVDd3GSnYnfogSuU6i9l%3A648f3c1bb1a54101a8874eb6413714ed55bec7d230ce53327a9eeb5a39cc1122%22%2C%22last_refreshed%22%3A1537995997.599834919%7D;  csrftoken=nS0d9EpYSBH1ks3KBmTch9VHBCqQOJmS; ds_user_id=8567095183' -H 'origin: www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:49.0) Gecko/20100101 Firefox/49.0' -H 'X-Requested-with: XMLHttpRequest' -H 'X-CSRFToken: nS0d9EpYSBH1ks3KBmTch9VHBCqQOJmS' -H 'X-Instagram-Ajax: dad8d866382b' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' -H 'Content-Length: 0' --compressed "
+ID: 1277883680 ()<br>
+<br>
+ Unautorized Client (id: 31474) set to BLOCKED_BY_INSTA!!! <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 28 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>
+Client: 27586 <br>
+<br>
+nRef Profil: liviagiovanardi<br>
+ Count: 5 Hasnext: 5 - 2018-10-16 07:33:44am<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#1447 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 1836106773 ()<br>
+array(1) {
+  [0]=>
+  string(33) "{"message": "", "status": "fail"}"
+}
+string(1263) "curl --proxy 'albertreye9917:3r4rcz0b1v@64.44.63.80:21287' 'https://www.instagram.com/web/friendships/5727493203/unfollow/' -X POST -H 'Cookie: mid=W7kTyAAEAAGj-BnynhriWVm1KDG1; sessionid=IGSC136ba0f9e21eb63bc16b18e54a77775cce61c9ead2bc1b0c80fba3cbb524741b%3AsLcEEbZ0FYMdAGfhzANdtPdDlBo2lzF6%3A%7B%22_auth_user_id%22%3A42396385%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%2242396385%3AEhsPMcgWaWAjlA4N70YWVl02PiGnVRSn%3A524a04e440287308346472f3ab12633b9b87ea5129119ac24aa64390e4c20f90%22%2C%22last_refreshed%22%3A1538856180.2091536522%7D;  csrftoken=WI4rW6HymBlhcLYADnWfVLoHLSwXZ2GR; ds_user_id=42396385' -H 'origin: www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:49.0) Gecko/20100101 Firefox/49.0' -H 'X-Requested-with: XMLHttpRequest' -H 'X-CSRFToken: WI4rW6HymBlhcLYADnWfVLoHLSwXZ2GR' -H 'X-Instagram-Ajax: dad8d866382b' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Accept: */*' -

@@ -147,7 +147,7 @@ class Payment extends CI_Controller {
     }
 
     public function mundi_create_boleto_payment() {
-        require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/system_config.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/system_config.php';
         $GLOBALS['sistem_config'] = new follows\cls\system_config();
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/Payment.php';
         $Payment = new \follows\cls\Payment();
