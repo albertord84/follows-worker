@@ -5,43 +5,47 @@ class Payment extends CI_Controller {
     // ACESSADOS EXTERNAMENTE POR CURL
     public function vindi_notif_post() {
         try {
-            $post_str = urldecode($_POST['post_str']);
+            $post = urldecode($_POST['post_str']);
             //var_dump($post_str);
-            $post = unserialize($post_str);
-            $post = json_decode($post);
+            //$post = unserialize($post_str);
+            //$post = json_decode($post);
             //var_dump(unserialize($post_str));
             // Write the contents back to the file
             $path = __dir__ . '/../../logs/vindi/';
             $file = $path . "vindi_notif_post-" . date("d-m-Y") . ".log";
-            $result = file_put_contents($file, $post_str . "\n\n", FILE_APPEND);
-            //$result = file_put_contents($file, "Albert Test... I trust God!\n", FILE_APPEND);
-            // Recurrence created succefully
-            if (isset($post->event) && isset($post->event->type) && $post->event->type == "charge_created") {
-                $gateway_client_id = $post->event->data->charge->customer->id;
-                // Activate User
-                //die("Activate client -> Recorrence created -> Set client pending by payment si o dia da cobrança é menor que o atual. Customer: $post->event->data->charge->customer->id");
-            }
-            // Bill paid succefully
-            if (isset($post->event) && isset($post->event->type) && $post->event->type == "bill_paid") {
-                if (isset($post->event->data) && isset($post->event->data->bill) && $post->event->data->bill->status = "paid") {
+            $result = file_put_contents($file, $post . "\n\n", FILE_APPEND);
+            if (isset($post->event) && isset($post->event->type)) {
+                // Recurrence created succefully
+                if ($post->event->type == "charge_created") {
+                    $gateway_client_id = $post->event->data->charge->customer->id;
                     // Activate User
-                    $gateway_client_id = $post->event->data->bill->customer->id;
-                    //1. activar cliente
-                    $this->load->model('class/user_model');
-                    $this->load->model('class/user_status');
-                    $this->load->model('class/client_model');
-                    $client_id = $this->client_model->get_client_id_by_gateway_client_id($gateway_client_id);
-                    if ($client_id) {
-                        $this->user_model->update_user($client_id, array(
-                            'status_id' => user_status::ACTIVE));
-                        $result = file_put_contents($file, "$client_id: ACTIVED" . "\n\r", FILE_APPEND);
-                        //2. pay_day un mes para el frente
-                        $this->client_model->update_client(
-                                $client_id, array('pay_day' => strtotime("+30 days", time())));
-                        $result = file_put_contents($file, "$client_id: +30 pay day" . "\n\r\n\r", FILE_APPEND);
-                    }
-                    //die("Activate client -> Payment done!! -> Dia da cobrança um mês para frente");
+                    //die("Activate client -> Recorrence created -> Set client pending by payment si o dia da cobrança é menor que o atual. Customer: $post->event->data->charge->customer->id");
                 }
+                // Bill paid succefully
+                if (isset($post->event) && isset($post->event->type) && $post->event->type == "bill_paid") {
+                    if (isset($post->event->data) && isset($post->event->data->bill) && $post->event->data->bill->status = "paid") {
+                        // Activate User
+                        $gateway_client_id = $post->event->data->bill->customer->id;
+                        //1. activar cliente
+                        $this->load->model('class/user_model');
+                        $this->load->model('class/user_status');
+                        $this->load->model('class/client_model');
+                        $client_id = $this->client_model->get_client_id_by_gateway_client_id($gateway_client_id);
+                        if ($client_id) {
+                            $this->user_model->update_user($client_id, array(
+                                'status_id' => user_status::ACTIVE));
+                            $result = file_put_contents($file, "$client_id: ACTIVED" . "\n\r", FILE_APPEND);
+                            //2. pay_day un mes para el frente
+                            $this->client_model->update_client(
+                                    $client_id, array('pay_day' => strtotime("+30 days", time())));
+                            $result = file_put_contents($file, "$client_id: +30 pay day" . "\n\r\n\r", FILE_APPEND);
+                        }
+                        //die("Activate client -> Payment done!! -> Dia da cobrança um mês para frente");
+                    }
+                }
+            } else {
+                $result = file_put_contents($file, "\nERROR\n" . $post . "\n\n", FILE_APPEND);
+                echo "FAIL";
             }
         } catch (\Exception $exc) {
             echo $exc->getTraceAsString();
@@ -113,7 +117,7 @@ class Payment extends CI_Controller {
         $result = $Vindi->create_recurrency_payment($user_id, $pay_day, $plane_type);
         echo json_encode($result);
     }
-    
+
     public function mundi_delete_payment() {
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/system_config.php';
         $GLOBALS['sistem_config'] = new follows\cls\system_config();
@@ -123,23 +127,20 @@ class Payment extends CI_Controller {
         $result = $Payment->delete_payment($order_key);
         echo json_encode($result);
     }
-    
+
     public function mundi_create_boleto_payment() {
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/system_config.php';
         $GLOBALS['sistem_config'] = new follows\cls\system_config();
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/Payment.php';
         $Payment = new \follows\cls\Payment();
-        $payment_data = (array)json_decode(urldecode($_POST['payment_data']));
+        $payment_data = (array) json_decode(urldecode($_POST['payment_data']));
         var_dump($_POST['payment_data']);
 //        $a="%7B%22AmountInCents%22%3A20374%2C%22DocumentNumber%22%3A15402%2C%22OrderReference%22%3A15402%2C%22id%22%3A%2230359%22%2C%22name%22%3A%22JOSE+R+G+MONTERO%22%2C%22cpf%22%3A%2207367014196%22%2C%22cep%22%3A%2224020206%22%2C%22street_address%22%3A%22Rua+Visconde+de+Sepetiba%22%2C%22house_number%22%3A%22223%22%2C%22neighborhood_address%22%3A%22Centro%22%2C%22municipality_address%22%3A%22Niter%5Cu00f3i%22%2C%22state_address%22%3A%22RJ%22%7D";
 //        $payment_data = (array)json_decode(urldecode($a));
-                
         //$result = $Payment->create_boleto_payment($payment_data);
         //echo json_encode($result);
     }
-    
-    
-    
+
     // USADOS INTERNAMENTE PELOS ROBOTS DE PAGAMENTO
     public function check_payment_vindi() {
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/Gmail.php';
@@ -412,7 +413,7 @@ class Payment extends CI_Controller {
         }
         echo "\n\n<br>Job Done!" . date("Y-m-d h:i:sa") . "\n\n";
     }
-    
+
     public function do_payment($payment_data) {
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows/worker/class/Payment.php';
         // Check client payment in mundipagg
@@ -601,7 +602,7 @@ class Payment extends CI_Controller {
         }
         return FALSE;
     }
-        
+
     public function check_initial_payment($client) {
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows/worker/class/DB.php';
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows/worker/class/Payment.php';
