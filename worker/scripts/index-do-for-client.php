@@ -36,14 +36,35 @@ $GLOBALS['sistem_config'] = new follows\cls\system_config();
 
 $id = filter_input(INPUT_GET, 'id',FILTER_VALIDATE_INT);
 $client_id = filter_input(INPUT_GET, 'client_id',FILTER_VALIDATE_INT);
-$Worker = new follows\cls\Worker(NULL,$id);
+$n = filter_input(INPUT_GET, 'n',FILTER_VALIDATE_INT);
+if($n == NULL || $n < 0)
+{
+    $n = 3;
+}
 
-//$Worker->check_daily_work();
-//$Worker->truncate_daily_work();
-//$Worker->prepare_daily_work();
-if($client_id !== NULL && $client_id > 0)
-    $Worker->do_work($client_id);
+$DB = new follows\cls\DB();
+if($DB->has_work($client_id))
+{
+    $hours = 24;
+    $Client = (new follows\cls\Client())->get_client($client_id);
+    $last_acces = $Client->last_access;
+    if(time() < $last_acces)
+        $hours = $hours - (($last_acces - time()) / 3600 % 24);
+    echo "Increasing last acces to client: $client_id for $hours H";
+    $DB->Increase_Client_Last_Access($client_id,$hours);
+    $Worker = new follows\cls\Worker(NULL,$id);
 
+    //$Worker->check_daily_work();
+    //$Worker->truncate_daily_work();
+    //$Worker->prepare_daily_work();
+    if($client_id !== NULL && $client_id > 0)
+        $Worker->do_work($client_id,$n);
+
+    $DB->Set_Client_Last_Access($client_id, $last_acces);
+    echo "Set last acess to time $last_acces";
+}
+else
+    echo "<br>Client $client_id without work<\br>";
 //----------------------------------------------------------------
 
 echo "\n<br>" . date("Y-m-d h:i:sa") . "\n\n";
