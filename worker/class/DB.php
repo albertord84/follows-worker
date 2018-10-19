@@ -576,6 +576,27 @@ namespace follows\cls {
             }
         }
         
+        public function has_work($client_id) {
+            //$Elapsed_time_limit = $GLOBALS['sistem_config']->MIN_NEXT_ATTEND_TIME;
+            try {
+                // Get daily work
+                $sql = ""
+                        . "SELECT * "
+                        . "FROM daily_work "
+                        . "INNER JOIN reference_profile ON reference_profile.id = daily_work.reference_id "
+                        . "INNER JOIN clients ON clients.user_id = reference_profile.client_id "
+                        . "INNER JOIN users ON users.id = clients.user_id "
+                        . "WHERE daily_work.reference_id IN (SELECT id FROM reference_profile WHERE reference_profile.client_id = $client_id);";
+
+                $result = mysqli_query($this->connection, $sql);
+                $object = $result->fetch_object();
+               
+                return $object != NULL;
+            } catch (\Exception $exc) {
+                echo $exc->getTraceAsString();
+            }
+        }
+        
         public function get_unfollow_work($client_id) {
             try {
                 // Get profiles to unfollow today for this Client... 
@@ -1052,6 +1073,19 @@ namespace follows\cls {
         public function Increase_Client_Last_Access($client_id, $hours = 2) {
             try {
                 $timestamp = strtotime("+$hours hours", time());
+                $this->Set_Client_Last_Access($client_id,$timestamp);
+            } catch (Exception $exc) {
+                echo $exc->getTraceAsString();
+            }
+        }
+        
+        /**
+         * Increase_Client_Last_Access
+         * @param type $client_id
+         * @param type $hours to add to client
+         */
+        public function Set_Client_Last_Access($client_id, $timestamp) {
+            try {
                 $sql = "UPDATE dumbudb.clients SET last_access='$timestamp' WHERE user_id=$client_id";
                 $result = mysqli_query($this->connection, $sql);
                 return $result;
@@ -1059,6 +1093,7 @@ namespace follows\cls {
                 echo $exc->getTraceAsString();
             }
         }
+        
 
         public function get_number_followed_today($client_id) {
             try {

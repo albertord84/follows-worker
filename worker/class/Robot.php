@@ -125,7 +125,9 @@ namespace follows\cls {
                 } else if (is_object($json_response) && $json_response->status == 'ok') { // if unfollowed 
                     $Profile->unfollowed = TRUE;
                     var_dump($json_response);
-                    echo "Followed ID: $Profile->followed_id ($Profile->insta_name)<br>\n";
+                    echo "Followed ID: $Profile->followed_id";
+                    if(isset($Profile->insta_name)) {echo "($Profile->insta_name)";}
+                    echo "<br>\n";
                     // Mark it unfollowed and send back to queue
                     // If have some Profile to unfollow
                     $has_next = count($Followeds_to_unfollow) && !$Followeds_to_unfollow[0]->unfollowed;
