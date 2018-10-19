@@ -10,38 +10,8 @@ require_once '../class/PaymentCielo3.0.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/externals/utils.php';
 
 $GLOBALS['sistem_config'] = new follows\cls\system_config();
-//print('Hola Mundo');
-//$Robot = new \follows\cls\Robot();
- // $Client = (new \follows\cls\Client())->get_client(27345);
- //  $cursor = NULL;
- //var_dump($Robot->get_insta_geomedia(json_decode($Client->cookies), '213163910', 10, $cursor));
-/*
-  $result = new \stdClass();
-  try                 $result = $Robot->make_login("ky2oficial", "alejandropacho32");
-  $result->json_response = new \stdClass();
-  $result->json_response->status = 'ok';
-  $result->json_response->authenticated = TRUE;
-  //$myDB->set_client_cookies($Client->id, json_encode($result));
 
-  var_dump($result);
-  } catch (\Exception $e) {
-  // did by Jose R (si el cliente pone mal la senha por motivo X, el login va a dar una excepcion, y no le devemos cambiar las cookies, imagina que fue uno que e copio el curl a mano)
-  //$myDB->set_cookies_to_null($Client->id);
-  } */
-
-//$Robot = new \follows\cls\Robot();
-//$res = $Robot->checkpoint_requested('riveauxmerino','Notredame88');
-//$Robot->make_checkpoint('riveauxmerino', 872305);
-//$res = $Robot->bot_login('guarapuvu', 'guarapuvu123');
-//$result = $Robot->bot_login('casazunzun', 'angelpadron1991');
-//var_dump($res);
-
-
- //$Robot = new \follows\cls\Robot();
- //$result = $Robot->bot_login('iselamendozadec', 'iselita87');
- //var_dump($result); 
-  
-/*
+ /*
   $payment = new \Payment();
   $client = new \stdClass();
   $client->credit_card_number = "5293888988785452";
@@ -99,7 +69,6 @@ $GLOBALS['sistem_config'] = new follows\cls\system_config();
   $daily_work->insta_follower_cursor = NULL;
   $daily_work->insta_name = 'cuba';
   $daily_work->rp_insta_id = 220021938;
-
 
 
   $query_hash_tag = 'ded47faa9a1aaded10161a2ff32abb6b';
@@ -195,10 +164,17 @@ $GLOBALS['sistem_config'] = new follows\cls\system_config();
 //--compressed
 //
 
-
+//-------------------------------------------------------------------------------
 //TEST FIRST LIKE
 /*$client = new follows\cls\Client();
-$isela = $client->get_client("20565"); //id de cliente de dumbu
+$isela = $client->get_client("31800"); //id de cliente de dumbu
 $istaid = 3916799608; //id de insta del perfil al que le daras like a su primer post
 $Robot = new follows\cls\Robot();
-$Robot->like_fist_post(json_decode($isela->cookies), $istaid);*/
+$result = $Robot->like_fist_post(json_decode($isela->cookies), $istaid);
+var_dump($result);*/
+
+//-------------------------------------------------------------------------------
+//LOGUIN
+/*$Robot = new \follows\cls\Robot();
+$result = $Robot->bot_login('mr.andyarte', 'mrandy.1');
+var_dump($result);*/

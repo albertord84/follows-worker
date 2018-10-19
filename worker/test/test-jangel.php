@@ -29,7 +29,7 @@ curl_setopt($ch, CURLOPT_PROXYTYPE, 'HTTP');
 curl_setopt($ch, CURLOPT_HTTPPROXYTUNNEL, 1);
  */
 
-$DB = new follows\cls\DB();
+/*$DB = new follows\cls\DB();
 $Robot = new \follows\cls\Robot();
 $Client = (new \follows\cls\Client())->get_client(30864);
 //$res = $Robot->get_insta_follows(json_decode($Client->cookies),$Client->insta_id,15);
@@ -39,7 +39,7 @@ $Client = (new \follows\cls\Client())->get_client(30864);
                         . "   reference_profile.insta_id as rp_insta_id, "
                         . "   reference_profile.type as rp_type, "
                         . "   reference_profile.id as rp_id */
-$daily_work = new \stdClass();
+/*/*$daily_work = new \stdClass();
 $daily_work->cookies = $Client->cookies;
 $daily_work->login_data = json_decode($Client->cookies);
 $daily_work->users_id = $Client->id;
@@ -80,7 +80,7 @@ while ($Followed = $unfollow_work->fetch_object()) { //
                 }
  $daily_work->black_list = $DB->get_black_list($daily_work->client_id);
  * 
- */
+ *
  $errors = false;
 // $Followeds_to_unfollow = NULL;
  $Ref_profile_follows = $Robot->do_follow_unfollow_work($Followeds_to_unfollow, $daily_work, $errors);
@@ -136,8 +136,7 @@ $client->credit_card_exp_year = "23";
 $client->credit_card_cvc = "564";
 $client->pay_day = strostamp('today');
 $payment->check_initial_payment($client);*/
-/*  
-
+/*
 $Client = (new \follows\cls\Client())->get_client(65045);
 
 $DB = new \follows\cls\DB();
@@ -176,7 +175,7 @@ var_dump($res);*/
 //$Robot->id = 1;
 //$Robot->process_follow_error($json_response);
 
-/*
+
 $Client = (new \follows\cls\Client())->get_client(20565);
 $daily_work = new \stdClass();
 $daily_work->rp_type = 1;
@@ -185,6 +184,7 @@ $daily_work->to_follow = 10;
 $daily_work->insta_follower_cursor = NULL;
 $daily_work->insta_name = 'lovecats';
 $daily_work->rp_insta_id = 220021938;
+$daily_work->client_id = 20565;
 
 $query_hash_tag = 'ded47faa9a1aaded10161a2ff32abb6b';
 $query_hash_loc = '951c979213d7e7a1cf1d73e2f661cbd1';
@@ -216,7 +216,7 @@ $res = $Robot->get_profiles_to_follow($daily_work, $error, $page_info);
 echo json_encode($res);
 var_dump($res);
 echo "<br></br><br>Peoples: $cnt</br><br></br>";
-*/
+
 /*
 $result_people =  $Robot->make_curl_followers_query($query_hash_people, $variables_people, json_decode($daily_work->cookies));
 $json_response = json_decode(exec($result_people));
