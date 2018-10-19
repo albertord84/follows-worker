@@ -6,42 +6,46 @@ class Payment extends CI_Controller {
     public function vindi_notif_post() {
         try {
             $post_str = urldecode($_POST['post_str']);
-            //var_dump($post_str);
-            $post = unserialize($post_str);
+            $post = urldecode($post_str);
             $post = json_decode($post);
-            //var_dump(unserialize($post_str));
             // Write the contents back to the file
             $path = __dir__ . '/../../logs/vindi/';
             $file = $path . "vindi_notif_post-" . date("d-m-Y") . ".log";
-            $result = file_put_contents($file, $post_str . "\n\n", FILE_APPEND);
-            //$result = file_put_contents($file, "Albert Test... I trust God!\n", FILE_APPEND);
-            // Recurrence created succefully
-            if (isset($post->event) && isset($post->event->type) && $post->event->type == "charge_created") {
-                $gateway_client_id = $post->event->data->charge->customer->id;
-                // Activate User
-                //die("Activate client -> Recorrence created -> Set client pending by payment si o dia da cobrança é menor que o atual. Customer: $post->event->data->charge->customer->id");
-            }
-            // Bill paid succefully
-            if (isset($post->event) && isset($post->event->type) && $post->event->type == "bill_paid") {
-                if (isset($post->event->data) && isset($post->event->data->bill) && $post->event->data->bill->status = "paid") {
+            $result = file_put_contents($file, "\n\n", FILE_APPEND);
+            $result = file_put_contents($file, serialize($post_str), FILE_APPEND);
+            if (isset($post->event) && isset($post->event->type)) {
+                // Recurrence created succefully
+                if ($post->event->type == "charge_created") {
+                    $gateway_client_id = $post->event->data->charge->customer->id;
                     // Activate User
-                    $gateway_client_id = $post->event->data->bill->customer->id;
-                    //1. activar cliente
-                    $this->load->model('class/user_model');
-                    $this->load->model('class/user_status');
-                    $this->load->model('class/client_model');
-                    $client_id = $this->client_model->get_client_id_by_gateway_client_id($gateway_client_id);
-                    if ($client_id) {
-                        $this->user_model->update_user($client_id, array(
-                            'status_id' => user_status::ACTIVE));
-                        $result = file_put_contents($file, "$client_id: ACTIVED" . "\n\r", FILE_APPEND);
-                        //2. pay_day un mes para el frente
-                        $this->client_model->update_client(
-                                $client_id, array('pay_day' => strtotime("+1 month", time())));
-                        $result = file_put_contents($file, "$client_id: +1 month from now" . "\n\r\n\r", FILE_APPEND);
-                    }
-                    //die("Activate client -> Payment done!! -> Dia da cobrança um mês para frente");
                 }
+                // Bill paid succefully
+                if (isset($post->event) && isset($post->event->type) && $post->event->type == "bill_paid") {
+                    if (isset($post->event->data) && isset($post->event->data->bill) && $post->event->data->bill->status = "paid") {
+                        // Activate User
+                        $gateway_client_id = $post->event->data->bill->customer->id;
+                        //1. activar cliente
+                        $this->load->model('class/user_model');
+                        $this->load->model('class/user_status');
+                        $this->load->model('class/client_model');
+                        $client_id = $this->client_model->get_client_id_by_gateway_client_id($gateway_client_id);
+                        if ($client_id) {
+                            $this->user_model->update_user($client_id, array(
+                                'status_id' => user_status::ACTIVE));
+                            $result = file_put_contents($file, "$client_id: ACTIVED" . "\n\n", FILE_APPEND);
+                            //2. pay_day un mes para el frente
+                            $this->client_model->update_client(
+                                    $client_id, array('pay_day' => strtotime("+1 month", time())));
+                            $result = file_put_contents($file, "$client_id: +1 month from now" . "\n\n\n", FILE_APPEND);
+                        }
+                        //die("Activate client -> Payment done!! -> Dia da cobrança um mês para frente");
+                    }
+                }
+            } else {
+                $result = file_put_contents($file, "\nERROR:\n", FILE_APPEND);
+                $result = file_put_contents($file, $post, FILE_APPEND);
+                $result = file_put_contents($file, "\nERROR END\n", FILE_APPEND);
+                echo "FAIL";
             }
         } catch (\Exception $exc) {
             echo $exc->getTraceAsString();
@@ -49,12 +53,9 @@ class Payment extends CI_Controller {
             return;
         }
 
-        // END COMMENT
-        //        $result = file_put_contents($file, serialize($_POST['OrderStatus']), FILE_APPEND);
         if ($result === FALSE) {
-            //var_dump($file);
+            
         }
-        //var_dump($file);
         echo "OK";
     }
 
@@ -113,7 +114,7 @@ class Payment extends CI_Controller {
         $result = $Vindi->create_recurrency_payment($user_id, $pay_day, $plane_type);
         echo json_encode($result);
     }
-    
+
     public function mundi_delete_payment() {
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/system_config.php';
         $GLOBALS['sistem_config'] = new follows\cls\system_config();
@@ -123,19 +124,17 @@ class Payment extends CI_Controller {
         $result = $Payment->delete_payment($order_key);
         echo json_encode($result);
     }
-    
+
     public function mundi_create_boleto_payment() {
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/system_config.php';
         $GLOBALS['sistem_config'] = new follows\cls\system_config();
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/Payment.php';
         $Payment = new \follows\cls\Payment();
-        $payment_data = (array)json_decode(urldecode($_POST['payment_data']));
+        $payment_data = (array) json_decode(urldecode($_POST['payment_data']));
         $result = $Payment->create_boleto_payment($payment_data);
         echo json_encode($result);
     }
-    
-    
-    
+
     // USADOS INTERNAMENTE PELOS ROBOTS DE PAGAMENTO
     public function check_payment_vindi() {
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/Gmail.php';
@@ -158,16 +157,16 @@ class Payment extends CI_Controller {
         $this->db->where('status_id <>', user_status::BEGINNER);
         $this->db->where('status_id <>', user_status::DONT_DISTURB);
         //$this->db->where('gateway_id', 1); // 1 -> Id da mundipagg
-//        $this->db->where('status_id <>', user_status::BLOCKED_BY_PAYMENT);
+        //        $this->db->where('status_id <>', user_status::BLOCKED_BY_PAYMENT);
         // TODO: COMMENT MAYBE
-//        $this->db->or_where('status_id', user_status::BLOCKED_BY_PAYMENT);  // This status change when the client update his pay data
-//        $this->db->or_where('status_id', user_status::ACTIVE);
-//        $this->db->or_where('status_id', user_status::BLOCKED_BY_INSTA);
-//        $this->db->or_where('status_id', user_status::VERIFY_ACCOUNT);
-//        $this->db->or_where('status_id', user_status::UNFOLLOW);
-//        $this->db->or_where('status_id', user_status::BLOCKED_BY_TIME);
-//        $this->db->or_where('status_id', user_status::INACTIVE);
-//        $this->db->or_where('status_id', user_status::PENDING);
+        //        $this->db->or_where('status_id', user_status::BLOCKED_BY_PAYMENT);  // This status change when the client update his pay data
+        //        $this->db->or_where('status_id', user_status::ACTIVE);
+        //        $this->db->or_where('status_id', user_status::BLOCKED_BY_INSTA);
+        //        $this->db->or_where('status_id', user_status::VERIFY_ACCOUNT);
+        //        $this->db->or_where('status_id', user_status::UNFOLLOW);
+        //        $this->db->or_where('status_id', user_status::BLOCKED_BY_TIME);
+        //        $this->db->or_where('status_id', user_status::INACTIVE);
+        //        $this->db->or_where('status_id', user_status::PENDING);
         $clients = $this->db->get()->result_array();
         // Check payment for each user
         foreach ($clients as $client) {
@@ -184,15 +183,20 @@ class Payment extends CI_Controller {
                 $today = strtotime("today");
                 if ($now > $payday && $client['status_id'] != user_status::BLOCKED_BY_PAYMENT) { // wheter not have order key
                     print "\n<br>Client pay data data expired!!!: $clientname (id: $clientid)<br>\n";
-                    $this->send_payment_email($client, $GLOBALS['sistem_config']->DAYS_TO_BLOCK_CLIENT - $diff_days);
-                    $this->load->model('class/user_status');
-                    $this->user_model->update_user($clientid, array('status_id' => user_status::BLOCKED_BY_PAYMENT, 'status_date' => time()));
+                    if ($GLOBALS['sistem_config']->DAYS_TO_BLOCK_CLIENT - $diff_days > 0) {
+                        $this->send_payment_email($client, $GLOBALS['sistem_config']->DAYS_TO_BLOCK_CLIENT - $diff_days);
+                        print "Days left: " . ($GLOBALS['sistem_config']->DAYS_TO_BLOCK_CLIENT - $diff_days) . "<br>\n";
+                    } else {
+                        $this->load->model('class/user_status');
+                        $this->user_model->update_user($clientid, array('status_id' => user_status::BLOCKED_BY_PAYMENT, 'status_date' => time()));
+                        $this->send_payment_email($client);
+                    }
                 }
             }
         }
         try {
             $Gmail = new follows\cls\Gmail();
-            $Gmail->send_mail("albertord84@gmail.com", "Alberto Reyes", 'DUMBU VINVI payment checked!!! ', 'DUMBU VINVI payment checked!!! ');
+            //$Gmail->send_mail("albertord84@gmail.com", "Alberto Reyes", 'DUMBU VINVI payment checked!!! ', 'DUMBU VINVI payment checked!!! ');
             $Gmail->send_mail("josergm86@gmail.com", "Jose Ramon ", 'DUMBU VINVI payment checked!!! ', 'DUMBU VINVI payment checked!!! ');
             $Gmail->send_mail("jangel.riveaux@gmail.com", "Jose Angel Riveaux ", 'DUMBU VINVI payment checked!!! ', 'DUMBU VINVI payment checked!!! ');
         } catch (Exception $ex) {
@@ -408,7 +412,7 @@ class Payment extends CI_Controller {
         }
         echo "\n\n<br>Job Done!" . date("Y-m-d h:i:sa") . "\n\n";
     }
-    
+
     public function do_payment($payment_data) {
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows/worker/class/Payment.php';
         // Check client payment in mundipagg
@@ -597,7 +601,7 @@ class Payment extends CI_Controller {
         }
         return FALSE;
     }
-        
+
     public function check_initial_payment($client) {
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows/worker/class/DB.php';
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows/worker/class/Payment.php';

@@ -43,6 +43,7 @@ class washdog_type {
     const TO_MANY_REQUESTS = 'TO MANY REQUESTS';
     const BLOCKED_CONTENT = 'BLOCKED CONTENT';
     const ERROR_PROCESSING_REQUEST = 'ERROR PROCESSING REQUEST';
+    const PROBLEM_WITH_YOUR_REQUEST = 'PROBLEM_WITH_YOUR_REQUEST';
     
     static public function Defines($const) {
             $cls = new ReflectionClass(__CLASS__);

@@ -1,0 +1,209 @@
+Worker Inited...!<br>
+2018-10-03 03:21:14pmget follow workget follow work done<br>
+Client: 29138 <br>
+<br>
+nRef Profil: colegiodomrafael<br>
+ Count: 0 Hasnext: 0 - 2018-10-03 03:21:14pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 0 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>
+Client: 27093 <br>
+<br>
+nRef Profil: dresscorte<br>
+ Count: 0 Hasnext: 0 - 2018-10-03 03:21:14pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 0 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>_________ELAPSED TIME (411): <br>
+Client: 62 <br>
+<br>
+nRef Profil: endeavorbrasil<br>
+ Count: 0 Hasnext: 0 - 2018-10-03 03:24:23pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 0 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>
+Client: 20818 <br>
+<br>
+nRef Profil: barbarabozan<br>
+ Count: 0 Hasnext: 0 - 2018-10-03 03:24:23pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 0 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>_________ELAPSED TIME (454): <br>
+Client: 29663 <br>
+<br>
+nRef Profil: casacorsc<br>
+ Count: 5 Hasnext: 5 - 2018-10-03 03:26:49pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#20 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 7441132492<br>
+object(stdClass)#34 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 489546803<br>
+object(stdClass)#20 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 8242842875<br>
+object(stdClass)#34 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 2931841762<br>
+object(stdClass)#20 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 21588559<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 46 <br>
+<br>
+Ref Profil: casacorsc (id: 49579 | type: 0)<br>
+<br>
+Ref Profil: casacorsc<br>
+Nodes: 5 <br>
+Profil name: bella_lo_ NOT FOLLOWING: requested_by_viewer() followed_by_viewer() null_picture(98)<br>
+Profil name: gabidp__ NOT FOLLOWING: followed_in_db(0) following_me() valid_profile()<br>
+Profil name: esa.arquitetura NOT FOLLOWING: followed_in_db(0) following_me() valid_profile()<br>
+Profil name: juliano.neto.fly NOT FOLLOWING: followed_in_db(0) following_me() valid_profile()<br>
+Profil name: imshacharborba NOT FOLLOWING: followed_in_db(0) following_me() valid_profile()<br>
+<br>
+Ref Profil: casacorsc (id: 49579 | type: 0)<br>
+<br>
+Ref Profil: casacorsc<br>
+Nodes: 5 <br>
+Profil name: jonasheerdt1 NOT FOLLOWING: followed_in_db(0) following_me() valid_profile()<br>
+Profil name: lidianyfaria NOT FOLLOWING: followed_in_db(0) following_me() valid_profile()<br>
+Profil name: cordovaimoveis NOT FOLLOWING: followed_in_db(0) following_me() valid_profile()<br>
+Profil name: jotharchtecture3 NOT FOLLOWING: followed_in_db(0) following_me() valid_profile()<br>
+Profil name: santini_marcos NOT FOLLOWING: followed_in_db(0) following_me() valid_profile()<br>
+<br>
+Ref Profil: casacorsc (id: 49579 | type: 0)<br>
+<br>
+Ref Profil: casacorsc<br>
+Nodes: 5 <br>
+Profil name: tinavalien NOT FOLLOWING: followed_in_db(0) following_me() valid_profile()<br>
+Profil name: suzanavitorio NOT FOLLOWING: followed_in_db(0) following_me() valid_profile()<br>
+Profil name: renatadelucac NOT FOLLOWING: followed_in_db(0) following_me() valid_profile()<br>
+Profil name: jelpmoveis NOT FOLLOWING: followed_in_db(0) following_me() valid_profile()<br>
+Profil name: hausarquitetos_ NOT FOLLOWING: followed_in_db(0) following_me() valid_profile()<br>
+<br>
+Ref Profil: casacorsc (id: 49579 | type: 0)<br>
+<br>
+Ref Profil: casacorsc<br>
+Nodes: 5 <br>
+Profil name: malu_martin NOT FOLLOWING: followed_in_db(0) following_me() valid_profile()<br>
+Profil name: fabianetibes NOT FOLLOWING: followed_in_db(0) following_me() valid_profile()<br>
+Profil name: camatt.eng.arq NOT FOLLOWING: followed_in_db(0) following_me() valid_profile()<br>
+Profil name: _juliana.veiga_ NOT FOLLOWING: followed_in_db(0) following_me() valid_profile()<br>
+Profil name: no.or7815 NOT FOLLOWING: requested_by_viewer() followed_by_viewer() null_picture(97)<br>
+<br>
+Ref Profil: casacorsc (id: 49579 | type: 0)<br>
+<br>
+Ref Profil: casacorsc<br>
+Nodes: 5 <br>
+Profil name: bah_dionisio NOT FOLLOWING: followed_in_db(0) following_me() valid_profile()<br>
+Profil name: luciacarvalhoimoveis NOT FOLLOWING: followed_in_db(0) following_me() valid_profile()<br>
+Profil name: elisa_fracalossi_ NOT FOLLOWING: followed_in_db(0) following_me() valid_profile()<br>
+Profil name: marcelakunst NOT FOLLOWING: followed_in_db(0) following_me() valid_profile()<br>
+Profil name: alinefmarx NOT FOLLOWING: followed_in_db(0) following_me() valid_profile()<br>
+<br>
+Ref Profil: casacorsc (id: 49579 | type: 0)<br>
+<br>
+Ref Profil: casacorsc<br>
+Nodes: 5 <br>
+Profil name: brunaraphaeladasilva NOT FOLLOWING: followed_in_db(0) following_me() valid_profile()<br>
+Profil name: elainersmessias NOT FOLLOWING: followed_in_db(0) following_me() valid_profile()<br>
+Profil name: sierraaltaruben NOT FOLLOWING: followed_in_db(0) following_me() valid_profile()<br>
+Profil name: libardidesignerinterior NOT FOLLOWING: followed_in_db(0) following_me() valid_profile()<br>
+Profil name: scarintellesesilva NOT FOLLOWING: followed_in_db(0) following_me() valid_profile()<br>
+<br>
+Ref Profil: casacorsc (id: 49579 | type: 0)<br>
+<br>
+Ref Profil: casacorsc<br>
+Nodes: 5 <br>
+Profil name: di.marmore NOT FOLLOWING: followed_in_db(0) following_me() valid_profile()<br>
+Profil name: jonatasmannrich NOT FOLLOWING: followed_in_db(0) following_me() valid_profile()<br>
+Profil name: luana.andolfatto NOT FOLLOWING: followed_in_db(0) following_me() valid_profile()<br>
+Profil name: hanh_le_nguyen NOT FOLLOWING: followed_in_db(0) following_me() valid_profile()<br>
+Profil name: atelier620 NOT FOLLOWING: followed_in_db(1) following_me() valid_profile()<br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 5 <br>get follow workget follow work done<br>
+Client: 19923 <br>
+<br>
+nRef Profil: robertamichele<br>
+ Count: 0 Hasnext: 0 - 2018-10-03 03:27:28pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 0 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>_________ELAPSED TIME (374): <br>
+Client: 27093 <br>
+<br>
+nRef Profil: dresscorte<br>
+ Count: 0 Hasnext: 0 - 2018-10-03 03:31:14pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 0 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>
+Client: 29138 <br>
+<br>
+nRef Profil: colegiodomrafael<br>
+ Count: 0 Hasnext: 0 - 2018-10-03 03:31:14pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 0 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>_________ELAPSED TIME (411): <br>
+Client: 62 <br>
+<br>
+nRef Profil: endeavorbrasil<br>
+ Count: 0 Hasnext: 0 - 2018-10-03 03:34:23pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 0 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br>get follow workget follow work done<br>
+Client: 20818 <br>
+<br>
+nRef Profil: barbarabozan<br>
+ Count: 0 Hasnext: 0 - 
