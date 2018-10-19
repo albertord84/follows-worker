@@ -23,12 +23,14 @@ class Payment extends CI_Controller {
                 if (isset($post->event) && isset($post->event->type) && $post->event->type == "bill_paid") {
                     if (isset($post->event->data) && isset($post->event->data->bill) && $post->event->data->bill->status = "paid") {
                         // Activate User
-                        $gateway_client_id = $post->event->data->bill->customer->id;
+                        //$gateway_client_id = $post->event->data->bill->customer->id;
+                        $gateway_payment_key = $post->event->data->bill->subscription->id;
                         //1. activar cliente
                         $this->load->model('class/user_model');
                         $this->load->model('class/user_status');
                         $this->load->model('class/client_model');
-                        $client_id = $this->client_model->get_client_id_by_gateway_client_id($gateway_client_id);
+                        //$client_id = $this->client_model->get_client_id_by_gateway_client_id($gateway_client_id);
+                        $client_id = $this->client_model->get_client_id_by_gateway_payment_key($gateway_payment_key);
                         if ($client_id) {
                             $this->user_model->update_user($client_id, array(
                                 'status_id' => user_status::ACTIVE));
@@ -54,7 +56,8 @@ class Payment extends CI_Controller {
         }
 
         if ($result === FALSE) {
-            
+            echo "FAIL";
+            return;
         }
         echo "OK";
     }

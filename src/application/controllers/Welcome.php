@@ -10,4 +10,16 @@ class Welcome extends CI_Controller {
         var_dump("olaaaa");
     }
 
+    public function test() {
+        $this->load->model('class/user_model');
+        $this->load->model('class/user_status');
+        $this->load->model('class/client_model');
+        $gateway_client_id = 7397972;
+        $client_id = $this->client_model->get_client_id_by_gateway_client_id($gateway_client_id);
+        var_dump($client_id);
+        $gateway_payment_key = 4875103;
+        $client_id = $this->client_model->get_client_id_by_gateway_payment_key($gateway_payment_key);
+        var_dump($client_id);
+    }
+
 }
