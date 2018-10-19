@@ -214,6 +214,7 @@ namespace follows\cls {
                 $Client->paused = $client_data->paused;
                 $Client->HTTP_SERVER_VARS = $client_data->HTTP_SERVER_VARS;
                 $Client->init_date = $client_data->init_date;
+                $Client->last_access = $client_data->last_access;
                 $Client->get_reference_profiles($Client->id);
             }
             return $Client;

@@ -241,6 +241,7 @@ namespace follows\cls {
                             $To_Unfollow = new \follows\cls\Followed();// Update Ref Prof Data
                             $To_Unfollow->id = $Followed->id;
                             $To_Unfollow->followed_id = $Followed->followed_id;
+                            $To_Unfollow->insta_name = $Followed->followed_login;
                             array_push($Followeds_to_unfollow, $To_Unfollow);
                         }
                     }
@@ -339,10 +340,12 @@ namespace follows\cls {
             return $daily_work;
         }
         
-        public function do_work($client_id = NULL) {
+        public function do_work($client_id = NULL, $n= NULL) {
             try {
                 $has_work = TRUE;
-                while ($has_work) {
+                $steps = 0;
+                while ($has_work && ($n == NULL || $steps < $n)) {
+                    $steps++;
                     //$DB = new \follows\cls\DB();
                     //daily work: cookies reference_id to_follow last_access id insta_name insta_id client_id 	insta_follower_cursor 	user_id 	credit_card_number 	credit_card_status_id 	credit_card_cvc 	credit_card_name 	pay_day 	insta_id 	insta_followers_ini 	insta_following id name	login pass email telf role_id status_id	languaje 
                     echo 'get follow work';
