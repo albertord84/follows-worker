@@ -318,17 +318,20 @@ namespace follows\cls {
             $Client = (new \follows\cls\Client())->get_client($daily_work->client_id);
             $proxy = $this->get_proxy_str($Client);
             if ($daily_work->rp_type == 0) {
+                echo "<br>\nRef Profil: $daily_work->insta_name<br>\n";
                 $json_response = $this->get_insta_followers(
                         $login_data, $daily_work->rp_insta_id, $quantity, $daily_work->insta_follower_cursor, $proxy
                 );
                 //var_dump($json_response);
                 if ($json_response === NULL) {
-                    $result = $this->DB->delete_daily_work_client($daily_work->users_id);
-                    $this->DB->set_client_status($daily_work->users_id, user_status::BLOCKED_BY_TIME);
-                    $this->DB->InsertEventToWashdog($daily_work->users_id, washdog_type::BLOCKED_BY_TIME, 1, $this->id, "Cookies incompleta when funtion get_profiles_to_follow");
+                    echo "<br>\n Empty response getting followers from this profile... <br>\n";
+                    $this->DB->Increase_Client_Last_Access($daily_work->client_id, $GLOBALS['sistem_config']->INCREASE_CLIENT_LAST_ACCESS);
+
+                    //$result = $this->DB->delete_daily_work_client($daily_work->users_id);
+                    //$this->DB->set_client_status($daily_work->users_id, user_status::BLOCKED_BY_TIME);
+                    //$this->DB->InsertEventToWashdog($daily_work->users_id, washdog_type::BLOCKED_BY_TIME, 1, $this->id, "Cookies incompleta when funtion get_profiles_to_follow");
                     //$this->DB->set_client_cookies($daily_work->users_id, NULL);
                 }
-                echo "<br>\nRef Profil: $daily_work->insta_name<br>\n";
                 if (is_object($json_response) && $json_response->status == 'ok') {
                     if (isset($json_response->data->user->edge_followed_by)) { // if response is ok
                         echo "Nodes: " . count($json_response->data->user->edge_followed_by->edges) . " <br>\n";

@@ -71,11 +71,14 @@ namespace follows\cls {
                         . "     INNER JOIN plane ON plane.id = clients.plane_id "
                         . "WHERE users.role_id = $CLIENT "
                         . "     AND (clients.unfollow_total IS NULL OR clients.unfollow_total <> 1) "
-                        . "     AND (users.status_id = $ACTIVE OR "
-                        . "          users.status_id = $PENDING OR "
-                        . "          users.status_id = $VERIFY_ACCOUNT OR "
-                        . "          users.status_id = $BLOCKED_BY_INSTA OR "
-                        . "          users.status_id = $BLOCKED_BY_TIME) "
+                        . "     AND ("
+//                        . "          users.status_id = $ACTIVE OR "
+//                        . "          users.status_id = $PENDING OR "
+//                        . "          users.status_id = $VERIFY_ACCOUNT OR "
+                        . "          users.status_id = $BLOCKED_BY_INSTA "
+//                        . "          users.status_id = $BLOCKED_BY_INSTA OR "
+//                        . "          users.status_id = $BLOCKED_BY_TIME"
+                        . "      ) "
                         . "ORDER BY users.id; ";
                 $result = mysqli_query($this->connection, $sql);
                 return $result;
