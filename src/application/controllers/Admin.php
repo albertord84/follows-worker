@@ -62,28 +62,55 @@ class Admin extends CI_Controller {
     }
     
     public function scan_logs($user_id, $init_date, $end_date){
+        $this->load->model('class/client_model');
         $base_path = $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/log/';
+        $client= $this->client_model->get_all_data_of_client($user_id);
         $dates = $this->get_string_interval_dates($init_date, $end_date);
         //1. para cada dia en el intervalo
         $response="";
         foreach ($dates as $day) {
             $response = "<br><span style='background-color:orange'>Day------".$day['date']." ----------------------------------------------------------------------------------------------------------------------------------------------</span><br>";//- imprimir dia
-            //2. escanear el WORKER de este dia e imprimir salida
+            //2. escanear el WORKER de este dia e imprimir salida (cuando se organize mejor)            
             //3. para cada LOG de este dia e imprimir salida
             $i=1;
             while ($i<16) {
                 $log_name = 'dumbo-worker'.$i.'-'.$day['str'].'.log';
-                //- LOG: escanear el log e imprimir salida
-                $handle = fopen($base_path.$log_name,'r');
+                if(file_exists($base_path.$log_name)){
+                    $handle = fopen($base_path.$log_name,'r');
+                    if($handle){
+                        $response .= "<br><span style='background-color:yellow'>------ROBOT FILE LOG: ".$log_name."---------------------------------------</span>"."<br>";
+                        $flag = FALSE;
+                        while(($line = fgets($handle)) !== false) {
+                            if(strpos($line, "Client: ")!==FALSE){
+                                if(strpos($line, "Client: ".$user_id)!==FALSE){
+                                    $flag = TRUE;
+                                    $response .= "<span style='background-color:#66ff66'>".$line."</span>";
+                                }    
+                                else
+                                    $flag = FALSE;
+                            }else{
+                                if($flag)
+                                    $response .= $line."<br>";
+                            }
+                        }
+                        fclose($handle);
+                    }
+                }
+                $i++;
+            }
+            //4. escanear el TOTAL_UNFOLLOW de este dia e imprimir salida
+            $unfollow_name = 'unfollow-'.$day['str'].'.log';
+            if(file_exists($base_path.$unfollow_name)){
+                $handle = fopen($base_path.$unfollow_name,'r');
                 if($handle){
-                    $response .= "<br><span style='background-color:yellow'>------ROBOT FILE LOG: ".$log_name."---------------------------------------</span>"."<br>";
+                    $response .= "<br><span style='background-color:yellow'>------UNFOLLOW TOTAL FILE LOG: ".$unfollow_name."---------------------------------------</span>"."<br>";
                     $flag = FALSE;
                     while(($line = fgets($handle)) !== false) {
                         if(strpos($line, "Client: ")!==FALSE){
-                            if(strpos($line, "Client: ".$user_id)!==FALSE){
+                            if(strpos($line, "Client: ".$client['login'])!==FALSE){
                                 $flag = TRUE;
                                 $response .= "<span style='background-color:#66ff66'>".$line."</span>";
-                            }    
+                            }
                             else
                                 $flag = FALSE;
                         }else{
@@ -92,14 +119,8 @@ class Admin extends CI_Controller {
                         }
                     }
                     fclose($handle);
-                } 
-                $i++;
+                }
             }
-            
-            //- TOTAL_UNFOLLOW
-            //- separador
-            //- AUTOLIKE                    
-            //- separador
             return $response;
         }
     }
