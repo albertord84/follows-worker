@@ -417,7 +417,7 @@ namespace follows\cls {
                         . "   OR  (daily_work.to_unfollow  > 0)) "
                         . "   AND (reference_profile.deleted <> TRUE || daily_work.to_unfollow  > 0) "
                         //. "WHERE (now - daily_work.last_access) >= $Elapsed_time_limit "
-                        . "ORDER BY clients.last_access ASC, reference_profile.last_access "
+                        . "ORDER BY clients.last_access ASC, reference_profile.last_access ASC"
                         . "LIMIT 1;";
 
                 $result = mysqli_query($this->connection, $sql);
@@ -553,7 +553,7 @@ namespace follows\cls {
                         . "INNER JOIN clients ON clients.user_id = reference_profile.client_id "
                         . "INNER JOIN users ON users.id = clients.user_id "
                         . "WHERE daily_work.reference_id IN (SELECT id FROM reference_profile WHERE reference_profile.client_id = $client_id) "
-                        . "ORDER BY reference_profile.last_access "
+                        . "ORDER BY reference_profile.last_access ASC "
                         . "LIMIT 1;";
 
                 $result = mysqli_query($this->connection, $sql);
@@ -569,6 +569,16 @@ namespace follows\cls {
                             . "WHERE clients.user_id = $object->users_id; ";
                     $result2 = mysqli_query($this->connection, $sql2);
                     if (!$result2) {
+                        var_dump($sql2);
+                    }
+                    
+                    $sql2 = ""
+                            . "UPDATE reference_profile "
+                            . "SET reference_profile.last_access = '$time' "
+                            . "WHERE reference_profile.id = $object->rp_id; ";
+                    $result2 = mysqli_query($this->connection, $sql2);
+                    
+                     if (!$result2) {
                         var_dump($sql2);
                     }
                 }
