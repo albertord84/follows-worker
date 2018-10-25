@@ -274,6 +274,20 @@
             }
         }
                  
+        public function get_client_id_by_gateway_payment_key($gateway_payment_key){
+            try {    
+                $this->db->select('*');
+                $this->db->from('client_payment'); 
+                $this->db->where('payment_key', "$gateway_payment_key");
+                $a = $this->db->get()->row_array();
+                if(isset($a['gateway_client_id']))
+                    return $a['dumbu_client_id'];
+                return null;
+            } catch (Exception $exc) {
+                echo $exc->getTraceAsString();
+            }
+        }
+                 
         public function get_pay_values($id_value){
             $this->db->select('*');
             $this->db->from('plane');
