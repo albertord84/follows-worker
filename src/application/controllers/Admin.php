@@ -7,7 +7,8 @@ ini_set('xdebug.var_display_max_data', 1024);
 class Admin extends CI_Controller {
 
     public function index() {
-        $this->load->view('admin_login_view');
+        var_dump(strpos("Worker Inited...!<br>","Worker")!==FALSE);
+        //$this->load->view('admin_login_view');
     }
     
     public function admin_do_login() {
@@ -42,31 +43,85 @@ class Admin extends CI_Controller {
         $this->load->model('class/admin_model');
         $this->load->model('class/system_config');
         $GLOBALS['sistem_config'] = $this->system_config->load();
-        if ($this->session->userdata('id') && $this->session->userdata('role_id')==user_role::ADMIN) {
+        //if ($this->session->userdata('id') && $this->session->userdata('role_id')==user_role::ADMIN) {
             $param = $this->input->post();
-            $datas['DATAS'] = $this->admin_model->get_dumbu_statistic($param);
+            $user_id = (isset($param['user_id']))?$param['user_id']:NULL;
+            $init_date = (isset($param['date_from']))?$param['date_from']:NULL;
+            $end_date = (isset($param['date_to']))?$param['date_to']:NULL;
+            if($user_id)
+                $datas['DATAS'] = $this->scan_logs($user_id, $init_date, $end_date);
+            else
+                $datas=NULL;
             $data['section1'] = $this->load->view('responsive_views/admin/admin_header_painel', '', true);
             $data['section2'] = $this->load->view('responsive_views/admin/admin_body_painel_view_scan_logs', $datas, true);
             $data['section3'] = $this->load->view('responsive_views/admin/users_end_painel', '', true);
             $this->load->view('view_admin', $data);
-        } else{
-            $this->load->view('admin_login_view');
-        }
+        //} else{
+        //    $this->load->view('admin_login_view');
+        //}
     }
     
     public function scan_logs($user_id, $init_date, $end_date){
-        //- para cada dia
-            //- imprimir dia
-            //- WORKER: escanear el de este dia e imprimir salida
-            //- separador
-            //- para cada log de cada worker
-                //- imprimir nombre del log
+        $base_path = $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/log/';
+        $dates = $this->get_string_interval_dates($init_date, $end_date);
+        //1. para cada dia en el intervalo
+        $response="";
+        foreach ($dates as $day) {
+            $response = "<br><span style='background-color:orange'>Day------".$day['date']." ----------------------------------------------------------------------------------------------------------------------------------------------</span><br>";//- imprimir dia
+            //2. escanear el WORKER de este dia e imprimir salida
+            //3. para cada LOG de este dia e imprimir salida
+            $i=1;
+            while ($i<16) {
+                $log_name = 'dumbo-worker'.$i.'-'.$day['str'].'.log';
                 //- LOG: escanear el log e imprimir salida
-                //- separador
+                $handle = fopen($base_path.$log_name,'r');
+                if($handle){
+                    $response .= "<br><span style='background-color:yellow'>------ROBOT FILE LOG: ".$log_name."---------------------------------------</span>"."<br>";
+                    $flag = FALSE;
+                    while(($line = fgets($handle)) !== false) {
+                        if(strpos($line, "Client: ")!==FALSE){
+                            if(strpos($line, "Client: ".$user_id)!==FALSE){
+                                $flag = TRUE;
+                                $response .= "<span style='background-color:#66ff66'>".$line."</span>";
+                            }    
+                            else
+                                $flag = FALSE;
+                        }else{
+                            if($flag)
+                                $response .= $line."<br>";
+                        }
+                    }
+                    fclose($handle);
+                } 
+                $i++;
+            }
+            
             //- TOTAL_UNFOLLOW
             //- separador
             //- AUTOLIKE                    
             //- separador
+            return $response;
+        }
+    }
+    
+    public function get_string_interval_dates($init_date, $end_date) {
+        $dates = array();
+        if($init_date && $end_date){
+            $a = strtotime($init_date.' 00:00:01');
+            $b = strtotime($end_date.' 23:59:00');
+            for($i=$a; $i<=$b;$i=strtotime("+1 day", $i)){
+                array_push($dates,
+                    array(
+                        'str'=>date("Y", $i).date("n", $i).date("d", $i),
+                        'date'=>date("d", $i)."/".date("n", $i)."/".date("Y", $i)
+                    )
+                );
+            }
+        }else{
+            $i=time();
+            array_push($dates,date("Y", $i).date("n", $i).date("d", $i));
+        }
+        return $dates;                    
     }
 
 }
