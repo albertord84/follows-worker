@@ -27,6 +27,17 @@
         <div class="col-xs-3">
         </div>
     </div>
+    <br><br><hr><br><br>
+    <div class="row">
+        <div class="col-xs-2"></div>
+        <div class="col-xs-8">
+            <div class="justify">
+                <?php echo $DATAS?>
+            </div>
+        </div>
+        <div class="col-xs-2">
+        </div>
+    </div>
     
     <br><br>    
     <br><br>    
