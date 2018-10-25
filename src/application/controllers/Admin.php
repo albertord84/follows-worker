@@ -42,19 +42,31 @@ class Admin extends CI_Controller {
         $this->load->model('class/admin_model');
         $this->load->model('class/system_config');
         $GLOBALS['sistem_config'] = $this->system_config->load();
-        if ($this->session->userdata('id') && $this->session->userdata('role_id')==user_role::ADMIN) {
+        //if ($this->session->userdata('id') && $this->session->userdata('role_id')==user_role::ADMIN) {
             $param = $this->input->post();
-            $datas['DATAS'] = $this->admin_model->get_dumbu_statistic($param);
+            $user_id = (isset($param['user_id']))?$param['user_id']:NULL;
+            $init_date = (isset($param['date_from']))?$param['date_from']:NULL;
+            $end_date = (isset($param['date_to']))?$param['date_to']:NULL;
+            if($user_id)
+                $datas['DATAS'] = $this->scan_logs($param['user_id'], $init_date, $end_date);
+            else
+                $datas=NULL;
             $data['section1'] = $this->load->view('responsive_views/admin/admin_header_painel', '', true);
             $data['section2'] = $this->load->view('responsive_views/admin/admin_body_painel_view_scan_logs', $datas, true);
             $data['section3'] = $this->load->view('responsive_views/admin/users_end_painel', '', true);
             $this->load->view('view_admin', $data);
-        } else{
-            $this->load->view('admin_login_view');
-        }
+        //} else{
+        //    $this->load->view('admin_login_view');
+        //}
     }
     
     public function scan_logs($user_id, $init_date, $end_date){
+        if($init_date && $end_date){
+            $a= explode('/', $init_date);  $init_date=$a[2].$a[1].$a[0];
+            $a= explode('/', $end_date);   $end_date=$a[2].$a[1].$a[0];
+        }else{
+            
+        }
         //- para cada dia
             //- imprimir dia
             //- WORKER: escanear el de este dia e imprimir salida
