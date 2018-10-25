@@ -8854,4 +8854,394 @@ object(stdClass)#694 (1) {
   string(2) "ok"
 }
 <br>
-Profil name: gr
+Profil name: grupoconcertino<br>
+object(stdClass)#281 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+Profil name: u.s._army_of_god<br>
+object(stdClass)#694 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+Profil name: universodamodaa_<br>
+object(stdClass)#281 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+<br>
+Client: felippetur (4)   2018-10-25 02:02:07am<br>
+\n<br> Count: 1\n<br>Profil name: elza_stephane<br>
+object(stdClass)#287 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+<br>
+Client: dioceliogoulart (5)   2018-10-25 02:02:08am<br>
+\n<br> Count: 1\n<br>Profil name: judithjeine<br>
+object(stdClass)#673 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+<br>
+Client: felippetur (4)   2018-10-25 02:22:10am<br>
+object(stdClass)#484 (2) {
+  ["data"]=>
+  object(stdClass)#675 (1) {
+    ["user"]=>
+    object(stdClass)#654 (1) {
+      ["edge_follow"]=>
+      object(stdClass)#287 (3) {
+        ["count"]=>
+        int(4128)
+        ["page_info"]=>
+        object(stdClass)#473 (2) {
+          ["has_next_page"]=>
+          bool(true)
+          ["end_cursor"]=>
+          string(120) "QVFDQzdjQ1k4bDhiYmR5REJ1RVo0VmM2VmdGOFp2cUhzTTdQTG1YZjB3dUI3eXZBSklwV2syVmN2dnhsMm1qVlhtSW1raDJzcHhqdlZ4VGF2ZGxiUWJKag=="
+        }
+        ["edges"]=>
+        array(0) {
+        }
+      }
+    }
+  }
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+ No nodes!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>
+ \n<br> Count: 0\n<br><br>
+Client: dioceliogoulart (5)   2018-10-25 02:22:10am<br>
+object(stdClass)#281 (2) {
+  ["data"]=>
+  object(stdClass)#660 (1) {
+    ["user"]=>
+    object(stdClass)#461 (1) {
+      ["edge_follow"]=>
+      object(stdClass)#689 (3) {
+        ["count"]=>
+        int(9)
+        ["page_info"]=>
+        object(stdClass)#269 (2) {
+          ["has_next_page"]=>
+          bool(true)
+          ["end_cursor"]=>
+          string(120) "QVFEUDVJaUNoc3F1UTlXcWlqX05uNDg4Tm9UclV3VGV4ekRxdUg2TU1lWDhSMjFmSFN3em9XUmJ6OG9meVZmUVVBTjZ2aDNYdnB0UDFlU3hxTTVDSWlHTw=="
+        }
+        ["edges"]=>
+        array(0) {
+        }
+      }
+    }
+  }
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+ No nodes!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>
+ \n<br> Count: 0\n<br><br>
+Client: felippetur (4)   2018-10-25 02:42:11am<br>
+object(stdClass)#473 (2) {
+  ["data"]=>
+  object(stdClass)#287 (1) {
+    ["user"]=>
+    object(stdClass)#654 (1) {
+      ["edge_follow"]=>
+      object(stdClass)#484 (3) {
+        ["count"]=>
+        int(4128)
+        ["page_info"]=>
+        object(stdClass)#675 (2) {
+          ["has_next_page"]=>
+          bool(true)
+          ["end_cursor"]=>
+          string(120) "QVFEU3pzUnRoVW9teE1CQUgxQV9NRVdBUGRJUnA0cmZGM0xXM1NMcUwwZWdqMG5zNExiR090dG9VbldXLWZUaEVPQjRFUzRwdEJjdTR4NzlDZklVTFFJMg=="
+        }
+        ["edges"]=>
+        array(0) {
+        }
+      }
+    }
+  }
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+ No nodes!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>
+ \n<br> Count: 0\n<br><br>
+Client: dioceliogoulart (5)   2018-10-25 02:42:11am<br>
+\n<br> Count: 7\n<br>Profil name: grupo_shalon_security<br>
+object(stdClass)#722 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+Profil name: adrianoribeirob<br>
+object(stdClass)#673 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+Profil name: prominasgvjn<br>
+object(stdClass)#722 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+Profil name: rafaelalc<br>
+object(stdClass)#673 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+Profil name: nubia.selen<br>
+object(stdClass)#722 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+Profil name: leonardo.maia.13<br>
+object(stdClass)#673 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+Profil name: tucamission<br>
+object(stdClass)#722 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+<br>
+Client: felippetur (4)   2018-10-25 03:02:23am<br>
+object(stdClass)#484 (2) {
+  ["data"]=>
+  object(stdClass)#654 (1) {
+    ["user"]=>
+    object(stdClass)#287 (1) {
+      ["edge_follow"]=>
+      object(stdClass)#673 (3) {
+        ["count"]=>
+        int(4128)
+        ["page_info"]=>
+        object(stdClass)#473 (2) {
+          ["has_next_page"]=>
+          bool(true)
+          ["end_cursor"]=>
+          string(120) "QVFDSHlpVzh6UHYyV1VmUllfcE1ta2puRTVUSDBsVWNXOTBNeUFwcGg1Uk5EZW9jZ2dKOUtWY1FSb3F6RnlkbWZGVHBfSTVqTThmNU9COFpRUFlYTXdfVg=="
+        }
+        ["edges"]=>
+        array(0) {
+        }
+      }
+    }
+  }
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+ No nodes!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>
+ \n<br> Count: 0\n<br><br>
+Client: dioceliogoulart (5)   2018-10-25 03:02:23am<br>
+\n<br> Count: 5\n<br>Profil name: arbitrar2018<br>
+object(stdClass)#290 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+Profil name: pelucioadvocacia<br>
+object(stdClass)#722 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+Profil name: teresacirino<br>
+object(stdClass)#290 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+Profil name: junior_tobias<br>
+object(stdClass)#722 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+Profil name: leticia.dias.568<br>
+object(stdClass)#290 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+<br>
+Client: felippetur (4)   2018-10-25 03:22:31am<br>
+object(stdClass)#673 (2) {
+  ["data"]=>
+  object(stdClass)#287 (1) {
+    ["user"]=>
+    object(stdClass)#654 (1) {
+      ["edge_follow"]=>
+      object(stdClass)#722 (3) {
+        ["count"]=>
+        int(4128)
+        ["page_info"]=>
+        object(stdClass)#484 (2) {
+          ["has_next_page"]=>
+          bool(true)
+          ["end_cursor"]=>
+          string(120) "QVFCb21JcE52VTZtS0VmaWNDT19Vc3JpNkJTTDN2MDh4OWhxVDZtZ3JQT00zem9VT3JYcXJJQmh5VUs1V3QxNEJ2WnV4RW5hZHBLSURlSWJBN1VWbDFkUw=="
+        }
+        ["edges"]=>
+        array(0) {
+        }
+      }
+    }
+  }
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+ No nodes!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>
+ \n<br> Count: 0\n<br><br>
+Client: dioceliogoulart (5)   2018-10-25 03:22:32am<br>
+\n<br> Count: 9\n<br>Profil name: vieiraesoaresadvocacia<br>
+object(stdClass)#269 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+Profil name: delenbueno<br>
+object(stdClass)#290 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+Profil name: martinseleaoadv<br>
+object(stdClass)#269 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+Profil name: nurseluciana<br>
+object(stdClass)#290 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+Profil name: tialesmaciel<br>
+object(stdClass)#269 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+Profil name: dayanedquiel<br>
+object(stdClass)#290 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+Profil name: raphaeldalboni<br>
+object(stdClass)#269 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+Profil name: stevesrenan<br>
+object(stdClass)#290 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+Profil name: loohgomides<br>
+object(stdClass)#269 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+<br>
+Client: felippetur (4)   2018-10-25 03:42:44am<br>
+object(stdClass)#722 (2) {
+  ["data"]=>
+  object(stdClass)#654 (1) {
+    ["user"]=>
+    object(stdClass)#287 (1) {
+      ["edge_follow"]=>
+      object(stdClass)#290 (3) {
+        ["count"]=>
+        int(4128)
+        ["page_info"]=>
+        object(stdClass)#673 (2) {
+          ["has_next_page"]=>
+          bool(true)
+          ["end_cursor"]=>
+          string(120) "QVFCMnhUVEt5ZXB2VkNSYUgwSlJqRnZCdXhuVWlBdzBoMURjTmJzYVdTTVB5bDVocll4clFNdWpqZjBmRFpVRGxBSXIwMW5GTVJHcEVIY1VRU1JFTlpWbQ=="
+        }
+        ["edges"]=>
+        array(0) {
+        }
+      }
+    }
+  }
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+ No nodes!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>
+ \n<br> Count: 0\n<br><br>
+Client: dioceliogoulart (5)   2018-10-25 03:42:45am<br>
+\n<br> Count: 15\n<br>Profil name: annemrosa<br>
+object(stdClass)#675 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+Profil name: actsdeia<br>
+object(stdClass)#269 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+Profil name: bruna_goisa<br>
+object(stdClass)#675 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+Profil name: oliicolares<br>
+object(stdClass)#269 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+Profil name: dgermanovix<br>
+object(stdClass)#675 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+Profil name: hilton.alencar<br>
+object(stdClass)#269 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+Profil name: jobecafe<br>
+object(stdClass)#675 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+Profil name: superbarracereais<br>
+object(stdClass)#269 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+<br>
+Profil name: cassia_barret
