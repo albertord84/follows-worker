@@ -10,6 +10,32 @@ class Admin extends CI_Controller {
         var_dump("olaaaa Admin");
     }
     
+    public function admin_do_login() {
+        $this->load->model('class/system_config');
+        $GLOBALS['sistem_config'] = $this->system_config->load();
+        $datas['SERVER_NAME'] = $GLOBALS['sistem_config']->SERVER_NAME;        
+        $datas = $this->input->post();        
+        $this->load->model('class/user_model');
+        $this->load->model('class/user_status');
+        $this->load->model('class/user_role');
+        $query = 'SELECT * FROM users'.
+                ' WHERE login="' . $datas['user_login'] . '" AND pass="' . md5($datas['user_pass']) .
+                '" AND role_id=' . user_role::ADMIN . ' AND status_id=' . user_status::ACTIVE;
+        $user = $this->user_model->execute_sql_query($query);
+        if(count($user)){
+            $this->user_model->set_sesion($user[0]['id'], $this->session, '');
+            $result['role'] = 'ADMIN';
+            $result['authenticated'] = true;
+            echo json_encode($result);
+        } else{
+            $result['resource'] = 'index#lnk_sign_in_now';
+            $result['message'] = 'Credenciais incorretas';
+            $result['cause'] = 'signin_required';
+            $result['authenticated'] = false;
+            echo json_encode($result);
+        }
+    }
+    
     public function view_scan_logs(){
         $this->load->model('class/user_role');
         $this->load->model('class/user_status');
@@ -24,7 +50,7 @@ class Admin extends CI_Controller {
             $data['section3'] = $this->load->view('responsive_views/admin/users_end_painel', '', true);
             $this->load->view('view_admin', $data);
         } else{
-            echo "Não pode acessar a esse recurso, deve fazer login!!";
+            $this->admin_do_login();
         }
     }
     
