@@ -50,7 +50,7 @@ class Admin extends CI_Controller {
             $data['section3'] = $this->load->view('responsive_views/admin/users_end_painel', '', true);
             $this->load->view('view_admin', $data);
         } else{
-            $this->admin_do_login();
+            $this->load->view('admin_login_view');
         }
     }
     
