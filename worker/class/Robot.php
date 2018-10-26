@@ -211,22 +211,21 @@ namespace follows\cls {
                                         var_dump($curl_str);
                                         var_dump("Error in do_follow_unfollow_work!!! follow");
                                     }
-                                    if ($daily_work->like_first /* && count($Profile_data->graphql->user->media->nodes) */) {
-                                        //$json_response_like = $this->make_insta_friendships_command($login_data, $Profile_data->user->media->nodes[0]->id, 'like', 'web/likes');
-                                        $json_response_like = $this->like_fist_post($login_data, $Profile->id, $Client);
-                                        if (!is_object($json_response_like) || !isset($json_response_like->status) || $json_response_like->status != 'ok') {
-                                            $error = $this->process_follow_error($json_response_like);
-                                            var_dump($json_response_like);
-                                            $error = TRUE;
-                                            if ($error == 10) {
-                                                (new Gmail())->sendAuthenticationErrorMail($Client->name, $Client->email);
-                                            }
-                                            break;
-                                        }
-                                    }
-                                    if (is_object($json_response2) && $json_response2->status == 'ok') { // if response is ok
-                                        array_push($Ref_profile_follows, $Profile);
+                                     if (is_object($json_response2) && $json_response2->status == 'ok') { // if response is ok
+                                        array_push($Ref_profile_follows, $Profile);                                        
                                         $follows++;
+                                        if ($daily_work->like_first /* && count($Profile_data->graphql->user->media->nodes) */) {
+                                            //$json_response_like = $this->make_insta_friendships_command($login_data, $Profile_data->user->media->nodes[0]->id, 'like', 'web/likes');
+                                            $json_response_like = $this->like_fist_post($login_data, $Profile->id, $Client);
+                                            if (!is_object($json_response_like) || !isset($json_response_like->status) || $json_response_like->status != 'ok') {
+                                                $error = $this->process_follow_error($json_response_like);
+                                                var_dump($json_response_like);
+                                                $error = TRUE;
+                                                if ($error == 10) {
+                                                    (new Gmail())->sendAuthenticationErrorMail($Client->name, $Client->email);
+                                                }
+                                            }
+                                        }                                   
                                         if ($follows >= $GLOBALS['sistem_config']->REQUESTS_AT_SAME_TIME)
                                             break;
                                     } else {
@@ -237,7 +236,7 @@ namespace follows\cls {
                                             (new Gmail())->sendAuthenticationErrorMail($Client->name, $Client->email);
                                         }
                                         break;
-                                    }
+                                    }                                   
                                     // Sleep up to proper delay between request
                                     sleep($GLOBALS['sistem_config']->DELAY_BETWEEN_REQUESTS);
                                 } else {
@@ -559,38 +558,19 @@ namespace follows\cls {
                         }
                         return $json_response;
                     } else {
+                        echo "Error in line 562</br>\n";
                         var_dump($output);
                         var_dump($curl_str);
                         return ($json_response === NULL) ? $output : $json_response;
                     }
-//                    else
-//                    {
-//                        $index = 0;
-//                        if($ip_count > -1)
-//                        {
-//                            $index = rand(0,$size-1);
-//                            while($visited[$index])
-//                            {
-//                                $index++;
-//                                if($index == $size) {$index = 0;}                            
-//                            }
-//                            $ip = $this->IPS['IPS'][$index];
-//                        }
-//                        else
-//                        { $ip = -1; }                     
-//                    }
-                } else {
-                    var_dump($output);
+                } else {                    
+                    echo "Error in line 567</br>\n"; 
+                    var_dump($output); 
                     var_dump($curl_str);
                     return $output;
                 }
             }
             return NULL;
-//            if (isset($output) && count($output) > 0)
-//                return $output[count($output) - 1];
-//            else {
-//                return $output;
-//            }
         }
 
         public function make_api_insta_friendships($login_data, $resource_id, $command = 'follow', $objetive_url = 'web/friendships', $Client = NULL) {
@@ -725,6 +705,12 @@ namespace follows\cls {
                 //print_r($output);
                 //print("-> $status<br><br>");
                 $json = json_decode($output[0]);
+                if($json == NULL)
+                {
+                    echo "Line error in line 710 in get_insta_chaining</br>\n";
+                    var_dump($output);
+                    var_dump($curl_str);                    
+                }
                 if (isset($json->data->user->edge_owner_to_timeline_media) && isset($json->data->user->edge_owner_to_timeline_media->edges) && count($json->data->user->edge_owner_to_timeline_media->edges)) {
                     return $json->data->user->edge_owner_to_timeline_media->edges;
                 }
