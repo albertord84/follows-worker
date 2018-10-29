@@ -44,6 +44,7 @@ class washdog_type {
     const BLOCKED_CONTENT = 'BLOCKED CONTENT';
     const ERROR_PROCESSING_REQUEST = 'ERROR PROCESSING REQUEST';
     const PROBLEM_WITH_YOUR_REQUEST = 'PROBLEM_WITH_YOUR_REQUEST';
+    const SET_PROXY ="SET PROXY";
     
     static public function Defines($const) {
             $cls = new ReflectionClass(__CLASS__);

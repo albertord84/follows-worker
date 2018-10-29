@@ -34,11 +34,19 @@ namespace follows\cls {
             
         }
 
-        function prepare_daily_work($not_mail = false) {
+        function prepare_daily_work($client_id =  NULL, $not_mail = false) {
             // Get Users Info
-            $Clients = (new Client())->get_clients();
-            
-//            $Client = (new Client())->get_client(19546);  Testar, cliente JA
+            $Clients = array();
+            if($client_id == NULL)
+            {
+                $Clients = (new Client())->get_clients();
+            } 
+            else
+            {
+                array_push($Clients, (new Client())->get_client($client_id));
+            }
+//          
+//          $Client = (new Client())->get_client(19546);  Testar, cliente JA
             
             $Client = new Client();
             foreach ($Clients as $Client) { // for each CLient
