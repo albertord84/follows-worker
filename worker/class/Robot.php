@@ -558,7 +558,8 @@ namespace follows\cls {
                         }
                         return $json_response;
                     } else {
-                        echo "Error in line 562</br>\n";
+                        //cambiar proxy si es por Tente mais tarde                        
+                        echo "Error in line 562</br>\n";                        
                         var_dump($output);
                         var_dump($curl_str);
                         return ($json_response === NULL) ? $output : $json_response;
