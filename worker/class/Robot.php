@@ -576,8 +576,7 @@ namespace follows\cls {
                             //(new \follows\cls\DB())->SaveHttpServerVars($Client->id, json_encode($HTTP_SERVER_VARS));
                         }
                         return $json_response;
-                    } else {
-                        //cambiar proxy si es por Tente mais tarde                        
+                    } else {                        
                         echo "Error in line 562</br>\n";                        
                         var_dump($output);
                         var_dump($curl_str);
