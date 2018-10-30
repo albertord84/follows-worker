@@ -476,12 +476,15 @@ namespace follows\cls {
 //                    print "<br>\n Unautorized Client (id: $client_id) STUDING set it to BLOCKED_BY_TIME!!! <br>\n";
                     // Alert when insta block by IP
                    // $time = $GLOBALS['sistem_config']->INCREASE_CLIENT_LAST_ACCESS;
+                    
+                    
+                    /* @TODO: Revisar Jose Angel
                     $this->DB->InsertEventToWashdog($client_id, washdog_type::SET_PROXY, 1, $this->id, "proxy set");
                     $proxy = $this->DB->get_client_proxy($client_id);
                     $new_proxy = ($proxy->idProxy + rand(0,6)) % 8 + 1;
                     var_dump("Set Proxy ($proxy) of client ($client_id) to proxy ($new_proxy)\n" );
                     $this->DB->SetProxyToClient($client_id,$new_proxy);                
-                    
+                    */
                     
                    // $this->DB->Increase_Client_Last_Access($client_id, 1);
 
@@ -659,7 +662,7 @@ namespace follows\cls {
             $curl_str .= "-H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:49.0) Gecko/20100101 Firefox/49.0' ";
             $curl_str .= "-H 'X-Requested-with: XMLHttpRequest' ";
             $curl_str .= "-H 'X-CSRFToken: $csrftoken' ";
-            $curl_str .= "-H 'X-Instagram-Ajax: dad8d866382b' ";
+                $curl_str .= "-H 'X-Instagram-Ajax: dad8d866382b' ";
             $curl_str .= "-H 'Content-Type: application/x-www-form-urlencoded' ";
             $curl_str .= "-H 'Accept: */*' ";
             $curl_str .= "-H 'Referer: https://www.instagram.com/' ";
@@ -708,8 +711,8 @@ namespace follows\cls {
             $curl_str .= "-H 'Referer: https://www.instagram.com/' ";
             $curl_str .= "-H 'Authority: www.instagram.com' ";
             $curl_str .= "-H 'Content-Length: 0' ";
-            $curl_str .= "--compressed --interface $ip";
-            $curl_str .= "--compressed";
+            $curl_str .= "--compressed --interface $ip ";
+            //$curl_str .= "--compressed";
             return $curl_str;
         }
 
