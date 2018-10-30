@@ -52,13 +52,11 @@ class Gmail extends CI_Controller {
         $GLOBALS['sistem_config'] = new follows\cls\system_config();
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/Gmail.php';
         $Gmail = new follows\cls\Gmail();
-
         $useremail = urldecode($_POST['useremail']);
         $username = urldecode($_POST['username']);
         $instaname = urldecode($_POST['instaname']);
         $instapass = urldecode($_POST['instapass']);
-
-        $result = $Gmail->send_user_to_purchase_step($useremail, $username, $instaname, $purchase_access_token);
+        $result = $Gmail->send_client_payment_success($useremail, $username, $instaname, $instapass);
         echo json_encode($result);
     }
 
@@ -67,13 +65,11 @@ class Gmail extends CI_Controller {
         $GLOBALS['sistem_config'] = new follows\cls\system_config();
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/Gmail.php';
         $Gmail = new follows\cls\Gmail();
-
         $username = urldecode($_POST['username']);
         $useremail = urldecode($_POST['useremail']);
         $usermsg = urldecode($_POST['usermsg']);
         $usercompany = urldecode($_POST['usercompany']);
         $userphone = urldecode($_POST['userphone']);
-
         $result = $Gmail->send_client_contact_form($username, $useremail, $usermsg, $usercompany, $userphone);
         echo json_encode($result);
     }

@@ -439,9 +439,9 @@ $(document).ready(function () {
         $("#container_plane_9_90").removeClass( "active" );
         $("#container_plane_29_90").removeClass( "active" );
         $("#container_plane_99_90").removeClass( "active" );
+        plane = '2';
         location.href = "#lnk_register_now";
         $("#client_email").focus();
-        plane = '2';
     });
     
     $('#btn_select_plane_moderated').click(function () {
@@ -453,9 +453,9 @@ $(document).ready(function () {
         $("#container_plane_9_90").addClass( "active" );
         $("#container_plane_29_90").removeClass( "active" );
         $("#container_plane_99_90").removeClass( "active" );
+        plane = '3';
         location.href = "#lnk_register_now";
         $("#client_email").focus();
-        plane = '3';
     });
     
     $('#btn_select_plane_fast').click(function () {
@@ -467,9 +467,9 @@ $(document).ready(function () {
         $("#container_plane_9_90").removeClass( "active" );
         $("#container_plane_29_90").addClass( "active" );
         $("#container_plane_99_90").removeClass( "active" );
+        plane = '4';
         location.href = "#lnk_register_now";
         $("#client_email").focus();
-        plane = '4';
     });
     
     $('#btn_select_plane_turbo').click(function () {
@@ -481,9 +481,9 @@ $(document).ready(function () {
         $("#container_plane_9_90").removeClass( "active" );
         $("#container_plane_29_90").removeClass( "active" );
         $("#container_plane_99_90").addClass( "active" );
+        plane = '5';
         location.href = "#lnk_register_now";
         $("#client_email").focus();
-        plane = '5';
     });
     
     $('#coniner_data_panel').css({'height': ''+$('#coniner_login_panel').height()});
