@@ -832,9 +832,11 @@ namespace follows\cls {
                 $tag_query = 'ac38b90f0f3981c42092016a37c59bf7';                
                 
                 $variables = "{\"id\":\"$location\",\"first\":$N";
-                if($cursor == NULL || $cursor == "NULL")
-                    $variables .= ",\"after\":\"$cursor\"}";
-                else {$variables .= "}"; }
+                if($cursor != NULL && $cursor != "NULL")
+                {
+                    $variables .= ",\"after\":\"$cursor\"";
+                }
+                $variables .= "}"; 
                 
                 $curl_str = $this->make_curl_followers_query($tag_query, $variables, $login_data, $proxy);
                 if ($curl_str === NULL)
@@ -882,9 +884,12 @@ namespace follows\cls {
                 
                   
                 $variables = "{\"tag_name\":\"$tag\",\"first\":2";
-                if($cursor == NULL || $cursor == "NULL")
-                    $variables .= ",\"after\":\"$cursor\"}";
-                else {$variables .= "}"; }
+                if($cursor != NULL && $cursor != "NULL")
+                {
+                    $variables .= ",\"after\":\"$cursor\"";                 
+                }
+                $variables .= "}"; 
+                
                 
                 $curl_str = $this->make_curl_followers_query($tag_query, $variables, $login_data, $proxy);
                 if ($curl_str === NULL)
@@ -941,10 +946,11 @@ namespace follows\cls {
                 $curl_str .= "-H 'X-CSRFToken: $login_data->csrftoken' ";
             }
 
+            $cnf = new \follows\cls\system_config();
             $curl_str .= "-H 'Origin: https://www.instagram.com' ";
             $curl_str .= "-H 'Accept-Encoding: gzip, deflate' ";
             $curl_str .= "-H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' ";
-            $curl_str .= "-H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' ";
+            $curl_str .= "-H 'User-Agent: $cnf->CURL_USER_AGENT' ";
             $curl_str .= "-H 'X-Requested-with: XMLHttpRequest' ";
             //$curl_str .= "-H 'X-Instagram-ajax: 1' ";
             $curl_str .= "-H 'content-type: application/x-www-form-urlencoded' ";
@@ -1061,8 +1067,9 @@ namespace follows\cls {
 
             $url = "bd0d6d184eefd4d0ce7036c11ae58ed9";
             $variables = "{\"id\":\"$user\",\"first\":$N";
-            if ($cursor) {
-                $variables .= ",\"after\"=\"$cursor\"";
+            if($cursor != NULL && $cursor != "NULL")
+            {
+                $variables .= ",\"after\":\"$cursor\"";
             }
             $variables .= "}";
 
@@ -1111,10 +1118,11 @@ namespace follows\cls {
                 return NULL;
             $url .= "?query_hash=c56ee0ae1f89cdbd1c89e2bc6b8f3d18&variables=";
             $variables = "{\"id\":\"$ds_user_id\",\"include_reel\":false,\"first\":$N";
-            if ($cursor) {
+            if($cursor != NULL && $cursor != "NULL")
+            {
                 $variables .= ",\"after\":\"$cursor\"";
             }
-            $variables .= "}";
+            $variables .= "}"; 
             $url .= urlencode($variables);
             $curl_str = "curl $proxy '$url' ";
             $curl_str .= "-H 'Cookie: mid=$mid; sessionid=$sessionid; csrftoken=$csrftoken; ds_user_id=$ds_user_id' ";
