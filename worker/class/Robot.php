@@ -640,7 +640,7 @@ namespace follows\cls {
             $curl_str .= "-H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:49.0) Gecko/20100101 Firefox/49.0' ";
             $curl_str .= "-H 'X-Requested-with: XMLHttpRequest' ";
             $curl_str .= "-H 'X-CSRFToken: $csrftoken' ";
-            $curl_str .= "-H 'X-Instagram-Ajax: dad8d866382b' ";
+                $curl_str .= "-H 'X-Instagram-Ajax: dad8d866382b' ";
             $curl_str .= "-H 'Content-Type: application/x-www-form-urlencoded' ";
             $curl_str .= "-H 'Accept: */*' ";
             $curl_str .= "-H 'Referer: https://www.instagram.com/' ";
@@ -689,8 +689,8 @@ namespace follows\cls {
             $curl_str .= "-H 'Referer: https://www.instagram.com/' ";
             $curl_str .= "-H 'Authority: www.instagram.com' ";
             $curl_str .= "-H 'Content-Length: 0' ";
-            $curl_str .= "--compressed --interface $ip";
-            $curl_str .= "--compressed";
+            $curl_str .= "--compressed --interface $ip ";
+            //$curl_str .= "--compressed";
             return $curl_str;
         }
 
