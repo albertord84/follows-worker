@@ -5653,4 +5653,2227 @@ array(1) {
   [0]=>
   string(45) "{"message": "rate limited", "status": "fail"}"
 }
-curl --proxy 'albertreye9917:3r4rcz0b1v@158.115.228.183:21276' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%2219248035%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=W2uccAAEAAEfIJjTi4p-5nlXIDE2; sessionid=IGSC97a42612b49f8da09a2ccd6faec235a56bab24867b9c89d38a733f884139111b%3AJldALS88pPbnYmabs16RWUWIi50B8ig8%3A%7B%22_auth_user_id%22%3A347515427%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%22347515427%3AZUrlDotRPF2HyoTanqCk4gLFs4YODTZ1%3Ae3b8b0571a0e0421c2a70b9a343dde4ce76b8f8aa6548f79f0ebb854539bb25b%22%2C%22last_refreshed%22%3A1533779078.1925830841%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=EZOfUrPgjuZ3sXqG9ZBR9zPf76C0yVeE; ds_user_id=347515427' -H 'X-CSRFToken: EZOfUrPgjuZ3sXqG9ZBR9zPf76C0yVeE' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Autho
+curl --proxy 'albertreye9917:3r4rcz0b1v@158.115.228.183:21276' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%2219248035%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=W2uccAAEAAEfIJjTi4p-5nlXIDE2; sessionid=IGSC97a42612b49f8da09a2ccd6faec235a56bab24867b9c89d38a733f884139111b%3AJldALS88pPbnYmabs16RWUWIi50B8ig8%3A%7B%22_auth_user_id%22%3A347515427%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%22347515427%3AZUrlDotRPF2HyoTanqCk4gLFs4YODTZ1%3Ae3b8b0571a0e0421c2a70b9a343dde4ce76b8f8aa6548f79f0ebb854539bb25b%22%2C%22last_refreshed%22%3A1533779078.1925830841%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=EZOfUrPgjuZ3sXqG9ZBR9zPf76C0yVeE; ds_user_id=347515427' -H 'X-CSRFToken: EZOfUrPgjuZ3sXqG9ZBR9zPf76C0yVeE' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed object(stdClass)#320 (2) {
+  ["message"]=>
+  string(12) "rate limited"
+  ["status"]=>
+  string(4) "fail"
+}
+Not message found!<br>
+ Client (id: 28007) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 1 <br><br>_________ELAPSED TIME (111): <br>
+Client: 30516 <br>
+<br>
+nRef Profil: nike<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:22:52pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#463 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 4243221281(natasha.amoura)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 45 <br>
+<br>
+Ref Profil: nike (id: 52339 | type: 0)<br>
+<br>
+Ref Profil: nike<br>
+Nodes: 1 <br>
+Profil name: deepak83029 FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 1 | unfollows: 1 <br><br>_________ELAPSED TIME (113): <br>
+Client: 29628 <br>
+<br>
+nRef Profil: embraed<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:23:07pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#753 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 6691284045(ops_aleh)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 39 <br>
+<br>
+Ref Profil: embraed (id: 51280 | type: 0)<br>
+<br>
+Ref Profil: embraed<br>
+Nodes: 1 <br>
+Profil name: zeusdobrasil FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 1 | unfollows: 1 <br><br>_________ELAPSED TIME (89): <br>
+Client: 31476 <br>
+<br>
+nRef Profil: mmarinhostudios<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:23:48pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#432 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 6003389289(btrzzm)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 75 <br>
+<br>
+Ref Profil: mmarinhostudios (id: 50947 | type: 0)<br>
+<br>
+Ref Profil: mmarinhostudios<br>
+Nodes: 1 <br>
+Profil name: gvr3d FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 1 | unfollows: 1 <br><br>_________ELAPSED TIME (116): <br>
+Client: 27559 <br>
+<br>
+nRef Profil: estetica<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:24:01pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 0 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>_________ELAPSED TIME (112): <br>
+Client: 29037 <br>
+<br>
+nRef Profil: daylipadron<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:24:09pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 471 <br>
+<br>
+Ref Profil: daylipadron (id: 49631 | type: 0)<br>
+<br>
+Ref Profil: daylipadron<br>
+array(1) {
+  [0]=>
+  string(45) "{"message": "rate limited", "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@64.44.63.127:21290' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%222023444583%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=W9HGpQAEAAGjFaGIt-Mx1kyb3RZ7; sessionid=3445996566%3A6zpgqe4UUW9O4P%3A8; s_network=; ig_pr=1; ig_vw=1855; csrftoken=tV9HBoK5g2AYiSQJ1o7A58DepjD1DKqa; ds_user_id=3445996566' -H 'X-CSRFToken: tV9HBoK5g2AYiSQJ1o7A58DepjD1DKqa' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed object(stdClass)#539 (2) {
+  ["message"]=>
+  string(12) "rate limited"
+  ["status"]=>
+  string(4) "fail"
+}
+Not message found!<br>
+ Client (id: 29037) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>_________ELAPSED TIME (99): <br>
+Client: 27750 <br>
+<br>
+nRef Profil: gabrielapugliesi<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:24:32pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 21 <br>
+<br>
+Ref Profil: gabrielapugliesi (id: 43809 | type: 0)<br>
+<br>
+Ref Profil: gabrielapugliesi<br>
+array(0) {
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@158.115.228.147:21252' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%2229797722%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=Wt3l4QABAAFm82M50ashiNJhOZB0; sessionid=IGSC7d36af0fbda7e1c45b6fbeb886fe2098490045097586948a12e118937af3c8e9%3Aqoug1ANUtwjNn75oPUw1xS17ziEF2WGo%3A%7B%22_auth_user_id%22%3A216398199%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A1%2C%22_token_ver%22%3A2%2C%22_token%22%3A%22216398199%3AxM7ZbxzZiVTkTLORO7wRARGI2fMXNDtL%3A78b4b46041be34d26dfd2e03283ce92cd047c11737297bf17a42b1183ec73bf6%22%2C%22last_refreshed%22%3A1539241951.6777544022%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=GZvDQaJ04hI2kPWMojAfbUcu7zu6wpyb; ds_user_id=216398199' -H 'X-CSRFToken: GZvDQaJ04hI2kPWMojAfbUcu7zu6wpyb' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed <br>
+ Empty response getting followers from this profile... <br>
+NULL
+Not error code found!<br>
+ Client (id: 27750) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>_________ELAPSED TIME (112): <br>
+Client: 28007 <br>
+<br>
+nRef Profil: _letvasconcelos<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:24:42pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#569 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 4210532174(raquellmartinss25)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 77 <br>
+<br>
+Ref Profil: _letvasconcelos (id: 48727 | type: 0)<br>
+<br>
+Ref Profil: _letvasconcelos<br>
+array(1) {
+  [0]=>
+  string(45) "{"message": "rate limited", "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@158.115.228.183:21276' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%22260052768%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=W2uccAAEAAEfIJjTi4p-5nlXIDE2; sessionid=IGSC97a42612b49f8da09a2ccd6faec235a56bab24867b9c89d38a733f884139111b%3AJldALS88pPbnYmabs16RWUWIi50B8ig8%3A%7B%22_auth_user_id%22%3A347515427%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%22347515427%3AZUrlDotRPF2HyoTanqCk4gLFs4YODTZ1%3Ae3b8b0571a0e0421c2a70b9a343dde4ce76b8f8aa6548f79f0ebb854539bb25b%22%2C%22last_refreshed%22%3A1533779078.1925830841%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=EZOfUrPgjuZ3sXqG9ZBR9zPf76C0yVeE; ds_user_id=347515427' -H 'X-CSRFToken: EZOfUrPgjuZ3sXqG9ZBR9zPf76C0yVeE' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed object(stdClass)#334 (2) {
+  ["message"]=>
+  string(12) "rate limited"
+  ["status"]=>
+  string(4) "fail"
+}
+Not message found!<br>
+ Client (id: 28007) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 1 <br><br>_________ELAPSED TIME (110): <br>
+Client: 14256 <br>
+<br>
+nRef Profil: anaelisasalinas<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:24:57pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#626 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 1742469874(mariafernandams)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 16 <br>
+<br>
+Ref Profil: anaelisasalinas (id: 17427 | type: 0)<br>
+<br>
+Ref Profil: anaelisasalinas<br>
+Nodes: 1 <br>
+Profil name: santtos560 NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: anaelisasalinas (id: 17427 | type: 0)<br>
+<br>
+Ref Profil: anaelisasalinas<br>
+Nodes: 1 <br>
+Profil name: santtos560 NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: anaelisasalinas (id: 17427 | type: 0)<br>
+<br>
+Ref Profil: anaelisasalinas<br>
+Nodes: 1 <br>
+Profil name: santtos560 NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: anaelisasalinas (id: 17427 | type: 0)<br>
+<br>
+Ref Profil: anaelisasalinas<br>
+Nodes: 1 <br>
+Profil name: santtos560 NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: anaelisasalinas (id: 17427 | type: 0)<br>
+<br>
+Ref Profil: anaelisasalinas<br>
+Nodes: 1 <br>
+Profil name: santtos560 NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: anaelisasalinas (id: 17427 | type: 0)<br>
+<br>
+Ref Profil: anaelisasalinas<br>
+Nodes: 1 <br>
+Profil name: santtos560 NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: anaelisasalinas (id: 17427 | type: 0)<br>
+<br>
+Ref Profil: anaelisasalinas<br>
+Nodes: 1 <br>
+Profil name: santtos560 NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 1 <br><br>_________ELAPSED TIME (117): <br>
+Client: 29628 <br>
+<br>
+nRef Profil: loja4elementos<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:25:17pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#450 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 5766308361(leoaalaska)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 39 <br>
+<br>
+Ref Profil: loja4elementos (id: 51281 | type: 0)<br>
+<br>
+Ref Profil: loja4elementos<br>
+Nodes: 1 <br>
+Profil name: murdocstore FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 1 | unfollows: 1 <br><br>
+Client: 31848 <br>
+<br>
+nRef Profil: alinekassab<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:25:29pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 60 <br>
+<br>
+Ref Profil: alinekassab (id: 52557 | type: 0)<br>
+<br>
+Ref Profil: alinekassab<br>
+array(1) {
+  [0]=>
+  string(45) "{"message": "rate limited", "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@207.188.155.18:21316' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%221256161916%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=W83cyAAEAAHU-eXy5zZuDXZuCV-5; sessionid=IGSC7c35e892b05c193507e67ed19a230959ceac8e89b928e2d400715b03f84591ca%3AcWGCOecGs7XRMqj5CU1RvGKwX1M6HCBW%3A%7B%22_auth_user_id%22%3A319151614%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%22319151614%3A4Sx66Hhswug0iRLvSVGbbitRBG3msloA%3Af09161b7c29f5ed5e30cc6588cf736e340027962f8af4573e407112a45e7518e%22%2C%22last_refreshed%22%3A1540218064.8848171234%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=XuaRUlUPgfqFNGknV7AIfL3AEo4Vrl5o; ds_user_id=319151614' -H 'X-CSRFToken: XuaRUlUPgfqFNGknV7AIfL3AEo4Vrl5o' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed object(stdClass)#737 (2) {
+  ["message"]=>
+  string(12) "rate limited"
+  ["status"]=>
+  string(4) "fail"
+}
+Not message found!<br>
+ Client (id: 31848) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>_________ELAPSED TIME (108): <br>
+Client: 28414 <br>
+<br>
+nRef Profil: outfit<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:25:43pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#463 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 8933532844(mauandradi)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 46 <br>
+<br>
+Ref Profil: outfit (id: 51386 | type: 2)<br>
+array(1) {
+  [0]=>
+  string(45) "{"message": "rate limited", "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@64.44.63.127:21290' 'https://www.instagram.com/graphql/query/?query_hash=ded47faa9a1aaded10161a2ff32abb6b&variables=%7B%22tag_name%22%3A%22outfit%22%2C%22first%22%3A2%7D' -H 'Cookie: mid=W78ViAAEAAHMPSej_pD6VYwMwcRg; sessionid=242079522%3Aw3bjJrUcAely7V%3A12; s_network=; ig_pr=1; ig_vw=1855; csrftoken=syzQ7GH4cbsven4sLrkDKbOTBo3fkqFN; ds_user_id=242079522' -H 'X-CSRFToken: syzQ7GH4cbsven4sLrkDKbOTBo3fkqFN' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed <br>
+ Untrated error!!!object(stdClass)#43 (2) {
+  ["message"]=>
+  string(12) "rate limited"
+  ["status"]=>
+  string(4) "fail"
+}
+Not message found!<br>
+ Client (id: 28414) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 1 <br><br>_________ELAPSED TIME (106): <br>
+Client: 20818 <br>
+<br>
+nRef Profil: barbarabozan<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:26:01pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 0 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>_________ELAPSED TIME (112): <br>
+Client: 29984 <br>
+<br>
+nRef Profil: felipevillaverde<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:26:09pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 14 <br>
+<br>
+Ref Profil: felipevillaverde (id: 47528 | type: 0)<br>
+<br>
+Ref Profil: felipevillaverde<br>
+array(1) {
+  [0]=>
+  string(45) "{"message": "rate limited", "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@207.188.155.18:21316' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%2225510108%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=W8fNOgAEAAFZomhIbB0D9VyeHxRf; sessionid=IGSCc47d5209141c674b62d673e3ad2c973b099bf64157f65422a288ec35636bc007%3AIOrJ6dgv3oEocjopsM51eRjbGgaoFtQP%3A%7B%22_auth_user_id%22%3A2130353479%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%222130353479%3AzYFsczTqsU9tDg3erX98u1Rt1VBMMfo6%3A49d664dcdcfb3817e85b4552d909fcf9305ffce19b528c74234222ea15fcaf17%22%2C%22last_refreshed%22%3A1539820875.324385643%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=BUZIYUjXFmGZezzqC3Z14fQkEeq354QQ; ds_user_id=2130353479' -H 'X-CSRFToken: BUZIYUjXFmGZezzqC3Z14fQkEeq354QQ' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed object(stdClass)#307 (2) {
+  ["message"]=>
+  string(12) "rate limited"
+  ["status"]=>
+  string(4) "fail"
+}
+Not message found!<br>
+ Client (id: 29984) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>_________ELAPSED TIME (96): <br>
+Client: 27750 <br>
+<br>
+nRef Profil: gioserrano<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:26:34pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 21 <br>
+<br>
+Ref Profil: gioserrano (id: 43811 | type: 0)<br>
+<br>
+Ref Profil: gioserrano<br>
+array(0) {
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@158.115.228.147:21252' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%223733575%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=Wt3l4QABAAFm82M50ashiNJhOZB0; sessionid=IGSC7d36af0fbda7e1c45b6fbeb886fe2098490045097586948a12e118937af3c8e9%3Aqoug1ANUtwjNn75oPUw1xS17ziEF2WGo%3A%7B%22_auth_user_id%22%3A216398199%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A1%2C%22_token_ver%22%3A2%2C%22_token%22%3A%22216398199%3AxM7ZbxzZiVTkTLORO7wRARGI2fMXNDtL%3A78b4b46041be34d26dfd2e03283ce92cd047c11737297bf17a42b1183ec73bf6%22%2C%22last_refreshed%22%3A1539241951.6777544022%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=GZvDQaJ04hI2kPWMojAfbUcu7zu6wpyb; ds_user_id=216398199' -H 'X-CSRFToken: GZvDQaJ04hI2kPWMojAfbUcu7zu6wpyb' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed <br>
+ Empty response getting followers from this profile... <br>
+NULL
+Not error code found!<br>
+ Client (id: 27750) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>_________ELAPSED TIME (109): <br>
+Client: 31683 <br>
+<br>
+nRef Profil: juanmanuel_777<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:26:47pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#334 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 237310549(djkatsizova_)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 25 <br>
+<br>
+Ref Profil: juanmanuel_777 (id: 51442 | type: 0)<br>
+<br>
+Ref Profil: juanmanuel_777<br>
+array(1) {
+  [0]=>
+  string(45) "{"message": "rate limited", "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@207.188.155.18:21316' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%222266160827%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=W8h8KQAEAAFFaFZ-mGPyj8N6wrNh; sessionid=IGSC86c82386c9beedae10370ccdedcad73658922eb606aee8b401731744ad3450e3%3ACstlMeHORwoZuTEgVtWp2kuzgPXDwXxv%3A%7B%22_auth_user_id%22%3A283671681%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%22283671681%3AIaezZAhAWNEwjRyJdqFBhDXlsMa8mhRx%3A811c1e36dde2c111a31a6821f213ef76fb0d93893b49fb254c31eb2fd8bf79ef%22%2C%22last_refreshed%22%3A1539865724.7499039173%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=okiXe7jz5b6SO8CeDSfflHXRZzwyq1Cf; ds_user_id=283671681' -H 'X-CSRFToken: okiXe7jz5b6SO8CeDSfflHXRZzwyq1Cf' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed object(stdClass)#561 (2) {
+  ["message"]=>
+  string(12) "rate limited"
+  ["status"]=>
+  string(4) "fail"
+}
+Not message found!<br>
+ Client (id: 31683) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 1 <br><br>_________ELAPSED TIME (110): <br>
+Client: 59 <br>
+<br>
+nRef Profil: vila-cruzeiro-rj<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:27:02pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#97 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 4003768801(ca.fermino)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 32 <br>
+<br>
+Ref Profil: vila-cruzeiro-rj (id: 50007 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: dentistasconstruindosorrisos NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+<br>
+Ref Profil: vila-cruzeiro-rj (id: 50007 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: dentistasconstruindosorrisos NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+<br>
+Ref Profil: vila-cruzeiro-rj (id: 50007 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: dentistasconstruindosorrisos NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+<br>
+Ref Profil: vila-cruzeiro-rj (id: 50007 | type: 1)<br>
+array(1) {
+  [0]=>
+  string(45) "{"message": "rate limited", "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@64.44.63.127:21290' 'https://www.instagram.com/graphql/query/?query_hash=ac38b90f0f3981c42092016a37c59bf7&variables=%7B%22id%22%3A%22133909006704414%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=WtlMoQABAAHZAlviRrBwRMd8ynet; sessionid=IGSCfe2b437e4340dc74135f2334e06568b917b33b6bcd291992f9df3a91268e20c6%3AYBDo636pauqKH9rZ56kRvj9Eu8NpdYQV%3A%7B%22_auth_user_id%22%3A204662017%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A1%2C%22_token_ver%22%3A2%2C%22_token%22%3A%22204662017%3AUH8hRY2fa6eCPK0GzIBdfqfw6IZN9Nu8%3Ad1338b1723d42d2994f350d9797106eb6c4eff00d9cb319308f664dac7991862%22%2C%22last_refreshed%22%3A1540450817.0670025349%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=wMUoHymANrIgNvQjNMMDu7pitwkdIOyF; ds_user_id=204662017' -H 'X-CSRFToken: wMUoHymANrIgNvQjNMMDu7pitwkdIOyF' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed <br>
+ Untrated error!!!object(stdClass)#348 (2) {
+  ["message"]=>
+  string(12) "rate limited"
+  ["status"]=>
+  string(4) "fail"
+}
+Not message found!<br>
+ Client (id: 59) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 1 <br><br>_________ELAPSED TIME (113): <br>
+Client: 29628 <br>
+<br>
+nRef Profil: sigaimaginarium<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:27:29pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#177 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 3003025728(daibijouxeacessorios)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 39 <br>
+<br>
+Ref Profil: sigaimaginarium (id: 51283 | type: 0)<br>
+<br>
+Ref Profil: sigaimaginarium<br>
+Nodes: 1 <br>
+Profil name: allinesouzaf FOLLOWING <br>
+NULL
+Not error code found!<br>
+ Client (id: 29628) not error code found (-1)!!! <br>
+NULL
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 1 | unfollows: 1 <br><br>_________ELAPSED TIME (106): <br>
+Client: 31437 <br>
+<br>
+nRef Profil: palhoca<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:27:51pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#516 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 642153897(budatrapstar)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 28 <br>
+<br>
+Ref Profil: palhoca (id: 51827 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: advocaciavk FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 1 | unfollows: 1 <br><br>_________ELAPSED TIME (109): <br>
+Client: 29253 <br>
+<br>
+nRef Profil: yoo2rio<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:28:17pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#658 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 533324613(cristiano_oficiel)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 117 <br>
+<br>
+Ref Profil: yoo2rio (id: 45872 | type: 0)<br>
+<br>
+Ref Profil: yoo2rio<br>
+array(1) {
+  [0]=>
+  string(45) "{"message": "rate limited", "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@207.188.155.18:21316' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%223088431641%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=WxVoKgABAAFRU8Dzkv-N6vVsvw4Y; sessionid=IGSCfc984c1191bc738f6f1eaa3ac6a5c37736242b8b2d05ceda17242c975b01836b%3AmsIOrc6qRsHzfRrZxo5L4yLalsJytqia%3A%7B%22_auth_user_id%22%3A1971041331%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A1%2C%22_token_ver%22%3A2%2C%22_token%22%3A%221971041331%3A2fcg7W5Vz2LEQFOxjmNH2RBoLw7E59ZS%3Af2efe0440c079dbc672e9b3a5f93ed1f6b5a7a64aab34db17bc35b59775c4295%22%2C%22last_refreshed%22%3A1539156338.3327682018%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=3FCS0ei5DEYWNd2OxuATphYOOMksQLZl; ds_user_id=1971041331' -H 'X-CSRFToken: 3FCS0ei5DEYWNd2OxuATphYOOMksQLZl' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed object(stdClass)#760 (2) {
+  ["message"]=>
+  string(12) "rate limited"
+  ["status"]=>
+  string(4) "fail"
+}
+Not message found!<br>
+ Client (id: 29253) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 1 <br><br>_________ELAPSED TIME (91): <br>
+Client: 18991 <br>
+<br>
+nRef Profil: fl0ripamilgrau<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:28:49pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 125 <br>
+<br>
+Ref Profil: fl0ripamilgrau (id: 27998 | type: 0)<br>
+<br>
+Ref Profil: fl0ripamilgrau<br>
+array(0) {
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@172.84.87.200:21254' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%22465949758%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=W0Np-wAEAAFSQqpO_zNZQNWgOufz; sessionid=IGSCf23e527b2a3a06e4454b06aa2a294e59c0a2fec43ae8db56e6c4039eae790d26%3AZPwvMACZI0MzKM3z3mYgJmzm7JSvCUxC%3A%7B%22_auth_user_id%22%3A3493677222%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%223493677222%3AeqlGQUXS3tpAY6O6o3dRErIh2zUlvZQQ%3A6e2a1ecc9819786009f588ccf1db5cf74275f737bcf8584c68c54d6211400322%22%2C%22last_refreshed%22%3A1531144714.9990868568%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=BZVWRZPP7WrTwYI8bP3b5xhLVDdamHiI; ds_user_id=3493677222' -H 'X-CSRFToken: BZVWRZPP7WrTwYI8bP3b5xhLVDdamHiI' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed <br>
+ Empty response getting followers from this profile... <br>
+NULL
+Not error code found!<br>
+ Client (id: 18991) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>_________ELAPSED TIME (105): <br>
+Client: 27529 <br>
+<br>
+nRef Profil: fortaleza-brazil<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:29:07pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#606 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 1061841349(__andrezin)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 53 <br>
+<br>
+Ref Profil: fortaleza-brazil (id: 39407 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: georgiano_tgg FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 1 | unfollows: 1 <br><br>_________ELAPSED TIME (114): <br>
+Client: 30723 <br>
+<br>
+nRef Profil: analiafranco<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:29:23pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 1 <br>
+<br>
+Ref Profil: analiafranco (id: 49696 | type: 0)<br>
+<br>
+Ref Profil: analiafranco<br>
+array(1) {
+  [0]=>
+  string(45) "{"message": "rate limited", "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@207.188.155.18:21316' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%22187043677%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=W8fOKgAEAAE9BVfpb3psEUoTC3yu; sessionid=4151019129%3A8r4cNvNLpvlVU2%3A19; s_network=; ig_pr=1; ig_vw=1855; csrftoken=NPiJpVuRm3IoKphpvhqYsA6xXbfio056; ds_user_id=4151019129' -H 'X-CSRFToken: NPiJpVuRm3IoKphpvhqYsA6xXbfio056' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed object(stdClass)#106 (2) {
+  ["message"]=>
+  string(12) "rate limited"
+  ["status"]=>
+  string(4) "fail"
+}
+Not message found!<br>
+ Client (id: 30723) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>_________ELAPSED TIME (113): <br>
+Client: 31848 <br>
+<br>
+nRef Profil: diogobatistass<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:29:32pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#565 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 8606149394(cerejadocecatalao)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 78 <br>
+<br>
+Ref Profil: diogobatistass (id: 52355 | type: 0)<br>
+<br>
+Ref Profil: diogobatistass<br>
+array(1) {
+  [0]=>
+  string(45) "{"message": "rate limited", "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@207.188.155.18:21316' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%22889527429%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=W83cyAAEAAHU-eXy5zZuDXZuCV-5; sessionid=IGSC7c35e892b05c193507e67ed19a230959ceac8e89b928e2d400715b03f84591ca%3AcWGCOecGs7XRMqj5CU1RvGKwX1M6HCBW%3A%7B%22_auth_user_id%22%3A319151614%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%22319151614%3A4Sx66Hhswug0iRLvSVGbbitRBG3msloA%3Af09161b7c29f5ed5e30cc6588cf736e340027962f8af4573e407112a45e7518e%22%2C%22last_refreshed%22%3A1540218064.8848171234%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=XuaRUlUPgfqFNGknV7AIfL3AEo4Vrl5o; ds_user_id=319151614' -H 'X-CSRFToken: XuaRUlUPgfqFNGknV7AIfL3AEo4Vrl5o' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed object(stdClass)#274 (2) {
+  ["message"]=>
+  string(12) "rate limited"
+  ["status"]=>
+  string(4) "fail"
+}
+Not message found!<br>
+ Client (id: 31848) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 1 <br><br>_________ELAPSED TIME (114): <br>
+Client: 22372 <br>
+<br>
+nRef Profil: squadafum<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:29:42pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#499 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 421064267(samanthabianucci1)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 80 <br>
+<br>
+Ref Profil: squadafum (id: 41989 | type: 0)<br>
+<br>
+Ref Profil: squadafum<br>
+Nodes: 1 <br>
+Profil name: jeanoliveira329 FOLLOWING <br>
+NULL
+Not error code found!<br>
+ Client (id: 22372) not error code found (-1)!!! <br>
+NULL
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 1 | unfollows: 1 <br><br>_________ELAPSED TIME (111): <br>
+Client: 62 <br>
+<br>
+nRef Profil: endeavorbrasil<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:30:00pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 0 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>_________ELAPSED TIME (114): <br>
+Client: 31437 <br>
+<br>
+nRef Profil: biguacu<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:30:06pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#751 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 2165560733(nei.morais)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 27 <br>
+<br>
+Ref Profil: biguacu (id: 51828 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: juliarosariodasilva NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+<br>
+Ref Profil: biguacu (id: 51828 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: juliarosariodasilva NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+<br>
+Ref Profil: biguacu (id: 51828 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: juliarosariodasilva NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+<br>
+Ref Profil: biguacu (id: 51828 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: juliarosariodasilva NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+<br>
+Ref Profil: biguacu (id: 51828 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: juliarosariodasilva NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+<br>
+Ref Profil: biguacu (id: 51828 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: juliarosariodasilva NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+<br>
+Ref Profil: biguacu (id: 51828 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: juliarosariodasilva NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 1 <br><br>_________ELAPSED TIME (104): <br>
+Client: 29365 <br>
+<br>
+nRef Profil: recife-brazil<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:31:02pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#137 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 488350427(vitorlisbboa)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 141 <br>
+<br>
+Ref Profil: recife-brazil (id: 51657 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: sementinha_17 FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 1 | unfollows: 1 <br><br>_________ELAPSED TIME (107): <br>
+Client: 14256 <br>
+<br>
+nRef Profil: marianabritocakes<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:31:31pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#214 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 9018693869(farida_sherif_2009)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 20 <br>
+<br>
+Ref Profil: marianabritocakes (id: 17263 | type: 0)<br>
+<br>
+Ref Profil: marianabritocakes<br>
+Nodes: 1 <br>
+Profil name: santtos560 NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: marianabritocakes (id: 17263 | type: 0)<br>
+<br>
+Ref Profil: marianabritocakes<br>
+Nodes: 1 <br>
+Profil name: santtos560 NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: marianabritocakes (id: 17263 | type: 0)<br>
+<br>
+Ref Profil: marianabritocakes<br>
+Nodes: 1 <br>
+Profil name: santtos560 NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: marianabritocakes (id: 17263 | type: 0)<br>
+<br>
+Ref Profil: marianabritocakes<br>
+Nodes: 1 <br>
+Profil name: santtos560 NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: marianabritocakes (id: 17263 | type: 0)<br>
+<br>
+Ref Profil: marianabritocakes<br>
+array(1) {
+  [0]=>
+  string(45) "{"message": "rate limited", "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@172.84.73.213:21287' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%222218760823%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=W8bHpgAEAAEq1BzK9E3rfgmF0Gbp; sessionid=IGSCc24d45e3f47bec8522b59806b72bdbe53555c87fbf9bc262c4c4fa468e83889f%3ADaKta2nCRyqsM0SnbV6pRFQRCDwVH0a9%3A%7B%22_auth_user_id%22%3A203213197%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%22203213197%3Au7seDzPK0lrgta6Mm0Q7NLMxK6dVA2vY%3A753edd100c46b737a1e6aa36a8374c86a7d58e39ff0e5bf0d7c97952b098ec12%22%2C%22last_refreshed%22%3A1539754310.1908893585%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=NXHYWwrsnWFNRPQN7Kyi8SE1gl9kUuIj; ds_user_id=203213197' -H 'X-CSRFToken: NXHYWwrsnWFNRPQN7Kyi8SE1gl9kUuIj' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed object(stdClass)#538 (2) {
+  ["message"]=>
+  string(12) "rate limited"
+  ["status"]=>
+  string(4) "fail"
+}
+Not message found!<br>
+ Client (id: 14256) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 1 <br><br>_________ELAPSED TIME (110): <br>
+Client: 28414 <br>
+<br>
+nRef Profil: saracoragem<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:31:55pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#258 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 3002449380(naninharfaria)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 65 <br>
+<br>
+Ref Profil: saracoragem (id: 51383 | type: 0)<br>
+<br>
+Ref Profil: saracoragem<br>
+array(1) {
+  [0]=>
+  string(45) "{"message": "rate limited", "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@64.44.63.127:21290' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%2254392590%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=W78ViAAEAAHMPSej_pD6VYwMwcRg; sessionid=242079522%3Aw3bjJrUcAely7V%3A12; s_network=; ig_pr=1; ig_vw=1855; csrftoken=syzQ7GH4cbsven4sLrkDKbOTBo3fkqFN; ds_user_id=242079522' -H 'X-CSRFToken: syzQ7GH4cbsven4sLrkDKbOTBo3fkqFN' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed object(stdClass)#114 (2) {
+  ["message"]=>
+  string(12) "rate limited"
+  ["status"]=>
+  string(4) "fail"
+}
+Not message found!<br>
+ Client (id: 28414) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 1 <br><br>_________ELAPSED TIME (114): <br>
+Client: 18568 <br>
+<br>
+nRef Profil: lucascf<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:32:04pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 119 <br>
+<br>
+Ref Profil: lucascf (id: 51835 | type: 0)<br>
+<br>
+Ref Profil: lucascf<br>
+Nodes: 1 <br>
+Profil name: draandressamesquita NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: lucascf (id: 51835 | type: 0)<br>
+<br>
+Ref Profil: lucascf<br>
+Nodes: 1 <br>
+Profil name: draandressamesquita NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: lucascf (id: 51835 | type: 0)<br>
+<br>
+Ref Profil: lucascf<br>
+Nodes: 1 <br>
+Profil name: draandressamesquita NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: lucascf (id: 51835 | type: 0)<br>
+<br>
+Ref Profil: lucascf<br>
+Nodes: 1 <br>
+Profil name: draandressamesquita NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: lucascf (id: 51835 | type: 0)<br>
+<br>
+Ref Profil: lucascf<br>
+Nodes: 1 <br>
+Profil name: draandressamesquita NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: lucascf (id: 51835 | type: 0)<br>
+<br>
+Ref Profil: lucascf<br>
+array(1) {
+  [0]=>
+  string(45) "{"message": "rate limited", "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@172.84.73.213:21287' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%228519517%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=WtNn4AABAAGMfzsVss232h4_2lm7; sessionid=IGSCda713851e61dbac76d2557abec176b4e1e7af1bc0837601d76e1b685fbf2fab8%3AiAsrRhoTYZjFgbYYlOBnYEiCjVF7tLUN%3A%7B%22_auth_user_id%22%3A5440764866%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A1%2C%22_token_ver%22%3A2%2C%22_token%22%3A%225440764866%3ACqqWse2RHAZKpcOAFECdKIF8w2LrmYgO%3Ac41d14c8ad379976670d72a28b967b5965ab14b21399e75c6cf6320890852e51%22%2C%22last_refreshed%22%3A1539241546.5271878242%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=erm3iFPpO2uh7sIR4wEeqfl3xq6FvQrT; ds_user_id=5440764866' -H 'X-CSRFToken: erm3iFPpO2uh7sIR4wEeqfl3xq6FvQrT' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed object(stdClass)#760 (2) {
+  ["message"]=>
+  string(12) "rate limited"
+  ["status"]=>
+  string(4) "fail"
+}
+Not message found!<br>
+ Client (id: 18568) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>
+Client: 29984 <br>
+<br>
+nRef Profil: pablio_caetano<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:32:17pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 15 <br>
+<br>
+Ref Profil: pablio_caetano (id: 47525 | type: 0)<br>
+<br>
+Ref Profil: pablio_caetano<br>
+array(1) {
+  [0]=>
+  string(45) "{"message": "rate limited", "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@207.188.155.18:21316' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%2236784144%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=W8fNOgAEAAFZomhIbB0D9VyeHxRf; sessionid=IGSCc47d5209141c674b62d673e3ad2c973b099bf64157f65422a288ec35636bc007%3AIOrJ6dgv3oEocjopsM51eRjbGgaoFtQP%3A%7B%22_auth_user_id%22%3A2130353479%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%222130353479%3AzYFsczTqsU9tDg3erX98u1Rt1VBMMfo6%3A49d664dcdcfb3817e85b4552d909fcf9305ffce19b528c74234222ea15fcaf17%22%2C%22last_refreshed%22%3A1539820875.324385643%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=BUZIYUjXFmGZezzqC3Z14fQkEeq354QQ; ds_user_id=2130353479' -H 'X-CSRFToken: BUZIYUjXFmGZezzqC3Z14fQkEeq354QQ' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed object(stdClass)#426 (2) {
+  ["message"]=>
+  string(12) "rate limited"
+  ["status"]=>
+  string(4) "fail"
+}
+Not message found!<br>
+ Client (id: 29984) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>
+Client: 31580 <br>
+<br>
+nRef Profil: telhadoverde<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:32:19pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 42 <br>
+<br>
+Ref Profil: telhadoverde (id: 51429 | type: 2)<br>
+array(1) {
+  [0]=>
+  string(45) "{"message": "rate limited", "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@64.44.63.127:21290' 'https://www.instagram.com/graphql/query/?query_hash=ded47faa9a1aaded10161a2ff32abb6b&variables=%7B%22tag_name%22%3A%22telhadoverde%22%2C%22first%22%3A2%7D' -H 'Cookie: mid=W8aKUQAEAAFG5nbjt8V1xGP9X5UL; sessionid=2074530637%3APOGbmEnwcXYu1r%3A3; s_network=; ig_pr=1; ig_vw=1855; csrftoken=DqLOemHzrkRaGflNLwmS3Zva6PDBwqYu; ds_user_id=2074530637' -H 'X-CSRFToken: DqLOemHzrkRaGflNLwmS3Zva6PDBwqYu' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed <br>
+ Untrated error!!!object(stdClass)#426 (2) {
+  ["message"]=>
+  string(12) "rate limited"
+  ["status"]=>
+  string(4) "fail"
+}
+Not message found!<br>
+ Client (id: 31580) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>_________ELAPSED TIME (114): <br>
+Client: 29306 <br>
+<br>
+nRef Profil: leomessi<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:32:26pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#614 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 7964912935(windaamhf_)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 24 <br>
+<br>
+Ref Profil: leomessi (id: 51905 | type: 0)<br>
+<br>
+Ref Profil: leomessi<br>
+Nodes: 1 <br>
+Profil name: biel.barreto.56 FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 1 | unfollows: 1 <br><br>_________ELAPSED TIME (108): <br>
+Client: 31437 <br>
+<br>
+nRef Profil: jurere-internacional<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:32:46pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#652 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 6636895753(alesilvva_)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 32 <br>
+<br>
+Ref Profil: jurere-internacional (id: 51829 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: usemaiden FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 1 | unfollows: 1 <br><br>_________ELAPSED TIME (107): <br>
+Client: 31882 <br>
+<br>
+nRef Profil: reserva<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:33:15pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 96 <br>
+<br>
+Ref Profil: reserva (id: 52480 | type: 0)<br>
+<br>
+Ref Profil: reserva<br>
+array(0) {
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@64.44.63.80:21287' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%2221260786%22%2C%22first%22%3A1%2C%22after%22%3A%22%22%7D' -H 'Cookie: mid=W6BEnwAEAAH9T3UULY3w9VYQA3Yp; sessionid=4780121179%3AuSZf6DvUnL1EZt%3A3; s_network=; ig_pr=1; ig_vw=1855; csrftoken=zvZH2pLVxT6h1x6AmrRqppxDmcsl9UI8; ds_user_id=4780121179' -H 'X-CSRFToken: zvZH2pLVxT6h1x6AmrRqppxDmcsl9UI8' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed <br>
+ Empty response getting followers from this profile... <br>
+NULL
+Not error code found!<br>
+ Client (id: 31882) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>_________ELAPSED TIME (110): <br>
+Client: 27529 <br>
+<br>
+nRef Profil: curitiba-brazil<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:33:27pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#19 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 1558754887(elisaanogueira)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 53 <br>
+<br>
+Ref Profil: curitiba-brazil (id: 39441 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: nrbgastronomia FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 1 | unfollows: 1 <br><br>_________ELAPSED TIME (106): <br>
+Client: 30070 <br>
+<br>
+nRef Profil: chocolate<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:33:51pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#86 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 8882183941(choco.latte.18847)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 39 <br>
+<br>
+Ref Profil: chocolate (id: 47756 | type: 2)<br>
+Nodes: 6 <br>
+Profil name: deliciasbylele FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 1 | unfollows: 1 <br><br>_________ELAPSED TIME (111): <br>
+Client: 20565 <br>
+<br>
+nRef Profil: cutecat<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:34:19pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#236 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 6734388(shleephoto)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 169 <br>
+<br>
+Ref Profil: cutecat (id: 48148 | type: 2)<br>
+Nodes: 6 <br>
+Profil name: aspen_kira FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 1 | unfollows: 1 <br><br>_________ELAPSED TIME (111): <br>
+Client: 29037 <br>
+<br>
+nRef Profil: daylipadron<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:34:46pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 471 <br>
+<br>
+Ref Profil: daylipadron (id: 49631 | type: 0)<br>
+<br>
+Ref Profil: daylipadron<br>
+array(1) {
+  [0]=>
+  string(45) "{"message": "rate limited", "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@64.44.63.127:21290' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%222023444583%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=W9HGpQAEAAGjFaGIt-Mx1kyb3RZ7; sessionid=3445996566%3A6zpgqe4UUW9O4P%3A8; s_network=; ig_pr=1; ig_vw=1855; csrftoken=tV9HBoK5g2AYiSQJ1o7A58DepjD1DKqa; ds_user_id=3445996566' -H 'X-CSRFToken: tV9HBoK5g2AYiSQJ1o7A58DepjD1DKqa' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed object(stdClass)#274 (2) {
+  ["message"]=>
+  string(12) "rate limited"
+  ["status"]=>
+  string(4) "fail"
+}
+Not message found!<br>
+ Client (id: 29037) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>_________ELAPSED TIME (108): <br>
+Client: 31683 <br>
+<br>
+nRef Profil: santiago-chile<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:35:00pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#346 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 6357468795(unclepipsadventures)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 25 <br>
+<br>
+Ref Profil: santiago-chile (id: 51463 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: flakitha__20 FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 1 | unfollows: 1 <br><br>_________ELAPSED TIME (106): <br>
+Client: 31097 <br>
+<br>
+nRef Profil: boutique_pally<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:35:23pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#307 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 1281512400(wellyngton_alane)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 80 <br>
+<br>
+Ref Profil: boutique_pally (id: 50819 | type: 0)<br>
+<br>
+Ref Profil: boutique_pally<br>
+Nodes: 1 <br>
+Profil name: anavaleriacosta1 FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 1 | unfollows: 1 <br><br>_________ELAPSED TIME (119): <br>
+Client: 29365 <br>
+<br>
+nRef Profil: praia-de-boa-viagem<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:35:34pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#522 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 1532592683(santanaaa10)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 147 <br>
+<br>
+Ref Profil: praia-de-boa-viagem (id: 51656 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: vi_marinho NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: praia-de-boa-viagem (id: 51656 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: vi_marinho NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: praia-de-boa-viagem (id: 51656 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: vi_marinho NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: praia-de-boa-viagem (id: 51656 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: vi_marinho NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: praia-de-boa-viagem (id: 51656 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: vi_marinho NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: praia-de-boa-viagem (id: 51656 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: vi_marinho NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: praia-de-boa-viagem (id: 51656 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: vi_marinho NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 1 <br><br>
+Client: 30748 <br>
+<br>
+nRef Profil: festas<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:36:08pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 0 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>_________ELAPSED TIME (118): <br>
+Client: 30070 <br>
+<br>
+nRef Profil: belo-horizonte-brazil<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:36:11pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#179 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 8747263501(deleedelaconfeitaria)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 39 <br>
+<br>
+Ref Profil: belo-horizonte-brazil (id: 50854 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: mylzzik FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 1 | unfollows: 1 <br><br>_________ELAPSED TIME (114): <br>
+Client: 29253 <br>
+<br>
+nRef Profil: yoo2rio<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:36:30pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#163 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 366743329(diogomarquesb)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 117 <br>
+<br>
+Ref Profil: yoo2rio (id: 45872 | type: 0)<br>
+<br>
+Ref Profil: yoo2rio<br>
+Nodes: 1 <br>
+Profil name: raquelalmeida955 FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 1 | unfollows: 1 <br><br>_________ELAPSED TIME (110): <br>
+Client: 27750 <br>
+<br>
+nRef Profil: gabrielapugliesi<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:36:46pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 21 <br>
+<br>
+Ref Profil: gabrielapugliesi (id: 43809 | type: 0)<br>
+<br>
+Ref Profil: gabrielapugliesi<br>
+array(0) {
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@158.115.228.147:21252' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%2229797722%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=Wt3l4QABAAFm82M50ashiNJhOZB0; sessionid=IGSC7d36af0fbda7e1c45b6fbeb886fe2098490045097586948a12e118937af3c8e9%3Aqoug1ANUtwjNn75oPUw1xS17ziEF2WGo%3A%7B%22_auth_user_id%22%3A216398199%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A1%2C%22_token_ver%22%3A2%2C%22_token%22%3A%22216398199%3AxM7ZbxzZiVTkTLORO7wRARGI2fMXNDtL%3A78b4b46041be34d26dfd2e03283ce92cd047c11737297bf17a42b1183ec73bf6%22%2C%22last_refreshed%22%3A1539241951.6777544022%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=GZvDQaJ04hI2kPWMojAfbUcu7zu6wpyb; ds_user_id=216398199' -H 'X-CSRFToken: GZvDQaJ04hI2kPWMojAfbUcu7zu6wpyb' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed <br>
+ Empty response getting followers from this profile... <br>
+NULL
+Not error code found!<br>
+ Client (id: 27750) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>
+Client: 29037 <br>
+<br>
+nRef Profil: daylipadron<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:36:48pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 471 <br>
+<br>
+Ref Profil: daylipadron (id: 49631 | type: 0)<br>
+<br>
+Ref Profil: daylipadron<br>
+array(1) {
+  [0]=>
+  string(45) "{"message": "rate limited", "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@64.44.63.127:21290' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%222023444583%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=W9HGpQAEAAGjFaGIt-Mx1kyb3RZ7; sessionid=3445996566%3A6zpgqe4UUW9O4P%3A8; s_network=; ig_pr=1; ig_vw=1855; csrftoken=tV9HBoK5g2AYiSQJ1o7A58DepjD1DKqa; ds_user_id=3445996566' -H 'X-CSRFToken: tV9HBoK5g2AYiSQJ1o7A58DepjD1DKqa' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed object(stdClass)#682 (2) {
+  ["message"]=>
+  string(12) "rate limited"
+  ["status"]=>
+  string(4) "fail"
+}
+Not message found!<br>
+ Client (id: 29037) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>_________ELAPSED TIME (117): <br>
+Client: 31908 <br>
+<br>
+nRef Profil: sao-francisco-niteroi<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:36:53pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 20 <br>
+<br>
+Ref Profil: sao-francisco-niteroi (id: 52588 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: alessandrasoarez NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: sao-francisco-niteroi (id: 52588 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: alessandrasoarez NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: sao-francisco-niteroi (id: 52588 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: alessandrasoarez NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: sao-francisco-niteroi (id: 52588 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: alessandrasoarez NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: sao-francisco-niteroi (id: 52588 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: alessandrasoarez NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: sao-francisco-niteroi (id: 52588 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: alessandrasoarez NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: sao-francisco-niteroi (id: 52588 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: alessandrasoarez NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>_________ELAPSED TIME (108): <br>
+Client: 30272 <br>
+<br>
+nRef Profil: musculacao<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:37:28pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#559 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 8748492943(laridestruidora)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 39 <br>
+<br>
+Ref Profil: musculacao (id: 48152 | type: 2)<br>
+Nodes: 5 <br>
+Profil name: e1assessoriaesportiva NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+Profil name: aleellen FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 1 | unfollows: 1 <br><br>_________ELAPSED TIME (117): <br>
+Client: 14256 <br>
+<br>
+nRef Profil: anaelisasalinas<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:37:54pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 16 <br>
+<br>
+Ref Profil: anaelisasalinas (id: 17427 | type: 0)<br>
+<br>
+Ref Profil: anaelisasalinas<br>
+array(1) {
+  [0]=>
+  string(45) "{"message": "rate limited", "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@172.84.73.213:21287' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%22273371495%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=W8bHpgAEAAEq1BzK9E3rfgmF0Gbp; sessionid=IGSCc24d45e3f47bec8522b59806b72bdbe53555c87fbf9bc262c4c4fa468e83889f%3ADaKta2nCRyqsM0SnbV6pRFQRCDwVH0a9%3A%7B%22_auth_user_id%22%3A203213197%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%22203213197%3Au7seDzPK0lrgta6Mm0Q7NLMxK6dVA2vY%3A753edd100c46b737a1e6aa36a8374c86a7d58e39ff0e5bf0d7c97952b098ec12%22%2C%22last_refreshed%22%3A1539754310.1908893585%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=NXHYWwrsnWFNRPQN7Kyi8SE1gl9kUuIj; ds_user_id=203213197' -H 'X-CSRFToken: NXHYWwrsnWFNRPQN7Kyi8SE1gl9kUuIj' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed object(stdClass)#145 (2) {
+  ["message"]=>
+  string(12) "rate limited"
+  ["status"]=>
+  string(4) "fail"
+}
+Not message found!<br>
+ Client (id: 14256) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>_________ELAPSED TIME (114): <br>
+Client: 31556 <br>
+<br>
+nRef Profil: luiza.gcarvalho<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:38:02pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#543 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 2409512707(willian_lachini)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 50 <br>
+<br>
+Ref Profil: luiza.gcarvalho (id: 51219 | type: 0)<br>
+<br>
+Ref Profil: luiza.gcarvalho<br>
+array(1) {
+  [0]=>
+  string(45) "{"message": "rate limited", "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@207.188.155.18:21316' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%22215659689%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=W7-KHAAEAAGGY2iSWwLlQVXPfBYE; sessionid=IGSC1c071cc31772c779225c9a1daf67e0c2cf62d1653d61f1537ab9a16afa932303%3Aem44SL61hTc5foYipqDF02rzDWBB0WVP%3A%7B%22_auth_user_id%22%3A571990089%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%22571990089%3AlmAx2u4VolTTK1xFAIZ6rYHdCWI6ZpsS%3A60914bba5173398170bc75aa1addf5a4de62b80412ed92b7bdd55b45d318e91d%22%2C%22last_refreshed%22%3A1539279462.7784371376%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=Jc7QrXgCbNQoDLpFykZLktXBCVgl9JzO; ds_user_id=571990089' -H 'X-CSRFToken: Jc7QrXgCbNQoDLpFykZLktXBCVgl9JzO' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed object(stdClass)#44 (2) {
+  ["message"]=>
+  string(12) "rate limited"
+  ["status"]=>
+  string(4) "fail"
+}
+Not message found!<br>
+ Client (id: 31556) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 1 <br><br>_________ELAPSED TIME (113): <br>
+Client: 28414 <br>
+<br>
+nRef Profil: lalanoleto<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:38:12pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#674 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 1548557944(actorkjh)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 51 <br>
+<br>
+Ref Profil: lalanoleto (id: 51382 | type: 0)<br>
+<br>
+Ref Profil: lalanoleto<br>
+Nodes: 1 <br>
+Profil name: rannarillory FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 1 | unfollows: 1 <br><br>
+Client: 17544 <br>
+<br>
+nRef Profil: davidbrazil<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:38:20pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#348 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 3196437934(fabiojorgebg)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 42 <br>
+<br>
+Ref Profil: davidbrazil (id: 49431 | type: 0)<br>
+<br>
+Ref Profil: davidbrazil<br>
+Nodes: 1 <br>
+Profil name: lucianamccadden7777 FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 1 | unfollows: 1 <br><br>_________ELAPSED TIME (117): <br>
+Client: 29253 <br>
+<br>
+nRef Profil: fasano<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:38:35pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 71 <br>
+<br>
+Ref Profil: fasano (id: 45871 | type: 0)<br>
+<br>
+Ref Profil: fasano<br>
+Nodes: 1 <br>
+Profil name: digirolamocereali FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 1 | unfollows: 0 <br><br>_________ELAPSED TIME (101): <br>
+Client: 29138 <br>
+<br>
+nRef Profil: aquitembistekcosteira<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:38:58pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 165 <br>
+<br>
+Ref Profil: aquitembistekcosteira (id: 51686 | type: 0)<br>
+<br>
+Ref Profil: aquitembistekcosteira<br>
+Nodes: 1 <br>
+Profil name: zeredovoss FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 1 | unfollows: 0 <br><br>_________ELAPSED TIME (112): <br>
+Client: 31908 <br>
+<br>
+nRef Profil: plaza-shopping-niteroi<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:39:16pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 19 <br>
+<br>
+Ref Profil: plaza-shopping-niteroi (id: 52570 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: studioanapaulagueiros NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: plaza-shopping-niteroi (id: 52570 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: studioanapaulagueiros NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: plaza-shopping-niteroi (id: 52570 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: studioanapaulagueiros NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: plaza-shopping-niteroi (id: 52570 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: studioanapaulagueiros NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: plaza-shopping-niteroi (id: 52570 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: studioanapaulagueiros NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: plaza-shopping-niteroi (id: 52570 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: studioanapaulagueiros NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: plaza-shopping-niteroi (id: 52570 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: studioanapaulagueiros NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>_________ELAPSED TIME (112): <br>
+Client: 59 <br>
+<br>
+nRef Profil: jairmessiasbolsonaro<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:39:46pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#433 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 193676834(vivibento)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 26 <br>
+<br>
+Ref Profil: jairmessiasbolsonaro (id: 49375 | type: 0)<br>
+<br>
+Ref Profil: jairmessiasbolsonaro<br>
+array(1) {
+  [0]=>
+  string(45) "{"message": "rate limited", "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@64.44.63.127:21290' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%22324756395%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=WtlMoQABAAHZAlviRrBwRMd8ynet; sessionid=IGSCfe2b437e4340dc74135f2334e06568b917b33b6bcd291992f9df3a91268e20c6%3AYBDo636pauqKH9rZ56kRvj9Eu8NpdYQV%3A%7B%22_auth_user_id%22%3A204662017%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A1%2C%22_token_ver%22%3A2%2C%22_token%22%3A%22204662017%3AUH8hRY2fa6eCPK0GzIBdfqfw6IZN9Nu8%3Ad1338b1723d42d2994f350d9797106eb6c4eff00d9cb319308f664dac7991862%22%2C%22last_refreshed%22%3A1540450817.0670025349%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=wMUoHymANrIgNvQjNMMDu7pitwkdIOyF; ds_user_id=204662017' -H 'X-CSRFToken: wMUoHymANrIgNvQjNMMDu7pitwkdIOyF' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed object(stdClass)#515 (2) {
+  ["message"]=>
+  string(12) "rate limited"
+  ["status"]=>
+  string(4) "fail"
+}
+Not message found!<br>
+ Client (id: 59) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 1 <br><br>
+Client: 11331 <br>
+<br>
+nRef Profil: giovannagissoni<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:39:51pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#203 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 8739175676(basiliodaise)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 100 <br>
+<br>
+Ref Profil: giovannagissoni (id: 52282 | type: 0)<br>
+<br>
+Ref Profil: giovannagissoni<br>
+Nodes: 1 <br>
+Profil name: cristinnajuh FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 1 | unfollows: 1 <br><br>
+Client: 20818 <br>
+<br>
+nRef Profil: barbarabozan<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:40:02pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 0 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>
+Client: 19923 <br>
+<br>
+nRef Profil: robertamichele<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:40:03pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 0 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>
+Client: 27559 <br>
+<br>
+nRef Profil: estetica<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:40:03pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 0 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>_________ELAPSED TIME (117): <br>
+Client: 29788 <br>
+<br>
+nRef Profil: joserobertomarques<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:40:06pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#214 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 326560750(natidoring)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 22 <br>
+<br>
+Ref Profil: joserobertomarques (id: 50304 | type: 0)<br>
+<br>
+Ref Profil: joserobertomarques<br>
+array(1) {
+  [0]=>
+  string(45) "{"message": "rate limited", "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@207.188.155.18:21316' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%22525787799%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=W0bymAABAAEJza9E-U2sl947yoY-; sessionid=IGSCa146fce215dc8b80ccf460f77c14a2d9dc53a4bf594a42c2195a06f620044399%3AJoLhrJ8XiwCGy2rIVztk4F9v4QfdFLxd%3A%7B%22_auth_user_id%22%3A8163351541%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A1%2C%22_token_ver%22%3A2%2C%22_token%22%3A%228163351541%3Ar4LIKARzvi9zLMMjJru6iGRNsYplEnwx%3Af8c145bfacf4f6bbdc7eb211ea3c57d8eeb1fa952da8c745884e23632f45fba3%22%2C%22last_refreshed%22%3A1539156515.0559859276%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=VSa6kmxIA63iPe1ZKWRbQ5Lzy1Tdaed9; ds_user_id=8163351541' -H 'X-CSRFToken: VSa6kmxIA63iPe1ZKWRbQ5Lzy1Tdaed9' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed object(stdClass)#678 (2) {
+  ["message"]=>
+  string(12) "rate limited"
+  ["status"]=>
+  string(4) "fail"
+}
+Not message found!<br>
+ Client (id: 29788) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 1 <br><br>_________ELAPSED TIME (109): <br>
+Client: 28022 <br>
+<br>
+nRef Profil: douglasbrose<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:40:21pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#366 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 4922699332(joaomourateam)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 6 <br>
+<br>
+Ref Profil: douglasbrose (id: 43975 | type: 0)<br>
+<br>
+Ref Profil: douglasbrose<br>
+array(1) {
+  [0]=>
+  string(45) "{"message": "rate limited", "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@172.84.87.200:21254' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%2252822442%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=WuazngABAAEs-fToQj1lUTiqaq57; sessionid=IGSC1973dab1fef5d5f9ab8e53f1c8209525a97e5eae38ab2c3a75579bbeac560d0d%3ApGtQoqBpfxlFsMMcCqF7zWDzuc4TLzla%3A%7B%22_auth_user_id%22%3A4355650531%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A1%2C%22_token_ver%22%3A2%2C%22_token%22%3A%224355650531%3Ag5ixPzbOqPJCgFf6Dmt8FVyvMcSqLCk9%3A6053c51e910352dfb0e61298cdbd58743aef34004e9e20de28665b154254dc17%22%2C%22last_refreshed%22%3A1539242005.1131968498%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=OJYGsBga5XjSyOAs6ooVUwM2u1QskjzX; ds_user_id=4355650531' -H 'X-CSRFToken: OJYGsBga5XjSyOAs6ooVUwM2u1QskjzX' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed object(stdClass)#432 (2) {
+  ["message"]=>
+  string(12) "rate limited"
+  ["status"]=>
+  string(4) "fail"
+}
+Not message found!<br>
+ Client (id: 28022) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 1 <br><br>_________ELAPSED TIME (118): <br>
+Client: 31580 <br>
+<br>
+nRef Profil: quadrovivo.jardimvertical<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:40:27pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 39 <br>
+<br>
+Ref Profil: quadrovivo.jardimvertical (id: 51420 | type: 0)<br>
+<br>
+Ref Profil: quadrovivo.jardimvertical<br>
+array(1) {
+  [0]=>
+  string(45) "{"message": "rate limited", "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@64.44.63.127:21290' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%224557119895%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=W8aKUQAEAAFG5nbjt8V1xGP9X5UL; sessionid=2074530637%3APOGbmEnwcXYu1r%3A3; s_network=; ig_pr=1; ig_vw=1855; csrftoken=DqLOemHzrkRaGflNLwmS3Zva6PDBwqYu; ds_user_id=2074530637' -H 'X-CSRFToken: DqLOemHzrkRaGflNLwmS3Zva6PDBwqYu' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed object(stdClass)#118 (2) {
+  ["message"]=>
+  string(12) "rate limited"
+  ["status"]=>
+  string(4) "fail"
+}
+Not message found!<br>
+ Client (id: 31580) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>_________ELAPSED TIME (117): <br>
+Client: 17544 <br>
+<br>
+nRef Profil: sbtonline<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:40:32pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#274 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 247983852(edneimilton)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 37 <br>
+<br>
+Ref Profil: sbtonline (id: 51641 | type: 0)<br>
+<br>
+Ref Profil: sbtonline<br>
+Nodes: 1 <br>
+Profil name: julyanarodrigues2011 FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 1 | unfollows: 1 <br><br>_________ELAPSED TIME (115): <br>
+Client: 27750 <br>
+<br>
+nRef Profil: neymarjr<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:40:51pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 21 <br>
+<br>
+Ref Profil: neymarjr (id: 40377 | type: 0)<br>
+<br>
+Ref Profil: neymarjr<br>
+array(0) {
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@158.115.228.147:21252' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%2226669533%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=Wt3l4QABAAFm82M50ashiNJhOZB0; sessionid=IGSC7d36af0fbda7e1c45b6fbeb886fe2098490045097586948a12e118937af3c8e9%3Aqoug1ANUtwjNn75oPUw1xS17ziEF2WGo%3A%7B%22_auth_user_id%22%3A216398199%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A1%2C%22_token_ver%22%3A2%2C%22_token%22%3A%22216398199%3AxM7ZbxzZiVTkTLORO7wRARGI2fMXNDtL%3A78b4b46041be34d26dfd2e03283ce92cd047c11737297bf17a42b1183ec73bf6%22%2C%22last_refreshed%22%3A1539241951.6777544022%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=GZvDQaJ04hI2kPWMojAfbUcu7zu6wpyb; ds_user_id=216398199' -H 'X-CSRFToken: GZvDQaJ04hI2kPWMojAfbUcu7zu6wpyb' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed <br>
+ Empty response getting followers from this profile... <br>
+NULL
+Not error code found!<br>
+ Client (id: 27750) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>_________ELAPSED TIME (109): <br>
+Client: 18991 <br>
+<br>
+nRef Profil: fl0ripamilgrau<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:41:04pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 125 <br>
+<br>
+Ref Profil: fl0ripamilgrau (id: 27998 | type: 0)<br>
+<br>
+Ref Profil: fl0ripamilgrau<br>
+array(0) {
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@172.84.87.200:21254' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%22465949758%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=W0Np-wAEAAFSQqpO_zNZQNWgOufz; sessionid=IGSCf23e527b2a3a06e4454b06aa2a294e59c0a2fec43ae8db56e6c4039eae790d26%3AZPwvMACZI0MzKM3z3mYgJmzm7JSvCUxC%3A%7B%22_auth_user_id%22%3A3493677222%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%223493677222%3AeqlGQUXS3tpAY6O6o3dRErIh2zUlvZQQ%3A6e2a1ecc9819786009f588ccf1db5cf74275f737bcf8584c68c54d6211400322%22%2C%22last_refreshed%22%3A1531144714.9990868568%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=BZVWRZPP7WrTwYI8bP3b5xhLVDdamHiI; ds_user_id=3493677222' -H 'X-CSRFToken: BZVWRZPP7WrTwYI8bP3b5xhLVDdamHiI' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed <br>
+ Empty response getting followers from this profile... <br>
+NULL
+Not error code found!<br>
+ Client (id: 18991) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>_________ELAPSED TIME (113): <br>
+Client: 27262 <br>
+<br>
+nRef Profil: detox<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:41:13pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#548 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 351570114(makeup.curitiba)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 38 <br>
+<br>
+Ref Profil: detox (id: 51795 | type: 2)<br>
+Nodes: 6 <br>
+Profil name: trudolly.rf FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 1 | unfollows: 1 <br><br>_________ELAPSED TIME (100): <br>
+Client: 59 <br>
+<br>
+nRef Profil: joicehasselmann<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:41:51pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#17 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 5733516569(naliasantosviana)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 26 <br>
+<br>
+Ref Profil: joicehasselmann (id: 49377 | type: 0)<br>
+<br>
+Ref Profil: joicehasselmann<br>
+array(1) {
+  [0]=>
+  string(45) "{"message": "rate limited", "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@64.44.63.127:21290' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%22516101842%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=WtlMoQABAAHZAlviRrBwRMd8ynet; sessionid=IGSCfe2b437e4340dc74135f2334e06568b917b33b6bcd291992f9df3a91268e20c6%3AYBDo636pauqKH9rZ56kRvj9Eu8NpdYQV%3A%7B%22_auth_user_id%22%3A204662017%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A1%2C%22_token_ver%22%3A2%2C%22_token%22%3A%22204662017%3AUH8hRY2fa6eCPK0GzIBdfqfw6IZN9Nu8%3Ad1338b1723d42d2994f350d9797106eb6c4eff00d9cb319308f664dac7991862%22%2C%22last_refreshed%22%3A1540450817.0670025349%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=wMUoHymANrIgNvQjNMMDu7pitwkdIOyF; ds_user_id=204662017' -H 'X-CSRFToken: wMUoHymANrIgNvQjNMMDu7pitwkdIOyF' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed object(stdClass)#192 (2) {
+  ["message"]=>
+  string(12) "rate limited"
+  ["status"]=>
+  string(4) "fail"
+}
+Not message found!<br>
+ Client (id: 59) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 1 <br><br>
+Client: 28458 <br>
+<br>
+nRef Profil: milk_japon<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:41:56pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 11 <br>
+<br>
+Ref Profil: milk_japon (id: 43089 | type: 0)<br>
+<br>
+Ref Profil: milk_japon<br>
+array(1) {
+  [0]=>
+  string(45) "{"message": "rate limited", "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@158.115.228.147:21252' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%221726226792%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=WtNqxgABAAGoxbCJl6158bjsVl2I; sessionid=IGSC5253e59e8305c8a1f37defee863a8937b9e5d861889cbdc6f5c95c2339cb4dbe%3AintuzjfZvUSOfY3lPGOKRMhWIrxeUkru%3A%7B%22_auth_user_id%22%3A1196357596%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A1%2C%22_token_ver%22%3A2%2C%22_token%22%3A%221196357596%3AJpDoL2mlnNgtEVWqC820ZHKWxFqEajqf%3A50268c08b5a2493c47b9fb9d4519786fc58ce910f25e9eefb08559c9efb26689%22%2C%22last_refreshed%22%3A1539156089.5614116192%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=Q5GgvYbT2SLijZHcy65sIT2oxH44O4X2; ds_user_id=1196357596' -H 'X-CSRFToken: Q5GgvYbT2SLijZHcy65sIT2oxH44O4X2' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed object(stdClass)#113 (2) {
+  ["message"]=>
+  string(12) "rate limited"
+  ["status"]=>
+  string(4) "fail"
+}
+Not message found!<br>
+ Client (id: 28458) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>_________ELAPSED TIME (118): <br>
+Client: 31824 <br>
+<br>
+nRef Profil: pescaesportiva<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:42:00pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#381 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 8034356985(universo_poc)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 40 <br>
+<br>
+Ref Profil: pescaesportiva (id: 51936 | type: 2)<br>
+Nodes: 6 <br>
+Profil name: pesqueirodojoca NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+Profil name: fernandopaesguiadepesca NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+Profil name: shomano_fishing NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+Profil name: pesquepaguedo.dim FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 1 | unfollows: 1 <br><br>_________ELAPSED TIME (117): <br>
+Client: 17556 <br>
+<br>
+nRef Profil: virtual_barata<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:42:21pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 15 <br>
+<br>
+Ref Profil: virtual_barata (id: 51895 | type: 0)<br>
+<br>
+Ref Profil: virtual_barata<br>
+array(1) {
+  [0]=>
+  string(45) "{"message": "rate limited", "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@207.188.155.18:21316' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%226692558940%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=W8DvBgAEAAGFu0sXxKpy8vixuN1-; sessionid=IGSC4809c142eba08072e0c50e347069c5263946a6d42a696d9c2bf0c29407e41650%3A12n3OspYZ7AEAPTRmyVebwWTvgMcTKhv%3A%7B%22_auth_user_id%22%3A285266555%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%22285266555%3AUvpNNeODmoOutuJzRCjufupGVw0aKjCv%3A9152bcfe95de15b8d8ca70504d2e3ee2e1b0bdce700a94d4f5901011b5c15c3f%22%2C%22last_refreshed%22%3A1539370778.3570654392%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=l3tbvwjQwXKMApD0Qmm34gRnYVRzHOpR; ds_user_id=285266555' -H 'X-CSRFToken: l3tbvwjQwXKMApD0Qmm34gRnYVRzHOpR' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed object(stdClass)#625 (2) {
+  ["message"]=>
+  string(12) "rate limited"
+  ["status"]=>
+  string(4) "fail"
+}
+Not message found!<br>
+ Client (id: 17556) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>_________ELAPSED TIME (114): <br>
+Client: 31580 <br>
+<br>
+nRef Profil: vertia_green_design<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:42:29pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 43 <br>
+<br>
+Ref Profil: vertia_green_design (id: 51421 | type: 0)<br>
+<br>
+Ref Profil: vertia_green_design<br>
+array(1) {
+  [0]=>
+  string(45) "{"message": "rate limited", "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@64.44.63.127:21290' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%221335012900%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=W8aKUQAEAAFG5nbjt8V1xGP9X5UL; sessionid=2074530637%3APOGbmEnwcXYu1r%3A3; s_network=; ig_pr=1; ig_vw=1855; csrftoken=DqLOemHzrkRaGflNLwmS3Zva6PDBwqYu; ds_user_id=2074530637' -H 'X-CSRFToken: DqLOemHzrkRaGflNLwmS3Zva6PDBwqYu' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed object(stdClass)#418 (2) {
+  ["message"]=>
+  string(12) "rate limited"
+  ["status"]=>
+  string(4) "fail"
+}
+Not message found!<br>
+ Client (id: 31580) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>_________ELAPSED TIME (106): <br>
+Client: 17544 <br>
+<br>
+nRef Profil: canalgnt<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:42:45pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#330 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 6117133426(sbampatofff)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 37 <br>
+<br>
+Ref Profil: canalgnt (id: 51642 | type: 0)<br>
+<br>
+Ref Profil: canalgnt<br>
+Nodes: 1 <br>
+Profil name: reginaldo_oficiial FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 1 | unfollows: 1 <br><br>_________ELAPSED TIME (111): <br>
+Client: 18991 <br>
+<br>
+nRef Profil: ingressorapidooficial<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:43:06pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 125 <br>
+<br>
+Ref Profil: ingressorapidooficial (id: 27999 | type: 0)<br>
+<br>
+Ref Profil: ingressorapidooficial<br>
+array(0) {
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@172.84.87.200:21254' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%221107022049%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=W0Np-wAEAAFSQqpO_zNZQNWgOufz; sessionid=IGSCf23e527b2a3a06e4454b06aa2a294e59c0a2fec43ae8db56e6c4039eae790d26%3AZPwvMACZI0MzKM3z3mYgJmzm7JSvCUxC%3A%7B%22_auth_user_id%22%3A3493677222%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%223493677222%3AeqlGQUXS3tpAY6O6o3dRErIh2zUlvZQQ%3A6e2a1ecc9819786009f588ccf1db5cf74275f737bcf8584c68c54d6211400322%22%2C%22last_refreshed%22%3A1531144714.9990868568%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=BZVWRZPP7WrTwYI8bP3b5xhLVDdamHiI; ds_user_id=3493677222' -H 'X-CSRFToken: BZVWRZPP7WrTwYI8bP3b5xhLVDdamHiI' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed <br>
+ Empty response getting followers from this profile... <br>
+NULL
+Not error code found!<br>
+ Client (id: 18991) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>_________ELAPSED TIME (107): <br>
+Client: 20565 <br>
+<br>
+nRef Profil: cutecat<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:43:21pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#432 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 320592214(paaticirilo)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 168 <br>
+<br>
+Ref Profil: cutecat (id: 48148 | type: 2)<br>
+Nodes: 6 <br>
+Profil name: catplaneta NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+Profil name: murmulet_cattery FOLLOWING <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 1 | unfollows: 1 <br><br>_________ELAPSED TIME (102): <br>
+Client: 28458 <br>
+<br>
+nRef Profil: iloveplaytime<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:43:58pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#284 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 272313095(katay_kat)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 18 <br>
+<br>
+Ref Profil: iloveplaytime (id: 43090 | type: 0)<br>
+<br>
+Ref Profil: iloveplaytime<br>
+array(1) {
+  [0]=>
+  string(45) "{"message": "rate limited", "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@158.115.228.147:21252' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%22185212983%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=WtNqxgABAAGoxbCJl6158bjsVl2I; sessionid=IGSC5253e59e8305c8a1f37defee863a8937b9e5d861889cbdc6f5c95c2339cb4dbe%3AintuzjfZvUSOfY3lPGOKRMhWIrxeUkru%3A%7B%22_auth_user_id%22%3A1196357596%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A1%2C%22_token_ver%22%3A2%2C%22_token%22%3A%221196357596%3AJpDoL2mlnNgtEVWqC820ZHKWxFqEajqf%3A50268c08b5a2493c47b9fb9d4519786fc58ce910f25e9eefb08559c9efb26689%22%2C%22last_refreshed%22%3A1539156089.5614116192%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=Q5GgvYbT2SLijZHcy65sIT2oxH44O4X2; ds_user_id=1196357596' -H 'X-CSRFToken: Q5GgvYbT2SLijZHcy65sIT2oxH44O4X2' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed object(stdClass)#608 (2) {
+  ["message"]=>
+  string(12) "rate limited"
+  ["status"]=>
+  string(4) "fail"
+}
+Not message found!<br>
+ Client (id: 28458) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 1 <br><br>_________ELAPSED TIME (117): <br>
+Client: 14256 <br>
+<br>
+nRef Profil: marianabritocakes<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:44:06pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 20 <br>
+<br>
+Ref Profil: marianabritocakes (id: 17263 | type: 0)<br>
+<br>
+Ref Profil: marianabritocakes<br>
+array(1) {
+  [0]=>
+  string(45) "{"message": "rate limited", "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@172.84.73.213:21287' 'https://www.instagram.com/graphql/query/?query_hash=37479f2b8209594dde7facb0d904896a&variables=%7B%22id%22%3A%222218760823%22%2C%22first%22%3A1%7D' -H 'Cookie: mid=W8bHpgAEAAEq1BzK9E3rfgmF0Gbp; sessionid=IGSCc24d45e3f47bec8522b59806b72bdbe53555c87fbf9bc262c4c4fa468e83889f%3ADaKta2nCRyqsM0SnbV6pRFQRCDwVH0a9%3A%7B%22_auth_user_id%22%3A203213197%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%22203213197%3Au7seDzPK0lrgta6Mm0Q7NLMxK6dVA2vY%3A753edd100c46b737a1e6aa36a8374c86a7d58e39ff0e5bf0d7c97952b098ec12%22%2C%22last_refreshed%22%3A1539754310.1908893585%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=NXHYWwrsnWFNRPQN7Kyi8SE1gl9kUuIj; ds_user_id=203213197' -H 'X-CSRFToken: NXHYWwrsnWFNRPQN7Kyi8SE1gl9kUuIj' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed object(stdClass)#781 (2) {
+  ["message"]=>
+  string(12) "rate limited"
+  ["status"]=>
+  string(4) "fail"
+}
+Not message found!<br>
+ Client (id: 14256) not error code found (-1)!!! <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>_________ELAPSED TIME (117): <br>
+Client: 30748 <br>
+<br>
+nRef Profil: festas<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:44:11pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 1): 0 <br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>_________ELAPSED TIME (113): <br>
+Client: 31824 <br>
+<br>
+nRef Profil: sao-luiz-ma<br>
+ Count: 1 Hasnext: 1 - 2018-10-30 02:44:18pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+object(stdClass)#788 (1) {
+  ["status"]=>
+  string(2) "ok"
+}
+Followed ID: 1434587252(tainafacanha)<br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 44 <br>
+<br>
+Ref Profil: sao-luiz-ma (id: 51935 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: maygentile NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+<br>
+Ref Profil: sao-luiz-ma (id: 51935 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: maygentile NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+<br>
+Ref Profil: sao-luiz-ma (id: 51935 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: maygentile NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+<br>
+Ref Profil: sao-luiz-ma (id: 51935 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: maygentile NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+<br>
+Ref Profil: sao-luiz-ma (id: 51935 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: maygentile NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+<br>
+Ref Profil: sao-luiz-ma (id: 51935 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: maygentile NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+<br>
+Ref Profil: sao-luiz-ma (id: 51935 | type: 1)<br>
+Nodes: 1 <br>
+Profil name: maygentile NOT FOLLOWING: followed_in_db(1) following_me() valid_profile(1)<br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 1 <br><br>_________ELAPSED TIME (115): <br>
+Client: 29253 <br>
+<br>
+nRef Profil: yoo2rio<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:44:54pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 116 <br>
+<br>
+Ref Profil: yoo2rio (id: 45872 | type: 0)<br>
+<br>
+Ref Profil: yoo2rio<br>
+Nodes: 1 <br>
+Profil name: raquelalmeida955 NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: yoo2rio (id: 45872 | type: 0)<br>
+<br>
+Ref Profil: yoo2rio<br>
+Nodes: 1 <br>
+Profil name: raquelalmeida955 NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: yoo2rio (id: 45872 | type: 0)<br>
+<br>
+Ref Profil: yoo2rio<br>
+Nodes: 1 <br>
+Profil name: raquelalmeida955 NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: yoo2rio (id: 45872 | type: 0)<br>
+<br>
+Ref Profil: yoo2rio<br>
+Nodes: 1 <br>
+Profil name: raquelalmeida955 NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: yoo2rio (id: 45872 | type: 0)<br>
+<br>
+Ref Profil: yoo2rio<br>
+Nodes: 1 <br>
+Profil name: raquelalmeida955 NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: yoo2rio (id: 45872 | type: 0)<br>
+<br>
+Ref Profil: yoo2rio<br>
+Nodes: 1 <br>
+Profil name: raquelalmeida955 NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br>
+Ref Profil: yoo2rio (id: 45872 | type: 0)<br>
+<br>
+Ref Profil: yoo2rio<br>
+Nodes: 1 <br>
+Profil name: raquelalmeida955 NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()<br>
+<br><br>
+
+________________________________________________<br><br>
+
+<br>Update daily_work! follows: 0 | unfollows: 0 <br><br>_________ELAPSED TIME (117): <br>
+Client: 21879 <br>
+<br>
+nRef Profil: sp<br>
+ Count: 0 Hasnext: 0 - 2018-10-30 02:45:09pm<br>
+ make_insta_friendships_command UNFOLLOW <br>
+<br>
+make_insta_friendships_command FOLLOW (like firsts = 0): 33 <br>
+<br>
+Ref Profil: sp (id: 52248 | type: 2)<br>
+array(1) {
+  [0]=>
+  string(45) "{"message": "rate limited", "status": "fail"}"
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@64.44.63.127:21290' 'https://www.instagram.com/graphql/query/?query_hash=ded47faa9a1aaded10161a2ff32abb6b&variables=%7B%22tag_name%22%3A%22sp%22%2C%22first%22%3A2%7D' -H 'Cookie: mid=W0eZdAABAAGzu4SglJO3k_MgdG6a; sessionid=IGSCdde7b8b16d7ba32cd8b4ca99c30760c676e7f8d82407674b937fb98253727495%3APTQUDprcmgCdt8PdTG2Zt3qmnZO5wRyY%3A%7B%22_auth_user_id%22%3A6108936972%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A1%2C%22_token_ver%22%3A2%2C%22_token%22%3A%226108936972%3ApbwuRasAiOxufVpJgyNZfpYt6jlSEmHu%3A7fa5c9a2441e9ebb921bc814f73038f07f6be0e79bb8f611a2dd2b6a0ee90935%22%2C%22last_refreshed%22%3A1539155574.0633733273%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=M94HNDmNmJeAZGDh5hFRPjAp0lPC61Wm; ds_user_id=6108936972' -H 'X-CSRFToken: M94HNDmNmJeAZGDh5hF
