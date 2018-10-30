@@ -122,10 +122,10 @@ $result = new \stdClass();
 //$res = $Robot->bot_login('alberto_dreyes', 'albertord9');
 //var_dump($res);
 
-/*
+
 $Robot = new \follows\cls\Robot();
-$result = $Robot->bot_login('drrbendoraytes', 'rb280875');
-var_dump($result);*/
+$result = $Robot->bot_login('alberto_test', 'alberto2');
+var_dump($result);
 /*
 $payment = new \Payment();
 $client = new \stdClass();
