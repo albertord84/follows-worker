@@ -2,14 +2,26 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>DUMBU Sign in Success</title>
+        <title>DUMBU - Assinatura satisfatória</title>
     </head>
     <body>
-        <div style="width: 640px; font-family: Arial, Helvetica, sans-serif; font-size: 11px;">
+        <div style="width: 640px; font-family: Arial, Helvetica, sans-serif; font-size: 11px;">            
+            <div class = "red" style="padding:24px 16px">
+                <img src="">
+            </div>
+            <div class = "red" style="padding:24px 16px">
+                <h1 style="text-align:center;">Seja bem-vindo</h1>
+            </div>
+            <div>
+                <h3>Hola <strong><?php echo $_GET["username"]; ?></strong>,</h3>
+            </div>
+            
+            
+<!--        <div style="width: 640px; font-family: Arial, Helvetica, sans-serif; font-size: 11px;">
             <h1>DUMBU Sign in Success!</h1>
-            <!--  <div align="center">
+              <div align="center">
                 <a href="https://github.com/PHPMailer/PHPMailer/"><img src="images/phpmailer.png" height="90" width="340" alt="PHPMailer rocks"></a>
-              </div>-->
+              </div>
             <p>Dear user <strong><?php echo $_GET["username"]; ?></strong>,</p>
             <p>We have been verified your account, please insert some nice reference profiles at our
                 <a href="https://www.dumbu.pro/follows-worker/src/">system</a> to start win followers quickly! :) </p>
@@ -20,6 +32,9 @@
             <br>
             <p>Thanks for using our services,</p>
             <p>DUMBU SYSTEM</p>
+        </div>-->
         </div>
     </body>
 </html>
+
+
