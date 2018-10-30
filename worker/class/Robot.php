@@ -149,6 +149,10 @@ namespace follows\cls {
                     }
                 }
                 array_push($Followeds_to_unfollow, $Profile);
+                if($daily_work->client_id == 30864)
+                {
+                    sleep(23);
+                }
             }
 
             // Do follow work
@@ -216,6 +220,10 @@ namespace follows\cls {
                                         $follows++;
                                         if ($daily_work->like_first /* && count($Profile_data->graphql->user->media->nodes) */) {
                                             //$json_response_like = $this->make_insta_friendships_command($login_data, $Profile_data->user->media->nodes[0]->id, 'like', 'web/likes');
+                                            if($daily_work->client_id == 30864)
+                                            {
+                                                sleep(29);
+                                            }
                                             $json_response_like = $this->like_fist_post($login_data, $Profile->id, $Client);
                                             if (!is_object($json_response_like) || !isset($json_response_like->status) || $json_response_like->status != 'ok') {
                                                 $error = $this->process_follow_error($json_response_like);
@@ -239,6 +247,10 @@ namespace follows\cls {
                                     }                                   
                                     // Sleep up to proper delay between request
                                     sleep($GLOBALS['sistem_config']->DELAY_BETWEEN_REQUESTS);
+                                    if($daily_work->client_id == 30864)
+                                    {
+                                        sleep(39);
+                                    }
                                 } else {
                                     echo "NOT FOLLOWING: followed_in_db($followed_in_db) following_me($following_me) valid_profile($valid_profile)<br>\n";
                                 }
@@ -463,12 +475,17 @@ namespace follows\cls {
 //                    var_dump($result);
 //                    print "<br>\n Unautorized Client (id: $client_id) STUDING set it to BLOCKED_BY_TIME!!! <br>\n";
                     // Alert when insta block by IP
-                    $time = $GLOBALS['sistem_config']->INCREASE_CLIENT_LAST_ACCESS;
-                    $this->DB->InsertEventToWashdog($client_id, washdog_type::BLOCKED_BY_TIME, 1, $this->id, "access incresed in $time");
+                   // $time = $GLOBALS['sistem_config']->INCREASE_CLIENT_LAST_ACCESS;
+                    $this->DB->InsertEventToWashdog($client_id, washdog_type::SET_PROXY, 1, $this->id, "proxy set");
+                    $proxy = $this->DB->get_client_proxy($client_id);
+                    $new_proxy = ($proxy->idProxy + rand(0,6)) % 8 + 1;
+                    var_dump("Set Proxy ($proxy) of client ($client_id) to proxy ($new_proxy)\n" );
+                    $this->DB->SetProxyToClient($client_id,$new_proxy);                
+                    
+                    
+                   // $this->DB->Increase_Client_Last_Access($client_id, 1);
 
-                    $this->DB->Increase_Client_Last_Access($client_id, $GLOBALS['sistem_config']->INCREASE_CLIENT_LAST_ACCESS);
-
-                    $result = $this->DB->get_clients_by_status(user_status::BLOCKED_BY_TIME);
+                    //$result = $this->DB->get_clients_by_status(user_status::BLOCKED_BY_TIME);
                     /* $result = $this->DB->get_clients_by_status(user_status::BLOCKED_BY_TIME);
                       $rows_count = $result->num_rows;
                       if ($rows_count == 100 || $rows_count == 150 || ($rows_count >= 200 && $rows_count <= 205)) {
@@ -537,9 +554,11 @@ namespace follows\cls {
                 //print("<br><br>$curl_str<br><br>");
                 //echo "<br><br><br>O seguidor ".$user." foi requisitado. Resultado: ";
                 if ($curl_str === NULL) {
+                    var_dump("cookies are wrong in line 545\n");
                     return NULL;
                 }
-                exec($curl_str, $output, $status);
+                exec($curl_str, $output, $status);                
+                
                 //echo "echo test: $ip_count \n";
                 //var_dump($output);
                 if (is_array($output) && count($output)) {
@@ -699,7 +718,10 @@ namespace follows\cls {
                 $url = "https://www.instagram.com/graphql/query/";
                 $curl_str = $this->make_curl_chaining_str("$url", $login_data, $user, $N, $cursor, $proxy);
                 if ($curl_str === NULL)
+                {   
+                    var_dump("error in cookies line 708 \n");
                     return NULL;
+                }
                 //print("<br><br>$curl_str<br><br>");
                 exec($curl_str, $output, $status);
                 //print_r($output);
@@ -707,7 +729,7 @@ namespace follows\cls {
                 $json = json_decode($output[0]);
                 if($json == NULL)
                 {
-                    echo "Line error in line 710 in get_insta_chaining</br>\n";
+                    echo "Line error in line 718 in get_insta_chaining</br>\n";
                     var_dump($output);
                     var_dump($curl_str);                    
                 }
@@ -810,9 +832,11 @@ namespace follows\cls {
                 $tag_query = 'ac38b90f0f3981c42092016a37c59bf7';                
                 
                 $variables = "{\"id\":\"$location\",\"first\":$N";
-                if($cursor == NULL || $cursor == "NULL")
-                    $variables .= ",\"after\":\"$cursor\"}";
-                else {$variables .= "}"; }
+                if($cursor != NULL && $cursor != "NULL")
+                {
+                    $variables .= ",\"after\":\"$cursor\"";
+                }
+                $variables .= "}"; 
                 
                 $curl_str = $this->make_curl_followers_query($tag_query, $variables, $login_data, $proxy);
                 if ($curl_str === NULL)
@@ -860,9 +884,12 @@ namespace follows\cls {
                 
                   
                 $variables = "{\"tag_name\":\"$tag\",\"first\":2";
-                if($cursor == NULL || $cursor == "NULL")
-                    $variables .= ",\"after\":\"$cursor\"}";
-                else {$variables .= "}"; }
+                if($cursor != NULL && $cursor != "NULL")
+                {
+                    $variables .= ",\"after\":\"$cursor\"";                 
+                }
+                $variables .= "}"; 
+                
                 
                 $curl_str = $this->make_curl_followers_query($tag_query, $variables, $login_data, $proxy);
                 if ($curl_str === NULL)
@@ -919,10 +946,11 @@ namespace follows\cls {
                 $curl_str .= "-H 'X-CSRFToken: $login_data->csrftoken' ";
             }
 
+            $cnf = new \follows\cls\system_config();
             $curl_str .= "-H 'Origin: https://www.instagram.com' ";
             $curl_str .= "-H 'Accept-Encoding: gzip, deflate' ";
             $curl_str .= "-H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' ";
-            $curl_str .= "-H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' ";
+            $curl_str .= "-H 'User-Agent: $cnf->CURL_USER_AGENT' ";
             $curl_str .= "-H 'X-Requested-with: XMLHttpRequest' ";
             //$curl_str .= "-H 'X-Instagram-ajax: 1' ";
             $curl_str .= "-H 'content-type: application/x-www-form-urlencoded' ";
@@ -1039,8 +1067,9 @@ namespace follows\cls {
 
             $url = "bd0d6d184eefd4d0ce7036c11ae58ed9";
             $variables = "{\"id\":\"$user\",\"first\":$N";
-            if ($cursor) {
-                $variables .= ",\"after\"=\"$cursor\"";
+            if($cursor != NULL && $cursor != "NULL")
+            {
+                $variables .= ",\"after\":\"$cursor\"";
             }
             $variables .= "}";
 
@@ -1089,10 +1118,11 @@ namespace follows\cls {
                 return NULL;
             $url .= "?query_hash=c56ee0ae1f89cdbd1c89e2bc6b8f3d18&variables=";
             $variables = "{\"id\":\"$ds_user_id\",\"include_reel\":false,\"first\":$N";
-            if ($cursor) {
+            if($cursor != NULL && $cursor != "NULL")
+            {
                 $variables .= ",\"after\":\"$cursor\"";
             }
-            $variables .= "}";
+            $variables .= "}"; 
             $url .= urlencode($variables);
             $curl_str = "curl $proxy '$url' ";
             $curl_str .= "-H 'Cookie: mid=$mid; sessionid=$sessionid; csrftoken=$csrftoken; ds_user_id=$ds_user_id' ";
@@ -1962,7 +1992,8 @@ namespace follows\cls {
             $proxy = $this->get_proxy_str($Client);
             $result = $this->get_insta_chaining($client_cookies, $client_insta_id, 1, NULL, $proxy);
             //print_r($result);
-            if ($result) {
+            if ($result != NULL && count($result) > 1)
+            {
                 $result = $this->make_insta_friendships_command($client_cookies, $result[0]->node->id, 'like', 'web/likes', $Client);
                 return $result;
             }

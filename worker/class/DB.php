@@ -417,7 +417,7 @@ namespace follows\cls {
                         . "   OR  (daily_work.to_unfollow  > 0)) "
                         . "   AND (reference_profile.deleted <> TRUE || daily_work.to_unfollow  > 0) "
                         //. "WHERE (now - daily_work.last_access) >= $Elapsed_time_limit "
-                        . "ORDER BY clients.last_access ASC, reference_profile.last_access ASC"
+                        . "ORDER BY clients.last_access ASC, reference_profile.last_access ASC "
                         . "LIMIT 1;";
 
                 $result = mysqli_query($this->connection, $sql);

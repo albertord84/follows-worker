@@ -34,11 +34,19 @@ namespace follows\cls {
             
         }
 
-        function prepare_daily_work($not_mail = false) {
+        function prepare_daily_work($client_id =  NULL, $not_mail = false) {
             // Get Users Info
-            $Clients = (new Client())->get_clients();
-            
-//            $Client = (new Client())->get_client(19546);  Testar, cliente JA
+            $Clients = array();
+            if($client_id == NULL)
+            {
+                $Clients = (new Client())->get_clients();
+            } 
+            else
+            {
+                array_push($Clients, (new Client())->get_client($client_id));
+            }
+//          
+//          $Client = (new Client())->get_client(19546);  Testar, cliente JA
             
             $Client = new Client();
             foreach ($Clients as $Client) { // for each CLient
@@ -348,7 +356,7 @@ namespace follows\cls {
                     $steps++;
                     //$DB = new \follows\cls\DB();
                     //daily work: cookies reference_id to_follow last_access id insta_name insta_id client_id 	insta_follower_cursor 	user_id 	credit_card_number 	credit_card_status_id 	credit_card_cvc 	credit_card_name 	pay_day 	insta_id 	insta_followers_ini 	insta_following id name	login pass email telf role_id status_id	languaje 
-                    echo 'get follow work';
+                    //echo '\nget follow work';
                     if($client_id == NULL)
                     {
                         $daily_work = $this->DB->get_follow_work();
@@ -357,7 +365,7 @@ namespace follows\cls {
                     {
                         $daily_work = $this->DB->get_follow_work_by_client_id($client_id);
                     }
-                    echo 'get follow work done';
+                    //echo 'get follow work done';
                     if ($daily_work) {                       
                         $daily_work->login_data = json_decode($daily_work->cookies);
                         if ($daily_work->login_data != NULL) {
