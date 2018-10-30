@@ -348,4 +348,24 @@ class Login extends CI_Controller {
             $signed['signed_body'], $signed['ig_sig_key_version']);
         return $result;
     }
+
+    private function param(string $param_name) {
+        $input = json_decode(file_get_contents('php://input'), true);
+        return $input[$param_name];
+    }
+
+    public function browser(string $user, string $pass) {
+        $this->load->library('firefox');
+        $resp = json_decode($this->firefox->login($user, $pass), false);
+        if ($resp->authenticated) {
+            return $this->output
+                ->set_status_header(200)
+                ->set_content_type('application/json', 'utf-8')
+                ->set_output($this->firefox->get_cookies());
+        }
+        return $this->output
+            ->set_status_header(500, 'Auth Error')
+            ->set_content_type('application/json', 'utf-8')
+            ->set_output($this->firefox->get_cookies());
+    }
 }
