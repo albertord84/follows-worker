@@ -245,7 +245,8 @@ class Firefox {
             );
             return json_encode([
                 'authenticated' => false,
-                'checkpoint_url' => $challengeData[1]
+                'checkpoint_url' => $challengeData[1],
+                'more_data' => $ret
             ]);
         }
     }
