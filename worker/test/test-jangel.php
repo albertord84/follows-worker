@@ -123,9 +123,15 @@ $result = new \stdClass();
 //var_dump($res);
 
 
-$Robot = new \follows\cls\Robot();
-$result = $Robot->bot_login('alberto_test', 'alberto2');
-var_dump($result);
+//$Robot = new \follows\cls\Robot();
+//$result = $Robot->bot_login('alberto_test', 'alberto2');
+//var_dump($result);
+
+$DB = new \follows\cls\DB();
+$DB->InsertEventToWashdog(30864, \follows\cls\washdog_type::SET_PROXY, 1, 1, "proxy set");
+$proxy = $DB->get_client_proxy(30864);
+$new_proxy = ($proxy->idProxy + rand(0,6)) % 8 + 1;
+var_dump("Set Proxy ($proxy->idProxy) of client ($client_id) to proxy ($new_proxy)\n" );
 /*
 $payment = new \Payment();
 $client = new \stdClass();
