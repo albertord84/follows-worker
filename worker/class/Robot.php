@@ -476,26 +476,24 @@ namespace follows\cls {
 //                    print "<br>\n Unautorized Client (id: $client_id) STUDING set it to BLOCKED_BY_TIME!!! <br>\n";
                     // Alert when insta block by IP
                    // $time = $GLOBALS['sistem_config']->INCREASE_CLIENT_LAST_ACCESS;
-                    
-                    
+                                        
                     // @TODO: Revisar Jose Angel
-                    $this->DB->InsertEventToWashdog($client_id, washdog_type::SET_PROXY, 1, $this->id, "proxy set");
                     $proxy = $this->DB->get_client_proxy($client_id);
-                    $new_proxy = ($proxy->idProxy + rand(0,6)) % 8 + 1;
+                    $new_proxy = ($proxy->idProxy + rand(0,6)) % 8 + 1;                    
+                    $this->DB->InsertEventToWashdog($client_id, washdog_type::SET_PROXY, 1, $this->id, "proxy set from $proxy->idProxy to $new_proxy");
                     var_dump("Set Proxy ($proxy->idProxy) of client ($client_id) to proxy ($new_proxy)\n" );
                     $this->DB->SetProxyToClient($client_id,$new_proxy);                
-                    
-                    
+                                        
                    // $this->DB->Increase_Client_Last_Access($client_id, 1);
 
                     //$result = $this->DB->get_clients_by_status(user_status::BLOCKED_BY_TIME);
-                    /* $result = $this->DB->get_clients_by_status(user_status::BLOCKED_BY_TIME);
+                    /*$result = $this->DB->get_clients_by_status(user_status::BLOCKED_BY_TIME);
                       $rows_count = $result->num_rows;
                       if ($rows_count == 100 || $rows_count == 150 || ($rows_count >= 200 && $rows_count <= 205)) {
                       $Gmail = new Gmail();
                       $Gmail->send_client_login_error("josergm86@gmail.com", "Jose!!!!!!! BLOQUEADOS 1= " . $rows_count, "Jose");
                       $Gmail->send_client_login_error("ruslan.guerra88@gmail.com", "Ruslan!!!!!!! BLOQUEADOS 1= " . $rows_count, "Ruslan");
-                      } */
+                     }*/
                     break;
                 case 8: // "Esta mensagem contém conteúdo que foi bloqueado pelos nossos sistemas de segurança." 
                     $result = $this->DB->delete_daily_work_client($client_id);
@@ -557,7 +555,7 @@ namespace follows\cls {
                 //print("<br><br>$curl_str<br><br>");
                 //echo "<br><br><br>O seguidor ".$user." foi requisitado. Resultado: ";
                 if ($curl_str === NULL) {
-                    var_dump("cookies are wrong in line 545\n");
+                    var_dump("cookies are wrong in line 545 function make_insta_friendships_command\n");
                     return NULL;
                 }
                 exec($curl_str, $output, $status);                
@@ -722,7 +720,7 @@ namespace follows\cls {
                 $curl_str = $this->make_curl_chaining_str("$url", $login_data, $user, $N, $cursor, $proxy);
                 if ($curl_str === NULL)
                 {   
-                    var_dump("error in cookies line 708 \n");
+                    var_dump("error in cookies line 708 function get_insta_chaining \n");
                     return NULL;
                 }
                 //print("<br><br>$curl_str<br><br>");
