@@ -216,28 +216,7 @@ class External_services{
         $string = curl_error($handler);
         curl_close($handler);
         return json_decode($response); 
-    }
-        
-    function send_new_client_payment_done($username, $useremail, $plane = 0){
-        $database_config = parse_ini_file(dirname(__FILE__) . "/../../../../FOLLOWS-LAYOUT.INI", true);
-        $worker_server_name = $database_config['server']['worker_server_name'];
-        $postData = array(
-            'username'=>urlencode($username),
-            'useremail'=>urlencode($useremail),
-            'plane'=>urlencode($plane)
-        );
-        $url = "http://$worker_server_name/follows-worker/worker/callbacks/send_new_client_payment_done.php";
-        $handler = curl_init();
-        curl_setopt($handler, CURLOPT_URL, $url);  
-        curl_setopt($handler, CURLOPT_POST,true);
-        curl_setopt($handler, CURLOPT_RETURNTRANSFER,true);  
-        curl_setopt($handler, CURLOPT_POSTFIELDS, $postData);  
-        $response = curl_exec($handler);
-        $info = curl_getinfo($handler);
-        $string = curl_error($handler);
-        curl_close($handler);
-        return json_decode($response); 
-    }
+    }   
     
     function send_client_payment_success($useremail, $username, $instaname, $instapass){
         $database_config = parse_ini_file(dirname(__FILE__) . "/../../../../FOLLOWS-LAYOUT.INI", true);
