@@ -893,18 +893,20 @@ namespace follows\cls {
                         $result = $this->DB->delete_daily_work($this->daily_work->reference_id);
                         if (!$without_log)
                             echo ("<br>\n Set end cursor to NULL!!!!!!!! Deleted daily work!!!!!!!!!!!!");
-                    } else {
-                        var_dump($output);
-                        print_r($curl_str);
-                        if (!$without_log)
+                    } else {                        
+                        if (!$without_log){
+                            var_dump($output);
+                            print_r($curl_str);
                             echo ("<br>\n Untrated error!!!");
+                        }
                     }
                 }
                 else
                 {
-                    var_dump($output);
-                    print_r($curl_str);
-                    
+                    if (!$without_log){
+                        var_dump($output);
+                        print_r($curl_str);                    
+                    }
                 }                
                 return $json;
             } catch (\Exception $exc) {
