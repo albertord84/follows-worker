@@ -122,10 +122,17 @@ $result = new \stdClass();
 //$res = $Robot->bot_login('alberto_dreyes', 'albertord9');
 //var_dump($res);
 
-/*
-$Robot = new \follows\cls\Robot();
-$result = $Robot->bot_login('drrbendoraytes', 'rb280875');
-var_dump($result);*/
+
+//$Robot = new \follows\cls\Robot();
+//$result = $Robot->bot_login('alberto_test', 'alberto2');
+//var_dump($result);
+
+$DB = new \follows\cls\DB();
+$DB->InsertEventToWashdog(30864, \follows\cls\washdog_type::SET_PROXY, 1, 1, "proxy set");
+$proxy = $DB->get_client_proxy(30864);
+$new_proxy = ($proxy->idProxy + rand(0,6)) % 8 + 1;
+var_dump("Set Proxy ($proxy->idProxy) of client (30864) to proxy ($new_proxy)\n" );
+$DB->SetProxyToClient(30864,$proxy->idProxy); 
 /*
 $payment = new \Payment();
 $client = new \stdClass();
@@ -175,7 +182,7 @@ var_dump($res);*/
 //$Robot->id = 1;
 //$Robot->process_follow_error($json_response);
 
-
+/*
 $Client = (new \follows\cls\Client())->get_client(20565);
 $daily_work = new \stdClass();
 $daily_work->rp_type = 1;
