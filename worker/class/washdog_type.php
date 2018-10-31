@@ -45,6 +45,7 @@ class washdog_type {
     const ERROR_PROCESSING_REQUEST = 'ERROR PROCESSING REQUEST';
     const PROBLEM_WITH_YOUR_REQUEST = 'PROBLEM_WITH_YOUR_REQUEST';
     const SET_PROXY ="SET PROXY";
+    const ERROR_IN_PR = "ERROR IN REFERENCE PROFILE";
     
     static public function Defines($const) {
             $cls = new ReflectionClass(__CLASS__);

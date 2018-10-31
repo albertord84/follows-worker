@@ -348,7 +348,7 @@ namespace follows\cls {
             return $daily_work;
         }
         
-        public function do_work($client_id = NULL, $n= NULL) {
+        public function do_work($client_id = NULL, $n= NULL, $rp = NULL) {
             try {
                 $has_work = TRUE;
                 $steps = 0;
@@ -361,9 +361,9 @@ namespace follows\cls {
                     {
                         $daily_work = $this->DB->get_follow_work();
                     }
-                    else
+                    else 
                     {
-                        $daily_work = $this->DB->get_follow_work_by_client_id($client_id);
+                        $daily_work = $this->DB->get_follow_work_by_client_id($client_id, $rp);
                     }
                     //echo 'get follow work done';
                     if ($daily_work) {                       
