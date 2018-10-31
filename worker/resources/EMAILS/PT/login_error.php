@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>DUMBU - Assinatura satisfatória</title>
+        <title>DUMBU - Erro em Login</title>
         <style>
             p{font-size:16px; text-align:justify; margin-top:5px}
         </style>
@@ -10,18 +10,23 @@
     <body >
         <div style="text-align: center;">
             <div style="max-width: 580px; font-family: Arial, Helvetica, sans-serif; font-size: 11px;">
-                <div style="padding:24px 16px; border-top-left-radius:15px; border-top-right-radius:15px; text-align:center; background-color:#1BB370; background-image:url('http://192.168.25.3/follows-worker/worker/resources/EMAILS/images/bk-success-puchase-texture.jpeg')">
+                <div style="padding:24px 16px; border-top-left-radius:15px; border-top-right-radius:15px; text-align:center; background-color:#FF5733">
                     <img src="https://dumbu.pro/follows/src/assets/images/logo.png"><br>
-                    <h1 S>Seja bem-vindo!</h1>
+                    <h1 S>Erro no Login, credenciais incorretas!</h1>
                 </div>
                 <div style="padding:60px; background-color:#F5F8F6">
                     <div>
                         <p>Olá <strong><?php echo urldecode($_GET["username"]);?></strong>,</p>
-                        <p>Sua assinatura foi realizada com sucesso, agora você precissa 
-                            acessar sua conta em nosso <a href="<?php echo urldecode($_GET["site"]);?>" target="_blank">site</a>.
-                            Para isso, utilize sempre seu usuário + senha de Instagram no campo de Login.
+                        <p>A ferramenta teve problemas para fazer o login com as credencias de Instagram 
+                            autorizadas por você no nosso sistema. Caso você mudou seu usuário ou senha no Instagram, por
+                            favor, faça login no nosso <a href="<?php echo urldecode($_GET["site"]);?>" target="_blank">site</a>
+                            e suas credencias ficaram atualizadas automáticamente.
                         </p>
-                        <p>Aqui você pode encontar dicas de como configurar e administrar sua conta para ter um bom desempenho.</p>
+                        <p>Seu usuário no nosso sistema é: <strong><?php echo $_GET["instaname"]; ?></strong></p>
+                        <p>IMPORTANTE: suas crendenciais devem ser as mesmas tanto em DUMBU quanto no Instagram.</p>
+                        
+                        
+                        
                         <p>Se quiser ajuda para configurar sua conta, ou se tiver dúvidas, escreva para 
                             <span style="color:blue"><?php echo urldecode($_GET["atendent_email"]);?></span>
                              e vamos a ajuda-lo! :)
@@ -44,5 +49,3 @@
         </div>
     </body>
 </html>
-
-
