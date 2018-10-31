@@ -536,7 +536,7 @@ namespace follows\cls {
             }
         }
 
-          public function get_follow_work_by_client_id($client_id) {
+          public function get_follow_work_by_client_id($client_id, $rp = NULL) {
             //$Elapsed_time_limit = $GLOBALS['sistem_config']->MIN_NEXT_ATTEND_TIME;
             try {
                 // Get daily work
@@ -551,10 +551,16 @@ namespace follows\cls {
                         . "FROM daily_work "
                         . "INNER JOIN reference_profile ON reference_profile.id = daily_work.reference_id "
                         . "INNER JOIN clients ON clients.user_id = reference_profile.client_id "
-                        . "INNER JOIN users ON users.id = clients.user_id "
-                        . "WHERE daily_work.reference_id IN (SELECT id FROM reference_profile WHERE reference_profile.client_id = $client_id) "
-                        . "ORDER BY reference_profile.last_access ASC "
-                        . "LIMIT 1;";
+                        . "INNER JOIN users ON users.id = clients.user_id ";
+                if($rp == NULL)
+                {
+                  $sql .= "WHERE daily_work.reference_id IN (SELECT id FROM reference_profile WHERE reference_profile.client_id = $client_id) ";
+                }
+                else{
+                    $sql .= "WHERE daily_work.reference_id = $rp ";
+                }
+                $sql .= "ORDER BY reference_profile.last_access ASC "
+                     . "LIMIT 1;";
 
                 $result = mysqli_query($this->connection, $sql);
                 $object = $result->fetch_object();
@@ -588,7 +594,7 @@ namespace follows\cls {
             }
         }
         
-        public function has_work($client_id) {
+        public function has_work($client_id, $rp = NULL) {
             //$Elapsed_time_limit = $GLOBALS['sistem_config']->MIN_NEXT_ATTEND_TIME;
             try {
                 // Get daily work
@@ -597,8 +603,15 @@ namespace follows\cls {
                         . "FROM daily_work "
                         . "INNER JOIN reference_profile ON reference_profile.id = daily_work.reference_id "
                         . "INNER JOIN clients ON clients.user_id = reference_profile.client_id "
-                        . "INNER JOIN users ON users.id = clients.user_id "
-                        . "WHERE daily_work.reference_id IN (SELECT id FROM reference_profile WHERE reference_profile.client_id = $client_id);";
+                        . "INNER JOIN users ON users.id = clients.user_id ";
+                if($rp == NULL)
+                {
+                    $sql .=  "WHERE daily_work.reference_id IN (SELECT id FROM reference_profile WHERE reference_profile.client_id = $client_id);";
+                }
+                else
+                {
+                    $sql .= "WHERE daily_work.reference_id = $rp;"; 
+                }
 
                 $result = mysqli_query($this->connection, $sql);
                 $object = $result->fetch_object();

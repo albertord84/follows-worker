@@ -99,28 +99,28 @@ class Admin extends CI_Controller {
                 $i++;
             }
             //4. escanear el TOTAL_UNFOLLOW de este dia e imprimir salida
-            $unfollow_name = 'unfollow-'.$day['str'].'.log';
-            if(file_exists($base_path.$unfollow_name)){
-                $handle = fopen($base_path.$unfollow_name,'r');
-                if($handle){
-                    $response .= "<br><span style='background-color:yellow'>------UNFOLLOW TOTAL FILE LOG: ".$unfollow_name."---------------------------------------</span>"."<br>";
-                    $flag = FALSE;
-                    while(($line = fgets($handle)) !== false) {
-                        if(strpos($line, "Client: ")!==FALSE){
-                            if(strpos($line, "Client: ".$client['login'])!==FALSE){
-                                $flag = TRUE;
-                                $response .= "<span style='background-color:#66ff66'>".$line."</span>";
-                            }
-                            else
-                                $flag = FALSE;
-                        }else{
-                            if($flag)
-                                $response .= $line."<br>";
-                        }
-                    }
-                    fclose($handle);
-                }
-            }
+//            $unfollow_name = 'unfollow-'.$day['str'].'.log';
+//            if(file_exists($base_path.$unfollow_name)){
+//                $handle = fopen($base_path.$unfollow_name,'r');
+//                if($handle){
+//                    $response .= "<br><span style='background-color:yellow'>------UNFOLLOW TOTAL FILE LOG: ".$unfollow_name."---------------------------------------</span>"."<br>";
+//                    $flag = FALSE;
+//                    while(($line = fgets($handle)) !== false) {
+//                        if(strpos($line, "Client: ")!==FALSE){
+//                            if(strpos($line, "Client: ".$client['login'])!==FALSE){
+//                                $flag = TRUE;
+//                                $response .= "<span style='background-color:#66ff66'>".$line."</span>";
+//                            }
+//                            else
+//                                $flag = FALSE;
+//                        }else{
+//                            if($flag)
+//                                $response .= $line."<br>";
+//                        }
+//                    }
+//                    fclose($handle);
+//                }
+//            }
             return $response;
         }
     }

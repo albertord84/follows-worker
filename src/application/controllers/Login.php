@@ -358,14 +358,9 @@ class Login extends CI_Controller {
         $this->load->library('firefox');
         $resp = json_decode($this->firefox->login($user, $pass), false);
         if ($resp->authenticated) {
-            return $this->output
-                ->set_status_header(200)
-                ->set_content_type('application/json', 'utf-8')
-                ->set_output($this->firefox->get_cookies());
+            echo json_encode($this->firefox->get_cookies());
+            return;
         }
-        return $this->output
-            ->set_status_header(500, 'Auth Error')
-            ->set_content_type('application/json', 'utf-8')
-            ->set_output($this->firefox->get_cookies());
+        echo json_encode($resp);
     }
 }

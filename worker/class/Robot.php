@@ -335,13 +335,8 @@ namespace follows\cls {
                 );
                 //var_dump($json_response);
                 if ($json_response === NULL) {
-                    echo "<br>\n Empty response getting followers from this profile... <br>\n";
-                    $this->DB->Increase_Client_Last_Access($daily_work->client_id, $GLOBALS['sistem_config']->INCREASE_CLIENT_LAST_ACCESS);
-
-                    //$result = $this->DB->delete_daily_work_client($daily_work->users_id);
-                    //$this->DB->set_client_status($daily_work->users_id, user_status::BLOCKED_BY_TIME);
-                    //$this->DB->InsertEventToWashdog($daily_work->users_id, washdog_type::BLOCKED_BY_TIME, 1, $this->id, "Cookies incompleta when funtion get_profiles_to_follow");
-                    //$this->DB->set_client_cookies($daily_work->users_id, NULL);
+                    var_dump("<br>\n Empty response getting followers from this profile... <br>\n");                   
+                    $json_response = $this->process_get_followers_error($daily_work, $Client, $quantity, $proxy);
                 }
                 if (is_object($json_response) && $json_response->status == 'ok') {
                     if (isset($json_response->data->user->edge_followed_by)) { // if response is ok
@@ -479,8 +474,10 @@ namespace follows\cls {
                                         
                     // @TODO: Revisar Jose Angel
                     $proxy = $this->DB->get_client_proxy($client_id);
-                    $new_proxy = ($proxy->idProxy + rand(0,6)) % 8 + 1;                    
-                    $this->DB->InsertEventToWashdog($client_id, washdog_type::SET_PROXY, 1, $this->id, "proxy set from $proxy->idProxy to $new_proxy");
+
+                    $new_proxy = ($proxy->idProxy + rand(0,6)) % 8 + 1;
+                    $this->DB->InsertEventToWashdog($client_id, washdog_type::SET_PROXY, 1, $this->id, "proxy set from proxy $proxy->idProxy to $new_proxy");
+
                     var_dump("Set Proxy ($proxy->idProxy) of client ($client_id) to proxy ($new_proxy)\n" );
                     $this->DB->SetProxyToClient($client_id,$new_proxy);                
                                         
@@ -565,6 +562,7 @@ namespace follows\cls {
                 if (is_array($output) && count($output)) {
                     $json_response = json_decode($output[count($output) - 1]);
                     if ($json_response && (isset($json_response->result) || (isset($json_response->status) && $json_response->status === 'ok'))) {
+                        var_dump("  LIKE FIRST OK\n");
                         if ($ip_count > -1) {
                             $HTTP_SERVER_VARS = NULL;
                             if (isset($Client->HTTP_SERVER_VARS)) { // if 
@@ -577,8 +575,8 @@ namespace follows\cls {
                             //(new \follows\cls\DB())->SaveHttpServerVars($Client->id, json_encode($HTTP_SERVER_VARS));
                         }
                         return $json_response;
-                    } else {
-                        echo "Error in line 562</br>\n";
+                    } else {                        
+                        echo "Error in line 562</br>\n";                        
                         var_dump($output);
                         var_dump($curl_str);
                         return ($json_response === NULL) ? $output : $json_response;
@@ -1993,10 +1991,13 @@ namespace follows\cls {
             $proxy = $this->get_proxy_str($Client);
             $result = $this->get_insta_chaining($client_cookies, $client_insta_id, 1, NULL, $proxy);
             //print_r($result);
-            if ($result != NULL && count($result) > 1)
+            if ($result != NULL && is_array($result) && array_key_exists('0', $result))
             {
                 $result = $this->make_insta_friendships_command($client_cookies, $result[0]->node->id, 'like', 'web/likes', $Client);
                 return $result;
+            } else {
+                var_dump(" Problem in first_like\n");
+                var_dump($result);
             }
         }
 
@@ -2437,8 +2438,13 @@ namespace follows\cls {
         }
 
         public function SetUnautorizedClientStatus($client_id) {
-            $this->DB->set_cookies_to_null($client_id);
-            $client = (new \follows\cls\Client())->get_client($client_id);
+           $this->DB->set_cookies_to_null($client_id);           
+           $client = (new \follows\cls\Client())->get_client($client_id);
+           $this->RecognizeClientStatus($client);
+        }
+        
+        public function RecognizeClientStatus($client)
+        {
             $result = $this->bot_login($client->login, $client->pass);
             if (isset($result->json_response->message)) {
                 if ($result->json_response->message == 'checkpoint_required') {
@@ -2449,8 +2455,35 @@ namespace follows\cls {
                     $this->DB->InsertEventToWashdog($client_id, washdog_type::BLOCKED_BY_INSTA, 1, $this->id);
                 }
             }
+            return $result;
         }
-
+        
+        public function process_get_followers_error($daily_work, $client, $quantity, $proxy)
+        {
+             $result = $this->RecognizeClientStatus($client);
+             if(isset($result->json_response->authenticated) && $result->json_response->authenticated)
+             {                 
+                //retry of graph request
+                  $json_response = $this->get_insta_followers($result, $daily_work->rp_insta_id, $quantity, $daily_work->insta_follower_cursor, $proxy);
+                  if($json_response === NULL)
+                  {
+                      $this->DB->update_reference_cursor($daily_work->reference_id,NULL);
+                      $this->DB->delete_daily_work($daily_work->reference_id);
+                      $this->DB->InsertEventToWashdog($client_id, washdog_type::ERROR_IN_PR, 1, $this->id, "unexistence reference profile or may be the reference profile is block ing the client");
+                    
+                  }
+                  else if(isset($json_response->status) && $json_response->status == 'ok')
+                  {
+                      return $json_response;                  
+                  }
+                  return NULL;              
+             }  
+             else if($result->json_response->message == 'checkpoint_required' || $result->json_response->message == 'incorrect_password')
+             {
+                 //unautorized, bloc by password or an api unrecognized error
+                 $this->DB->delete_daily_work_client($daily_work->client_id);
+             }
+        }
     }
 
 // end of Robot

@@ -1,8 +1,42 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+/**
+ * Este script solo depende de:
+ *
+ * - guzzlehttp/guzzle
+ * - symfony/http-foundation
+ *
+ * Estas bibliotecas deben existir dentro de algun directorio "vendor",
+ * y deben estar debidamente registradas en el "autoload.php". Luego,
+ * basta con hacer un require de ese autoload.php, este donde este...
+ * Esto quiere decir, que la primera linea del require, es lo unico que
+ * habria que modificar si nos llevamos este script integramente para
+ * cualquier servidor.
+ *
+ * En cuanto a los parametros, se deben pasar por POST, y codificados
+ * como JSON, en el cuerpo, o sea, la seccion data de la peticion. Seria
+ * asi:
+ *
+ * {"user":"napoleon","pass":"KonquerTheWor1d"}
+ *
+ * Escogi hacerlo de esta forma porque la mayoria de las bibliotecas de
+ * JavaScript que usan AJAX, estan migrando el formato de la peticion
+ * a objetos JSON, en lugar de una cadena "url-form-encoded" como se hacia
+ * antiguamente.
+ *
+ * Los parametros que se deben pasar son estos:
+ *
+ * - user: el nombre del usuario de Instagram
+ * - pass: la contraseña del usuario
+ *
+ * El resultado que se obtiene es un JSON con las cookies de la sesion
+ * abierta. Si algo sale mal, se devuelve un JSON en el que "authenticated"
+ * es "false".
+ *
+ */
 
 require __DIR__ . '/../../vendor/autoload.php';
 
+use \Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 use \GuzzleHttp\Client;
 use \GuzzleHttp\Cookie\SetCookie;
 use \GuzzleHttp\Cookie\CookieJar;
@@ -11,14 +45,11 @@ use \GuzzleHttp\Psr7\Response;
 
 class Firefox {
 
-    protected $CI;
     protected $client;
     protected $cookies;
     protected $ua;
 
     public function __construct() {
-        $this->CI =& get_instance();
-
         $this->cookies = new CookieJar;
 
         $this->client = new Client([
@@ -63,7 +94,7 @@ class Firefox {
     protected function instagram_com() {
         $response = $this->client->send(
             new Request('GET', 'https://www.instagram.com', [
-                "User-Agent" => $GLOBALS['ua'],
+                "User-Agent" => $this->ua,
                 "Accept" => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
                 "Accept-Language" => 'es,en-US;q=0.7,en;q=0.3',
                 "DNT" => 1,
@@ -83,7 +114,7 @@ class Firefox {
         $response = $this->client->send(
             new Request('POST', 'https://www.instagram.com/qp/batch_fetch_web/',
                 [
-                    "User-Agent" => $GLOBALS['ua'],
+                    "User-Agent" => $this->ua,
                     "Accept" => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
                     "Accept-Language" => 'es,en-US;q=0.7,en;q=0.3',
                     "Referer" => 'https://www.instagram.com/',
@@ -113,7 +144,7 @@ class Firefox {
                 'POST',
                 'https://www.instagram.com/ajax/bz',
                 [
-                    "User-Agent" => $GLOBALS['ua'],
+                    "User-Agent" => $this->ua,
                     "Accept" => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
                     "Accept-Language" => 'es,en-US;q=0.7,en;q=0.3',
                     "Referer" => 'https://www.instagram.com/',
@@ -143,7 +174,7 @@ class Firefox {
                 'GET',
                 'https://www.instagram.com/accounts/login/?__a=1',
                 [
-                    "User-Agent" => $GLOBALS['ua'],
+                    "User-Agent" => $this->ua,
                     "Accept" => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
                     "Accept-Language" => 'es,en-US;q=0.7,en;q=0.3',
                     "Referer" => 'https://www.instagram.com/',
@@ -207,12 +238,34 @@ class Firefox {
             return $ret;
         } catch(\Exception $e) {
             $msg = $e->getMessage();
-            $challengeData = preg_match('/checkpoint_url": "(.*)", "lock"/', $matches);
-            return [
+            $challengeData = preg_match(
+                '/checkpoint_url": "(.*)", "lock"/',
+                $msg,
+                $matches
+            );
+            return json_encode([
                 'authenticated' => false,
-                'checkpoint_url' => $challengeData[1]
-            ];
+                'checkpoint_url' => $challengeData[1],
+                'more_data' => $ret
+            ]);
         }
     }
 
 }
+
+$firefox = new Firefox;
+$request = SymfonyRequest::createFromGlobals();
+$content = $request->getContent();
+$params = json_decode($content, true);
+
+$resp = json_decode(
+    $firefox->login($params['user'], $params['pass']),
+    false
+);
+
+if ($resp->authenticated) {
+    echo json_encode($firefox->get_cookies());
+    exit();
+}
+
+echo json_encode($resp);
