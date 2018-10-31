@@ -58,21 +58,18 @@ namespace follows\cls {
         }
         
         //-------funciones para ser usados desde External_services------------------------------------
-        public function send_client_payment_success($useremail, $username, $instaname, $instapass) {
+        public function send_user_to_purchase_step($subject, $useremail, $username, $instaname, $purchase_access_token) {
             $this->mail->clearAddresses();
             $this->mail->addAddress($useremail, $username);
             $this->mail->clearCCs();
-            $this->mail->addCC($GLOBALS['sistem_config']->ATENDENT_EMAIL, $GLOBALS['sistem_config']->ATENDENT_USER_LOGIN);
             $this->mail->addReplyTo($GLOBALS['sistem_config']->ATENDENT_EMAIL, $GLOBALS['sistem_config']->ATENDENT_USER_LOGIN);
-            $this->mail->Subject = 'DUMBU Sign in successfully approved!';
+            $this->mail->CharSet = 'UTF-8';
+            $this->mail->Subject = $subject;
             $username = urlencode($username);
             $instaname = urlencode($instaname);
-            $instapass = urlencode($instapass);
-            $site= "https://www.".$GLOBALS['sistem_config']->SERVER_URL;
-            $atendent_email =$GLOBALS['sistem_config']->ATENDENT_EMAIL;
+            $purchase_access_token = urlencode($purchase_access_token);
             $lang = $GLOBALS['sistem_config']->LANGUAGE;
-            $this->mail->msgHTML(@file_get_contents("http://" . $_SERVER['SERVER_NAME'] . "/follows-worker/worker/resources/EMAILS/$lang/payment_success.php?username=$username&instaname=$instaname&site=$site&atendent_email=$atendent_email"), dirname(__FILE__));
-            $this->mail->Subject = 'DUMBU Sign in successfully approved!';
+            $this->mail->msgHTML(@file_get_contents("http://" . $_SERVER['SERVER_NAME'] . "/follows-worker/worker/resources/EMAILS/$lang/link_purchase_step.php?username=$username&instaname=$instaname&purchase_access_token=$purchase_access_token"), dirname(__FILE__));
             if (!$this->mail->send()) {
                 $result['success'] = false;
                 $result['message'] = "Mailer Error: " . $this->mail->ErrorInfo;
@@ -84,62 +81,15 @@ namespace follows\cls {
             return $result;
         }
         
-        public function send_client_contact_form($username, $useremail, $usermsg, $usercompany = NULL, $userphone = NULL) {
-            //Set an alternative reply-to address
-            //$mail->addReplyTo('albertord@ic.uff.br', 'First Last');
-            //Set who the message is to be sent to           
-            $this->mail->clearAddresses();
-            $this->mail->addAddress($GLOBALS['sistem_config']->SYSTEM_EMAIL, $GLOBALS['sistem_config']->SYSTEM_USER_LOGIN);
-            $this->mail->addCC($GLOBALS['sistem_config']->ATENDENT_EMAIL, $GLOBALS['sistem_config']->ATENDENT_USER_LOGIN);
-            $this->mail->clearReplyTos();
-            $this->mail->addReplyTo($useremail, $username);
-            $this->mail->isHTML(true);
-            //Set the subject line
-            $this->mail->Subject = "User Contact: $username";
-            //Read an HTML message body from an external file, convert referenced images to embedded,
-            //convert HTML into a basic plain-text alternative body
-            $username = urlencode($username);
-            $usermsg = urlencode($usermsg);
-            $usercompany = urlencode($usercompany);
-            $userphone = urlencode($userphone);
-           
-           // $this->mail->msgHTML(@file_get_contents("http://dumbu.one/follows-worker/worker/resources/emails/contact_form.php?username=$username&useremail=$useremail&usercompany=$usercompany&userphone=$userphone&usermsg=$usermsg"), dirname(__FILE__));
-            
-            $this->mail->msgHTML(@file_get_contents("http://". $_SERVER['SERVER_NAME'] ."/follows-worker/worker/resources/emails/contact_form.php?username=$username&useremail=$useremail&usercompany=$usercompany&userphone=$userphone&usermsg=$usermsg"), dirname(__FILE__));
-            //$this->mail->Body = $usermsg;
-            //Replace the plain text body with one created manually
-            $this->mail->AltBody = "User Contact: $username";
-            //Attach an image file
-            //$mail->addAttachment('images/phpmailer_mini.png');
-            //send the message, check for errors
-            //-------------Alberto
-            /* if (!$this->mail->send()) {
-              echo "Mailer Error: " . $this->mail->ErrorInfo;
-              } else {
-              echo "Message sent!";
-              }
-              $this->mail->smtpClose(); */
-            //-------------Jose R
-            if (!$this->mail->send()) {
-                $result['success'] = false;
-                $result['message'] = "Mailer Error: " . $this->mail->ErrorInfo;
-            } else {
-                $result['success'] = true;
-                $result['message'] = "Message sent!" . $this->mail->ErrorInfo;
-            }
-            $this->mail->smtpClose();
-            return $result;
-            //-------------------
-        }
-               
-        public function send_link_ticket_bank_and_access_link($username, $useremail, $access_link, $ticket_link){
+        public function send_link_ticket_bank_and_access_link($subject, $username, $useremail, $access_link, $ticket_link){
             $this->mail->clearAddresses();
             $this->mail->addAddress($useremail);
             $this->mail->addCC($GLOBALS['sistem_config']->ATENDENT_EMAIL, $GLOBALS['sistem_config']->ATENDENT_USER_LOGIN);
             $this->mail->addReplyTo($GLOBALS['sistem_config']->ATENDENT_EMAIL, $GLOBALS['sistem_config']->ATENDENT_USER_LOGIN);
             $this->mail->clearReplyTos();
+            $this->mail->CharSet = 'UTF-8';
             $this->mail->isHTML(true);
-            $this->mail->Subject = "Ticket bank generated successfully!!";
+            $this->mail->Subject = $subject;
             $username = urlencode($username);
             $access_link = urlencode($access_link);
             $ticket_link = urlencode($ticket_link);
@@ -157,14 +107,44 @@ namespace follows\cls {
             return $result;
         }
         
-        public function send_link_ticket_bank_in_update($useremail, $username, $ticket_link){      
+        public function send_client_contact_form($subject, $username, $useremail, $usermsg, $usercompany = NULL, $userphone = NULL) {
+            $this->mail->clearAddresses();
+            $this->mail->addAddress($GLOBALS['sistem_config']->SYSTEM_EMAIL, $GLOBALS['sistem_config']->SYSTEM_USER_LOGIN);
+            $this->mail->addCC($GLOBALS['sistem_config']->ATENDENT_EMAIL, $GLOBALS['sistem_config']->ATENDENT_USER_LOGIN);
+            $this->mail->clearReplyTos();
+            $this->mail->addReplyTo($useremail, $username);
+            $this->mail->isHTML(true);
+            $this->mail->CharSet = 'UTF-8';
+            $this->mail->Subject = $subject.": $username";
+            $username = urlencode($username);
+            $usermsg = urlencode($usermsg);
+            $usercompany = urlencode($usercompany);
+            $userphone = urlencode($userphone);
+            $site= "https://www.".$GLOBALS['sistem_config']->SERVER_URL;
+            $atendent_email =$GLOBALS['sistem_config']->ATENDENT_EMAIL;
+            $lang = $GLOBALS['sistem_config']->LANGUAGE;
+            $this->mail->msgHTML(@file_get_contents("http://". $_SERVER['SERVER_NAME'] ."/follows-worker/worker/resources/EMAILS/$lang/contact_form.php?username=$username&useremail=$useremail&usercompany=$usercompany&userphone=$userphone&usermsg=$usermsg&site=$site&atendent_email=$atendent_email"), dirname(__FILE__));
+            $this->mail->AltBody = "User Contact: $username";
+            if (!$this->mail->send()) {
+                $result['success'] = false;
+                $result['message'] = "Mailer Error: " . $this->mail->ErrorInfo;
+            } else {
+                $result['success'] = true;
+                $result['message'] = "Message sent!" . $this->mail->ErrorInfo;
+            }
+            $this->mail->smtpClose();
+            return $result;
+        }
+        
+        public function send_link_ticket_bank_in_update($subject, $useremail, $username, $ticket_link){      
             $this->mail->clearAddresses();
             $this->mail->addAddress($useremail);
             $this->mail->addCC($GLOBALS['sistem_config']->ATENDENT_EMAIL, $GLOBALS['sistem_config']->ATENDENT_USER_LOGIN);
             $this->mail->addReplyTo($GLOBALS['sistem_config']->ATENDENT_EMAIL, $GLOBALS['sistem_config']->ATENDENT_USER_LOGIN);
             $this->mail->clearReplyTos();
             $this->mail->isHTML(true);
-            $this->mail->Subject = "Ticket bank generated successfully!!";
+            $this->mail->CharSet = 'UTF-8';
+            $this->mail->Subject = $subject;
             $username = urlencode($username);
             $ticket_link = urlencode($ticket_link);
             $atendent_email = $GLOBALS['sistem_config']->ATENDENT_EMAIL;
@@ -181,18 +161,21 @@ namespace follows\cls {
             return $result;
         }
         
-        public function send_user_to_purchase_step($useremail, $username, $instaname, $purchase_access_token) {
+        public function send_client_payment_success($subject, $useremail, $username, $instaname, $instapass) {
             $this->mail->clearAddresses();
             $this->mail->addAddress($useremail, $username);
             $this->mail->clearCCs();
+            $this->mail->addCC($GLOBALS['sistem_config']->ATENDENT_EMAIL, $GLOBALS['sistem_config']->ATENDENT_USER_LOGIN);
             $this->mail->addReplyTo($GLOBALS['sistem_config']->ATENDENT_EMAIL, $GLOBALS['sistem_config']->ATENDENT_USER_LOGIN);
-            $this->mail->Subject = 'DUMBU Continuar com o cadastro!';
+            $this->mail->CharSet = 'UTF-8';
+            $this->mail->Subject = $subject;
             $username = urlencode($username);
             $instaname = urlencode($instaname);
-            $purchase_access_token = urlencode($purchase_access_token);
+            $instapass = urlencode($instapass);
+            $site= "https://www.".$GLOBALS['sistem_config']->SERVER_URL;
+            $atendent_email =$GLOBALS['sistem_config']->ATENDENT_EMAIL;
             $lang = $GLOBALS['sistem_config']->LANGUAGE;
-            $this->mail->msgHTML(@file_get_contents("http://" . $_SERVER['SERVER_NAME'] . "/follows-worker/worker/resources/EMAILS/$lang/link_purchase_step.php?username=$username&instaname=$instaname&purchase_access_token=$purchase_access_token"), dirname(__FILE__));
-            $this->mail->Subject = 'DUMBU Account Confirmation!';
+            $this->mail->msgHTML(@file_get_contents("http://" . $_SERVER['SERVER_NAME'] . "/follows-worker/worker/resources/EMAILS/$lang/payment_success.php?username=$username&instaname=$instaname&site=$site&atendent_email=$atendent_email"), dirname(__FILE__));
             if (!$this->mail->send()) {
                 $result['success'] = false;
                 $result['message'] = "Mailer Error: " . $this->mail->ErrorInfo;
@@ -203,35 +186,13 @@ namespace follows\cls {
             $this->mail->smtpClose();
             return $result;
         }
-        
-        public function send_new_client_payment_done($username, $useremail, $plane = 0) {
-            $this->mail->clearAddresses();
-            $this->mail->addCC($GLOBALS['sistem_config']->ATENDENT_EMAIL, $GLOBALS['sistem_config']->ATENDENT_USER_LOGIN);
-            $this->mail->clearReplyTos();
-            $this->mail->addReplyTo($useremail, $username);
-            $this->mail->Subject = 'New Client with payment!';
-            $username = urlencode($username);
-            $plane = urlencode($plane);
-            $lang = $GLOBALS['sistem_config']->LANGUAGE;
-            $email_msg = "http://" . $_SERVER['SERVER_NAME'] . "/follows-worker/worker/resources/emails/new_client_with_payment.php?username=$username&useremail=$useremail";
-            $this->mail->msgHTML(@file_get_contents("http://" . $_SERVER['SERVER_NAME'] . "/follows-worker/worker/resources/$lang/emails/new_client_with_payment.php?username=$username&useremail=$useremail&plane=$plane"), dirname(__FILE__));
-            $this->mail->AltBody = 'New Client with payment';
-            if (!$this->mail->send()) {
-                $result['success'] = false;
-                $result['message'] = "Mailer Error: " . $this->mail->ErrorInfo;
-            } else {
-                $result['success'] = true;
-                $result['message'] = "Message sent!" . $this->mail->ErrorInfo;
-            }
-            $this->mail->smtpClose();
-            return $result;
-        }
-        
+                
         //-------funciones para ser usados desde lod ROBOTS------------------------------------
         public function send_mail($useremail, $username, $subject, $mail) {
             $this->mail->clearAddresses();
             $this->mail->addAddress($useremail, $username);
             $this->mail->clearCCs();
+            $this->mail->CharSet = 'UTF-8';
             $this->mail->Subject = $subject;
             //Read an HTML message body from an external file, convert referenced images to embedded,
             //convert HTML into a basic plain-text alternative body
@@ -262,13 +223,17 @@ namespace follows\cls {
             $this->mail->clearCCs();
             $this->mail->addCC($GLOBALS['sistem_config']->ATENDENT_EMAIL, $GLOBALS['sistem_config']->ATENDENT_USER_LOGIN);
             $this->mail->addReplyTo($GLOBALS['sistem_config']->ATENDENT_EMAIL, $GLOBALS['sistem_config']->ATENDENT_USER_LOGIN);
-            $this->mail->Subject = 'DUMBU Problem with your login';
+            $this->mail->CharSet = 'UTF-8';
+            $lang = $GLOBALS['sistem_config']->LANGUAGE;
+            if($lang=="PT")
+                $this->mail->Subject = 'Verifique sua conta agora!';
+            else
+                $this->mail->Subject = 'DUMBU Problem with your login';
             $username = urlencode($username);
             $instaname = urlencode($instaname);
             $instapass = urlencode($instapass);
             $site= "https://www.".$GLOBALS['sistem_config']->SERVER_URL;
             $atendent_email =$GLOBALS['sistem_config']->ATENDENT_EMAIL;
-            $lang = $GLOBALS['sistem_config']->LANGUAGE;
             $this->mail->msgHTML(@file_get_contents("http://" . $_SERVER['SERVER_NAME'] . "/follows-worker/worker/resources/EMAILS/$lang/login_error.php?username=$username&instaname=$instaname&instapass=$instapass&site=$site&atendent_email=$atendent_email"), dirname(__FILE__));
             $this->mail->AltBody = 'DUMBU Problem with your login';
             if (!$this->mail->send()) {
@@ -292,9 +257,14 @@ namespace follows\cls {
             //$this->mail->addCC($GLOBALS['sistem_config']->SYSTEM_EMAIL, $GLOBALS['sistem_config']->SYSTEM_USER_LOGIN);
             $this->mail->addCC($GLOBALS['sistem_config']->ATENDENT_EMAIL, $GLOBALS['sistem_config']->ATENDENT_USER_LOGIN);
             $this->mail->addReplyTo($GLOBALS['sistem_config']->ATENDENT_EMAIL, $GLOBALS['sistem_config']->ATENDENT_USER_LOGIN);
+            $this->mail->CharSet = 'UTF-8';
             //Set the subject line
             //$this->mail->Subject = 'DUMBU Cliente sem perfis de referencia';
-            $this->mail->Subject = 'DUMBU Client without reference profiles alert';
+            $lang = $GLOBALS['sistem_config']->LANGUAGE;
+            if($lang=="PT")
+                $this->mail->Subject = 'Adicione perfis de referência :)';
+            else
+                $this->mail->Subject = 'DUMBU Client without reference profiles';
             //Read an HTML message body from an external file, convert referenced images to embedded,
             //convert HTML into a basic plain-text alternative body
             $username = urlencode($username);
@@ -302,8 +272,9 @@ namespace follows\cls {
             $instapass = urlencode($instapass);
             //$this->mail->msgHTML(file_get_contents("http://localhost/follows-worker/worker/resources/emails/login_error.php?username=$username&instaname=$instaname&instapass=$instapass"), dirname(__FILE__));
             //echo "http://" . $_SERVER['SERVER_NAME'] . "<br><br>";
-            $lang = $GLOBALS['sistem_config']->LANGUAGE;
-            $this->mail->msgHTML(@file_get_contents("http://" . $_SERVER['SERVER_NAME'] . "/follows-worker/worker/resources/$lang/emails/not_reference_profiles.php?username=$username&instaname=$instaname&instapass=$instapass"), dirname(__FILE__));
+            $site= "https://www.".$GLOBALS['sistem_config']->SERVER_URL;
+            $atendent_email =$GLOBALS['sistem_config']->ATENDENT_EMAIL;
+            $this->mail->msgHTML(@file_get_contents("http://" . $_SERVER['SERVER_NAME'] . "/follows-worker/worker/resources/EMAILS/$lang/not_reference_profiles.php?username=$username&instaname=$instaname&instapass=$instapass&site=$site&atendent_email=$atendent_email"), dirname(__FILE__));
             //Replace the plain text body with one created manually
             //$this->mail->AltBody = 'DUMBU Cliente sem perfis de referência';
             $this->mail->AltBody = 'DUMBU Client without reference profiles alert';
@@ -331,9 +302,14 @@ namespace follows\cls {
             //$this->mail->addCC($GLOBALS['sistem_config']->SYSTEM_EMAIL, $GLOBALS['sistem_config']->SYSTEM_USER_LOGIN);
             $this->mail->addCC($GLOBALS['sistem_config']->ATENDENT_EMAIL, $GLOBALS['sistem_config']->ATENDENT_USER_LOGIN);
             $this->mail->addReplyTo($GLOBALS['sistem_config']->ATENDENT_EMAIL, $GLOBALS['sistem_config']->ATENDENT_USER_LOGIN);
+            $this->mail->CharSet = 'UTF-8';
             //Set the subject line
             //$this->mail->Subject = "DUMBU Problemas de pagamento $diff_days dia(s)";
-            $this->mail->Subject = "DUMBU Payment Issues $diff_days day(s)";
+            $lang = $GLOBALS['sistem_config']->LANGUAGE;
+            if($lang=="PT")
+                $this->mail->Subject = "Pagamento não processado :(";
+            else
+                $this->mail->Subject = "Payment not processed :(";
             //Read an HTML message body from an external file, convert referenced images to embedded,
             //convert HTML into a basic plain-text alternative body
             $username = urlencode($username);
@@ -341,12 +317,10 @@ namespace follows\cls {
             $instapass = urlencode($instapass);
             //$this->mail->msgHTML(file_get_contents("http://localhost/follows-worker/worker/resources/emails/login_error.php?username=$username&instaname=$instaname&instapass=$instapass"), dirname(__FILE__));
             //echo "http://" . $_SERVER['SERVER_NAME'] . "<br><br>";
-            $lang = $GLOBALS['sistem_config']->LANGUAGE;
-            
-            // @TUDO -> Trapo ate
+            $site= "https://www.".$GLOBALS['sistem_config']->SERVER_URL;
+            $atendent_email =$GLOBALS['sistem_config']->ATENDENT_EMAIL;
             $_SERVER['SERVER_NAME'] = $GLOBALS['sistem_config']->SERVER_NAME === "ONE"? "dumbu.one" : $_SERVER['SERVER_NAME'];
-            
-            $this->mail->msgHTML(@file_get_contents("http://" . $_SERVER['SERVER_NAME'] . "/follows-worker/worker/resources/$lang/emails/payment_error.php?username=$username&instaname=$instaname&instapass=$instapass&diff_days=$diff_days"), dirname(__FILE__));
+            $this->mail->msgHTML(@file_get_contents("http://" . $_SERVER['SERVER_NAME'] . "/follows-worker/worker/resources/EMAILS/$lang/payment_error.php?username=$username&instaname=$instaname&instapass=$instapass&diff_days=$diff_days&site=$site&atendent_email=$atendent_email"), dirname(__FILE__));
             //Replace the plain text body with one created manually
             //$this->mail->AltBody = 'DUMBU Problemas de pagamento';
             $this->mail->Subject = "DUMBU Payment Issues";
