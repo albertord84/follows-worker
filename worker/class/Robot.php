@@ -1995,7 +1995,7 @@ namespace follows\cls {
             $proxy = $this->get_proxy_str($Client);
             $result = $this->get_insta_chaining($client_cookies, $client_insta_id, 1, NULL, $proxy);
             //print_r($result);
-            if ($result != NULL && count($result) > 1)
+            if ($result != NULL && is_array($result) && array_key_exists('0', $result))
             {
                 $result = $this->make_insta_friendships_command($client_cookies, $result[0]->node->id, 'like', 'web/likes', $Client);
                 return $result;
