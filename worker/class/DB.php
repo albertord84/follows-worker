@@ -564,28 +564,31 @@ namespace follows\cls {
 
                 $result = mysqli_query($this->connection, $sql);
                 $object = $result->fetch_object();
-                $object->last_access = $object->last_access - 86400;
-                // Update daily work time
-                if ($object && (!isset($object->last_access) || intval($object->last_access) < time())) {
-                    //$ref_prof_id = $object->rp_insta_id;
-                    $time = time() + 86400;
-                    $sql2 = ""
-                            . "UPDATE clients "
-                            . "SET clients.last_access = '$time' "
-                            . "WHERE clients.user_id = $object->users_id; ";
-                    $result2 = mysqli_query($this->connection, $sql2);
-                    if (!$result2) {
-                        var_dump($sql2);
-                    }
-                    
-                    $sql2 = ""
-                            . "UPDATE reference_profile "
-                            . "SET reference_profile.last_access = '$time' "
-                            . "WHERE reference_profile.id = $object->rp_id; ";
-                    $result2 = mysqli_query($this->connection, $sql2);
-                    
-                     if (!$result2) {
-                        var_dump($sql2);
+                if($object != NULL)
+                {
+                    $object->last_access = $object->last_access - 86400;
+                    // Update daily work time
+                    if ($object && (!isset($object->last_access) || intval($object->last_access) < time())) {
+                        //$ref_prof_id = $object->rp_insta_id;
+                        $time = time() + 86400;
+                        $sql2 = ""
+                                . "UPDATE clients "
+                                . "SET clients.last_access = '$time' "
+                                . "WHERE clients.user_id = $object->users_id; ";
+                        $result2 = mysqli_query($this->connection, $sql2);
+                        if (!$result2) {
+                            var_dump($sql2);
+                        }
+
+                        $sql2 = ""
+                                . "UPDATE reference_profile "
+                                . "SET reference_profile.last_access = '$time' "
+                                . "WHERE reference_profile.id = $object->rp_id; ";
+                        $result2 = mysqli_query($this->connection, $sql2);
+
+                         if (!$result2) {
+                            var_dump($sql2);
+                        }
                     }
                 }
                 return $object;

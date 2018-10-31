@@ -755,34 +755,51 @@ namespace follows\cls {
                 exec($curl_str, $output, $status);
                 //echo "<br>output $output[0] \n\n</br>";
                 //print_r($output);
-                //print("-> $status<br><br>");                
-                $json = json_decode($output[0]);
-                //var_dump($output);
-                if (isset($json->data->user->edge_followed_by) && isset($json->data->user->edge_followed_by->page_info)) {
-                    if ($json->data->user->edge_followed_by->page_info->has_next_page === false) {
-                        echo ("<br>\n END Cursor empty!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>\n ");
-                        var_dump(json_encode($json));
-                        //$DB = new DB();
-                        $this->DB->update_reference_cursor($this->daily_work->reference_id, NULL);
-                        echo ("<br>\n Updated Reference Cursor to NULL!!<br>\n ");
-                        $result = $this->DB->delete_daily_work($this->daily_work->reference_id);
-                        if ($result) {
-                            echo ("<br>\n Deleted Daily work!!<br>\n ");
+                //print("-> $status<br><br>"); 
+                if(count($output) > 0)
+                {
+                    $json = json_decode($output[0]);
+                    //var_dump($output);
+                    if (isset($json->data->user->edge_followed_by) && isset($json->data->user->edge_followed_by->page_info)) {
+                        if ($json->data->user->edge_followed_by->page_info->has_next_page === false) {
+                            echo ("<br>\n END Cursor empty!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>\n ");
+                            var_dump(json_encode($json));
+                            //$DB = new DB();
+                            $this->DB->update_reference_cursor($this->daily_work->reference_id, NULL);
+                            echo ("<br>\n Updated Reference Cursor to NULL!!<br>\n ");
+                            $result = $this->DB->delete_daily_work($this->daily_work->reference_id);
+                            if ($result) {
+                                echo ("<br>\n Deleted Daily work!!<br>\n ");
+                            }
                         }
+                    } else {
+                        var_dump($output);
+                        print_r($curl_str);
+                        /* if (isset($json->data) && ($json->data->user == null)) {
+                          //$this->DB->update_reference_cursor($this->daily_work->reference_id, NULL);
+                          //echo ("<br>\n Updated Reference Cursor to NULL!!");
+                          $result = $this->DB->delete_daily_work($this->daily_work->reference_id);
+                          if ($result) {
+                          echo ("<br>\n Deleted Daily work!!<br>\n ");
+                          } else {
+                          var_dump($result);
+                          }
+                          } */
                     }
-                } else {
-                    var_dump($output);
-                    print_r($curl_str);
-                    /* if (isset($json->data) && ($json->data->user == null)) {
-                      //$this->DB->update_reference_cursor($this->daily_work->reference_id, NULL);
-                      //echo ("<br>\n Updated Reference Cursor to NULL!!");
-                      $result = $this->DB->delete_daily_work($this->daily_work->reference_id);
-                      if ($result) {
-                      echo ("<br>\n Deleted Daily work!!<br>\n ");
-                      } else {
-                      var_dump($result);
-                      }
-                      } */
+                }
+                else {
+                        var_dump($output);
+                        print_r($curl_str);
+                        /* if (isset($json->data) && ($json->data->user == null)) {
+                          //$this->DB->update_reference_cursor($this->daily_work->reference_id, NULL);
+                          //echo ("<br>\n Updated Reference Cursor to NULL!!");
+                          $result = $this->DB->delete_daily_work($this->daily_work->reference_id);
+                          if ($result) {
+                          echo ("<br>\n Deleted Daily work!!<br>\n ");
+                          } else {
+                          var_dump($result);
+                          }
+                          } */
                 }
                 return $json;
             } catch (\Exception $exc) {
@@ -805,20 +822,30 @@ namespace follows\cls {
                 if ($curl_str === NULL)
                     return NULL;
                 exec($curl_str, $output, $status);
-                $json = json_decode($output[0]);
-                //var_dump($json);
-                if (isset($json->data->user->edge_follow) && isset($json->data->user->edge_follow->page_info)) {
-                    $cursor = $json->data->user->edge_follow->page_info->end_cursor;
-                    if (count($json->data->user->edge_follow->edges) == 0) {
-                        var_dump($json);
-//                        var_dump($curl_str);
-                        echo ("<br>\n No nodes!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>\n ");
+                if(count($output) > 0)
+                {
+                    $json = json_decode($output[0]);
+                    //var_dump($json);
+                    if (isset($json->data->user->edge_follow) && isset($json->data->user->edge_follow->page_info)) {
+                        $cursor = $json->data->user->edge_follow->page_info->end_cursor;
+                        if (count($json->data->user->edge_follow->edges) == 0) {
+                            var_dump($json);
+    //                        var_dump($curl_str);
+                            echo ("<br>\n No nodes!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>\n ");
+                        }
+                    } else {
+                        //var_dump($output);
+                        echo ("empty curl response in get_insta_follows\n");
+                        var_dump($curl_str);
+                        //$this->DB->update_reference_cursor($this->daily_work->reference_id, NULL);
                     }
-                } else {
-                    //var_dump($output);
-                    var_dump($curl_str);
-                    //$this->DB->update_reference_cursor($this->daily_work->reference_id, NULL);
                 }
+                 else {
+                        //var_dump($output
+                        //
+                        var_dump($curl_str);
+                        //$this->DB->update_reference_cursor($this->daily_work->reference_id, NULL);
+                  }
                 return $json;
             } catch (\Exception $exc) {
                 echo $exc->getTraceAsString();
@@ -841,35 +868,44 @@ namespace follows\cls {
                 if ($curl_str === NULL)
                     return NULL;
                 exec($curl_str, $output, $status);
-                $json = json_decode($output[0]);
-                //var_dump($output);
-                if (isset($json->data->location->edge_location_to_media) && isset($json->data->location->edge_location_to_media->page_info)) {
-                    $cursor = $json->data->location->edge_location_to_media->page_info->end_cursor;
-                    if (count($json->data->location->edge_location_to_media->edges) == 0) {
-                        //echo '<pre>'.json_encode($json, JSON_PRETTY_PRINT).'</pre>';
-                        //var_dump($json);
-//                        var_dump($curl_str);
+                if(count($output) > 0)
+                {
+                    $json = json_decode($output[0]);
+                    //var_dump($output);
+                    if (isset($json->data->location->edge_location_to_media) && isset($json->data->location->edge_location_to_media->page_info)) {
+                        $cursor = $json->data->location->edge_location_to_media->page_info->end_cursor;
+                        if (count($json->data->location->edge_location_to_media->edges) == 0) {
+                            //echo '<pre>'.json_encode($json, JSON_PRETTY_PRINT).'</pre>';
+                            //var_dump($json);
+    //                        var_dump($curl_str);
+                            if (!$without_log)
+                                echo ("<br>\n No nodes!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                            $this->DB->update_reference_cursor($this->daily_work->reference_id, NULL);
+                            $result = $this->DB->delete_daily_work($this->daily_work->reference_id);
+                            if (!$without_log)
+                                echo ("<br>\n Set end cursor to NULL!!!!!!!! Deleted daily work!!!!!!!!!!!!");
+                        }
+                    } else if (isset($json->data) && $json->data->location == NULL) {
+                        //var_dump($output);
                         if (!$without_log)
-                            echo ("<br>\n No nodes!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                            print_r($curl_str);
                         $this->DB->update_reference_cursor($this->daily_work->reference_id, NULL);
                         $result = $this->DB->delete_daily_work($this->daily_work->reference_id);
                         if (!$without_log)
                             echo ("<br>\n Set end cursor to NULL!!!!!!!! Deleted daily work!!!!!!!!!!!!");
-                    }
-                } else if (isset($json->data) && $json->data->location == NULL) {
-                    //var_dump($output);
-                    if (!$without_log)
+                    } else {
+                        var_dump($output);
                         print_r($curl_str);
-                    $this->DB->update_reference_cursor($this->daily_work->reference_id, NULL);
-                    $result = $this->DB->delete_daily_work($this->daily_work->reference_id);
-                    if (!$without_log)
-                        echo ("<br>\n Set end cursor to NULL!!!!!!!! Deleted daily work!!!!!!!!!!!!");
-                } else {
+                        if (!$without_log)
+                            echo ("<br>\n Untrated error!!!");
+                    }
+                }
+                else
+                {
                     var_dump($output);
                     print_r($curl_str);
-                    if (!$without_log)
-                        echo ("<br>\n Untrated error!!!");
-                }
+                    
+                }                
                 return $json;
             } catch (\Exception $exc) {
                 if (!$without_log)
@@ -1792,7 +1828,7 @@ namespace follows\cls {
                     $csrftoken = $cookies->csrftoken;
                     $mid = $cookies->mid;
                     if ($mid !== null && $mid !== '') {
-                        while (!$result->json_response->authenticated && $cnt < 2) {  // try up to 3 times, because possivel erros
+                        while (!$result->json_response->authenticated && $cnt < 1) {  // try up to 3 times, because possivel erros
                             $cnt++;
                             // Make instagram action
                             $url = "https://www.instagram.com/graphql/query/";
@@ -2448,11 +2484,11 @@ namespace follows\cls {
             $result = $this->bot_login($client->login, $client->pass);
             if (isset($result->json_response->message)) {
                 if ($result->json_response->message == 'checkpoint_required') {
-                    $this->DB->set_client_status($client_id, user_status::VERIFY_ACCOUNT);
-                    $this->DB->InsertEventToWashdog($client_id, washdog_type::ROBOT_VERIFY_ACCOUNT, 1, $this->id);
+                    $this->DB->set_client_status($client->id, user_status::VERIFY_ACCOUNT);
+                    $this->DB->InsertEventToWashdog($client->id, washdog_type::ROBOT_VERIFY_ACCOUNT, 1, $this->id);
                 } else if ($result->json_response->message == 'incorrect_password') {
-                    $this->DB->set_client_status($client_id, user_status::BLOCKED_BY_INSTA);
-                    $this->DB->InsertEventToWashdog($client_id, washdog_type::BLOCKED_BY_INSTA, 1, $this->id);
+                    $this->DB->set_client_status($client->id, user_status::BLOCKED_BY_INSTA);
+                    $this->DB->InsertEventToWashdog($client->id, washdog_type::BLOCKED_BY_INSTA, 1, $this->id);
                 }
             }
             return $result;
