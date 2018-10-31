@@ -2439,8 +2439,13 @@ namespace follows\cls {
         }
 
         public function SetUnautorizedClientStatus($client_id) {
-            $this->DB->set_cookies_to_null($client_id);
-            $client = (new \follows\cls\Client())->get_client($client_id);
+           $this->DB->set_cookies_to_null($client_id);           
+           $client = (new \follows\cls\Client())->get_client($client_id);
+           $this->RecognizeClientStatus($client);
+        }
+        
+        public function RecognizeClientStatus($client)
+        {
             $result = $this->bot_login($client->login, $client->pass);
             if (isset($result->json_response->message)) {
                 if ($result->json_response->message == 'checkpoint_required') {
@@ -2451,8 +2456,8 @@ namespace follows\cls {
                     $this->DB->InsertEventToWashdog($client_id, washdog_type::BLOCKED_BY_INSTA, 1, $this->id);
                 }
             }
+            return $result;
         }
-
     }
 
 // end of Robot
