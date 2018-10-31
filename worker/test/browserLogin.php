@@ -238,15 +238,14 @@ class Firefox {
             return $ret;
         } catch(\Exception $e) {
             $msg = $e->getMessage();
-            $challengeData = preg_match(
+            preg_match(
                 '/checkpoint_url": "(.*)", "lock"/',
                 $msg,
                 $matches
             );
             return json_encode([
                 'authenticated' => false,
-                'checkpoint_url' => $challengeData[1],
-                'more_data' => $ret
+                'checkpoint_url' => 'https://www.instagram.com' . $matches[1]
             ]);
         }
     }
