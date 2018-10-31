@@ -579,8 +579,8 @@ namespace follows\cls {
                             //(new \follows\cls\DB())->SaveHttpServerVars($Client->id, json_encode($HTTP_SERVER_VARS));
                         }
                         return $json_response;
-                    } else {
-                        echo "Error in line 562</br>\n";
+                    } else {                        
+                        echo "Error in line 562</br>\n";                        
                         var_dump($output);
                         var_dump($curl_str);
                         return ($json_response === NULL) ? $output : $json_response;
@@ -1995,7 +1995,7 @@ namespace follows\cls {
             $proxy = $this->get_proxy_str($Client);
             $result = $this->get_insta_chaining($client_cookies, $client_insta_id, 1, NULL, $proxy);
             //print_r($result);
-            if ($result != NULL && count($result) > 1)
+            if ($result != NULL && is_array($result) && array_key_exists('0', $result))
             {
                 $result = $this->make_insta_friendships_command($client_cookies, $result[0]->node->id, 'like', 'web/likes', $Client);
                 return $result;
