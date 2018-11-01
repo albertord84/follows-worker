@@ -4,3 +4,4 @@ composer.phar
 composer.lock
 src/logs/
 worker/log/
+nohup.out
