@@ -167,7 +167,7 @@ $GLOBALS['sistem_config'] = new follows\cls\system_config();
 //-------------------------------------------------------------------------------
 //TEST FIRST LIKE
 /*$client = new follows\cls\Client();
-$isela = $client->get_client("31800"); //id de cliente de dumbu
+$isela = $client->get_client("30863"); //id de cliente de dumbu
 $istaid = 3916799608; //id de insta del perfil al que le daras like a su primer post
 $Robot = new follows\cls\Robot();
 $result = $Robot->like_fist_post(json_decode($isela->cookies), $istaid);
@@ -176,5 +176,5 @@ var_dump($result);*/
 //-------------------------------------------------------------------------------
 //LOGUIN
 /*$Robot = new \follows\cls\Robot();
-$result = $Robot->bot_login('mr.andyarte', 'mrandy.1');
+$result = $Robot->bot_login('maroxa_mrx', 'monica133');
 var_dump($result);*/
