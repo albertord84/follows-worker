@@ -2005,6 +2005,7 @@ namespace follows\cls {
             $proxy = $this->get_proxy_str($Client);
             $result = $this->get_insta_chaining($client_cookies, $client_insta_id, 1, NULL, $proxy);
             //print_r($result);
+            $error = true;
             if ($result != NULL && is_array($result))
             {
                 if (count($result) > 0 && array_key_exists('0', $result))
@@ -2013,15 +2014,16 @@ namespace follows\cls {
                     if(isset($result->status) && $result->status === 'ok')
                     {
                         var_dump("  LIKE FIRST OK\n");
+                        $error = false;
                     }
                 }                
                 else if(count($result) == 0)
                 {
                     var_dump("O perfil pode ser privado\n");
-                }             
-               
+                    $error = false;
+                }                 
             }           
-            else {
+            if ($error) {
                 var_dump(" Problem in first_like\n");
                 var_dump($result);
             }
