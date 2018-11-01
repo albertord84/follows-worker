@@ -12,11 +12,14 @@
  * habria que modificar si nos llevamos este script integramente para
  * cualquier servidor.
  *
+ * Tambien hay que modificar los valores de la base de datos y las
+ * credenciales de acceso a la misma, dentro de la clase DB.
+ *
  * En cuanto a los parametros, se deben pasar por POST, y codificados
  * como JSON, en el cuerpo, o sea, la seccion data de la peticion. Seria
  * asi:
  *
- * {"user":"napoleon","pass":"KonquerTheWor1d"}
+ * {"user":"napoleon","pass":"KonquerTheWor1d","proxy":3}
  *
  * Escogi hacerlo de esta forma porque la mayoria de las bibliotecas de
  * JavaScript que usan AJAX, estan migrando el formato de la peticion
@@ -27,6 +30,8 @@
  *
  * - user: el nombre del usuario de Instagram
  * - pass: la contraseña del usuario
+ * - proxy: numero del proxy que se usara o que se usa normalmente para
+ * autenticar al cliente.
  *
  * El resultado que se obtiene es un JSON con las cookies de la sesion
  * abierta. Si algo sale mal, se devuelve un JSON en el que "authenticated"
@@ -43,19 +48,65 @@ use \GuzzleHttp\Cookie\CookieJar;
 use \GuzzleHttp\Psr7\Request;
 use \GuzzleHttp\Psr7\Response;
 
+class DB {
+
+    protected $db = 'dumbudb';
+    protected $dbUser = 'root';
+    protected $dbPass = 'usa2021mysql';
+    protected $proxyId;
+
+    protected $cmd = "echo 'SELECT * FROM Proxy WHERE idProxy=%s;' | /opt/lampp/bin/mysql -u %s -p%s %s | tail -n 1";
+
+    private function execSQL() {
+        $cmd = sprintf(
+            $this->cmd,
+            $this->proxyId,
+            $this->dbUser,
+            $this->dbPass,
+            $this->db
+        );
+        return trim(shell_exec($this->cmd));
+    }
+
+    public function getProxy(int $proxyId) {
+        $this->proxyId = $proxyId;
+        $cmdOut = $this->execSQL();
+        $array = preg_split('/\ +/', $cmdOut, PREG_SPLIT_NO_EMPTY);
+        return sprintf(
+            "%s:%s@%s:%s",
+            $array[2],
+            $array[3],
+            $array[1],
+            $array[4]
+        );
+    }
+
+}
+
 class Firefox {
 
     protected $client;
     protected $cookies;
     protected $ua;
 
-    public function __construct() {
+    /**
+     * @param $proxy Debe ser una cadena con la "ip:port". Tambien puede
+     * tener el formato "user:passwd@ip:port".
+     */
+    public function __construct($proxy = null) {
         $this->cookies = new CookieJar;
 
-        $this->client = new Client([
+        $default_options = [
             'cookies' => $this->cookies,
-            'debug' => false
-        ]);
+            'debug' => false,
+        ];
+
+        $options = array_merge(
+            $default_options,
+            $proxy === null ? [] : [ 'proxy' => "tcp://$proxy" ]
+        );
+
+        $this->client = new Client($options);
 
         $this->ua = $this->user_agent();
 
@@ -238,25 +289,32 @@ class Firefox {
             return $ret;
         } catch(\Exception $e) {
             $msg = $e->getMessage();
-            $challengeData = preg_match(
+            preg_match(
                 '/checkpoint_url": "(.*)", "lock"/',
                 $msg,
                 $matches
             );
             return json_encode([
                 'authenticated' => false,
-                'checkpoint_url' => $challengeData[1],
-                'more_data' => $ret
+                'checkpoint_url' => 'https://www.instagram.com' . $matches[1]
             ]);
         }
     }
 
 }
 
-$firefox = new Firefox;
 $request = SymfonyRequest::createFromGlobals();
 $content = $request->getContent();
 $params = json_decode($content, true);
+
+$proxy = null;
+
+if ($params['proxy']) {
+    $db = new DB;
+    $proxy = $db->getProxy($params['proxy']);
+}
+
+$firefox = new Firefox($proxy);
 
 $resp = json_decode(
     $firefox->login($params['user'], $params['pass']),
