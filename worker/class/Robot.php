@@ -726,15 +726,18 @@ namespace follows\cls {
                 //print_r($output);
                 //print("-> $status<br><br>");
                 $json = json_decode($output[0]);
-                if($json == NULL)
+                /*if($json == NULL)
                 {
                     echo "Line error in line 718 in get_insta_chaining</br>\n";
                     var_dump($output);
                     var_dump($curl_str);                    
-                }
+                }*/
                 if (isset($json->data->user->edge_owner_to_timeline_media) && isset($json->data->user->edge_owner_to_timeline_media->edges) && count($json->data->user->edge_owner_to_timeline_media->edges)) {
                     return $json->data->user->edge_owner_to_timeline_media->edges;
                 }
+                echo "Message Error in get_insta_chaining</br>\n";
+                var_dump($output);
+                var_dump($curl_str);                    
                 return FALSE;
             } catch (\Exception $exc) {
                 echo $exc->getTraceAsString();
