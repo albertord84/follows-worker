@@ -35,7 +35,8 @@ $GLOBALS['sistem_config'] = new follows\cls\system_config();
 // WORKER
 $Worker = new follows\cls\Worker(NULL,999);
 //$Worker->truncate_daily_work();
-$Worker->prepare_daily_work(7638,TRUE);
+$Worker->prepare_daily_work(TRUE);
+//$Worker->prepare_daily_work(7638,TRUE);
 //$Gmail = new follows\cls\Gmail();
 //$Gmail->send_mail("josergm86@gmail.com", "Jose Ramon ",'DUMBU prepare daily work done!!! ','DUMBU prepare daily work done!!! ');
 //$Gmail->send_mail("jangel.riveaux@gmail.com", "Jose Angel Riveaux ",'DUMBU prepare daily work done!!! ','DUMBU prepare daily work done!!! ');

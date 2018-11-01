@@ -356,7 +356,7 @@ namespace follows\cls {
                     $steps++;
                     //$DB = new \follows\cls\DB();
                     //daily work: cookies reference_id to_follow last_access id insta_name insta_id client_id 	insta_follower_cursor 	user_id 	credit_card_number 	credit_card_status_id 	credit_card_cvc 	credit_card_name 	pay_day 	insta_id 	insta_followers_ini 	insta_following id name	login pass email telf role_id status_id	languaje 
-                    //echo '\nget follow work';
+                    //echo '\n get follow work';
                     if($client_id == NULL)
                     {
                         $daily_work = $this->DB->get_follow_work();
