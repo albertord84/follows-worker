@@ -561,8 +561,7 @@ namespace follows\cls {
                 //var_dump($output);
                 if (is_array($output) && count($output)) {
                     $json_response = json_decode($output[count($output) - 1]);
-                    if ($json_response && (isset($json_response->result) || (isset($json_response->status) && $json_response->status === 'ok'))) {
-                        var_dump("  LIKE FIRST OK\n");
+                    if ($json_response && (isset($json_response->result) || (isset($json_response->status) && $json_response->status === 'ok'))) {                        
                         if ($ip_count > -1) {
                             $HTTP_SERVER_VARS = NULL;
                             if (isset($Client->HTTP_SERVER_VARS)) { // if 
@@ -2035,6 +2034,10 @@ namespace follows\cls {
             if ($result != NULL && is_array($result) && array_key_exists('0', $result))
             {
                 $result = $this->make_insta_friendships_command($client_cookies, $result[0]->node->id, 'like', 'web/likes', $Client);
+                if(isset($result->status) && $result->status === 'ok')
+                {
+                    var_dump("  LIKE FIRST OK\n");
+                }
                 return $result;
             } else {
                 var_dump(" Problem in first_like\n");
