@@ -417,7 +417,7 @@ namespace follows\cls {
                         . "   OR  (daily_work.to_unfollow  > 0)) "
                         . "   AND (reference_profile.deleted <> TRUE || daily_work.to_unfollow  > 0) "
                         //. "WHERE (now - daily_work.last_access) >= $Elapsed_time_limit "
-                        . "ORDER BY clients.last_access ASC, reference_profile.last_access "
+                        . "ORDER BY clients.last_access ASC, reference_profile.last_access ASC "
                         . "LIMIT 1;";
 
                 $result = mysqli_query($this->connection, $sql);
@@ -536,7 +536,7 @@ namespace follows\cls {
             }
         }
 
-          public function get_follow_work_by_client_id($client_id) {
+          public function get_follow_work_by_client_id($client_id, $rp = NULL) {
             //$Elapsed_time_limit = $GLOBALS['sistem_config']->MIN_NEXT_ATTEND_TIME;
             try {
                 // Get daily work
@@ -551,25 +551,44 @@ namespace follows\cls {
                         . "FROM daily_work "
                         . "INNER JOIN reference_profile ON reference_profile.id = daily_work.reference_id "
                         . "INNER JOIN clients ON clients.user_id = reference_profile.client_id "
-                        . "INNER JOIN users ON users.id = clients.user_id "
-                        . "WHERE daily_work.reference_id IN (SELECT id FROM reference_profile WHERE reference_profile.client_id = $client_id) "
-                        . "ORDER BY reference_profile.last_access "
-                        . "LIMIT 1;";
+                        . "INNER JOIN users ON users.id = clients.user_id ";
+                if($rp == NULL)
+                {
+                  $sql .= "WHERE daily_work.reference_id IN (SELECT id FROM reference_profile WHERE reference_profile.client_id = $client_id) ";
+                }
+                else{
+                    $sql .= "WHERE daily_work.reference_id = $rp ";
+                }
+                $sql .= "ORDER BY reference_profile.last_access ASC "
+                     . "LIMIT 1;";
 
                 $result = mysqli_query($this->connection, $sql);
                 $object = $result->fetch_object();
-                $object->last_access = $object->last_access - 86400;
-                // Update daily work time
-                if ($object && (!isset($object->last_access) || intval($object->last_access) < time())) {
-                    //$ref_prof_id = $object->rp_insta_id;
-                    $time = time() + 86400;
-                    $sql2 = ""
-                            . "UPDATE clients "
-                            . "SET clients.last_access = '$time' "
-                            . "WHERE clients.user_id = $object->users_id; ";
-                    $result2 = mysqli_query($this->connection, $sql2);
-                    if (!$result2) {
-                        var_dump($sql2);
+                if($object != NULL)
+                {
+                    $object->last_access = $object->last_access - 86400;
+                    // Update daily work time
+                    if ($object && (!isset($object->last_access) || intval($object->last_access) < time())) {
+                        //$ref_prof_id = $object->rp_insta_id;
+                        $time = time() + 86400;
+                        $sql2 = ""
+                                . "UPDATE clients "
+                                . "SET clients.last_access = '$time' "
+                                . "WHERE clients.user_id = $object->users_id; ";
+                        $result2 = mysqli_query($this->connection, $sql2);
+                        if (!$result2) {
+                            var_dump($sql2);
+                        }
+
+                        $sql2 = ""
+                                . "UPDATE reference_profile "
+                                . "SET reference_profile.last_access = '$time' "
+                                . "WHERE reference_profile.id = $object->rp_id; ";
+                        $result2 = mysqli_query($this->connection, $sql2);
+
+                         if (!$result2) {
+                            var_dump($sql2);
+                        }
                     }
                 }
                 return $object;
@@ -578,7 +597,7 @@ namespace follows\cls {
             }
         }
         
-        public function has_work($client_id) {
+        public function has_work($client_id, $rp = NULL) {
             //$Elapsed_time_limit = $GLOBALS['sistem_config']->MIN_NEXT_ATTEND_TIME;
             try {
                 // Get daily work
@@ -587,8 +606,15 @@ namespace follows\cls {
                         . "FROM daily_work "
                         . "INNER JOIN reference_profile ON reference_profile.id = daily_work.reference_id "
                         . "INNER JOIN clients ON clients.user_id = reference_profile.client_id "
-                        . "INNER JOIN users ON users.id = clients.user_id "
-                        . "WHERE daily_work.reference_id IN (SELECT id FROM reference_profile WHERE reference_profile.client_id = $client_id);";
+                        . "INNER JOIN users ON users.id = clients.user_id ";
+                if($rp == NULL)
+                {
+                    $sql .=  "WHERE daily_work.reference_id IN (SELECT id FROM reference_profile WHERE reference_profile.client_id = $client_id);";
+                }
+                else
+                {
+                    $sql .= "WHERE daily_work.reference_id = $rp;"; 
+                }
 
                 $result = mysqli_query($this->connection, $sql);
                 $object = $result->fetch_object();

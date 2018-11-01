@@ -22,6 +22,7 @@ class Payment extends CI_Controller {
                 // Bill paid succefully
                 if (isset($post->event) && isset($post->event->type) && $post->event->type == "bill_paid") {
                     if (isset($post->event->data) && isset($post->event->data->bill) && $post->event->data->bill->status = "paid") {
+                        $result = file_put_contents($file, "bill_paid DETECTED!!:\n", FILE_APPEND);
                         // Activate User
                         //$gateway_client_id = $post->event->data->bill->customer->id;
                         $gateway_payment_key = $post->event->data->bill->subscription->id;
@@ -39,6 +40,9 @@ class Payment extends CI_Controller {
                             $this->client_model->update_client(
                                     $client_id, array('pay_day' => strtotime("+1 month", time())));
                             $result = file_put_contents($file, "$client_id: +1 month from now" . "\n\n\n", FILE_APPEND);
+                        }
+                        else {
+                            $result = file_put_contents($file, "Subscription($gateway_payment_key): NOT FOUND HERE!!!" . "\n\n\n", FILE_APPEND);
                         }
                         //die("Activate client -> Payment done!! -> Dia da cobrança um mês para frente");
                     }

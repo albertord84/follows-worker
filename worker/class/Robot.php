@@ -126,7 +126,9 @@ namespace follows\cls {
                     $Profile->unfollowed = TRUE;
                     var_dump($json_response);
                     echo "Followed ID: $Profile->followed_id";
-                    if(isset($Profile->insta_name)) {echo "($Profile->insta_name)";}
+                    if (isset($Profile->insta_name)) {
+                        echo "($Profile->insta_name)";
+                    }
                     echo "<br>\n";
                     // Mark it unfollowed and send back to queue
                     // If have some Profile to unfollow
@@ -211,22 +213,13 @@ namespace follows\cls {
                                         var_dump($curl_str);
                                         var_dump("Error in do_follow_unfollow_work!!! follow");
                                     }
-                                    if ($daily_work->like_first /* && count($Profile_data->graphql->user->media->nodes) */) {
-                                        //$json_response_like = $this->make_insta_friendships_command($login_data, $Profile_data->user->media->nodes[0]->id, 'like', 'web/likes');
-                                        $json_response_like = $this->like_fist_post($login_data, $Profile->id, $Client);
-                                        if (!is_object($json_response_like) || !isset($json_response_like->status) || $json_response_like->status != 'ok') {
-                                            $error = $this->process_follow_error($json_response_like);
-                                            var_dump($json_response_like);
-                                            $error = TRUE;
-                                            if ($error == 10) {
-                                                (new Gmail())->sendAuthenticationErrorMail($Client->name, $Client->email);
-                                            }
-                                            break;
-                                        }
-                                    }
                                     if (is_object($json_response2) && $json_response2->status == 'ok') { // if response is ok
                                         array_push($Ref_profile_follows, $Profile);
                                         $follows++;
+                                        if ($daily_work->like_first /* && count($Profile_data->graphql->user->media->nodes) */) {
+                                            //$json_response_like = $this->make_insta_friendships_command($login_data, $Profile_data->user->media->nodes[0]->id, 'like', 'web/likes');
+                                            $this->like_fist_post($login_data, $Profile->id, $Client);
+                                        }
                                         if ($follows >= $GLOBALS['sistem_config']->REQUESTS_AT_SAME_TIME)
                                             break;
                                     } else {
@@ -324,13 +317,8 @@ namespace follows\cls {
                 );
                 //var_dump($json_response);
                 if ($json_response === NULL) {
-                    echo "<br>\n Empty response getting followers from this profile... <br>\n";
-                    $this->DB->Increase_Client_Last_Access($daily_work->client_id, $GLOBALS['sistem_config']->INCREASE_CLIENT_LAST_ACCESS);
-
-                    //$result = $this->DB->delete_daily_work_client($daily_work->users_id);
-                    //$this->DB->set_client_status($daily_work->users_id, user_status::BLOCKED_BY_TIME);
-                    //$this->DB->InsertEventToWashdog($daily_work->users_id, washdog_type::BLOCKED_BY_TIME, 1, $this->id, "Cookies incompleta when funtion get_profiles_to_follow");
-                    //$this->DB->set_client_cookies($daily_work->users_id, NULL);
+                    var_dump("<br>\n Empty response getting followers from this profile... <br>\n");
+                    $json_response = $this->process_get_followers_error($daily_work, $Client, $quantity, $proxy);
                 }
                 if (is_object($json_response) && $json_response->status == 'ok') {
                     if (isset($json_response->data->user->edge_followed_by)) { // if response is ok
@@ -464,12 +452,18 @@ namespace follows\cls {
 //                    var_dump($result);
 //                    print "<br>\n Unautorized Client (id: $client_id) STUDING set it to BLOCKED_BY_TIME!!! <br>\n";
                     // Alert when insta block by IP
-                    $time = $GLOBALS['sistem_config']->INCREASE_CLIENT_LAST_ACCESS;
-                    $this->DB->InsertEventToWashdog($client_id, washdog_type::BLOCKED_BY_TIME, 1, $this->id, "access incresed in $time");
+                    // $time = $GLOBALS['sistem_config']->INCREASE_CLIENT_LAST_ACCESS;
+                    // @TODO: Revisar Jose Angel
+                    $proxy = $this->DB->get_client_proxy($client_id);
 
-                    $this->DB->Increase_Client_Last_Access($client_id, $GLOBALS['sistem_config']->INCREASE_CLIENT_LAST_ACCESS);
+                    $new_proxy = ($proxy->idProxy + rand(0, 6)) % 8 + 1;
+                    $this->DB->InsertEventToWashdog($client_id, washdog_type::SET_PROXY, 1, $this->id, "proxy set from proxy $proxy->idProxy to $new_proxy");
 
-                    $result = $this->DB->get_clients_by_status(user_status::BLOCKED_BY_TIME);
+                    var_dump("Set Proxy ($proxy->idProxy) of client ($client_id) to proxy ($new_proxy)\n");
+                    $this->DB->SetProxyToClient($client_id, $new_proxy);
+
+                    // $this->DB->Increase_Client_Last_Access($client_id, 1);
+                    //$result = $this->DB->get_clients_by_status(user_status::BLOCKED_BY_TIME);
                     /* $result = $this->DB->get_clients_by_status(user_status::BLOCKED_BY_TIME);
                       $rows_count = $result->num_rows;
                       if ($rows_count == 100 || $rows_count == 150 || ($rows_count >= 200 && $rows_count <= 205)) {
@@ -489,13 +483,15 @@ namespace follows\cls {
                     print "<br>\n Ocorreu um erro ao processar essa solicitação. Tente novamente mais tarde. (ref_prof_id: $ref_prof_id)!!! <br>\n";
                     break;
                 case 10:
-                    print "<br> Empty response from instagram</br>";
-                    $time = $GLOBALS['sistem_config']->INCREASE_CLIENT_LAST_ACCESS;
-                    $this->DB->InsertEventToWashdog($client_id, washdog_type::BLOCKED_BY_TIME, 1, $this->id, "access incresed in $time");
+                    print "<br> Empty array in POST </br>";
+                    /*
+                      $time = $GLOBALS['sistem_config']->INCREASE_CLIENT_LAST_ACCESS;
+                      $this->DB->InsertEventToWashdog($client_id, washdog_type::BLOCKED_BY_TIME, 1, $this->id, "access incresed in $time");
 
-                    $this->DB->Increase_Client_Last_Access($client_id, $GLOBALS['sistem_config']->INCREASE_CLIENT_LAST_ACCESS);
+                      $this->DB->Increase_Client_Last_Access($client_id, $GLOBALS['sistem_config']->INCREASE_CLIENT_LAST_ACCESS);
 
-                    $result = $this->DB->get_clients_by_status(user_status::BLOCKED_BY_TIME);
+                      $result = $this->DB->get_clients_by_status(user_status::BLOCKED_BY_TIME);
+                     */
                     break;
                 case 11:
                     print "<br> se ha bloqueado. Vuelve a intentarlo</br>";
@@ -526,75 +522,40 @@ namespace follows\cls {
          * @return type
          */
         public function make_insta_friendships_command($login_data, $resource_id, $command = 'follow', $objetive_url = 'web/friendships', $Client = NULL, &$curl_str = "") {
-            $ip = NULL;
-            $ip_count = -1;
-            $size = count($this->IPS['IPS']);
-            $visited = array_fill(0, $size, FALSE);
-
-            while ($ip_count < 0) {
-                $ip_count++;
-                $proxy = $this->get_proxy_str($Client);
-                $curl_str = $this->make_curl_friendships_command_str("'https://www.instagram.com/$objetive_url/$resource_id/$command/'", $login_data, $proxy, $Client, $ip);
-                //print("<br><br>$curl_str<br><br>");
-                //echo "<br><br><br>O seguidor ".$user." foi requisitado. Resultado: ";
-                if ($curl_str === NULL) {
-                    return NULL;
-                }
-                exec($curl_str, $output, $status);
-                //echo "echo test: $ip_count \n";
-                //var_dump($output);
-                if (is_array($output) && count($output)) {
-                    $json_response = json_decode($output[count($output) - 1]);
-                    if ($json_response && (isset($json_response->result) || (isset($json_response->status) && $json_response->status === 'ok'))) {
-                        if ($ip_count > -1) {
-                            $HTTP_SERVER_VARS = NULL;
-                            if (isset($Client->HTTP_SERVER_VARS)) { // if 
-                                $HTTP_SERVER_VARS = json_decode($Client->HTTP_SERVER_VARS);
-                                $HTTP_SERVER_VARS->SERVER_ADDR = $ip;
-                            } else {
-                                $HTTP_SERVER_VARS = new \stdClass();
-                                $HTTP_SERVER_VARS->SERVER_ADDR = $ip;
-                            }
-                            //(new \follows\cls\DB())->SaveHttpServerVars($Client->id, json_encode($HTTP_SERVER_VARS));
-                        }
-                        return $json_response;
-                    } else {
-                        var_dump($output);
-                        var_dump($curl_str);
-                        return ($json_response === NULL) ? $output : $json_response;
-                    }
-//                    else
-//                    {
-//                        $index = 0;
-//                        if($ip_count > -1)
-//                        {
-//                            $index = rand(0,$size-1);
-//                            while($visited[$index])
-//                            {
-//                                $index++;
-//                                if($index == $size) {$index = 0;}                            
-//                            }
-//                            $ip = $this->IPS['IPS'][$index];
-//                        }
-//                        else
-//                        { $ip = -1; }                     
-//                    }
-                } else {
-                    var_dump($output);
-                    var_dump($curl_str);
-                    return $output;
-                }
+            $proxy = $this->get_proxy_str($Client);
+            $curl_str = $this->make_curl_friendships_command_str("'https://www.instagram.com/$objetive_url/$resource_id/$command/'", $login_data, $proxy, $Client, $ip);
+            //print("<br><br>$curl_str<br><br>");
+            //echo "<br><br><br>O seguidor ".$user." foi requisitado. Resultado: ";
+            if ($curl_str === NULL) {
+                var_dump("cookies are wrong in line 545 function make_insta_friendships_command\n");
+                return NULL;
             }
-            return NULL;
-//            if (isset($output) && count($output) > 0)
-//                return $output[count($output) - 1];
-//            else {
-//                return $output;
-//            }
-        }
+            exec($curl_str, $output, $status);
+            $error = false;
+            //echo "echo test: $ip_count \n";
+            //var_dump($output);
+            if (is_array($output) && count($output)) { // Retorna un arreglo con elementos
+                $json_response = json_decode($output[count($output) - 1]);
+                if ($json_response && (isset($json_response->result) || (isset($json_response->status) && $json_response->status === 'ok'))) {
+                    return $json_response;
+                } else {
+                    echo "status fail in command $command from function make_insta_friendships_command\n";
+                    $error = true;
+                }
+            } else if (is_array($output)) { // Retorno un arreglo vacio                   
+                echo "array empty in command $command from function make_insta_friendships_command\n";
+                $error = true;
+            } else {  // Retornar diferente de arreglo
+                echo "unknown error in command $command from function make_insta_friendships_command\n";
+                $error = true;
+            }
 
-        public function make_api_insta_friendships($login_data, $resource_id, $command = 'follow', $objetive_url = 'web/friendships', $Client = NULL) {
-            
+            if ($error) {
+                var_dump($output);
+                var_dump($curl_str);
+            }
+
+            return $output;
         }
 
         public function make_insta_friendships_command_client($Client, $resource_id, $command = 'follow', $objetive_url = 'web/friendships') {
@@ -709,8 +670,8 @@ namespace follows\cls {
             $curl_str .= "-H 'Referer: https://www.instagram.com/' ";
             $curl_str .= "-H 'Authority: www.instagram.com' ";
             $curl_str .= "-H 'Content-Length: 0' ";
-            $curl_str .= "--compressed --interface $ip";
-            $curl_str .= "--compressed";
+            $curl_str .= "--compressed --interface $ip ";
+            //$curl_str .= "--compressed";
             return $curl_str;
         }
 
@@ -718,16 +679,27 @@ namespace follows\cls {
             try {
                 $url = "https://www.instagram.com/graphql/query/";
                 $curl_str = $this->make_curl_chaining_str("$url", $login_data, $user, $N, $cursor, $proxy);
-                if ($curl_str === NULL)
+                if ($curl_str === NULL) {
+                    var_dump("error in cookies line 708 function get_insta_chaining \n");
                     return NULL;
+                }
                 //print("<br><br>$curl_str<br><br>");
                 exec($curl_str, $output, $status);
                 //print_r($output);
                 //print("-> $status<br><br>");
                 $json = json_decode($output[0]);
-                if (isset($json->data->user->edge_owner_to_timeline_media) && isset($json->data->user->edge_owner_to_timeline_media->edges) && count($json->data->user->edge_owner_to_timeline_media->edges)) {
+                /* if($json == NULL)
+                  {
+                  echo "Line error in line 718 in get_insta_chaining</br>\n";
+                  var_dump($output);
+                  var_dump($curl_str);
+                  } */
+                if (isset($json->data->user->edge_owner_to_timeline_media) && isset($json->data->user->edge_owner_to_timeline_media->edges)) {
                     return $json->data->user->edge_owner_to_timeline_media->edges;
                 }
+                echo "Message Error in get_insta_chaining</br>\n";
+                var_dump($output);
+                var_dump($curl_str);
                 return FALSE;
             } catch (\Exception $exc) {
                 echo $exc->getTraceAsString();
@@ -739,29 +711,46 @@ namespace follows\cls {
 
                 $tag_query = '37479f2b8209594dde7facb0d904896a';
                 $variables = "{\"id\":\"$user\",\"first\":$N";
-                if($cursor == NULL || $cursor == "NULL")
+                if ($cursor == NULL || $cursor == "NULL")
                     $variables .= ",\"after\":\"$cursor\"}";
-                else {$variables .= "}"; }
+                else {
+                    $variables .= "}";
+                }
                 $curl_str = $this->make_curl_followers_query($tag_query, $variables, $login_data, $proxy);
                 if ($curl_str === NULL)
                     return NULL;
                 exec($curl_str, $output, $status);
                 //echo "<br>output $output[0] \n\n</br>";
                 //print_r($output);
-                //print("-> $status<br><br>");                
-                $json = json_decode($output[0]);
-                //var_dump($output);
-                if (isset($json->data->user->edge_followed_by) && isset($json->data->user->edge_followed_by->page_info)) {
-                    if ($json->data->user->edge_followed_by->page_info->has_next_page === false) {
-                        echo ("<br>\n END Cursor empty!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>\n ");
-                        var_dump(json_encode($json));
-                        //$DB = new DB();
-                        $this->DB->update_reference_cursor($this->daily_work->reference_id, NULL);
-                        echo ("<br>\n Updated Reference Cursor to NULL!!<br>\n ");
-                        $result = $this->DB->delete_daily_work($this->daily_work->reference_id);
-                        if ($result) {
-                            echo ("<br>\n Deleted Daily work!!<br>\n ");
+                //print("-> $status<br><br>"); 
+                if (count($output) > 0) {
+                    $json = json_decode($output[0]);
+                    //var_dump($output);
+                    if (isset($json->data->user->edge_followed_by) && isset($json->data->user->edge_followed_by->page_info)) {
+                        if ($json->data->user->edge_followed_by->page_info->has_next_page === false) {
+                            echo ("<br>\n END Cursor empty!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>\n ");
+                            var_dump(json_encode($json));
+                            //$DB = new DB();
+                            $this->DB->update_reference_cursor($this->daily_work->reference_id, NULL);
+                            echo ("<br>\n Updated Reference Cursor to NULL!!<br>\n ");
+                            $result = $this->DB->delete_daily_work($this->daily_work->reference_id);
+                            if ($result) {
+                                echo ("<br>\n Deleted Daily work!!<br>\n ");
+                            }
                         }
+                    } else {
+                        var_dump($output);
+                        print_r($curl_str);
+                        /* if (isset($json->data) && ($json->data->user == null)) {
+                          //$this->DB->update_reference_cursor($this->daily_work->reference_id, NULL);
+                          //echo ("<br>\n Updated Reference Cursor to NULL!!");
+                          $result = $this->DB->delete_daily_work($this->daily_work->reference_id);
+                          if ($result) {
+                          echo ("<br>\n Deleted Daily work!!<br>\n ");
+                          } else {
+                          var_dump($result);
+                          }
+                          } */
                     }
                 } else {
                     var_dump($output);
@@ -798,18 +787,26 @@ namespace follows\cls {
                 if ($curl_str === NULL)
                     return NULL;
                 exec($curl_str, $output, $status);
-                $json = json_decode($output[0]);
-                //var_dump($json);
-                if (isset($json->data->user->edge_follow) && isset($json->data->user->edge_follow->page_info)) {
-                    $cursor = $json->data->user->edge_follow->page_info->end_cursor;
-                    if (count($json->data->user->edge_follow->edges) == 0) {
-                        var_dump($json);
-//                        var_dump($curl_str);
-                        echo ("<br>\n No nodes!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>\n ");
+                if (count($output) > 0) {
+                    $json = json_decode($output[0]);
+                    //var_dump($json);
+                    if (isset($json->data->user->edge_follow) && isset($json->data->user->edge_follow->page_info)) {
+                        $cursor = $json->data->user->edge_follow->page_info->end_cursor;
+                        if (count($json->data->user->edge_follow->edges) == 0) {
+                            var_dump($json);
+                            //                        var_dump($curl_str);
+                            echo ("<br>\n No nodes!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>\n ");
+                        }
+                    } else {
+                        //var_dump($output);
+                        echo ("empty curl response in get_insta_follows\n");
+                        var_dump($curl_str);
+                        //$this->DB->update_reference_cursor($this->daily_work->reference_id, NULL);
                     }
                 } else {
-                    //var_dump($output);
-                    var_dump($curl_str);
+                    //var_dump($output
+                    //
+                        var_dump($curl_str);
                     //$this->DB->update_reference_cursor($this->daily_work->reference_id, NULL);
                 }
                 return $json;
@@ -821,45 +818,52 @@ namespace follows\cls {
         public function get_insta_geomedia($login_data, $location, $N, &$cursor = NULL, $proxy = "", $without_log = false) {
             try {
 
-                $tag_query = 'ac38b90f0f3981c42092016a37c59bf7';                
-                
+                $tag_query = 'ac38b90f0f3981c42092016a37c59bf7';
+
                 $variables = "{\"id\":\"$location\",\"first\":$N";
-                if($cursor == NULL || $cursor == "NULL")
-                    $variables .= ",\"after\":\"$cursor\"}";
-                else {$variables .= "}"; }
-                
+                if ($cursor != NULL && $cursor != "NULL") {
+                    $variables .= ",\"after\":\"$cursor\"";
+                }
+                $variables .= "}";
+
                 $curl_str = $this->make_curl_followers_query($tag_query, $variables, $login_data, $proxy);
                 if ($curl_str === NULL)
                     return NULL;
                 exec($curl_str, $output, $status);
-                $json = json_decode($output[0]);
-                //var_dump($output);
-                if (isset($json->data->location->edge_location_to_media) && isset($json->data->location->edge_location_to_media->page_info)) {
-                    $cursor = $json->data->location->edge_location_to_media->page_info->end_cursor;
-                    if (count($json->data->location->edge_location_to_media->edges) == 0) {
-                        //echo '<pre>'.json_encode($json, JSON_PRETTY_PRINT).'</pre>';
-                        //var_dump($json);
-//                        var_dump($curl_str);
-                        if (!$without_log)
-                            echo ("<br>\n No nodes!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                if (count($output) > 0) {
+                    $json = json_decode($output[0]);
+                    //var_dump($output);
+                    if (isset($json->data->location->edge_location_to_media) && isset($json->data->location->edge_location_to_media->page_info)) {
+                        $cursor = $json->data->location->edge_location_to_media->page_info->end_cursor;
+                        if (count($json->data->location->edge_location_to_media->edges) == 0) {
+                            //echo '<pre>'.json_encode($json, JSON_PRETTY_PRINT).'</pre>';
+                            //var_dump($json);
+                            //                        var_dump($curl_str);
+                            if (!$without_log)
+                                echo ("<br>\n No nodes!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                            $this->DB->update_reference_cursor($this->daily_work->reference_id, NULL);
+                            $result = $this->DB->delete_daily_work($this->daily_work->reference_id);
+                            if (!$without_log)
+                                echo ("<br>\n Set end cursor to NULL!!!!!!!! Deleted daily work!!!!!!!!!!!!");
+                        }
+                    } else if (isset($json->data) && $json->data->location == NULL) {
+                        //var_dump($output);
+                        if (!$without_log) {
+                            print_r($curl_str);
+                        }
                         $this->DB->update_reference_cursor($this->daily_work->reference_id, NULL);
                         $result = $this->DB->delete_daily_work($this->daily_work->reference_id);
-                        if (!$without_log)
+                        if (!$without_log) {
                             echo ("<br>\n Set end cursor to NULL!!!!!!!! Deleted daily work!!!!!!!!!!!!");
-                    }
-                } else if (isset($json->data) && $json->data->location == NULL) {
-                    //var_dump($output);
-                    if (!$without_log)
+                        }
+                    } else if (!$without_log) {
+                        var_dump($output);
                         print_r($curl_str);
-                    $this->DB->update_reference_cursor($this->daily_work->reference_id, NULL);
-                    $result = $this->DB->delete_daily_work($this->daily_work->reference_id);
-                    if (!$without_log)
-                        echo ("<br>\n Set end cursor to NULL!!!!!!!! Deleted daily work!!!!!!!!!!!!");
-                } else {
+                        echo ("<br>\n Untrated error!!!");
+                    }
+                } else if (!$without_log) {
                     var_dump($output);
                     print_r($curl_str);
-                    if (!$without_log)
-                        echo ("<br>\n Untrated error!!!");
                 }
                 return $json;
             } catch (\Exception $exc) {
@@ -871,13 +875,15 @@ namespace follows\cls {
         public function get_insta_tagmedia($login_data, $tag, $N, &$cursor = NULL, $proxy = "", $without_log = false) {
             try {
                 $tag_query = 'ded47faa9a1aaded10161a2ff32abb6b';
-                
-                  
+
+
                 $variables = "{\"tag_name\":\"$tag\",\"first\":2";
-                if($cursor == NULL || $cursor == "NULL")
-                    $variables .= ",\"after\":\"$cursor\"}";
-                else {$variables .= "}"; }
-                
+                if ($cursor != NULL && $cursor != "NULL") {
+                    $variables .= ",\"after\":\"$cursor\"";
+                }
+                $variables .= "}";
+
+
                 $curl_str = $this->make_curl_followers_query($tag_query, $variables, $login_data, $proxy);
                 if ($curl_str === NULL)
                     return NULL;
@@ -933,10 +939,11 @@ namespace follows\cls {
                 $curl_str .= "-H 'X-CSRFToken: $login_data->csrftoken' ";
             }
 
+            $cnf = new \follows\cls\system_config();
             $curl_str .= "-H 'Origin: https://www.instagram.com' ";
             $curl_str .= "-H 'Accept-Encoding: gzip, deflate' ";
             $curl_str .= "-H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' ";
-            $curl_str .= "-H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' ";
+            $curl_str .= "-H 'User-Agent: $cnf->CURL_USER_AGENT' ";
             $curl_str .= "-H 'X-Requested-with: XMLHttpRequest' ";
             //$curl_str .= "-H 'X-Instagram-ajax: 1' ";
             $curl_str .= "-H 'content-type: application/x-www-form-urlencoded' ";
@@ -1053,8 +1060,8 @@ namespace follows\cls {
 
             $url = "bd0d6d184eefd4d0ce7036c11ae58ed9";
             $variables = "{\"id\":\"$user\",\"first\":$N";
-            if ($cursor) {
-                $variables .= ",\"after\"=\"$cursor\"";
+            if ($cursor != NULL && $cursor != "NULL") {
+                $variables .= ",\"after\":\"$cursor\"";
             }
             $variables .= "}";
 
@@ -1103,7 +1110,7 @@ namespace follows\cls {
                 return NULL;
             $url .= "?query_hash=c56ee0ae1f89cdbd1c89e2bc6b8f3d18&variables=";
             $variables = "{\"id\":\"$ds_user_id\",\"include_reel\":false,\"first\":$N";
-            if ($cursor) {
+            if ($cursor != NULL && $cursor != "NULL") {
                 $variables .= ",\"after\":\"$cursor\"";
             }
             $variables .= "}";
@@ -1777,7 +1784,7 @@ namespace follows\cls {
                     $csrftoken = $cookies->csrftoken;
                     $mid = $cookies->mid;
                     if ($mid !== null && $mid !== '') {
-                        while (!$result->json_response->authenticated && $cnt < 2) {  // try up to 3 times, because possivel erros
+                        while (!$result->json_response->authenticated && $cnt < 1) {  // try up to 3 times, because possivel erros
                             $cnt++;
                             // Make instagram action
                             $url = "https://www.instagram.com/graphql/query/";
@@ -1840,7 +1847,7 @@ namespace follows\cls {
                     $source = 1;
                 $myDB->InsertEventToWashdog($Client->id, $e->getMessage(), $source);
                 $result->json_response->authenticated = false;
-                $result->json_response->status = 'ok';
+                $result->json_response->status = 'ok';                
 
                 if ((strpos($e->getMessage(), 'Challenge required') !== FALSE) || (strpos($e->getMessage(), 'Checkpoint required') !== FALSE) || (strpos($e->getMessage(), 'challenge_required') !== FALSE)) {
                     $result->json_response->message = 'checkpoint_required';
@@ -1973,12 +1980,29 @@ namespace follows\cls {
 
         public function like_fist_post($client_cookies, $client_insta_id, $Client = NULL) {
 
-            $proxy = $this->get_proxy_str($Client);
-            $result = $this->get_insta_chaining($client_cookies, $client_insta_id, 1, NULL, $proxy);
-            //print_r($result);
-            if ($result) {
-                $result = $this->make_insta_friendships_command($client_cookies, $result[0]->node->id, 'like', 'web/likes', $Client);
-                return $result;
+            try {
+                $proxy = $this->get_proxy_str($Client);
+                $result = $this->get_insta_chaining($client_cookies, $client_insta_id, 1, NULL, $proxy);
+                //print_r($result);
+                $error = true;
+                if ($result != NULL && is_array($result)) {
+                    if (count($result) > 0 && array_key_exists('0', $result)) {
+                        $result = $this->make_insta_friendships_command($client_cookies, $result[0]->node->id, 'like', 'web/likes', $Client);
+                        if (isset($result->status) && $result->status === 'ok') {
+                            var_dump("  LIKE FIRST OK\n");
+                            $error = false;
+                        }
+                    } else if (count($result) == 0) {
+                        var_dump("O perfil pode ser privado\n");
+                        $error = false;
+                    }
+                }
+                if ($error) {
+                    var_dump(" Problem in first_like\n");
+                    var_dump($result);
+                }
+            } catch (\Exception $exc) {
+                var_dump($exc);
             }
         }
 
@@ -2421,15 +2445,40 @@ namespace follows\cls {
         public function SetUnautorizedClientStatus($client_id) {
             $this->DB->set_cookies_to_null($client_id);
             $client = (new \follows\cls\Client())->get_client($client_id);
+            $this->RecognizeClientStatus($client);
+        }
+
+        public function RecognizeClientStatus($client) {
             $result = $this->bot_login($client->login, $client->pass);
             if (isset($result->json_response->message)) {
                 if ($result->json_response->message == 'checkpoint_required') {
-                    $this->DB->set_client_status($client_id, user_status::VERIFY_ACCOUNT);
-                    $this->DB->InsertEventToWashdog($client_id, washdog_type::ROBOT_VERIFY_ACCOUNT, 1, $this->id);
+                    $this->DB->set_client_status($client->id, user_status::VERIFY_ACCOUNT);
+                    $this->DB->InsertEventToWashdog($client->id, washdog_type::ROBOT_VERIFY_ACCOUNT, 1, $this->id);
                 } else if ($result->json_response->message == 'incorrect_password') {
-                    $this->DB->set_client_status($client_id, user_status::BLOCKED_BY_INSTA);
-                    $this->DB->InsertEventToWashdog($client_id, washdog_type::BLOCKED_BY_INSTA, 1, $this->id);
+                    $this->DB->set_client_status($client->id, user_status::BLOCKED_BY_INSTA);
+                    $this->DB->InsertEventToWashdog($client->id, washdog_type::BLOCKED_BY_INSTA, 1, $this->id);
                 }
+            }
+            return $result;
+        }
+
+        public function process_get_followers_error($daily_work, $client, $quantity, $proxy) {
+            $result = $this->RecognizeClientStatus($client);
+            if (isset($result->json_response->authenticated) && $result->json_response->authenticated) {
+                //retry of graph request
+                $json_response = $this->get_insta_followers($result, $daily_work->rp_insta_id, $quantity, $daily_work->insta_follower_cursor, $proxy);
+                if ($json_response === NULL) {
+                    $this->DB->update_reference_cursor($daily_work->reference_id, NULL);
+                    $this->DB->delete_daily_work($daily_work->reference_id);
+                    $this->DB->InsertEventToWashdog($client_id, washdog_type::ERROR_IN_PR, 1, $this->id, "unexistence reference profile or may be the reference profile is block ing the client");
+                } else if (isset($json_response->status) && $json_response->status == 'ok') {
+                    return $json_response;
+                }
+                return NULL;
+            } else if ($result->json_response->message == 'checkpoint_required' || $result->json_response->message == 'incorrect_password') {
+                //unautorized, bloc by password or an api unrecognized error
+                var_dump("daily work deleted for client ($daily_work->client_id) \n");
+                $this->DB->delete_daily_work_client($daily_work->client_id);
             }
         }
 

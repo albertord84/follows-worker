@@ -1,0 +1,1558 @@
+Worker Inited...!<br>
+2018-10-29 07:00:01am<br>
+ NOT Autenticated Client!!!: alberto_dreyes <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: opiniaoconservadora <br>
+<br>
+Client 59 to status 1!!!<br>
+Workable Referenc Profile: 15 <br>
+<br>
+<br>
+Autenticated Client: sibitecomunicacao <br>
+<br>
+Client 62 to status 1!!!<br>
+Workable Referenc Profile: 0 <br>
+<br>
+Not reference profiles: sibitecomunicacao <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: mo.taniguti <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: lily.s.alves <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: ma_luco <br>
+<br>
+Client 1567 to status 1!!!<br>
+Workable Referenc Profile: 7 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: fragabar <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: katiacsdc <br>
+<br>
+Client 6264 to status 1!!!<br>
+Workable Referenc Profile: 18 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: grazielialvess <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: comandantedochurrasco <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: pollyruffini <br>
+<br>
+Client 9615 to status 1!!!<br>
+Workable Referenc Profile: 4 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: star_point <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: juliobaptistaoficial <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: ateliermarielamoreira <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: 365_indubai <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: vitoriaabritto <br>
+<br>
+Client 11331 to status 1!!!<br>
+Workable Referenc Profile: 7 <br>
+<br>
+<br>
+Autenticated Client: lojaoperapc <br>
+<br>
+Client 11377 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: kstimportados <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: maycowmontemor <br>
+<br>
+Client 11541 to status 1!!!<br>
+Workable Referenc Profile: 18 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: draalinehsilva <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: thamaraelisa.tattoo <br>
+<br>
+Client 11762 to status 1!!!<br>
+Workable Referenc Profile: 16 <br>
+<br>
+<br>
+Autenticated Client: davidkapper <br>
+<br>
+Client 11866 to status 1!!!<br>
+Workable Referenc Profile: 7 <br>
+<br>
+array(0) {
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@207.188.155.18:21316' 'https://www.instagram.com/graphql/query/?query_hash=ac38b90f0f3981c42092016a37c59bf7&variables=%7B%22id%22%3A%22220021938%22%2C%22first%22%3A10%2C%22after%22%3A%22%22%7D' -H 'Cookie: mid=WlzHEQALAAHLRjvU72w6B1q3xj58; sessionid=IGSC9639ba095bb4489c866408c4984485120cb3e761d7934a95b7a102450bdd9d19%3A2sQMENzv4JEeazLTXpvI51eW8Etrlrnd%3A%7B%22_auth_user_id%22%3A229687072%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%22229687072%3Ah80oEGjKq7RaJJ5YJ61w9onQnXfMnkPV%3A5b2eb84c40c8e4229bc644dc5fa772adb82da8b79de401c9e1bb698032516b6f%22%2C%22last_refreshed%22%3A1516031809.1478357315%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=IgIJfKSeCCvTR0SCWSnWs5hz2fAFYaDf; ds_user_id=229687072' -H 'X-CSRFToken: IgIJfKSeCCvTR0SCWSnWs5hz2fAFYaDf' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed array(0) {
+}
+curl --proxy 'albertreye9917:3r4rcz0b1v@207.188.155.18:21316' 'https://www.instagram.com/graphql/query/?query_hash=ac38b90f0f3981c42092016a37c59bf7&variables=%7B%22id%22%3A%22220021938%22%2C%22first%22%3A10%2C%22after%22%3A%22%22%7D' -H 'Cookie: mid=WlzHEQALAAHLRjvU72w6B1q3xj58; sessionid=IGSC9639ba095bb4489c866408c4984485120cb3e761d7934a95b7a102450bdd9d19%3A2sQMENzv4JEeazLTXpvI51eW8Etrlrnd%3A%7B%22_auth_user_id%22%3A229687072%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%22229687072%3Ah80oEGjKq7RaJJ5YJ61w9onQnXfMnkPV%3A5b2eb84c40c8e4229bc644dc5fa772adb82da8b79de401c9e1bb698032516b6f%22%2C%22last_refreshed%22%3A1516031809.1478357315%7D; s_network=; ig_pr=1; ig_vw=1855; csrftoken=IgIJfKSeCCvTR0SCWSnWs5hz2fAFYaDf; ds_user_id=229687072' -H 'X-CSRFToken: IgIJfKSeCCvTR0SCWSnWs5hz2fAFYaDf' -H 'Origin: https://www.instagram.com' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'X-Requested-with: XMLHttpRequest' -H 'content-type: application/x-www-form-urlencoded' -H 'Accept: */*' -H 'Referer: https://www.instagram.com/' -H 'Authority: www.instagram.com' --compressed <br>
+ NOT Autenticated Client!!!: letdaher <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: ela_andrea <br>
+<br>
+Client 14239 to status 1!!!<br>
+Workable Referenc Profile: 18 <br>
+<br>
+<br>
+Autenticated Client: nafurtadocakes <br>
+<br>
+Client 14256 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: castrolautoservice <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: manu.mamaeaoquadrado <br>
+<br>
+Client 15024 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+Autenticated Client: jgiordanoo <br>
+<br>
+Client 15576 to status 1!!!<br>
+Workable Referenc Profile: 18 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: pbpetti <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: andreiso <br>
+<br>
+Client 16227 to status 1!!!<br>
+Workable Referenc Profile: 10 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: mytrips7 <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: directdireito <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: flavia_vdr <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: helder_del_monte <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: faleiroslaura <br>
+<br>
+Client 17011 to status 1!!!<br>
+Workable Referenc Profile: 17 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: dannysetudo <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: contadordehistoriasreais <br>
+<br>
+Client 17544 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+Autenticated Client: guil38 <br>
+<br>
+Client 17556 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+Autenticated Client: jhoneheber <br>
+<br>
+Client 17760 to status 1!!!<br>
+Workable Referenc Profile: 18 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: sao_os_caipiras <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: acerickrj <br>
+<br>
+Client 17899 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+Autenticated Client: leandrogarciadj <br>
+<br>
+Client 17901 to status 1!!!<br>
+Workable Referenc Profile: 5 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: ethianemarques <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: quarto_22 <br>
+<br>
+Client 18568 to status 1!!!<br>
+Workable Referenc Profile: 4 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: blogdakeli <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: willianabrito <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: tumsoundfestival <br>
+<br>
+Client 18991 to status 1!!!<br>
+Workable Referenc Profile: 2 <br>
+<br>
+<br>
+Autenticated Client: casalbioequilibrio <br>
+<br>
+Client 19101 to status 1!!!<br>
+Workable Referenc Profile: 5 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: fastfitsc <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: hustler.hc <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: isarengel <br>
+<br>
+Client 19420 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: nati.fressato <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: calcadospaubrasil <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: fuinha <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: pedrowilsonrodriguespimentel <br>
+<br>
+Client 19923 to status 1!!!<br>
+Workable Referenc Profile: 0 <br>
+<br>
+Not reference profiles: pedrowilsonrodriguespimentel <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: centerperfumaria <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: pmelorocha <br>
+<br>
+Client 20102 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: thaliaalvesdec <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: yasminndias_ <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: jb_alves_educador <br>
+<br>
+Client 20272 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: leonardosantosfotografia <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: maisonbiarro <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: iselamendozadec <br>
+<br>
+Client 20565 to status 1!!!<br>
+Workable Referenc Profile: 4 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: bamboh.pt <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: redeentropia <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: cadillacs.pastelaria <br>
+<br>
+Client 20818 to status 1!!!<br>
+Workable Referenc Profile: 0 <br>
+<br>
+Not reference profiles: cadillacs.pastelaria <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: ricardoribeiro0013 <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: camacariplazahotel <br>
+<br>
+Client 21407 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+Autenticated Client: shoppingcasaedesign_ <br>
+<br>
+Client 21602 to status 1!!!<br>
+Workable Referenc Profile: 15 <br>
+<br>
+<br>
+Autenticated Client: embraconcondominios <br>
+<br>
+Client 21879 to status 1!!!<br>
+Workable Referenc Profile: 18 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: hamburguinhomoema <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: vilmamartins_7 <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: lionrollingcircusrio <br>
+<br>
+Client 22372 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+Autenticated Client: pilotelton <br>
+<br>
+Client 22538 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: kevinlorenzorj <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: georgemuchuli <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: 5000covers <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: marciomouraoficial <br>
+<br>
+Client 22955 to status 1!!!<br>
+Workable Referenc Profile: 15 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: dl_beautysalon <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: hiratabreno <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: gamecenterpaulista <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: pacofishrd <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: plagamba01 <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: oscarcauchi <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: entreomarealagoa <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: studio4cinco <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: fabriciofabre <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: kevinvem <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: djallannatal <br>
+<br>
+Client 25268 to status 1!!!<br>
+Workable Referenc Profile: 3 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: polpasempreviva <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: eccgamers <br>
+<br>
+Client 25313 to status 1!!!<br>
+Workable Referenc Profile: 4 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: kessyaaa <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: celparra <br>
+<br>
+Client 25451 to status 1!!!<br>
+Workable Referenc Profile: 16 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: mayconbarroco <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: caiocesar <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: drraphaelmarques <br>
+<br>
+Client 26696 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+Autenticated Client: casazunzun <br>
+<br>
+Client 26811 to status 1!!!<br>
+Workable Referenc Profile: 2 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: draraymedeiros <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: bracholuismiguel <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: draflaviasgavioli <br>
+<br>
+Client 27262 to status 1!!!<br>
+Workable Referenc Profile: 12 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: k123silva <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: eco.noronha <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: gelottisports <br>
+<br>
+Client 27432 to status 1!!!<br>
+Workable Referenc Profile: 18 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: bombeefsantos <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: parvathi_brasil <br>
+<br>
+Client 27529 to status 1!!!<br>
+Workable Referenc Profile: 12 <br>
+<br>
+<br>
+Autenticated Client: visagismofacial_drika <br>
+<br>
+Client 27559 to status 1!!!<br>
+Workable Referenc Profile: 0 <br>
+<br>
+Not reference profiles: visagismofacial_drika <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: bakwarabrasil <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: carlabarcellosjoias <br>
+<br>
+Client 27586 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: rogiacomello <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: solvebrazil <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: miocheoficial <br>
+<br>
+Client 27726 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+Autenticated Client: daylipadron <br>
+<br>
+Client 27733 to status 1!!!<br>
+Workable Referenc Profile: 5 <br>
+<br>
+<br>
+Autenticated Client: naraabreuu <br>
+<br>
+Client 27750 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: lukmodas <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: girlsgardenacessorios <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: capimlimaomga <br>
+<br>
+Client 27797 to status 1!!!<br>
+Workable Referenc Profile: 5 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: maxpremiumjeans <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: bruna.fb <br>
+<br>
+Client 27843 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: na_cara_do_gol <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: cyrofuziama <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: thaycomfome <br>
+<br>
+Client 28007 to status 1!!!<br>
+Workable Referenc Profile: 3 <br>
+<br>
+<br>
+Autenticated Client: dankana_dk <br>
+<br>
+Client 28022 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: vivimaquiagem <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: closetdasduasto <br>
+<br>
+Client 28062 to status 9!!!int(17833)
+<br>
+ NOT Autenticated Client!!!: gardelmaroz <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: ferefacrochet <br>
+<br>
+Client 28098 to status 1!!!<br>
+Workable Referenc Profile: 12 <br>
+<br>
+<br>
+Autenticated Client: nr_mini <br>
+<br>
+Client 28105 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: alvomarketingagc <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: maxiprodutos <br>
+<br>
+Client 28363 to status 1!!!<br>
+Workable Referenc Profile: 18 <br>
+<br>
+<br>
+Autenticated Client: drdanilopelegrino <br>
+<br>
+Client 28373 to status 1!!!<br>
+Workable Referenc Profile: 14 <br>
+<br>
+<br>
+Autenticated Client: mariaclaraguimaraes1 <br>
+<br>
+Client 28414 to status 1!!!<br>
+Workable Referenc Profile: 7 <br>
+<br>
+<br>
+Autenticated Client: meirellesipc <br>
+<br>
+Client 28436 to status 1!!!<br>
+Workable Referenc Profile: 12 <br>
+<br>
+<br>
+Autenticated Client: carlota_barnabe <br>
+<br>
+Client 28458 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: drdanilopelegrino <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: ky2oficial <br>
+<br>
+Client 28493 to status 1!!!<br>
+Workable Referenc Profile: 0 <br>
+<br>
+Not reference profiles: ky2oficial <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: bindanvm <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: vida_sol_e_mar_ecoresort <br>
+<br>
+Client 28576 to status 1!!!<br>
+Workable Referenc Profile: 15 <br>
+<br>
+<br>
+Autenticated Client: aco_brasil <br>
+<br>
+Client 28577 to status 1!!!<br>
+Workable Referenc Profile: 12 <br>
+<br>
+<br>
+Autenticated Client: desafioadois2 <br>
+<br>
+Client 28591 to status 1!!!<br>
+Workable Referenc Profile: 18 <br>
+<br>
+<br>
+Autenticated Client: karbofitness <br>
+<br>
+Client 28614 to status 1!!!<br>
+Workable Referenc Profile: 17 <br>
+<br>
+<br>
+Autenticated Client: neovita_fisioterapia <br>
+<br>
+Client 28668 to status 1!!!<br>
+Workable Referenc Profile: 3 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: pretta_araujo <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: quatro_maos <br>
+<br>
+Client 28712 to status 1!!!<br>
+Workable Referenc Profile: 16 <br>
+<br>
+<br>
+Autenticated Client: pp_eventos <br>
+<br>
+Client 28751 to status 1!!!<br>
+Workable Referenc Profile: 17 <br>
+<br>
+<br>
+Autenticated Client: stopscapautomotivo <br>
+<br>
+Client 28844 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: drpedroferrari <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: bunkersounds <br>
+<br>
+Client 28970 to status 1!!!<br>
+Workable Referenc Profile: 18 <br>
+<br>
+<br>
+Autenticated Client: annamaya_arquitetura <br>
+<br>
+Client 28994 to status 1!!!<br>
+Workable Referenc Profile: 17 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: 1kgdobom <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: livre.digital <br>
+<br>
+Client 28996 to status 1!!!<br>
+Workable Referenc Profile: 14 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: rhuanpenaforte <br>
+<br>
+Client 29001 to status 3!!!int(17833)
+<br>
+Autenticated Client: restaurantebario <br>
+<br>
+Client 29004 to status 1!!!<br>
+Workable Referenc Profile: 18 <br>
+<br>
+<br>
+Autenticated Client: felippeturtransportes <br>
+<br>
+Client 29007 to status 1!!!<br>
+Workable Referenc Profile: 17 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: txcambioeturismo_rio <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: riveauxmerino <br>
+<br>
+Client 29037 to status 1!!!<br>
+Workable Referenc Profile: 1 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: brechoandreaventuro <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: guarapuvu <br>
+<br>
+Client 29138 to status 1!!!<br>
+Workable Referenc Profile: 4 <br>
+<br>
+<br>
+Autenticated Client: ranchotalisma_mg <br>
+<br>
+Client 29171 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+Autenticated Client: vitormagnusss <br>
+<br>
+Client 29183 to status 1!!!<br>
+Workable Referenc Profile: 12 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: danelonprimeacessorios <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: masseriniosteria <br>
+<br>
+Client 29253 to status 1!!!<br>
+Workable Referenc Profile: 2 <br>
+<br>
+<br>
+Autenticated Client: naotolendoisso <br>
+<br>
+Client 29305 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+Autenticated Client: elizabet_insurance_agent <br>
+<br>
+Client 29306 to status 1!!!<br>
+Workable Referenc Profile: 16 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: elestore.rio <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: joannaa_aguiar <br>
+<br>
+Client 29347 to status 1!!!<br>
+Workable Referenc Profile: 10 <br>
+<br>
+<br>
+Autenticated Client: psgacademyrecife <br>
+<br>
+Client 29365 to status 1!!!<br>
+Workable Referenc Profile: 3 <br>
+<br>
+<br>
+Autenticated Client: ghanabranding <br>
+<br>
+Client 29419 to status 1!!!<br>
+Workable Referenc Profile: 18 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: orlamodapraiaoficial <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: allbotequipamentos <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: jeferson__brandao <br>
+<br>
+Client 29539 to status 1!!!<br>
+Workable Referenc Profile: 18 <br>
+<br>
+<br>
+Autenticated Client: vivianeneu <br>
+<br>
+Client 29540 to status 1!!!<br>
+Workable Referenc Profile: 18 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: dhougie_ <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: grafianafoto <br>
+<br>
+Client 29570 to status 1!!!<br>
+Workable Referenc Profile: 13 <br>
+<br>
+<br>
+Autenticated Client: thespacetimeripples <br>
+<br>
+Client 29593 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: rubia_martinss <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: emporiodifiori <br>
+<br>
+Client 29628 to status 1!!!<br>
+Workable Referenc Profile: 18 <br>
+<br>
+<br>
+Autenticated Client: viajandonaarquitetura <br>
+<br>
+Client 29663 to status 1!!!<br>
+Workable Referenc Profile: 18 <br>
+<br>
+<br>
+Autenticated Client: doceriaanaester <br>
+<br>
+Client 29696 to status 1!!!<br>
+Workable Referenc Profile: 16 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: oficialforroperfeito <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: thekingboy_ <br>
+<br>
+Client 29724 to status 1!!!<br>
+Workable Referenc Profile: 5 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: rique.silva <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: studying_the_secret <br>
+<br>
+Client 29788 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+Autenticated Client: studiohairinternacional <br>
+<br>
+Client 29814 to status 1!!!<br>
+Workable Referenc Profile: 7 <br>
+<br>
+<br>
+Autenticated Client: ahdireito <br>
+<br>
+Client 29842 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: marciabotam <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: tclaranunes <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: alaskaclothingstore <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: gkt_kickboxing <br>
+<br>
+Client 29947 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: blogdoarinos <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: leandroquelucifotografia <br>
+<br>
+Client 29968 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+Autenticated Client: generalstorefitness <br>
+<br>
+Client 29969 to status 1!!!<br>
+Workable Referenc Profile: 18 <br>
+<br>
+<br>
+Autenticated Client: ginetom_rodrigues <br>
+<br>
+Client 29984 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+Autenticated Client: diegocamargotattoo <br>
+<br>
+Client 30041 to status 1!!!<br>
+Workable Referenc Profile: 18 <br>
+<br>
+<br>
+Autenticated Client: gustavo_ono <br>
+<br>
+Client 30070 to status 1!!!<br>
+Workable Referenc Profile: 18 <br>
+<br>
+<br>
+Autenticated Client: _brokerst <br>
+<br>
+Client 30074 to status 1!!!<br>
+Workable Referenc Profile: 3 <br>
+<br>
+<br>
+Autenticated Client: lifeprojectone <br>
+<br>
+Client 30080 to status 1!!!<br>
+Workable Referenc Profile: 17 <br>
+<br>
+<br>
+Autenticated Client: disfranco.motors <br>
+<br>
+Client 30118 to status 1!!!<br>
+Workable Referenc Profile: 3 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: bruruschel <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: murilooc7 <br>
+<br>
+Client 30138 to status 1!!!<br>
+Workable Referenc Profile: 10 <br>
+<br>
+<br>
+Autenticated Client: rikdelucca <br>
+<br>
+Client 30194 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+Autenticated Client: hueskerbrasil <br>
+<br>
+Client 30226 to status 1!!!<br>
+Workable Referenc Profile: 12 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: rodrigoranchodascabras <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: meuprojeto.fit <br>
+<br>
+Client 30272 to status 1!!!<br>
+Workable Referenc Profile: 18 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: nandokounat <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: julio_sosa_imoveis <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: canelihome <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: _lrnnym <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: festivalnovomundo <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: linoamanda <br>
+<br>
+Client 30442 to status 1!!!<br>
+Workable Referenc Profile: 16 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: _lorecosta <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: luiara_helmer <br>
+<br>
+Client 30507 to status 1!!!<br>
+Workable Referenc Profile: 3 <br>
+<br>
+<br>
+Autenticated Client: dul_fcy <br>
+<br>
+Client 30516 to status 1!!!<br>
+Workable Referenc Profile: 12 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: karol_nunes00 <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: noahestetica <br>
+<br>
+Client 30567 to status 1!!!<br>
+Workable Referenc Profile: 12 <br>
+<br>
+<br>
+Autenticated Client: casadovaz <br>
+<br>
+Client 30577 to status 1!!!<br>
+Workable Referenc Profile: 10 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: arena7bh <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: jonatas.batistela <br>
+<br>
+Client 30583 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: itsredtv <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: tamyparadorneptunia <br>
+<br>
+Client 30639 to status 1!!!<br>
+Workable Referenc Profile: 18 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: gabicoach <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: f1ciaimobiliaria <br>
+<br>
+Client 30671 to status 1!!!<br>
+Workable Referenc Profile: 18 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: mc2turismo <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: fredmunizrj <br>
+<br>
+Client 30712 to status 1!!!<br>
+Workable Referenc Profile: 16 <br>
+<br>
+<br>
+Autenticated Client: drasheilawatanabe <br>
+<br>
+Client 30723 to status 1!!!<br>
+Workable Referenc Profile: 4 <br>
+<br>
+<br>
+Autenticated Client: creativapapelaria <br>
+<br>
+Client 30748 to status 1!!!<br>
+Workable Referenc Profile: 0 <br>
+<br>
+Not reference profiles: creativapapelaria <br>
+<br>
+<br>
+Autenticated Client: victorperazzini <br>
+<br>
+Client 30837 to status 1!!!<br>
+Workable Referenc Profile: 10 <br>
+<br>
+<br>
+Autenticated Client: alberto_test <br>
+<br>
+Client 30864 to status 1!!!<br>
+Workable Referenc Profile: 1 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: fassegseguros <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: giovanni.consultor <br>
+<br>
+Client 30869 to status 1!!!<br>
+Workable Referenc Profile: 14 <br>
+<br>
+<br>
+Autenticated Client: coach.jorgeamorim <br>
+<br>
+Client 30870 to status 1!!!<br>
+Workable Referenc Profile: 0 <br>
+<br>
+Not reference profiles: coach.jorgeamorim <br>
+<br>
+<br>
+Autenticated Client: blessedmaemequer <br>
+<br>
+Client 30871 to status 1!!!<br>
+Workable Referenc Profile: 16 <br>
+<br>
+<br>
+Autenticated Client: dentistabruna <br>
+<br>
+Client 30873 to status 1!!!<br>
+Workable Referenc Profile: 0 <br>
+<br>
+Not reference profiles: dentistabruna <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: chicomorais <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: douglasvwalker <br>
+<br>
+Client 30933 to status 1!!!<br>
+Workable Referenc Profile: 11 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: jumota_decor <br>
+<br>
+Client 31017 to status 3!!!int(17833)
+<br>
+Autenticated Client: marmitinhaslight <br>
+<br>
+Client 31018 to status 1!!!<br>
+Workable Referenc Profile: 5 <br>
+<br>
+<br>
+Autenticated Client: priscila_assilva <br>
+<br>
+Client 31076 to status 1!!!<br>
+Workable Referenc Profile: 3 <br>
+<br>
+<br>
+Autenticated Client: kasamor_store <br>
+<br>
+Client 31085 to status 1!!!<br>
+Workable Referenc Profile: 11 <br>
+<br>
+<br>
+Autenticated Client: levis_tudouu <br>
+<br>
+Client 31097 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+Autenticated Client: amorefeoficial <br>
+<br>
+Client 31108 to status 1!!!<br>
+Workable Referenc Profile: 3 <br>
+<br>
+<br>
+Autenticated Client: gomilkbrasil <br>
+<br>
+Client 31116 to status 1!!!<br>
+Workable Referenc Profile: 16 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: curyamin <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: medconsultingbrasil <br>
+<br>
+Client 31150 to status 1!!!<br>
+Workable Referenc Profile: 4 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: voa_hati <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: samo_oliveiraa <br>
+<br>
+Client 31217 to status 1!!!<br>
+Workable Referenc Profile: 16 <br>
+<br>
+<br>
+Autenticated Client: clinicaformighieri <br>
+<br>
+Client 31250 to status 1!!!<br>
+Workable Referenc Profile: 10 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: carloskpulling <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: oppaviajei <br>
+<br>
+Client 31272 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+Autenticated Client: jubart_design <br>
+<br>
+Client 31359 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+Autenticated Client: bellkeyprofessional <br>
+<br>
+Client 31370 to status 1!!!<br>
+Workable Referenc Profile: 4 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: ronyfgomesss <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: blena.nathallya <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: edersonflx <br>
+<br>
+Client 31433 to status 1!!!<br>
+Workable Referenc Profile: 10 <br>
+<br>
+<br>
+Autenticated Client: tridorimpermebializacao <br>
+<br>
+Client 31437 to status 1!!!<br>
+Workable Referenc Profile: 15 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: caio_luka <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: brasil.anb <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: jeanpiresfotografia <br>
+<br>
+Client 31476 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: charles_gsilvaa <br>
+<br>
+Client 31484 to status 3!!!int(17833)
+<br>
+ NOT Autenticated Client!!!: carlafagundesblog <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: aguedamaurien <br>
+<br>
+Client 31543 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: eusoudaro <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: caiquefregnani <br>
+<br>
+Client 31556 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+Autenticated Client: mulheres_que_se_amam_ <br>
+<br>
+Client 31575 to status 1!!!<br>
+Workable Referenc Profile: 0 <br>
+<br>
+Not reference profiles: mulheres_que_se_amam_ <br>
+<br>
+<br>
+Autenticated Client: marco.suplementos <br>
+<br>
+Client 31576 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+Autenticated Client: tetovivo <br>
+<br>
+Client 31580 to status 1!!!<br>
+Workable Referenc Profile: 11 <br>
+<br>
+<br>
+Autenticated Client: andrewanderley <br>
+<br>
+Client 31600 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: _lsilvva <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: kauadellon <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: divulgageraisoficial <br>
+<br>
+Client 31654 to status 1!!!<br>
+Workable Referenc Profile: 3 <br>
+<br>
+<br>
+Autenticated Client: mariodj.uy <br>
+<br>
+Client 31683 to status 1!!!<br>
+Workable Referenc Profile: 17 <br>
+<br>
+<br>
+Autenticated Client: stephanmarinho <br>
+<br>
+Client 31693 to status 1!!!<br>
+Workable Referenc Profile: 10 <br>
+<br>
+<br>
+Autenticated Client: glaubritooficial <br>
+<br>
+Client 31707 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+Autenticated Client: natpharmafarmacia <br>
+<br>
+Client 31724 to status 1!!!<br>
+Workable Referenc Profile: 17 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: tablesdecorpy <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: julianasilvaespaco <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: alice_carvalho_oficial <br>
+<br>
+Client 31743 to status 1!!!<br>
+Workable Referenc Profile: 3 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: juliaparanhos_ <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: rannabeckeroficial <br>
+<br>
+Client 31748 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+Autenticated Client: filhoteeco <br>
+<br>
+Client 31755 to status 1!!!<br>
+Workable Referenc Profile: 5 <br>
+<br>
+<br>
+Autenticated Client: jeff_valerio <br>
+<br>
+Client 31761 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+Autenticated Client: equipe.dx <br>
+<br>
+Client 31788 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+Autenticated Client: mr.andyarte <br>
+<br>
+Client 31800 to status 1!!!<br>
+Workable Referenc Profile: 1 <br>
+<br>
+<br>
+Autenticated Client: 401loungebar <br>
+<br>
+Client 31807 to status 1!!!<br>
+Workable Referenc Profile: 13 <br>
+<br>
+<br>
+Autenticated Client: edinhotattoojc <br>
+<br>
+Client 31811 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+Autenticated Client: eduardo_purapesca <br>
+<br>
+Client 31824 to status 1!!!<br>
+Workable Referenc Profile: 11 <br>
+<br>
+<br>
+Autenticated Client: psi.brunarodrigues <br>
+<br>
+Client 31827 to status 1!!!<br>
+Workable Referenc Profile: 14 <br>
+<br>
+<br>
+Autenticated Client: dillyscoralick <br>
+<br>
+Client 31828 to status 1!!!<br>
+Workable Referenc Profile: 18 <br>
+<br>
+<br>
+Autenticated Client: maktubemiratessbrasil <br>
+<br>
+Client 31830 to status 1!!!<br>
+Workable Referenc Profile: 5 <br>
+<br>
+<br>
+Autenticated Client: opldecor <br>
+<br>
+Client 31836 to status 1!!!<br>
+Workable Referenc Profile: 18 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: yslaoker <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: dutkasstoreitajai <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: brunoxavierhair <br>
+<br>
+Client 31846 to status 1!!!<br>
+Workable Referenc Profile: 18 <br>
+<br>
+<br>
+Autenticated Client: thaaysbastos <br>
+<br>
+Client 31848 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: intensicare <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: eduretro <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: maroxa_mrx <br>
+<br>
+int(17833)
+<br>
+Autenticated Client: itsfranio <br>
+<br>
+Client 31891 to status 1!!!<br>
+Workable Referenc Profile: 6 <br>
+<br>
+<br>
+ NOT Autenticated Client!!!: theus_macieel <br>
+<br>
+int(17833)
+<br>
+ NOT Autenticated Client!!!: valeriojansen <br>
+<br>
+int(17833)
+
+<br>2018-10-29 07:17:07am
+

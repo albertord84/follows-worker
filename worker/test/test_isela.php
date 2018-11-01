@@ -9,6 +9,10 @@ require_once '../class/Reference_profile.php';
 require_once '../class/PaymentCielo3.0.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/externals/utils.php';
 
+ini_set('xdebug.var_display_max_depth', 17);
+ini_set('xdebug.var_display_max_children', 256);
+ini_set('xdebug.var_display_max_data', 8024);
+
 $GLOBALS['sistem_config'] = new follows\cls\system_config();
 
  /*
@@ -126,9 +130,10 @@ $GLOBALS['sistem_config'] = new follows\cls\system_config();
 //----------------------------------------------------------------
 //
 // WORKER
-//$Worker = new follows\cls\Worker();
+$Worker = new follows\cls\Worker();
 
-//$Worker->prepare_daily_work();
+$Worker->prepare_daily_work();
+//$Worker->prepare_daily_work(31537);
 //$Reference_id = 44013;  // PR, Geo o Hashtag
 //$daily_work = $Worker->get_work_by_id($Reference_id);
 //$Worker->do_follow_unfollow_work($daily_work);
@@ -167,14 +172,14 @@ $GLOBALS['sistem_config'] = new follows\cls\system_config();
 //-------------------------------------------------------------------------------
 //TEST FIRST LIKE
 /*$client = new follows\cls\Client();
-$isela = $client->get_client("31800"); //id de cliente de dumbu
-$istaid = 3916799608; //id de insta del perfil al que le daras like a su primer post
+$isela = $client->get_client("29007"); //id de cliente de dumbu
+$istaid = 318210297; //id de insta del perfil al que le daras like a su primer post
 $Robot = new follows\cls\Robot();
 $result = $Robot->like_fist_post(json_decode($isela->cookies), $istaid);
 var_dump($result);*/
 
 //-------------------------------------------------------------------------------
 //LOGUIN
-/*$Robot = new \follows\cls\Robot();
-$result = $Robot->bot_login('mr.andyarte', 'mrandy.1');
-var_dump($result);*/
+//$Robot = new \follows\cls\Robot();
+//$result = $Robot->bot_login('carlafagundesblog', 'lefteris2018');
+//var_dump($result);

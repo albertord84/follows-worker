@@ -16,6 +16,9 @@ $DB = new \follows\cls\DB();
 $Gmail = new \follows\cls\Gmail();
 $Client = new follows\cls\Client();
 
+$MAX_NUM_PROFILES = 1; // 15;
+$SLEEP            = 2; // 20;   
+
 while (true){
 $clients_data_db = $DB->get_unfollow_clients_data();
 //$clients_data_db = $Client->get_client(1);
@@ -55,13 +58,13 @@ if(isset($clients_data_db))
                 echo "<br>\nClient: $client_data->login ($client_data->id)   " . date("Y-m-d h:i:sa") . "<br>\n";
                 // Verify Profile Following
                 $json_response = $Robot->get_insta_follows(
-                        $login_data, $client_data->insta_id, 15
+                        $login_data, $client_data->insta_id, $MAX_NUM_PROFILES
                 );
                 if (isset($json_response->data->user->edge_follow) && isset($json_response->data->user->edge_follow->page_info)) {
                     if ($json_response->data->user->edge_follow->page_info->has_next_page == false) {
                         $cursor = $json_response->data->user->edge_follow->page_info->end_cursor;
                         $json_response = $Robot->get_insta_follows(
-                                $login_data, $client_data->insta_id, 15, $cursor
+                                $login_data, $client_data->insta_id, $MAX_NUM_PROFILES, $cursor
                         );
                     }
                 }
@@ -105,12 +108,12 @@ if(isset($clients_data_db))
                 }
             } 
         }
-        // Wait 20 minutes
-        sleep(20 * 60);
+        // Wait $SLEEP minutes
+        sleep($SLEEP * 60);
     }      
   }
- // Wait 20 minutes
-sleep(20 * 60);
+ // Wait $SLEEP minutes
+sleep($SLEEP * 60);
 }
         
         
