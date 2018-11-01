@@ -2002,30 +2002,36 @@ namespace follows\cls {
 
         public function like_fist_post($client_cookies, $client_insta_id, $Client = NULL) {
 
-            $proxy = $this->get_proxy_str($Client);
-            $result = $this->get_insta_chaining($client_cookies, $client_insta_id, 1, NULL, $proxy);
-            //print_r($result);
-            $error = true;
-            if ($result != NULL && is_array($result))
+            try
             {
-                if (count($result) > 0 && array_key_exists('0', $result))
+                $proxy = $this->get_proxy_str($Client);
+                $result = $this->get_insta_chaining($client_cookies, $client_insta_id, 1, NULL, $proxy);
+                //print_r($result);
+                $error = true;
+                if ($result != NULL && is_array($result))
                 {
-                    $result = $this->make_insta_friendships_command($client_cookies, $result[0]->node->id, 'like', 'web/likes', $Client);
-                    if(isset($result->status) && $result->status === 'ok')
+                    if (count($result) > 0 && array_key_exists('0', $result))
                     {
-                        var_dump("  LIKE FIRST OK\n");
+                        $result = $this->make_insta_friendships_command($client_cookies, $result[0]->node->id, 'like', 'web/likes', $Client);
+                        if(isset($result->status) && $result->status === 'ok')
+                        {
+                            var_dump("  LIKE FIRST OK\n");
+                            $error = false;
+                        }
+                    }                
+                    else if(count($result) == 0)
+                    {
+                        var_dump("O perfil pode ser privado\n");
                         $error = false;
-                    }
-                }                
-                else if(count($result) == 0)
-                {
-                    var_dump("O perfil pode ser privado\n");
-                    $error = false;
-                }                 
-            }           
-            if ($error) {
-                var_dump(" Problem in first_like\n");
-                var_dump($result);
+                    }                 
+                }           
+                if ($error) {
+                    var_dump(" Problem in first_like\n");
+                    var_dump($result);
+                }
+            
+            } catch (\Exception $exc) {
+                var_dump($exc);
             }
         }
 
