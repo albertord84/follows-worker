@@ -39,7 +39,7 @@ namespace follows\cls {
             $Clients = array();
             if($client_id == NULL)
             {
-                $Clients = (new Client())->get_clients();
+                $Clients = (new Client())->get_clients();                
             } 
             else
             {

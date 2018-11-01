@@ -1847,7 +1847,7 @@ namespace follows\cls {
                     $source = 1;
                 $myDB->InsertEventToWashdog($Client->id, $e->getMessage(), $source);
                 $result->json_response->authenticated = false;
-                $result->json_response->status = 'ok';
+                $result->json_response->status = 'ok';                
 
                 if ((strpos($e->getMessage(), 'Challenge required') !== FALSE) || (strpos($e->getMessage(), 'Checkpoint required') !== FALSE) || (strpos($e->getMessage(), 'challenge_required') !== FALSE)) {
                     $result->json_response->message = 'checkpoint_required';
