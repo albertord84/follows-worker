@@ -889,27 +889,21 @@ namespace follows\cls {
                         }
                     } else if (isset($json->data) && $json->data->location == NULL) {
                         //var_dump($output);
-                        if (!$without_log)
-                            print_r($curl_str);
+                        if (!$without_log){  print_r($curl_str); }
                         $this->DB->update_reference_cursor($this->daily_work->reference_id, NULL);
                         $result = $this->DB->delete_daily_work($this->daily_work->reference_id);
-                        if (!$without_log)
-                            echo ("<br>\n Set end cursor to NULL!!!!!!!! Deleted daily work!!!!!!!!!!!!");
-                    } else {                        
-                        if (!$without_log){
+                        if (!$without_log){ echo ("<br>\n Set end cursor to NULL!!!!!!!! Deleted daily work!!!!!!!!!!!!"); }
+                    } else if (!$without_log){
                             var_dump($output);
                             print_r($curl_str);
                             echo ("<br>\n Untrated error!!!");
-                        }
                     }
+                    
                 }
-                else
-                {
-                    if (!$without_log){
+                else if(!$without_log){
                         var_dump($output);
                         print_r($curl_str);                    
-                    }
-                }                
+                }                              
                 return $json;
             } catch (\Exception $exc) {
                 if (!$without_log)
@@ -2525,6 +2519,7 @@ namespace follows\cls {
              else if($result->json_response->message == 'checkpoint_required' || $result->json_response->message == 'incorrect_password')
              {
                  //unautorized, bloc by password or an api unrecognized error
+                 var_dump("daily work deleted for client ($daily_work->client_id) \n");
                  $this->DB->delete_daily_work_client($daily_work->client_id);
              }
         }
