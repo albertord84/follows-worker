@@ -149,10 +149,6 @@ namespace follows\cls {
                     }
                 }
                 array_push($Followeds_to_unfollow, $Profile);
-                if($daily_work->client_id == 30864)
-                {
-                    sleep(23);
-                }
             }
 
             // Do follow work
@@ -220,19 +216,7 @@ namespace follows\cls {
                                         $follows++;
                                         if ($daily_work->like_first /* && count($Profile_data->graphql->user->media->nodes) */) {
                                             //$json_response_like = $this->make_insta_friendships_command($login_data, $Profile_data->user->media->nodes[0]->id, 'like', 'web/likes');
-                                            if($daily_work->client_id == 30864)
-                                            {
-                                                sleep(29);
-                                            }
-                                            $json_response_like = $this->like_fist_post($login_data, $Profile->id, $Client);
-                                            if (!is_object($json_response_like) || !isset($json_response_like->status) || $json_response_like->status != 'ok') {
-                                                $error = $this->process_follow_error($json_response_like);
-                                                var_dump($json_response_like);
-                                                $error = TRUE;
-                                                if ($error == 10) {
-                                                    (new Gmail())->sendAuthenticationErrorMail($Client->name, $Client->email);
-                                                }
-                                            }
+                                            $this->like_fist_post($login_data, $Profile->id, $Client);                                            
                                         }                                   
                                         if ($follows >= $GLOBALS['sistem_config']->REQUESTS_AT_SAME_TIME)
                                             break;
@@ -246,11 +230,7 @@ namespace follows\cls {
                                         break;
                                     }                                   
                                     // Sleep up to proper delay between request
-                                    sleep($GLOBALS['sistem_config']->DELAY_BETWEEN_REQUESTS);
-                                    if($daily_work->client_id == 30864)
-                                    {
-                                        sleep(39);
-                                    }
+                                    sleep($GLOBALS['sistem_config']->DELAY_BETWEEN_REQUESTS);                                    
                                 } else {
                                     echo "NOT FOLLOWING: followed_in_db($followed_in_db) following_me($following_me) valid_profile($valid_profile)<br>\n";
                                 }
@@ -731,7 +711,7 @@ namespace follows\cls {
                     var_dump($output);
                     var_dump($curl_str);                    
                 }*/
-                if (isset($json->data->user->edge_owner_to_timeline_media) && isset($json->data->user->edge_owner_to_timeline_media->edges) && count($json->data->user->edge_owner_to_timeline_media->edges)) {
+                if (isset($json->data->user->edge_owner_to_timeline_media) && isset($json->data->user->edge_owner_to_timeline_media->edges)) {
                     return $json->data->user->edge_owner_to_timeline_media->edges;
                 }
                 echo "Message Error in get_insta_chaining</br>\n";
@@ -2025,15 +2005,23 @@ namespace follows\cls {
             $proxy = $this->get_proxy_str($Client);
             $result = $this->get_insta_chaining($client_cookies, $client_insta_id, 1, NULL, $proxy);
             //print_r($result);
-            if ($result != NULL && is_array($result) && array_key_exists('0', $result))
+            if ($result != NULL && is_array($result))
             {
-                $result = $this->make_insta_friendships_command($client_cookies, $result[0]->node->id, 'like', 'web/likes', $Client);
-                if(isset($result->status) && $result->status === 'ok')
+                if (count($result) > 0 && array_key_exists('0', $result))
                 {
-                    var_dump("  LIKE FIRST OK\n");
-                }
-                return $result;
-            } else {
+                    $result = $this->make_insta_friendships_command($client_cookies, $result[0]->node->id, 'like', 'web/likes', $Client);
+                    if(isset($result->status) && $result->status === 'ok')
+                    {
+                        var_dump("  LIKE FIRST OK\n");
+                    }
+                }                
+                else if(count($result) == 0)
+                {
+                    var_dump("O perfil pode ser privado\n");
+                }             
+               
+            }           
+            else {
                 var_dump(" Problem in first_like\n");
                 var_dump($result);
             }
