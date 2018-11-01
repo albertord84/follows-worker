@@ -484,6 +484,13 @@ namespace follows\cls {
                     break;
                 case 10:
                     print "<br> Empty array in POST </br>";
+                    $proxy = $this->DB->get_client_proxy($client_id);
+
+                    $new_proxy = ($proxy->idProxy + rand(0, 6)) % 8 + 1;
+                    $this->DB->InsertEventToWashdog($client_id, washdog_type::SET_PROXY, 1, $this->id, "proxy set from proxy $proxy->idProxy to $new_proxy");
+
+                    var_dump("Set Proxy ($proxy->idProxy) of client ($client_id) to proxy ($new_proxy)\n");
+                    $this->DB->SetProxyToClient($client_id, $new_proxy);
                     /*
                       $time = $GLOBALS['sistem_config']->INCREASE_CLIENT_LAST_ACCESS;
                       $this->DB->InsertEventToWashdog($client_id, washdog_type::BLOCKED_BY_TIME, 1, $this->id, "access incresed in $time");
