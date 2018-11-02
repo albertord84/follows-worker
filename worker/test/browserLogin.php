@@ -268,7 +268,7 @@ class Firefox {
 
 function get_proxy($proxyId) {
     $ini_file = trim(file_get_contents(__DIR__ . '/.dbIni'));
-    $config = parse_ini_file($ini_file, true);
+    $config = parse_ini_file($ini_file);
     $conn = mysqli_connect($config['host'], $config['user'], $config['pass'], $config['db']);
     $result = mysqli_query($conn, "SELECT * FROM Proxy WHERE idProxy=$proxyId");
     $proxy = mysqli_fetch_object($result);
