@@ -43,45 +43,8 @@ require __DIR__ . '/../../vendor/autoload.php';
 
 use \Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 use \GuzzleHttp\Client;
-use \GuzzleHttp\Cookie\SetCookie;
 use \GuzzleHttp\Cookie\CookieJar;
 use \GuzzleHttp\Psr7\Request;
-use \GuzzleHttp\Psr7\Response;
-
-class DB {
-
-    protected $db = 'dumbudb';
-    protected $dbUser = 'root';
-    protected $dbPass = 'usa2021mysql';
-    protected $proxyId;
-
-    protected $cmd = "echo 'SELECT * FROM Proxy WHERE idProxy=%s;' | /opt/lampp/bin/mysql -u %s -p%s %s | tail -n 1";
-
-    private function execSQL() {
-        $cmd = sprintf(
-            $this->cmd,
-            $this->proxyId,
-            $this->dbUser,
-            $this->dbPass,
-            $this->db
-        );
-        return trim(shell_exec($this->cmd));
-    }
-
-    public function getProxy(int $proxyId) {
-        $this->proxyId = $proxyId;
-        $cmdOut = $this->execSQL();
-        $array = preg_split('/\ +/', $cmdOut, PREG_SPLIT_NO_EMPTY);
-        return sprintf(
-            "%s:%s@%s:%s",
-            $array[2],
-            $array[3],
-            $array[1],
-            $array[4]
-        );
-    }
-
-}
 
 class Firefox {
 
@@ -303,6 +266,12 @@ class Firefox {
 
 }
 
+function get_proxy($proxyId) {
+    $url = trim(file_get_contents(__DIR__ . '/.proxyUrl'));
+    $json = file_get_contents($url . '/' . $proxyId);
+    return json_decode($json);
+}
+
 $request = SymfonyRequest::createFromGlobals();
 $content = $request->getContent();
 $params = json_decode($content, true);
@@ -310,8 +279,14 @@ $params = json_decode($content, true);
 $proxy = null;
 
 if ($params['proxy']) {
-    $db = new DB;
-    $proxy = $db->getProxy($params['proxy']);
+    $data = get_proxy($params['proxy']);
+    $proxy = sprintf(
+        "%s:%s@%s:%s",
+        $data['proxy_user'],
+        $data['proxy_password'],
+        $data['proxy'],
+        $data['port']
+    );
 }
 
 $firefox = new Firefox($proxy);
