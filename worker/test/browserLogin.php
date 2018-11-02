@@ -274,7 +274,7 @@ function get_proxy($proxyId) {
         3306, '/opt/lampp/var/mysql/mysql.sock');
     $result = mysqli_query($conn, "SELECT * FROM Proxy WHERE idProxy=$proxyId");
     $proxy = mysqli_fetch_object($result);
-    return json_decode($proxy);
+    return json_encode($proxy);
 }
 
 if(true) {
