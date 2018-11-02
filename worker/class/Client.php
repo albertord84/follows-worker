@@ -295,10 +295,12 @@ namespace follows\cls {
             $login_data = (new Robot())->bot_login($Client->login, $Client->pass);
             if (is_object($login_data) && isset($login_data->json_response->authenticated) && $login_data->json_response->authenticated) {
                 $this->set_client_cookies($Client->id, json_encode($login_data));
-                echo "<br>\n Autenticated Client!!! Cookies changed: $Client->login <br>\n<br>\n";
+                echo "<br>\n Autenticated Client!!! Cookies changed: $Client->login ($Client->id) <br>\n\n\n<br>\n";
                 return $login_data;
             } else {
-                echo "<br>\n NOT Autenticated Client!!!: $Client->login <br>\n<br>\n";
+                echo "<br>\n NOT Autenticated Client!!!: $Client->login ($Client->id) <br>\n";
+                var_dump($login_data->json_response);
+                echo "\n\n__________________________________________________________________<br>\n";
                 // Chague client status
                 if (isset($login_data->json_response) && $login_data->json_response->status == 'ok') {
                     if ($login_data->json_response->message == 'checkpoint_required') {

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require __DIR__ . '/../../../vendor/autoload.php';
+require __DIR__ . '/../../vendor/autoload.php';
 
 use \GuzzleHttp\Client;
 use \GuzzleHttp\Cookie\SetCookie;
@@ -43,7 +43,7 @@ class Firefox {
         $last_until_now = 62;
         $v = mt_rand(58, $last_until_now);
         return sprintf(
-            "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:%s.0) Gecko/20100101 Firefox/%s.0"
+            "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:%s.0) Gecko/20100101 Firefox/%s.0",
             $v, $v
         );
     }
@@ -170,7 +170,7 @@ class Firefox {
                 'POST',
                 'https://www.instagram.com/accounts/login/ajax/',
                 [
-                    "User-Agent" => $GLOBALS['ua'],
+                    "User-Agent" => $ua,
                     "Accept" => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
                     "Accept-Language" => 'es,en-US;q=0.7,en;q=0.3',
                     "Referer" => 'https://www.instagram.com/',
@@ -185,7 +185,8 @@ class Firefox {
                 "username=$user&password=$pass&queryParams=%7B%22source%22%3A%22auth_switcher%22%7D"
             )
         );
-        return $response->getBody()->getContents();
+        $ret = $response->getBody()->getContents();
+        return $ret;
     }
 
     public function get_cookies() {
@@ -193,15 +194,25 @@ class Firefox {
     }
 
     public function login(string $user, string $pass) {
-        $this->instagram_com();
-        sleep(mt_rand(1,2));
-        $this->batch_fetch_web();
-        sleep(mt_rand(1,2));
-        $this->ajax_bz();
-        sleep(mt_rand(1,2));
-        $this->accounts_login();
-        sleep(mt_rand(1,2));
-        return $this->accounts_login_ajax($user, $pass);
+        try {
+            $this->instagram_com();
+            sleep(mt_rand(1,2));
+            $this->batch_fetch_web();
+            sleep(mt_rand(1,2));
+            $this->ajax_bz();
+            sleep(mt_rand(1,2));
+            $this->accounts_login();
+            sleep(mt_rand(1,2));
+            $ret = $this->accounts_login_ajax($user, $pass);
+            return $ret;
+        } catch(\Exception $e) {
+            $msg = $e->getMessage();
+            $challengeData = preg_match('/checkpoint_url": "(.*)", "lock"/', $matches);
+            return [
+                'authenticated' => false,
+                'checkpoint_url' => $challengeData[1]
+            ];
+        }
     }
 
 }
