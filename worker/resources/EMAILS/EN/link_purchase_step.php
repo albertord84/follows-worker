@@ -28,7 +28,7 @@
                 </div>
                 <div style="padding:24px 16px; border-bottom-left-radius:15px; border-bottom-right-radius:15px; text-align:center; background-color:#7E7D7D;">
                     <img src="https://dumbu.pro/follows/src/assets/images/logo-footer.png"><br>
-                    <h5>DUMBU - <?php echo date("Y",time());?> - ALL RIGHTS RESERVED RESERVED</h5>
+                    <h5>DUMBU - <?php echo date("Y",time());?> - ALL RIGHTS RESERVED</h5>
                 </div>
             </div>
         </div>
