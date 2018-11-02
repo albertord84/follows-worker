@@ -275,6 +275,11 @@ function get_proxy($proxyId) {
     //return json_decode($json);
 }
 
+if(true) {
+    get_proxy(2);
+    die();
+}
+
 $request = SymfonyRequest::createFromGlobals();
 $content = $request->getContent();
 $params = json_decode($content, true);
