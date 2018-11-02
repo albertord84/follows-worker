@@ -277,11 +277,6 @@ function get_proxy($proxyId) {
     return json_encode($proxy);
 }
 
-if(true) {
-    echo get_proxy(2);
-    die();
-}
-
 $request = SymfonyRequest::createFromGlobals();
 $content = $request->getContent();
 $params = json_decode($content, true);
@@ -289,13 +284,13 @@ $params = json_decode($content, true);
 $proxy = null;
 
 if ($params['proxy']) {
-    $data = get_proxy($params['proxy']);
-    $proxy = sprintf(
+    $proxy = get_proxy($params['proxy']);
+    $proxy_str = sprintf(
         "%s:%s@%s:%s",
-        $data['proxy_user'],
-        $data['proxy_password'],
-        $data['proxy'],
-        $data['port']
+        $data->proxy_user,
+        $data->proxy_password,
+        $data->proxy,
+        $data->port
     );
 }
 
