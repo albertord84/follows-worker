@@ -72,10 +72,10 @@ namespace follows\cls {
                         . "WHERE users.role_id = $CLIENT "
                         . "     AND (clients.unfollow_total IS NULL OR clients.unfollow_total <> 1) "
                         . "     AND ("
-                        //. "          users.status_id = $ACTIVE OR "
-                        //. "          users.status_id = $PENDING OR "
-                        //. "          users.status_id = $VERIFY_ACCOUNT OR "
-                        //. "          users.status_id = $BLOCKED_BY_INSTA OR "
+                        . "          users.status_id = $ACTIVE OR "
+                        . "          users.status_id = $PENDING OR "
+                        . "          users.status_id = $VERIFY_ACCOUNT OR "
+                        . "          users.status_id = $BLOCKED_BY_INSTA OR "
                         . "          users.status_id = $BLOCKED_BY_TIME"
                         . "      ) "
                         . "ORDER BY users.id; ";
@@ -1098,7 +1098,7 @@ namespace follows\cls {
          * @param type $client_id
          * @param type $hours to add to client
          */
-        public function Increase_Client_Last_Access($client_id, $hours = 2) {
+        public function Increase_Client_Last_Access($client_id, $hours = 1) {
             try {
                 $timestamp = strtotime("+$hours hours", time());
                 $this->Set_Client_Last_Access($client_id,$timestamp);

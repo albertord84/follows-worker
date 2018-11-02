@@ -699,6 +699,88 @@ ________________________________________________
 Update daily_work! follows: 5 | unfollows: 5
 
 
+Client: 31908
+
+
+nRef Profil: rio-de-janeiro-rio-de-janeiro
+
+Count: 5 Hasnext: 5 - 2018-11-02 01:47:30am
+
+make_insta_friendships_command UNFOLLOW
+
+object(stdClass)#1248 (1) {
+["status"]=>
+string(2) "ok"
+}
+Followed ID: 4126421011(koskina.cozinha)
+
+object(stdClass)#1436 (1) {
+["status"]=>
+string(2) "ok"
+}
+Followed ID: 258852254(espacopatinifit)
+
+object(stdClass)#1248 (1) {
+["status"]=>
+string(2) "ok"
+}
+Followed ID: 6746678041(viralcenters)
+
+object(stdClass)#1436 (1) {
+["status"]=>
+string(2) "ok"
+}
+Followed ID: 8083008776(nationgabs)
+
+object(stdClass)#1248 (1) {
+["status"]=>
+string(2) "ok"
+}
+Followed ID: 273146091(braciola85)
+
+
+
+make_insta_friendships_command FOLLOW (like firsts = 1): 17
+
+
+
+Ref Profil: rio-de-janeiro-rio-de-janeiro (id: 52567 | type: 1)
+
+Nodes: 5
+
+Profil name: thigors2 FOLLOWING
+
+string(16) " LIKE FIRST OK
+"
+Profil name: wallacetsilveira FOLLOWING
+
+string(16) " LIKE FIRST OK
+"
+Profil name: margareth.campos.35 FOLLOWING
+
+string(16) " LIKE FIRST OK
+"
+Profil name: filipefigueiraoficial FOLLOWING
+
+string(16) " LIKE FIRST OK
+"
+Profil name: gabyloirinha.silva FOLLOWING
+
+string(16) " LIKE FIRST OK
+"
+
+
+
+
+________________________________________________
+
+
+
+
+Update daily_work! follows: 5 | unfollows: 5
+
+_________ELAPSED TIME (580):
+
 
 ------ROBOT FILE LOG: dumbo-worker6-20181101.log---------------------------------------
 Client: 31908
@@ -1828,6 +1910,100 @@ ________________________________________________
 
 Update daily_work! follows: 5 | unfollows: 5
 
+
+Client: 31908
+
+
+nRef Profil: praia-de-itacoatiara
+
+Count: 5 Hasnext: 5 - 2018-11-02 01:58:24am
+
+make_insta_friendships_command UNFOLLOW
+
+object(stdClass)#393 (1) {
+["status"]=>
+string(2) "ok"
+}
+Followed ID: 1465578(jleniadefenza)
+
+object(stdClass)#453 (1) {
+["status"]=>
+string(2) "ok"
+}
+Followed ID: 3576285098(mireille.aziz)
+
+object(stdClass)#393 (1) {
+["status"]=>
+string(2) "ok"
+}
+Followed ID: 8648285808(luckypatel158)
+
+object(stdClass)#453 (1) {
+["status"]=>
+string(2) "ok"
+}
+Followed ID: 582837287(katynoel2)
+
+object(stdClass)#393 (1) {
+["status"]=>
+string(2) "ok"
+}
+Followed ID: 3169728200(mayank_rajawat01)
+
+
+
+make_insta_friendships_command FOLLOW (like firsts = 1): 17
+
+
+
+Ref Profil: praia-de-itacoatiara (id: 52569 | type: 1)
+
+Nodes: 5
+
+Profil name: marianavivasa NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()
+
+Profil name: monsieur_cookies NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()
+
+Profil name: ladecimavejo FOLLOWING
+
+string(16) " LIKE FIRST OK
+"
+Profil name: margot_carioca FOLLOWING
+
+string(16) " LIKE FIRST OK
+"
+Profil name: jairmodesto6 NOT FOLLOWING: requested_by_viewer() followed_by_viewer(1) null_picture()
+
+
+
+Ref Profil: praia-de-itacoatiara (id: 52569 | type: 1)
+
+Nodes: 5
+
+Profil name: bailondeibelin FOLLOWING
+
+string(16) " LIKE FIRST OK
+"
+Profil name: thaysventura FOLLOWING
+
+string(16) " LIKE FIRST OK
+"
+Profil name: pollyanna.g.s FOLLOWING
+
+string(16) " LIKE FIRST OK
+"
+
+
+
+
+________________________________________________
+
+
+
+
+Update daily_work! follows: 5 | unfollows: 5
+
+_________ELAPSED TIME (587):
 
 
 ------ROBOT FILE LOG: dumbo-worker9-20181101.log---------------------------------------
