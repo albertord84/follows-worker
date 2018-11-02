@@ -267,9 +267,12 @@ class Firefox {
 }
 
 function get_proxy($proxyId) {
-    $url = trim(file_get_contents(__DIR__ . '/.proxyUrl'));
-    $json = file_get_contents($url . '/' . $proxyId);
-    return json_decode($json);
+    $config = parse_ini_file('/opt/lampp/htdocs/FOLLOWS-WORKER.INI');
+    if(true) {
+        var_dump($config);
+        die();
+    }
+    //return json_decode($json);
 }
 
 $request = SymfonyRequest::createFromGlobals();
