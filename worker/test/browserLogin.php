@@ -269,11 +269,10 @@ class Firefox {
 function get_proxy($proxyId) {
     $ini_file = trim(file_get_contents(__DIR__ . '/.dbIni'));
     $config = parse_ini_file($ini_file);
-    $mysqli = mysqli_init();
-    mysqli_real_connect($mysqli, $config['host'],
+    $conn = mysqli_connect($config['host'],
         $config['user'], $config['pass'], $config['db'],
         3306, '/opt/lampp/var/mysql/mysql.sock');
-    $result = mysqli_real_query($mysqli, "SELECT * FROM Proxy WHERE idProxy=$proxyId");
+    $result = mysqli_query($conn, "SELECT * FROM Proxy WHERE idProxy=$proxyId");
     $proxy = mysqli_fetch_object($result);
     return json_decode($proxy);
 }
