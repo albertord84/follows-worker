@@ -1082,7 +1082,7 @@ namespace follows\cls {
          * @param type $client_id
          * @param type $hours to add to client
          */
-        public function Increase_Client_Last_Access($client_id, $hours = 2) {
+        public function Increase_Client_Last_Access($client_id, $hours = 1) {
             try {
                 $timestamp = strtotime("+$hours hours", time());
                 $this->Set_Client_Last_Access($client_id,$timestamp);
