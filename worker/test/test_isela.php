@@ -172,14 +172,20 @@ $Worker->prepare_daily_work();
 //-------------------------------------------------------------------------------
 //TEST FIRST LIKE
 /*$client = new follows\cls\Client();
+<<<<<<< HEAD
+$isela = $client->get_client("30863"); //id de cliente de dumbu
+$istaid = 3916799608; //id de insta del perfil al que le daras like a su primer post
+=======
 $isela = $client->get_client("29007"); //id de cliente de dumbu
 $istaid = 318210297; //id de insta del perfil al que le daras like a su primer post
+>>>>>>> 6ebe1573f75be5d6b9a2f0f611b9ccdcbb3fb6b2
 $Robot = new follows\cls\Robot();
 $result = $Robot->like_fist_post(json_decode($isela->cookies), $istaid);
 var_dump($result);*/
 
 //-------------------------------------------------------------------------------
 //LOGUIN
+
 //$Robot = new \follows\cls\Robot();
 //$result = $Robot->bot_login('carlafagundesblog', 'lefteris2018');
 //var_dump($result);

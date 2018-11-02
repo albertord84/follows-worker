@@ -9,7 +9,7 @@ class Gmail extends CI_Controller {
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/system_config.php';
         $GLOBALS['sistem_config'] = new follows\cls\system_config();
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/Gmail.php';
-        $Gmail = new follows\cls\Gmail();
+        $Gmail = new follows\cls\Gmail();        
         $subject = urldecode($_POST['subject']);
         $useremail = urldecode($_POST['useremail']);
         $username = urldecode($_POST['username']);

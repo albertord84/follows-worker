@@ -349,18 +349,16 @@ class Login extends CI_Controller {
         return $result;
     }
 
-    private function param(string $param_name) {
+    private function param($param_name) {
         $input = json_decode(file_get_contents('php://input'), true);
         return $input[$param_name];
     }
 
-    public function browser(string $user, string $pass) {
-        $this->load->library('firefox');
-        $resp = json_decode($this->firefox->login($user, $pass), false);
-        if ($resp->authenticated) {
-            echo json_encode($this->firefox->get_cookies());
-            return;
-        }
-        echo json_encode($resp);
+    public function proxy($proxyId) {
+        $rows = $this->db
+            ->where('idProxy', $proxyId)
+            ->get('Proxy');
+        $proxy = current($rows);
+        echo json_encode($proxy);
     }
 }
