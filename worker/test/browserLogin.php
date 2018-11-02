@@ -267,16 +267,16 @@ class Firefox {
 }
 
 function get_proxy($proxyId) {
-    $config = parse_ini_file('/opt/lampp/htdocs/FOLLOWS-WORKER.INI');
-    if(true) {
-        var_dump($config);
-        die();
-    }
-    //return json_decode($json);
+    $ini_file = trim(file_get_contents(__DIR__ . '/.dbIni'));
+    $config = parse_ini_file($ini_file, true);
+    $conn = mysqli_connect($config['host'], $config['user'], $config['pass'], $config['db']);
+    $result = mysqli_query($conn, "SELECT * FROM Proxy WHERE idProxy=$proxyId");
+    $proxy = mysqli_fetch_object($result);
+    return json_decode($proxy);
 }
 
 if(true) {
-    get_proxy(2);
+    echo get_proxy(2);
     die();
 }
 
