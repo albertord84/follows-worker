@@ -269,15 +269,12 @@ class Firefox {
 function get_proxy($proxyId) {
     $ini_file = trim(file_get_contents(__DIR__ . '/.dbIni'));
     $config = parse_ini_file($ini_file);
-    $conn = mysql_connect($config['host'], $config['user'], $config['pass'], $config['db']);
-    $result = mysql_query($conn, "SELECT * FROM Proxy WHERE idProxy=$proxyId");
-    $proxy = mysql_fetch_object($result);
-    return json_decode($proxy);
-}
-
-if(true) {
-    echo get_proxy(2);
-    die();
+    $conn = mysqli_connect($config['host'],
+        $config['user'], $config['pass'], $config['db'],
+        3306, '/opt/lampp/var/mysql/mysql.sock');
+    $result = mysqli_query($conn, "SELECT * FROM Proxy WHERE idProxy=$proxyId");
+    $proxy = mysqli_fetch_object($result);
+    return json_encode($proxy);
 }
 
 $request = SymfonyRequest::createFromGlobals();
@@ -287,13 +284,13 @@ $params = json_decode($content, true);
 $proxy = null;
 
 if ($params['proxy']) {
-    $data = get_proxy($params['proxy']);
-    $proxy = sprintf(
+    $proxy = get_proxy($params['proxy']);
+    $proxy_str = sprintf(
         "%s:%s@%s:%s",
-        $data['proxy_user'],
-        $data['proxy_password'],
-        $data['proxy'],
-        $data['port']
+        $data->proxy_user,
+        $data->proxy_password,
+        $data->proxy,
+        $data->port
     );
 }
 
