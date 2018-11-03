@@ -324,8 +324,9 @@ $params = json_decode($content, true);
 $proxy = null;
 
 if ($params['proxy']) {
-    $proxy = get_proxy($params['proxy']);
-    log_event($log_file, "Proxy: " . $proxy);
+    $proxy_data = get_proxy($params['proxy']);
+    $data = json_decode($proxy_json, false);
+    log_event($log_file, "Proxy: " . $proxy_data);
     $proxy_str = sprintf(
         "%s:%s@%s:%s",
         $data->proxy_user,
