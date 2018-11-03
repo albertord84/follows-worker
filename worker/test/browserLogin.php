@@ -307,7 +307,8 @@ function get_proxy($proxyId) {
         3306, '/opt/lampp/var/mysql/mysql.sock');
     $result = mysqli_query($conn, "SELECT * FROM Proxy WHERE idProxy=$proxyId");
     $proxy = mysqli_fetch_object($result);
-    return json_encode($proxy);
+    $json = json_encode($proxy);
+    return $json;
 }
 
 /////////////////////////////////////////////////////////////////////
@@ -316,7 +317,7 @@ $log_file = prepare_log();
 
 $request = SymfonyRequest::createFromGlobals();
 $content = $request->getContent();
-log_event($log_file, $content);
+log_event($log_file, "Params: " . $content);
 
 $params = json_decode($content, true);
 
@@ -324,6 +325,7 @@ $proxy = null;
 
 if ($params['proxy']) {
     $proxy = get_proxy($params['proxy']);
+    log_event($log_file, "Proxy: " . $proxy);
     $proxy_str = sprintf(
         "%s:%s@%s:%s",
         $data->proxy_user,
@@ -331,7 +333,6 @@ if ($params['proxy']) {
         $data->proxy,
         $data->port
     );
-    log_event($log_file, $proxy_str);
 }
 
 $firefox = new Firefox($proxy);
