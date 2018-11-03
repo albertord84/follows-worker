@@ -51,6 +51,7 @@ class Firefox {
     protected $client;
     protected $cookies;
     protected $ua;
+    protected $log;
 
     /**
      * @param $proxy Debe ser una cadena con la "ip:port". Tambien puede
@@ -73,6 +74,10 @@ class Firefox {
 
         $this->ua = $this->user_agent();
 
+    }
+
+    protected function log($data) {
+        log($this->log, $data);
     }
 
     protected function rnd() {
@@ -231,6 +236,7 @@ class Firefox {
             )
         );
         $ret = $response->getBody()->getContents();
+        $this->log($ret);
         return $ret;
     }
 
@@ -266,6 +272,22 @@ class Firefox {
 
 }
 
+function prepare_log() {
+    $d = date("Ymd");
+    $log_name = "/tmp/browser-login-$d.log";
+    fopen($log_name, "w");
+    return $log_name;
+}
+
+function log($log_file, $data) {
+    $record = sprintf(
+        "%s - %s",
+        date("H:i:s"),
+        $data
+    );
+    file_put_contents($log_file, $record, FILE_APPEND);
+}
+
 function get_proxy($proxyId) {
     $ini_file = trim(file_get_contents(__DIR__ . '/.dbIni'));
     $config = parse_ini_file($ini_file);
@@ -277,8 +299,14 @@ function get_proxy($proxyId) {
     return json_encode($proxy);
 }
 
+/////////////////////////////////////////////////////////////////////
+
+$log = prepare_log();
+
 $request = SymfonyRequest::createFromGlobals();
 $content = $request->getContent();
+log($log, $content);
+
 $params = json_decode($content, true);
 
 $proxy = null;
@@ -292,6 +320,7 @@ if ($params['proxy']) {
         $data->proxy,
         $data->port
     );
+    log($log, $proxy_str);
 }
 
 $firefox = new Firefox($proxy);
