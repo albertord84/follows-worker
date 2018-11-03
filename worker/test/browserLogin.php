@@ -333,6 +333,7 @@ if ($params['proxy']) {
         $data->proxy,
         $data->port
     );
+    log_event($log_file, "Proxy string: " . $proxy_str);
 }
 
 $firefox = new Firefox($proxy_str);
