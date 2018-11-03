@@ -274,10 +274,12 @@ class Firefox {
                 $msg,
                 $matches
             );
-            return json_encode([
+            $error = json_encode([
                 'authenticated' => false,
                 'checkpoint_url' => 'https://www.instagram.com' . $matches[1]
             ]);
+            $this->log_event($error);
+            return $error;
         }
     }
 
