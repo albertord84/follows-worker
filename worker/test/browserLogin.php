@@ -335,7 +335,7 @@ if ($params['proxy']) {
     );
 }
 
-$firefox = new Firefox($proxy);
+$firefox = new Firefox($proxy_str);
 $firefox->set_log($log_file);
 
 $resp = json_decode(
