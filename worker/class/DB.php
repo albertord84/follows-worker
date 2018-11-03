@@ -1251,8 +1251,12 @@ namespace follows\cls {
         
         public function get_dumbu_statistics() {
             try {
+                //clientes por status
                 $str = "SELECT status_id,count(*) as cnt FROM dumbudb.users GROUP BY status_id;";
                 $result = mysqli_query($this->connection, $str);
+                //clientes pagantes
+//                $str = "SELECT status_id,count(*) as cnt FROM dumbudb.users GROUP BY status_id;";
+//                $result2 = mysqli_query($this->connection, $str);
                 return $result;
             } catch (\Exception $exc) {
                 echo $exc->getTraceAsString();
