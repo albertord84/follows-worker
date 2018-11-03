@@ -51,7 +51,7 @@ class Firefox {
     protected $client;
     protected $cookies;
     protected $ua;
-    protected $log;
+    protected $log_file;
 
     /**
      * @param $proxy Debe ser una cadena con la "ip:port". Tambien puede
@@ -76,12 +76,12 @@ class Firefox {
 
     }
 
-    public function set_log($log) {
-        $this->log = $log;
+    public function set_log($logfile) {
+        $this->log_file = $logfile;
     }
 
     protected function log_event($data) {
-        log($this->log, $data);
+        log($this->log_file, $data);
     }
 
     protected function rnd() {
