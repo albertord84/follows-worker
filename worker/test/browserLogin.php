@@ -76,6 +76,10 @@ class Firefox {
 
     }
 
+    public function setLog($log) {
+        $this->log = $log;
+    }
+
     protected function log($data) {
         log($this->log, $data);
     }
@@ -301,11 +305,11 @@ function get_proxy($proxyId) {
 
 /////////////////////////////////////////////////////////////////////
 
-$log = prepare_log();
+$log_file = prepare_log();
 
 $request = SymfonyRequest::createFromGlobals();
 $content = $request->getContent();
-log($log, $content);
+log($log_file, $content);
 
 $params = json_decode($content, true);
 
@@ -320,10 +324,11 @@ if ($params['proxy']) {
         $data->proxy,
         $data->port
     );
-    log($log, $proxy_str);
+    log($log_file, $proxy_str);
 }
 
 $firefox = new Firefox($proxy);
+$firefox->setLog($log_file);
 
 $resp = json_decode(
     $firefox->login($params['user'], $params['pass']),
