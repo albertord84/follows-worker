@@ -81,7 +81,7 @@ class Firefox {
     }
 
     protected function log_event($data) {
-        log($this->log_file, $data);
+        log_event($this->log_file, $data);
     }
 
     protected function rnd() {
@@ -283,7 +283,7 @@ function prepare_log() {
     return $log_name;
 }
 
-function log($log_file, $data) {
+function log_event($log_file, $data) {
     $record = sprintf(
         "%s - %s",
         date("H:i:s"),
@@ -309,7 +309,7 @@ $log_file = prepare_log();
 
 $request = SymfonyRequest::createFromGlobals();
 $content = $request->getContent();
-log($log_file, $content);
+log_event($log_file, $content);
 
 $params = json_decode($content, true);
 
@@ -324,7 +324,7 @@ if ($params['proxy']) {
         $data->proxy,
         $data->port
     );
-    log($log_file, $proxy_str);
+    log_event($log_file, $proxy_str);
 }
 
 $firefox = new Firefox($proxy);
