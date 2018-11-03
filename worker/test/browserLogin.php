@@ -76,11 +76,11 @@ class Firefox {
 
     }
 
-    public function setLog($log) {
+    public function set_log($log) {
         $this->log = $log;
     }
 
-    protected function log($data) {
+    protected function log_event($data) {
         log($this->log, $data);
     }
 
@@ -240,7 +240,7 @@ class Firefox {
             )
         );
         $ret = $response->getBody()->getContents();
-        $this->log($ret);
+        $this->log_event($ret);
         return $ret;
     }
 
@@ -328,7 +328,7 @@ if ($params['proxy']) {
 }
 
 $firefox = new Firefox($proxy);
-$firefox->setLog($log_file);
+$firefox->set_log($log_file);
 
 $resp = json_decode(
     $firefox->login($params['user'], $params['pass']),
