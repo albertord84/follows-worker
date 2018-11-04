@@ -456,7 +456,8 @@ namespace follows\cls {
                     // @TODO: Revisar Jose Angel
                     $proxy = $this->DB->get_client_proxy($client_id);
 
-                    $new_proxy = ($proxy->idProxy + rand(0, 6)) % 8 + 1;
+                    //$new_proxy = ($proxy->idProxy + rand(0, 6)) % 8 + 1;
+                    $new_proxy = ($proxy->idProxy) % 8 + 1;
                     $this->DB->InsertEventToWashdog($client_id, washdog_type::SET_PROXY, 1, $this->id, "proxy set from proxy $proxy->idProxy to $new_proxy");
 
                     var_dump("Set Proxy ($proxy->idProxy) of client ($client_id) to proxy ($new_proxy)\n");
@@ -486,7 +487,7 @@ namespace follows\cls {
                     print "<br> Empty array in POST </br>";
                     $proxy = $this->DB->get_client_proxy($client_id);
 
-                    $new_proxy = ($proxy->idProxy + rand(0, 6)) % 8 + 1;
+                    $new_proxy = ($proxy->idProxy) % 8 + 1;
                     $this->DB->InsertEventToWashdog($client_id, washdog_type::SET_PROXY, 1, $this->id, "proxy set from proxy $proxy->idProxy to $new_proxy");
 
                     var_dump("Set Proxy ($proxy->idProxy) of client ($client_id) to proxy ($new_proxy)\n");
