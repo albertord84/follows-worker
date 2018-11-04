@@ -355,6 +355,11 @@ class Login extends CI_Controller {
     }
 
     public function proxy($proxyId) {
+        //$config = parse_ini_file(APPPATH . "/../../../FOLLOWS-WORKER.INI", true);
+        if(true){
+            var_dump($this->config);
+            die();
+        }
         $rows = $this->db
             ->where('idProxy', $proxyId)
             ->get('Proxy');

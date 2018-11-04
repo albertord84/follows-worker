@@ -1246,6 +1246,7 @@ namespace follows\cls {
 
         public function get_dumbu_statistics() {
             try {
+                //clientes por status
                 $str = "SELECT status_id,count(*) as cnt FROM dumbudb.users GROUP BY status_id;";
                 $result = mysqli_query($this->connection, $str);
                 return $result;
@@ -1253,8 +1254,19 @@ namespace follows\cls {
                 echo $exc->getTraceAsString();
             }
         }
-
-        public function insert_dumbu_statistics($cols, $arr) {
+        
+        public function get_dumbu_paying_customers() {
+            try {               
+                //clientes pagantes
+                $str = "SELECT count(*) as cnt FROM dumbudb.users JOIN dumbudb.clients ON users.id=clients.user_id WHERE users.status_id in (1,3,5,6,7,9,10) AND credit_card_number<>'' AND credit_card_number<>'PAYMENT_BY_TICKET_BANK' AND credit_card_number is not NULL;";
+                $result2 = mysqli_query($this->connection, $str);
+                return $result2;
+            } catch (\Exception $exc) {
+                echo $exc->getTraceAsString();
+            }
+        }
+        
+        public function insert_dumbu_statistics($cols,$arr) {
             try {
                 $sql = "INSERT INTO dumbudb.dumbu_statistic " . $cols . " VALUE " . $arr . ";";
                 $result = mysqli_query($this->connection, $sql);
