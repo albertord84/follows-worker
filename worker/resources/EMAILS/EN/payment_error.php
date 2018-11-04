@@ -16,7 +16,7 @@
         <div style="text-align: center;">
             <div style="max-width: 580px; font-family: Arial, Helvetica, sans-serif; font-size: 11px;">
                 <div style="padding:24px 16px; border-top-left-radius:15px; border-top-right-radius:15px; text-align:center; background-color:#FF5733">
-                    <img src="https://dumbu.pro/follows/src/assets/images/logo.png"><br>
+                    <img src="https://dumbu.one/follows/src/assets/images/logo.png"><br>
                     <h1 S>Payment not found!</h1>
                 </div>
                 <div style="padding:60px; background-color:#F5F8F6" class="lateral">
@@ -56,7 +56,7 @@
                     </div>        
                 </div>
                 <div style="padding:24px 16px; border-bottom-left-radius:15px; border-bottom-right-radius:15px; text-align:center; background-color:#7E7D7D;">
-                    <img src="https://dumbu.pro/follows/src/assets/images/logo-footer.png"><br>
+                    <img src="https://dumbu.one/follows/src/assets/images/logo-footer.png"><br>
                     <h5>DUMBU - <?php echo date("Y",time());?> - ALL RIGHTS RESERVED</h5>
                 </div>
             </div>
