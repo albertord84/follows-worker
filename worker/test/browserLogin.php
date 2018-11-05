@@ -288,7 +288,7 @@ class Firefox {
 function prepare_log() {
     $d = date("Ymd");
     $log_name = "/tmp/browser-login-$d.log";
-    fopen($log_name, "w");
+    // fopen($log_name, "w");
     return $log_name;
 }
 
