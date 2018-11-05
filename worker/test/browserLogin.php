@@ -125,7 +125,7 @@ class Firefox {
             ])
         );
         $ret = $response->getBody()->getContents();
-        $this->log_event($ret);
+        // $this->log_event($ret);
         return $ret;
     }
 
