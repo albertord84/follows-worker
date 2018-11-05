@@ -266,8 +266,6 @@ namespace follows\cls {
                     {    $unfollows++; }
                 }
                 // TODO: foults  
-                // TODO: errors verificar o que fazer
-                $errors = false;
                 $this->DB->update_daily_work($daily_work->reference_id, count($Ref_profile_follows), $unfollows, 0, $errors);
                 return TRUE;
             }

@@ -809,7 +809,7 @@ namespace follows\cls {
             }
         }
 
-        public function update_daily_work($ref_prof_id, $follows, $unfollows, $faults = 0, $error = FALSE) {
+        public function update_daily_work($ref_prof_id, $follows, $unfollows, $faults = 0) {
             try {
                 $sql = ""
                         . "UPDATE daily_work "
@@ -819,14 +819,7 @@ namespace follows\cls {
 
                 $result1 = mysqli_query($this->connection, $sql);
                 // Record Client last access and foults
-                if (!$error) {
-                    $time = time();
-                } else {
-                    $hours = $GLOBALS['sistem_config']->INCREASE_CLIENT_LAST_ACCESS;
-                    $time = strtotime("+$hours hours", time());
-                    $this->InsertEventToWashdog($client_id, washdog_type::BLOCKED_BY_TIME, 1, 0, "access incresed in $time");
-                    print "<br>\n Access incresed in $time \n<br>";
-                }
+                $time = time();
                 $sql = ""
                         . "UPDATE clients "
                         . "INNER JOIN reference_profile ON clients.user_id = reference_profile.client_id "
