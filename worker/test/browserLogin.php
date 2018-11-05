@@ -316,6 +316,7 @@ function get_proxy($proxyId) {
 /////////////////////////////////////////////////////////////////////
 
 $log_file = prepare_log();
+log_event($log_file, "::: COMENZANDO INTENTO DE INICIO DE SESION :::");
 
 $request = SymfonyRequest::createFromGlobals();
 $content = $request->getContent();
@@ -352,4 +353,5 @@ if ($resp->authenticated) {
     exit();
 }
 
+log_event($log_file, "::: TERMINADO EL INICIO DE SESION :::");
 echo json_encode($resp);
