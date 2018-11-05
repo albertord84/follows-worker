@@ -51,7 +51,7 @@ class Firefox {
     protected $client;
     protected $cookies;
     protected $ua;
-    protected $log;
+    protected $log_file;
 
     /**
      * @param $proxy Debe ser una cadena con la "ip:port". Tambien puede
@@ -73,15 +73,14 @@ class Firefox {
         $this->client = new Client($options);
 
         $this->ua = $this->user_agent();
-
     }
 
-    public function setLog($log) {
-        $this->log = $log;
+    public function set_log($logfile) {
+        $this->log_file = $logfile;
     }
 
-    protected function log($data) {
-        log($this->log, $data);
+    protected function log_event($data) {
+        log_event($this->log_file, $data);
     }
 
     protected function rnd() {
@@ -125,7 +124,9 @@ class Firefox {
                 "Upgrade-Insecure-Requests" => 1,
             ])
         );
-        return $response->getBody()->getContents();
+        $ret = $response->getBody()->getContents();
+        $this->log_event($ret);
+        return $ret;
     }
 
     protected function batch_fetch_web() {
@@ -152,7 +153,9 @@ class Firefox {
                 'surfaces_to_queries=%7B%225095%22%3A%22viewer()+%7B%5Cn++eligible_promotions.surface_nux_id(%3Csurface%3E).external_gating_permitted_qps(%3Cexternal_gating_permitted_qps%3E)+%7B%5Cn++++edges+%7B%5Cn++++++priority%2C%5Cn++++++time_range+%7B%5Cn++++++++start%2C%5Cn++++++++end%5Cn++++++%7D%2C%5Cn++++++node+%7B%5Cn++++++++id%2C%5Cn++++++++promotion_id%2C%5Cn++++++++max_impressions%2C%5Cn++++++++triggers%2C%5Cn++++++++template+%7B%5Cn++++++++++name%2C%5Cn++++++++++parameters+%7B%5Cn++++++++++++name%2C%5Cn++++++++++++string_value%5Cn++++++++++%7D%5Cn++++++++%7D%2C%5Cn++++++++creatives+%7B%5Cn++++++++++title+%7B%5Cn++++++++++++text%5Cn++++++++++%7D%2C%5Cn++++++++++content+%7B%5Cn++++++++++++text%5Cn++++++++++%7D%2C%5Cn++++++++++footer+%7B%5Cn++++++++++++text%5Cn++++++++++%7D%2C%5Cn++++++++++social_context+%7B%5Cn++++++++++++text%5Cn++++++++++%7D%2C%5Cn++++++++++primary_action%7B%5Cn++++++++++++title+%7B%5Cn++++++++++++++text%5Cn++++++++++++%7D%2C%5Cn++++++++++++url%2C%5Cn++++++++++++limit%2C%5Cn++++++++++++dismiss_promotion%5Cn++++++++++%7D%2C%5Cn++++++++++secondary_action%7B%5Cn++++++++++++title+%7B%5Cn++++++++++++++text%5Cn++++++++++++%7D%2C%5Cn++++++++++++url%2C%5Cn++++++++++++limit%2C%5Cn++++++++++++dismiss_promotion%5Cn++++++++++%7D%2C%5Cn++++++++++dismiss_action%7B%5Cn++++++++++++title+%7B%5Cn++++++++++++++text%5Cn++++++++++++%7D%2C%5Cn++++++++++++url%2C%5Cn++++++++++++limit%2C%5Cn++++++++++++dismiss_promotion%5Cn++++++++++%7D%2C%5Cn++++++++++image+%7B%5Cn++++++++++++uri%5Cn++++++++++%7D%5Cn++++++++%7D%5Cn++++++%7D%5Cn++++%7D%5Cn++%7D%5Cn%7D%22%2C%225780%22%3A%22viewer()+%7B%5Cn++eligible_promotions.surface_nux_id(%3Csurface%3E).external_gating_permitted_qps(%3Cexternal_gating_permitted_qps%3E)+%7B%5Cn++++edges+%7B%5Cn++++++priority%2C%5Cn++++++time_range+%7B%5Cn++++++++start%2C%5Cn++++++++end%5Cn++++++%7D%2C%5Cn++++++node+%7B%5Cn++++++++id%2C%5Cn++++++++promotion_id%2C%5Cn++++++++max_impressions%2C%5Cn++++++++triggers%2C%5Cn++++++++template+%7B%5Cn++++++++++name%2C%5Cn++++++++++parameters+%7B%5Cn++++++++++++name%2C%5Cn++++++++++++string_value%5Cn++++++++++%7D%5Cn++++++++%7D%2C%5Cn++++++++creatives+%7B%5Cn++++++++++title+%7B%5Cn++++++++++++text%5Cn++++++++++%7D%2C%5Cn++++++++++content+%7B%5Cn++++++++++++text%5Cn++++++++++%7D%2C%5Cn++++++++++footer+%7B%5Cn++++++++++++text%5Cn++++++++++%7D%2C%5Cn++++++++++social_context+%7B%5Cn++++++++++++text%5Cn++++++++++%7D%2C%5Cn++++++++++primary_action%7B%5Cn++++++++++++title+%7B%5Cn++++++++++++++text%5Cn++++++++++++%7D%2C%5Cn++++++++++++url%2C%5Cn++++++++++++limit%2C%5Cn++++++++++++dismiss_promotion%5Cn++++++++++%7D%2C%5Cn++++++++++secondary_action%7B%5Cn++++++++++++title+%7B%5Cn++++++++++++++text%5Cn++++++++++++%7D%2C%5Cn++++++++++++url%2C%5Cn++++++++++++limit%2C%5Cn++++++++++++dismiss_promotion%5Cn++++++++++%7D%2C%5Cn++++++++++dismiss_action%7B%5Cn++++++++++++title+%7B%5Cn++++++++++++++text%5Cn++++++++++++%7D%2C%5Cn++++++++++++url%2C%5Cn++++++++++++limit%2C%5Cn++++++++++++dismiss_promotion%5Cn++++++++++%7D%2C%5Cn++++++++++image+%7B%5Cn++++++++++++uri%5Cn++++++++++%7D%5Cn++++++++%7D%5Cn++++++%7D%5Cn++++%7D%5Cn++%7D%5Cn%7D%22%7D&vc_policy=default&version=1'
             )
         );
-        return $response->getBody()->getContents();
+        $ret = $response->getBody()->getContents();
+        $this->log_event($ret);
+        return $ret;
     }
 
     protected function ajax_bz() {
@@ -182,7 +185,9 @@ class Firefox {
                 'q=%5B%7B%22page_id%22%3A%22b8nr8x%22%2C%22posts%22%3A%5B%5B%22qe%3Aexpose%22%2C%7B%22qe%22%3A%22su_universe%22%2C%22mid%22%3A%22%s%22%7D%2C1540315780568%2C0%5D%5D%2C%22trigger%22%3A%22qe%3Aexpose%22%2C%22send_method%22%3A%22ajax%22%7D%5D&ts=1540315788333'
             )
         );
-        return $response->getBody()->getContents();
+        $ret = $response->getBody()->getContents();
+        $this->log_event($ret);
+        return $ret;
     }
 
     protected function accounts_login() {
@@ -209,7 +214,9 @@ class Firefox {
                 ]
             )
         );
-        return $response->getBody()->getContents();
+        $ret = $response->getBody()->getContents();
+        $this->log_event($ret);
+        return $ret;
     }
 
     protected function accounts_login_ajax(string $user, string $pass) {
@@ -240,7 +247,7 @@ class Firefox {
             )
         );
         $ret = $response->getBody()->getContents();
-        $this->log($ret);
+        $this->log_event($ret);
         return $ret;
     }
 
@@ -267,10 +274,12 @@ class Firefox {
                 $msg,
                 $matches
             );
-            return json_encode([
+            $error = json_encode([
                 'authenticated' => false,
                 'checkpoint_url' => 'https://www.instagram.com' . $matches[1]
             ]);
+            $this->log_event($error);
+            return $error;
         }
     }
 
@@ -283,13 +292,13 @@ function prepare_log() {
     return $log_name;
 }
 
-function log($log_file, $data) {
+function log_event($log_file, $data) {
     $record = sprintf(
         "%s - %s",
         date("H:i:s"),
         $data
     );
-    file_put_contents($log_file, $record, FILE_APPEND);
+    file_put_contents($log_file, $record . PHP_EOL, FILE_APPEND);
 }
 
 function get_proxy($proxyId) {
@@ -300,7 +309,8 @@ function get_proxy($proxyId) {
         3306, '/opt/lampp/var/mysql/mysql.sock');
     $result = mysqli_query($conn, "SELECT * FROM Proxy WHERE idProxy=$proxyId");
     $proxy = mysqli_fetch_object($result);
-    return json_encode($proxy);
+    $json = json_encode($proxy);
+    return $json;
 }
 
 /////////////////////////////////////////////////////////////////////
@@ -309,14 +319,16 @@ $log_file = prepare_log();
 
 $request = SymfonyRequest::createFromGlobals();
 $content = $request->getContent();
-log($log_file, $content);
+log_event($log_file, "Params: " . $content);
 
 $params = json_decode($content, true);
 
 $proxy = null;
 
 if ($params['proxy']) {
-    $proxy = get_proxy($params['proxy']);
+    $proxy_data = get_proxy($params['proxy']);
+    $data = json_decode($proxy_data, false);
+    log_event($log_file, "Proxy: " . $proxy_data);
     $proxy_str = sprintf(
         "%s:%s@%s:%s",
         $data->proxy_user,
@@ -324,11 +336,11 @@ if ($params['proxy']) {
         $data->proxy,
         $data->port
     );
-    log($log_file, $proxy_str);
+    log_event($log_file, "Proxy string: " . $proxy_str);
 }
 
-$firefox = new Firefox($proxy);
-$firefox->setLog($log_file);
+$firefox = new Firefox($proxy_str);
+$firefox->set_log($log_file);
 
 $resp = json_decode(
     $firefox->login($params['user'], $params['pass']),
