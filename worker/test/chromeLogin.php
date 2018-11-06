@@ -227,7 +227,9 @@ function getProxy($proxyId) {
     return $json;
 }
 
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+////////************ PUNTO DE ENTRADA *************//////////
+/////////////////////////////////////////////////////////////
 
 try {
     // creando el log y el logger
@@ -243,6 +245,7 @@ try {
     $params = json_decode($content, true);
     logEvent($logger, 'Parametros obtenidos: ', $params);
     // consiguiendo el proxy basado en los parametros de la peticion web
+    $proxyStr = null;
     if ($params['proxy']) {
         $proxyData = getProxy($params['proxy']);
         $data = json_decode($proxyData, false);
@@ -257,7 +260,8 @@ try {
         logEvent($logger, 'Cadena del Proxy de acceso: ', [$proxyStr]);
     }
     // creando el cliente http
-    $client = httpClient();
+    $options = $proxyStr !== null ? [ 'proxy' => "tcp://$proxyStr" ] : [];
+    $client = httpClient($options);
     logEvent($logger, 'Creado el cliente HTTP');
     // secuencia de peticiones a Instagram
     requestInstagramPage($client);
