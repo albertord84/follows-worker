@@ -215,22 +215,51 @@ function requestLoginAjax($client, $userName, $password) {
     return $ret;
 }
 
+function getProxy($proxyId) {
+    $iniFile = trim(file_get_contents(__DIR__ . '/.dbIni'));
+    $config = parse_ini_file($iniFile);
+    $conn = mysqli_connect($config['host'],
+        $config['user'], $config['pass'], $config['db'],
+        3306, '/opt/lampp/var/mysql/mysql.sock');
+    $result = mysqli_query($conn, "SELECT * FROM Proxy WHERE idProxy=$proxyId");
+    $proxy = mysqli_fetch_object($result);
+    $json = json_encode($proxy);
+    return $json;
+}
+
 ///////////////////////////////////////////////////////////////////////
 
-// creando el log y el logger
-$log = logFile($log_path, $channel, $date_id);
-$logger = new Logger($channel);
-$logger->pushHandler(new StreamHandler($log));
-
-logEvent($logger, 'COMENZANDO INTENTO DE LOGUEO',
-    ['userAgent' => userAgent()]);
-
-$client = httpClient();
-logEvent($logger, 'Creado el cliente HTTP');
-
 try {
-    $userName = 'yordanoweb';
-    $password = 'Kaperuza25';
+    // creando el log y el logger
+    $log = logFile($log_path, $channel, $date_id);
+    $logger = new Logger($channel);
+    $logger->pushHandler(new StreamHandler($log));
+    // el comienzo de todo...
+    logEvent($logger, 'COMENZANDO INTENTO DE LOGUEO',
+        ['userAgent' => userAgent()]);
+    // obteniendo parametros de la peticion web
+    $request = SymfonyRequest::createFromGlobals();
+    $content = $request->getContent();
+    $params = json_decode($content, true);
+    logEvent($logger, 'Parametros obtenidos: ', $params);
+    // consiguiendo el proxy basado en los parametros de la peticion web
+    if ($params['proxy']) {
+        $proxyData = getProxy($params['proxy']);
+        $data = json_decode($proxyData, false);
+        logEvent($logger, "Proxy: ", [$proxyData]);
+        $proxyStr = sprintf(
+            "%s:%s@%s:%s",
+            $data->proxy_user,
+            $data->proxy_password,
+            $data->proxy,
+            $data->port
+        );
+        logEvent($logger, 'Cadena del Proxy de acceso: ', [$proxyStr]);
+    }
+    // creando el cliente http
+    $client = httpClient();
+    logEvent($logger, 'Creado el cliente HTTP');
+    // secuencia de peticiones a Instagram
     requestInstagramPage($client);
     logEvent($logger, 'Conectado a pagina inicial de Instagram...');
     $batchFetchWebResponse = requestBatchFetchWeb($client);
