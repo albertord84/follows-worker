@@ -270,7 +270,7 @@ try {
     logEvent($logger, $batchFetchWebResponse);
     $accountLoginResponse = requestAccountLoginA1($client);
     logEvent($logger, $accountLoginResponse);
-    $loginAjax = requestLoginAjax($client, $userName, $password);
+    $loginAjax = requestLoginAjax($client, $params['user'], $params['pass']);
     logEvent($logger, $loginAjax);
     $authResp = json_decode($loginAjax, false);
     if (!$authResp->authenticated) {
