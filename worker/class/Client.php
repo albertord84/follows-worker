@@ -183,9 +183,22 @@ namespace follows\cls {
                         case "10":
                             $cols .= "BLOCKED_BY_TIME,";
                             break;
+                        case "21":
+                            $cols .= "PAYING_CUSTOMERS,";
+                            break;
                     }
                     $arr .= $value['cnt'] . ',';
                 }
+                
+                
+                $datas2 = $DB->get_dumbu_paying_customers();
+                foreach ($datas2 as $value) {                    
+                    $cols .= "PAYING_CUSTOMERS,";
+                    $arr .= $value['cnt'] . ',';
+                }
+                
+                
+                
                 $cols .= 'date)';
                 $arr .= $time . ')';
                 $DB->insert_dumbu_statistics($cols, $arr);

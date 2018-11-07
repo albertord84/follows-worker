@@ -72,10 +72,10 @@ namespace follows\cls {
                         . "WHERE users.role_id = $CLIENT "
                         . "     AND (clients.unfollow_total IS NULL OR clients.unfollow_total <> 1) "
                         . "     AND ("
-                        //. "          users.status_id = $ACTIVE OR "
-                        //. "          users.status_id = $PENDING OR "
-                        //. "          users.status_id = $VERIFY_ACCOUNT OR "
-                        //. "          users.status_id = $BLOCKED_BY_INSTA OR "
+                        . "          users.status_id = $ACTIVE OR "
+                        . "          users.status_id = $PENDING OR "
+                        . "          users.status_id = $VERIFY_ACCOUNT OR "
+                        . "          users.status_id = $BLOCKED_BY_INSTA OR "
                         . "          users.status_id = $BLOCKED_BY_TIME"
                         . "      ) "
                         . "ORDER BY users.id; ";
@@ -432,11 +432,11 @@ namespace follows\cls {
                             . "SET clients.last_access = '$time' "
                             . "WHERE clients.user_id = $object->users_id; ";
                     $result2 = mysqli_query($this->connection, $sql2);
-                    
+
                     if (!$result2) {
                         var_dump($sql2);
                     }
-                    
+
                     $sql2 = ""
                             . "UPDATE reference_profile "
                             . "SET reference_profile.last_access = '$time' "
@@ -448,7 +448,7 @@ namespace follows\cls {
                 echo $exc->getTraceAsString();
             }
         }
-        
+
         public function get_follow_work2() {
             //$Elapsed_time_limit = $GLOBALS['sistem_config']->MIN_NEXT_ATTEND_TIME;
             try {
@@ -536,7 +536,7 @@ namespace follows\cls {
             }
         }
 
-          public function get_follow_work_by_client_id($client_id, $rp = NULL) {
+        public function get_follow_work_by_client_id($client_id, $rp = NULL) {
             //$Elapsed_time_limit = $GLOBALS['sistem_config']->MIN_NEXT_ATTEND_TIME;
             try {
                 // Get daily work
@@ -552,20 +552,17 @@ namespace follows\cls {
                         . "INNER JOIN reference_profile ON reference_profile.id = daily_work.reference_id "
                         . "INNER JOIN clients ON clients.user_id = reference_profile.client_id "
                         . "INNER JOIN users ON users.id = clients.user_id ";
-                if($rp == NULL)
-                {
-                  $sql .= "WHERE daily_work.reference_id IN (SELECT id FROM reference_profile WHERE reference_profile.client_id = $client_id) ";
-                }
-                else{
+                if ($rp == NULL) {
+                    $sql .= "WHERE daily_work.reference_id IN (SELECT id FROM reference_profile WHERE reference_profile.client_id = $client_id) ";
+                } else {
                     $sql .= "WHERE daily_work.reference_id = $rp ";
                 }
                 $sql .= "ORDER BY reference_profile.last_access ASC "
-                     . "LIMIT 1;";
+                        . "LIMIT 1;";
 
                 $result = mysqli_query($this->connection, $sql);
                 $object = $result->fetch_object();
-                if($object != NULL)
-                {
+                if ($object != NULL) {
                     $object->last_access = $object->last_access - 86400;
                     // Update daily work time
                     if ($object && (!isset($object->last_access) || intval($object->last_access) < time())) {
@@ -586,7 +583,7 @@ namespace follows\cls {
                                 . "WHERE reference_profile.id = $object->rp_id; ";
                         $result2 = mysqli_query($this->connection, $sql2);
 
-                         if (!$result2) {
+                        if (!$result2) {
                             var_dump($sql2);
                         }
                     }
@@ -596,7 +593,7 @@ namespace follows\cls {
                 echo $exc->getTraceAsString();
             }
         }
-        
+
         public function has_work($client_id, $rp = NULL) {
             //$Elapsed_time_limit = $GLOBALS['sistem_config']->MIN_NEXT_ATTEND_TIME;
             try {
@@ -607,24 +604,21 @@ namespace follows\cls {
                         . "INNER JOIN reference_profile ON reference_profile.id = daily_work.reference_id "
                         . "INNER JOIN clients ON clients.user_id = reference_profile.client_id "
                         . "INNER JOIN users ON users.id = clients.user_id ";
-                if($rp == NULL)
-                {
-                    $sql .=  "WHERE daily_work.reference_id IN (SELECT id FROM reference_profile WHERE reference_profile.client_id = $client_id);";
-                }
-                else
-                {
-                    $sql .= "WHERE daily_work.reference_id = $rp;"; 
+                if ($rp == NULL) {
+                    $sql .= "WHERE daily_work.reference_id IN (SELECT id FROM reference_profile WHERE reference_profile.client_id = $client_id);";
+                } else {
+                    $sql .= "WHERE daily_work.reference_id = $rp;";
                 }
 
                 $result = mysqli_query($this->connection, $sql);
                 $object = $result->fetch_object();
-               
+
                 return $object != NULL;
             } catch (\Exception $exc) {
                 echo $exc->getTraceAsString();
             }
         }
-        
+
         public function get_unfollow_work($client_id) {
             try {
                 // Get profiles to unfollow today for this Client... 
@@ -815,35 +809,30 @@ namespace follows\cls {
             }
         }
 
-        public function update_daily_work($ref_prof_id, $follows, $unfollows, $faults = 0, $error = FALSE) {
+        public function update_daily_work($ref_prof_id, $follows, $unfollows, $faults = 0) {
             try {
-//                if ($follows == 0)
-//                    $follows = 1; // To priorize others RP in the next time... avoiding select this RP ever...
                 $sql = ""
                         . "UPDATE daily_work "
                         . "SET daily_work.to_follow   = (daily_work.to_follow   - $follows), "
                         . "    daily_work.to_unfollow = (daily_work.to_unfollow - $unfollows) "
                         . "WHERE daily_work.reference_id = $ref_prof_id; ";
 
-                $result = mysqli_query($this->connection, $sql);
+                $result1 = mysqli_query($this->connection, $sql);
                 // Record Client last access and foults
-                if (!$error) {
-                    $time = time();
-                } else {
-                    $hours = $GLOBALS['sistem_config']->INCREASE_CLIENT_LAST_ACCESS;
-                    $time = strtotime("+$hours hours", time());
-                }
+                $time = time();
                 $sql = ""
                         . "UPDATE clients "
                         . "INNER JOIN reference_profile ON clients.user_id = reference_profile.client_id "
                         . "SET clients.last_access = '$time', "
                         . "    clients.foults = clients.foults + $faults "
                         . "WHERE reference_profile.id = $ref_prof_id; ";
-                $result = mysqli_query($this->connection, $sql);
+                $result2 = mysqli_query($this->connection, $sql);
+                //    if ($result2) {
+                //    }
                 //$affected = mysqli_num_rows($result);
-                if ($result)
+                if ($result1) {
                     print "<br>Update daily_work! follows: $follows | unfollows: $unfollows <br>";
-                else
+                } else
                     print "<br>NOT UPDATED daily_work!!!<br> $sql <br>";
                 return TRUE;
             } catch (\Exception $exc) {
@@ -1098,15 +1087,15 @@ namespace follows\cls {
          * @param type $client_id
          * @param type $hours to add to client
          */
-        public function Increase_Client_Last_Access($client_id, $hours = 2) {
+        public function Increase_Client_Last_Access($client_id, $hours = 1) {
             try {
                 $timestamp = strtotime("+$hours hours", time());
-                $this->Set_Client_Last_Access($client_id,$timestamp);
+                $this->Set_Client_Last_Access($client_id, $timestamp);
             } catch (Exception $exc) {
                 echo $exc->getTraceAsString();
             }
         }
-        
+
         /**
          * Increase_Client_Last_Access
          * @param type $client_id
@@ -1121,7 +1110,6 @@ namespace follows\cls {
                 echo $exc->getTraceAsString();
             }
         }
-        
 
         public function get_number_followed_today($client_id) {
             try {
@@ -1248,9 +1236,10 @@ namespace follows\cls {
                 echo $exc->getTraceAsString();
             }
         }
-        
+
         public function get_dumbu_statistics() {
             try {
+                //clientes por status
                 $str = "SELECT status_id,count(*) as cnt FROM dumbudb.users GROUP BY status_id;";
                 $result = mysqli_query($this->connection, $str);
                 return $result;
@@ -1259,16 +1248,27 @@ namespace follows\cls {
             }
         }
         
+        public function get_dumbu_paying_customers() {
+            try {               
+                //clientes pagantes
+                $str = "SELECT count(*) as cnt FROM dumbudb.users JOIN dumbudb.clients ON users.id=clients.user_id WHERE users.status_id in (1,3,5,6,7,9,10) AND credit_card_number<>'' AND credit_card_number<>'PAYMENT_BY_TICKET_BANK' AND credit_card_number is not NULL;";
+                $result2 = mysqli_query($this->connection, $str);
+                return $result2;
+            } catch (\Exception $exc) {
+                echo $exc->getTraceAsString();
+            }
+        }
+        
         public function insert_dumbu_statistics($cols,$arr) {
             try {
-                $sql = "INSERT INTO dumbudb.dumbu_statistic ".$cols." VALUE ".$arr.";";
+                $sql = "INSERT INTO dumbudb.dumbu_statistic " . $cols . " VALUE " . $arr . ";";
                 $result = mysqli_query($this->connection, $sql);
                 return $result;
             } catch (\Exception $exc) {
                 echo $exc->getTraceAsString();
             }
         }
-        
+
     }
 
 }

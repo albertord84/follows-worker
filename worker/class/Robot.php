@@ -141,7 +141,7 @@ namespace follows\cls {
                     if ($error == 6) {// Just empty message:
                         $error = FALSE;
                         $Profile->unfollowed = TRUE;
-                    } else if ($error == 7 || $error == 9) { // To much request response string only
+                    } else if ($error == 9) { // To much request response string only
                         $error = FALSE;
                         break;
                     } else if ($error == 10) {
@@ -200,7 +200,7 @@ namespace follows\cls {
                                 //$followed_in_db = NULL;
                                 if (!$followed_in_db && !$following_me && $valid_profile) { // Si no lo he seguido en BD y no me está siguiendo
                                     // Do follow request
-                                    echo "FOLLOWING <br>\n";
+                                    echo "FOLLOWED <br>\n";
                                     $curl_str = "";
                                     $json_response2 = $this->make_insta_friendships_command($login_data, $Profile->id, 'follow', 'web/friendships', $Client, $curl_str);
                                     if ($json_response2 === NULL) {
@@ -218,7 +218,7 @@ namespace follows\cls {
                                         $follows++;
                                         if ($daily_work->like_first /* && count($Profile_data->graphql->user->media->nodes) */) {
                                             //$json_response_like = $this->make_insta_friendships_command($login_data, $Profile_data->user->media->nodes[0]->id, 'like', 'web/likes');
-                                            $this->like_fist_post($login_data, $Profile->id, $Client);
+                                            $this->like_fist_post($login_data, $Profile->id, $Client, $error);
                                         }
                                         if ($follows >= $GLOBALS['sistem_config']->REQUESTS_AT_SAME_TIME)
                                             break;
@@ -456,7 +456,8 @@ namespace follows\cls {
                     // @TODO: Revisar Jose Angel
                     $proxy = $this->DB->get_client_proxy($client_id);
 
-                    $new_proxy = ($proxy->idProxy + rand(0, 6)) % 8 + 1;
+                    //$new_proxy = ($proxy->idProxy + rand(0, 6)) % 8 + 1;
+                    $new_proxy = ($proxy->idProxy) % 8 + 1;
                     $this->DB->InsertEventToWashdog($client_id, washdog_type::SET_PROXY, 1, $this->id, "proxy set from proxy $proxy->idProxy to $new_proxy");
 
                     var_dump("Set Proxy ($proxy->idProxy) of client ($client_id) to proxy ($new_proxy)\n");
@@ -486,7 +487,7 @@ namespace follows\cls {
                     print "<br> Empty array in POST </br>";
                     $proxy = $this->DB->get_client_proxy($client_id);
 
-                    $new_proxy = ($proxy->idProxy + rand(0, 6)) % 8 + 1;
+                    $new_proxy = ($proxy->idProxy) % 8 + 1;
                     $this->DB->InsertEventToWashdog($client_id, washdog_type::SET_PROXY, 1, $this->id, "proxy set from proxy $proxy->idProxy to $new_proxy");
 
                     var_dump("Set Proxy ($proxy->idProxy) of client ($client_id) to proxy ($new_proxy)\n");
@@ -546,8 +547,8 @@ namespace follows\cls {
                 if ($json_response && (isset($json_response->result) || (isset($json_response->status) && $json_response->status === 'ok'))) {
                     return $json_response;
                 } else {
-                    echo "status fail in command $command from function make_insta_friendships_command\n";
-                    $error = true;
+                    echo "status fail in command $command from function make_insta_friendships_command\n";  
+                    return $json_response;
                 }
             } else if (is_array($output)) { // Retorno un arreglo vacio                   
                 echo "array empty in command $command from function make_insta_friendships_command\n";
@@ -1985,7 +1986,7 @@ namespace follows\cls {
             return $cookies;
         }
 
-        public function like_fist_post($client_cookies, $client_insta_id, $Client = NULL) {
+        public function like_fist_post($client_cookies, $client_insta_id, $Client = NULL, &$output_error = FALSE) {
 
             try {
                 $proxy = $this->get_proxy_str($Client);
@@ -1998,6 +1999,9 @@ namespace follows\cls {
                         if (isset($result->status) && $result->status === 'ok') {
                             var_dump("  LIKE FIRST OK\n");
                             $error = false;
+                        }
+                        else {
+                           $output_error =  $this->process_follow_error($result);
                         }
                     } else if (count($result) == 0) {
                         var_dump("O perfil pode ser privado\n");
@@ -2484,7 +2488,8 @@ namespace follows\cls {
                 return NULL;
             } else if ($result->json_response->message == 'checkpoint_required' || $result->json_response->message == 'incorrect_password') {
                 //unautorized, bloc by password or an api unrecognized error
-                var_dump("daily work deleted for client ($daily_work->client_id) \n");
+                $msg = $result->json_response->message;
+                var_dump("daily work deleted for client ($daily_work->client_id) because $msg\n");
                 $this->DB->delete_daily_work_client($daily_work->client_id);
             }
         }
