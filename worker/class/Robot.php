@@ -200,7 +200,7 @@ namespace follows\cls {
                                 //$followed_in_db = NULL;
                                 if (!$followed_in_db && !$following_me && $valid_profile) { // Si no lo he seguido en BD y no me está siguiendo
                                     // Do follow request
-                                    echo "FOLLOWING <br>\n";
+                                    echo "FOLLOWED <br>\n";
                                     $curl_str = "";
                                     $json_response2 = $this->make_insta_friendships_command($login_data, $Profile->id, 'follow', 'web/friendships', $Client, $curl_str);
                                     if ($json_response2 === NULL) {
