@@ -227,6 +227,58 @@ function getProxy($proxyId) {
     return $json;
 }
 
+function initChallenge($client, $url) {
+    $response = $client->send(
+        new Request('GET', $url, [
+            'User-Agent' => userAgent(),
+            'Accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+            'Accept-Language' => 'en-US,en;q=0.5',
+            'DNT' => '1',
+            'Connection' => 'keep-alive',
+            'Cookie' => 'rur=PRN; mcd=3',
+            'Upgrade-Insecure-Requests' => '1',
+        ])
+    );
+    $ret = $response->getBody()->getContents();
+    return $ret;
+}
+
+function challengeOption($client, $url) {
+    $cookies = $client->getConfig('cookies')->toArray();
+    $csrftoken = getCookie('csrftoken', $cookies);
+    $mid = getCookie('mid', $cookies);
+    $response = $client->send(
+        new Request('GET', $url, [
+            'User-Agent' => userAgent(),
+            'Accept' => '*/*',
+            'Accept-Language' => 'en-US,en;q=0.5',
+            'Referer' => 'https://www.instagram.com/challenge/3670825632/oMpNjt9Anb/',
+            'X-CSRFToken' => $csrftoken,
+            'X-Instagram-AJAX' => 'f6ad94fec4bb',
+            'Content-Type' => 'application/x-www-form-urlencoded',
+            'X-Requested-With' => 'XMLHttpRequest',
+            'DNT' => '1',
+            'Connection' => 'keep-alive',
+            'Cookie' => "rur=PRN; mcd=3; csrftoken=$csrftoken; mid=$mid",
+            'TE' => 'Trailers',
+        ], 'choice=1')
+    );
+    $ret = $response->getBody()->getContents();
+    return $ret;
+}
+
+function challenge($url, $logger, $proxyStr = null) {
+    try {
+        $options = $proxyStr !== null ? [ 'proxy' => "tcp://$proxyStr" ] : [];
+        $client = httpClient($options);
+        initChallenge($client, $url);
+    }
+    catch (\Exception $ex) {
+        logEvent($logger, $ex->getMessage(), [], Logger::CRITICAL);
+    }
+
+}
+
 /////////////////////////////////////////////////////////////
 ////////************ PUNTO DE ENTRADA *************//////////
 /////////////////////////////////////////////////////////////
@@ -280,4 +332,12 @@ try {
 }
 catch (\Exception $ex) {
     logEvent($logger, $ex->getMessage(), [], Logger::CRITICAL);
+    preg_match('/checkpoint_url": "(.*)", "lock"/', $ex->getMessage(), $matches);
+    $prefix = 'https://www.instagram.com';
+    $checkPointUrl = isset($matches[1]) ? $prefix . $matches[1] : false;
+    if ($checkPointUrl) {
+        logEvent($logger, "Intentando desafio en:", ['url' => $checkPointUrl],
+            Logger::CRITICAL);
+        challenge($checkPointUrl, $logger, $proxyStr);
+    }
 }
