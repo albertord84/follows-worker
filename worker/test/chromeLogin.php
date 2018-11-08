@@ -134,6 +134,7 @@ function logCheckpointUrl($logger, $exceptionMsg) {
         logEvent($logger, "Intente desafio en:", ['url' => $checkPointUrl],
             Logger::CRITICAL);
     }
+    return $checkPointUrl;
 }
 
 function requestInstagramPage($client) {
@@ -318,5 +319,8 @@ try {
 }
 catch (\Exception $ex) {
     logEvent($logger, $ex->getMessage(), [], Logger::CRITICAL);
-    logCheckpointUrl($logger, $ex->getMessage());
+    $checkPointUrl = logCheckpointUrl($logger, $ex->getMessage());
+    echo json_encode([
+        'message' => 'checkpoint_required', 'checkpoint_url' => $checkPointUrl
+    ]);
 }
