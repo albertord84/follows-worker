@@ -93,10 +93,48 @@ function getCookie($name, $cookies) {
     return array_reduce($cookies, $reducer, null);
 }
 
+function createLogger($log_path, $channel, $date_id) {
+    $log = logFile($log_path, $channel, $date_id);
+    $logger = new Logger($channel);
+    $logger->pushHandler(new StreamHandler($log));
+    return $logger;
+}
+
+function getRequestParams() {
+    $request = SymfonyRequest::createFromGlobals();
+    $content = $request->getContent();
+    $params = json_decode($content, true);
+    return $params;
+}
+
+function getProxyStr($proxyParam) {
+    $proxyData = getProxy($proxyParam);
+    $data = json_decode($proxyData, false);
+    $proxyStr = sprintf(
+        "%s:%s@%s:%s",
+        $data->proxy_user,
+        $data->proxy_password,
+        $data->proxy,
+        $data->port
+    );
+    return $proxyStr;
+}
+
 // funciones impuras
 
 function logEvent($logger, $message, $context = [], $level = Logger::INFO) {
     $logger->addRecord($level, $message, $context);
+}
+
+function logCheckpointUrl($logger, $exceptionMsg) {
+    preg_match('/checkpoint_url": "(.*)", "lock"/', $exceptionMsg, $matches);
+    $prefix = 'https://www.instagram.com';
+    $checkPointUrl = isset($matches[1]) ? $prefix . $matches[1] : false;
+    if ($checkPointUrl) {
+        logEvent($logger, "Intente desafio en:", ['url' => $checkPointUrl],
+            Logger::CRITICAL);
+    }
+    return $checkPointUrl;
 }
 
 function requestInstagramPage($client) {
@@ -227,56 +265,17 @@ function getProxy($proxyId) {
     return $json;
 }
 
-function initChallenge($client, $url) {
-    $response = $client->send(
-        new Request('GET', $url, [
-            'User-Agent' => userAgent(),
-            'Accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-            'Accept-Language' => 'en-US,en;q=0.5',
-            'DNT' => '1',
-            'Connection' => 'keep-alive',
-            'Cookie' => 'rur=PRN; mcd=3',
-            'Upgrade-Insecure-Requests' => '1',
-        ])
-    );
-    $ret = $response->getBody()->getContents();
-    return $ret;
-}
-
-function challengeOption($client, $url) {
+function returnedCookies($client) {
     $cookies = $client->getConfig('cookies')->toArray();
-    $csrftoken = getCookie('csrftoken', $cookies);
-    $mid = getCookie('mid', $cookies);
-    $response = $client->send(
-        new Request('GET', $url, [
-            'User-Agent' => userAgent(),
-            'Accept' => '*/*',
-            'Accept-Language' => 'en-US,en;q=0.5',
-            'Referer' => 'https://www.instagram.com/challenge/3670825632/oMpNjt9Anb/',
-            'X-CSRFToken' => $csrftoken,
-            'X-Instagram-AJAX' => 'f6ad94fec4bb',
-            'Content-Type' => 'application/x-www-form-urlencoded',
-            'X-Requested-With' => 'XMLHttpRequest',
-            'DNT' => '1',
-            'Connection' => 'keep-alive',
-            'Cookie' => "rur=PRN; mcd=3; csrftoken=$csrftoken; mid=$mid",
-            'TE' => 'Trailers',
-        ], 'choice=1')
-    );
-    $ret = $response->getBody()->getContents();
-    return $ret;
-}
-
-function challenge($url, $logger, $proxyStr = null) {
-    try {
-        $options = $proxyStr !== null ? [ 'proxy' => "tcp://$proxyStr" ] : [];
-        $client = httpClient($options);
-        initChallenge($client, $url);
-    }
-    catch (\Exception $ex) {
-        logEvent($logger, $ex->getMessage(), [], Logger::CRITICAL);
-    }
-
+    // print_r($cookies);
+    $result = array_reduce($cookies, function($newCookies, $currentCookie) {
+        if ($currentCookie['Value'] !== '') {
+            $name = $currentCookie['Name'];
+            $newCookies[$name] = $currentCookie['Value'];
+        }
+        return $newCookies;
+    }, []);
+    return json_encode((object) $result);
 }
 
 /////////////////////////////////////////////////////////////
@@ -285,30 +284,17 @@ function challenge($url, $logger, $proxyStr = null) {
 
 try {
     // creando el log y el logger
-    $log = logFile($log_path, $channel, $date_id);
-    $logger = new Logger($channel);
-    $logger->pushHandler(new StreamHandler($log));
-    // el comienzo de todo...
+    $logger = createLogger($log_path, $channel, $date_id);
+    // anunciando el comienzo...
     logEvent($logger, 'COMENZANDO INTENTO DE LOGUEO',
         ['userAgent' => userAgent()]);
     // obteniendo parametros de la peticion web
-    $request = SymfonyRequest::createFromGlobals();
-    $content = $request->getContent();
-    $params = json_decode($content, true);
+    $params = getRequestParams();
     logEvent($logger, 'Parametros obtenidos: ', $params);
     // consiguiendo el proxy basado en los parametros de la peticion web
     $proxyStr = null;
-    if ($params['proxy']) {
-        $proxyData = getProxy($params['proxy']);
-        $data = json_decode($proxyData, false);
-        logEvent($logger, "Proxy: ", [$proxyData]);
-        $proxyStr = sprintf(
-            "%s:%s@%s:%s",
-            $data->proxy_user,
-            $data->proxy_password,
-            $data->proxy,
-            $data->port
-        );
+    if (isset($params['proxy'])) {
+        $proxyStr = getProxyStr($params['proxy']);
         logEvent($logger, 'Cadena del Proxy de acceso: ', [$proxyStr]);
     }
     // creando el cliente http
@@ -326,18 +312,15 @@ try {
     logEvent($logger, $loginAjax);
     $authResp = json_decode($loginAjax, false);
     if (!$authResp->authenticated) {
-        throw new \Exception('No se pudo autenticar al usuario ' . $userName);
+        throw new \Exception('No se pudo autenticar al usuario ' . $params['user']);
     }
-    logEvent($logger, 'SESIÓN INICIADA', ['user' => $userName]);
+    logEvent($logger, 'SESIÓN INICIADA', [ 'user' => $params['user'] ]);
+    echo returnedCookies($client);
 }
 catch (\Exception $ex) {
     logEvent($logger, $ex->getMessage(), [], Logger::CRITICAL);
-    preg_match('/checkpoint_url": "(.*)", "lock"/', $ex->getMessage(), $matches);
-    $prefix = 'https://www.instagram.com';
-    $checkPointUrl = isset($matches[1]) ? $prefix . $matches[1] : false;
-    if ($checkPointUrl) {
-        logEvent($logger, "Intentando desafio en:", ['url' => $checkPointUrl],
-            Logger::CRITICAL);
-        challenge($checkPointUrl, $logger, $proxyStr);
-    }
+    $checkPointUrl = logCheckpointUrl($logger, $ex->getMessage());
+    echo json_encode([
+        'message' => 'checkpoint_required', 'checkpoint_url' => $checkPointUrl
+    ]);
 }
