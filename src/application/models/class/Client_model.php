@@ -629,7 +629,7 @@
             //desactivating reference profile
             try {
                 $this->db->where(array('client_id'=>$clien_id, 'insta_name'=>$profile, 'deleted'=>'0'));
-                $this->db->update('reference_profile',array('deleted'=>'1'));
+                $a = $this->db->update('reference_profile',array('deleted'=>'1','status_id'=>4));
                 return true;
             } catch (Exception $exc) {
                 echo $exc->getTraceAsString();
