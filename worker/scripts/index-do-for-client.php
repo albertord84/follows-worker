@@ -53,7 +53,7 @@ if($client_id != NULL)
         if(time() < $last_acces)
             $hours = $hours - (($last_acces - time()) / 3600 % 24);
         echo "Increasing last acces to client: $client_id for $hours H";
-        $DB->Increase_Client_Last_Access($client_id,$hours);
+        //$DB->Increase_Client_Last_Access($client_id,$hours);
         $Worker = new follows\cls\Worker(NULL,$id);
 
         //$Worker->check_daily_work();
