@@ -10,6 +10,16 @@ echo date("Y-m-d h:i:sa");
 
 $GLOBALS['sistem_config'] = new follows\cls\system_config();
 
+
+
+
 $Worker = new follows\cls\Worker(NULL,999);
-$Worker->prepare_daily_work(TRUE);
+$DB = new follows\cls\DB();
+$clients = $DB->get_clients_by_status(follows\cls\user_status::BLOCKED_BY_TIME);
+while($client_data = $clients->fetch_object())
+{
+    $Worker->prepare_daily_work($client_data->user_id,TRUE);
+    $DB->set_client_status($client_data->user_id, follows\cls\user_status::ACTIVE);
+}
+
 echo "\n<br>" . date("Y-m-d h:i:sa") . "\n\n";
