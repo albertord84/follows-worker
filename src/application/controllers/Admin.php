@@ -60,7 +60,7 @@ class Admin extends CI_Controller {
         $this->load->model('class/client_model');
         $base_path = $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/log/';
         $client= $this->client_model->get_all_data_of_client($user_id);        
-        $response="";        
+        $response="";
         $response = "<br><span style='background-color:orange'>Day------".$date." ----------------------------------------------------------------------------------------------------------------------------------------------</span><br>";//- imprimir dia
         //2. escanear el WORKER de este dia e imprimir salida (cuando se organize mejor)            
         //3. para cada LOG de este dia e imprimir salida
