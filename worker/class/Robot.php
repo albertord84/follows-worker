@@ -250,6 +250,8 @@ namespace follows\cls {
                         if (!$page_info->has_next_page)
                             break;
                     } else {
+                        echo "Problem with pageinfo \n <br>";
+                        var_dump($page_info);
                         break;
                     }
                 }
@@ -719,11 +721,10 @@ namespace follows\cls {
 
                 $tag_query = '37479f2b8209594dde7facb0d904896a';
                 $variables = "{\"id\":\"$user\",\"first\":$N";
-                if ($cursor == NULL || $cursor == "NULL")
-                    $variables .= ",\"after\":\"$cursor\"}";
-                else {
-                    $variables .= "}";
+                if ($cursor != NULL && $cursor != "NULL") {
+                    $variables .= ",\"after\":\"$cursor\"";
                 }
+                $variables .= "}";
                 $curl_str = $this->make_curl_followers_query($tag_query, $variables, $login_data, $proxy);
                 if ($curl_str === NULL)
                     return NULL;
