@@ -128,7 +128,7 @@ namespace follows\cls {
                         $login_data, $Profile->followed_id, 'unfollow', 'web/friendships', $Client, $curl_str
                 );
                 if ($json_response === NULL) {
-                    var_dump("Null response from instagram\n");
+                    var_dump("Null response from instagram in unfullow\n");
                 } else if (is_object($json_response) && $json_response->status == 'ok') { // if unfollowed 
                     $Profile->unfollowed = TRUE;
                     var_dump($json_response);
@@ -211,7 +211,7 @@ namespace follows\cls {
                                     $curl_str = "";
                                     $json_response2 = $this->make_insta_friendships_command($login_data, $Profile->id, 'follow', 'web/friendships', $Client, $curl_str);
                                     if ($json_response2 === NULL) {
-                                        var_dump("NULL response from instagram\n");
+                                        var_dump("NULL response from instagram in follow\n");
                                     }
                                     if (is_object($json_response2) && $json_response2->status == 'ok') { // if response is ok
                                         array_push($Ref_profile_follows, $Profile);
@@ -546,7 +546,9 @@ namespace follows\cls {
                 if ($json_response && (isset($json_response->result) || (isset($json_response->status) && $json_response->status === 'ok'))) {
                     return $json_response;
                 } else {
-                    echo "status fail in command $command from function make_insta_friendships_command\n";  
+                    echo "status fail in command $command from function make_insta_friendships_command\n";                     
+                    var_dump($output);
+                    var_dump($curl_str);
                     return $json_response;
                 }
             } else if (is_array($output)) { // Retorno un arreglo vacio                   
