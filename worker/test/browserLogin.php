@@ -125,7 +125,7 @@ class Firefox {
             ])
         );
         $ret = $response->getBody()->getContents();
-        $this->log_event($ret);
+        // $this->log_event($ret);
         return $ret;
     }
 
@@ -288,7 +288,7 @@ class Firefox {
 function prepare_log() {
     $d = date("Ymd");
     $log_name = "/tmp/browser-login-$d.log";
-    fopen($log_name, "w");
+    // fopen($log_name, "w");
     return $log_name;
 }
 
@@ -316,6 +316,7 @@ function get_proxy($proxyId) {
 /////////////////////////////////////////////////////////////////////
 
 $log_file = prepare_log();
+log_event($log_file, "::: COMENZANDO INTENTO DE INICIO DE SESION :::");
 
 $request = SymfonyRequest::createFromGlobals();
 $content = $request->getContent();
@@ -352,4 +353,5 @@ if ($resp->authenticated) {
     exit();
 }
 
+log_event($log_file, "::: TERMINADO EL INICIO DE SESION :::");
 echo json_encode($resp);

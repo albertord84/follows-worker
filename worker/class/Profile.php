@@ -74,7 +74,7 @@ namespace follows\cls {
                     $error = 5;
                 } else if ((strpos($response->message, 'Tente novamente mais tarde') !== FALSE) 
                        ||  (strpos($response->message, 'Aguarde alguns minutos antes de tentar novamente') !== FALSE)
-                        || (strpos($response->message, 'orbidden') !== FALSE)) {
+                        || (strpos($response->message, 'orbidden') !== FALSE)) { 
                     $error = 7;
                 } else if (strpos($response->message, 'Esta mensagem contém conteúdo que foi bloqueado pelos nossos sistemas de segurança.') !== FALSE) {
                     $error = 8;
@@ -85,7 +85,7 @@ namespace follows\cls {
                 } else if ($response->message === '') {
                     $error = 6; // Empty message
                 }
-                else if (strpos($response->message,'ecution error') !== FALSE)
+                else if (strpos($response->message,'execution error') !== FALSE || strpos($response->message,'execution failure') !== FALSE)
                 {
                     $error = 12;
                 }
