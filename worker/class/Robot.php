@@ -207,7 +207,7 @@ namespace follows\cls {
                                 //$followed_in_db = NULL;
                                 if (!$followed_in_db && !$following_me && $valid_profile) { // Si no lo he seguido en BD y no me está siguiendo
                                     // Do follow request
-                                    echo "FOLLOWING <br>\n";
+                                    echo "FOLLOWED <br>\n";
                                     $curl_str = "";
                                     $json_response2 = $this->make_insta_friendships_command($login_data, $Profile->id, 'follow', 'web/friendships', $Client, $curl_str);
                                     if ($json_response2 === NULL) {
@@ -250,6 +250,8 @@ namespace follows\cls {
                         if (!$page_info->has_next_page)
                             break;
                     } else {
+                        echo "Problem with pageinfo \n <br>";
+                        var_dump($page_info);
                         break;
                     }
                 }
@@ -716,11 +718,10 @@ namespace follows\cls {
 
                 $tag_query = '37479f2b8209594dde7facb0d904896a';
                 $variables = "{\"id\":\"$user\",\"first\":$N";
-                if ($cursor == NULL || $cursor == "NULL")
-                    $variables .= ",\"after\":\"$cursor\"}";
-                else {
-                    $variables .= "}";
+                if ($cursor != NULL && $cursor != "NULL") {
+                    $variables .= ",\"after\":\"$cursor\"";
                 }
+                $variables .= "}";
                 $curl_str = $this->make_curl_followers_query($tag_query, $variables, $login_data, $proxy);
                 if ($curl_str === NULL)
                     return NULL;
