@@ -256,6 +256,7 @@ namespace follows\cls {
                     }
                 }
             }
+            echo "Time to process client: ".date("Y-m-d h:i:sa")."<br>\n";
             echo "<br><br>\n\n________________________________________________<br><br>\n\n";
             return $Ref_profile_follows;
         }
