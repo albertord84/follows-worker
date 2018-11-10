@@ -141,6 +141,37 @@ class Payment extends CI_Controller {
         $result = $Payment->create_boleto_payment($payment_data);
         echo json_encode($result);
     }
+    
+    public function mundi_create_recurrency_payment() {
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/system_config.php';
+        $GLOBALS['sistem_config'] = new follows\cls\system_config();
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/Payment.php';
+        $Payment = new \follows\cls\Payment();
+        
+        $payment_data = (array) json_decode(urldecode($_POST['payment_data']));
+        $recurrence = urldecode($_POST['recurrence']);
+        $paymentMethodCode = urldecode($_POST['paymentMethodCode']);
+        
+        if($paymentMethodCode && $recurrence)
+            $result = $Payment->create_recurrency_payment($payment_data, $recurrence, $paymentMethodCode);
+        elseif(!$paymentMethodCode && $recurrence)
+            $result = $Payment->create_recurrency_payment($payment_data, $recurrence);
+        elseif(!$paymentMethodCode && !$recurrence)
+            $result = $Payment->create_recurrency_payment($payment_data);
+        echo json_encode($result);
+    }
+    
+    public function mundi_create_payment() {
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/system_config.php';
+        $GLOBALS['sistem_config'] = new follows\cls\system_config();
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/Payment.php';
+        $Payment = new \follows\cls\Payment();        
+        $payment_data = (array) json_decode(urldecode($_POST['payment_data']));        
+        $result = $Payment->create_payment($payment_data);
+        echo json_encode($result);
+    }
+    
+    
 
     // USADOS INTERNAMENTE PELOS ROBOTS DE PAGAMENTO
     public function check_payment_vindi() {
