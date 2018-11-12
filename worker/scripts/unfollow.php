@@ -78,7 +78,7 @@ if(isset($clients_data_db))
                     $analised = 0;
                     foreach ($Profiles as $rpkey => $Profile) {
                         $analised ++;
-                        if($unfollow > $MAX_NUM_PROFILES){
+                        if($analised >= $MAX_NUM_PROFILES){
                             break;
                         }
                         $Profile = $Profile->node;
