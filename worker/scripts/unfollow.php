@@ -16,8 +16,8 @@ $DB = new \follows\cls\DB();
 $Gmail = new \follows\cls\Gmail();
 $Client = new follows\cls\Client();
 
-$MAX_NUM_PROFILES = 1; // 15;
-$SLEEP            = 2; // 20;   
+$MAX_NUM_PROFILES = 10; // 15;
+$SLEEP            = 1; // 20;   
 
 while (true){
 $clients_data_db = $DB->get_unfollow_clients_data();
@@ -31,7 +31,7 @@ if(isset($clients_data_db))
     //    $clients_data[$CN] = $clients_data_db;
         //= $obj->fetch_object();
         $clients_data[$CN]->unfollows = 0;
-        print "" . $clients_data[$CN]->login . '  |   ' . $clients_data[$CN]->id . '  |   ' . $clients_data[$CN]->insta_following . "<br>\n";
+        print "" . $clients_data[$CN]->login . '  |   ' . $clients_data[$CN]->user_id . '  |   ' . $clients_data[$CN]->insta_following . "<br>\n";
         //get the white list
         $login = $Robot->bot_login($clients_data[$CN]->login, $clients_data[$CN]->pass);
         if (isset($login->json_response->authenticated) && $login->json_response->authenticated) {
@@ -44,7 +44,7 @@ if(isset($clients_data_db))
         } else {
             $Gmail->send_client_login_error($clients_data[$CN]->email, $clients_data[$CN]->name, $clients_data[$CN]->login);
             print "NOT AUTENTICATED!!!";
-            echo "<br>\n DELETED FROM UNFOLLOW: " . $clients_data[$CN]->login . " (" . $clients_data[$CN]->id . ") <br>\n";
+            echo "<br>\n DELETED FROM UNFOLLOW: " . $clients_data[$CN]->login . " (" . $clients_data[$CN]->user_id . ") <br>\n";
             unset($clients_data[$CN]);
         }
         $CN++;
@@ -71,7 +71,7 @@ if(isset($clients_data_db))
     //            var_dump($json_response);
                 if (is_object($json_response) && $json_response->status == 'ok' && isset($json_response->data->user->edge_follow->edges)) { // if response is ok
                    // Get Users 
-                    $white_list = $DB->get_white_list($client_data->id);
+                    $white_list = $DB->get_white_list($client_data->user_id);
                     print '\n<br> Count: ' . count($json_response->data->user->edge_follow->edges) . '\n<br>';
                     $Profiles = $json_response->data->user->edge_follow->edges;
                     foreach ($Profiles as $rpkey => $Profile) {

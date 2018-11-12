@@ -2493,6 +2493,30 @@ namespace follows\cls {
                 $this->DB->delete_daily_work_client($daily_work->client_id);
             }
         }
+        
+        public function exist_client($profile_name, $login_data = NULL, $proxy = "")
+        {
+           $curl_str = "curl $proxy https://www.instagram.com/$profile_name ";
+           if($login_data !== NULL){               
+                $csrftoken = $login_data->csrftoken;
+                $ds_user_id = $login_data->ds_user_id;
+                $sessionid = $login_data->sessionid;
+                $mid = $login_data->mid;
+                $curl_str .= "-H 'Cookie: mid=$mid; sessionid=$sessionid;  csrftoken=$csrftoken; ds_user_id=$ds_user_id' ";
+           }
+           $curl_str .= "-H 'Accept-Language: en-US;q=0.5,en;q=0.3' ";
+           $curl_str .= "-H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:49.0) Gecko/20100101 Firefox/49.0' ";
+           $curl_str .= "-H 'Accept: */*' ";
+           $curl_str .= "--compressed ";
+           exec($curl_str, $output, $status);
+           $size = count($output);
+           if($size > 0)
+           {
+                return strpos($output[size], "@$profile_name") !== FALSE;
+                      
+           }
+           return false;
+        }
 
     }
 
