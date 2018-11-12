@@ -16,8 +16,9 @@ $DB = new \follows\cls\DB();
 $Gmail = new \follows\cls\Gmail();
 $Client = new follows\cls\Client();
 
-$MAX_NUM_PROFILES = 10; // 15;
-$SLEEP            = 1; // 20;   
+$NUM_PROFILES_REQUEST = 20; // 15;
+$MAX_NUM_PROFILES = 5; // 15;
+$SLEEP            = 5; // 20;   
 
 while (true){
 $clients_data_db = $DB->get_unfollow_clients_data();
@@ -55,16 +56,16 @@ if(isset($clients_data_db))
         foreach ($clients_data as $ckey => $client_data) {
             if ($client_data && $client_data->cookies) {
                 $login_data = $client_data->cookies;
-                echo "<br>\nClient: $client_data->login ($client_data->id)   " . date("Y-m-d h:i:sa") . "<br>\n";
+                echo "<br>\nClient: $client_data->login ($client_data->user_id)   " . date("Y-m-d h:i:sa") . "<br>\n";
                 // Verify Profile Following
                 $json_response = $Robot->get_insta_follows(
-                        $login_data, $client_data->insta_id, $MAX_NUM_PROFILES
+                        $login_data, $client_data->insta_id, $NUM_PROFILES_REQUEST
                 );
                 if (isset($json_response->data->user->edge_follow) && isset($json_response->data->user->edge_follow->page_info)) {
                     if ($json_response->data->user->edge_follow->page_info->has_next_page == false) {
                         $cursor = $json_response->data->user->edge_follow->page_info->end_cursor;
                         $json_response = $Robot->get_insta_follows(
-                                $login_data, $client_data->insta_id, $MAX_NUM_PROFILES, $cursor
+                                $login_data, $client_data->insta_id, $NUM_PROFILES_REQUEST, $cursor
                         );
                     }
                 }
@@ -74,16 +75,20 @@ if(isset($clients_data_db))
                     $white_list = $DB->get_white_list($client_data->user_id);
                     print '\n<br> Count: ' . count($json_response->data->user->edge_follow->edges) . '\n<br>';
                     $Profiles = $json_response->data->user->edge_follow->edges;
+                    $analised = 0;
                     foreach ($Profiles as $rpkey => $Profile) {
-                        
+                        $analised ++;
+                        if($unfollow > $MAX_NUM_PROFILES){
+                            break;
+                        }
                         $Profile = $Profile->node;
                         // If profile is not in white list then do unfollow request
                         if(!(isset($white_list) && str_binary_search($Profile->id,$white_list)))
                         {   
                             echo "Profil name: $Profile->username<br>\n";
                             $json_response2 = $Robot->make_insta_friendships_command($login_data, $Profile->id, 'unfollow');
-                            var_dump($json_response2);
-                            echo "<br>\n";
+                            //var_dump($json_response2);
+                            //echo "<br>\n";
                             if (is_object($json_response2) && $json_response2->status == 'ok') { // if response is ok
                                 $clients_data[$ckey]->unfollows++;
                             } else { // Porcess error

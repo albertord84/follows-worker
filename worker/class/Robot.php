@@ -132,7 +132,7 @@ namespace follows\cls {
                 } else if (is_object($json_response) && $json_response->status == 'ok') { // if unfollowed 
                     $Profile->unfollowed = TRUE;
                     var_dump($json_response);
-                    echo "Followed ID: $Profile->followed_id";
+                    echo "Followed_ID: $Profile->followed_id";
                     if (isset($Profile->insta_name)) {
                         echo "($Profile->insta_name)";
                     }
