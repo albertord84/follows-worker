@@ -118,7 +118,7 @@ namespace follows\cls {
             }
             
             
-            for ($i = 0; $i < $GLOBALS['sistem_config']->REQUESTS_AT_SAME_TIME && ($has_next); $i++) {
+            for ($i = 0; $error === FALSE && $i < $GLOBALS['sistem_config']->REQUESTS_AT_SAME_TIME && ($has_next); $i++) {
                 $error = FALSE;
                 // Next profile to unfollow, not yet unfollwed
                 $Profile = array_shift($Followeds_to_unfollow);
@@ -165,10 +165,10 @@ namespace follows\cls {
             $Ref_profile_follows = array();
             $follows = 0;
             echo "<br>\nmake_insta_friendships_command FOLLOW (like firsts = $daily_work->like_first): $daily_work->to_follow <br>\n";
-            if (!$error && $daily_work->to_follow > 0) { // If has to follow
+            if ($error === FALSE && $daily_work->to_follow > 0) { // If has to follow
                 $get_followers_count = 0;
                 $error = FALSE;
-                while (!$error && $follows < $GLOBALS['sistem_config']->REQUESTS_AT_SAME_TIME && $get_followers_count < $GLOBALS['sistem_config']->MAX_GET_FOLLOWERS_REQUESTS) {
+                while ($error === FALSE && $follows < $GLOBALS['sistem_config']->REQUESTS_AT_SAME_TIME && $get_followers_count < $GLOBALS['sistem_config']->MAX_GET_FOLLOWERS_REQUESTS) {
                     // Get next insta followers of Ref_profile
                     $get_followers_count++;
                     echo "<br>\nRef Profil: $daily_work->insta_name (id: $daily_work->rp_id | type: $daily_work->type)<br>\n";
@@ -803,7 +803,7 @@ namespace follows\cls {
                         $cursor = $json->data->user->edge_follow->page_info->end_cursor;
                         if (count($json->data->user->edge_follow->edges) == 0) {
                             var_dump($json);
-                            //                        var_dump($curl_str);
+                            var_dump($curl_str);
                             echo ("<br>\n No nodes!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>\n ");
                         }
                     } else {
