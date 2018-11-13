@@ -91,6 +91,7 @@ if(isset($clients_data_db))
                             //echo "<br>\n";
                             if (is_object($json_response2) && $json_response2->status == 'ok') { // if response is ok
                                 $clients_data[$ckey]->unfollows++;
+                                echo "Unfollowed <br>\n";
                             } else { // Porcess error
                                 $Profile = new \follows\cls\Profile();
                                 $error = $Profile->parse_profile_follow_errors($json_response2); // TODO: Class for error messages
