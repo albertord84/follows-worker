@@ -869,12 +869,13 @@ namespace follows\cls {
                         var_dump($output);
                         print_r($curl_str);
                         echo ("<br>\n Untrated error!!!");
-                    }
+                    }                    
+                    return $json;
                 } else if (!$without_log) {
                     var_dump($output);
                     print_r($curl_str);
                 }
-                return $json;
+                return $output;
             } catch (\Exception $exc) {
                 if (!$without_log)
                     echo $exc->getTraceAsString();
@@ -2495,9 +2496,18 @@ namespace follows\cls {
             }
         }
         
-        public function exist_client($profile_name, $login_data = NULL, $proxy = "")
+        public function exist_reference_profile($profile_name, $type, $insta_id=NULL, $login_data = NULL, $proxy = "")
         {
-           $curl_str = "curl $proxy https://www.instagram.com/$profile_name ";
+           $type_text = "/";
+           if($type == 1)
+           {
+               $type_text .= "explore/locations/$insta_id/";
+           }
+           else if($type == 2)
+           {
+                  $type_text .= "explore/tags/";
+           }
+           $curl_str = "curl $proxy https://www.instagram.com"."$type_text"."$profile_name/ ";
            if($login_data !== NULL){               
                 $csrftoken = $login_data->csrftoken;
                 $ds_user_id = $login_data->ds_user_id;
@@ -2511,10 +2521,27 @@ namespace follows\cls {
            $curl_str .= "--compressed ";
            exec($curl_str, $output, $status);
            $size = count($output);
-           if($size > 0)
+           $it_not_has = FALSE;
+           //comprobando que a cabesera contenga em algum sittio del doc el insta name del PR
+           if($size > 20)
            {
-                return strpos($output[size], "@$profile_name") !== FALSE;
-                      
+                for($i =2; $i < 20 && !$it_not_has; $i++)
+                {
+
+                    $it_not_has = strpos($output[$i], "Page Not Found") === TRUE;
+
+                }
+           
+                if(!$it_not_has)
+                {
+                     return TRUE;
+
+                }
+                var_dump($output[7]);
+           }
+           else
+           {
+               var_dump($output);
            }
            return false;
         }

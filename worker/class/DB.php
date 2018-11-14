@@ -1,7 +1,9 @@
 <?php
 
 namespace follows\cls {
-
+       
+    require_once 'reference_profiles_status.php'; 
+    
     class DB {
 
         protected $host = 'localhost';
@@ -867,13 +869,18 @@ namespace follows\cls {
 
         public function update_reference_cursor($reference_id, $end_cursor) {
             $date = ($end_cursor == '' || $end_cursor == NULL) ? time() : NULL;
+            $ended_status = (new reference_profiles_status())->ENDED;
             try {
                 $sql = ""
                         . "UPDATE reference_profile "
                         . "SET "
                         . "     reference_profile.insta_follower_cursor = '$end_cursor', "
-                        . "     reference_profile.end_date = '$date' "
-                        . "WHERE reference_profile.id = $reference_id; ";
+                        . "     reference_profile.end_date = '$date' ";
+                if($date !== NULL)
+                {
+                    $sql .= ", reference_profile.status_id = $ended_status ";
+                }
+                $sql .=  "WHERE reference_profile.id = $reference_id; ";
 
                 $result = mysqli_query($this->connection, $sql);
 
@@ -1263,6 +1270,34 @@ namespace follows\cls {
             try {
                 $sql = "INSERT INTO dumbudb.dumbu_statistic " . $cols . " VALUE " . $arr . ";";
                 $result = mysqli_query($this->connection, $sql);
+                return $result;
+            } catch (\Exception $exc) {
+                echo $exc->getTraceAsString();
+            }
+        }
+        
+        public function GetReferenceProfileStatus()
+        {
+           try {
+                //clientes por status
+                $str = "SELECT *  FROM reference_profiles_status;";
+                $result = mysqli_query($this->connection, $str);
+                return $result;
+            } catch (\Exception $exc) {
+                echo $exc->getTraceAsString();
+            } 
+        }
+        
+        public function UpdateReferenceProfileStatus($status, $id)
+        {
+            return $this->UpdateTableField("reference_profile", "status_id", $status, "WHERE id = $id");
+        }
+        
+        public function UpdateTableField($table, $field, $value, $query)
+        {
+            try{
+                $str = "UPDATE $table SET $table.$field = $value $query;";
+                 $result = mysqli_query($this->connection, $str);
                 return $result;
             } catch (\Exception $exc) {
                 echo $exc->getTraceAsString();

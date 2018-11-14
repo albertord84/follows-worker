@@ -11,5 +11,6 @@ echo date("Y-m-d h:i:sa");
 $GLOBALS['sistem_config'] = new follows\cls\system_config();
 
 $Worker = new follows\cls\Worker(NULL,999);
-$Worker->prepare_daily_work(TRUE);
+$Worker->truncate_daily_work();
+$Worker->prepare_daily_work();
 echo "\n<br>" . date("Y-m-d h:i:sa") . "\n\n";

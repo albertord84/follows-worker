@@ -6,7 +6,7 @@ namespace follows\cls {
     require_once 'User.php';
     require_once 'Robot.php';
     require_once 'DB.php';
-
+    require_once 'reference_profiles_status.php';                    
     /**
      * class Client
      * 
@@ -276,15 +276,33 @@ namespace follows\cls {
 
         public function rp_workable_count() {
             $count = 0;
+            $Robot = new Robot();
+            $proxy = $Robot->get_proxy_str($this);
+            $status = new reference_profiles_status();
+            $DB = new DB();
             if ($this->reference_profiles) {
                 foreach ($this->reference_profiles as $ref_prof) {
-                    if (!$ref_prof->deleted && $ref_prof->end_date == NULL) {
+                    if ($ref_prof->deleted && $ref_prof->status != $status->DELETED)
+                    {
+                        $DB->UpdateReferenceProfileStatus($status->DELETED, $ref_prof->id);
+                    }
+                    else if($ref_prof->end_date != NULL && $ref_prof->status != $status->ENDED)
+                    {
+                         $DB->UpdateReferenceProfileStatus($status->ENDED, $ref_prof->id);
+                    }
+                    else if(!$Robot->exist_reference_profile($ref_prof->insta_name,$ref_prof->type, $ref_prof->insta_id, json_decode($this->cookies), $proxy)
+                            && $ref_prof->status != $status->LOCKED)
+                    {
+                         $DB->UpdateReferenceProfileStatus($status->LOCKED, $ref_prof->id);
+                    }
+                    else if($ref_prof->status  == $status->ACTIVE)
+                    {
                         $count++;
                     }
                 }
             }
             return $count;
-        }
+        }       
 
         public function delete_daily_work($client_id) {
             $DB = new DB();
@@ -408,6 +426,7 @@ namespace follows\cls {
                     $Ref_Prof->deleted = ($prof_data->deleted || ($prof_data->deleted == "1")) ? true : false;
                     $Ref_Prof->type = $prof_data->type;
                     $Ref_Prof->end_date = $prof_data->end_date;
+                    $Ref_Prof->status = $prof_data->status_id;
                     array_push($this->reference_profiles, $Ref_Prof);
 //                    }
                 }
