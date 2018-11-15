@@ -16,7 +16,7 @@ $DB = new \follows\cls\DB();
 $Gmail = new \follows\cls\Gmail();
 $Client = new follows\cls\Client();
 
-$NUM_PROFILES_REQUEST = 30; // 15;
+$NUM_PROFILES_REQUEST = 35; // 15;
 $MAX_NUM_PROFILES = 5; // 15;
 $SLEEP            = 5; // 20;   
 
