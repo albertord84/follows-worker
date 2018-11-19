@@ -20,6 +20,8 @@ $NUM_PROFILES_REQUEST = 35; // 15;
 $MAX_NUM_PROFILES = 5; // 15;
 $SLEEP            = 5; // 20;   
 
+$cursors_clients = []; //save cursor in BD is the best approach
+
 while (true){
 $clients_data_db = $DB->get_unfollow_clients_data();
 //$clients_data_db = $Client->get_client(1);
@@ -39,9 +41,9 @@ if(isset($clients_data_db))
     //        $login_data = json_encode($login);
             $login_data = $login;
             $clients_data[$CN]->cookies = $login_data;
-            $json_response = $Robot->get_insta_follows(// Respect firsts X users
-                   $login_data, $clients_data[$CN]->insta_id, 30
-            );
+//            $json_response = $Robot->get_insta_follows(// Respect firsts X users
+//                   $login_data, $clients_data[$CN]->insta_id, 30
+//            );
         } else {
             $Gmail->send_client_login_error($clients_data[$CN]->email, $clients_data[$CN]->name, $clients_data[$CN]->login);
             print "NOT AUTENTICATED!!!";
@@ -58,24 +60,34 @@ if(isset($clients_data_db))
                 $login_data = $client_data->cookies;
                 echo "<br>\nClient: $client_data->login ($client_data->user_id)   " . date("Y-m-d h:i:sa") . "<br>\n";
                 // Verify Profile Following
+                $cursor = $cursors_clients['user_id'];  //null when start
                 $json_response = $Robot->get_insta_follows(
                         $login_data, $client_data->insta_id, $NUM_PROFILES_REQUEST
                 );
                 if (isset($json_response->data->user->edge_follow) && isset($json_response->data->user->edge_follow->page_info)) {
                     if ($json_response->data->user->edge_follow->page_info->has_next_page == true && count($json_response->data->user->edge_follow->edges) == 0) {
-                        $cursor = $json_response->data->user->edge_follow->page_info->end_cursor;
+                        $cursor = $json_response->data->user->edge_follow->page_info->end_cursor;                        
                         $json_response = $Robot->get_insta_follows(
                                 $login_data, $client_data->insta_id, $NUM_PROFILES_REQUEST, $cursor
                         );
+                        if (isset($json_response->data->user->edge_follow) && isset($json_response->data->user->edge_follow->page_info)) {
+                            if ($json_response->data->user->edge_follow->page_info->has_next_page == true && count($json_response->data->user->edge_follow->edges) == 0) {
+                                $cursor = $json_response->data->user->edge_follow->page_info->end_cursor;                        
+                                $json_response = $Robot->get_insta_follows(
+                                        $login_data, $client_data->insta_id, $NUM_PROFILES_REQUEST, $cursor
+                                );
+                            }
+                        }
                     }
                 }
     //            var_dump($json_response);
-                if (is_object($json_response) && $json_response->status == 'ok' && isset($json_response->data->user->edge_follow->edges)) { // if response is ok
+                if (is_object($json_response) && $json_response->status == 'ok' && isset($json_response->data->user->edge_follow->edges) && $json_response->data->user->edge_follow->count > 0 ) { // if response is ok
                    // Get Users 
                     $white_list = $DB->get_white_list($client_data->user_id);
                     print '\n<br> Count: ' . count($json_response->data->user->edge_follow->edges) . '\n<br>';
                     $Profiles = $json_response->data->user->edge_follow->edges;
                     $unfollowed_profiles = 0;
+                    $in_white_list = 0;
                     foreach ($Profiles as $rpkey => $Profile) {                        
                         $Profile = $Profile->node;
                         // If profile is not in white list then do unfollow request
@@ -107,7 +119,12 @@ if(isset($clients_data_db))
                                 break;
                             }                        
                         }
+                        else{
+                            $in_white_list++;
+                        }
                     }
+                    if($in_white_list == count($Profiles) && $in_white_list > 0)
+                        $cursors_clients['user_id'] = $cursor;// save cursor
                 } else {
                     unset($clients_data[$ckey]);
                     echo "<br>\n DELETED FROM UNFOLLOW!! NOT CLIENT DATA: $client_data->login ($client_data->id) <br>\n";
