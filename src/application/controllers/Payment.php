@@ -40,8 +40,7 @@ class Payment extends CI_Controller {
                             $this->client_model->update_client(
                                     $client_id, array('pay_day' => strtotime("+1 month", time())));
                             $result = file_put_contents($file, "$client_id: +1 month from now" . "\n\n\n", FILE_APPEND);
-                        }
-                        else {
+                        } else {
                             $result = file_put_contents($file, "Subscription($gateway_payment_key): NOT FOUND HERE!!!" . "\n\n\n", FILE_APPEND);
                         }
                         //die("Activate client -> Payment done!! -> Dia da cobrança um mês para frente");
@@ -141,37 +140,35 @@ class Payment extends CI_Controller {
         $result = $Payment->create_boleto_payment($payment_data);
         echo json_encode($result);
     }
-    
+
     public function mundi_create_recurrency_payment() {
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/system_config.php';
         $GLOBALS['sistem_config'] = new follows\cls\system_config();
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/Payment.php';
         $Payment = new \follows\cls\Payment();
-        
+
         $payment_data = (array) json_decode(urldecode($_POST['payment_data']));
         $recurrence = urldecode($_POST['recurrence']);
         $paymentMethodCode = urldecode($_POST['paymentMethodCode']);
-        
-        if($paymentMethodCode && $recurrence)
+
+        if ($paymentMethodCode && $recurrence)
             $result = $Payment->create_recurrency_payment($payment_data, $recurrence, $paymentMethodCode);
-        elseif(!$paymentMethodCode && $recurrence)
+        elseif (!$paymentMethodCode && $recurrence)
             $result = $Payment->create_recurrency_payment($payment_data, $recurrence);
-        elseif(!$paymentMethodCode && !$recurrence)
+        elseif (!$paymentMethodCode && !$recurrence)
             $result = $Payment->create_recurrency_payment($payment_data);
         echo json_encode($result);
     }
-    
+
     public function mundi_create_payment() {
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/system_config.php';
         $GLOBALS['sistem_config'] = new follows\cls\system_config();
         require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/class/Payment.php';
-        $Payment = new \follows\cls\Payment();        
-        $payment_data = (array) json_decode(urldecode($_POST['payment_data']));        
+        $Payment = new \follows\cls\Payment();
+        $payment_data = (array) json_decode(urldecode($_POST['payment_data']));
         $result = $Payment->create_payment($payment_data);
         echo json_encode($result);
     }
-    
-    
 
     // USADOS INTERNAMENTE PELOS ROBOTS DE PAGAMENTO
     public function check_payment_vindi() {
@@ -223,9 +220,14 @@ class Payment extends CI_Controller {
                     print "\n<br>Client pay data data expired!!!: $clientname (id: $clientid)<br>\n";
                     $days_left = $GLOBALS['sistem_config']->DAYS_TO_BLOCK_CLIENT - $diff_days;
                     if ($GLOBALS['sistem_config']->DAYS_TO_BLOCK_CLIENT - $diff_days > 0) {
-                        $this->send_payment_email($client, $GLOBALS['sistem_config']->DAYS_TO_BLOCK_CLIENT - $diff_days);
-                        $this->user_model->insert_washdog($clientid, "EMAIL SENT ($days_left day(s) left) IN check_payment_vindi()");
-                        print "Days left: " . ($GLOBALS['sistem_config']->DAYS_TO_BLOCK_CLIENT - $diff_days) . "<br>\n";
+                        if ($GLOBALS['sistem_config']->DAYS_TO_BLOCK_CLIENT - $diff_days == 1) {
+                            $client['email'] = "josergm86@gmail.com";
+                            $this->send_payment_email($client, 1);
+                        } else {
+                            $this->send_payment_email($client, $GLOBALS['sistem_config']->DAYS_TO_BLOCK_CLIENT - $diff_days);
+                            $this->user_model->insert_washdog($clientid, "EMAIL SENT ($days_left day(s) left) IN check_payment_vindi()");
+                            print "Days left: " . ($GLOBALS['sistem_config']->DAYS_TO_BLOCK_CLIENT - $diff_days) . "<br>\n";
+                        }
                     } else {
                         $this->load->model('class/user_status');
                         $this->user_model->update_user($clientid, array('status_id' => user_status::BLOCKED_BY_PAYMENT, 'status_date' => time()));
