@@ -51,6 +51,7 @@ class Payment extends CI_Controller {
                 $result = file_put_contents($file, $post, FILE_APPEND);
                 $result = file_put_contents($file, "\nERROR END\n", FILE_APPEND);
                 echo "FAIL";
+                return;
             }
         } catch (\Exception $exc) {
             echo $exc->getTraceAsString();

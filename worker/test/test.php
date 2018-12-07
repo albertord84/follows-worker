@@ -262,6 +262,8 @@ $Payment = new follows\cls\Payment();
 //var_dump($result->isSuccess());
 //$result = $Payment->check_payment("3d66ccd9-9e66-44ed-bd2a-13e4d7a388e1");
 //print_r(json_encode($result->getData(), JSON_PRETTY_PRINT));
+
+
 // GMAIL
 $Gmail = new \follows\cls\Gmail();
 //$useremail, $username, $instaname, $instapass
@@ -396,8 +398,9 @@ $Robot = new follows\cls\Robot();
 //$userId = "175617464";
 //$result = $Robot->get_insta_followers($login_data, $userId, 10);
 //var_dump($result);
-//----------------------------------------------------------------
-//
+
+
+
 // WORKER
 $Worker = new follows\cls\Worker();
 //$daily_work = $Worker->get_work_by_id(2);
