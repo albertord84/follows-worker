@@ -9,15 +9,16 @@
 namespace ApiInstaWeb;
 
 /**
- * Description of Media
+ * Description of ProfileType
  *
- * @author dumbu
+ * @author jose
  */
-class Media {
-    //put your code here
-    public $owner;
+class ProfileType  extends SplEnum{
+     const __default = self::Person;
     
-    public function __construct(\stdClass $response) {
-        
-    }
+     const GeoReference = 1;
+     
+     const Person = 0;  
+     
+     const Tag = 2;
 }

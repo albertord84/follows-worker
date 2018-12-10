@@ -9,15 +9,14 @@
 namespace ApiInstaWeb;
 
 /**
- * Description of Media
+ * Description of VerificationChoice
  *
- * @author dumbu
+ * @author jose
  */
-class Media {
-    //put your code here
-    public $owner;
+class VerificationChoice  extends SplEnum{
+     const __default = self::Email;
     
-    public function __construct(\stdClass $response) {
-        
-    }
+     const Email = 1;
+     
+     const SMS = 0;     
 }

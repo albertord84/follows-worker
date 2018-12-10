@@ -27,7 +27,7 @@ namespace ApiInstaWeb{
 
         public $instaProfileData;
 
-        public function __construct($response) {
+        public function __construct(\stdClass $response) {
 
         }
 

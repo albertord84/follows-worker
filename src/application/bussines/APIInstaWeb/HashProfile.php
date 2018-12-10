@@ -14,5 +14,32 @@ namespace ApiInstaWeb;
  * @author dumbu
  */
 class HashProfile extends ReferenceProfile{
-    //put your code here
+    
+    //begin ReferenceProfile
+     protected function get_insta_prof_data(\stdClass $cookies = NULL) {
+        
+    }
+
+    protected function make_curl_str(\stdClass $cookies, int $N, string $cursor = NULL, string $proxy = "") {
+        
+    }
+
+    protected function process_insta_prof_data(\stdClass $content) {
+        
+    }
+
+    public function get_insta_followers(\stdClass $cookies = NULL, int $N = 15, string $cursor = NULL, string $proxy = "") {
+        
+    }
+
+    public function get_insta_media(\stdClass $cookies = NULL, int $N = 15, string $cursor = NULL, string $proxy = "") {
+        
+    }
+
+    public function get_post_user_info($post_reference, \stdClass $cookies = NULL, string $proxy = NULL) {
+        
+    }
+
+     //end ReferenceProfile
+    
 }

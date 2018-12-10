@@ -6,11 +6,13 @@
  * and open the template in the editor.
  */
 
+namespace bussines\cls;
+
 /**
- * Description of InstaException
+ * Description of system_config
  *
- * @author dumbu
+ * @author jose
  */
-class InstaException extends Exception{
+class system_config {
     //put your code here
 }
