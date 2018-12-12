@@ -15,4 +15,14 @@ namespace Worker;
  */
 class DailyWork {
     //put your code here
+    /*+Client
++Ref_profile_follows = array()
++Followeds_to_unfollow = array()
++last_accesss
++foults
+     * ------------------------
++__construct()        
+     *  +is_work_done($config)
+     *  +get_unfollow_data($client_id)
+     *      */
 }

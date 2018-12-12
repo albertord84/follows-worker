@@ -23,7 +23,7 @@ namespace ApiInstaWeb
 
         }
 
-        protected function make_curl_str(\stdClass $cookies, int $N, string $cursor = NULL, string $proxy = "") {
+        protected function make_curl_str(\stdClass $cookies, int $N, string $cursor = NULL, Proxy $proxy = NULL) {
 
         }
 
@@ -31,21 +31,21 @@ namespace ApiInstaWeb
 
         }
 
-        public function get_insta_followers(\stdClass $cookies = NULL, int $N = 15, string $cursor = NULL, string $proxy = "") {
+        public function get_insta_followers(\stdClass $cookies = NULL, int $N = 15, string $cursor = NULL, Proxy $proxy = NULL) {
 
         }
 
-        public function get_insta_media(\stdClass $cookies = NULL, int $N = 15, string $cursor = NULL, string $proxy = "") {
+        public function get_insta_media(\stdClass $cookies = NULL, int $N = 15, string $cursor = NULL, Proxy $proxy = NULL) {
 
         }
 
-        public function get_post_user_info($post_reference, \stdClass $cookies = NULL, string $proxy = NULL) {
+        public function get_post_user_info($post_reference, \stdClass $cookies = NULL, Proxy $proxy = NULL) {
             
         }
 
          //end ReferenceProfile
 
-        protected function make_curl_following_str(\stdClass $cookies, int $N, string $cursor = NULL, string $proxy = "") {
+        protected function make_curl_following_str(\stdClass $cookies, int $N, string $cursor = NULL, Proxy $proxy = NULL) {
 
         }
 
@@ -59,7 +59,7 @@ namespace ApiInstaWeb
         public function get_reference_data(\stdClass $cookies, string $referense_name){}
 
         //pasar para InstaProfile
-        public function exists_profile(string $profile_name, ProfileType $type, string $insta_id=NULL, \stdClass $cookies=NULL, string $proxy = ""){}
+        public function exists_profile(string $profile_name, ProfileType $type, string $insta_id=NULL, \stdClass $cookies=NULL, Proxy $proxy = NULL){}
       
 
     }

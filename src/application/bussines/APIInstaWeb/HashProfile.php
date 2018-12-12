@@ -6,40 +6,42 @@
  * and open the template in the editor.
  */
 
-namespace ApiInstaWeb;
+namespace ApiInstaWeb
+{
 
-/**
- * Description of HashProfile
- *
- * @author dumbu
- */
-class HashProfile extends ReferenceProfile{
-    
-    //begin ReferenceProfile
-     protected function get_insta_prof_data(\stdClass $cookies = NULL) {
-        
+    /**
+     * Description of HashProfile
+     *
+     * @author dumbu
+     */
+    class HashProfile extends ReferenceProfile{
+
+        //begin ReferenceProfile
+         protected function get_insta_prof_data(\stdClass $cookies = NULL) {
+
+        }
+
+        protected function make_curl_str(\stdClass $cookies, int $N, string $cursor = NULL, Proxy $proxy = NULL) {
+
+        }
+
+        protected function process_insta_prof_data(\stdClass $content) {
+
+        }
+
+        public function get_insta_followers(\stdClass $cookies = NULL, int $N = 15, string $cursor = NULL, Proxy $proxy = NULL) {
+
+        }
+
+        public function get_insta_media(\stdClass $cookies = NULL, int $N = 15, string $cursor = NULL, Proxy $proxy = NULL) {
+
+        }
+
+        public function get_post_user_info($post_reference, \stdClass $cookies = NULL, Proxy $proxy = NULL) {
+
+        }
+
+         //end ReferenceProfile
+
     }
-
-    protected function make_curl_str(\stdClass $cookies, int $N, string $cursor = NULL, string $proxy = "") {
-        
-    }
-
-    protected function process_insta_prof_data(\stdClass $content) {
-        
-    }
-
-    public function get_insta_followers(\stdClass $cookies = NULL, int $N = 15, string $cursor = NULL, string $proxy = "") {
-        
-    }
-
-    public function get_insta_media(\stdClass $cookies = NULL, int $N = 15, string $cursor = NULL, string $proxy = "") {
-        
-    }
-
-    public function get_post_user_info($post_reference, \stdClass $cookies = NULL, string $proxy = NULL) {
-        
-    }
-
-     //end ReferenceProfile
-    
 }

@@ -22,16 +22,10 @@ namespace ApiInstaWeb
         public $insta_id;
 
         public $proxy;
-
-        public $port;
-
-        public $proxy_user;
-
-        public $proxy_pass;
         
         private $has_logs;
 
-        public function __construct(string $insta_id, \stdClass $cookies, string $proxy, int $port, string $proxy_user, string $proxy_pass) {
+        public function __construct(string $insta_id, \stdClass $cookies, Proxy $proxy) {
             if(!InstaClient::verify_cookies($cookies))
             {
                 throw  new Exceptions\CookiesWrongSyntaxException('the cookies you are passing are incompleate or wrong');
@@ -39,9 +33,6 @@ namespace ApiInstaWeb
             $this->insta_id = $insta_id;
             $this->cookies = $cookies;
             $this->proxy = $proxy;
-            $this->port = $port;
-            $this->proxy_user = $proxy_user;
-            $this->proxy_pass = $proxy_pass;
             $has_log = TRUE;
         }
     //put your code here

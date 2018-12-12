@@ -11,6 +11,6 @@
  *
  * @author dumbu
  */
-class HashtagProfile {
+class BussinesPersonProfile extends BussinesRefProfile {
     //put your code here
 }

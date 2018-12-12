@@ -29,14 +29,14 @@ abstract class ReferenceProfile {
    
    abstract protected function get_insta_prof_data(\stdClass $cookies=NULL);
    
-   abstract protected function make_curl_str(\stdClass $cookies, int $N, string $cursor=NULL, string $proxy="");   
+   abstract protected function make_curl_str(\stdClass $cookies, int $N, string $cursor=NULL, Proxy $proxy=NULL);   
    
-   abstract public function get_insta_followers(\stdClass $cookies = NULL, int $N = 15, string $cursor = NULL, string $proxy = "");
+   abstract public function get_insta_followers(\stdClass $cookies = NULL, int $N = 15, string $cursor = NULL, Proxy $proxy = NULL);
    
-   abstract public function get_insta_media(\stdClass $cookies = NULL, int $N = 15, string $cursor = NULL, string $proxy = "");
+   abstract public function get_insta_media(\stdClass $cookies = NULL, int $N = 15, string $cursor = NULL, Proxy $proxy = NULL);
    
    //Debe ser pasada para una clase de Post
-   abstract public function get_post_user_info($post_reference, \stdClass  $cookies = NULL, string $proxy = NULL);
+   abstract public function get_post_user_info($post_reference, \stdClass  $cookies = NULL, Proxy $proxy = NULL);
       
    public function TurnOn_Logs(){ $has_logs = TRUE; }
    
