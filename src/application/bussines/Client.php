@@ -25,7 +25,7 @@ class Client {
     
     public function change_status($status_id) {
         print("\n<br> change status");
-        //$this->client_model->change_status($status_id);
+        $this->client_model->change_status($status_id);
     }
     
     public function get_proxy() {
