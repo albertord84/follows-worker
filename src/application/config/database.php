@@ -78,11 +78,10 @@ $config = parse_ini_file(dirname(__FILE__)."/../../../../FOLLOWS-WORKER.INI", tr
 
 $db['default'] = array(
     'dsn' => '',
-    'hostname' => $SERVER_NAME,
-    'username' => $DB_USER_NAME,
-    'password' => $DB_PASSWORD,
-    'database' => $DB_NAME,
-    'dbdriver' => $DB_DRIVER,    
+    'hostname' => $config["database"]["host"],
+    'database' => $config["database"]["db"],   
+    'username' => $config["database"]["user"],
+    'password' => $config["database"]["pass"],
     'dbprefix' => '',
     'pconnect' => FALSE,
     'db_debug' => (ENVIRONMENT !== 'develop'),
