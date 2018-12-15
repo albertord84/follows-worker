@@ -47,7 +47,8 @@ class Proxy_model extends CI_Model {
     return $query->row();
   }
 
-  function get_all() {
+function get_all($offset = 0, $rows = 0){	
+    $this->db->limit($offset, $rows);
     $this->db->select('*')->from('Proxy');
     //$this->db->order_by('<field>', '<type>'); ==> asc/desc
     $query = $this->db->get();
