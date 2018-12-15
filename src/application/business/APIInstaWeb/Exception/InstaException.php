@@ -5,14 +5,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-namespace Worker
-{
-    /**
-     * Description of Worker
-     *
-     * @author dumbu
-     */
-    class Worker {
-        //put your code here
-    }
+
+/**
+ * Description of InstaException
+ *
+ * @author dumbu
+ */
+class InstaException extends Exception{
+    //put your code here
 }

@@ -9,10 +9,15 @@
 namespace ApiInstaWeb;
 
 /**
- * Description of InstaApi
+ * Description of Media
  *
  * @author dumbu
  */
-class InstaApi {
+class Media {
     //put your code here
+    public $owner;
+    
+    public function __construct(\stdClass $response) {
+        
+    }
 }

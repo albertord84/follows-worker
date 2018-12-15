@@ -16,6 +16,8 @@ class ExceptionCode extends SplEnum{
      const __default = self::UnknownException;
     
      const UnknownException = 0;
+     
+     const CookiesWrongSyntax = 1;
 }
 
 

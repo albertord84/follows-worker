@@ -74,15 +74,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
-$config = parse_ini_file(dirname(__FILE__) . "/../../../../FOLLOWS-WORKER.INI", true);
+// registra para codeigniter la configuracion externa de la DB.  
+include_once getcwd().'/workbench/db-settings.php';
+
+echo $file;
 
 $db['default'] = array(
     'dsn' => '',
-    'hostname' => $config["database"]["host"],
-    'username' => $config["database"]["user"],
-    'password' => $config["database"]["pass"],
-    'database' => $config["database"]["db"],
-    'dbdriver' => 'mysqli',
+    'hostname' => $SERVER_NAME,
+    'username' => $DB_USER_NAME,
+    'password' => $DB_PASSWORD,
+    'database' => $DB_NAME,
+    'dbdriver' => $DB_DRIVER,    
     'dbprefix' => '',
     'pconnect' => FALSE,
     'db_debug' => (ENVIRONMENT !== 'develop'),

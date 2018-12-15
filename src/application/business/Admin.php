@@ -6,11 +6,13 @@
  * and open the template in the editor.
  */
 
+namespace bussines\cls;
+
 /**
- * Description of HashtagProfile
+ * Description of Admin
  *
- * @author dumbu
+ * @author jose
  */
-class HashtagProfile {
+class Admin {
     //put your code here
 }

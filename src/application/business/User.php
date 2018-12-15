@@ -6,13 +6,13 @@
  * and open the template in the editor.
  */
 
-namespace ApiInstaWeb;
+namespace bussines\cls;
 
 /**
- * Description of HashProfile
+ * Description of User
  *
- * @author dumbu
+ * @author jose
  */
-class HashProfile extends ReferenceProfile{
+class User {
     //put your code here
 }

@@ -6,14 +6,13 @@
  * and open the template in the editor.
  */
 
-namespace ApiInstaWeb;
+namespace bussines\cls;
 
 /**
- * Description of InstaClient
+ * Description of system_config
  *
- * @author dumbu
+ * @author jose
  */
-class InstaClient {
+class system_config {
     //put your code here
-    
 }

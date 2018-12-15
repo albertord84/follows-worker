@@ -6,13 +6,11 @@
  * and open the template in the editor.
  */
 
-namespace ApiInstaWeb;
-
 /**
- * Description of GeoProfile
+ * Description of HashtagProfile
  *
  * @author dumbu
  */
-class GeoProfile extends ReferenceProfile {
+class BussinesRefProfile {
     //put your code here
 }

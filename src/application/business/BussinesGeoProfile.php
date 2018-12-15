@@ -6,13 +6,11 @@
  * and open the template in the editor.
  */
 
-namespace ApiInstaWeb;
-
 /**
- * Description of ReferenceProfile
+ * Description of HashtagProfile
  *
  * @author dumbu
  */
-class ReferenceProfile {
+class HashtagProfile extends BussinesRefProfile{
     //put your code here
 }

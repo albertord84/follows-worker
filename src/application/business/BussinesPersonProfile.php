@@ -7,10 +7,10 @@
  */
 
 /**
- * Description of InstaException
+ * Description of HashtagProfile
  *
  * @author dumbu
  */
-class InstaException {
+class BussinesHashProfile extends BussinesRefProfile {
     //put your code here
 }
