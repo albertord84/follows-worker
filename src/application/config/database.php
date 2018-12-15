@@ -75,17 +75,17 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 // registra para codeigniter la configuracion externa de la DB.  
-include_once getcwd().'/workbench/db-settings.php';
-
-echo $file;
+//include_once getcwd().'/workbench/db-settings.php';
+$config = parse_ini_file(dirname(__FILE__) . "/../../../../FOLLOWS-WORKER.INI", true);
+//$config = parse_ini_file($_SERVER['DOCUMENT_ROOT']."/FOLLOWS-WORKER.INI", true);
 
 $db['default'] = array(
     'dsn' => '',
-    'hostname' => $SERVER_NAME,
-    'username' => $DB_USER_NAME,
-    'password' => $DB_PASSWORD,
-    'database' => $DB_NAME,
-    'dbdriver' => $DB_DRIVER,    
+    'hostname' => $config["database"]["host"],
+    'username' => $config["database"]["user"],
+    'password' => $config["database"]["pass"],
+    'database' => $config["database"]["db"],
+    'dbdriver' => 'mysqli',   
     'dbprefix' => '',
     'pconnect' => FALSE,
     'db_debug' => (ENVIRONMENT !== 'develop'),
