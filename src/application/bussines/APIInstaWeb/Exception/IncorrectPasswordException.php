@@ -6,13 +6,14 @@
  * and open the template in the editor.
  */
 
+namespace ApiInstaWeb\Exceptions;
+
 /**
- * Description of InstaException
+ * Description of IncorrectPasswordException
  *
- * @author dumbu
+ * @author jose
  */
-class InstaException extends Exception{
+class IncorrectPasswordException extends \InstaException{
     //put your code here
-    public function Code(){ return ApiInstaWeb\Exceptions\ExceptionCode::UnknownException;}
-    
- }
+    public function Code(){return ExceptionCode::IncorrectPassword; }
+}

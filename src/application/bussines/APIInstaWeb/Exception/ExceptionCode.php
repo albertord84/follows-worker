@@ -18,6 +18,10 @@ class ExceptionCode extends SplEnum{
      const UnknownException = 0;
      
      const CookiesWrongSyntax = 1;
+     
+     const InstaCheckpointRequired = 2;
+     
+     const IncorrectPassword = 3;
 }
 
 
