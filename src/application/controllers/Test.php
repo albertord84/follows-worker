@@ -10,6 +10,13 @@ class Test extends CI_Controller {
     public function index() {
     }
     
+    public function db ($param, $action, $id)
+    {
+      //echo "ok";
+       $this->load->model('db_model');
+       $this->get_clients_by_status();
+    }
+    
     public function entity ($param, $action, $id)
     {
       echo "<b>Param: </b>".$param."<br><b>Action: </b>".$action."<br><br>";
