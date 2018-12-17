@@ -36,14 +36,15 @@ class Credit_card_status_model extends CI_Model {
 		return $query->row();
 	}
 
-function get_all($offset = 0, $rows = 0){	
+  function get_all($offset = 0, $rows = 0){	
     $this->db->limit($offset, $rows);		
-		$this->db->select('<write-complex-query-here>')->from('credit_card_status');
+		$this->db->select('*')->from('credit_card_status');
 		//$this->db->order_by('<field>', '<type>'); ==> asc/desc
 		$query = $this->db->get();
 
 		return $query->result();
 	}
 }
+
 ?>
 

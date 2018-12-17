@@ -53,12 +53,13 @@ class Pendences_model extends CI_Model {
 
   function get_all($offset = 0, $rows = 0){	
     $this->db->limit($offset, $rows);	
-    $this->db->select('<write-complex-query-here>')->from('pendences');
+    $this->db->select('*')->from('pendences');
     //$this->db->order_by('<field>', '<type>'); ==> asc/desc
     $query = $this->db->get();
 
     return $query->result();
   }
 }
+
 ?>
 

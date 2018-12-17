@@ -39,7 +39,7 @@ class Payment_cause_model extends CI_Model {
 
   function get_all($offset = 0, $rows = 0){	
     $this->db->limit($offset, $rows);
-    $this->db->select('<write-complex-query-here>')->from('payment_cause');
+    $this->db->select('*')->from('payment_cause');
     //$this->db->order_by('<field>', '<type>'); ==> asc/desc
     $query = $this->db->get();
 

@@ -41,13 +41,13 @@ class Reference_profiles_status_model extends CI_Model {
 
   function get_all($offset = 0, $rows = 0){	
     $this->db->limit($offset, $rows);	
-    $this->db->select('<write-complex-query-here>')->from('reference_profiles_status');
+    $this->db->select('*')->from('reference_profiles_status');
     //$this->db->order_by('<field>', '<type>'); ==> asc/desc
     $query = $this->db->get();
 
     return $query->result();
   }
-
 }
+
 ?>
 

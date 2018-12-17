@@ -42,12 +42,13 @@ class Washdog_model extends CI_Model {
   }
 
   function get_all() {
-    $this->db->select('<write-complex-query-here>')->from('washdog');
+    $this->db->select('*')->from('washdog');
     //$this->db->order_by('<field>', '<type>'); ==> asc/desc
     $query = $this->db->get();
 
     return $query->result();
   }
 }
+
 ?>
 

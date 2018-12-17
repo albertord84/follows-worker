@@ -36,7 +36,8 @@ class Dumbu_statistic_model extends CI_Model {
 		$this->db->delete('dumbu_statistic', array('id' => $id));
 	}
 
-	function update ($id, $active, $blocked_by_payment, $blocked_by_insta, $deleted, $inactive, $pending, $unfollow, $beginner, $verify_account, $blocked_by_time, $dont_disturb, $paying_customers, $date){
+	function update ($id, $active, $blocked_by_payment, $blocked_by_insta, $deleted, $inactive, $pending, $unfollow, 
+                   $beginner, $verify_account, $blocked_by_time, $dont_disturb, $paying_customers, $date){
 		$this->active = $active;
         $this->blocked_by_payment = $blocked_by_payment;
         $this->blocked_by_insta = $blocked_by_insta;
@@ -61,14 +62,15 @@ class Dumbu_statistic_model extends CI_Model {
 		return $query->row();
 	}
 
-function get_all($offset = 0, $rows = 0){	
+  function get_all($offset = 0, $rows = 0){	
     $this->db->limit($offset, $rows);		
-		$this->db->select('<write-complex-query-here>')->from('dumbu_statistic');
+		$this->db->select('*')->from('dumbu_statistic');
 		//$this->db->order_by('<field>', '<type>'); ==> asc/desc
 		$query = $this->db->get();
 
 		return $query->result();
 	}
 }
+
 ?>
 

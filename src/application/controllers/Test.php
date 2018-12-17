@@ -16,15 +16,22 @@ class Test extends CI_Controller {
       
       switch ($param)
       {
-        case 'proxy': $this->e_Proxy($action, $id); break;
         case 'black_and_white_list': $this->e_Black_and_white_list($action, $id); break;      
         case 'client_payment': $this->e_Client_payment($action, $id); break;
         case 'clients': $this->e_Clients($action, $id); break;
+        case 'credit_card_status': $this->e_Credit_card_status($action, $id); break;
+        case 'daily_report': $this->e_Daily_report($action, $id); break;
+        case 'daily_work': $this->e_Daily_work($action, $id); break;
+        case 'dumbu_statistic': $this->e_Dumbu_statistic($action, $id); break;
         
-        /*case '': $this->($action, $id); break;
-        case '': $this->($action, $id); break;
-        case '': $this->($action, $id); break;
-        case '': $this->($action, $id); break;
+        
+        
+        case 'proxy': $this->e_Proxy($action, $id); break;
+        
+        /*
+        
+        
+        
         case '': $this->($action, $id); break;
         case '': $this->($action, $id); break;
         case '': $this->($action, $id); break;
@@ -120,85 +127,83 @@ class Test extends CI_Controller {
       }
     }
     
-    /*private function e_?($action, $id)
-    {
-      
-      $this->load->model('');
+    private function e_Credit_card_status($action, $id)
+    { 
+      $this->load->model('credit_card_status_model');
       //$this->load->model('proxy_model', 'proxy');
       
       if ($action == 'get-by-id')
       {
-        $items = $this->->get_by_id($id);
+        $items = $this->credit_card_status_model->get_by_id($id);
         print_r($items);
       }
       else if ($action == 'get-all'){
-        $items = $this->->get_all();
+        $items = $this->credit_card_status_model->get_all();
         print_r($items);
       }
       else {
         echo "action wrong!!!"; 
       }
-    }*/
+    }
     
-    /*private function e_?($action, $id)
+    private function e_Daily_report($action, $id)
     {
-      
-      $this->load->model('');
+      $this->load->model('daily_report_model');
       //$this->load->model('proxy_model', 'proxy');
       
       if ($action == 'get-by-id')
       {
-        $items = $this->->get_by_id($id);
+        $items = $this->daily_report_model->get_by_id($id);
         print_r($items);
       }
       else if ($action == 'get-all'){
-        $items = $this->?->get_all();
+        $items = $this->daily_report_model->get_all(4);
         print_r($items);
       }
       else {
         echo "action wrong!!!"; 
       }
-    }*/
+    }
     
-    /*private function e_?($action, $id)
+    private function e_Daily_work($action, $id)
     {
       
-      $this->load->model('?_model');
+      $this->load->model('daily_work_model');
       //$this->load->model('proxy_model', 'proxy');
       
       if ($action == 'get-by-id')
       {
-        $items = $this->?_model->get_by_id($id);
+        $items = $this->daily_work_model->get_by_id($id);
         print_r($items);
       }
       else if ($action == 'get-all'){
-        $items = $this->?_model->get_all();
+        $items = $this->daily_work_model->get_all();
         print_r($items);
       }
       else {
         echo "action wrong!!!"; 
       }
-    }*/
+    }
     
-    /*private function e_?($action, $id)
+    private function e_Dumbu_statistic($action, $id)
     {
       
-      $this->load->model('?_model');
-      //$this->load->model('proxy_model', 'proxy');
+      $this->load->model('dumbu_statistic_model');
+      //$this->load->modelD'proxy_model', 'proxy');
       
       if ($action == 'get-by-id')
       {
-        $items = $this->?_model->get_by_id($id);
+        $items = $this->dumbu_statistic_model->get_by_id($id);
         var_dump($items);
       }
       else if ($action == 'get-all'){
-        $items = $this->?_model->get_all();
+        $items = $this->dumbu_statistic_model->get_all();
         var_dump($items);
       }
       else {
         echo "action wrong!!!"; 
       }
-    }*/
+    }
     
     /*private function e_?($action, $id)
     {
