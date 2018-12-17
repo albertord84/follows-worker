@@ -6,7 +6,7 @@ namespace follows\cls {
 
    class DB_model extends CI_Model {
 
-      /*protected $host = 'localhost';
+      protected $host = 'localhost';
       protected $db = 'dumbudb';
       protected $db_followed = 'dumbudb_followed';
       //protected $port = '3128';
@@ -38,7 +38,7 @@ namespace follows\cls {
             $this->db_followed = $config["database"]["follow"];
             $this->fConnection = mysqli_connect($this->host, $this->user, $this->pass, $this->db_followed) or die("Cannot connect to database.");
          }
-      }*/
+      }
 
       /*function construct() {
          parent::construct();
