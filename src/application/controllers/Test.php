@@ -1,20 +1,39 @@
 <?php
 if (!defined('BASEPATH')) exit('No direct script access allowed');
 
+//using namespace follows\cls
+//use follows\cls;
+
+/*$file = getcwd()."/application/models/DB.php";
+require_once $file;*/ //---> TEST #1-faul!!!
+
 class Test extends CI_Controller {
     public function __construct() {
       parent::__construct() ;
-      //require_once config_item('business-client-class');  
+      //echo getcwd()."/application/models/DB.php";
+
+      //require_once config_item('business-client-class'); 
+      //require_once getcwd()."/application/models/DB.php";
+      
+      //$file = getcwd()."/application/models/DB.php";
+      //if(file_exists($file)) echo "el fichero existe";
+      //require_once $file;
+      //include_once $file; //---> TEST #2-faul!!!
     }
     
     public function index() {
     }
     
-    public function db ($param, $action, $id)
+    public function db ()
     {
-      //echo "ok";
-       $this->load->model('db_model');
-       $this->get_clients_by_status();
+      echo "<br><br>ok";
+      
+      //if(file_exists("../models/DB.php")) echo "el fichero existe";
+      require_once getcwd()."/application/models/DB.php";
+      //require_once "../mophpdels/DB.php";
+      
+      $obj = new follows\cls\DB(); 
+      //$obj = new DB(); //---> TEST #3-faul!!!
     }
     
     public function entity ($param, $action, $id)
