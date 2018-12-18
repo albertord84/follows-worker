@@ -103,7 +103,8 @@ $autoload['helper'] = array('url');
 | config files.  Otherwise, leave it blank.
 |
 */
-$autoload['config'] = array("project_paths");
+
+$autoload['config'] = array('project_paths');
 
 /*
 | -------------------------------------------------------------------
