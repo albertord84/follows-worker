@@ -9,16 +9,15 @@
 namespace ApiInstaWeb\Exceptions;
 
 /**
- * Description of CookiesWrongSyntaxException
+ * Description of IncorrectPasswordException
  *
  * @author jose
  */
-class CookiesWrongSyntaxException extends \InstaException {
+class IncorrectPasswordException extends \InstaException{
     //put your code here
     public function __construct(string $message = "", Throwable $previous = null) {
-        parent::__construct($message, ExceptionCode::CookiesWrongSyntax, $previous);
+        parent::__construct($message, ExceptionCode::IncorrectPassword, $previous);
     }
     
-    public function Code(){return ExceptionCode::CookiesWrongSyntax; }
+    public function Code(){return ExceptionCode::IncorrectPassword; }
 }
-

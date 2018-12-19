@@ -22,9 +22,16 @@ namespace ApiInstaWeb
         public  $user;
         public  $password;
         
+        public function __construct(string $ip, string $port, string $user, string $password ) {
+            $this->ip = $ip;
+            $this->port = $port;
+            $this->user = $user;
+            $this->password = $password;
+        }
+
         public function  ToString()
         {
-            return "";
+            return "--proxy '$user:$password@$ip:$port'";
         }
     }
 }

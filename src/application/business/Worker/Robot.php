@@ -8,6 +8,9 @@
 
 namespace Worker
 {
+    require_once '../APIInstaWeb';
+    require_once '../APIInstaWeb/Exception';
+    require_once '../APIInstaWeb/Response';
     /**
      * Description of Robot
      *
@@ -33,9 +36,6 @@ namespace Worker
         {}
 
         public function process_get_insta_ref_prof_data_for_daily_report($content, \BusinessRefProfile $ref_prof)
-        {}
-
-        public function encode_cookies($csfrtoken, $sessionid, $ds_user_id, $mid)
         {}
 
         public function set_client_cookies_by_curl(int $client_id, string $curl, int $robot_id = NULL)

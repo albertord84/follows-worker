@@ -9,16 +9,15 @@
 namespace ApiInstaWeb\Exceptions;
 
 /**
- * Description of CookiesWrongSyntaxException
+ * Description of CurlNertworkException
  *
  * @author jose
  */
-class CookiesWrongSyntaxException extends \InstaException {
-    //put your code here
-    public function __construct(string $message = "", Throwable $previous = null) {
-        parent::__construct($message, ExceptionCode::CookiesWrongSyntax, $previous);
-    }
+class CurlNertworkException extends \InstaException{
     
-    public function Code(){return ExceptionCode::CookiesWrongSyntax; }
+    
+    public function __construct(string $message = "", Throwable $previous = null) {
+        parent::__construct($message, ExceptionCode::CurlNertworkError, $previous);
+    }
+    //put your code here
 }
-

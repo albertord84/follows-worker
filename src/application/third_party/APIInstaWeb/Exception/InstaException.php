@@ -12,5 +12,14 @@
  * @author dumbu
  */
 class InstaException extends Exception{
+    
+    private $code;
+    
+    public function __construct(string $message = "",ApiInstaWeb\Exceptions\ExceptionCode $code, Throwable $previous = null) {
+        parent::__construct($message,  $previous);
+        $this->code = $code; 
+    }
     //put your code here
-}
+    public function Code(){ return $code;}
+    
+ }
