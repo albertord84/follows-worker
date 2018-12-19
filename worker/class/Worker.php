@@ -33,7 +33,8 @@ namespace follows\cls {
         public function get_worker_config() {
             
         }
-
+        
+        // PASADA!!!
         function prepare_daily_work($client_id =  NULL, $not_mail = false) {
             // Get Users Info
             $Clients = array();
@@ -348,6 +349,7 @@ namespace follows\cls {
             return $daily_work;
         }
         
+        // PASADA!!!
         public function do_work($client_id = NULL, $n= NULL, $rp = NULL) {
             try {
                 $has_work = TRUE;

@@ -74,15 +74,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
+<<<<<<< HEAD
 $config = parse_ini_file(dirname(__FILE__) . "/../../../../FOLLOWS-WORKER.INI", true);
+=======
+$config = parse_ini_file(dirname(__FILE__)."/../../../../FOLLOWS-WORKER.INI", true);
+>>>>>>> a6cfd306f35bfa4fab16281c5ef1b7063e3315eb
 
 $db['default'] = array(
     'dsn' => '',
     'hostname' => $config["database"]["host"],
+<<<<<<< HEAD
     'username' => $config["database"]["user"],
     'password' => $config["database"]["pass"],
     'database' => $config["database"]["db"],
     'dbdriver' => 'mysqli',   
+=======
+    'database' => $config["database"]["db"],   
+    'username' => $config["database"]["user"],
+    'password' => $config["database"]["pass"],
+    'dbdriver' => 'mysqli',
+>>>>>>> a6cfd306f35bfa4fab16281c5ef1b7063e3315eb
     'dbprefix' => '',
     'pconnect' => FALSE,
     'db_debug' => (ENVIRONMENT !== 'develop'),
