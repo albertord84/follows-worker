@@ -1,4 +1,5 @@
 <?php
+if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 ini_set('xdebug.var_display_max_depth', 256);
 ini_set('xdebug.var_display_max_children', 256);
@@ -11,10 +12,11 @@ class Welcome extends CI_Controller {
     }
     
     public function index() {
+        echo "se invoco el index";
         /*var_dump("olaaaa");
         var_dump($_SERVER['DOCUMENT_ROOT']);
-        require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/src/application/bussines/Client.php';
-        $C = new bussines\cls\Client(1);
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/src/application/business/Client.php';
+        $C = new business\cls\Client(1);
         $C->change_status(1);*/
     }
 

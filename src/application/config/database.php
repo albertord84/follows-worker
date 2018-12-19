@@ -82,6 +82,7 @@ $db['default'] = array(
     'database' => $config["database"]["db"],   
     'username' => $config["database"]["user"],
     'password' => $config["database"]["pass"],
+    'dbdriver' => 'mysqli',
     'dbprefix' => '',
     'pconnect' => FALSE,
     'db_debug' => (ENVIRONMENT !== 'develop'),
