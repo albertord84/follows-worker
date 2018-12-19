@@ -67,6 +67,7 @@ namespace business\cls\worker {
       return $config;
     }
 
+    // LISTA!!!
     public function prepare_daily_work(bool $not_mail = false) {
       // Get Users Info
       $Clients = array();
@@ -162,14 +163,17 @@ namespace business\cls\worker {
       }
     }
 
+    // NUEVAS x IMPLMENTAR !!!
     public function prepare_client_daily_work(int $client_id, bool $not_mail = false) {
       
     }
 
+    // NUEVAS x IMPLMENTAR !!!
     public function request_current_work(\business\cls\Client $client = NULL) {
       
     }
 
+    // LISTA!!!
     public function do_work(int $client_id = NULL, int $n = NULL, int $rp = NULL) {
       try {
         $has_work = TRUE;
@@ -229,7 +233,7 @@ namespace business\cls\worker {
       }
     }
 
-    //do follow unfollow work
+    // LISTA!!!
     private function do_client_work(DailyWork $daily_work) {
       if ($daily_work) {
         //Get new follows
@@ -266,26 +270,63 @@ namespace business\cls\worker {
       return FALSE;
     }
 
+    // LISTA!!!
     public function get_work() {
-      
+      //$DB = new \follows\cls\DB();
+
+      $daily_work = $this->DB->get_follow_work();
+      $daily_work->login_data = json_decode($daily_work->cookies);
+      $Followeds_to_unfollow = array();
+      if ($daily_work->to_unfollow > 0) {
+        $unfollow_work = $this->DB->get_unfollow_work($daily_work->client_id);
+        while ($Followed = $unfollow_work->fetch_object()) { //
+          $To_Unfollow = new \follows\cls\Followed();
+          // Update Ref Prof Data
+          $To_Unfollow->id = $Followed->id;
+          $To_Unfollow->followed_id = $Followed->followed_id;
+          array_push($Followeds_to_unfollow, $To_Unfollow);
+        }
+      }
+      $daily_work->to_unfollow = $Followeds_to_unfollow;
+      return $daily_work;
     }
 
+    // LISTA!!!
     public function get_work_by_id(int $id) {
-      
+      //$DB = new \follows\cls\DB();
+      $daily_work = $this->DB->get_follow_work_by_id($reference_id);
+      $daily_work->login_data = json_decode($daily_work->cookies);
+      $Followeds_to_unfollow = array();
+      if ($daily_work->to_unfollow > 0) {
+        $unfollow_work = $this->DB->get_unfollow_work($daily_work->client_id);
+        while ($Followed = $unfollow_work->fetch_object()) { //
+          $To_Unfollow = new \follows\cls\Followed();
+          // Update Ref Prof Data
+          $To_Unfollow->id = $Followed->id;
+          $To_Unfollow->followed_id = $Followed->followed_id;
+          array_push($Followeds_to_unfollow, $To_Unfollow);
+        }
+      }
+      $daily_work->to_unfollow = $Followeds_to_unfollow;
+      return $daily_work;
     }
 
+    // LISTA!!!
     private function insert_daily_work(\BusinessRefProfile $ref_prof, $to_follow, $to_unfollow, $cookies) {
-      
+      //$DB = new \follows\cls\DB();
+      $this->DB->insert_daily_work($Ref_Prof->id, $to_follow, $to_unfollow, json_encode($login_data));
     }
 
+    // LISTA!!!
     private function delete_daily_work(int $ref_prof_id) {
-      
+      //$DB = new \follows\cls\DB();
+      $this->DB->truncate_daily_work($ref_prof_id);
     }
-
+    
+    // LISTA!!!
     public function truncate_daily_work() {
-      
+      //$DB = new \follows\cls\DB();
+      $this->DB->truncate_daily_work();
     }
-
   }
-
 }
