@@ -25,7 +25,9 @@ namespace ApiInstaWeb
      +make_curl_friendships_command_str($url, $login_data, $proxy = NULL, $Client = NULL) : STRING
      +get_insta_chaining($login_data, $user, $N = 1, $cursor = NULL, $proxy = ""):  InstaResponse
          */
-
+        
+        protected $has_logs = TRUE;
+        
         public function login(string $username, string $password, Proxy $proxy)
         {
             $debug = false;
@@ -83,25 +85,47 @@ namespace ApiInstaWeb
                     $res = $exc->getResponse()->getChallenge()->getApiPath();
                     throw new Exceptions\InstaCheckpointRequiredException($e->getMessage(),$e,$res); 
                 } else if (strpos($e->getMessage(), 'Network: CURL error 28') !== FALSE) { // Time out by bad proxy
-                    $proxy_id = ($proxy->idProxy) % 8 + 1;
-                    $myDB->SetProxyToClient($Client->id, $proxy_id);
+                    throw new Exceptions\CurlNertworkException($e->getMessage(),$e);
                 } else if (strpos($e->getMessage(), 'password you entered is incorrect') !== FALSE)
-                    $result->json_response->message = 'incorrect_password';
+                    throw new Exceptions\IncorrectPasswordException($e->getMessage(),$e);
                 else if (strpos($e->getMessage(), 'there was a problem with your request') !== FALSE)
-                    $result->json_response->message = 'problem_with_your_request';
+                    throw  new \InstaException('problem_with_your_request',$e);
                 else
-                    $result->json_response->message = $e->getMessage();
+                    throw  new \InstaException($e->getMessage(),$e);
                 return $result;
                 
             }
         }
         
-        public function make_insta_friendships_command(string $resource_id, \stdClass $cookies= NULL, string $command = 'follow', string $objetive_url = 'web/friendships', &$curl_str = "", Proxy $proxy = NULL) 
-        {}
-        
-        
-        public function get_insta_chaining(\stdClass $cookies= NULL, int $N = 1, string $cursor = NULL,Proxy  $proxy = NULL){}
-        
+        public static function make_query(string $query, string $variables, \stdClass $cookies, Proxy $proxy=NULL)
+        {            
+            $variables = urlencode($variables);
+            $graphquery_url = InstaURLs::GraphqlQuery;
+            $url = "$graphquery_url?query_hash=$query&variables=$variables";
+            $proxy_str = $proxy->ToString();
+            $curl_str = "curl $proxy_str '$url' ";
+            if ($cookies !== NULL) {
+                if ($cookies->mid == NULL || $cookies->csrftoken == NULL || $cookies->sessionid == NULL ||
+                        $cookies->ds_user_id == NULL)
+                    return NULL;
+                $curl_str .= "-H 'Cookie: mid=$cookies->mid; sessionid=$cookies->sessionid; s_network=; ig_pr=1; ig_vw=1855; csrftoken=$cookies->csrftoken; ds_user_id=$cookies->ds_user_id' ";
+                $curl_str .= "-H 'X-CSRFToken: $cookies->csrftoken' ";
+            }
+
+            $cnf = new \follows\cls\system_config();
+            $curl_str .= "-H 'Origin: https://www.instagram.com' ";
+            $curl_str .= "-H 'Accept-Encoding: gzip, deflate' ";
+            $curl_str .= "-H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' ";
+            $curl_str .= "-H 'User-Agent: $cnf->CURL_USER_AGENT' ";
+            $curl_str .= "-H 'X-Requested-with: XMLHttpRequest' ";
+            $curl_str .= "-H 'content-type: application/x-www-form-urlencoded' ";
+            $curl_str .= "-H 'Accept: */*' ";
+            $curl_str .= "-H 'Referer: https://www.instagram.com/' ";
+            $curl_str .= "-H 'Authority: www.instagram.com' ";
+            $curl_str .= "--compressed ";
+            return $curl_str;
+        }
+    
 
     }
 }

@@ -18,7 +18,7 @@ class InstaURLs  extends SplEnum{
     
      const Instagram = 'https://www.instagram.com';
      
-     const ChainingURL = '';
+     const GraphqlQuery = '"https://www.instagram.com/graphql/query/"';
      
      const MakePost = '';
 }

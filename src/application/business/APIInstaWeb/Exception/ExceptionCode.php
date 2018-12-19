@@ -22,6 +22,8 @@ class ExceptionCode extends SplEnum{
      const InstaCheckpointRequired = 2;
      
      const IncorrectPassword = 3;
+     
+     const CurlNertworkError = 28;
 }
 
 
