@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace Worker
+namespace business\cls\worker
 {
     require_once '../APIInstaWeb';
     require_once '../APIInstaWeb/Exception';
