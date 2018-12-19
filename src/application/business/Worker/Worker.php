@@ -60,9 +60,15 @@ namespace business\cls\worker {
     public $mail;
 
     public function __construct($id = -1) {
+      $this->Robot = new Robot($DB);
+      $this->Robot->config = $GLOBALS['sistem_config'];
+      $this->Robot->id = $id;
       $this->id = $id;
+      $this->Gmail = new Gmail();
+      $this->DB = $DB ? $DB : new \follows\cls\DB();
     }
 
+    // LISTA!!!
     public function get_worker_config() {
       return $config;
     }
@@ -322,11 +328,13 @@ namespace business\cls\worker {
       //$DB = new \follows\cls\DB();
       $this->DB->truncate_daily_work($ref_prof_id);
     }
-    
+
     // LISTA!!!
     public function truncate_daily_work() {
       //$DB = new \follows\cls\DB();
       $this->DB->truncate_daily_work();
     }
+
   }
+
 }
