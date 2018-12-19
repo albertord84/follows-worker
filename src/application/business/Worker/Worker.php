@@ -37,7 +37,7 @@ namespace business\cls\worker
 
 +do_client_work($daily_work) :BOOL    //ANTIGUA -> do_follow_unfollow_work
 
-+save_follow_unfollow_work($Followeds_to_unfollow, $Ref_profile_follows, $daily_work) : BOOL
++save_follow_unfollow_work($Followeds_to_unfollow, $Ref_profile_follows, $daily_work) : BOOL   
 
 +get_work_by_id($reference_id) : DailyWork
 
