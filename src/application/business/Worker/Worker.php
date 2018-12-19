@@ -26,11 +26,11 @@ namespace business\cls\worker
          * ------------------------------------------
 +__construct($DB = NULL, $id = -1)
 
->>>>>> +get_worker_config() <<<<<<<<             //	NUEVA NO EXISTE
->>>>>> +request_follow_unfollow_work() <<<<<<<   //     NUEVA NO EXISTE
->>>>>> +send_check_insta_user_work($Client) <<<<<<  //	NUEVA NO EXISTE
->>>>>> +have_work() <<<<<<<<  //   NUEVA NO EXISTE
->>>>>> +get_work() : DailyWork <<<<<<<  //  NUEVA NO EXISTE
+>>>>>> +get_worker_config() <<<<<<<<                      //NUEVA NO EXISTE
+>>>>>> +request_follow_unfollow_work() <<<<<<<            //NUEVA NO EXISTE
+>>>>>> +send_check_insta_user_work($Client) <<<<<<        //NUEVA NO EXISTE
+>>>>>> +have_work() <<<<<<<<                              //NUEVA NO EXISTE
+>>>>>> +get_work() : DailyWork <<<<<<<                    //NUEVA NO EXISTE
 
 
 -prepare_daily_work($client_id =  NULL, $not_mail = false) : VOID
