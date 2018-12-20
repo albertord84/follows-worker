@@ -9,8 +9,8 @@
  * 
  */
 class Plane_model extends CI_Model {
-  function construct() {
-    parent::construct();
+  function __construct() {
+    parent::__construct();
   }
 
   function save($initial_val, $normal_val, $to_follow, $gateway_prod_id, $gateway_plane_id) {

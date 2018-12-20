@@ -9,8 +9,8 @@
  * 
  */
 class Users_model extends CI_Model {
-  function construct() {
-    parent::construct();
+  function __construct() {
+    parent::__construct();
   }
 
   function save($role_id, $name, $login, $pass, $email, $phone_ddi, $phone_ddd, $phone_number, $status_id, $status_date, $language, $init_date, $end_date) {

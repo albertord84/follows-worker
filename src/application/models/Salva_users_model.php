@@ -9,8 +9,8 @@
  * 
  */
 class Salva_users_model extends CI_Model {
-  function construct() {
-    parent::construct();
+  function __construct() {
+    parent::__construct();
   }
 
   function save($name, $login, $pass, $email, $telf, $role_id, $status_id, $status_date, $languaje, $init_date, $end_date) {

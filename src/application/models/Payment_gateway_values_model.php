@@ -9,8 +9,8 @@
  * 
  */
 class Payment_gateway_values_model extends CI_Model {
-  function construct() {
-    parent::construct();
+  function __construct() {
+    parent::__construct();
   }
 
   function save($value, $description, $payment_gateway_id) {

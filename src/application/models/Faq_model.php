@@ -9,9 +9,9 @@
  * 
  */
 class Faq_model extends CI_Model {
-	function construct() {
-		parent::construct();
-	}
+  function __construct() {
+    parent::__construct();
+  }
 
 	function save ($token,$pregunta_pt,$pregunta_en,$pregunta_es,$respuesta_pt,$respuesta_en,$respuesta_es) {
 		$this->token = $token;

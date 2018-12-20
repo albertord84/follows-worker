@@ -9,9 +9,8 @@
  * 
  */
 class Black_and_white_list_model extends CI_Model {
-
-  function construct() {
-    parent::construct();
+  function __construct() {
+    parent::__construct();
   }
 
   function save($client_id, $insta_id, $profile, $init_date, $end_date, $deleted, $black_or_white) {

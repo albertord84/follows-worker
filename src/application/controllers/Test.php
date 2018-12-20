@@ -36,6 +36,15 @@ class Test extends CI_Controller {
       //$obj = new DB(); //---> TEST #3-faul!!!
     }
     
+    public function db_model ()
+    {
+      $this->load->model('db_model');
+      //$this->db_model->myFunc();
+ 
+      $items = $this->db_model->get_clients_by_status(1);
+      print_r($items);
+    }
+    
     public function entity ($param, $action, $id)
     {
       echo "<b>Param: </b>".$param."<br><b>Action: </b>".$action."<br><br>";

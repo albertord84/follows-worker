@@ -9,8 +9,8 @@
  * 
  */
 class Reference_profile_model extends CI_Model {
-  function construct() {
-    parent::construct();
+  function __construct() {
+    parent::__construct();
   }
 
   function save($insta_name, $insta_id, $status_id, $client_id, $insta_follower_cursor, $deleted, $end_date, $follows, $type, $last_access) {

@@ -9,8 +9,8 @@
  * 
  */
 class Worker_robot_model extends CI_Model {
-  function construct() {
-    parent::construct();
+  function __construct() {
+    parent::__construct();
   }
 
   function save($worker_id, $robot_id) {

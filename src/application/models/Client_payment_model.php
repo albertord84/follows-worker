@@ -9,9 +9,8 @@
  * 
  */
 class Client_payment_model extends CI_Model {
-
-  function construct() {
-    parent::construct();
+  function __construct() {
+    parent::__construct();
   }
 
   function save($gateway_client_id, $dumbu_plane_id, $payment_key, $gateway_id) {

@@ -9,9 +9,9 @@
  * 
  */
 class Clients_model extends CI_Model {
-	function construct() {
-		parent::construct();
-	}
+  function __construct() {
+    parent::__construct();
+  }
 
 	function save ($plane_id, $credit_card_number, $credit_card_status_id, $credit_card_cvc, $credit_card_name, $credit_card_exp_month, $credit_card_exp_year, $pay_day,
 				   $initial_order_key, $order_key, $pending_order_key, $actual_payment_value, $insta_id, $insta_followers_ini, $insta_following, $http_server_vars, $foults,

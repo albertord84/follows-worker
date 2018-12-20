@@ -9,9 +9,9 @@
  * 
  */
 class Dumbu_system_config_model extends CI_Model {
-	function construct() {
-		parent::construct();
-	}
+  function __construct() {
+    parent::__construct();
+  }
 
 	function save ($value, $description) {
 		$this->value = $value;

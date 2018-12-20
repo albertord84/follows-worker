@@ -9,8 +9,8 @@
  * 
  */
 class Washdog_model extends CI_Model {
-  function construct() {
-    parent::construct();
+  function __construct() {
+    parent::__construct();
   }
 
   function save($user_id, $action, $date) {

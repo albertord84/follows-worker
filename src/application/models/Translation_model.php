@@ -9,8 +9,8 @@
  * 
  */
 class Translation_model extends CI_Model {
-  function construct() {
-    parent::construct();
+  function __construct() {
+    parent::__construct();
   }
 
   function save($token, $portugues, $ingles, $espanol, $active) {

@@ -9,8 +9,8 @@
  * 
  */
 class User_role_model extends CI_Model {
-  function construct() {
-    parent::construct();
+  function __construct() {
+    parent::__construct();
   }
 
   function save($name) {

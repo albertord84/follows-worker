@@ -9,9 +9,9 @@
  * 
  */
 class Daily_work_model extends CI_Model {
-	function construct() {
-		parent::construct();
-	}
+  function __construct() {
+    parent::__construct();
+  }
 
 	function save ($to_follow, $to_unfollow, $cookies) {
 		$this->to_follow = $to_follow;

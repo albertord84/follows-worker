@@ -9,8 +9,8 @@
  * 
  */
 class Pendences_model extends CI_Model {
-  function construct() {
-    parent::construct();
+  function __construct() {
+    parent::__construct();
   }
 
   function save($client_id, $text, $init_date, $event_date, $resolved_date, $number, $frequency, $closed_message) {

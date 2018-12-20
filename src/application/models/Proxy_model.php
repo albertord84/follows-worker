@@ -9,9 +9,8 @@
  * 
  */
 class Proxy_model extends CI_Model {
-
-  function construct() {
-    parent::construct();
+  function __construct() {
+    parent::__construct();
   }
 
   function save($proxy, $proxy_user, $proxy_password, $port, $isreserved) {

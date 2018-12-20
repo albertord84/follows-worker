@@ -9,8 +9,8 @@
  * 
  */
 class Ticket_peixe_urbano_status_model extends CI_Model {
-  function construct() {
-    parent::construct();
+  function __construct() {
+    parent::__construct();
   }
 
   function save($name, $description) {

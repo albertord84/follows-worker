@@ -9,8 +9,8 @@
  * 
  */
 class Ticket_bank_model extends CI_Model {
-  function construct() {
-    parent::construct();
+  function __construct() {
+    parent::__construct();
   }
 
   function save($client_id, $name_in_ticket, $cpf, $ticket_link, $amount_months, $value, $document_number, $ticket_order_key, $generated_date, $payed_date, $ticket_bank_option, $cep, $street_address, $house_number, $neighborhood_address, $municipality_address, $state_address) {

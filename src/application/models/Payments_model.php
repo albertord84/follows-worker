@@ -9,8 +9,8 @@
  * 
  */
 class Payments_model extends CI_Model {
-  function construct() {
-    parent::construct();
+  function __construct() {
+    parent::__construct();
   }
 
   function save($client_id, $payment_form_id, $payment_cause_id, $payment_value, $captured_order_key, $plane, $date) {

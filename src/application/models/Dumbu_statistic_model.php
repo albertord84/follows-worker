@@ -9,9 +9,9 @@
  * 
  */
 class Dumbu_statistic_model extends CI_Model {
-	function construct() {
-		parent::construct();
-	}
+  function __construct() {
+    parent::__construct();
+  }
 	
 	function save ($active, $blocked_by_payment, $blocked_by_insta, $deleted, $inactive, $pending, $unfollow, $beginner, $verify_account, $blocked_by_time, $dont_disturb, $paying_customers, $date) {
 		$this->active = $active;
