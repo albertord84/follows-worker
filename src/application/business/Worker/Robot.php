@@ -8,6 +8,9 @@
 
 namespace Worker
 {
+    require_once '../APIInstaWeb';
+    require_once '../APIInstaWeb/Exception';
+    require_once '../APIInstaWeb/Response';
     /**
      * Description of Robot
      *
@@ -32,10 +35,7 @@ namespace Worker
         public function get_profiles_to_follow(DayliWork $daily_work, ErrorType &$error = NULL, &$page_info)
         {}
 
-        public function process_get_insta_ref_prof_data_for_daily_report($content, \BussinesRefProfile $ref_prof)
-        {}
-
-        public function encode_cookies($csfrtoken, $sessionid, $ds_user_id, $mid)
+        public function process_get_insta_ref_prof_data_for_daily_report($content, \BusinessRefProfile $ref_prof)
         {}
 
         public function set_client_cookies_by_curl(int $client_id, string $curl, int $robot_id = NULL)
@@ -44,7 +44,7 @@ namespace Worker
         public function temporal_log($data) 
         {}
 
-        public function process_get_followers_error(DailyWork $daily_work, \bussines\cls\Client $client, int $quantity, Proxy $proxy)
+        public function process_get_followers_error(DailyWork $daily_work, \business\cls\Client $client, int $quantity, Proxy $proxy)
         {}
     }
 }

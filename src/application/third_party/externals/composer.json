@@ -1,0 +1,6 @@
+{
+    "require": {
+        "vindi/vindi-php": "^1.2",
+        "mgp25/instagram-php": "^4.1"
+    }
+}

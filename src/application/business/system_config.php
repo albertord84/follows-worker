@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace bussines\cls;
+namespace business\cls;
 
 /**
  * Description of system_config

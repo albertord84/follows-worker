@@ -59,7 +59,7 @@ namespace Worker
         public function prepare_client_daily_work(int $client_id, bool $not_mail = false)
         {}
         
-        public function request_current_work(\bussines\cls\Client $client = NULL)
+        public function request_current_work(\business\cls\Client $client = NULL)
         {}
         
         public function do_work(int $client_id = NULL, int $n= NULL, int $rp = NULL)
@@ -74,7 +74,7 @@ namespace Worker
         public function get_work_by_id(int $id){}
         
         
-        private function insert_daily_work(\BussinesRefProfile $ref_prof, $to_follow, $to_unfollow, $cookies ){}
+        private function insert_daily_work(\BusinessRefProfile $ref_prof, $to_follow, $to_unfollow, $cookies ){}
         
         private function delete_daily_work(int $ref_prof_id) {}
         
