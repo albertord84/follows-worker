@@ -1,8 +1,7 @@
-/nbproject/private/
-vendor/
-composer.phar
-composer.lock
-src/logs/*
-worker/log/*
-nohup.out
-.idea/
+/nbproject/
+/.idea/*
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
