@@ -12,4 +12,7 @@
   $config['business-y-class'] = getcwd().'/application/business/y.php';
   $config['business-z-class'] = getcwd().'/application/business/z.php';
   
+  $config['db-exception-class'] = getcwd().'/application/business/DB_Exception.php';
+  
+  
 ?>

@@ -20,6 +20,8 @@ class Db_model extends CI_Model {
 
   function __construct() {
     parent::__construct();
+    
+    require_once config_item('db-exception-class');
   }
 
   public function myFunc ()
@@ -59,14 +61,28 @@ class Db_model extends CI_Model {
                       INNER JOIN plane ON plane.id = clients.plane_id 
                       WHERE users.status_id = '%d' AND user_id > '%d'", $user_status, $uid);
       
-      $query = $this->db->query($sql); 
+      $query = $this->db->query($sql);
 
-      //echo $this->db->_error_message();
-      echo $this->db->_error_number();
-
-      //return $query->result();
-    } catch (\Exception $exc) {
-      echo $exc->getTraceAsString();
+      return $query->result();
+    } 
+    catch (\Error $e) {
+      echo "<h2>try-catch del db_model</h2>";
+      print_r($this->db->error()); echo "<br><br>"; 
+      echo count($this->db->error())."<br>";
+      
+      echo "<b>Code: </b>".$e->getCode()."<br>";
+      echo "<b>Message: </b>".$e->getMessage()."<br>";
+      echo "<b>File: </b>".$e->getFile()."<br>";
+      echo "<b>Line: </b>".$e->getLine()."<br>";
+      echo "<b>Trace: </b>".$e->getTraceAsString();
+      
+      //if (count($this->db->error()) > 0)
+        throw new DB_Exception($this->db->error(), $e->getMessage(), $e->getFile(), 
+                               $e->getLine(), $e->getTrace());
+      //else 
+       //throw new ErrorException("lolo"); 
+      
+      //  echo $exc->getTraceAsString();
     }
   }
 
