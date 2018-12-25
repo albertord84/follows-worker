@@ -5,21 +5,10 @@ date_default_timezone_set('America/Sao_Paulo');
 
 /*
 |--------------------------------------------------------------------------
-| 
-|--------------------------------------------------------------------------
-|
 | Registra un controlador-de-Errores personalizada que transforma los errores 
 | de PHP en excepciones.
-|
 */
-
-//echo "<h2>Estoy dento de file config</h2>";
-require_once getcwd().'/application/business/DB_Exception.php';
-//$file = getcwd().'/application/business/DB_Exception.php';
-//echo "<h2>".$file."</h2>";
-//if (file_exists($file)) echo "el fichero existe!!!";
-
-function my_error_handler($errno, $errstr, $errfile, $errline) 
+/*function my_error_handler($errno, $errstr, $errfile, $errline) 
 { 
   if (!(error_reporting() & $errno)) 
   { 
@@ -28,34 +17,31 @@ function my_error_handler($errno, $errstr, $errfile, $errline)
   }
   log_message('error', "$errstr @$errfile::$errline($errno)"); //echo "MI ERROR!!!";
   throw new ErrorException($errstr, $errno, 0, $errfile, $errline); 
-  //throw new Exception($errstr, $errno, 0, $errfile, $errline);
-  //throw new DB_Exception($errstr, $errno, 0);
 } 
-set_error_handler("my_error_handler");
+set_error_handler("my_error_handler");*/
 
 /*
-|
+|--------------------------------------------------------------------------
 | Registra un manejador de excepción no capturada.
-|
 */
 function my_exception_handler($error) 
 { 
-  echo "<h2>Exception no manipulada.... por lo tanto trata por my_exception_handler</h2>";
-
+  echo "<h2>Exception no manipulada.... tratada por my_exception_handler</h2>";
+  echo "<pre>"; 
   echo "<b>Code: </b>".$error->getCode()."<br>";
   echo "<b>Message: </b>".$error->getMessage()."<br>";
   echo "<b>File: </b>".$error->getFile()."<br>";
   echo "<b>Line: </b>".$error->getLine()."<br>";
   echo "<b>Trace: </b>".$error->getTraceAsString();
-
-  $ci = &get_instance();
-  echo "<br><br>";
-  print_r($ci->db->error());
-
-  echo '<br><br><br><pre>'; 
-  print_r($error); 
   echo '</pre>'; 
-
+  
+  $ci = &get_instance();
+  if ($ci->db->error()['code'] != 0){
+    echo "<br><br>";
+    echo count($ci->db->error())."<br>";
+    echo $ci->db->error()['code']."<br>";
+    print_r($ci->db->error()); 
+  }
   //header("HTTP/1.0 500 Internal Server Error"); 
 } 
 set_exception_handler("my_exception_handler");
@@ -86,7 +72,6 @@ set_exception_handler("my_exception_handler");
 $config['base_url'] = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https' : 'http');
 $config['base_url'] .= '://' . $_SERVER['HTTP_HOST'];
 $config['base_url'] .= str_replace(basename($_SERVER['SCRIPT_NAME']),'' , $_SERVER['SCRIPT_NAME']);
-
 
 /*
 |--------------------------------------------------------------------------

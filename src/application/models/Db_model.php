@@ -59,30 +59,19 @@ class Db_model extends CI_Model {
       $sql = sprintf("SELECT * FROM users1
                       INNER JOIN clients ON clients.user_id = users.id 
                       INNER JOIN plane ON plane.id = clients.plane_id 
-                      WHERE users.status_id = '%d' AND user_id > '%d'", $user_status, $uid);
+                      WHERE users.status_id = '%d' AND user_id > '%d'", $user_status, $uid); 
       
+      //$query = NULL;
       $query = $this->db->query($sql);
 
       return $query->result();
     } 
-    catch (\Error $e) {
-      echo "<h2>try-catch del db_model</h2>";
-      print_r($this->db->error()); echo "<br><br>"; 
-      echo count($this->db->error())."<br>";
-      
-      echo "<b>Code: </b>".$e->getCode()."<br>";
-      echo "<b>Message: </b>".$e->getMessage()."<br>";
-      echo "<b>File: </b>".$e->getFile()."<br>";
-      echo "<b>Line: </b>".$e->getLine()."<br>";
-      echo "<b>Trace: </b>".$e->getTraceAsString();
-      
-      //if (count($this->db->error()) > 0)
-        throw new DB_Exception($this->db->error(), $e->getMessage(), $e->getFile(), 
-                               $e->getLine(), $e->getTrace());
-      //else 
-       //throw new ErrorException("lolo"); 
-      
-      //  echo $exc->getTraceAsString();
+    catch (Error $e) {
+      if ($this->db->error()['code'] != 0) {
+        throw new Db_Exception($this->db->error(), $e);
+      }else {
+        throw $e;
+      }
     }
   }
 

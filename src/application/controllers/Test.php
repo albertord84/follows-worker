@@ -36,11 +36,11 @@ class Test extends CI_Controller {
       //throw new Exception();
       //throw new CI_Exception();
 
-      throw new DB_Exception("mi mensaje para la exception");
+      throw new Db_Exception("mi mensaje para la exception");
     } 
     //catch (MY_Exceptions $e) {
     //catch (Exception $e) {
-    catch (DB_Exception $e){
+    catch (Php_Exception $e){
       //echo $e->getMessage();
       //$e->show_miError();
       echo "Estoy en el catch<br><br>";
@@ -73,22 +73,13 @@ class Test extends CI_Controller {
       $items = $this->db_model->get_clients_by_status(1);
       print_r($items);
     } 
-    //catch (Exception $e) {
-    //catch(MY_Exceptions $e){
-    //catch(\Exception $e){
-    //catch(\ErrorException $e){
-    //catch(\Error $e){
-    catch (DB_Exception $e){ 
+    catch (Error $e){ 
+      echo "<h2>Capture el error php</h2>";
+      echo $e->getMessage();
+    }
+    catch (Db_Exception $e){ 
       echo "<h2>try-catch del controller</h2>";
-      //echo $e->getDB_error();
       echo $e->getErrorInfo();
-      //echo "capture la exception en el db_model_controller<br><br>";
-      //print_r($this->db->error()); echo "<br>";
-      //echo $this->db->error()
-      
-      //print_r($e);
-      //log_message('error', $e->getMessage() . ' in ' . $e->getFile() . ':' . $e->getLine());
-      // on error 
     }
   }
 
