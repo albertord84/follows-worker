@@ -17,15 +17,31 @@ namespace ApiInstaWeb
     class HashProfile extends ReferenceProfile{
 
         //begin ReferenceProfile
-         protected function get_insta_prof_data(\stdClass $cookies = NULL) {
-
-        }
-
         protected function make_curl_str(\stdClass $cookies, int $N, string $cursor = NULL, Proxy $proxy = NULL) {
 
         }
 
         protected function process_insta_prof_data(\stdClass $content) {
+             $Profile = NULL;
+            if (is_object($content) && $content->status === 'ok') {
+                $tags = $content->hashtags;
+                // Get user with $ref_prof name over all matchs 
+                if (is_array($tags)) {
+                    for ($i = 0; $i < count($tags); $i++) {
+                        if ($tags[$i]->hashtag->name === $ref_prof) {
+                            $Profile = $tags[$i]->hashtag;
+                            //if ($ref_prof != NULL) {
+                               // $Profile->follows = $this->get_insta_ref_prof_follows($ref_prof_id);
+                            //}
+                            break;
+                        }
+                    }
+                }
+            } else {
+                //var_dump($content);
+                //var_dump("null reference profile!!!");
+            }
+            return $Profile;
 
         }
 

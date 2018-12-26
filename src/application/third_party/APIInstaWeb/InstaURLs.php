@@ -21,5 +21,7 @@ class InstaURLs  extends SplEnum{
      const GraphqlQuery = '"https://www.instagram.com/graphql/query/"';
      
      const MakePost = '';
+     
+     const TopSearch = '"https://www.instagram.com/web/search/topsearch/';
 }
 

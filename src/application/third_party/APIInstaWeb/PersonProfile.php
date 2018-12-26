@@ -19,16 +19,34 @@ namespace ApiInstaWeb
         //put your code here
 
         //begin ReferenceProfile
-        protected function get_insta_prof_data(\stdClass $cookies = NULL) {
-
-        }
-
         protected function make_curl_str(\stdClass $cookies, int $N, string $cursor = NULL, Proxy $proxy = NULL) {
 
         }
 
         protected function process_insta_prof_data(\stdClass $content) {
-
+            $Profile = NULL;
+            if (is_object($content) && $content->status === 'ok') {
+                $users = $content->users;
+                // Get user with $ref_prof name over all matchs 
+                if (is_array($users)) {
+                    for ($i = 0; $i < count($users); $i++) {
+                        if ($users[$i]->user->username === $ref_prof) {
+                            $Profile = $users[$i]->user;
+                            //var_dump($Profile);
+                          //  $Profile->follows = $this->get_insta_ref_prof_follows($ref_prof_id);
+                            $Profile->following = $this->get_insta_following_count($ref_prof);
+                            if (!isset($Profile->follower_count)) {
+                                $Profile->follower_count = isset($Profile->byline) ? $this->parse_follow_count($Profile->byline) : 0;
+                            }
+                            break;
+                        }
+                    }
+                }
+            } else {
+                //var_dump($content);
+                //var_dump("null reference profile!!!");
+            }
+            return $Profile;
         }
 
         public function get_insta_followers(\stdClass $cookies = NULL, int $N = 15, string $cursor = NULL, Proxy $proxy = NULL) {
