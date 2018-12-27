@@ -14,18 +14,22 @@ namespace business\cls {
      * @author jose
      */
     class ProxyManager extends Business {
-        //put your code here
+        
+        function __construct() {
+            $this->load->model('db_model');
+        }
+        
         public function UpdateUserProxy()
         {
             $this->CI->load_model("client_model");
             //<DB FUNC>
             $DB = new \business\DB\DB();
-            $clients = $DB->GetClientWithouProxy();
-            $proxies = $DB->GetNotResrevedProxyList();
+            $clients = $this->db_model->GetClientWithouProxy();
+            $proxies = $this->db_model->GetNotResrevedProxyList();
             $proxiesLst = array();
             while(($proxy = $proxies->fetch_object()))
             {
-                $proxy->cnt = $DB->GetProxyClientCounts($proxy->proxy)->fetch_object()->cnt;
+                $proxy->cnt = $this->db_model->GetProxyClientCounts($proxy->proxy)->fetch_object()->cnt;
                 array_push($proxiesLst, $proxy);
             }
             while(($client = $clients->fetch_object()))
@@ -42,7 +46,7 @@ namespace business\cls {
                         break;
                     }
                 }
-                $res = $DB->SetProxyToClient($client->user_id, $min_proxy->idProxy);
+                $res = $this->db_model->SetProxyToClient($client->user_id, $min_proxy->idProxy);
                 $min_proxy->cnt++;
             }
         }

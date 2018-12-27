@@ -77,7 +77,15 @@ namespace ApiInstaWeb
                 $source = 0;
                 if (isset($id) && $id !== NULL && $id !== 0)
                     $source = 1;
+                
+                
+                
+                /** @todo Passar para quien llama */
                 $myDB->InsertEventToWashdog($Client->id, $e->getMessage(), $source);
+                
+                
+                
+                
                 $result->json_response->authenticated = false;
                 $result->json_response->status = 'ok';                
 

@@ -18,12 +18,12 @@ namespace ApiInstaWeb {
 
         //put your code here
         //begin ReferenceProfile
-       /* protected function make_curl_str(\stdClass $cookies, int $N, string $cursor = NULL, Proxy $proxy = NULL) {
+        /* protected function make_curl_str(\stdClass $cookies, int $N, string $cursor = NULL, Proxy $proxy = NULL) {
 
-        }*/
-     public function __construct() {
-         $this->tag_query = "37479f2b8209594dde7facb0d904896a";
-     }
+          } */
+        public function __construct() {
+            $this->tag_query = "37479f2b8209594dde7facb0d904896a";
+        }
 
         protected function process_insta_prof_data(\stdClass $content) {
             $Profile = NULL;
@@ -35,7 +35,7 @@ namespace ApiInstaWeb {
                         if ($users[$i]->user->username === $ref_prof) {
                             $Profile = $users[$i]->user;
                             //var_dump($Profile);
-                          //  $Profile->follows = $this->get_insta_ref_prof_follows($ref_prof_id);
+                            //  $Profile->follows = $this->get_insta_ref_prof_follows($ref_prof_id);
                             $Profile->following = $this->get_insta_following_count($ref_prof);
                             if (!isset($Profile->follower_count)) {
                                 $Profile->follower_count = isset($Profile->byline) ? $this->parse_follow_count($Profile->byline) : 0;
@@ -52,10 +52,9 @@ namespace ApiInstaWeb {
         }
 
         public function get_insta_followers(\stdClass $cookies = NULL, int $N = 15, string& $cursor = NULL, Proxy $proxy = NULL) {
-           
-            $follower_list = $this->get_insta_followers_list($cookies, $N, $cursor,$proxy);
-            if($follower_list != NULL)
-            {
+
+            $follower_list = $this->get_insta_followers_list($cookies, $N, $cursor, $proxy);
+            if ($follower_list != NULL) {
                 if (is_object($json_response) && $json_response->status == 'ok') {
                     if (isset($json_response->data->user->edge_followed_by)) { // if response is ok
                         echo "Nodes: " . count($json_response->data->user->edge_followed_by->edges) . " <br>\n";
@@ -66,18 +65,17 @@ namespace ApiInstaWeb {
                         } else if ($page_info->has_next_page === FALSE && $page_info->end_cursor === NULL) {
                             throw new Exceptions\EndCursorException("The cursor has ended");
                         }
-                        
                     } else {
-                         throw new Exceptions\EndCursorException("The cursor has ended");
+                        throw new Exceptions\EndCursorException("The cursor has ended");
                     }
                     return $profiles;
                 }
             }
             return $follower_list;
         }
-        
+
         private function get_insta_followers_list(\stdClass $cookies = NULL, int $N = 15, string& $cursor = NULL, Proxy $proxy = NULL) {
-                    
+
             try {
                 $variables = "{\"id\":\"$this->insta_id\",\"first\":$N";
                 if ($cursor != NULL && $cursor != "NULL") {
@@ -89,35 +87,31 @@ namespace ApiInstaWeb {
                 if ($curl_str === NULL)
                     return NULL;
                 exec($curl_str, $output, $status);
-                
+
                 if (count($output) > 0 && isset($output[0])) {
                     $json = json_decode($output[0]);
-                    
+
                     if (isset($json->data->user->edge_followed_by) && isset($json->data->user->edge_followed_by->page_info)) {
                         if ($json->data->user->edge_followed_by->page_info->has_next_page === false) {
-                            if($this->has_logs)
-                            {
+                            if ($this->has_logs) {
                                 echo ("<br>\n END Cursor empty!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>\n ");
                                 var_dump(json_encode($json));
                                 echo ("<br>\n Updated Reference Cursor to NULL!!<br>\n ");
                             }
-                            $cursor = NULL;                            
-                        }
-                        else 
-                        {                            
+                            $cursor = NULL;
+                        } else {
                             $cursor = $json->data->user->edge_followed_by->page_info->end_cursor;
                         }
-                    } else if($this->has_logs){
+                    } else if ($this->has_logs) {
                         var_dump($output);
                         print_r($curl_str);
                     }
-                    
-                return $json;
-                } 
-                else if($this->has_logs){
-                        var_dump($output);
-                        print_r($curl_str);
-                        return NULL;
+
+                    return $json;
+                } else if ($this->has_logs) {
+                    var_dump($output);
+                    print_r($curl_str);
+                    return NULL;
                 }
             } catch (\Exception $exc) {
                 echo $exc->getTraceAsString();

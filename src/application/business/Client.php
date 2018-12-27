@@ -2,18 +2,19 @@
 
 //require_once 'Reference_profile[].php';
 
-namespace follows\cls {
+namespace business\cls {
     require_once 'User.php';
-    require_once 'Robot.php';
-    require_once 'DB.php';
-    require_once 'StatusProfiles.php';  
-    require_once '../third_party/APIInstaWeb/InstaClient.php';
+    /* require_once 'Robot.php';
+      require_once 'DB.php';
+      require_once 'StatusProfiles.php';
+      require_once '../third_party/APIInstaWeb/InstaClient.php'; */
+
     /**
      * class Client
      * 
      */
     class Client extends User {
-        /** Aggregations: */
+        /** Aggregation/s: */
         /** Compositions: */
         /** Attributes: */
 
@@ -107,6 +108,12 @@ namespace follows\cls {
          */
         public $paused;
 
+        /**
+         *
+         * @var Proxy 
+         */
+        public $Proxy;
+
         public function get_clients() {
             try {
                 $Clients = array();
@@ -190,16 +197,16 @@ namespace follows\cls {
                     }
                     $arr .= $value['cnt'] . ',';
                 }
-                
-                
+
+
                 $datas2 = $DB->get_dumbu_paying_customers();
-                foreach ($datas2 as $value) {                    
+                foreach ($datas2 as $value) {
                     $cols .= "PAYING_CUSTOMERS,";
                     $arr .= $value['cnt'] . ',';
                 }
-                
-                
-                
+
+
+
                 $cols .= 'date)';
                 $arr .= $time . ')';
                 $DB->insert_dumbu_statistics($cols, $arr);
@@ -230,6 +237,8 @@ namespace follows\cls {
                 $Client->init_date = $client_data->init_date;
                 $Client->last_access = $client_data->last_access;
                 $Client->get_reference_profiles($Client->id);
+                $Client->Proxy = new Proxy();
+                $Client->Proxy->load($client_data->proxy_id);
             }
             return $Client;
         }
@@ -283,27 +292,19 @@ namespace follows\cls {
             $DB = new DB();
             if ($this->reference_profiles) {
                 foreach ($this->reference_profiles as $ref_prof) {
-                    if ($ref_prof->deleted && $ref_prof->status != $status->DELETED)
-                    {
+                    if ($ref_prof->deleted && $ref_prof->status != $status->DELETED) {
                         $DB->UpdateReferenceProfileStatus($status->DELETED, $ref_prof->id);
-                    }
-                    else if($ref_prof->end_date != NULL && $ref_prof->status != $status->ENDED)
-                    {
-                         $DB->UpdateReferenceProfileStatus($status->ENDED, $ref_prof->id);
-                    }
-                    else if(!$Robot->exist_reference_profile($ref_prof->insta_name,$ref_prof->type, $ref_prof->insta_id, json_decode($this->cookies), $proxy)
-                            && $ref_prof->status != $status->LOCKED)
-                    {
-                         $DB->UpdateReferenceProfileStatus($status->LOCKED, $ref_prof->id);
-                    }
-                    else if($ref_prof->status  == $status->ACTIVE)
-                    {
+                    } else if ($ref_prof->end_date != NULL && $ref_prof->status != $status->ENDED) {
+                        $DB->UpdateReferenceProfileStatus($status->ENDED, $ref_prof->id);
+                    } else if (!$Robot->exist_reference_profile($ref_prof->insta_name, $ref_prof->type, $ref_prof->insta_id, json_decode($this->cookies), $proxy) && $ref_prof->status != $status->LOCKED) {
+                        $DB->UpdateReferenceProfileStatus($status->LOCKED, $ref_prof->id);
+                    } else if ($ref_prof->status == $status->ACTIVE) {
                         $count++;
                     }
                 }
             }
             return $count;
-        }       
+        }
 
         public function delete_daily_work($client_id) {
             $DB = new DB();
@@ -315,6 +316,7 @@ namespace follows\cls {
          */
         function __construct() {
             parent::__construct();
+            $this->CI->load->library('InstaApiLib');
         }
 
         /**
@@ -324,7 +326,15 @@ namespace follows\cls {
          */
         public function sign_in($Client) {
             $DB = new DB();
-            $login_data = (new Robot())->bot_login($Client->login, $Client->pass);
+
+            try {
+                $login_data = $this->CI->InstaApiLib->login($this->login, $this->pass, $this->Proxy);
+            } catch (Exception $exc) {
+                $myDB->InsertEventToWashdog($Client->id, $exc->getMessage(), $source);
+                echo $exc->getTraceAsString();
+            }
+
+
             if (is_object($login_data) && isset($login_data->json_response->authenticated) && $login_data->json_response->authenticated) {
                 $this->set_client_cookies($Client->id, json_encode($login_data));
                 echo "<br>\n Autenticated Client!!! Cookies changed: $Client->login ($Client->id) <br>\n\n\n<br>\n";
@@ -435,32 +445,32 @@ namespace follows\cls {
                 echo $exc->getTraceAsString();
             }
         }
-        
+
         ///Anhadir estas funciones en el disenho
-        public function checkpoint_requested(string $login, string $pass, \ApiInstaWeb\VerificationChoice $choise = \ApiInstaWeb\VerificationChoice::Email)
-        {
+        public function checkpoint_requested(string $login, string $pass, \ApiInstaWeb\VerificationChoice $choise = \ApiInstaWeb\VerificationChoice::Email) {
             $login_data = json_decode($this->cookies);
             $proxy = $this->GetProxy();
             $client = new \ApiInstaWeb\InstaClient($this->insta_id, $login_data, $proxy);
-            $res = $client->checkpoint_requested($login, $pass,$choise);
-            $this->cookies = json_encode($client->cookies);            
+            $res = $client->checkpoint_requested($login, $pass, $choise);
+            $this->cookies = json_encode($client->cookies);
             //guardar las cookies en la Base de Datos
             return $res;
         }
-        
-        public function make_checkpoint(string $login, string $code)
-        {
+
+        public function make_checkpoint(string $login, string $code) {
             //las cookies son las actualizadas de la BD
             $login_data = json_decode($this->cookies);
             $proxy = $this->GetProxy();
             $client = new \ApiInstaWeb\InstaClient($this->insta_id, $login_data, $proxy);
-            $res = $client->make_checkpoint($login,$code);
-            $this->cookies = json_encode($client->cookies);            
+            $res = $client->make_checkpoint($login, $code);
+            $this->cookies = json_encode($client->cookies);
             //guardar las cookies en la Base de Datos
             return $res;
         }
-        
-        public function GetProxy(){}
+
+        public function GetProxy() {
+            
+        }
 
     }
 
