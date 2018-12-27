@@ -6,11 +6,13 @@
  * and open the template in the editor.
  */
 
+namespace ApiInstaWeb\Exceptions;
+
 /**
- * Description of HashtagProfile
+ * Description of WrongEndCursorException
  *
- * @author dumbu
+ * @author jose
  */
-class HashtagProfile extends BusinessRefProfile{
+class WrongEndCursorException extends \InstaException {
     //put your code here
 }
