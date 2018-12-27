@@ -40,9 +40,19 @@ class Test extends CI_Controller {
     {
       $this->load->model('db_model');
       //$this->db_model->myFunc();
- 
-      $items = $this->db_model->get_clients_by_status(1);
-      print_r($items);
+
+      try {
+        $items = $this->db_model->get_clients_by_status(1);
+        print_r($items);
+      } 
+      catch (Error $e){ 
+        echo "<h2>Capture el error php</h2>";
+        echo $e->getMessage();
+      }
+      catch (Db_Exception $e){ 
+        echo "<h2>try-catch del controller</h2>";
+        echo $e->getErrorInfo();
+      }
     }
     
     public function entity ($param, $action, $id)
