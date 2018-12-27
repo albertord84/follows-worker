@@ -32,7 +32,14 @@ class Dumbu_system_config_model extends CI_Model {
 		$this->db->update('dumbu_system_config', $this, array('name' => $name));
 	}
 
-	function get_by_id ($name) {
+	function get_by_id ($id) {
+		$this->db->where('id', $id);
+		$query = $this->db->get('dumbu_system_config');
+
+		return $query->row();
+	}
+  
+  function get_by_name ($name) {
 		$this->db->where('name', $name);
 		$query = $this->db->get('dumbu_system_config');
 
