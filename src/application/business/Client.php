@@ -6,7 +6,8 @@ namespace follows\cls {
     require_once 'User.php';
     require_once 'Robot.php';
     require_once 'DB.php';
-    require_once 'StatusProfiles.php';                    
+    require_once 'StatusProfiles.php';  
+    require_once '../third_party/APIInstaWeb/InstaClient.php';
     /**
      * class Client
      * 
@@ -434,6 +435,32 @@ namespace follows\cls {
                 echo $exc->getTraceAsString();
             }
         }
+        
+        ///Anhadir estas funciones en el disenho
+        public function checkpoint_requested(string $login, string $pass, \ApiInstaWeb\VerificationChoice $choise = \ApiInstaWeb\VerificationChoice::Email)
+        {
+            $login_data = json_decode($this->cookies);
+            $proxy = $this->GetProxy();
+            $client = new \ApiInstaWeb\InstaClient($this->insta_id, $login_data, $proxy);
+            $res = $client->checkpoint_requested($login, $pass,$choise);
+            $this->cookies = json_encode($client->cookies);            
+            //guardar las cookies en la Base de Datos
+            return $res;
+        }
+        
+        public function make_checkpoint(string $login, string $code)
+        {
+            //las cookies son las actualizadas de la BD
+            $login_data = json_decode($this->cookies);
+            $proxy = $this->GetProxy();
+            $client = new \ApiInstaWeb\InstaClient($this->insta_id, $login_data, $proxy);
+            $res = $client->make_checkpoint($login,$code);
+            $this->cookies = json_encode($client->cookies);            
+            //guardar las cookies en la Base de Datos
+            return $res;
+        }
+        
+        public function GetProxy(){}
 
     }
 

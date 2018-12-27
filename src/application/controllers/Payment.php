@@ -221,9 +221,12 @@ class Payment extends CI_Controller {
                     print "\n<br>Client pay data data expired!!!: $clientname (id: $clientid)<br>\n";
                     $days_left = $GLOBALS['sistem_config']->DAYS_TO_BLOCK_CLIENT - $diff_days;
                     if ($GLOBALS['sistem_config']->DAYS_TO_BLOCK_CLIENT - $diff_days > 0) {
-                        if ($GLOBALS['sistem_config']->DAYS_TO_BLOCK_CLIENT - $diff_days == 1) {
+                        if ($GLOBALS['sistem_config']->DAYS_TO_BLOCK_CLIENT - $diff_days == 4) {
                             $client['email'] = "josergm86@gmail.com";
-                            $this->send_payment_email($client, 1);
+                            $this->send_payment_email($client, 4);
+                        } else if ($GLOBALS['sistem_config']->DAYS_TO_BLOCK_CLIENT - $diff_days == 3) {
+                            $client['email'] = "josergm86@gmail.com";
+                            $this->send_payment_email($client, 3);
                         } else {
                             $this->send_payment_email($client, $GLOBALS['sistem_config']->DAYS_TO_BLOCK_CLIENT - $diff_days);
                             $this->user_model->insert_washdog($clientid, "EMAIL SENT ($days_left day(s) left) IN check_payment_vindi()");

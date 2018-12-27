@@ -1218,11 +1218,7 @@ namespace follows\cls {
 
         public function get_insta_csrftoken($ch) {
             curl_setopt($ch, CURLOPT_URL, "https://www.instagram.com/");
-//curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie);
-//curl_setopt($ch, CURLOPT_COOKIEFILE, $cookie);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-            //curl_setopt($ch, CURLOPT_CAINFO, "curl-ca-bundle.crt");
-            //curl_setopt ($ch, CURLOPT_CAINFO,"cacert.pem");
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
             curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
             curl_setopt($ch, CURLINFO_HEADER_OUT, true);
