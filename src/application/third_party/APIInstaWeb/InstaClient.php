@@ -75,16 +75,8 @@ namespace ApiInstaWeb
         }
         
         private function make_curl_friendships_command_str(string $url) {
-            if($cookies != NULL)
-            {
-                $csrftoken = $cookies->csrftoken;
-                $ds_user_id = $cookies->ds_user_id;
-                $sessionid = $cookies->sessionid;
-                $mid = $cookies->mid;
-                if (($csrftoken === NULL || $csrftoken === "") && ($ds_user_id === NULL || $ds_user_id === "") &&
-                        ($sessionid === NULL || sessionid === "") && ($mid === NULL || $mid === ""))
-                    return NULL;
-            }
+            if (!$this->verify_cookies($cookies))
+                throw new Exceptions\CookiesWrongSyntaxException("The cookies are wrong");
             $proxy_str = "";
             if($proxy != NULL)
                 $proxy_str = $proxy->ToString();

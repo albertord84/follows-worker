@@ -450,7 +450,7 @@ namespace follows\cls {
         
         public function make_checkpoint(string $login, string $code)
         {
-            
+            //las cookies son las actualizadas de la BD
             $login_data = json_decode($this->cookies);
             $proxy = $this->GetProxy();
             $client = new \ApiInstaWeb\InstaClient($this->insta_id, $login_data, $proxy);
