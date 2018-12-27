@@ -25,7 +25,9 @@ abstract class ReferenceProfile {
     
     protected $has_logs = TRUE;
     
-   protected static function get_insta_data_from_client($ref_prof, \stdClass $cookies, $proxy = NULL) {
+    protected $tag_query;
+
+    protected static function get_insta_data_from_client($ref_prof, \stdClass $cookies, $proxy = NULL) {
         if ($ref_prof == "" || $ref_prof == NULL) {
             throw new \Exception("This was and empty or null referece profile (ref_prof)");
         }
@@ -87,9 +89,7 @@ abstract class ReferenceProfile {
 
    abstract protected function  process_insta_prof_data(\stdClass $content);   
    
-   abstract protected function make_curl_str(\stdClass $cookies, int $N, string $cursor=NULL, Proxy $proxy=NULL);   
-   
-   abstract public function get_insta_followers(\stdClass $cookies = NULL, int $N = 15, string $cursor = NULL, Proxy $proxy = NULL);
+   abstract public function get_insta_followers(\stdClass $cookies = NULL, int $N = 15, string& $cursor = NULL, Proxy $proxy = NULL);
    
    abstract public function get_insta_media(\stdClass $cookies = NULL, int $N = 15, string $cursor = NULL, Proxy $proxy = NULL);
    

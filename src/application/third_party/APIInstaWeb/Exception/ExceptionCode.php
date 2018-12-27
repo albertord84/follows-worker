@@ -23,6 +23,10 @@ class ExceptionCode extends SplEnum{
      
      const IncorrectPassword = 3;
      
+     const EndCursor = 4;
+     
+     const WrongEndCursor = 5;
+     
      const CurlNertworkError = 28;
 }
 
