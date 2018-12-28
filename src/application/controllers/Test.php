@@ -26,6 +26,13 @@ class Test extends CI_Controller {
     public function index() {
     }
     
+    public function library ()
+    {
+      
+      $this->load->library("APIInstaWeb/InstaApi_lib", '', 'InstaApi');
+      $this->InstaApi->Msg();
+    }
+    
     public function db ()
     {
       echo "<br><br>ok";
