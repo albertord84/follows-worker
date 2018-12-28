@@ -19,6 +19,8 @@ class Test extends CI_Controller {
       //if(file_exists($file)) echo "el fichero existe";
       //require_once $file;
       //include_once $file; //---> TEST #2-faul!!!
+      
+      require_once config_item('db-exception-class');
     }
     
     public function index() {
