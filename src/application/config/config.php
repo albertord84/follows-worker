@@ -1,7 +1,50 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-date_default_timezone_set('America/Sao_Paulo'); 
+date_default_timezone_set('America/Sao_Paulo');
+
+/*
+|--------------------------------------------------------------------------
+| Registra un controlador-de-Errores personalizada que transforma los errores 
+| de PHP en excepciones.
+*/
+/*function my_error_handler($errno, $errstr, $errfile, $errline) 
+{ 
+  if (!(error_reporting() & $errno)) 
+  { 
+   // This error code is not included in error_reporting 
+    return; 
+  }
+  log_message('error', "$errstr @$errfile::$errline($errno)"); //echo "MI ERROR!!!";
+  throw new ErrorException($errstr, $errno, 0, $errfile, $errline); 
+} 
+set_error_handler("my_error_handler");*/
+
+/*
+|--------------------------------------------------------------------------
+| Registra un manejador de excepción no capturada.
+*/
+function my_exception_handler($error) 
+{ 
+  echo "<h2>Exception no manipulada.... tratada por my_exception_handler</h2>";
+  echo "<pre>"; 
+  echo "<b>Code: </b>".$error->getCode()."<br>";
+  echo "<b>Message: </b>".$error->getMessage()."<br>";
+  echo "<b>File: </b>".$error->getFile()."<br>";
+  echo "<b>Line: </b>".$error->getLine()."<br>";
+  echo "<b>Trace: </b>".$error->getTraceAsString();
+  echo '</pre>'; 
+  
+  $ci = &get_instance();
+  if ($ci->db->error()['code'] != 0){
+    echo "<br><br>";
+    echo count($ci->db->error())."<br>";
+    echo $ci->db->error()['code']."<br>";
+    print_r($ci->db->error()); 
+  }
+  //header("HTTP/1.0 500 Internal Server Error"); 
+} 
+set_exception_handler("my_exception_handler");
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +72,6 @@ date_default_timezone_set('America/Sao_Paulo');
 $config['base_url'] = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https' : 'http');
 $config['base_url'] .= '://' . $_SERVER['HTTP_HOST'];
 $config['base_url'] .= str_replace(basename($_SERVER['SCRIPT_NAME']),'' , $_SERVER['SCRIPT_NAME']);
-
 
 /*
 |--------------------------------------------------------------------------
@@ -220,7 +262,7 @@ $config['directory_trigger'] = 'd';
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 0;
+$config['log_threshold'] = 4;
 
 /*
 |--------------------------------------------------------------------------

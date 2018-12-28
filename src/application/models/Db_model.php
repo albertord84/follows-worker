@@ -20,6 +20,8 @@ class Db_model extends CI_Model {
 
   function __construct() {
     parent::__construct();
+    
+    require_once config_item('db-exception-class');
   }
 
   public function myFunc ()
@@ -57,16 +59,19 @@ class Db_model extends CI_Model {
       $sql = sprintf("SELECT * FROM users1
                       INNER JOIN clients ON clients.user_id = users.id 
                       INNER JOIN plane ON plane.id = clients.plane_id 
-                      WHERE users.status_id = '%d' AND user_id > '%d'", $user_status, $uid);
+                      WHERE users.status_id = '%d' AND user_id > '%d'", $user_status, $uid); 
       
-      $query = $this->db->query($sql); 
+      //$query = NULL;
+      $query = $this->db->query($sql);
 
-      //echo $this->db->_error_message();
-      echo $this->db->_error_number();
-
-      //return $query->result();
-    } catch (\Exception $exc) {
-      echo $exc->getTraceAsString();
+      return $query->result();
+    } 
+    catch (Error $e) {
+      if ($this->db->error()['code'] != 0) {
+        throw new Db_Exception($this->db->error(), $e);
+      }else {
+        throw $e;
+      }
     }
   }
 

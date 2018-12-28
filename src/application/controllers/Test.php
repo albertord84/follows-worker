@@ -19,6 +19,8 @@ class Test extends CI_Controller {
       //if(file_exists($file)) echo "el fichero existe";
       //require_once $file;
       //include_once $file; //---> TEST #2-faul!!!
+      
+      require_once config_item('db-exception-class');
     }
     
     public function index() {
@@ -38,11 +40,22 @@ class Test extends CI_Controller {
     
     public function db_model ()
     {
+      echo "ok";
       $this->load->model('db_model');
       //$this->db_model->myFunc();
- 
-      $items = $this->db_model->get_clients_by_status(1);
-      print_r($items);
+
+      try {
+        $items = $this->db_model->get_clients_by_status(1);
+        print_r($items);
+      } 
+      catch (Error $e){ 
+        echo "<h2>Capture el error php</h2>";
+        echo $e->getMessage();
+      }
+      catch (Db_Exception $e){ 
+        echo "<h2>try-catch del controller</h2>";
+        echo $e->getErrorInfo();
+      }
     }
     
     public function entity ($param, $action, $id)
