@@ -15,24 +15,24 @@ use \business\cls\Proxy;
  */
 class InstaApi_lib {
 
-    public function __construct ()
-    {
-      require_once config_item('thirdparty-insta_api-resource');
-     
-      $this->ApiInsta = new InstaApi();
-      echo "se cargo satisfactoriamente la libreria<br><br>";
-      //if (file_exists(config_item('thirdparty-insta_api-resource'))) echo "el fichero existe";
-    }
-    
-    public function login(string $username, string $password, Proxy $proxy) {
-        $this->ApiInsta->login($username, $password, $proxy);
-    }
+  public function __construct ()
+  {
+    require_once config_item('thirdparty-insta_api-resource');
 
-    public static function make_query(string $query, string $variables, \stdClass $cookies, Proxy $proxy = NULL) {
-    }
-    
-    public function Msg ()
-    {
-      echo "<h2>se invoco bien un metodo de la lib</h2>";
-    }
+    $this->ApiInsta = new InstaApi();
+    echo "se cargo satisfactoriamente la libreria<br><br>";
+    //if (file_exists(config_item('thirdparty-insta_api-resource'))) echo "el fichero existe";
+  }
+
+  public function login(string $username, string $password, Proxy $proxy) {
+    $this->ApiInsta->login($username, $password, $proxy);
+  }
+
+  public static function make_query(string $query, string $variables, \stdClass $cookies, Proxy $proxy = NULL) {
+  }
+
+  public function Msg ()
+  {
+    echo "<h2>se invoco bien un metodo de la lib: ".__CLASS__."</h2>";
+  }
 }
