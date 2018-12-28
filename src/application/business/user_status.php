@@ -2,8 +2,8 @@
 
 namespace business\cls{
 
-    class user_status extends Business {
-
+    //class user_status extends Business {
+    class user_status {
         const ACTIVE = 1;
         const BLOCKED_BY_PAYMENT = 2;
         const BLOCKED_BY_INSTA = 3;

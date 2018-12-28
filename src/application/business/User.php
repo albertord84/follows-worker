@@ -15,7 +15,7 @@ namespace business\cls{
  *
  * @author jose
  */
-class User extends Business {
+class User  {
       /** Aggregations: */
         /** Compositions: */
         /*         * * Attributes: ** */

@@ -1,11 +1,5 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 namespace ApiInstaWeb {
 
   require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/externals/vendor/autoload.php';
@@ -109,7 +103,7 @@ namespace ApiInstaWeb {
       $curl_str = "curl $proxy_str '$url' ";
       if ($cookies !== NULL) {
         if ($cookies->mid == NULL || $cookies->csrftoken == NULL || $cookies->sessionid == NULL ||
-          $cookies->ds_user_id == NULL)
+                $cookies->ds_user_id == NULL)
           return NULL;
         $curl_str .= "-H 'Cookie: mid=$cookies->mid; sessionid=$cookies->sessionid; s_network=; ig_pr=1; ig_vw=1855; csrftoken=$cookies->csrftoken; ds_user_id=$cookies->ds_user_id' ";
         $curl_str .= "-H 'X-CSRFToken: $cookies->csrftoken' ";

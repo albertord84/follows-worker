@@ -1,24 +1,24 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+namespace ApiInstaWeb\Exceptions {
 
-namespace ApiInstaWeb\Exceptions;
+  //require_once 'ExceptionCode.php';
+  require_once 'InstaException.php';
 
-/**
- * Description of CookiesWrongSyntaxException
- *
- * @author jose
- */
-class CookiesWrongSyntaxException extends \InstaException {
+  /**
+   * Description of CookiesWrongSyntaxException
+   *
+   * @author jose
+   */
+  class CookiesWrongSyntaxException extends InstaException {
     //put your code here
     public function __construct(string $message = "", Throwable $previous = null) {
-        parent::__construct($message, ExceptionCode::CookiesWrongSyntax, $previous);
+      //parent::__construct($message, ExceptionCode::CookiesWrongSyntax, $previous);
     }
-    
-    public function Code(){return ExceptionCode::CookiesWrongSyntax; }
-}
 
+    public function Code() {
+      //return ExceptionCode::CookiesWrongSyntax;
+    }
+  }
+
+}

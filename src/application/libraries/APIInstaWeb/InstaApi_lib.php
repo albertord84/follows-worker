@@ -1,9 +1,8 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-//require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/externals/vendor/autoload.php';
-
-use \ApiInstaWeb\InstaApi;
-use \business\cls\Proxy;
+use ApiInstaWeb\Proxy;
+use ApiInstaWeb\InstaApi;
+use ApiInstaWeb\InstaURLs;
 
 /**
  * @category CodeIgniter-Library: InstaApiLib
@@ -15,13 +14,16 @@ use \business\cls\Proxy;
  */
 class InstaApi_lib {
 
-  public function __construct ()
+  public function __construct ($params)
   {
+    require_once config_item('thirdparty-proxy-resource');
     require_once config_item('thirdparty-insta_api-resource');
+    require_once config_item('thirdparty-insta_url-resource');
 
     $this->ApiInsta = new InstaApi();
-    echo "se cargo satisfactoriamente la libreria<br><br>";
-    //if (file_exists(config_item('thirdparty-insta_api-resource'))) echo "el fichero existe";
+    
+    // Borrar luego, se usa para comprobar que se cargo bien el recurso.
+    echo "se cargo satisfactoriamente la libreria: ".__CLASS__."<br><br>valor del parametro: ".$params['username'];
   }
 
   public function login(string $username, string $password, Proxy $proxy) {
@@ -31,8 +33,9 @@ class InstaApi_lib {
   public static function make_query(string $query, string $variables, \stdClass $cookies, Proxy $proxy = NULL) {
   }
 
+  // Funcion temporal para comprobar que se cargo la lib.
   public function Msg ()
   {
-    echo "<h2>se invoco bien un metodo de la lib: ".__CLASS__."</h2>";
+    echo "<h2>se invoco bien un metodo de la lib: ".__CLASS__."->".__FUNCTION__."()</h2>";
   }
 }
