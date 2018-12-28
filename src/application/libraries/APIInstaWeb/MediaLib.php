@@ -6,11 +6,18 @@
  * and open the template in the editor.
  */
 
+namespace ApiInstaWeb;
+
 /**
- * Description of HashtagProfile
+ * Description of Media
  *
  * @author dumbu
  */
-class BusinessRefProfile extends Business {
+class Media {
     //put your code here
+    public $owner;
+    
+    public function __construct(\stdClass $response) {
+        
+    }
 }

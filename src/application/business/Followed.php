@@ -6,7 +6,7 @@ namespace business\cls {
      * class Followed
      * 
      */
-    class Followed {
+    class Followed extends Business {
         /** Aggregations: */
         /** Compositions: */
         /*         * * Attributes: ** */

@@ -6,13 +6,17 @@
  * and open the template in the editor.
  */
 
-namespace business\cls;
+namespace ApiInstaWeb;
 
 /**
- * Description of system_config
+ * Description of VerificationChoice
  *
  * @author jose
  */
-class system_config extends Business {
-    //put your code here
+class VerificationChoice  extends SplEnum{
+     const __default = self::Email;
+    
+     const Email = 1;
+     
+     const SMS = 0;     
 }

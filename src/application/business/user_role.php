@@ -2,7 +2,7 @@
 
 namespace business\cls{
 
-    class user_role {
+    class user_role extends Business {
 
         const ADMIN = 1;
         const CLIENT = 2;

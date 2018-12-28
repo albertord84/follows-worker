@@ -14,7 +14,9 @@ class InstaApiLib {
         $ApiInstaWeb->login($username, $password, $proxy);
     }
 
-    public static function make_query(string $query, string $variables, \stdClass $cookies, Proxy $proxy = NULL) {
+    public static function make_query(string $query, string $variables, \stdClass $cookies, \business\cls\Proxy $proxy = NULL) {
+        $ApiInstaWeb = new ApiInstaWeb\InstaApi();
+        $ApiInstaWeb->make_query($query, $variables, $cookies, $proxy);
     }
 
 }

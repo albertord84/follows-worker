@@ -3,7 +3,7 @@
 namespace business\cls {
     include_once 'DB.php';
 
-    class StatusProfiles {
+    class StatusProfiles extends Business {
 
         public function __construct() {
             $DB = new DB();

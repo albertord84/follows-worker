@@ -6,13 +6,19 @@
  * and open the template in the editor.
  */
 
-namespace business\cls;
+namespace ApiInstaWeb;
 
 /**
- * Description of system_config
+ * Description of ProfileType
  *
  * @author jose
  */
-class system_config extends Business {
-    //put your code here
+class ProfileType  extends SplEnum{
+     const __default = self::Person;
+    
+     const GeoReference = 1;
+     
+     const Person = 0;  
+     
+     const Tag = 2;
 }
