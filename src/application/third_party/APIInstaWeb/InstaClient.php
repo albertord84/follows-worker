@@ -15,7 +15,9 @@ namespace ApiInstaWeb {
     private $has_logs;
 
     public function __construct(string $insta_id, \stdClass $cookies, Proxy $proxy) {
+      require_once config_item('composer_autoload');
       require_once config_item('cookies_wrong_syntax-exception-class');
+      require_once config_item('thirdparty-insta_api-resource');
       
       /*if (!InstaClient::verify_cookies($cookies)) {
         throw new Exceptions\CookiesWrongSyntaxException('the cookies you are passing are incompleate or wrong');
@@ -184,15 +186,14 @@ namespace ApiInstaWeb {
       return false;*/
     }
 
-    public function make_login(string $login, string $pass) {
-      /*$instaAPI = new InstaApi();
+    public function make_login(string $login, string $pass, Proxy $proxy = null) {
+      $instaAPI = new InstaApi();
       try {
-        $result = $instaAPI->login($login, $pass, $this->proxy);
+        $result = $instaAPI->login($login, $pass, $proxy);
       } catch (\Exception $exc) {
         throw $exc;
       }
-      $cookies = $result->Cookies;
-      return $cookies;*/
+      return $result;
     }
 
     public function like_fist_post(string $fromClient_ista_id) {

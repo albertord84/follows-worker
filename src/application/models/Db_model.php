@@ -12,7 +12,7 @@ class Db_model extends CI_Model {
 
   function get_clients_by_status($user_status, $uid = 0) {
     try {     
-      $sql = sprintf("SELECT * FROM users1
+      $sql = sprintf("SELECT * FROM users
                       INNER JOIN clients ON clients.user_id = users.id 
                       INNER JOIN plane ON plane.id = clients.plane_id 
                       WHERE users.status_id = '%d' AND user_id > '%d'", $user_status, $uid); 
@@ -172,7 +172,7 @@ class Db_model extends CI_Model {
 
       //return $query->result();
       
-      return $result ? $result->fetch_object() : NULL;
+      return $result ? $result->result_object() : NULL;
     } 
     catch (Error $e) {
       if ($this->db->error()['code'] != 0) {
@@ -195,7 +195,7 @@ class Db_model extends CI_Model {
 
       //return $query->result();
       
-      $object = $result ? $result->fetch_object() : NULL;
+      $object = $result ? $result->result_object() : NULL;
       return isset($object->gateway_plane_id) ? $object->gateway_plane_id : 0;
     } 
     catch (Error $e) {
@@ -217,7 +217,7 @@ class Db_model extends CI_Model {
         . "     INNER JOIN plane ON plane.id = client_payment.dumbu_plane_id "
         . "WHERE users.id = $client_id; "
       );
-      return $result ? $result->fetch_object() : NULL;
+      return $result ? $result->result_object() : NULL;
     } 
     catch (Error $e) {
       if ($this->db->error()['code'] != 0) {
@@ -236,7 +236,7 @@ class Db_model extends CI_Model {
         . "     INNER JOIN clients ON clients.user_id = users.id "
         . "WHERE users.id = $client_id; "
       );
-      return $result ? $result->fetch_object() : NULL;
+      return $result ? $result->result_object() : NULL;
     } 
     catch (Error $e) {
       if ($this->db->error()['code'] != 0) {
@@ -254,7 +254,7 @@ class Db_model extends CI_Model {
         . "SELECT insta_id FROM clients "
         . "WHERE user_id = $client_id; "
       );
-      return $result ? $result->fetch_object() : NULL;
+      return $result ? $result->result_object() : NULL;
     } 
     catch (Error $e) {
       if ($this->db->error()['code'] != 0) {
@@ -275,7 +275,7 @@ class Db_model extends CI_Model {
         . "ORDER BY user_id DESC "
         . "LIMIT 1; ";
       $result = $this->db->query($sql);
-      return $result ? $result->fetch_object() : NULL;
+      return $result ? $result->result_object() : NULL;
     } 
     catch (Error $e) {
       if ($this->db->error()['code'] != 0) {
@@ -294,7 +294,7 @@ class Db_model extends CI_Model {
         . "     INNER JOIN Proxy ON clients.proxy = Proxy.idProxy "
         . "WHERE user_id LIKE '$client_id';";
       $result = $this->db->query($sql);
-      return $result ? $result->fetch_object() : NULL;
+      return $result ? $result->result_object() : NULL;
     } 
     catch (Error $e) {
       if ($this->db->error()['code'] != 0) {
@@ -440,7 +440,7 @@ class Db_model extends CI_Model {
       $this->connect();
       $query = "SELECT client_id FROM dumbudb.reference_profile WHERE  id =" . $ref_prof_id . ";";
       $result = $this->db->query($query);
-      $data = $result->fetch_object();
+      $data = $result->result_object();
       if (isset($data->client_id))
         return $data->client_id;
       else
@@ -505,7 +505,7 @@ class Db_model extends CI_Model {
         . "LIMIT 1;";
 
       $result = $this->db->query($sql);
-      $object = $result->fetch_object();
+      $object = $result->result_object();
 
       // Update daily work time
       if ($object && (!isset($object->last_access) || intval($object->last_access) < time())) {
@@ -563,7 +563,7 @@ class Db_model extends CI_Model {
         . "LIMIT 1;";
 
       $result = $this->db->query($sql);
-      $object = $result->fetch_object();
+      $object = $result->result_object();
 
       // Update daily work time
       if ($object && (!isset($object->last_access) || intval($object->last_access) < time())) {
@@ -609,7 +609,7 @@ class Db_model extends CI_Model {
         . "LIMIT 1;";
 
       $result = $this->db->query($sql);
-      $object = $result->fetch_object();
+      $object = $result->result_object();
 
       // Update daily work time
       if ($object && (!isset($object->last_access) || intval($object->last_access) < time())) {
@@ -660,7 +660,7 @@ class Db_model extends CI_Model {
         . "LIMIT 1;";
 
       $result = $this->db->query($sql);
-      $object = $result->fetch_object();
+      $object = $result->result_object();
       if ($object != NULL) {
         $object->last_access = $object->last_access - 86400;
         // Update daily work time
@@ -715,7 +715,7 @@ class Db_model extends CI_Model {
       }
 
       $result = $this->db->query($sql);
-      $object = $result->fetch_object();
+      $object = $result->result_object();
 
       return $object != NULL;
     } 
@@ -1071,7 +1071,7 @@ class Db_model extends CI_Model {
       $this->connect();
       $sql = "SELECT * FROM dumbu_system_config;";
       $result = $this->db->query($sql);
-//                return $result ? $result->fetch_object() : NULL;
+//                return $result ? $result->result_object() : NULL;
       return $result ? $result : NULL;
     } 
     catch (Error $e) {
@@ -1092,7 +1092,7 @@ class Db_model extends CI_Model {
         . "ORDER BY black_and_white_list.insta_id;";
       $result = $this->db->query($sql);
       $new_array = NULL;
-      while ($obj = $result->fetch_object()) {
+      while ($obj = $result->result_object()) {
         $new_array[] = $obj->insta_id; // Inside while loop
       }
       return $new_array;
@@ -1115,7 +1115,7 @@ class Db_model extends CI_Model {
         . "LIMIT $index, 10;";
       $result = $this->db->query($sql);
       $new_array = NULL;
-      while ($obj = $result->fetch_object()) {
+      while ($obj = $result->result_object()) {
         $new_array[] = $obj->insta_id; // Inside while loop
       }
       return $new_array;
@@ -1138,7 +1138,7 @@ class Db_model extends CI_Model {
         . "ORDER BY black_and_white_list.insta_id;";
       $result = $this->db->query($sql);
       $new_array = NULL;
-      while ($obj = $result->fetch_object()) {
+      while ($obj = $result->result_object()) {
         $new_array[] = $obj->insta_id; // Inside while loop
       }
       return $new_array;
@@ -1157,7 +1157,7 @@ class Db_model extends CI_Model {
       $sql = "SELECT DISTINCT client_id FROM dumbudb.black_and_white_list WHERE  black_or_white = 1;";
       $result = $this->db->query($sql);
       $new_array = NULL;
-      while ($obj = $result->fetch_object()) {
+      while ($obj = $result->result_object()) {
         $new_array[] = $obj->client_id; // Inside while loop
       }
       return $new_array;
@@ -1187,7 +1187,7 @@ class Db_model extends CI_Model {
         $result = $this->db->query($sql);
       }
 
-      $obj = $result->fetch_object();
+      $obj = $result->result_object();
       if (isset($robot_id) == true) {
         $sql = "INSERT INTO dumbudb.washdog1 (user_id, type, date, robot, metadata) VALUE ('$user_id','$obj->id', '$time', $robot_id, '$metadata');";
       } else {
@@ -1455,7 +1455,7 @@ class Db_model extends CI_Model {
     try {
       $sql = "SELECT * FROM Proxy WHERE idProxy = $idProxy;";
       $result = $this->db->query($sql);
-      return $result->fetch_object();
+      return $result->result_object();
     } 
     catch (Error $e) {
       if ($this->db->error()['code'] != 0) {

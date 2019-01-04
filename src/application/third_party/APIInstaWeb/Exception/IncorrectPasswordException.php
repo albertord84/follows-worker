@@ -6,18 +6,25 @@
  * and open the template in the editor.
  */
 
-namespace ApiInstaWeb\Exceptions;
+namespace ApiInstaWeb\Exceptions {
+  require_once 'ExceptionCode.php';
+  require_once 'InstaException.php';
+  /**
+   * Description of IncorrectPasswordException
+   *
+   * @author jose
+   */
+  class IncorrectPasswordException extends InstaException {
 
-/**
- * Description of IncorrectPasswordException
- *
- * @author jose
- */
-class IncorrectPasswordException extends \InstaException{
     //put your code here
     public function __construct(string $message = "", Throwable $previous = null) {
-        parent::__construct($message, ExceptionCode::IncorrectPassword, $previous);
+      parent::__construct($message, ExceptionCode::IncorrectPassword, $previous);
     }
-    
-    public function Code(){return ExceptionCode::IncorrectPassword; }
+
+    public function Code() {
+      return ExceptionCode::IncorrectPassword;
+    }
+
+  }
+
 }

@@ -6,18 +6,20 @@
  * and open the template in the editor.
  */
 
-namespace ApiInstaWeb\Exceptions;
+namespace ApiInstaWeb\Exceptions {
 
-/**
- * Description of CurlNertworkException
- *
- * @author jose
- */
-class CurlNertworkException extends \InstaException{
-    
-    
+  /**
+   * Description of CurlNertworkException
+   *
+   * @author jose
+   */
+  class CurlNertworkException extends InstaException {
+
     public function __construct(string $message = "", Throwable $previous = null) {
-        parent::__construct($message, ExceptionCode::CurlNertworkError, $previous);
+      parent::__construct($message, ExceptionCode::CurlNertworkError, $previous);
     }
+
     //put your code here
+  }
+
 }

@@ -6,13 +6,16 @@
  * and open the template in the editor.
  */
 
-namespace ApiInstaWeb\Exceptions;
-
-/**
- * Description of EndCursorException
- *
- * @author jose
- */
-class EndCursorException extends \InstaException {
+namespace ApiInstaWeb\Exceptions {
+  require_once 'ExceptionCode.php';
+  require_once 'InstaException.php';
+  /**
+   * Description of EndCursorException
+   *
+   * @author jose
+   */
+  class EndCursorException extends InstaException {
     //put your code here
+  }
+
 }

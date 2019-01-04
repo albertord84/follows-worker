@@ -2,8 +2,6 @@
 
 namespace ApiInstaWeb {
 
-  require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/externals/vendor/autoload.php';
-
   /**
    * Description of InstaApi
    *
@@ -22,7 +20,15 @@ namespace ApiInstaWeb {
 
     protected $has_logs = TRUE;
 
-    public function login(string $username, string $password, Proxy $proxy) {
+    public function __construct() {
+      require_once config_item('composer_autoload');
+      require_once config_item('cookies_wrong_syntax-exception-class');
+      require_once config_item('insta_checkpoint_required-exception-class');
+      require_once config_item('incorrect_password-exception-class');
+      require_once config_item('curl_nertwork-exception-class');
+    }
+
+    public function login(string $username, string $password, Proxy $proxy = null) {
       $debug = false;
       $truncatedDebug = true;
       //////////////////////
@@ -35,7 +41,8 @@ namespace ApiInstaWeb {
 
         //$ig->setOutputInterface("191.252.110.140");
         //$ig->setProxy(['proxy'=>'tcp://70.39.250.32:23128']);
-        $ig->setProxy("http://" . $proxy->ToString());
+        if ($proxy)
+          $ig->setProxy("http://" . $proxy->ToString());
         //$ig->setProxy("http://albertreye9917:3r4rcz0b1v@207.188.155.18:21316");
 
         $loginResponse = $ig->login($username, $password);
@@ -61,6 +68,8 @@ namespace ApiInstaWeb {
         $Cookies['ds_user_id'] = $ig->client->getCookie('ds_user_id')->getValue();
         $Cookies['mid'] = $ig->client->getCookie('mid')->getValue();
         $loginResponse['Cookies'] = (object) $Cookies;
+        $loginResponse["json_response"]->authenticated = true;
+        $loginResponse["json_response"]->status = 'ok';
         return (object) $loginResponse;
       } catch (\Exception $e) {
         //echo '<br>Something went wrong: ' . $e->getMessage() . "\n</br>";
@@ -69,20 +78,9 @@ namespace ApiInstaWeb {
         if (isset($id) && $id !== NULL && $id !== 0)
           $source = 1;
 
-
-
-        /** @todo Passar para quien llama */
-        $myDB->InsertEventToWashdog($Client->id, $e->getMessage(), $source);
-
-
-
-
-        $result->json_response->authenticated = false;
-        $result->json_response->status = 'ok';
-
         if ((strpos($e->getMessage(), 'Challenge required') !== FALSE) || (strpos($e->getMessage(), 'Checkpoint required') !== FALSE) || (strpos($e->getMessage(), 'challenge_required') !== FALSE)) {
-          $res = $exc->getResponse()->getChallenge()->getApiPath();
-          throw new Exceptions\InstaCheckpointRequiredException($e->getMessage(), $e, $res);
+          $res = $e->getResponse()->getChallenge()->getApiPath();
+          throw new Exceptions\InstaCheckpointRequiredException($e->getMessage(), $e->getPrevious(), $res);
         } else if (strpos($e->getMessage(), 'Network: CURL error 28') !== FALSE) { // Time out by bad proxy
           throw new Exceptions\CurlNertworkException($e->getMessage(), $e);
         } else if (strpos($e->getMessage(), 'password you entered is incorrect') !== FALSE)
@@ -91,7 +89,6 @@ namespace ApiInstaWeb {
           throw new \InstaException('problem_with_your_request', $e);
         else
           throw new \InstaException($e->getMessage(), $e);
-        return $result;
       }
     }
 

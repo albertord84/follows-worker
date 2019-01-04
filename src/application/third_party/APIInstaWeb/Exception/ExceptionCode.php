@@ -1,7 +1,6 @@
 <?php
 
 namespace ApiInstaWeb\Exceptions {
-
   /**
    * Description of ExceptionCode
    * Enum of 

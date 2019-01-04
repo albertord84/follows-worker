@@ -31,8 +31,9 @@ class Test extends CI_Controller {
       //$params = array('username'  => 'isela');
        
       // -OK-
-      //$this->load->library("APIInstaWeb/GeoProfile_lib", null, 'GeoProfile_lib');
+      //$this->load->library("APIInstaWeb/GeoProfile_lib", null, 'GeoProfile');
       //$this->GeoProfile_lib->Msg();
+      //$this->GeoProfile->Msg();
       
       // -OK-
       //$this->load->library("APIInstaWeb/HashProfile_lib", null, 'HashProfile_lib');
@@ -43,9 +44,10 @@ class Test extends CI_Controller {
       //$this->load->library("APIInstaWeb/InstaApi_lib", null, 'InstaApi_lib');
       //$this->InstaApi_lib->Msg();
       
-      // SUPER ERRORSAZO!!!
+      // -OK-
       $this->load->library("APIInstaWeb/InstaClient_lib", null, 'InstaClient_lib');
-      $this->InstaClient_lib->Msg();
+      $result = $this->InstaClient_lib->make_login("alberto_test", "alberto2");
+      var_dump($result);
       
       // -OK-
       //$this->load->library("APIInstaWeb/PersonProfile_lib", null, 'PersonProfile_lib');
