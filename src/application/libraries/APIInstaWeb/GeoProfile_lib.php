@@ -27,20 +27,19 @@ class GeoProfile_lib {
   }
 
   public function get_insta_followers(\stdClass $cookies = NULL, int $N = 15, string& $cursor = NULL, Proxy $proxy = NULL) {
-    /*$ApiInstaWeb = new ApiInstaWeb\GeoProfile();
-    $ApiInstaWeb->get_insta_followers($cookies, $N, $cursor, $proxy);*/
+     $this->GeoProfile->get_insta_followers($cookies, $N, $cursor, $proxy);
   }
 
   public function get_insta_media(\stdClass $cookies = NULL, int $N = 15, string $cursor = NULL, Proxy $proxy = NULL) {
-    /*$ApiInstaWeb = new ApiInstaWeb\GeoProfile();
-    $ApiInstaWeb->get_insta_media($cookies, $N, $cursor, $proxy);*/
+    $this->GeoProfile->get_insta_media($cookies, $N, $cursor, $proxy);
   }
 
   public function get_post_user_info($post_reference, \stdClass $cookies = NULL, Proxy $proxy = NULL) {
-    /*$ApiInstaWeb = new ApiInstaWeb\GeoProfile();
-    $ApiInstaWeb->get_post_user_info($post_reference, $cookies, $proxy);*/
+    $this->GeoProfile->get_post_user_info($post_reference, $cookies, $proxy);
   }
 
+  
+  
   // Funcion temporal para comprobar que se cargo la lib.
   public function Msg ()
   {

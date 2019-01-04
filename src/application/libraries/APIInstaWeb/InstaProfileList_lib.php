@@ -22,7 +22,9 @@ class InstaProfileList_lib {
   } 
 
   public function get_list_from_insta_follower_list($response) {
-
+   
+    $this->InstaProfileList->get_list_from_insta_follower_list($response);
+    
   }
 
   // Funcion temporal para comprobar que se cargo la lib.

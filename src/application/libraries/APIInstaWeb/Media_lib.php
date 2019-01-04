@@ -13,8 +13,8 @@ class Media_lib {
   public function __construct ()
   {
     //require_once config_item('thirdparty-X-resource');
-
-
+    $this->Media = new Media();
+    
     echo "se cargo satisfactoriamente la libreria: ".__CLASS__."<br><br>";
   }
 

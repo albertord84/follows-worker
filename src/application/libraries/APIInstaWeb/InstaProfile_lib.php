@@ -17,11 +17,15 @@ class InstaProfile_lib {
   {
     require_once config_item('thirdparty-insta_url-resource');
     require_once config_item('thirdparty-insta_profile-resource');
+    
+    $this->InstaProfile = new InstaProfile();
 
     echo "se cargo satisfactoriamente la libreria: ".__CLASS__."<br><br>";
   }
 
   public function get_reference_user($cookies, $reference_user_name) {
+     
+    $this->InstaProfile->get_reference_user($cookies, $reference_user_name);
 
   }
 

@@ -13,8 +13,9 @@ class Proxy_lib {
   public function __construct ()
   {
     require_once config_item('thirdparty-proxy-resource');
-
-
+    
+     $this->Proxy = new Proxy(); 
+    
     echo "se cargo satisfactoriamente la libreria: ".__CLASS__."<br><br>";
   }
   
@@ -26,6 +27,8 @@ class Proxy_lib {
   }*/
 
   public function ToString() {
+    
+    $this->Proxy->ToString();
  
   }
 

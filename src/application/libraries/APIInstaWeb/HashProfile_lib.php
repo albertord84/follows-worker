@@ -24,23 +24,19 @@ class HashProfile_lib {
   }
    
   protected function process_insta_prof_data(\stdClass $content) {
-    /*$ApiInstaWeb = new ApiInstaWeb\HashProfile();
-    $ApiInstaWeb->process_insta_prof_data($content);*/
+    $this->HashProfile->process_insta_prof_data($content);
   }
 
   public function get_insta_followers(\stdClass $cookies = NULL, int $N = 15, string& $cursor = NULL, \business\cls\Proxy $proxy = NULL) {
-    /*$ApiInstaWeb = new ApiInstaWeb\HashProfile();
-    $ApiInstaWeb->get_insta_followers($cookies, $N, $cursor, $proxy);*/
+    $this->HashProfile->get_insta_followers($cookies, $N, $cursor, $proxy);
   }
 
   public function get_insta_media(\stdClass $cookies = NULL, int $N = 15, string $cursor = NULL, \business\cls\Proxy $proxy = NULL) {
-    /*$ApiInstaWeb = new ApiInstaWeb\HashProfile();
-    $ApiInstaWeb->get_insta_media($cookies, $N, $cursor, $proxy);*/
+    $this->HashProfile->get_insta_media($cookies, $N, $cursor, $proxy);
   }
 
   public function get_post_user_info($post_reference, \stdClass $cookies = NULL, \business\cls\Proxy $proxy = NULL) {
-    /*$ApiInstaWeb = new ApiInstaWeb\HashProfile();
-    $ApiInstaWeb->get_post_user_info($post_reference, $cookies, $proxy);*/
+    $this->HashProfile->get_post_user_info($post_reference, $cookies, $proxy);
   }
 
   // Funcion temporal para comprobar que se cargo la lib.
