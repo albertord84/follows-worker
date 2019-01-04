@@ -24,7 +24,6 @@ namespace business\cls {
         {
             $this->CI->load_model("client_model");
             //<DB FUNC>
-            $DB = new \business\DB\DB();
             $clients = $this->db_model->GetClientWithouProxy();
             $proxies = $this->db_model->GetNotResrevedProxyList();
             $proxiesLst = array();
