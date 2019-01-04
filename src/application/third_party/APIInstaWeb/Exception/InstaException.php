@@ -8,20 +8,21 @@ namespace ApiInstaWeb\Exceptions {
    *
    * @author dumbu
    */
-  class InstaException extends Exception {
-
-    private $code;
+ //class InstaException extends Exception {
+  class InstaException {
+    //private $code;
 
     //public function __construct(string $message = "", ApiInstaWeb\Exceptions\ExceptionCode $code, Throwable $previous = null) {
-    public function __construct(){
-    //parent::__construct($message, $previous);
+    public function __construct($message, $code, $previous){
+      parent::__construct($message, $code, $previous);
+      //parent::__construct($e->getMessage(), $e->getCode(), $e->getPrevious());
       //$this->code = $code;
     }
 
     //put your code here
-    public function Code() {
+    /*public function Code() {
       return $this->$code;
-    }
+    }*/
 
   }
 
