@@ -44,12 +44,13 @@ namespace business\cls\worker {
     public $mail;
 
     public function __construct($id = -1) {
-      $this->Robot = new Robot($DB);
+      $this->Robot = new Robot($DB); //CONCERTAR
       $this->Robot->config = $GLOBALS['sistem_config'];
       $this->Robot->id = $id;
       $this->id = $id;
       $this->Gmail = new Gmail();
-      $this->DB = $DB ? $DB : new \follows\cls\DB();
+      //$this->DB = $DB ? $DB : new \follows\cls\DB();
+      $this->load->model('db_model');
     }
 
     // LISTA!!!
@@ -89,7 +90,7 @@ namespace business\cls\worker {
                   isset($cookies->mid) && $cookies->mid != NULL && $cookies->mid != "") {//enejkefnjknl o
             //Jose R: si tiene los 4 parametros de las cookies, devemos intentar hacer una operacion (coger 10 seguidores de qq RP)
             //para chekear que esas cookies estan correctas, si no, bloquear por ssenha errada  status_id=3
-            $this->DB->Create_Followed($Client->id);
+            $this->db_model->Create_Followed($Client->id);
             print("<br>\nAutenticated Client: $Client->login <br>\n<br>\n");
             $Client->set_client_status($Client->id, user_status::ACTIVE);
             // Distribute work between clients
@@ -112,23 +113,23 @@ namespace business\cls\worker {
                   $valid_geo = ($Ref_Prof->type == 1 && ($Client->plane_id == 1 || $Client->plane_id > 3));
                   $valid_hastag = ($Ref_Prof->type == 2 && ($Client->plane_id == 1 || $Client->plane_id > 3));
                   if ($Ref_Prof->type == 0 || $valid_geo || $valid_hastag) { // Nivel de permisos dependendo do plano, solo para quem tem permissao para geo ou hastag
-                    $this->DB->insert_daily_work($Ref_Prof->id, $to_follow, $to_unfollow, $Client->cookies);
+                    $this->db_model->insert_daily_work($Ref_Prof->id, $to_follow, $to_unfollow, $Client->cookies);
                   }
                 }
               }
             } else {
               echo "Not reference profiles: $Client->login <br>\n<br>\n";
               if (count($Client->reference_profiles)) { // To keep unfollow
-                $this->DB->insert_daily_work($Client->reference_profiles[0]->id, 0, $DIALY_REQUESTS_BY_CLIENT, $Client->cookies);
+                $this->db_model->insert_daily_work($Client->reference_profiles[0]->id, 0, $DIALY_REQUESTS_BY_CLIENT, $Client->cookies);
               }
               if (!$not_mail)
                 $this->Gmail->send_client_not_rps($Client->email, $Client->name, $Client->login, $Client->pass);
             }
           }
           else if ($Client->status_id === user_status::ACTIVE) {
-            $this->DB->set_client_cookies($Client->id);
-            $this->DB->set_client_status($Client->id, user_status::VERIFY_ACCOUNT);
-            $this->DB->InsertEventToWashdog($Client->client_id, washdog_type::ROBOT_VERIFY_ACCOUNT, 1, 0, "Cookies incompletas when prepare_daily_work");
+            $this->db_model->set_client_cookies($Client->id);
+            $this->db_model->set_client_status($Client->id, user_status::VERIFY_ACCOUNT);
+            $this->db_model->InsertEventToWashdog($Client->client_id, washdog_type::ROBOT_VERIFY_ACCOUNT, 1, 0, "Cookies incompletas when prepare_daily_work");
           }
         } elseif (!$Client->paused) {
           // TODO: do something in Client autentication error
@@ -148,7 +149,7 @@ namespace business\cls\worker {
         // }
         //die("Loged all Clients");
         //
-            //$this->DB->reset_preference_profile_cursors()
+            //$this->db_model->reset_preference_profile_cursors()
         //;
       }
     }
@@ -174,9 +175,9 @@ namespace business\cls\worker {
           //daily work: cookies reference_id to_follow last_access id insta_name insta_id client_id 	insta_follower_cursor 	user_id 	credit_card_number 	credit_card_status_id 	credit_card_cvc 	credit_card_name 	pay_day 	insta_id 	insta_followers_ini 	insta_following id name	login pass email telf role_id status_id	languaje 
           //echo '\n get follow work';
           if ($client_id == NULL) {
-            $daily_work = $this->DB->get_follow_work();
+            $daily_work = $this->db_model->get_follow_work();
           } else {
-            $daily_work = $this->DB->get_follow_work_by_client_id($client_id, $rp);
+            $daily_work = $this->db_model->get_follow_work_by_client_id($client_id, $rp);
           }
           //echo 'get follow work done';
           if ($daily_work) {
@@ -230,7 +231,7 @@ namespace business\cls\worker {
         $unfollow_work = NULL;
         $Followeds_to_unfollow = array();
         if ($daily_work->to_unfollow > 0) {
-          $unfollow_work = $this->DB->get_unfollow_work($daily_work->client_id);
+          $unfollow_work = $this->db_model->get_unfollow_work($daily_work->client_id);
           if (is_object($unfollow_work) && !is_bool($unfollow_work)) {
             while ($Followed = $unfollow_work->fetch_object()) {
               $To_Unfollow = new \follows\cls\Followed(); // Update Ref Prof Data
@@ -242,7 +243,7 @@ namespace business\cls\worker {
           }
         }
         //Reuest for the black list in the data base
-        $daily_work->black_list = $this->DB->get_black_list($daily_work->client_id);
+        $daily_work->black_list = $this->db_model->get_black_list($daily_work->client_id);
         $errors = false;
         $Ref_profile_follows = $this->Robot->do_follow_unfollow_work($Followeds_to_unfollow, $daily_work, $errors);
         $this->save_follow_unfollow_work($Followeds_to_unfollow, $Ref_profile_follows, $daily_work);
@@ -254,7 +255,7 @@ namespace business\cls\worker {
           }
         }
         // TODO: foults  
-        $this->DB->update_daily_work($daily_work->reference_id, count($Ref_profile_follows), $unfollows, 0, $errors);
+        $this->db_model->update_daily_work($daily_work->reference_id, count($Ref_profile_follows), $unfollows, 0, $errors);
         return TRUE;
       }
       return FALSE;
@@ -264,11 +265,11 @@ namespace business\cls\worker {
     public function get_work() {
       //$DB = new \follows\cls\DB();
 
-      $daily_work = $this->DB->get_follow_work();
+      $daily_work = $this->db_model->get_follow_work();
       $daily_work->login_data = json_decode($daily_work->cookies);
       $Followeds_to_unfollow = array();
       if ($daily_work->to_unfollow > 0) {
-        $unfollow_work = $this->DB->get_unfollow_work($daily_work->client_id);
+        $unfollow_work = $this->db_model->get_unfollow_work($daily_work->client_id);
         while ($Followed = $unfollow_work->fetch_object()) { //
           $To_Unfollow = new \follows\cls\Followed();
           // Update Ref Prof Data
@@ -284,11 +285,11 @@ namespace business\cls\worker {
     // LISTA!!!
     public function get_work_by_id(int $id) {
       //$DB = new \follows\cls\DB();
-      $daily_work = $this->DB->get_follow_work_by_id($reference_id);
+      $daily_work = $this->db_model->get_follow_work_by_id($reference_id);
       $daily_work->login_data = json_decode($daily_work->cookies);
       $Followeds_to_unfollow = array();
       if ($daily_work->to_unfollow > 0) {
-        $unfollow_work = $this->DB->get_unfollow_work($daily_work->client_id);
+        $unfollow_work = $this->db_model->get_unfollow_work($daily_work->client_id);
         while ($Followed = $unfollow_work->fetch_object()) { //
           $To_Unfollow = new \follows\cls\Followed();
           // Update Ref Prof Data
@@ -304,19 +305,19 @@ namespace business\cls\worker {
     // LISTA!!!
     private function insert_daily_work(\BusinessRefProfile $ref_prof, $to_follow, $to_unfollow, $cookies) {
       //$DB = new \follows\cls\DB();
-      $this->DB->insert_daily_work($Ref_Prof->id, $to_follow, $to_unfollow, json_encode($login_data));
+      $this->db_model->insert_daily_work($Ref_Prof->id, $to_follow, $to_unfollow, json_encode($login_data));
     }
 
     // LISTA!!!
     private function delete_daily_work(int $ref_prof_id) {
       //$DB = new \follows\cls\DB();
-      $this->DB->truncate_daily_work($ref_prof_id);
+      $this->db_model->truncate_daily_work($ref_prof_id);
     }
 
     // LISTA!!!
     public function truncate_daily_work() {
       //$DB = new \follows\cls\DB();
-      $this->DB->truncate_daily_work();
+      $this->db_model->truncate_daily_work();
     }
 
   }

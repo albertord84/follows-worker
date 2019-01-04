@@ -91,7 +91,7 @@ class User  {
          * 
          */
         function __construct() {
-            //$this->load->model('User_model');
+            $this->load->model('db_model');
         }
 
         /**

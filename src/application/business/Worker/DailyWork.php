@@ -54,6 +54,7 @@ class DailyWork {
 
         function __construct() {
             $this->Client = new Client();
+            $this->load->model('db_model');
         }
 
     
@@ -63,8 +64,8 @@ class DailyWork {
 
         public function get_unfollow_data($client_id) {
             // Get profiles to unfollow today for this Client...(i.e the last followed)
-            $DB = new \follows\cls\DB();
-            $unfollow_data = $DB->get_unfollow_data($client_id);
+            //$DB = new \follows\cls\DB();
+            $unfollow_data = $this->db_model->get_unfollow_data($client_id);
             while ($Followed = $unfollow_data->fetch_object()) {
                 $To_Unfollow = new \follows\cls\Followed();
                 // Update Ref Prof Data

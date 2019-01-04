@@ -1,7 +1,6 @@
 <?php
 
 namespace business\cls {
-    include_once 'DB.php';
 
     class StatusProfiles extends Business {
 

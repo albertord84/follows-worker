@@ -113,12 +113,12 @@ namespace business\cls {
          * @var Proxy 
          */
         public $Proxy;
-
+        
         public function get_clients() {
             try {
                 $Clients = array();
-                $DB = new \follows\cls\DB();
-                $clients_data = $DB->get_clients_data();
+                //$DB = new \follows\cls\DB();
+                $clients_data = $this->db_model->get_clients_data();
                 while ($client_data = $clients_data->fetch_object()) {
                     $Client = $this->fill_client_data($client_data);
                     array_push($Clients, $Client);
@@ -132,12 +132,12 @@ namespace business\cls {
         public function insert_clients_daily_report() {
             try {
                 $Clients = array();
-                $DB = new \follows\cls\DB();
-                $clients_data = $DB->get_clients_data_for_report();
+                //$DB = new \follows\cls\DB();
+                $clients_data = $this->db_model->get_clients_data_for_report();
                 while ($client_data = $clients_data->fetch_object()) {
                     $profile_data = (new Reference_profile())->get_insta_ref_prof_data($client_data->login, $client_data->id);
                     if ($profile_data) {
-                        $result = $DB->insert_client_daily_report($client_data->id, $profile_data);
+                        $result = $this->db_model->insert_client_daily_report($client_data->id, $profile_data);
                         var_dump($client_data->login);
                         var_dump("Cantidad de follows = " . $profile_data->follower_count);
                         echo '<br><br><br>';
@@ -154,9 +154,9 @@ namespace business\cls {
         public function dumbu_statistics() {
             try {
                 $Clients = array();
-                $DB = new \follows\cls\DB();
+                //$DB = new \follows\cls\DB();
                 $time = strtotime(date("Y-m-d H:00:00"));
-                $datas = $DB->get_dumbu_statistics();
+                $datas = $this->db_model->get_dumbu_statistics();
                 $arr = '(';
                 $cols = '(';
                 foreach ($datas as $value) {
@@ -199,7 +199,7 @@ namespace business\cls {
                 }
 
 
-                $datas2 = $DB->get_dumbu_paying_customers();
+                $datas2 = $this->db_model->get_dumbu_paying_customers();
                 foreach ($datas2 as $value) {
                     $cols .= "PAYING_CUSTOMERS,";
                     $arr .= $value['cnt'] . ',';
@@ -209,7 +209,7 @@ namespace business\cls {
 
                 $cols .= 'date)';
                 $arr .= $time . ')';
-                $DB->insert_dumbu_statistics($cols, $arr);
+                $this->db_model->insert_dumbu_statistics($cols, $arr);
             } catch (Exception $exc) {
                 echo $exc->getTraceAsString();
             }
@@ -245,8 +245,8 @@ namespace business\cls {
 
         public function get_client($client_id) {
             try {
-                $DB = new DB();
-                $client_data = $DB->get_client_data($client_id);
+                //$DB = new DB();
+                $client_data = $this->db_model->get_client_data($client_id);
                 $Client = $this->fill_client_data($client_data);
                 return $Client;
             } catch (Exception $exc) {
@@ -256,8 +256,8 @@ namespace business\cls {
 
         public function get_begginer_client($client_id) {
             try {
-                $DB = new DB();
-                $client_data = $DB->get_biginner_data($client_id);
+                //$DB = new DB();
+                $client_data = $this->db_model->get_biginner_data($client_id);
                 $Client = $this->fill_client_data($client_data);
                 return $Client;
             } catch (Exception $exc) {
@@ -266,7 +266,7 @@ namespace business\cls {
         }
 
         public function create_daily_work($client_id) {
-            $DB = new DB();
+            //$DB = new DB();
             $Client = $this->get_client($client_id);
             if (count($Client->reference_profiles) > 0) {
                 $DIALY_REQUESTS_BY_CLIENT = $Client->to_follow;
@@ -277,7 +277,7 @@ namespace business\cls {
                 $to_unfollow = $to_follow_unfollow;
                 foreach ($Client->reference_profiles as $Ref_Prof) { // For each reference profile
 //$Ref_prof_data = $this->Robot->get_insta_ref_prof_data($Ref_Prof->insta_name);
-                    $DB->insert_daily_work($Ref_Prof->id, $to_follow, $to_unfollow, $Client->cookies);
+                    $this->db_model->insert_daily_work($Ref_Prof->id, $to_follow, $to_unfollow, $Client->cookies);
                 }
             } else {
                 echo "Not reference profiles: $Client->login <br>\n<br>\n";
@@ -289,15 +289,15 @@ namespace business\cls {
             $Robot = new Robot();
             $proxy = $Robot->get_proxy_str($this);
             $status = new reference_profiles_status();
-            $DB = new DB();
+            //$DB = new DB();
             if ($this->reference_profiles) {
                 foreach ($this->reference_profiles as $ref_prof) {
                     if ($ref_prof->deleted && $ref_prof->status != $status->DELETED) {
-                        $DB->UpdateReferenceProfileStatus($status->DELETED, $ref_prof->id);
+                        $this->db_model->UpdateReferenceProfileStatus($status->DELETED, $ref_prof->id);
                     } else if ($ref_prof->end_date != NULL && $ref_prof->status != $status->ENDED) {
-                        $DB->UpdateReferenceProfileStatus($status->ENDED, $ref_prof->id);
+                        $this->db_model->UpdateReferenceProfileStatus($status->ENDED, $ref_prof->id);
                     } else if (!$Robot->exist_reference_profile($ref_prof->insta_name, $ref_prof->type, $ref_prof->insta_id, json_decode($this->cookies), $proxy) && $ref_prof->status != $status->LOCKED) {
-                        $DB->UpdateReferenceProfileStatus($status->LOCKED, $ref_prof->id);
+                        $this->db_model->UpdateReferenceProfileStatus($status->LOCKED, $ref_prof->id);
                     } else if ($ref_prof->status == $status->ACTIVE) {
                         $count++;
                     }
@@ -307,8 +307,8 @@ namespace business\cls {
         }
 
         public function delete_daily_work($client_id) {
-            $DB = new DB();
-            $DB->delete_daily_work_client($client_id);
+            //$DB = new DB();
+            $this->db_model->delete_daily_work_client($client_id);
         }
 
         /**
@@ -325,11 +325,12 @@ namespace business\cls {
          * @return logindata or NULL
          */
         public function sign_in($Client) {
-            $DB = new DB();
+            //$DB = new DB();
 
             try {
                 $login_data = $this->CI->InstaApiLib->login($this->login, $this->pass, $this->Proxy);
             } catch (Exception $exc) {
+                //CONCERTAR myDB
                 $myDB->InsertEventToWashdog($Client->id, $exc->getMessage(), $source);
                 echo $exc->getTraceAsString();
             }
@@ -356,9 +357,9 @@ namespace business\cls {
                         }
                     } else
                     if ($login_data->json_response->message == 'problem_with_your_request') {
-                        $DB->InsertEventToWashdog($Client->id, washdog_type::PROBLEM_WITH_YOUR_REQUEST, 1, 0, "Unknow error with your request");
+                        $this->db_model->InsertEventToWashdog($Client->id, washdog_type::PROBLEM_WITH_YOUR_REQUEST, 1, 0, "Unknow error with your request");
                     } else {
-                        $DB->InsertEventToWashdog($Client->id, washdog_type::PROBLEM_WITH_YOUR_REQUEST, 1, 0, $login_data->json_response->message);
+                        $this->db_model->InsertEventToWashdog($Client->id, washdog_type::PROBLEM_WITH_YOUR_REQUEST, 1, 0, $login_data->json_response->message);
                     }
                 }
                 $this->set_client_cookies($Client->id, NULL);
@@ -382,8 +383,8 @@ namespace business\cls {
             try {
                 $client_id = $client_id ? $client_id : $this->id;
                 $cookies = $cookies ? $cookies : $this->cookies;
-                $DB = new \follows\cls\DB();
-                $result = $DB->set_client_cookies($client_id, $cookies);
+                //$DB = new \follows\cls\DB();
+                $result = $this->db_model->set_client_cookies($client_id, $cookies);
                 /* if ($result) {
                   //print "Client $client_id cookies changed!!!";
                   } else {
@@ -399,8 +400,8 @@ namespace business\cls {
             try {
                 $client_id = $client_id ? $client_id : $this->id;
                 $status_id = $status_id ? $status_id : $this->status_id;
-                $DB = new \follows\cls\DB();
-                $result = $DB->set_client_status($client_id, $status_id);
+                //$DB = new \follows\cls\DB();
+                $result = $this->db_model->set_client_status($client_id, $status_id);
                 if ($result) {
                     print "Client $client_id to status $status_id!!!";
                 } else {
@@ -422,9 +423,10 @@ namespace business\cls {
         public function get_reference_profiles($client_id = NULL) {
             try {
                 $client_id = $client_id ? $client_id : $this->id;
-                $DB = new \follows\cls\DB();
-                $ref_profs_data = $DB->get_reference_profiles_data($client_id);
+                //$DB = new \follows\cls\DB();
+                $ref_profs_data = $this->db_model->get_reference_profiles_data($client_id);
                 while ($prof_data = $ref_profs_data->fetch_object()) {
+                    //CONCERTAR quitar follows...
                     $Ref_Prof = new \follows\cls\Reference_profile();
                     //print_r($prof_data);
                     // Update Ref Prof Data if not privated
