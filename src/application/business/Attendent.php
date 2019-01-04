@@ -7,7 +7,7 @@ namespace business\cls {
      * class Attendent
      * 
      */
-    class Attendent {
+    class Attendent extends Business {
         /** Aggregations: */
         /** Compositions: */
         /*         * * Attributes: ** */

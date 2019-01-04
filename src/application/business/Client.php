@@ -2,18 +2,19 @@
 
 //require_once 'Reference_profile[].php';
 
-namespace follows\cls {
+namespace business\cls {
     require_once 'User.php';
-    require_once 'Robot.php';
-    require_once 'DB.php';
-    require_once 'StatusProfiles.php';  
-    require_once '../third_party/APIInstaWeb/InstaClient.php';
+    /* require_once 'Robot.php';
+      require_once 'DB.php';
+      require_once 'StatusProfiles.php';
+      require_once '../third_party/APIInstaWeb/InstaClient.php'; */
+
     /**
      * class Client
      * 
      */
     class Client extends User {
-        /** Aggregations: */
+        /** Aggregation/s: */
         /** Compositions: */
         /** Attributes: */
 
@@ -107,11 +108,17 @@ namespace follows\cls {
          */
         public $paused;
 
+        /**
+         *
+         * @var Proxy 
+         */
+        public $Proxy;
+        
         public function get_clients() {
             try {
                 $Clients = array();
-                $DB = new \follows\cls\DB();
-                $clients_data = $DB->get_clients_data();
+                //$DB = new \follows\cls\DB();
+                $clients_data = $this->db_model->get_clients_data();
                 while ($client_data = $clients_data->fetch_object()) {
                     $Client = $this->fill_client_data($client_data);
                     array_push($Clients, $Client);
@@ -125,12 +132,12 @@ namespace follows\cls {
         public function insert_clients_daily_report() {
             try {
                 $Clients = array();
-                $DB = new \follows\cls\DB();
-                $clients_data = $DB->get_clients_data_for_report();
+                //$DB = new \follows\cls\DB();
+                $clients_data = $this->db_model->get_clients_data_for_report();
                 while ($client_data = $clients_data->fetch_object()) {
                     $profile_data = (new Reference_profile())->get_insta_ref_prof_data($client_data->login, $client_data->id);
                     if ($profile_data) {
-                        $result = $DB->insert_client_daily_report($client_data->id, $profile_data);
+                        $result = $this->db_model->insert_client_daily_report($client_data->id, $profile_data);
                         var_dump($client_data->login);
                         var_dump("Cantidad de follows = " . $profile_data->follower_count);
                         echo '<br><br><br>';
@@ -147,9 +154,9 @@ namespace follows\cls {
         public function dumbu_statistics() {
             try {
                 $Clients = array();
-                $DB = new \follows\cls\DB();
+                //$DB = new \follows\cls\DB();
                 $time = strtotime(date("Y-m-d H:00:00"));
-                $datas = $DB->get_dumbu_statistics();
+                $datas = $this->db_model->get_dumbu_statistics();
                 $arr = '(';
                 $cols = '(';
                 foreach ($datas as $value) {
@@ -190,19 +197,19 @@ namespace follows\cls {
                     }
                     $arr .= $value['cnt'] . ',';
                 }
-                
-                
-                $datas2 = $DB->get_dumbu_paying_customers();
-                foreach ($datas2 as $value) {                    
+
+
+                $datas2 = $this->db_model->get_dumbu_paying_customers();
+                foreach ($datas2 as $value) {
                     $cols .= "PAYING_CUSTOMERS,";
                     $arr .= $value['cnt'] . ',';
                 }
-                
-                
-                
+
+
+
                 $cols .= 'date)';
                 $arr .= $time . ')';
-                $DB->insert_dumbu_statistics($cols, $arr);
+                $this->db_model->insert_dumbu_statistics($cols, $arr);
             } catch (Exception $exc) {
                 echo $exc->getTraceAsString();
             }
@@ -230,14 +237,16 @@ namespace follows\cls {
                 $Client->init_date = $client_data->init_date;
                 $Client->last_access = $client_data->last_access;
                 $Client->get_reference_profiles($Client->id);
+                $Client->Proxy = new Proxy();
+                $Client->Proxy->load($client_data->proxy_id);
             }
             return $Client;
         }
 
         public function get_client($client_id) {
             try {
-                $DB = new DB();
-                $client_data = $DB->get_client_data($client_id);
+                //$DB = new DB();
+                $client_data = $this->db_model->get_client_data($client_id);
                 $Client = $this->fill_client_data($client_data);
                 return $Client;
             } catch (Exception $exc) {
@@ -247,8 +256,8 @@ namespace follows\cls {
 
         public function get_begginer_client($client_id) {
             try {
-                $DB = new DB();
-                $client_data = $DB->get_biginner_data($client_id);
+                //$DB = new DB();
+                $client_data = $this->db_model->get_biginner_data($client_id);
                 $Client = $this->fill_client_data($client_data);
                 return $Client;
             } catch (Exception $exc) {
@@ -257,7 +266,7 @@ namespace follows\cls {
         }
 
         public function create_daily_work($client_id) {
-            $DB = new DB();
+            //$DB = new DB();
             $Client = $this->get_client($client_id);
             if (count($Client->reference_profiles) > 0) {
                 $DIALY_REQUESTS_BY_CLIENT = $Client->to_follow;
@@ -268,7 +277,7 @@ namespace follows\cls {
                 $to_unfollow = $to_follow_unfollow;
                 foreach ($Client->reference_profiles as $Ref_Prof) { // For each reference profile
 //$Ref_prof_data = $this->Robot->get_insta_ref_prof_data($Ref_Prof->insta_name);
-                    $DB->insert_daily_work($Ref_Prof->id, $to_follow, $to_unfollow, $Client->cookies);
+                    $this->db_model->insert_daily_work($Ref_Prof->id, $to_follow, $to_unfollow, $Client->cookies);
                 }
             } else {
                 echo "Not reference profiles: $Client->login <br>\n<br>\n";
@@ -280,34 +289,26 @@ namespace follows\cls {
             $Robot = new Robot();
             $proxy = $Robot->get_proxy_str($this);
             $status = new reference_profiles_status();
-            $DB = new DB();
+            //$DB = new DB();
             if ($this->reference_profiles) {
                 foreach ($this->reference_profiles as $ref_prof) {
-                    if ($ref_prof->deleted && $ref_prof->status != $status->DELETED)
-                    {
-                        $DB->UpdateReferenceProfileStatus($status->DELETED, $ref_prof->id);
-                    }
-                    else if($ref_prof->end_date != NULL && $ref_prof->status != $status->ENDED)
-                    {
-                         $DB->UpdateReferenceProfileStatus($status->ENDED, $ref_prof->id);
-                    }
-                    else if(!$Robot->exist_reference_profile($ref_prof->insta_name,$ref_prof->type, $ref_prof->insta_id, json_decode($this->cookies), $proxy)
-                            && $ref_prof->status != $status->LOCKED)
-                    {
-                         $DB->UpdateReferenceProfileStatus($status->LOCKED, $ref_prof->id);
-                    }
-                    else if($ref_prof->status  == $status->ACTIVE)
-                    {
+                    if ($ref_prof->deleted && $ref_prof->status != $status->DELETED) {
+                        $this->db_model->UpdateReferenceProfileStatus($status->DELETED, $ref_prof->id);
+                    } else if ($ref_prof->end_date != NULL && $ref_prof->status != $status->ENDED) {
+                        $this->db_model->UpdateReferenceProfileStatus($status->ENDED, $ref_prof->id);
+                    } else if (!$Robot->exist_reference_profile($ref_prof->insta_name, $ref_prof->type, $ref_prof->insta_id, json_decode($this->cookies), $proxy) && $ref_prof->status != $status->LOCKED) {
+                        $this->db_model->UpdateReferenceProfileStatus($status->LOCKED, $ref_prof->id);
+                    } else if ($ref_prof->status == $status->ACTIVE) {
                         $count++;
                     }
                 }
             }
             return $count;
-        }       
+        }
 
         public function delete_daily_work($client_id) {
-            $DB = new DB();
-            $DB->delete_daily_work_client($client_id);
+            //$DB = new DB();
+            $this->db_model->delete_daily_work_client($client_id);
         }
 
         /**
@@ -315,6 +316,7 @@ namespace follows\cls {
          */
         function __construct() {
             parent::__construct();
+            $this->CI->load->library('InstaApiLib');
         }
 
         /**
@@ -323,8 +325,17 @@ namespace follows\cls {
          * @return logindata or NULL
          */
         public function sign_in($Client) {
-            $DB = new DB();
-            $login_data = (new Robot())->bot_login($Client->login, $Client->pass);
+            //$DB = new DB();
+
+            try {
+                $login_data = $this->CI->InstaApiLib->login($this->login, $this->pass, $this->Proxy);
+            } catch (Exception $exc) {
+                //CONCERTAR myDB
+                $myDB->InsertEventToWashdog($Client->id, $exc->getMessage(), $source);
+                echo $exc->getTraceAsString();
+            }
+
+
             if (is_object($login_data) && isset($login_data->json_response->authenticated) && $login_data->json_response->authenticated) {
                 $this->set_client_cookies($Client->id, json_encode($login_data));
                 echo "<br>\n Autenticated Client!!! Cookies changed: $Client->login ($Client->id) <br>\n\n\n<br>\n";
@@ -346,9 +357,9 @@ namespace follows\cls {
                         }
                     } else
                     if ($login_data->json_response->message == 'problem_with_your_request') {
-                        $DB->InsertEventToWashdog($Client->id, washdog_type::PROBLEM_WITH_YOUR_REQUEST, 1, 0, "Unknow error with your request");
+                        $this->db_model->InsertEventToWashdog($Client->id, washdog_type::PROBLEM_WITH_YOUR_REQUEST, 1, 0, "Unknow error with your request");
                     } else {
-                        $DB->InsertEventToWashdog($Client->id, washdog_type::PROBLEM_WITH_YOUR_REQUEST, 1, 0, $login_data->json_response->message);
+                        $this->db_model->InsertEventToWashdog($Client->id, washdog_type::PROBLEM_WITH_YOUR_REQUEST, 1, 0, $login_data->json_response->message);
                     }
                 }
                 $this->set_client_cookies($Client->id, NULL);
@@ -372,8 +383,8 @@ namespace follows\cls {
             try {
                 $client_id = $client_id ? $client_id : $this->id;
                 $cookies = $cookies ? $cookies : $this->cookies;
-                $DB = new \follows\cls\DB();
-                $result = $DB->set_client_cookies($client_id, $cookies);
+                //$DB = new \follows\cls\DB();
+                $result = $this->db_model->set_client_cookies($client_id, $cookies);
                 /* if ($result) {
                   //print "Client $client_id cookies changed!!!";
                   } else {
@@ -389,8 +400,8 @@ namespace follows\cls {
             try {
                 $client_id = $client_id ? $client_id : $this->id;
                 $status_id = $status_id ? $status_id : $this->status_id;
-                $DB = new \follows\cls\DB();
-                $result = $DB->set_client_status($client_id, $status_id);
+                //$DB = new \follows\cls\DB();
+                $result = $this->db_model->set_client_status($client_id, $status_id);
                 if ($result) {
                     print "Client $client_id to status $status_id!!!";
                 } else {
@@ -412,9 +423,10 @@ namespace follows\cls {
         public function get_reference_profiles($client_id = NULL) {
             try {
                 $client_id = $client_id ? $client_id : $this->id;
-                $DB = new \follows\cls\DB();
-                $ref_profs_data = $DB->get_reference_profiles_data($client_id);
+                //$DB = new \follows\cls\DB();
+                $ref_profs_data = $this->db_model->get_reference_profiles_data($client_id);
                 while ($prof_data = $ref_profs_data->fetch_object()) {
+                    //CONCERTAR quitar follows...
                     $Ref_Prof = new \follows\cls\Reference_profile();
                     //print_r($prof_data);
                     // Update Ref Prof Data if not privated
@@ -435,32 +447,32 @@ namespace follows\cls {
                 echo $exc->getTraceAsString();
             }
         }
-        
+
         ///Anhadir estas funciones en el disenho
-        public function checkpoint_requested(string $login, string $pass, \ApiInstaWeb\VerificationChoice $choise = \ApiInstaWeb\VerificationChoice::Email)
-        {
+        public function checkpoint_requested(string $login, string $pass, \ApiInstaWeb\VerificationChoice $choise = \ApiInstaWeb\VerificationChoice::Email) {
             $login_data = json_decode($this->cookies);
             $proxy = $this->GetProxy();
             $client = new \ApiInstaWeb\InstaClient($this->insta_id, $login_data, $proxy);
-            $res = $client->checkpoint_requested($login, $pass,$choise);
-            $this->cookies = json_encode($client->cookies);            
+            $res = $client->checkpoint_requested($login, $pass, $choise);
+            $this->cookies = json_encode($client->cookies);
             //guardar las cookies en la Base de Datos
             return $res;
         }
-        
-        public function make_checkpoint(string $login, string $code)
-        {
+
+        public function make_checkpoint(string $login, string $code) {
             //las cookies son las actualizadas de la BD
             $login_data = json_decode($this->cookies);
             $proxy = $this->GetProxy();
             $client = new \ApiInstaWeb\InstaClient($this->insta_id, $login_data, $proxy);
-            $res = $client->make_checkpoint($login,$code);
-            $this->cookies = json_encode($client->cookies);            
+            $res = $client->make_checkpoint($login, $code);
+            $this->cookies = json_encode($client->cookies);
             //guardar las cookies en la Base de Datos
             return $res;
         }
-        
-        public function GetProxy(){}
+
+        public function GetProxy() {
+            
+        }
 
     }
 

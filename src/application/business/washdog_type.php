@@ -13,7 +13,7 @@ namespace business\cls;
  *
  * @author jose
  */
-class washdog_type {
+class washdog_type extends Business {
     //put your code here
     const PURCHASE = 'SUCCESSFUL PURCHASE';
     const ACTIVE_STATUS = 'FOR ACTIVE STATUS';

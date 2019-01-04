@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
  * @category CodeIgniter-Model: dumbu_system_config_Model
@@ -39,13 +39,15 @@ class Dumbu_system_config_model extends CI_Model {
 		return $query->row();
 	}
 
-	function get_all(){		
-		$this->db->select('<write-complex-query-here>')->from('dumbu_system_config');
+  function get_all($offset = 0, $rows = 0){	
+    $this->db->limit($offset, $rows);		
+		$this->db->select('*')->from('dumbu_system_config');
 		//$this->db->order_by('<field>', '<type>'); ==> asc/desc
 		$query = $this->db->get();
 
 		return $query->result();
 	}
 }
+
 ?>
 

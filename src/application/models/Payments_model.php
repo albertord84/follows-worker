@@ -1,107 +1,62 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
-
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
-
  * @category CodeIgniter-Model: payments_Model
-
  * 
-
  * @access public
-
- * @todo <description>
-
  * 
-
+ * @todo <description>
+ * 
  */
-
-
-
 class Payments_model extends CI_Model {
+  function construct() {
+    parent::construct();
+  }
 
-	function construct() {
+  function save($client_id, $payment_form_id, $payment_cause_id, $payment_value, $captured_order_key, $plane, $date) {
+    $this->client_id = $client_id;
+    $this->payment_form_id = $payment_form_id;
+    $this->payment_cause_id = $payment_cause_id;
+    $this->payment_value = $payment_value;
+    $this->captured_order_key = $captured_order_key;
+    $this->plane = $plane;
+    $this->date = $date;
+    $this->db->insert('payments', $this);
 
-		parent::construct();
+    return $this->db->insert_id();
+  }
 
-	}
+  function remove($id) {
+    $this->db->delete('payments', array('id' => $id));
+  }
 
+  function update($id, $client_id, $payment_form_id, $payment_cause_id, $payment_value, $captured_order_key, $plane, $date) {
+    $this->client_id = $client_id;
+    $this->payment_form_id = $payment_form_id;
+    $this->payment_cause_id = $payment_cause_id;
+    $this->payment_value = $payment_value;
+    $this->captured_order_key = $captured_order_key;
+    $this->plane = $plane;
+    $this->date = $date;
 
+    $this->db->update('payments', $this, array('id' => $id));
+  }
 
-	function save ($client_id,$payment_form_id,$payment_cause_id,$payment_value,$captured_order_key,$plane,$date) {
+  function get_by_id($id) {
+    $this->db->where('id', $id);
+    $query = $this->db->get('payments');
 
-		         $this->client_id = $client_id;
-         $this->payment_form_id = $payment_form_id;
-         $this->payment_cause_id = $payment_cause_id;
-         $this->payment_value = $payment_value;
-         $this->captured_order_key = $captured_order_key;
-         $this->plane = $plane;
-         $this->date = $date;
+    return $query->row();
+  }
 
+  function get_all($offset = 0, $rows = 0) {
+    $this->db->limit($offset, $rows);
+    $this->db->select('*')->from('payments');
+    //$this->db->order_by('<field>', '<type>'); ==> asc/desc
+    $query = $this->db->get();
 
-		$this->db->insert('payments', $this);
-
-
-
-		return $this->db->insert_id();
-
-	}
-
-
-
-	function remove ($id) {
-
-		$this->db->delete('payments', array('id' => $id));
-
-	}
-
-	
-
-	function update ($id, $client_id,$payment_form_id,$payment_cause_id,$payment_value,$captured_order_key,$plane,$date){
-
-		         $this->client_id = $client_id;
-         $this->payment_form_id = $payment_form_id;
-         $this->payment_cause_id = $payment_cause_id;
-         $this->payment_value = $payment_value;
-         $this->captured_order_key = $captured_order_key;
-         $this->plane = $plane;
-         $this->date = $date;
-
-
-		$this->db->update('payments', $this, array('id' => $id));
-
-	}
-
-
-
-	function get_by_id ($id) {
-
-		$this->db->where('id', $id);
-
-		$query = $this->db->get('payments');
-
-
-
-		return $query->row();
-
-	}
-
-
-
-	function get_all(){		
-
-		$this->db->select('<write-complex-query-here>')->from('payments');
-
-		//$this->db->order_by('<field>', '<type>'); ==> asc/desc
-
-		$query = $this->db->get();
-
-		
-
-		return $query->result();
-
-	}
-
+    return $query->result();
+  }
 }
 
 ?>

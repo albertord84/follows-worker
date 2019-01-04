@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
  * @category CodeIgniter-Model: clients_Model
@@ -109,13 +109,15 @@ class Clients_model extends CI_Model {
 		return $query->row();
 	}
 
-	function get_all(){		
-		$this->db->select('<write-complex-query-here>')->from('clients');
+	function get_all($offset = 0, $rows = 0){	
+    $this->db->limit($offset, $rows);
+		$this->db->select('*')->from('clients');
 		//$this->db->order_by('<field>', '<type>'); ==> asc/desc
 		$query = $this->db->get();
-
+    
 		return $query->result();
 	}
 }
+
 ?>
 

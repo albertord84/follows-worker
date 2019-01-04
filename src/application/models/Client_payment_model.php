@@ -1,5 +1,4 @@
-<?php
-if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
  * @category CodeIgniter-Model: client_payment_Model
@@ -45,8 +44,9 @@ class Client_payment_model extends CI_Model {
     return $query->row();
   }
 
-  function get_all() {
-    $this->db->select('<write-complex-query-here>')->from('client_payment');
+function get_all($offset = 0, $rows = 0){	
+    $this->db->limit($offset, $rows);
+    $this->db->select('*')->from('client_payment');
     //$this->db->order_by('<field>', '<type>'); ==> asc/desc
     $query = $this->db->get();
 

@@ -1,5 +1,4 @@
-<?php
-if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
  * @category CodeIgniter-Model: black_and_white_list_Model
@@ -15,17 +14,6 @@ class Black_and_white_list_model extends CI_Model {
     parent::construct();
   }
 
-  /**
-   * 
-   * @param type $client_id
-   * @param type $insta_id
-   * @param type $profile
-   * @param type $init_date
-   * @param type $end_date
-   * @param type $deleted
-   * @param type $black_or_white
-   * @return type
-   */
   function save($client_id, $insta_id, $profile, $init_date, $end_date, $deleted, $black_or_white) {
     $this->client_id = $client_id;
     $this->insta_id = $insta_id;
@@ -62,9 +50,9 @@ class Black_and_white_list_model extends CI_Model {
     return $query->row();
   }
 
-  function get_all() {
-    /** @todo <write-complex-query-here>*/
-    $this->db->select('<write-complex-query-here>')->from('black_and_white_list');
+  function get_all($offset = 0, $rows = 0){	
+    $this->db->limit($offset, $rows);
+    $this->db->select('*')->from('black_and_white_list');
     //$this->db->order_by('<field>', '<type>'); ==> asc/desc
     $query = $this->db->get();
 

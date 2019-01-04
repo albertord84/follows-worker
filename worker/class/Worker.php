@@ -33,7 +33,8 @@ namespace follows\cls {
         public function get_worker_config() {
             
         }
-
+        
+        // PASADA!!!
         function prepare_daily_work($client_id =  NULL, $not_mail = false) {
             // Get Users Info
             $Clients = array();
@@ -235,7 +236,8 @@ namespace follows\cls {
         public function request_follow_unfollow_work() {
             
         }
-
+        
+        // PASADA!!!
         public function do_follow_unfollow_work($daily_work) {
             if ($daily_work) {
                 //Get new follows
@@ -309,6 +311,7 @@ namespace follows\cls {
             //return count($this->work_queue);
         }
 
+        // PASADA!!!
         function get_work() {
             //$DB = new \follows\cls\DB();
             
@@ -328,7 +331,8 @@ namespace follows\cls {
             $daily_work->to_unfollow = $Followeds_to_unfollow;
             return $daily_work;
         }
-
+        
+        // PASADA!!!
         function get_work_by_id($reference_id) {
             //$DB = new \follows\cls\DB();
             $daily_work = $this->DB->get_follow_work_by_id($reference_id);
@@ -348,6 +352,7 @@ namespace follows\cls {
             return $daily_work;
         }
         
+        // PASADA!!!
         public function do_work($client_id = NULL, $n= NULL, $rp = NULL) {
             try {
                 $has_work = TRUE;
@@ -412,16 +417,19 @@ namespace follows\cls {
             }
         }
 
+        // PASADA!!!
         function insert_daily_work($Ref_Prof, $to_follow, $to_unfollow, $login_data) {
             //$DB = new \follows\cls\DB();
             $this->DB->insert_daily_work($Ref_Prof->id, $to_follow, $to_unfollow, json_encode($login_data));
         }
 
+        // PASADA!!!
         function delete_daily_work($ref_prof_id) {
             //$DB = new \follows\cls\DB();
             $this->DB->truncate_daily_work($ref_prof_id);
         }
 
+        // PASADA!!!
         function truncate_daily_work() {
             //$DB = new \follows\cls\DB();
             $this->DB->truncate_daily_work();

@@ -3,7 +3,7 @@
 namespace business\cls {
     require_once 'Attendent.php';
     
-    class Admin {
+    class Admin extends Business {
         
         public function add_admin() {
             

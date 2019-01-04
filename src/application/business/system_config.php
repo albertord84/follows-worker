@@ -13,6 +13,6 @@ namespace business\cls;
  *
  * @author jose
  */
-class system_config {
+class system_config extends Business {
     //put your code here
 }

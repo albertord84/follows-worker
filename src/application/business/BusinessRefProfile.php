@@ -11,6 +11,6 @@
  *
  * @author dumbu
  */
-class BusinessRefProfile {
+class BusinessRefProfile extends Business {
     //put your code here
 }

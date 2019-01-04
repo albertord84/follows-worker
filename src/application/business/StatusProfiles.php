@@ -1,13 +1,12 @@
 <?php
 
 namespace business\cls {
-    include_once 'DB.php';
 
-    class StatusProfiles {
+    class StatusProfiles extends Business {
 
         public function __construct() {
-            $DB = new DB();
-            $result = $DB->GetReferenceProfileStatus();
+            $this->load->model('db_model');
+            $result = $this->db_model->GetReferenceProfileStatus();
             if ($result) {
                 while ($var_info = $result->fetch_array()) {
                     $this->{$var_info["status"]} = $var_info["id"];
