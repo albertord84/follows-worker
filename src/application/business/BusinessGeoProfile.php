@@ -7,10 +7,10 @@
  */
 
 /**
- * Description of HashtagProfile
+ * Description of GeoProfile
  *
  * @author dumbu
  */
-class HashtagProfile extends BusinessRefProfile{
+class BusinessGeoProfile extends BusinessRefProfile{
     //put your code here
 }

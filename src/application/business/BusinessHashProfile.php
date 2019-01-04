@@ -7,10 +7,10 @@
  */
 
 /**
- * Description of HashtagProfile
+ * Description of HashProfile
  *
  * @author dumbu
  */
-class BusinessPersonProfile extends BusinessRefProfile {
+class BusinessHashProfile extends BusinessRefProfile {
     //put your code here
 }
