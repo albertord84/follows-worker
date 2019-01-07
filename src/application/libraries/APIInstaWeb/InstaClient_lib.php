@@ -24,7 +24,7 @@ class InstaClient_lib {
     require_once config_item('thirdparty-insta_client-resource');
     require_once config_item('thirdparty-verification_choice-resource');
     require_once config_item('insta_checkpoint_required-exception-class');
-    
+
 //    if (file_exists(config_item('insta_checkpoint_required-exception-class'))) echo "el fichero existe<br><br>";
 
     $this->CI = &get_instance();
@@ -78,23 +78,18 @@ class InstaClient_lib {
   public function make_login(string $login, string $pass) {
     try {
       $result = $this->InstaClient->make_login($login, $pass);
-      return $result;
     } catch (InstaCheckpointRequiredException $exc) {
-      
-      /** @TODO Pasar quien llame a esta libreria la responsabilidad de insertar en el whashdog **/
-      //$this->CI->db_model->InsertEventToWashdog($Client->id, $exc->getMessage(), $source);
-
-      $result->json_response->verify_link = $exc->GetChallange();
-      $result->json_response->authenticated = false;
-      $result->json_response->status = 'ok';
-      $result->json_response->message = $exc->getMessage();
+      $result = new ApiInstaWeb\Responses\LoginResponse(
+              'ok', false, $exc->getMessage(), NULL, $exc->GetChallange()
+      );
     } catch (\Exception $exc) {
       $this->db_model->InsertEventToWashdog($Client->id, $exc->getMessage(), $source);
 
-      $result->json_response->authenticated = false;
-      $result->json_response->status = 'ok';
-      $result->json_response->message = $exc->getMessage();
+      $result = new ApiInstaWeb\Responses\LoginResponse(
+              'ok', false, $exc->getMessage(), NULL
+      );
     }
+    return $result;
   }
 
   public function like_fist_post(string $fromClient_ista_id) {

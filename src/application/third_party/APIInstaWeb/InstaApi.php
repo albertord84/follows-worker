@@ -45,32 +45,25 @@ namespace ApiInstaWeb {
           $ig->setProxy("http://" . $proxy->ToString());
         //$ig->setProxy("http://albertreye9917:3r4rcz0b1v@207.188.155.18:21316");
 
-        $loginResponse = $ig->login($username, $password);
+        $loginIGResponse = $ig->login($username, $password);
 
         $ig->client->loadCookieJar();
-        //var_dump($ig);
 
-        if ($loginResponse !== null && $loginResponse->isTwoFactorRequired()) {
-          $twoFactorIdentifier = $loginResponse->getTwoFactorInfo()->getTwoFactorIdentifier();
-
-          // The "STDIN" lets you paste the code via terminal for testing.
-          // You should replace this line with the logic you want.
-          // The verification code will be sent by Instagram via SMS.
+        if ($loginIGResponse !== null && $loginIGResponse->isTwoFactorRequired()) {
+          $twoFactorIdentifier = $loginIGResponse->getTwoFactorInfo()->getTwoFactorIdentifier();
           $verificationCode = trim(fgets(STDIN));
           $ig->finishTwoFactorLogin($verificationCode, $twoFactorIdentifier);
         }
 
         $Cookies = array();
-        $loginResponse = array();
-//                $loginResponse->Cookies = new \stdClass();
         $Cookies['sessionid'] = $ig->client->getCookie('sessionid')->getValue();
         $Cookies['csrftoken'] = $ig->client->getCookie('csrftoken')->getValue();
         $Cookies['ds_user_id'] = $ig->client->getCookie('ds_user_id')->getValue();
         $Cookies['mid'] = $ig->client->getCookie('mid')->getValue();
-        $loginResponse['Cookies'] = (object) $Cookies;
-        $loginResponse["json_response"]->authenticated = true;
-        $loginResponse["json_response"]->status = 'ok';
-        return (object) $loginResponse;
+        $loginResponse = new ApiInstaWeb\Responses\LoginResponse(
+                'ok', true, "", (object) $Cookies
+        );
+        return $loginResponse;
       } catch (\Exception $e) {
         //echo '<br>Something went wrong: ' . $e->getMessage() . "\n</br>";
         //echo $e->getTraceAsString();                

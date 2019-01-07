@@ -38,7 +38,6 @@
   $config['business-worker-class'] = getcwd().'/application/business/Worker/Worker.php';
   
   //Clases del negocio del SystemResponse
-  $config['business-client_response-class'] = getcwd().'/application/business/SystemResponse/ClientResponse.php'; 
   $config['business-dumbu_response-class'] = getcwd().'/application/business/SystemResponse/DUMBUResponse.php';
   $config['business-payment_response-class'] = getcwd().'/application/business/SystemResponse/PaymentResponse.php';
   $config['business-reference_profile_response-class'] = getcwd().'/application/business/SystemResponse/ReferenceProfileResponse.php';
@@ -49,6 +48,8 @@
 */
   
   //Recursos de la APIInstaWeb que viraron tambien librerias (nombreRecurso_lib)
+  $config['business-client_response-class'] = getcwd().'/application/third_party/APIInstaWeb/Response/ClientResponse.php'; 
+  $config['business-login_response-class'] = getcwd().'/application/third_party/APIInstaWeb/Response/LoginResponse.php'; 
   $config['thirdparty-geo_profile-resource'] = getcwd().'/application/third_party/APIInstaWeb/GeoProfile.php';
   $config['thirdparty-has_profile-resource'] = getcwd().'/application/third_party/APIInstaWeb/HashProfile.php';
   $config['thirdparty-insta_api-resource'] = getcwd().'/application/third_party/APIInstaWeb/InstaApi.php';

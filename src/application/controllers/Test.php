@@ -45,7 +45,9 @@ class Test extends CI_Controller {
       //$this->InstaApi_lib->Msg();
       
       // -OK-
+      echo 'ok';
       $this->load->library("APIInstaWeb/InstaClient_lib", null, 'InstaClient_lib');
+      $result = new ApiInstaWeb\Responses\LoginResponse();
       $result = $this->InstaClient_lib->make_login("alberto_test", "alberto2");
       var_dump($result);
       
