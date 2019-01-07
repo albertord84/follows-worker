@@ -15,7 +15,7 @@ namespace business\cls{
  *
  * @author jose
  */
-class User  {
+class User extends Business {
       /** Aggregations: */
         /** Compositions: */
         /*         * * Attributes: ** */
@@ -91,7 +91,7 @@ class User  {
          * 
          */
         function __construct() {
-            $this->load->model('db_model');
+            
         }
 
         /**

@@ -17,15 +17,16 @@ namespace business\cls {
     class ProxyManager extends Business {
         
         function __construct() {
-            $this->load->model('db_model');
+            $this->CI->load->model('db_model');
+            $this->CI->load_model("client_model");
         }
         
         public function UpdateUserProxy()
         {
-            $this->CI->load_model("client_model");
+            
             //<DB FUNC>
-            $clients = $this->db_model->GetClientWithouProxy();
-            $proxies = $this->db_model->GetNotResrevedProxyList();
+            $clients = $this->CI->db_model->GetClientWithouProxy();
+            $proxies = $this->CI->db_model->GetNotResrevedProxyList();
             $proxiesLst = array();
             while(($proxy = $proxies->fetch_object()))
             {

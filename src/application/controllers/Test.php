@@ -2,7 +2,8 @@
 if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 //using namespace follows\cls
-//use follows\cls;
+use business\cls\Client;
+
 
 /*$file = getcwd()."/application/models/DB.php";
 require_once $file;*/ //---> TEST #1-faul!!!
@@ -21,9 +22,18 @@ class Test extends CI_Controller {
       //include_once $file; //---> TEST #2-faul!!!
       
       require_once config_item('db-exception-class');
+      require_once config_item('business-client-class');
     }
     
     public function index() {
+    }
+    
+    public function client() {
+      echo "Dentro de client controller";
+      
+      //$obj = new Client();
+      
+      echo "<br><br>Ok";
     }
     
     public function library ()

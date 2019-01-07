@@ -114,11 +114,17 @@ namespace business\cls {
          */
         public $Proxy;
         
+        function __construct () {
+          parent::__construct();
+          
+          $this->CI->load->model('db_model');
+        }
+        
         public function get_clients() {
             try {
                 $Clients = array();
                 //$DB = new \follows\cls\DB();
-                $clients_data = $this->db_model->get_clients_data();
+                $clients_data = $this->CI->db_model->get_clients_data();
                 while ($client_data = $clients_data->fetch_object()) {
                     $Client = $this->fill_client_data($client_data);
                     array_push($Clients, $Client);
