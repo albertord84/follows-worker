@@ -2,7 +2,7 @@
 
 //require_once 'Reference_profile[].php';
 
-namespace business\cls {
+namespace business {
     require_once 'User.php';
     /* require_once 'Robot.php';
       require_once 'DB.php';

@@ -1,6 +1,6 @@
 <?php
 
-namespace business\cls {
+namespace business {
     require_once 'Attendent.php';
     
     class Admin extends Business {

@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace business\cls\worker;
+namespace business\worker;
 
 /**
  * Description of ErrorType

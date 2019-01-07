@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace business\cls\worker;
+namespace business\worker;
 
      require_once '../system_config.php';
      require_once '../Client.php';
