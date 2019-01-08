@@ -10,6 +10,7 @@ namespace business {
     class ProxyManager extends Business {
         
         function __construct() {
+            parent::__construct();
             $this->CI->load->model('db_model');
             //$this->CI->load_model("client_model"); NO SE USA AQUI
         }

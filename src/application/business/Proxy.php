@@ -17,6 +17,7 @@ namespace business {
         protected $isreserved;
 
         function __construct() {
+            parent::__construct();
             $this->CI->load->model('proxy_model');
         }
 
