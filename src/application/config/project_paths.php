@@ -48,8 +48,6 @@
 */
   
   //Recursos de la APIInstaWeb que viraron tambien librerias (nombreRecurso_lib)
-  $config['business-client_response-class'] = getcwd().'/application/third_party/APIInstaWeb/Response/ClientResponse.php'; 
-  $config['business-login_response-class'] = getcwd().'/application/third_party/APIInstaWeb/Response/LoginResponse.php'; 
   $config['thirdparty-geo_profile-resource'] = getcwd().'/application/third_party/APIInstaWeb/GeoProfile.php';
   $config['thirdparty-has_profile-resource'] = getcwd().'/application/third_party/APIInstaWeb/HashProfile.php';
   $config['thirdparty-insta_api-resource'] = getcwd().'/application/third_party/APIInstaWeb/InstaApi.php';
@@ -68,7 +66,7 @@
   
 /*
 |--------------------------------------------------------------------------
-| Paths de las Clases Exception.
+| Paths de las Clases Exception
 */
   
   //Exception de la BD
@@ -86,10 +84,28 @@
   
   /*
 |--------------------------------------------------------------------------
-| Paths de las Clases Response.
+| Paths de las Clases Response de la APIInstaWeb
 */
-  
+  $config['client_response-class'] = getcwd().'/application/third_party/APIInstaWeb/Response/ClientResponse.php'; 
+  $config['cookies-response-class'] = getcwd().'/application/third_party/APIInstaWeb/Response/CookiesResponse.php';
   $config['insta-response-class'] = getcwd().'/application/third_party/APIInstaWeb/Response/InstaResponse.php';
+  $config['loguin-response-class'] = getcwd().'/application/third_party/APIInstaWeb/Response/LoguinResponse.php';
+  
+  /*
+|--------------------------------------------------------------------------
+| Paths de las librerias Email y Payment
+  */
+  
+  //Librerias de Email 
+  $config['email-allin-libraries'] = getcwd().'/application/libraries/Email/Allin.php'; 
+  $config['email-gmail-libraries'] = getcwd().'/application/libraries/Email/Gmail.php'; 
+   
+  //Librerias de Payment
+  $config['payment-mundipagg-libraries'] = getcwd().'/application/libraries/Payment/Mundipagg.php'; 
+  $config['payment-vindi-libraries'] = getcwd().'/application/libraries/Payment/Vindi.php'; 
+   
+
+    
   
 ?>
 

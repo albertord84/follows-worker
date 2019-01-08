@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace business\cls;
+namespace business{
 
 /**
  * Description of washdog_type
@@ -58,4 +58,5 @@ class washdog_type extends Business {
             return false;
         }
 
+  }
 }

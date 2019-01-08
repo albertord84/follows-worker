@@ -1,14 +1,6 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-namespace business\cls{
-    require_once 'user_role.php';
-    require_once 'user_status.php';
+namespace business{
 
 /**
  * Description of User
@@ -91,6 +83,8 @@ class User extends Business {
          * 
          */
         function __construct() {
+          require_once config_item('user_role');
+          require_once config_item('user_status');
             
         }
 

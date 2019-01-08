@@ -1,12 +1,12 @@
 <?php
 
-namespace business\cls {
+namespace business {
 
     class StatusProfiles extends Business {
 
         public function __construct() {
-            $this->load->model('db_model');
-            $result = $this->db_model->GetReferenceProfileStatus();
+            $this->CI->load->model('db_model');
+            $result = $this->CI->db_model->GetReferenceProfileStatus();
             if ($result) {
                 while ($var_info = $result->fetch_array()) {
                     $this->{$var_info["status"]} = $var_info["id"];

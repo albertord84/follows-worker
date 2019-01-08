@@ -1,6 +1,6 @@
 <?php
 
-namespace business\cls {
+namespace business {
 
     class Business {
 

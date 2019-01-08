@@ -1,13 +1,6 @@
 <?php
 
-namespace business\cls {
-    /*
-     * To change this license header, choose License Headers in Project Properties.
-     * To change this template file, choose Tools | Templates
-     * and open the template in the editor.
-     */
-    
-    //require_once 'DB.php';
+namespace business {
 
     /**
      * Description of ProxyManager
@@ -18,7 +11,7 @@ namespace business\cls {
         
         function __construct() {
             $this->CI->load->model('db_model');
-            $this->CI->load_model("client_model");
+            //$this->CI->load_model("client_model");
         }
         
         public function UpdateUserProxy()
