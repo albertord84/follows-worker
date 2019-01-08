@@ -11,7 +11,7 @@ namespace business {
         
         function __construct() {
             $this->CI->load->model('db_model');
-            //$this->CI->load_model("client_model");
+            //$this->CI->load_model("client_model"); NO SE USA AQUI
         }
         
         public function UpdateUserProxy()
