@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace business\worker {
+namespace worker {
 
   /**
    * Description of Worker

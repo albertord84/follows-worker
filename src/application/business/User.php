@@ -1,147 +1,155 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 namespace business {
-    require_once 'user_role.php';
-    require_once 'user_status.php';
-    require_once 'Business.php';
-     
-/**
- * Description of User
- *
- * @author jose
- */
-class User extends Business {
-      /** Aggregations: */
-        /** Compositions: */
-        /*         * * Attributes: ** */
 
-        /**
-         * Variable defined as setter and getter reference example,
-         * study carefully:
-         * If function with same variable name is defined, the magic getter 
-         * and setter will called without (resp. with) the $value param, 
-         * so it function can determine if should do a get or o set..
-         * 
-         * @access public
-         */
-        public $id;       
-        public function id($value = NULL) {
-            if (isset($value)) {
-                $this->id = $value;
-            }
-            else {
-                return $this->id;
-            }
-        }
+  require_once config_item('business-class');
+  //require_once config_item('user_role');
+  //require_once config_item('user_status');
+  
+  /**
+   * @category Business class
+   * 
+   * @access public
+   *
+   * @todo Define an client business class.
+   * 
+   */
+  class User extends Business {
 
-        /**
-         * 
-         * @access public
-         */
-        public $name;
+    /**
+     * 
+     * @access public
+     * @var type
+     *  
+     */
+    public $id;
 
-        /**
-         * 
-         * @access public
-         */
-        public $login;
+    /**
+     * 
+     * @access public
+     * @var type
+     *  
+     */
+    public $name;
 
-        /**
-         * 
-         * @access public
-         */
-        public $pass;
+    /**
+     * 
+     * @access public
+     * @var type
+     *  
+     */
+    public $login;
 
-        /**
-         * 
-         * @access public
-         */
-        public $email;
+    /**
+     * 
+     * @access public
+     * @var type 
+     * 
+     */
+    public $pass;
 
-        /**
-         * 
-         * @access public
-         */
-        public $telf;
+    /**
+     * 
+     * @access public
+     * @var type 
+     * 
+     */
+    public $email;
 
-        /**
-         * 
-         * @access public
-         */
-        public $role_id;
+    /**
+     * 
+     * @access public
+     * @var type 
+     * 
+     */
+    public $telf;
 
-        /**
-         * 
-         * @access public
-         */
-        public $status_id;
+    /**
+     * 
+     * @access public
+     * @var type 
+     * 
+     */
+    public $role_id;
 
-        /**
-         * 
-         * @access public
-         */
-        public $languaje;
+    /**
+     * 
+     * @access public
+     * @var type 
+     * 
+     */
+    public $status_id;
 
-        /**
-         * 
-         */
-        function __construct() {
-          parent::__construct();
-        }
+    /**
+     * 
+     * @access public
+     * @var type
+     *  
+     */
+    public $languaje;
 
-        /**
-         * 
-         *
-         * @return unsigned short
-         * @access public
-         */
-        public function do_login($user_name,$user_pass) 
-         { 
-            echo $user_name;
-         }
+    /**
+     * 
+     * @todo Class constructor.
+     * 
+     */
+    function __construct() {
+      parent::__construct();
 
-// end of member function do_login
-
-        /**
-         * 
-         *
-         * @return bool
-         * @access public
-         */
-        public function update_user() {
-            
-        }
-
-// end of member function update_user
-
-        /**
-         * 
-         *
-         * @param serial user_id 
-
-         * @return User
-         * @access public
-         */
-        public function load_user($user_id = 0) {
-            
-        }
-
-// end of member function load_user
-
-        /**
-         * 
-         *
-         * @return bool
-         * @access public
-         */
-        public function disable_account() {
-            
-        }        
     }
+
+    public function id($value = NULL) {
+      if (isset($value)) {
+        $this->id = $value;
+      } else {
+        return $this->id;
+      }
+    }
+
+    /**
+     * 
+     * @todo
+     * @param type
+     * @return
+     * 
+     */
+    public function do_login($user_name, $user_pass) {
+      echo $user_name;
+    }
+
+    /**
+     * 
+     * @todo
+     * @param type
+     * @return
+     * 
+     */
+    public function update_user() {
+      
+    }
+
+    /**
+     * 
+     * @todo
+     * @param type
+     * @return
+     * 
+     */
+    public function load_user($user_id = 0) {
+      
+    }
+
+    /**
+     * 
+     * @todo
+     * @param type
+     * @return
+     * 
+     */
+    public function disable_account() {
+      
+    }
+
+  }
+
 }

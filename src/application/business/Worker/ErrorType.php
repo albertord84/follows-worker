@@ -6,17 +6,18 @@
  * and open the template in the editor.
  */
 
-namespace business\worker;
+namespace worker{
 
 /**
  * Description of ErrorType
  *
  * @author dumbu
  */
-class ErrorType extends SplEnum{
+     class ErrorType extends SplEnum{
     
-    const __default = self::UnknownError;
+       const __default = self::UnknownError;
     
-    const UnknownError = 0;
-    //put your code here
-}
+       const UnknownError = 0;
+   }
+   
+}   

@@ -1,6 +1,6 @@
 <?php
 
-namespace business\cls {
+namespace business {
 
     /**
      * Description of Proxy
@@ -22,7 +22,7 @@ namespace business\cls {
 
         function load(int $id = NULL) {
             $this->id = ($id)? $id : $this->id;
-            $proxy_data = $this->CI->db->proxy_model->get_by_id($this->id);
+            $proxy_data = $this->CI->proxy_model->get_by_id($this->id);
             $this->id = $id;
             $this->ip = $proxy_data[$ip];
             $this->port = $proxy_data[$port];

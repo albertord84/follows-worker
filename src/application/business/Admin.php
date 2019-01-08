@@ -1,9 +1,13 @@
 <?php
 
 namespace business {
-    require_once 'Attendent.php';
     
     class Admin extends Business {
+      
+        function __construct() {
+          require_once config_item('attendent');
+            
+        }
         
         public function add_admin() {
             

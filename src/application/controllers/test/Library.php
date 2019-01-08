@@ -18,7 +18,7 @@ class Library extends CI_Controller {
     public function client() {
       echo "Dentro de client controller";
       
-      $obj = new Client();
+      //$obj = new Client();
       
       echo "<br><br>Ok";
     }

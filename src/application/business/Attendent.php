@@ -1,8 +1,6 @@
 <?php
 
-namespace business\cls {
-    require_once 'Attendent.php';
-
+namespace business {
     /**
      * class Attendent
      * 
@@ -18,6 +16,13 @@ namespace business\cls {
          * @return Attendent
          * @access public
          */
+      
+      
+        function __construct() {
+          require_once config_item('attendent');
+            
+        }
+        
         public function add_attendent() {
             
         }

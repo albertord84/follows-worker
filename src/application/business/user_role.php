@@ -1,6 +1,6 @@
 <?php
 
-namespace business\cls{
+namespace business{
 
     //class user_role extends Business {
     class user_role {
