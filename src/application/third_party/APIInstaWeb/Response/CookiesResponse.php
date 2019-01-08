@@ -1,35 +1,30 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+namespace ApiInstaWeb\Responses {
 
-namespace ApiInstaWeb\Responses{
+   /**
+   * @category ApiInstaWeb Third-Party Class
+   * 
+   * @access public
+   *
+   * @todo Define a Instagram Cookies Response.
+   * 
+   */
+  class CookiesResponse {
 
     /**
-     * Description of InstaResponse
-     *
-     * @author dumbu
+     * 
+     * @access public
      */
-    class CookiesResponse {
-      public $verify_link;
-      public $authenticated;
-      public $status;
-      public $message;
-      public $cookies;
+
+    public function __construct($status = NULL, $authenticated = NULL, $message = NULL, $cookies = NULL, $verify_link = NULL) {
       
-      public function __construct($status = NULL, $authenticated = NULL, $message = NULL, $cookies = NULL, $verify_link = NULL) {
-        $this->verify_link = $verify_link;
-        $this->authenticated = $authenticated;
-        $this->status = $status;
-        $this->message = $message;
-        $this->cookies = $cookies;
-      }
-      
-      public function get_response() {
-                
-      }
     }
+
+    public function get_response() {
+      
+    }
+
+  }
+
 }

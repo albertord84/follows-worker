@@ -8,7 +8,7 @@ ini_set('xdebug.var_display_max_data', 1024);
 class Welcome extends CI_Controller {
     public function __construct() {
       parent::__construct() ;
-      require_once config_item('business-client-class');  
+      //require_once config_item('business-client-class');  
     }
     
     public function index() {

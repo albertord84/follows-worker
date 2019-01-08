@@ -6,10 +6,11 @@
  * and open the template in the editor.
  */
 
-namespace business\cls{
+namespace business {
     require_once 'user_role.php';
     require_once 'user_status.php';
-
+    require_once 'Business.php';
+     
 /**
  * Description of User
  *
@@ -91,7 +92,7 @@ class User extends Business {
          * 
          */
         function __construct() {
-            
+          parent::__construct();
         }
 
         /**

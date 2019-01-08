@@ -14,7 +14,7 @@ use ApiInstaWeb\InstaURLs;
  */
 class InstaApi_lib {
 
-  public function __construct ($params)
+  public function __construct ()
   {
     require_once config_item('thirdparty-proxy-resource');
     require_once config_item('thirdparty-insta_api-resource');

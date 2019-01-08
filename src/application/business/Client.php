@@ -114,12 +114,6 @@ namespace business {
          */
         public $Proxy;
         
-        function __construct () {
-          parent::__construct();
-          
-          $this->CI->load->model('db_model');
-        }
-        
         public function get_clients() {
             try {
                 $Clients = array();
@@ -322,7 +316,7 @@ namespace business {
          */
         function __construct() {
             parent::__construct();
-            $this->CI->load->library('InstaApiLib');
+            $this->CI->load->library("APIInstaWeb/InstaApi_lib", null, 'InstaApi_lib');
         }
 
         /**

@@ -1,97 +1,15 @@
 <?php
 if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-//using namespace follows\cls
-use business\cls\Client;
-
-
-/*$file = getcwd()."/application/models/DB.php";
-require_once $file;*/ //---> TEST #1-faul!!!
-
-class Test extends CI_Controller {
+class Database extends CI_Controller {
     public function __construct() {
       parent::__construct() ;
-      //echo getcwd()."/application/models/DB.php";
-
-      //require_once config_item('business-client-class'); 
-      //require_once getcwd()."/application/models/DB.php";
-      
-      //$file = getcwd()."/application/models/DB.php";
-      //if(file_exists($file)) echo "el fichero existe";
-      //require_once $file;
-      //include_once $file; //---> TEST #2-faul!!!
       
       require_once config_item('db-exception-class');
-      require_once config_item('business-client-class');
     }
     
     public function index() {
-    }
-    
-    public function client() {
-      echo "Dentro de client controller";
-      
-      //$obj = new Client();
-      
-      echo "<br><br>Ok";
-    }
-    
-    public function library ()
-    {
-      //$params = array('username'  => 'isela');
-       
-      // -OK-
-      //$this->load->library("APIInstaWeb/GeoProfile_lib", null, 'GeoProfile');
-      //$this->GeoProfile_lib->Msg();
-      //$this->GeoProfile->Msg();
-      
-      // -OK-
-      //$this->load->library("APIInstaWeb/HashProfile_lib", null, 'HashProfile_lib');
-      //$this->HashProfile_lib->Msg();
-      
-      // -OK-
-      //$this->load->library("APIInstaWeb/InstaApi_lib", $params, 'InstaApi_lib');
-      //$this->load->library("APIInstaWeb/InstaApi_lib", null, 'InstaApi_lib');
-      //$this->InstaApi_lib->Msg();
-      
-      // -OK-
-      echo 'ok';
-      $this->load->library("APIInstaWeb/InstaClient_lib", null, 'InstaClient_lib');
-      $result = new ApiInstaWeb\Responses\LoginResponse();
-      $result = $this->InstaClient_lib->make_login("alberto_test", "alberto2");
-      var_dump($result);
-      
-      // -OK-
-      //$this->load->library("APIInstaWeb/PersonProfile_lib", null, 'PersonProfile_lib');
-      //$this->PersonProfile_lib->Msg();
-      
-      // -OK-
-      //$this->load->library("APIInstaWeb/InstaProfileList_lib", null, 'InstaProfileList_lib');
-      //$this->InstaProfileList_lib->Msg();
-      
-      // -medio OK.. revisar constructor-
-      //$this->load->library("APIInstaWeb/InstaProfile_lib", null, 'InstaProfile_lib');
-      //$this->InstaProfile_lib->Msg();
-      
-      // -OK-
-      //$this->load->library("APIInstaWeb/Proxy_lib", null, 'Proxy_lib');
-      //$this->Proxy_lib->Msg();
-      
-      //$this->load->library("APIInstaWeb/Media_lib", null, 'Media_lib');
-      //$this->Media_lib->Msg();
-   
-    }
-    
-    public function db ()
-    {
-      echo "<br><br>ok";
-      
-      //if(file_exists("../models/DB.php")) echo "el fichero existe";
-      require_once getcwd()."/application/models/DB.php";
-      //require_once "../mophpdels/DB.php";
-      
-      $obj = new follows\cls\DB(); 
-      //$obj = new DB(); //---> TEST #3-faul!!!
+      echo "Controller: <b>".__CLASS__."</b> cargado.";
     }
     
     public function db_model ()
@@ -793,5 +711,6 @@ class Test extends CI_Controller {
       }
     }*/
 }
+
 
 

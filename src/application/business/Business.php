@@ -1,19 +1,31 @@
 <?php
 
-namespace business\cls {
+namespace business {
 
-    class Business {
+  /**
+   * @category Business Class
+   * 
+   * @access public
+   *
+   * @todo Define business base class.
+   * 
+   */
+  class Business {
 
-        //protected $CI = CI_Controller();
-        
-        public function __construct() {
-            $this->CI = &get_instance();
-        }
+    /**
+     * 
+     * @access public
+     */
+    protected $CI;
 
-        public function TEST($param) {
-            
-        }
-
+    public function __construct() {
+      $this->CI = &get_instance();
     }
+
+    public function TEST($param) {
+      
+    }
+
+  }
 
 }
