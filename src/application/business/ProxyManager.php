@@ -40,7 +40,7 @@ namespace business {
                         break;
                     }
                 }
-                $res = $this->db_model->SetProxyToClient($client->user_id, $min_proxy->idProxy);
+                $res = $this->CI->db_model->SetProxyToClient($client->user_id, $min_proxy->idProxy);
                 $min_proxy->cnt++;
             }
         }

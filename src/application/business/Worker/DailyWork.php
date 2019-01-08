@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace business\worker;
+namespace worker{
 
      require_once '../system_config.php';
      require_once '../Client.php';
@@ -74,4 +74,5 @@ class DailyWork {
                 array_push($this->Followeds_to_unfollow, $To_Unfollow);
             }
         }
+   }
 }
