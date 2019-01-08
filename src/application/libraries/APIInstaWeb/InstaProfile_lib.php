@@ -19,8 +19,6 @@ class InstaProfile_lib {
     require_once config_item('thirdparty-insta_profile-resource');
     
     $this->InstaProfile = new InstaProfile();
-
-    echo "se cargo satisfactoriamente la libreria: ".__CLASS__."<br><br>";
   }
 
   public function get_reference_user($cookies, $reference_user_name) {
@@ -32,6 +30,6 @@ class InstaProfile_lib {
   // Funcion temporal para comprobar que se cargo la lib.
   public function Msg ()
   {
-    echo "<h2>se invoco bien un metodo de la lib: ".__CLASS__."->".__FUNCTION__."()</h2>";
+    echo __CLASS__."->".__FUNCTION__."() invocado (<b>ok</b>)";
   }
 }

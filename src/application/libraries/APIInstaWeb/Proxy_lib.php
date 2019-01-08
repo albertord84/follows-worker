@@ -15,8 +15,6 @@ class Proxy_lib {
     require_once config_item('thirdparty-proxy-resource');
     
      $this->Proxy = new Proxy(); 
-    
-    echo "se cargo satisfactoriamente la libreria: ".__CLASS__."<br><br>";
   }
   
   /*public function __construct(string $ip, string $port, string $user, string $password) {
@@ -35,6 +33,6 @@ class Proxy_lib {
   // Funcion temporal para comprobar que se cargo la lib.
   public function Msg ()
   {
-    echo "<h2>se invoco bien un metodo de la lib: ".__CLASS__."->".__FUNCTION__."()</h2>";
+    echo __CLASS__."->".__FUNCTION__."() invocado (<b>ok</b>)";
   }
 }

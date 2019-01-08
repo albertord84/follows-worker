@@ -21,7 +21,7 @@ namespace ApiInstaWeb {
     protected $has_logs = TRUE;
 
     public function __construct() {
-      require_once config_item('composer_autoload');
+      //require_once config_item('composer_autoload');
       require_once config_item('cookies_wrong_syntax-exception-class');
       require_once config_item('insta_checkpoint_required-exception-class');
       require_once config_item('incorrect_password-exception-class');
@@ -61,7 +61,7 @@ namespace ApiInstaWeb {
         $Cookies['ds_user_id'] = $ig->client->getCookie('ds_user_id')->getValue();
         $Cookies['mid'] = $ig->client->getCookie('mid')->getValue();
         $loginResponse = new ApiInstaWeb\Responses\LoginResponse(
-                'ok', true, "", (object) $Cookies
+          'ok', true, "", (object) $Cookies
         );
         return $loginResponse;
       } catch (\Exception $e) {
@@ -93,7 +93,7 @@ namespace ApiInstaWeb {
       $curl_str = "curl $proxy_str '$url' ";
       if ($cookies !== NULL) {
         if ($cookies->mid == NULL || $cookies->csrftoken == NULL || $cookies->sessionid == NULL ||
-                $cookies->ds_user_id == NULL)
+          $cookies->ds_user_id == NULL)
           return NULL;
         $curl_str .= "-H 'Cookie: mid=$cookies->mid; sessionid=$cookies->sessionid; s_network=; ig_pr=1; ig_vw=1855; csrftoken=$cookies->csrftoken; ds_user_id=$cookies->ds_user_id' ";
         $curl_str .= "-H 'X-CSRFToken: $cookies->csrftoken' ";

@@ -149,7 +149,10 @@ namespace business {
      */
     function __construct() {
       parent::__construct();
+      
       //$this->CI->load->library("APIInstaWeb/InstaApi_lib", null, 'InstaApi_lib');
+      $this->ci = &get_instance();
+      $this->ci->load->library("APIInstaWeb/InstaApi_lib", null, 'InstaApi_lib');
     }
 
     /**

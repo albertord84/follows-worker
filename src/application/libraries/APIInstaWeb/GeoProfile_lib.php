@@ -18,8 +18,6 @@ class GeoProfile_lib {
     require_once config_item('thirdparty-geo_profile-resource');
     
     $this->GeoProfile = new GeoProfile();
-      
-    echo "se cargo satisfactoriamente la libreria: ".__CLASS__."<br><br>";
   }
 
   protected function process_insta_prof_data(\stdClass $content) {
@@ -43,6 +41,6 @@ class GeoProfile_lib {
   // Funcion temporal para comprobar que se cargo la lib.
   public function Msg ()
   {
-    echo "<h2>se invoco bien un metodo de la lib: ".__CLASS__."->".__FUNCTION__."()</h2>";
+    echo __CLASS__."->".__FUNCTION__."() invocado (<b>ok</b>)";
   }
 }
