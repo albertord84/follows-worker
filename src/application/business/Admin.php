@@ -5,6 +5,8 @@ namespace business {
     class Admin extends Business {
       
         function __construct() {
+          parent::__construct();
+          
           require_once config_item('attendent');
             
         }

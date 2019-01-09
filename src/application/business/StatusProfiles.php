@@ -5,6 +5,8 @@ namespace business {
     class StatusProfiles extends Business {
 
         public function __construct() {
+            parent::__construct();
+            
             $this->CI->load->model('db_model');
             $result = $this->CI->db_model->GetReferenceProfileStatus();
             if ($result) {
