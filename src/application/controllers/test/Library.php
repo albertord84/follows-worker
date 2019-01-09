@@ -54,9 +54,9 @@ class Library extends CI_Controller {
 
     // -OK-
     echo "<br>[load] InstaClient_lib ==> ";
-    //$this->load->library("APIInstaWeb/InstaClient_lib", null, 'InstaClient_lib');
+    $this->load->library("APIInstaWeb/InstaClient_lib", null, 'InstaClient_lib');
     echo "(<b>ok</b>) || ";
-    //$this->InstaClient_lib->Msg();
+    $this->InstaClient_lib->Msg();
     //$result = new ApiInstaWeb\Responses\LoginResponse();
     //$result = $this->InstaClient_lib->make_login("alberto_test", "alberto2");
     //var_dump($result);
@@ -101,4 +101,8 @@ class Library extends CI_Controller {
     echo "</pre>";
   }
 
+  public function run ()
+  {
+    echo "aqui se ejecutara un run";
+  }
 }

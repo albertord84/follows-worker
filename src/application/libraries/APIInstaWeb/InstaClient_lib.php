@@ -2,11 +2,11 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-use ApiInstaWeb\Exceptions\InstaCheckpointRequiredException;
 use ApiInstaWeb\Proxy;
 use ApiInstaWeb\InstaURLs;
 use ApiInstaWeb\InstaClient;
 use ApiInstaWeb\VerificationChoice;
+use ApiInstaWeb\Exceptions\InstaCheckpointRequiredException;
 
 /**
  * @category CodeIgniter-Library: InstaApiLib
@@ -25,12 +25,10 @@ class InstaClient_lib {
     require_once config_item('thirdparty-verification_choice-resource');
     require_once config_item('insta_checkpoint_required-exception-class');
 
-//    if (file_exists(config_item('insta_checkpoint_required-exception-class'))) echo "el fichero existe<br><br>";
-
     $this->CI = &get_instance();
     $this->CI->load->model("db_model");
 
-    $this->InstaClient = new InstaClient("", new stdClass(), new Proxy("", "", "", ""));
+    $this->InstaClient = new InstaClient("", new \stdClass(), new Proxy("", "", "", ""));
   }
 
   public function make_insta_friendships_command(string $resource_id, string $command = 'follow', string $objetive_url = 'web/friendships') {
