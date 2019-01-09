@@ -6,18 +6,22 @@
  * and open the template in the editor.
  */
 
-namespace ApiInstaWeb;
+namespace ApiInstaWeb {
 
-/**
- * Description of Media
- *
- * @author dumbu
- */
-class Media {
+  /**
+   * Description of Media
+   *
+   * @author dumbu
+   */
+  class Media {
+
     //put your code here
     public $owner;
-    
-    public function __construct(\stdClass $response) {
-        
+
+    public function __construct($response) {
+      
     }
+
+  }
+
 }

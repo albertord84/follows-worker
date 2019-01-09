@@ -1,5 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
+use ApiInstaWeb\Proxy;
+
 /**
  * @category CodeIgniter-Library: X
  * 
@@ -14,7 +16,7 @@ class Proxy_lib {
   {
     require_once config_item('thirdparty-proxy-resource');
     
-     $this->Proxy = new Proxy(); 
+     $this->Proxy = new Proxy("", "", "", ""); 
   }
   
   /*public function __construct(string $ip, string $port, string $user, string $password) {

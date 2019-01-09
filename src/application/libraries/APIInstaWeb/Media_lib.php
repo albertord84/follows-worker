@@ -1,5 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
+use ApiInstaWeb\Media;
+
 /**
  * @category CodeIgniter-Library: Media_lib
  * 
@@ -12,8 +14,9 @@ class Media_lib {
 
   public function __construct ()
   {
-    //require_once config_item('thirdparty-X-resource');
-    $this->Media = new Media();
+    require_once config_item('thirdparty-media-resource');
+    
+    $this->Media = new Media(null);
   }
 
   // Funcion temporal para comprobar que se cargo la lib.
