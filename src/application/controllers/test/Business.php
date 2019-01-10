@@ -1,108 +1,78 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+if (!defined('BASEPATH'))
+  exit('No direct script access allowed');
 
 use business\Client;
+use business\Proxy;
+use business\ProxyManager;
+use business\StatusProfiles;
 
-class Library extends CI_Controller {
+class Business extends CI_Controller {
 
   public function __construct() {
     parent::__construct();
 
-    require_once config_item('db-exception-class');
+    //require_once config_item('db-exception-class');
     require_once config_item('business-client-class');
+    require_once config_item('business-proxy-class');
+    require_once config_item('business-proxy_manager-class');
+    require_once config_item('business-status_profiles-class');
   }
 
   public function index() {
     echo "Controller: <b>" . __CLASS__ . "</b> cargado.";
   }
 
-  public function client() {
-    echo "Dentro de client controller";
-
+  public function run() {
+    //======= CLIENT =======//
+    echo "<h1>Test Client Business</h1>";
     $obj = new Client();
+    echo "[new] Client_business ==> (<b>ok</b>)<br>";
 
-    echo "<br><br>Ok";
+    $array = $obj->get_clients();
+    echo "[get] get_clients() => result: " . count($array) . "<br>";
+
+    $array = $obj->get_client(1);
+    echo "[get] get_client() => result: " . count($array) . "<br>";
+
+    //$array = $obj->get_begginer_client(0, 5);
+    //echo "[get] get_begginer_client() => result: ".count($array)."<br>"; var_dump($array);
+    //$array = $obj->get_reference_profiles();
+    //echo "[insert] get_reference_profiles() => result: ".count($array)."<br>";
+    //echo "[fill] () => result: ".count($array)."<br>";
+    //echo "[get] () => result: ".count($array)."<br>";
+    //======= PROXY =======//
+    echo "<h1>Test Proxy Business</h1>";
+    $obj = new Proxy();
+    echo "[new] Proxy_business ==> (<b>ok</b>)<br>";
+
+    $obj->load();
+    echo "[load] load() ==> (<b>ok</b>)";
+
+    //======= PROXY-MANAGER =======//
+    echo "<h1>Test ProxyManager Business</h1>";
+    $obj = new ProxyManager();
+    echo "[new] ProxyManager_business ==> (<b>ok</b>)<br>";
+
+    $obj->UpdateUserProxy();
+    echo "[update] UpdateUserProxy ==> (<b>ok</b>)<br>";
+
+    $obj->GetNextProxy();
+    echo "[get] GetNextProxy ==> (<b>ok</b>)<br>";
+
+    $obj->GetReservedProxy();
+    echo "[get] GetReservedProxy ==> (<b>ok</b>)";
+
+    //======= STATUS-PROFILE =======//
+    echo "<h1>Test StatusProfiles Business</h1>";
+    $obj = new StatusProfiles();
+    echo "[new] StatusProfiles_business ==> (<b>ok</b>)";
+
+    //======= A =======//
+    //======= B =======//
+    //======= C =======//
+    //======= D =======//
   }
 
-  public function load() {
-    //$params = array('username'  => 'isela');
-
-    $count = 0;
-    echo "<h3><u>Test de carga de librerias</u></h3>";
-
-    // -OK-
-    echo "<pre>";
-    echo "[load] GeoProfile_lib ==> ";
-    $this->load->library("APIInstaWeb/GeoProfile_lib", null, 'GeoProfile_lib');
-    echo "(<b>ok</b>) || ";
-    $this->GeoProfile_lib->Msg();
-    $count++;
-
-    // -OK-
-    echo "<br>[load] HashProfile_lib ==> ";
-    $this->load->library("APIInstaWeb/HashProfile_lib", null, 'HashProfile_lib');
-    echo "(<b>ok</b>) || ";
-    $this->HashProfile_lib->Msg();
-    $count++;
-
-    // -OK-
-    echo "<br>[load] InstaApi_lib ==> ";
-    $this->load->library("APIInstaWeb/InstaApi_lib", null, 'InstaApi_lib');
-    //$this->load->library("APIInstaWeb/InstaApi_lib", $params, 'InstaApi_lib');
-    echo "(<b>ok</b>) || ";
-    $this->InstaApi_lib->Msg();
-    $count++;
-
-    // -OK-
-    echo "<br>[load] InstaClient_lib ==> ";
-    $this->load->library("APIInstaWeb/InstaClient_lib", null, 'InstaClient_lib');
-    echo "(<b>ok</b>) || ";
-    $this->InstaClient_lib->Msg();
-    //$result = new ApiInstaWeb\Responses\LoginResponse();
-    //$result = $this->InstaClient_lib->make_login("alberto_test", "alberto2");
-    //var_dump($result);
-    $count++;
-
-    // -OK-
-    echo "<br>[load] PersonProfile_lib ==> ";
-    $this->load->library("APIInstaWeb/PersonProfile_lib", null, 'PersonProfile_lib');
-    echo "(<b>ok</b>) || ";
-    $this->PersonProfile_lib->Msg();
-    $count++;
-
-    // -OK-
-    echo "<br>[load] InstaProfileList_lib ==> ";
-    $this->load->library("APIInstaWeb/InstaProfileList_lib", null, 'InstaProfileList_lib');
-    echo "(<b>ok</b>) || ";
-    $this->InstaProfileList_lib->Msg();
-    $count++;
-
-    // -OK-
-    echo "<br>[load] InstaProfile_lib ==> ";
-    $this->load->library("APIInstaWeb/InstaProfile_lib", null, 'InstaProfile_lib');
-    echo "(<b>ok</b>) || ";
-    $this->InstaProfile_lib->Msg();
-    $count++;
-
-    // -OK-
-    echo "<br>[load] Proxy_lib ==> ";
-    $this->load->library("APIInstaWeb/Proxy_lib", null, 'Proxy_lib');
-    echo "(<b>ok</b>) || ";
-    $this->Proxy_lib->Msg();
-    $count++;
-
-    // -OK-
-    echo "<br>[load] Media_lib ==> ";
-    $this->load->library("APIInstaWeb/Media_lib", null, 'Media_lib');
-    echo "(<b>ok</b>) || ";
-    $this->Media_lib->Msg();
-    $count++;
-
-    echo "<br><br>total: " . $count . " libs";
-    echo "</pre>";
-  }
-
-  public function run ()
-  {
-    echo "aqui se ejecutara un run";
-  }
 }

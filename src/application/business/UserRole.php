@@ -1,24 +1,25 @@
 <?php
 
-namespace business{
+namespace business {
 
-    //class user_role extends Business {
-    class user_role {
-        const ADMIN = 1;
-        const CLIENT = 2;
-        const ATTENDET = 3;
+  //class user_role extends Business {
+  class UserRole {
 
-        static public function Defines($const) {
-            $cls = new ReflectionClass(__CLASS__);
-            foreach ($cls->getConstants() as $key => $value) {
-                if ($value == $const) {
-                    return true;
-                }
-            }
+    const ADMIN = 1;
+    const CLIENT = 2;
+    const ATTENDET = 3;
 
-            return false;
+    static public function Defines($const) {
+      $cls = new ReflectionClass(__CLASS__);
+      foreach ($cls->getConstants() as $key => $value) {
+        if ($value == $const) {
+          return true;
         }
+      }
 
+      return false;
     }
+
+  }
 
 }

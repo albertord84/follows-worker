@@ -15,6 +15,7 @@ namespace business {
     /**
      * 
      * @access public
+     * 
      */
     protected $CI;
 

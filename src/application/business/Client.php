@@ -150,9 +150,8 @@ namespace business {
     function __construct() {
       parent::__construct();
       
-      //$this->CI->load->library("APIInstaWeb/InstaApi_lib", null, 'InstaApi_lib');
-      $this->ci = &get_instance();
-      $this->ci->load->library("APIInstaWeb/InstaApi_lib", null, 'InstaApi_lib');
+      $this->CI->load->model('db_model');
+      $this->CI->load->library("APIInstaWeb/InstaApi_lib", null, 'InstaApi_lib');
     }
 
     /**
@@ -163,20 +162,73 @@ namespace business {
      * 
      */
     public function get_clients() {
+      return $this->CI->db_model->get_clients_data();
+    }
+
+    /**
+     * 
+     * @todo
+     * @param type
+     * @return
+     * 
+     */
+    public function get_client($client_id) {
+      $client_data = $this->CI->db_model->get_client_data($client_id);
+      return $client_data;
+      
+      //$Client = $this->fill_client_data($client_data);
+      //return $Client;
+    }
+    
+    /**
+     * 
+     * @todo
+     * @param type
+     * @return
+     * 
+     */
+    public function get_begginer_client($offset = 0, $rows = 0) {
+      $client_data = $this->CI->db_model->get_biginner_data($offset, $rows);
+      return $client_data;
+      //$Client = $this->fill_client_data($client_data);
+      //return $Client;
+    }
+    
+    /**
+     * 
+     * @todo
+     * @param type
+     * @return
+     * 
+     */
+    public function get_reference_profiles($client_id = NULL) {
       try {
-        $Clients = array();
+        $client_id = $client_id ? $client_id : $this->id;
         //$DB = new \follows\cls\DB();
-        $clients_data = $this->CI->db_model->get_clients_data();
-        while ($client_data = $clients_data->fetch_object()) {
-          $Client = $this->fill_client_data($client_data);
-          array_push($Clients, $Client);
+        $ref_profs_data = $this->CI->db_model->get_reference_profiles_data($client_id);
+        while ($prof_data = $ref_profs_data->fetch_object()) {
+          //CONCERTAR quitar follows...
+          $Ref_Prof = new \follows\cls\Reference_profile();
+          //print_r($prof_data);
+          // Update Ref Prof Data if not privated
+          // TODO: Chechk if privated RP
+//                    if ($Ref_Prof->is_private($prof_data->insta_name) === FALSE) {
+          $Ref_Prof->id = $prof_data->id;
+          $Ref_Prof->insta_id = $prof_data->insta_id;
+          $Ref_Prof->insta_name = $prof_data->insta_name;
+          $Ref_Prof->insta_follower_cursor = $prof_data->insta_follower_cursor;
+          $Ref_Prof->deleted = ($prof_data->deleted || ($prof_data->deleted == "1")) ? true : false;
+          $Ref_Prof->type = $prof_data->type;
+          $Ref_Prof->end_date = $prof_data->end_date;
+          $Ref_Prof->status = $prof_data->status_id;
+          array_push($this->reference_profiles, $Ref_Prof);
+//                    }
         }
-        return $Clients;
       } catch (Exception $exc) {
         echo $exc->getTraceAsString();
       }
     }
-
+    
     /**
      * 
      * @todo
@@ -307,42 +359,6 @@ namespace business {
         $Client->Proxy->load($client_data->proxy_id);
       }
       return $Client;
-    }
-
-    /**
-     * 
-     * @todo
-     * @param type
-     * @return
-     * 
-     */
-    public function get_client($client_id) {
-      try {
-        //$DB = new DB();
-        $client_data = $this->CI->db_model->get_client_data($client_id);
-        $Client = $this->fill_client_data($client_data);
-        return $Client;
-      } catch (Exception $exc) {
-        echo $exc->getTraceAsString();
-      }
-    }
-
-    /**
-     * 
-     * @todo
-     * @param type
-     * @return
-     * 
-     */
-    public function get_begginer_client($client_id) {
-      try {
-        //$DB = new DB();
-        $client_data = $this->CI->db_model->get_biginner_data($client_id);
-        $Client = $this->fill_client_data($client_data);
-        return $Client;
-      } catch (Exception $exc) {
-        echo $exc->getTraceAsString();
-      }
     }
 
     /**
@@ -514,41 +530,6 @@ namespace business {
           print "Client $client_id to status $status_id!!!";
         } else {
           print "FAIL CHANGING Client $client_id to status $status_id!!!";
-        }
-      } catch (Exception $exc) {
-        echo $exc->getTraceAsString();
-      }
-    }
-
-    /**
-     * 
-     * @todo
-     * @param type
-     * @return
-     * 
-     */
-    public function get_reference_profiles($client_id = NULL) {
-      try {
-        $client_id = $client_id ? $client_id : $this->id;
-        //$DB = new \follows\cls\DB();
-        $ref_profs_data = $this->CI->db_model->get_reference_profiles_data($client_id);
-        while ($prof_data = $ref_profs_data->fetch_object()) {
-          //CONCERTAR quitar follows...
-          $Ref_Prof = new \follows\cls\Reference_profile();
-          //print_r($prof_data);
-          // Update Ref Prof Data if not privated
-          // TODO: Chechk if privated RP
-//                    if ($Ref_Prof->is_private($prof_data->insta_name) === FALSE) {
-          $Ref_Prof->id = $prof_data->id;
-          $Ref_Prof->insta_id = $prof_data->insta_id;
-          $Ref_Prof->insta_name = $prof_data->insta_name;
-          $Ref_Prof->insta_follower_cursor = $prof_data->insta_follower_cursor;
-          $Ref_Prof->deleted = ($prof_data->deleted || ($prof_data->deleted == "1")) ? true : false;
-          $Ref_Prof->type = $prof_data->type;
-          $Ref_Prof->end_date = $prof_data->end_date;
-          $Ref_Prof->status = $prof_data->status_id;
-          array_push($this->reference_profiles, $Ref_Prof);
-//                    }
         }
       } catch (Exception $exc) {
         echo $exc->getTraceAsString();

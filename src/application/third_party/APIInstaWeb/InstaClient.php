@@ -15,7 +15,7 @@ namespace ApiInstaWeb {
     private $has_logs;
 
     public function __construct(string $insta_id, \stdClass $cookies, Proxy $proxy) {
-      //require_once config_item('composer_autoload');
+      require_once config_item('composer_autoload');
       require_once config_item('cookies_wrong_syntax-exception-class');
       require_once config_item('thirdparty-insta_api-resource');
       

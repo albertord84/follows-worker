@@ -95,7 +95,6 @@ namespace business {
      */
     function __construct() {
       parent::__construct();
-
     }
 
     public function id($value = NULL) {

@@ -26,10 +26,10 @@
   $config['business-proxy_manager-class'] = getcwd().'/application/business/ProxyManager.php';
   $config['business-status_profiles-class'] = getcwd().'/application/business/StatusProfiles.php';
   $config['business-user-class'] = getcwd().'/application/business/User.php';
-  $config['business-system_config-class'] = getcwd().'/application/business/system_config.php';
-  $config['business-user_role-class'] = getcwd().'/application/business/user_role.php';
-  $config['business-user_status-class'] = getcwd().'/application/business/user_status.php';
-  $config['business-washdog_type-class'] = getcwd().'/application/business/washdog_type.php';
+  $config['business-system_config-class'] = getcwd().'/application/business/SystemConfig.php';
+  $config['business-user_role-class'] = getcwd().'/application/business/UserRole.php';
+  $config['business-user_status-class'] = getcwd().'/application/business/UserStatus.php';
+  $config['business-washdog_type-class'] = getcwd().'/application/business/WashdogType.php';
   
   //Clases del negocio del Worker
   $config['business-daily_work-class'] = getcwd().'/application/business/Worker/DailyWork.php';
@@ -104,8 +104,7 @@
   $config['payment-mundipagg-libraries'] = getcwd().'/application/libraries/Payment/Mundipagg.php'; 
   $config['payment-vindi-libraries'] = getcwd().'/application/libraries/Payment/Vindi.php'; 
    
-
-    
+   
   
 ?>
 

@@ -21,7 +21,7 @@ namespace ApiInstaWeb {
     protected $has_logs = TRUE;
 
     public function __construct() {
-      //require_once config_item('composer_autoload');
+      require_once config_item('composer_autoload');
       require_once config_item('cookies_wrong_syntax-exception-class');
       require_once config_item('insta_checkpoint_required-exception-class');
       require_once config_item('incorrect_password-exception-class');

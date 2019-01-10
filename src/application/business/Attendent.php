@@ -21,7 +21,7 @@ namespace business {
         function __construct() {          
           parent::__construct();
           
-          require_once config_item('attendent');
+          require_once config_item('business-attendent-class');
             
         }
         
