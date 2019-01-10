@@ -1,12 +1,6 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-namespace worker{
+namespace business\worker{
 
      require_once '../system_config.php';
      require_once '../Client.php';
@@ -17,7 +11,7 @@ namespace worker{
  *
  * @author dumbu
  */
-class DailyWork {
+class DailyWork extends \business\Business{
         /** Aggregations: */
         /** Compositions: */
         /*         * * Attributes: ** */

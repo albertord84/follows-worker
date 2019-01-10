@@ -9,7 +9,7 @@ namespace business {
    * 
    * @access public
    *
-   * @todo Define an client business class.
+   * @todo Define an Client business class.
    * 
    */
   class Client extends User {
@@ -156,11 +156,8 @@ namespace business {
 
     /**
      * 
-     * @todo
-     * @param type
-     * @return
-     * 
-     */
+     * @return type
+     */        
     public function get_clients() {
       return $this->CI->db_model->get_clients_data();
     }
@@ -179,7 +176,7 @@ namespace business {
     }
     
     /**
-     * @
+     *
      * @param type $offset
      * @param type $rows
      * @return type
@@ -193,10 +190,7 @@ namespace business {
     
     /**
      * 
-     * @todo
-     * @param type
-     * @return
-     * 
+     * @param type $client_id
      */
     public function get_reference_profiles($client_id = NULL) {
       try {

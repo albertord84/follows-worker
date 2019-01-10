@@ -5,7 +5,11 @@ namespace business {
   require_once config_item('business-user-class');
 
   /**
-   * class Attendent
+   * @category Business class
+   * 
+   * @access public
+   *
+   * @todo Define an Attendent business class.
    * 
    */
   class Attendent extends Business {

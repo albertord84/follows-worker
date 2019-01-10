@@ -1,6 +1,6 @@
 <?php
 
-namespace worker{
+namespace business\worker{
     require_once '../APIInstaWeb';
     require_once '../APIInstaWeb/Exception';
     require_once '../APIInstaWeb/Response';
@@ -17,7 +17,7 @@ namespace worker{
     require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/externals/vendor/autoload.php';
     */
     
-    class Robot {
+    class Robot extends \business\Business{
 
         public function __construct() {
             

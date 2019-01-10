@@ -2,6 +2,16 @@
 
 namespace business {
 
+  require_once config_item('business-user-class');
+
+  /**
+   * @category Business class
+   * 
+   * @access public
+   *
+   * @todo Define an StatusProfiles business class.
+   * 
+   */
   class StatusProfiles extends Business {
 
     public function __construct() {
