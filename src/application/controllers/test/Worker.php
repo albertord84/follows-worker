@@ -39,7 +39,7 @@ class Business extends CI_Controller {
     echo "[get] get_clients() => result: " . count($array) . " ==> (<b>ok</b>)<br>"; //var_dump($array)
 
     $array = $obj->get_client(1);
-    echo "[get] get_client() => result: " . count($array) . " ==> (<b>ok</b>)<br>"; //var_dump($array);
+    echo "[get] get_client() => result: " . count($array) . " ==> (<b>ok</b>)<br>"; //var_dump($array)
     
     //$array = $obj->get_begginer_client(0, 5);
     //echo "[get] get_begginer_client() => result: ".count($array)."<br>"; var_dump($array);

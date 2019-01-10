@@ -1,21 +1,24 @@
 <?php
 
 namespace business\worker{
+  
+  use business\Business; 
+  use business\Client; 
+  
+  require_once config_item('business-class');
+  require_once config_item('business-client-class');
+  require_once config_item('business-system-config-class');
 
-     require_once '../system_config.php';
-     require_once '../Client.php';
-     require_once '../Followed.php';
 
-/**
- * Description of DailyWork
- *
- * @author dumbu
- */
-class DailyWork extends \business\Business{
-        /** Aggregations: */
-        /** Compositions: */
-        /*         * * Attributes: ** */
-
+  /**
+   * @category Business class
+   * 
+   * @access public
+   *
+   * @todo Define an DailyWork worker class.
+   * 
+   */
+class DailyWork extends Business{
         /**
          * 
          * @access public
@@ -47,8 +50,13 @@ class DailyWork extends \business\Business{
         public $foults;
 
         function __construct() {
-            $this->Client = new Client();
-            $this->load->model('db_model');
+            /*$this->Client = new Client();
+            $this->load->model('db_model');*/
+          
+          parent::__construct();
+      
+          $this->CI->load->model('db_model');
+          $this->CI->load->library("APIInstaWeb/InstaApi_lib", null, 'InstaApi_lib');
         }
 
     
