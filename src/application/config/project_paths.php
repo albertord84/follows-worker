@@ -36,7 +36,7 @@
   $config['business-robot-class'] = getcwd().'/application/business/Worker/Robot.php';
   $config['business-worker-class'] = getcwd().'/application/business/Worker/Worker.php';
   
-  //Clases del negocio del SystemResponse
+  //Clases del negocio del Response
   $config['business-dumbu_response-class'] = getcwd().'/application/business/SystemResponse/DUMBUResponse.php';
   $config['business-payment_response-class'] = getcwd().'/application/business/SystemResponse/PaymentResponse.php';
   $config['business-reference_profile_response-class'] = getcwd().'/application/business/SystemResponse/ReferenceProfileResponse.php';
