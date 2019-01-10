@@ -2,7 +2,7 @@
 
 use business\Client;
 
-class Library extends CI_Controller {
+class Library_test extends CI_Controller {
 
   public function __construct() {
     parent::__construct();

@@ -11,7 +11,7 @@ use business\Client;
 use business\ProxyManager;
 use business\StatusProfiles;
 
-class Business extends CI_Controller {
+class Business_test extends CI_Controller {
 
   public function __construct() {
     parent::__construct();
