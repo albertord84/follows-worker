@@ -1,10 +1,9 @@
 <?php
 
-
 namespace ApiInstaWeb {
 
   require_once 'ReferenceProfile.php';
-  
+
   /**
    * Description of GeoProfile
    *
@@ -22,8 +21,7 @@ namespace ApiInstaWeb {
       $this->tag_query = "ac38b90f0f3981c42092016a37c59bf7";
     }
 
-    protected function process_insta_prof_data(\stdClass $content) {
-
+    public function process_insta_prof_data(\stdClass $content) {
       $Profile = NULL;
       if (is_object($content) && $content->status === 'ok') {
         $places = $content->places;

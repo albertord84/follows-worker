@@ -103,6 +103,51 @@ class Library extends CI_Controller {
 
   public function run ()
   {
-    echo "aqui se ejecutara un run";
+    //======= GEO_PROFILE-LIB =======//
+    echo "<pre>";
+    echo "<h1>Test GeoProfile Library</h1>";
+    echo "[load] GeoProfile_lib ==> ";
+    $this->load->library("APIInstaWeb/GeoProfile_lib", null, 'GeoProfile_lib');
+    echo "(<b>ok</b>)<br>";
+    
+    echo "[exec] process_insta_prof_data() ==> ";
+    $this->GeoProfile_lib->process_insta_prof_data(new \stdClass());
+    echo "(<b>ok</b>)<br>";
+    
+    //======= HASH_PROFILE-LIB =======//
+    //echo "[exec] () ==> ";
+    
+    //echo "(<b>ok</b>)<br>";
+    
+    //======= INSTA_API-LIB =======//
+    //echo "[exec] () ==> ";
+    
+    //echo "(<b>ok</b>)<br>";
+    
+    //======= INSTA_API_CLIENT-LIB =======//
+    //echo "[exec] () ==> ";
+    
+    //echo "(<b>ok</b>)<br>";
+    
+    //======= INSTA_PROFILE_LIST-LIB =======//
+    //echo "[exec] () ==> ";
+    
+    //echo "(<b>ok</b>)<br>";
+    
+    //======= MEDIA-LIB =======//
+    //echo "[exec] () ==> ";
+    
+    //echo "(<b>ok</b>)<br>";
+    
+    //======= PERSON_PROFILE-LIB =======//
+    //echo "[exec] () ==> ";
+    
+    //echo "(<b>ok</b>)<br>";
+    
+    //======= PROXY-LIB =======//
+    //echo "[exec] () ==> ";
+    
+    //echo "(<b>ok</b>)<br>";
+
   }
 }

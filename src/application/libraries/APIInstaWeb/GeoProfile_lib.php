@@ -20,7 +20,7 @@ class GeoProfile_lib {
     $this->GeoProfile = new GeoProfile();
   }
 
-  protected function process_insta_prof_data(\stdClass $content) {
+  public function process_insta_prof_data(\stdClass $content) {
      $this->GeoProfile->process_insta_prof_data($content);
   }
 
