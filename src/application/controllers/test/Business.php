@@ -3,8 +3,12 @@
 if (!defined('BASEPATH'))
   exit('No direct script access allowed');
 
-use business\Client;
 use business\Proxy;
+use business\Admin;
+use business\Attendent;
+use business\SystemConfig;
+use business\Followed;
+use business\Client;
 use business\ProxyManager;
 use business\StatusProfiles;
 
@@ -13,9 +17,12 @@ class Business extends CI_Controller {
   public function __construct() {
     parent::__construct();
 
-    //require_once config_item('db-exception-class');
-    require_once config_item('business-client-class');
     require_once config_item('business-proxy-class');
+    require_once config_item('business-admin-class');
+    require_once config_item('business-attendent-class');
+    require_once config_item('business-followed-class');
+    require_once config_item('business-system_config-class');
+    require_once config_item('business-client-class');
     require_once config_item('business-proxy_manager-class');
     require_once config_item('business-status_profiles-class');
   }
@@ -31,17 +38,20 @@ class Business extends CI_Controller {
     echo "[new] Client_business ==> (<b>ok</b>)<br>";
 
     $array = $obj->get_clients();
-    echo "[get] get_clients() => result: " . count($array) . "<br>"; //var_dump($array);
+    echo "[get] get_clients() => result: " . count($array) . "<br>"; //var_dump($array)
 
     $array = $obj->get_client(1);
-    echo "[get] get_client() => result: " . count($array) . "<br>"; //var_dump($array);
-
+    echo "[get] get_client() => result: " . count($array) . "<br>"; //var_dump($array)
+    
     //$array = $obj->get_begginer_client(0, 5);
     //echo "[get] get_begginer_client() => result: ".count($array)."<br>"; var_dump($array);
+    //
     //$array = $obj->get_reference_profiles();
     //echo "[insert] get_reference_profiles() => result: ".count($array)."<br>";
+    //
     //echo "[fill] () => result: ".count($array)."<br>";
     //echo "[get] () => result: ".count($array)."<br>";
+    
     //======= PROXY =======//
     echo "<h1>Test Proxy Business</h1>";
     $obj = new Proxy();
@@ -69,10 +79,25 @@ class Business extends CI_Controller {
     $obj = new StatusProfiles();
     echo "[new] StatusProfiles_business ==> (<b>ok</b>)";
 
-    //======= A =======//
-    //======= B =======//
-    //======= C =======//
-    //======= D =======//
+    //======= ADMIN =======//
+    echo "<h1>Test Admin Business</h1>";
+    $obj = new Admin();
+    echo "[new] Admin_business ==> (<b>ok</b>)";
+
+    //======= ATTENDENT =======//
+    echo "<h1>Test Attendent Business</h1>";
+    $obj = new Attendent();
+    echo "[new] Attendent_business ==> (<b>ok</b>)";
+
+    //======= FOLLOWED =======//
+    echo "<h1>Test Followed Business</h1>";
+    $obj = new Followed();
+    echo "[new] Followed_business ==> (<b>ok</b>)";
+
+    //======= SYSTEM-CONFIG =======//
+    echo "<h1>Test SystemConfig Business</h1>";
+    $obj = new SystemConfig();
+    echo "[new] SystemConfig_business ==> (<b>ok</b>)";
   }
 
 }

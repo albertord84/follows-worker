@@ -1,85 +1,89 @@
 <?php
 
 namespace business {
-    
+
+  require_once config_item('business-user-class');
+  
+  /**
+   * @category Business class
+   * 
+   * @access public
+   *
+   * @todo Define an client business class.
+   * 
+   */
+  class Followed extends Business {
+    /** Aggregations: */
+    /** Compositions: */
+    /*     * * Attributes: ** */
+
     /**
-     * class Followed
      * 
+     * @access public
      */
-    class Followed extends Business {
-        /** Aggregations: */
-        /** Compositions: */
-        /*         * * Attributes: ** */
+    public $id;
 
-        /**
-         * 
-         * @access public
-         */
-        public $id;
+    /**
+     * Instagram id of folowed profile
+     * @access public
+     */
+    public $followed_id;
 
-        /**
-         * Instagram id of folowed profile
-         * @access public
-         */
-        public $followed_id;
+    /**
+     * 
+     * @access public
+     */
+    public $client_id;
 
-        /**
-         * 
-         * @access public
-         */
-        public $client_id;
+    /**
+     * 
+     * @access public
+     */
+    public $reference_id;
 
-        /**
-         * 
-         * @access public
-         */
-        public $reference_id;
+    /**
+     * 
+     * @access public
+     */
+    public $requested;
 
-        /**
-         * 
-         * @access public
-         */
-        public $requested;
+    /**
+     * 
+     * @access public
+     */
+    public $date;
 
-        /**
-         * 
-         * @access public
-         */
-        public $date;
+    /**
+     * 
+     * @access public
+     */
+    public $unfollowed;
 
-        /**
-         * 
-         * @access public
-         */
-        public $unfollowed;
+    /**
+     * 
+     *
+     * @return Followed
+     * @access public
+     */
+    function __construct() {
+      parent::__construct();
+    }
 
-        /**
-         * 
-         *
-         * @return Followed
-         * @access public
-         */
-        
-        function __construct() {          
-          parent::__construct();
-                      
-        }
-        
-        public function add_followed() {
-            
-        }
+    public function add_followed() {
+      
+    }
 
 // end of member function add_followed
 
-        /**
-         * 
-         *
-         * @return bool
-         * @access public
-         */
-        public function unfollow() {
-            
-        }
+    /**
+     * 
+     *
+     * @return bool
+     * @access public
+     */
+    public function unfollow() {
+      
+    }
 
 // end of member function unfollow
 //        
@@ -101,12 +105,10 @@ namespace business {
 //            }
 //            return null;
 //        }
+    // end of generic setter an getter definition
+  }
 
- // end of generic setter an getter definition
-        
-    }
-
-    // end of Followed
+  // end of Followed
 }
 
 ?>

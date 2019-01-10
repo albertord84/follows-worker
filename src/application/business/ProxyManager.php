@@ -2,6 +2,8 @@
 
 namespace business {
 
+  require_once config_item('business-user-class');
+  
   /**
    * Description of ProxyManager
    *

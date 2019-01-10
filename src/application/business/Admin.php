@@ -1,31 +1,29 @@
 <?php
 
 namespace business {
-    
-    class Admin extends Business {
+
+  require_once config_item('business-user-class');
+  
+  class Admin extends Business {
+
+    function __construct() {
+      parent::__construct();
+    }
+
+    public function add_admin() {
       
-        function __construct() {
-          parent::__construct();
-          
-          require_once config_item('business-admin-class');
-            
-        }
-        
-        public function add_admin() {
-            
-        }
-        
-        public function delete_admin() {
-            
-        }
-        
-        public function update_admin() {
-            
-        }
+    }
 
+    public function delete_admin() {
+      
+    }
 
-        
-    }    
+    public function update_admin() {
+      
+    }
+
+  }
+
 }
 
 ?>
