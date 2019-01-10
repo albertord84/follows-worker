@@ -166,13 +166,11 @@ namespace business {
     }
 
     /**
-     * 
-     * @todo
-     * @param type
-     * @return
-     * 
+     * Get client data
+     * @param int $client_id
+     * @return DataSet  
      */
-    public function get_client($client_id) {
+    public function get_client(int $client_id) {
       $client_data = $this->CI->db_model->get_client_data($client_id);
       return $client_data;
       
@@ -181,11 +179,10 @@ namespace business {
     }
     
     /**
-     * 
-     * @todo
-     * @param type
-     * @return
-     * 
+     * @
+     * @param type $offset
+     * @param type $rows
+     * @return type
      */
     public function get_begginer_client($offset = 0, $rows = 0) {
       $client_data = $this->CI->db_model->get_biginner_data($offset, $rows);
