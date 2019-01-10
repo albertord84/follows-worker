@@ -3,13 +3,13 @@
 namespace business {
 
   require_once config_item('business-user-class');
-  
+
   /**
    * @category Business class
    * 
    * @access public
    *
-   * @todo Define an client business class.
+   * @todo Define an Followed business class.
    * 
    */
   class Followed extends Business {

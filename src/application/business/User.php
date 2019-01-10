@@ -11,7 +11,7 @@ namespace business {
    * 
    * @access public
    *
-   * @todo Define an client business class.
+   * @todo Define an User business class.
    * 
    */
   class User extends Business {

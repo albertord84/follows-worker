@@ -1,19 +1,13 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-namespace worker {
+namespace business\worker {
 
   /**
    * Description of Worker
    *
    * @author dumbu
    */
-  class Worker {
+  class Worker extends \business\Business{
 
     //put your code here
     /*
