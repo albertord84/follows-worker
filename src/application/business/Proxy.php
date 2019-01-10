@@ -2,10 +2,15 @@
 
 namespace business {
 
+  require_once config_item('business-user-class');
+  
   /**
-   * Description of Proxy
+   * @category Business class
+   * 
+   * @access public
    *
-   * @author jose
+   * @todo Define an client business class.
+   * 
    */
   class Proxy extends Business {
 

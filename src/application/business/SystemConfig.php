@@ -2,12 +2,14 @@
 
 namespace business{
 
+  require_once config_item('business-user-class');
+  
 /**
  * Description of system_config
  *
  * @author jose
  */
-   class system_config extends Business {
+   class SystemConfig extends Business {
     //put your code here
    }
 }   

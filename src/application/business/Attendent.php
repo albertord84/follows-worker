@@ -1,57 +1,57 @@
 <?php
 
 namespace business {
-    /**
-     * class Attendent
-     * 
-     */
-    class Attendent extends Business {
-        /** Aggregations: */
-        /** Compositions: */
-        /*         * * Attributes: ** */
 
-        /**
-         * 
-         *
-         * @return Attendent
-         * @access public
-         */
+  require_once config_item('business-user-class');
+
+  /**
+   * class Attendent
+   * 
+   */
+  class Attendent extends Business {
+    /** Aggregations: */
+    /** Compositions: */
+    /*     * * Attributes: ** */
+
+    /**
+     * 
+     *
+     * @return Attendent
+     * @access public
+     */
+    function __construct() {
+      parent::__construct();
+
+      require_once config_item('business-attendent-class');
+    }
+
+    public function add_attendent() {
       
-      
-        function __construct() {          
-          parent::__construct();
-          
-          require_once config_item('business-attendent-class');
-            
-        }
-        
-        public function add_attendent() {
-            
-        }
+    }
 
 // end of member function add_attendent
 
-        /**
-         * 
-         *
-         * @return bool
-         * @access public
-         */
-        public function delete_attendent() {
-            
-        }
+    /**
+     * 
+     *
+     * @return bool
+     * @access public
+     */
+    public function delete_attendent() {
+      
+    }
 
 // end of member function delete_attendent
 
-        /**
-         * 
-         *
-         * @return Attendent
-         * @access public
-         */
-        public function update_attendent() {
-            
-        }
+    /**
+     * 
+     *
+     * @return Attendent
+     * @access public
+     */
+    public function update_attendent() {
+      
+    }
 
 // end of member function update_attendent
 //        
@@ -73,12 +73,10 @@ namespace business {
 //            }
 //            return null;
 //        }
+    // end of generic setter an getter definition
+  }
 
- // end of generic setter an getter definition
-        
-    }
-
-    // end of Attendent
+  // end of Attendent
 }
 
 ?>
