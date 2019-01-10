@@ -1,7 +1,15 @@
 <?php
 
 namespace business {
-
+  
+   /**
+   * @category Business class
+   * 
+   * @access public
+   *
+   * @todo Define an UserStatus business static class.
+   * 
+   */
   class UserStatus {
 
     const ACTIVE = 1;

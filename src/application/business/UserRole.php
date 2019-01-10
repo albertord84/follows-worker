@@ -2,7 +2,14 @@
 
 namespace business {
 
-  //class user_role extends Business {
+  /**
+   * @category Business class
+   * 
+   * @access public
+   *
+   * @todo Define an UserRole business static class.
+   * 
+   */
   class UserRole {
 
     const ADMIN = 1;

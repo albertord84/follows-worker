@@ -3,8 +3,8 @@
 namespace business {
 
   require_once config_item('business-class');
-  //require_once config_item('user_role');
-  //require_once config_item('user_status');
+  require_once config_item('business-user_role-class');
+  require_once config_item('business-user_status-class');
   
   /**
    * @category Business class

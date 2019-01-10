@@ -7,7 +7,6 @@ use business\Proxy;
 use business\Admin;
 use business\Attendent;
 use business\SystemConfig;
-use business\Followed;
 use business\Client;
 use business\ProxyManager;
 use business\StatusProfiles;
@@ -20,7 +19,6 @@ class Business extends CI_Controller {
     require_once config_item('business-proxy-class');
     require_once config_item('business-admin-class');
     require_once config_item('business-attendent-class');
-    require_once config_item('business-followed-class');
     require_once config_item('business-system_config-class');
     require_once config_item('business-client-class');
     require_once config_item('business-proxy_manager-class');
@@ -38,10 +36,10 @@ class Business extends CI_Controller {
     echo "[new] Client_business ==> (<b>ok</b>)<br>";
 
     $array = $obj->get_clients();
-    echo "[get] get_clients() => result: " . count($array) . "(<b>ok</b>)<br>"; //var_dump($array)
+    echo "[get] get_clients() => result: " . count($array) . " ==> (<b>ok</b>)<br>"; //var_dump($array)
 
     $array = $obj->get_client(1);
-    echo "[get] get_client() => result: " . count($array) . "(<b>ok</b>)<br>"; //var_dump($array)
+    echo "[get] get_client() => result: " . count($array) . " ==> (<b>ok</b>)<br>"; //var_dump($array)
     
     //$array = $obj->get_begginer_client(0, 5);
     //echo "[get] get_begginer_client() => result: ".count($array)."<br>"; var_dump($array);
@@ -88,11 +86,6 @@ class Business extends CI_Controller {
     echo "<h1>Test Attendent Business</h1>";
     $obj = new Attendent();
     echo "[new] Attendent_business ==> (<b>ok</b>)";
-
-    //======= FOLLOWED =======//
-    echo "<h1>Test Followed Business</h1>";
-    $obj = new Followed();
-    echo "[new] Followed_business ==> (<b>ok</b>)";
 
     //======= SYSTEM-CONFIG =======//
     echo "<h1>Test SystemConfig Business</h1>";

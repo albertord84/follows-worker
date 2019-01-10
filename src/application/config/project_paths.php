@@ -20,7 +20,6 @@
   $config['business-ref_profile-class'] = getcwd().'/application/business/BusinessRefProfile.php';
   $config['business-class'] = getcwd().'/application/business/Business.php';
   $config['business-client-class'] = getcwd().'/application/business/Client.php';  
-  $config['business-followed-class'] = getcwd().'/application/business/Followed.php';
   $config['business-own_exception-class'] = getcwd().'/application/business/OwnException.php';
   $config['business-proxy-class'] = getcwd().'/application/business/Proxy.php';
   $config['business-proxy_manager-class'] = getcwd().'/application/business/ProxyManager.php';

@@ -1,20 +1,16 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 namespace business{
 
-/**
- * Description of washdog_type
- *
- * @author jose
- */
-class washdog_type extends Business {
-    //put your code here
+  /**
+   * @category Business class
+   * 
+   * @access public
+   *
+   * @todo Define an WashdogType business static class.
+   * 
+   */
+class WashdogType extends Business {
     const PURCHASE = 'SUCCESSFUL PURCHASE';
     const ACTIVE_STATUS = 'FOR ACTIVE STATUS';
     const FOR_STATUS = 'FOR STATUS';
