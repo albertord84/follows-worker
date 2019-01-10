@@ -3,9 +3,12 @@
 namespace ApiInstaWeb {
 
   /**
-   * Description of InstaApi
+   * @category Third-Party Instagram API
+   * 
+   * @access public
    *
-   * @author dumbu
+   * @todo .
+   * 
    */
   class InstaApi {
 
@@ -22,10 +25,10 @@ namespace ApiInstaWeb {
 
     public function __construct() {
       require_once config_item('composer_autoload');
+      require_once config_item('curl_nertwork-exception-class');
+      require_once config_item('incorrect_password-exception-class');
       require_once config_item('cookies_wrong_syntax-exception-class');
       require_once config_item('insta_checkpoint_required-exception-class');
-      require_once config_item('incorrect_password-exception-class');
-      require_once config_item('curl_nertwork-exception-class');
     }
 
     public function login(string $username, string $password, Proxy $proxy = null) {
