@@ -1,7 +1,9 @@
 <?php
 
 namespace ApiInstaWeb {
-
+  
+  use ApiInstaWeb\Exceptions\InstaException;
+  
   /**
    * @category Third-Party Instagram API
    * 
@@ -25,6 +27,7 @@ namespace ApiInstaWeb {
 
     public function __construct() {
       require_once config_item('composer_autoload');
+      require_once config_item('insta-exception-class');
       require_once config_item('curl_nertwork-exception-class');
       require_once config_item('incorrect_password-exception-class');
       require_once config_item('cookies_wrong_syntax-exception-class');
@@ -82,9 +85,9 @@ namespace ApiInstaWeb {
         } else if (strpos($e->getMessage(), 'password you entered is incorrect') !== FALSE)
           throw new Exceptions\IncorrectPasswordException($e->getMessage(), $e);
         else if (strpos($e->getMessage(), 'there was a problem with your request') !== FALSE)
-          throw new \InstaException('problem_with_your_request', $e);
+          throw new InstaException('problem_with_your_request', $e->getCode());
         else
-          throw new \InstaException($e->getMessage(), $e);
+          throw new InstaException($e->getMessage(), $e);
       }
     }
 
