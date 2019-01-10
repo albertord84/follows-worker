@@ -3,9 +3,12 @@
 namespace ApiInstaWeb {
   
   /**
-   * Description of InstaClient
+   * @category CodeIgniter-Library: InstaApiLib
+   * 
+   * @access public
    *
-   * @author dumbu
+   * @todo Define a codeigniter library for X
+   * 
    */
   class InstaClient {
 
@@ -15,9 +18,9 @@ namespace ApiInstaWeb {
     private $has_logs;
 
     public function __construct(string $insta_id, \stdClass $cookies, Proxy $proxy) {
-      require_once config_item('composer_autoload');
-      require_once config_item('cookies_wrong_syntax-exception-class');
+      //require_once config_item('composer_autoload');
       require_once config_item('thirdparty-insta_api-resource');
+      require_once config_item('cookies_wrong_syntax-exception-class');
       
       /*if (!InstaClient::verify_cookies($cookies)) {
         throw new Exceptions\CookiesWrongSyntaxException('the cookies you are passing are incompleate or wrong');
@@ -27,8 +30,6 @@ namespace ApiInstaWeb {
       $this->proxy = $proxy;
       $this->has_log = TRUE;*/
     }
-
-    //put your code here
 
 
     public function make_insta_friendships_command(string $resource_id, string $command = 'follow', string $objetive_url = 'web/friendships') {

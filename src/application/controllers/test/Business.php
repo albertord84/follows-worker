@@ -32,7 +32,7 @@ class Business extends CI_Controller {
   public function run() {
     //======= CLIENT =======//
     echo "<pre>";
-    echo "<h1>Test Client Business</h1>";
+    echo "<h2>Test Client Business</h2>";
     $obj = new Client();
     echo "[new] Client_business ==> (<b>ok</b>)<br>";
 
@@ -52,7 +52,7 @@ class Business extends CI_Controller {
     //echo "[get] () => result: ".count($array)."<br>";
     
     //======= PROXY =======//
-    echo "<h1>Test Proxy Business</h1>";
+    echo "<h2>Test Proxy Business</h2>";
     $obj = new Proxy();
     echo "[new] Proxy_business ==> (<b>ok</b>)<br>";
 
@@ -60,7 +60,7 @@ class Business extends CI_Controller {
     echo "[load] load() ==> (<b>ok</b>)";
 
     //======= PROXY-MANAGER =======//
-    echo "<h1>Test ProxyManager Business</h1>";
+    echo "<h2>Test ProxyManager Business</h2>";
     $obj = new ProxyManager();
     echo "[new] ProxyManager_business ==> (<b>ok</b>)<br>";
 
@@ -74,22 +74,22 @@ class Business extends CI_Controller {
     echo "[get] GetReservedProxy ==> (<b>ok</b>)";
 
     //======= STATUS-PROFILE =======//
-    echo "<h1>Test StatusProfiles Business</h1>";
+    echo "<h2>Test StatusProfiles Business</h2>";
     $obj = new StatusProfiles();
     echo "[new] StatusProfiles_business ==> (<b>ok</b>)";
 
     //======= ADMIN =======//
-    echo "<h1>Test Admin Business</h1>";
+    echo "<h2>Test Admin Business</h2>";
     $obj = new Admin();
     echo "[new] Admin_business ==> (<b>ok</b>)";
 
     //======= ATTENDENT =======//
-    echo "<h1>Test Attendent Business</h1>";
+    echo "<h2>Test Attendent Business</h2>";
     $obj = new Attendent();
     echo "[new] Attendent_business ==> (<b>ok</b>)";
 
     //======= SYSTEM-CONFIG =======//
-    echo "<h1>Test SystemConfig Business</h1>";
+    echo "<h2>Test SystemConfig Business</h2>";
     $obj = new SystemConfig();
     echo "[new] SystemConfig_business ==> (<b>ok</b>)";
     echo "</pre>";

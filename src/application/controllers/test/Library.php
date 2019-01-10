@@ -102,7 +102,7 @@ class Library extends CI_Controller {
   {
     //======= GEO_PROFILE-LIB =======//
     echo "<pre>";
-    echo "<h1>Test GeoProfile Library</h1>";
+    echo "<h2>Test GeoProfile Library</h2>";
     echo "[load] GeoProfile_lib ==> ";
     $this->load->library("APIInstaWeb/GeoProfile_lib", null, 'GeoProfile_lib');
     echo "(<b>ok</b>)<br>";
@@ -112,39 +112,48 @@ class Library extends CI_Controller {
     echo "(<b>ok</b>)<br>";
     
     //======= HASH_PROFILE-LIB =======//
-     echo "<h1>Test HashProfile Library</h1>";
+     echo "<h2>Test HashProfile Library</h2>";
     //echo "[exec] () ==> ";
     
     //echo "(<b>ok</b>)<br>";
     
     //======= PERSON_PROFILE-LIB =======//
-    echo "<h1>Test PersonProfile Library</h1>";
+    echo "<h2>Test PersonProfile Library</h2>";
     //echo "[exec] () ==> ";
     
     //echo "(<b>ok</b>)<br>";
     
     //======= INSTA_API-LIB =======//
-     echo "<h1>Test InstaApi Library</h1>";
+     echo "<h2>Test InstaApi Library</h2>";
     //echo "[exec] () ==> ";
     
     //echo "(<b>ok</b>)<br>";
     
     //======= INSTA_API_CLIENT-LIB =======//
-     echo "<h1>Test InstaApiClient Library</h1>";
-    //echo "[exec] () ==> ";
+     echo "<h2>Test InstaApiClient Library</h2>";
+     echo "[load] InstaClient_lib ==> ";
+     $this->load->library("APIInstaWeb/InstaClient_lib", null, 'InstaClient_lib');
+     echo "(<b>ok</b>)<br>";
+     
+     echo "[exec] make_login() ==> ";
+     $result = $this->InstaClient_lib->make_login("alberto_test", "alberto2");
+     //var_dump($result);
+     echo "(<b>ok</b>)<br>";
+     
+  //echo "[exec] () ==> ";
     //$result = new ApiInstaWeb\Responses\LoginResponse();
-    //$result = $this->InstaClient_lib->make_login("alberto_test", "alberto2");
+    //
     //var_dump($result);
     //echo "(<b>ok</b>)<br>";
     
     //======= INSTA_PROFILE_LIST-LIB =======//
-     echo "<h1>Test InstaProfileList Library</h1>";
+     echo "<h2>Test InstaProfileList Library</h2>";
     //echo "[exec] () ==> ";
     
     //echo "(<b>ok</b>)<br>";
     
     //======= MEDIA-LIB =======//
-     echo "<h1>Test Media Library</h1>";
+     echo "<h2>Test Media Library</h2>";
     //echo "[exec] () ==> ";
     
     //echo "(<b>ok</b>)<br>";
