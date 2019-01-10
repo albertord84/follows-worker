@@ -15,7 +15,7 @@ namespace business {
   class Attendent extends Business {
     /** Aggregations: */
     /** Compositions: */
-    /*     * * Attributes: ** */
+    /** Attributes:   */
 
     /**
      * 
