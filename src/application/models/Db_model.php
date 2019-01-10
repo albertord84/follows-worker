@@ -1,4 +1,4 @@
-fill_client_datafill_client_data<?php
+<?php
 
 if (!defined('BASEPATH'))
   exit('No direct script access allowed');
