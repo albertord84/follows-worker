@@ -31,6 +31,7 @@ class Business extends CI_Controller {
 
   public function run() {
     //======= CLIENT =======//
+    echo "<pre>";
     echo "<h1>Test Client Business</h1>";
     $obj = new Client();
     echo "[new] Client_business ==> (<b>ok</b>)<br>";
@@ -91,6 +92,7 @@ class Business extends CI_Controller {
     echo "<h1>Test SystemConfig Business</h1>";
     $obj = new SystemConfig();
     echo "[new] SystemConfig_business ==> (<b>ok</b>)";
+    echo "</pre>";
   }
 
 }

@@ -57,9 +57,6 @@ class Library extends CI_Controller {
     $this->load->library("APIInstaWeb/InstaClient_lib", null, 'InstaClient_lib');
     echo "(<b>ok</b>) || ";
     $this->InstaClient_lib->Msg();
-    //$result = new ApiInstaWeb\Responses\LoginResponse();
-    //$result = $this->InstaClient_lib->make_login("alberto_test", "alberto2");
-    //var_dump($result);
     $count++;
 
     // -OK-
@@ -115,39 +112,48 @@ class Library extends CI_Controller {
     echo "(<b>ok</b>)<br>";
     
     //======= HASH_PROFILE-LIB =======//
-    //echo "[exec] () ==> ";
-    
-    //echo "(<b>ok</b>)<br>";
-    
-    //======= INSTA_API-LIB =======//
-    //echo "[exec] () ==> ";
-    
-    //echo "(<b>ok</b>)<br>";
-    
-    //======= INSTA_API_CLIENT-LIB =======//
-    //echo "[exec] () ==> ";
-    
-    //echo "(<b>ok</b>)<br>";
-    
-    //======= INSTA_PROFILE_LIST-LIB =======//
-    //echo "[exec] () ==> ";
-    
-    //echo "(<b>ok</b>)<br>";
-    
-    //======= MEDIA-LIB =======//
+     echo "<h1>Test HashProfile Library</h1>";
     //echo "[exec] () ==> ";
     
     //echo "(<b>ok</b>)<br>";
     
     //======= PERSON_PROFILE-LIB =======//
+    echo "<h1>Test PersonProfile Library</h1>";
     //echo "[exec] () ==> ";
     
     //echo "(<b>ok</b>)<br>";
     
+    //======= INSTA_API-LIB =======//
+     echo "<h1>Test InstaApi Library</h1>";
+    //echo "[exec] () ==> ";
+    
+    //echo "(<b>ok</b>)<br>";
+    
+    //======= INSTA_API_CLIENT-LIB =======//
+     echo "<h1>Test InstaApiClient Library</h1>";
+    //echo "[exec] () ==> ";
+    //$result = new ApiInstaWeb\Responses\LoginResponse();
+    //$result = $this->InstaClient_lib->make_login("alberto_test", "alberto2");
+    //var_dump($result);
+    //echo "(<b>ok</b>)<br>";
+    
+    //======= INSTA_PROFILE_LIST-LIB =======//
+     echo "<h1>Test InstaProfileList Library</h1>";
+    //echo "[exec] () ==> ";
+    
+    //echo "(<b>ok</b>)<br>";
+    
+    //======= MEDIA-LIB =======//
+     echo "<h1>Test Media Library</h1>";
+    //echo "[exec] () ==> ";
+    
+    //echo "(<b>ok</b>)<br>";
+   
     //======= PROXY-LIB =======//
+    
     //echo "[exec] () ==> ";
     
     //echo "(<b>ok</b>)<br>";
-
+    echo "</pre>";
   }
 }
