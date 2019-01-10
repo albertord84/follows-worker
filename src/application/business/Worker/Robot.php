@@ -1,11 +1,16 @@
 <?php
 
-namespace business\worker{
+namespace business\worker {
+  
+  use business\Business; 
+ 
+  require_once config_item('business-class');
+  
+     /*
     require_once '../APIInstaWeb';
     require_once '../APIInstaWeb/Exception';
     require_once '../APIInstaWeb/Response';
-    
-    /*
+       
     require_once 'DB.php';
     require_once 'Gmail.php';
     require_once 'Reference_profile.php';
@@ -16,17 +21,29 @@ namespace business\worker{
     require_once 'InstaAPI.php';
     require_once $_SERVER['DOCUMENT_ROOT'] . '/follows-worker/worker/externals/vendor/autoload.php';
     */
+  
+  
+   /**
+   * @category Business class
+   * 
+   * @access public
+   *
+   * @todo Define an Robot worker class.
+   * 
+   */
     
-    class Robot extends \business\Business{
+    class Robot extends Business{
 
         public function __construct() {
+          parent::__construct();
+      
+          $this->CI->load->model('db_model');
+          $this->CI->load->library("APIInstaWeb/InstaApi_lib", null, 'InstaApi_lib');
             
-            $config = parse_ini_file(dirname(__FILE__) . $conf_file, true);
+        /*  $config = parse_ini_file(dirname(__FILE__) . $conf_file, true);
             $this->IPS = $config["IPS"];
             $this->Day_client_work = new Day_client_work();
-            $this->Ref_profile = new Reference_profile();
-            //$this->DB = $DB ? $DB : new \follows\cls\DB();
-            $this->load->model('db_model');
+            $this->Ref_profile = new Reference_profile();*/
         }
 
         public function do_follow_unfollow_work($Followeds_to_unfollow, DailyWork $daily_work, ErrorType &$error = NUL) {

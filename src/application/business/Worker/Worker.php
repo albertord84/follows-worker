@@ -2,12 +2,21 @@
 
 namespace business\worker {
 
+  use business\Business;
+
+  require_once config_item('business-class');
+
+//require_once config_item('business-robot-class');
+
   /**
-   * Description of Worker
+   * @category Business class
+   * 
+   * @access public
    *
-   * @author dumbu
+   * @todo Define an Worker worker class.
+   * 
    */
-  class Worker extends \business\Business{
+  class Worker extends Business {
 
     //put your code here
     /*
@@ -37,7 +46,7 @@ namespace business\worker {
     public $robot;
     public $mail;
 
-    public function __construct($id = -1) {
+    /* public function __construct($id = -1) {
       $this->Robot = new Robot($DB); //CONCERTAR
       $this->Robot->config = $GLOBALS['sistem_config'];
       $this->Robot->id = $id;
@@ -45,6 +54,14 @@ namespace business\worker {
       $this->Gmail = new Gmail();
       //$this->DB = $DB ? $DB : new \follows\cls\DB();
       $this->load->model('db_model');
+      } */
+
+    function __construct() {
+      parent::__construct();
+
+      $this->CI->load->model('db_model');
+      $this->CI->load->library("APIInstaWeb/InstaApi_lib", null, 'InstaApi_lib');
+
     }
 
     // LISTA!!!
