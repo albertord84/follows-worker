@@ -23,19 +23,13 @@ class PersonProfile_lib {
     $this->PersonProfile = new PersonProfile();
   }
 
-  protected function process_insta_prof_data(\stdClass $content) {
-    
-    $this->PersonProfile->process_insta_prof_data($content); 
- 
-  }
-
   public function get_insta_followers(\stdClass $cookies = NULL, int $N = 15, string& $cursor = NULL, Proxy $proxy = NULL) {
     
     $this->PersonProfile->get_insta_followers($cookies, $N, $cursor, $proxy);
 
   }
 
-  private function get_insta_followers_list(\stdClass $cookies = NULL, int $N = 15, string& $cursor = NULL, Proxy $proxy = NULL) {
+  public function get_insta_followers_list(\stdClass $cookies = NULL, int $N = 15, string& $cursor = NULL, Proxy $proxy = NULL) {
     
     $this->PersonProfile->get_insta_followers_list($cookies, $N,  $cursor, $proxy);
 
@@ -53,18 +47,6 @@ class PersonProfile_lib {
     
   }
 
-  protected function make_curl_following_str(\stdClass $cookies, int $N, string $cursor = NULL, Proxy $proxy = NULL) {
-    
-    $this->PersonProfile->make_curl_following_str($cookies, $N, $cursor, $proxy);
-    
-  }
-
-  private function parse_follow_count($follow_count_str) {
-    
-    $this->PersonProfile->parse_follow_count($follow_count_str);
-    
-  }
-
   public function get_insta_following_count() {
     
     $this->PersonProfile->get_insta_following_count();
@@ -77,12 +59,30 @@ class PersonProfile_lib {
     
   }
 
+  public function process_insta_prof_data(\stdClass $content) {
+    
+    $this->PersonProfile->process_insta_prof_data($content); 
+ 
+  }
+  
   public function exists_profile(string $profile_name, ProfileType $type, string $insta_id = NULL, \stdClass $cookies = NULL, Proxy $proxy = NULL) {
     
     $this->PersonProfile->exists_profile($profile_name, $type, $insta_id, $cookies, $proxy); 
     
   }
 
+  public function make_curl_following_str(\stdClass $cookies, int $N, string $cursor = NULL, Proxy $proxy = NULL) {
+    
+    $this->PersonProfile->make_curl_following_str($cookies, $N, $cursor, $proxy);
+    
+  }
+
+  public function parse_follow_count($follow_count_str) {
+    
+    $this->PersonProfile->parse_follow_count($follow_count_str);
+    
+  }
+  
   // Funcion temporal para comprobar que se cargo la lib.
   public function Msg ()
   {

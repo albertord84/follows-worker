@@ -1,7 +1,9 @@
 <?php
 
 namespace ApiInstaWeb\Responses {
-
+  
+  require_once config_item('cookies-response-class');
+  
   /**
    * @category ApiInstaWeb Third-Party Class
    * 
@@ -15,30 +17,35 @@ namespace ApiInstaWeb\Responses {
     /**
      * 
      * @access public
+     * 
      */
     public $Verify_link;
     
     /**
      * 
      * @access public
+     * 
      */
     public $Authenticated;
     
     /**
      * 
      * @access public
+     * 
      */
     public $Status;
     
     /**
      * 
      * @access public
+     * 
      */
     public $Message;
     
     /**
      * 
      * @access public
+     * 
      */
     public $Cookies;
 

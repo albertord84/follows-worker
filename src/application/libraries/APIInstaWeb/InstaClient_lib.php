@@ -6,6 +6,10 @@ use ApiInstaWeb\Proxy;
 use ApiInstaWeb\InstaURLs;
 use ApiInstaWeb\InstaClient;
 use ApiInstaWeb\VerificationChoice;
+use ApiInstaWeb\Responses\LoginResponse;
+use ApiInstaWeb\Exceptions\InstaException;
+use ApiInstaWeb\Exceptions\CurlNertworkException;
+use ApiInstaWeb\Exceptions\IncorrectPasswordException;
 use ApiInstaWeb\Exceptions\InstaCheckpointRequiredException;
 
 /**
@@ -19,6 +23,7 @@ use ApiInstaWeb\Exceptions\InstaCheckpointRequiredException;
 class InstaClient_lib {
 
   public function __construct() {
+    require_once config_item('login-response-class');
     require_once config_item('thirdparty-proxy-resource');
     require_once config_item('thirdparty-insta_url-resource');
     require_once config_item('thirdparty-insta_client-resource');
@@ -31,61 +36,59 @@ class InstaClient_lib {
     $this->InstaClient = new InstaClient("", new \stdClass(), new Proxy("", "", "", ""));
   }
 
+  public function make_login(string $login, string $pass) {
+    try {
+      $result = $this->InstaClient->make_login($login, $pass);
+    } 
+    catch (InstaCheckpointRequiredException $e) {
+      $result = new LoginResponse('ok', false, $e->getMessage(), NULL, $e->GetChallange());
+    } 
+    catch (InstaException $e) {
+      $this->db_model->InsertEventToWashdog($Client->id, $e->getMessage(), $source);
+
+      $result = new LoginResponse('ok', false, $e->getMessage(), NULL);
+    }
+    return $result;
+  }
+  
   public function make_insta_friendships_command(string $resource_id, string $command = 'follow', string $objetive_url = 'web/friendships') {
 
     $this->InstaClient->make_insta_friendships_command($resource_id, $command, $objetive_url);
   }
 
-  private function make_curl_friendships_command_str(string $url) {
+  public function make_curl_friendships_command_str(string $url) {
 
     $this->InstaClient->make_curl_friendships_command_str($url);
   }
 
-  private function make_curl_chaining_str(string $insta_id, int $N, string $cursor = NULL) {
+  public function make_curl_chaining_str(string $insta_id, int $N, string $cursor = NULL) {
 
     $this->InstaClient->make_curl_chaining_str($insta_id, $N, $cursor);
   }
 
-  private static function obtine_cookie_value($cookies, string $name) {
+  public function obtine_cookie_value($cookies, string $name) {
 
     $this->InstaClient->obtine_cookie_value($cookies, $name);
   }
 
-  private function get_cookies_value(string $key) {
+  public function get_cookies_value(string $key) {
 
     $this->InstaClient->get_cookies_value($key);
   }
 
-  private function make_post() {
+  public function make_post() {
 
     $this->InstaClient->make_post();
   }
 
-  private function get_insta_csrftoken($ch) {
+  public function get_insta_csrftoken($ch) {
 
     $this->InstaClient->get_insta_csrftoken($ch);
   }
 
-  public static function verify_cookies(\stdClass $cookies) {
+  public function verify_cookies(\stdClass $cookies) {
 
     $this->InstaClient->verify_cookies($cookies);
-  }
-
-  public function make_login(string $login, string $pass) {
-    try {
-      $result = $this->InstaClient->make_login($login, $pass);
-    } catch (InstaCheckpointRequiredException $exc) {
-      $result = new ApiInstaWeb\Responses\LoginResponse(
-              'ok', false, $exc->getMessage(), NULL, $exc->GetChallange()
-      );
-    } catch (\Exception $exc) {
-      $this->db_model->InsertEventToWashdog($Client->id, $exc->getMessage(), $source);
-
-      $result = new ApiInstaWeb\Responses\LoginResponse(
-              'ok', false, $exc->getMessage(), NULL
-      );
-    }
-    return $result;
   }
 
   public function like_fist_post(string $fromClient_ista_id) {

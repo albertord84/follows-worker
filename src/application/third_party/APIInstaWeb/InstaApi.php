@@ -2,7 +2,12 @@
 
 namespace ApiInstaWeb {
   
+  use ApiInstaWeb\Responses\LoginResponse;
+  use ApiInstaWeb\Responses\CookiesResponse;
   use ApiInstaWeb\Exceptions\InstaException;
+  use ApiInstaWeb\Exceptions\CurlNertworkException;
+  use ApiInstaWeb\Exceptions\IncorrectPasswordException;
+  use ApiInstaWeb\Exceptions\InstaCheckpointRequiredException;
   
   /**
    * @category Third-Party Instagram API
@@ -27,6 +32,8 @@ namespace ApiInstaWeb {
 
     public function __construct() {
       require_once config_item('composer_autoload');
+      require_once config_item('login-response-class');
+      require_once config_item('cookies-response-class');
       require_once config_item('insta-exception-class');
       require_once config_item('curl_nertwork-exception-class');
       require_once config_item('incorrect_password-exception-class');
@@ -61,37 +68,48 @@ namespace ApiInstaWeb {
           $ig->finishTwoFactorLogin($verificationCode, $twoFactorIdentifier);
         }
 
-        $Cookies = array();
+        /*$Cookies = array();
         $Cookies['sessionid'] = $ig->client->getCookie('sessionid')->getValue();
         $Cookies['csrftoken'] = $ig->client->getCookie('csrftoken')->getValue();
         $Cookies['ds_user_id'] = $ig->client->getCookie('ds_user_id')->getValue();
-        $Cookies['mid'] = $ig->client->getCookie('mid')->getValue();
-        $loginResponse = new ApiInstaWeb\Responses\LoginResponse(
-          'ok', true, "", (object) $Cookies
-        );
+        $Cookies['mid'] = $ig->client->getCookie('mid')->getValue();*/
+        
+        $sessionid = $ig->client->getCookie('sessionid')->getValue();
+        $csrftoken = $ig->client->getCookie('csrftoken')->getValue();
+        $ds_user_id = $ig->client->getCookie('ds_user_id')->getValue();
+        $mid = $ig->client->getCookie('mid')->getValue();
+        
+        $Cookies = new CookiesResponse($sessionid, $csrftoken, $ds_user_id, $mid);  
+        $loginResponse = new LoginResponse('ok', true, "", $Cookies);
+        
         return $loginResponse;
+        
       } catch (\Exception $e) {
         //echo '<br>Something went wrong: ' . $e->getMessage() . "\n</br>";
         //echo $e->getTraceAsString();                
         $source = 0;
-        if (isset($id) && $id !== NULL && $id !== 0)
-          $source = 1;
+        if (isset($id) && $id !== NULL && $id !== 0) $source = 1;
 
         if ((strpos($e->getMessage(), 'Challenge required') !== FALSE) || (strpos($e->getMessage(), 'Checkpoint required') !== FALSE) || (strpos($e->getMessage(), 'challenge_required') !== FALSE)) {
           $res = $e->getResponse()->getChallenge()->getApiPath();
-          throw new Exceptions\InstaCheckpointRequiredException($e->getMessage(), $e->getPrevious(), $res);
-        } else if (strpos($e->getMessage(), 'Network: CURL error 28') !== FALSE) { // Time out by bad proxy
-          throw new Exceptions\CurlNertworkException($e->getMessage(), $e);
-        } else if (strpos($e->getMessage(), 'password you entered is incorrect') !== FALSE)
-          throw new Exceptions\IncorrectPasswordException($e->getMessage(), $e);
-        else if (strpos($e->getMessage(), 'there was a problem with your request') !== FALSE)
+          throw new InstaCheckpointRequiredException($e->getMessage(), $e->getPrevious(), $res);
+        } 
+        else if (strpos($e->getMessage(), 'Network: CURL error 28') !== FALSE) { // Time out by bad proxy
+          throw new CurlNertworkException($e->getMessage(), $e);
+        } 
+        else if (strpos($e->getMessage(), 'password you entered is incorrect') !== FALSE) {
+          throw new IncorrectPasswordException($e->getMessage(), $e);
+        } 
+        else if (strpos($e->getMessage(), 'there was a problem with your request') !== FALSE) {
           throw new InstaException('problem_with_your_request', $e->getCode());
-        else
-          throw new InstaException($e->getMessage(), $e);
+        } 
+        else {
+          throw new InstaException($e->getMessage(), $e->getCode());
+        }
       }
     }
 
-    public static function make_query(string $query, string $variables, \stdClass $cookies, Proxy $proxy = NULL) {
+    public function make_query(string $query, string $variables, \stdClass $cookies, Proxy $proxy = NULL) {
       $variables = urlencode($variables);
       $graphquery_url = InstaURLs::GraphqlQuery;
       $url = "$graphquery_url?query_hash=$query&variables=$variables";

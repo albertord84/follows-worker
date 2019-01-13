@@ -36,11 +36,4 @@ class GeoProfile_lib {
     $this->GeoProfile->get_post_user_info($post_reference, $cookies, $proxy);
   }
 
-  
-  
-  // Funcion temporal para comprobar que se cargo la lib.
-  public function Msg ()
-  {
-    echo __CLASS__."->".__FUNCTION__."() invocado (<b>ok</b>)";
-  }
 }

@@ -8,17 +8,24 @@ date_default_timezone_set('America/Sao_Paulo');
 | Registra un controlador-de-Errores personalizada que transforma los errores 
 | de PHP en excepciones.
 */
-/*function my_error_handler($errno, $errstr, $errfile, $errline) 
+function my_error_handler($errno, $errstr, $errfile, $errline) 
 { 
   if (!(error_reporting() & $errno)) 
   { 
    // This error code is not included in error_reporting 
     return; 
   }
-  log_message('error', "$errstr @$errfile::$errline($errno)"); //echo "MI ERROR!!!";
-  throw new ErrorException($errstr, $errno, 0, $errfile, $errline); 
+  //log_message('error', "$errstr @$errfile::$errline($errno)"); //echo "MI ERROR!!!";
+  //throw new ErrorException($errstr, $errno, 0, $errfile, $errline); 
+  echo "<pre>"; 
+  echo "<h2>Error de Parser de PHP.... tratada por my_error_handler</h2>";
+  echo "<b>Code: </b>".$errno."<br>";
+  echo "<b>Message: </b>".$errstr."<br>";
+  echo "<b>File: </b>".$errfile."<br>";
+  echo "<b>Line: </b>".$errline."<br>";
+  echo '</pre>';
 } 
-set_error_handler("my_error_handler");*/
+set_error_handler("my_error_handler");
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +33,8 @@ set_error_handler("my_error_handler");*/
 */
 function my_exception_handler($error) 
 { 
-  echo "<h2>Exception no manipulada.... tratada por my_exception_handler</h2>";
   echo "<pre>"; 
+  echo "<h2>Exception no manipulada.... tratada por my_exception_handler</h2>";
   echo "<b>Code: </b>".$error->getCode()."<br>";
   echo "<b>Message: </b>".$error->getMessage()."<br>";
   echo "<b>File: </b>".$error->getFile()."<br>";

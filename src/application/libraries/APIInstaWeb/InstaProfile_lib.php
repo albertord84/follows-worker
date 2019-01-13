@@ -18,13 +18,12 @@ class InstaProfile_lib {
     require_once config_item('thirdparty-insta_url-resource');
     require_once config_item('thirdparty-insta_profile-resource');
     
-    $this->InstaProfile = new InstaProfile();
+    $this->InstaProfile = new InstaProfile(new \stdClass());
   }
 
-  public function get_reference_user($cookies, $reference_user_name) {
-     
+  public function get_reference_user($cookies, $reference_user_name) 
+  {
     $this->InstaProfile->get_reference_user($cookies, $reference_user_name);
-
   }
 
   // Funcion temporal para comprobar que se cargo la lib.

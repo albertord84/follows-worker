@@ -2,6 +2,8 @@
 
 namespace ApiInstaWeb {
 
+  use ApiInstaWeb\InstaApi;
+  
   require_once 'ReferenceProfile.php';
 
   /**
@@ -18,6 +20,8 @@ namespace ApiInstaWeb {
 
     public function __construct() {
       parent::__construct();
+      require_once config_item('thirdparty-insta_api-resource');
+      
       $this->tag_query = "ac38b90f0f3981c42092016a37c59bf7";
     }
 

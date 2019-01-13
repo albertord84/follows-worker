@@ -88,7 +88,7 @@
   $config['client_response-class'] = getcwd().'/application/third_party/APIInstaWeb/Response/ClientResponse.php'; 
   $config['cookies-response-class'] = getcwd().'/application/third_party/APIInstaWeb/Response/CookiesResponse.php';
   $config['insta-response-class'] = getcwd().'/application/third_party/APIInstaWeb/Response/InstaResponse.php';
-  $config['loguin-response-class'] = getcwd().'/application/third_party/APIInstaWeb/Response/LoguinResponse.php';
+  $config['login-response-class'] = getcwd().'/application/third_party/APIInstaWeb/Response/LoginResponse.php';
   
   /*
 |--------------------------------------------------------------------------

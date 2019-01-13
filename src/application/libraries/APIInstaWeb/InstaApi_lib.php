@@ -27,7 +27,7 @@ class InstaApi_lib {
     $this->ApiInsta->login($username, $password, $proxy);
   }
 
-  public static function make_query(string $query, string $variables, \stdClass $cookies, Proxy $proxy = NULL) {
+  public function make_query(string $query, string $variables, \stdClass $cookies, Proxy $proxy = NULL) {
   }
 
   // Funcion temporal para comprobar que se cargo la lib.

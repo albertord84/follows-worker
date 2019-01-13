@@ -33,65 +33,56 @@ class Library_test extends CI_Controller {
     echo "<pre>";
     echo "[load] GeoProfile_lib ==> ";
     $this->load->library("APIInstaWeb/GeoProfile_lib", null, 'GeoProfile_lib');
-    echo "(<b>ok</b>) || ";
-    $this->GeoProfile_lib->Msg();
+    echo "(<b>ok</b>)";
     $count++;
 
     // -OK-
     echo "<br>[load] HashProfile_lib ==> ";
     $this->load->library("APIInstaWeb/HashProfile_lib", null, 'HashProfile_lib');
-    echo "(<b>ok</b>) || ";
-    $this->HashProfile_lib->Msg();
-    $count++;
-
-    // -OK-
-    echo "<br>[load] InstaApi_lib ==> ";
-    $this->load->library("APIInstaWeb/InstaApi_lib", null, 'InstaApi_lib');
-    //$this->load->library("APIInstaWeb/InstaApi_lib", $params, 'InstaApi_lib');
-    echo "(<b>ok</b>) || ";
-    $this->InstaApi_lib->Msg();
-    $count++;
-
-    // -OK-
-    echo "<br>[load] InstaClient_lib ==> ";
-    $this->load->library("APIInstaWeb/InstaClient_lib", null, 'InstaClient_lib');
-    echo "(<b>ok</b>) || ";
-    $this->InstaClient_lib->Msg();
+    echo "(<b>ok</b>)";
     $count++;
 
     // -OK-
     echo "<br>[load] PersonProfile_lib ==> ";
     $this->load->library("APIInstaWeb/PersonProfile_lib", null, 'PersonProfile_lib');
-    echo "(<b>ok</b>) || ";
-    $this->PersonProfile_lib->Msg();
+    echo "(<b>ok</b>)";
+    $count++;
+    
+    // -OK-
+    echo "<br>[load] InstaApi_lib ==> ";
+    $this->load->library("APIInstaWeb/InstaApi_lib", null, 'InstaApi_lib');
+    //$this->load->library("APIInstaWeb/InstaApi_lib", $params, 'InstaApi_lib');
+    echo "(<b>ok</b>)";
+    $count++;
+
+    // -OK-
+    echo "<br>[load] InstaClient_lib ==> ";
+    $this->load->library("APIInstaWeb/InstaClient_lib", null, 'InstaClient_lib');
+    echo "(<b>ok</b>)";
     $count++;
 
     // -OK-
     echo "<br>[load] InstaProfileList_lib ==> ";
     $this->load->library("APIInstaWeb/InstaProfileList_lib", null, 'InstaProfileList_lib');
-    echo "(<b>ok</b>) || ";
-    $this->InstaProfileList_lib->Msg();
+    echo "(<b>ok</b>)";
     $count++;
 
     // -OK-
     echo "<br>[load] InstaProfile_lib ==> ";
     $this->load->library("APIInstaWeb/InstaProfile_lib", null, 'InstaProfile_lib');
-    echo "(<b>ok</b>) || ";
-    $this->InstaProfile_lib->Msg();
+    echo "(<b>ok</b>)";
     $count++;
 
     // -OK-
     echo "<br>[load] Proxy_lib ==> ";
     $this->load->library("APIInstaWeb/Proxy_lib", null, 'Proxy_lib');
-    echo "(<b>ok</b>) || ";
-    $this->Proxy_lib->Msg();
+    echo "(<b>ok</b>)";
     $count++;
 
     // -OK-
     echo "<br>[load] Media_lib ==> ";
     $this->load->library("APIInstaWeb/Media_lib", null, 'Media_lib');
-    echo "(<b>ok</b>) || ";
-    $this->Media_lib->Msg();
+    echo "(<b>ok</b>)";
     $count++;
 
     echo "<br><br>total: " . $count . " libs";
@@ -110,59 +101,206 @@ class Library_test extends CI_Controller {
     echo "[exec] process_insta_prof_data() ==> ";
     $this->GeoProfile_lib->process_insta_prof_data(new \stdClass());
     echo "(<b>ok</b>)<br>";
+   
+    echo "[exec] get_insta_followers() ==> ";
+    $this->GeoProfile_lib->get_insta_followers();
+    //echo "(<b>ok</b>)<br>";
+    
+    echo "[exec] get_insta_media() ==> ";
+    //$this->GeoProfile_lib->get_insta_media();
+    //echo "(<b>ok</b>)<br>";
+    
+    echo "[exec] get_post_user_info() ==> ";
+    //$this->GeoProfile_lib->get_post_user_info();
+    //echo "(<b>ok</b>)<br>";
     
     //======= HASH_PROFILE-LIB =======//
-     echo "<h2>Test HashProfile Library</h2>";
-    //echo "[exec] () ==> ";
+    echo "<h2>Test HashProfile Library</h2>";
+    echo "[load] HashProfile_lib ==> ";
+    $this->load->library("APIInstaWeb/HashProfile_lib", null, 'HashProfile_lib');
+    echo "(<b>ok</b>)<br>";
     
+    echo "[exec] process_insta_prof_data() ==> ";
+    //$this->HashProfile_lib->process_insta_prof_data();
+    //echo "(<b>ok</b>)<br>";
+    
+    echo "[exec] get_insta_followers() ==> ";
+    //$this->HashProfile_lib->get_insta_followers();
+    //echo "(<b>ok</b>)<br>";
+    
+    echo "[exec] get_insta_media() ==> ";
+    //$this->HashProfile_lib->get_insta_media();
+    //echo "(<b>ok</b>)<br>";
+    
+    echo "[exec] get_post_user_info() ==> ";
+    //$this->HashProfile_lib->get_post_user_info();
     //echo "(<b>ok</b>)<br>";
     
     //======= PERSON_PROFILE-LIB =======//
     echo "<h2>Test PersonProfile Library</h2>";
-    //echo "[exec] () ==> ";
+    echo "[load] HashProfile_lib ==> ";
+    $this->load->library("APIInstaWeb/PersonProfile_lib", null, 'PersonProfile_lib');
+    echo "(<b>ok</b>)<br>";
+        
+    echo "[exec] get_insta_followers() ==> ";
+    //$this->PersonProfile_lib->get_insta_followers();
+    //echo "(<b>ok</b>)<br>";
     
+    echo "[exec] get_insta_followers_list() ==> ";
+    //$this->PersonProfile_lib->get_insta_followers_list();
+    //echo "(<b>ok</b>)<br>";
+    
+    echo "[exec] get_insta_media() ==> ";
+    //$this->PersonProfile_lib->get_insta_media();
+    //echo "(<b>ok</b>)<br>";
+    
+    echo "[exec] get_post_user_info() ==> ";
+    //$this->PersonProfile_lib->get_post_user_info();
+    //echo "(<b>ok</b>)<br>";
+    
+    echo "[exec] get_insta_following_count() ==> ";
+    //$this->PersonProfile_lib->get_insta_following_count();
+    //echo "(<b>ok</b>)<br>";
+    
+    echo "[exec] get_reference_data() ==> ";
+    //$this->PersonProfile_lib->get_reference_data();
+    //echo "(<b>ok</b>)<br>";
+    
+    echo "[exec] process_insta_prof_data() ==> ";
+    //$this->PersonProfile_lib->process_insta_prof_data();
+    //echo "(<b>ok</b>)<br>";
+    
+    echo "[exec] make_curl_following_str() ==> ";
+    //$this->PersonProfile_lib->make_curl_following_str();
+    //echo "(<b>ok</b>)<br>";
+    
+    echo "[exec] parse_follow_count() ==> ";
+    //$this->PersonProfile_lib->parse_follow_count();
+    //echo "(<b>ok</b>)<br>";
+    
+    echo "[exec] exists_profile() ==> ";
+    //$this->PersonProfile_lib->exists_profile();
     //echo "(<b>ok</b>)<br>";
     
     //======= INSTA_API-LIB =======//
-     echo "<h2>Test InstaApi Library</h2>";
-    //echo "[exec] () ==> ";
+    echo "<h2>Test InstaApi Library</h2>";
+    echo "[load] InstaApi_lib ==> ";
+    $this->load->library("APIInstaWeb/InstaApi_lib", null, 'InstaApi_lib');
+    echo "(<b>ok</b>)<br>";
     
+    echo "[exec] login() ==> ";
+    //$this->InstaApi_lib->login();
+    //echo "(<b>ok</b>)<br>";
+    
+    echo "[exec] make_query() ==> ";
+    //$this->InstaApi_lib->make_query();
     //echo "(<b>ok</b>)<br>";
     
     //======= INSTA_API_CLIENT-LIB =======//
-     echo "<h2>Test InstaApiClient Library</h2>";
-     echo "[load] InstaClient_lib ==> ";
-     $this->load->library("APIInstaWeb/InstaClient_lib", null, 'InstaClient_lib');
-     echo "(<b>ok</b>)<br>";
+    echo "<h2>Test InstaApiClient Library</h2>";
+    echo "[load] InstaClient_lib ==> ";
+    $this->load->library("APIInstaWeb/InstaClient_lib", null, 'InstaClient_lib');
+    echo "(<b>ok</b>)<br>";
      
-     echo "[exec] make_login() ==> ";
-     $result = $this->InstaClient_lib->make_login("alberto_test", "alberto2");
-     //var_dump($result);
-     echo "(<b>ok</b>)<br>";
+    echo "[exec] make_login() ==> ";
+    $result = $this->InstaClient_lib->make_login("alberto_test", "alberto2");
+    echo "(<b>ok</b>)<br>"; var_dump($result);
      
-  //echo "[exec] () ==> ";
+    echo "[exec] make_insta_friendships_command() ==> ";
+    //$this->InstaClient_lib->make_insta_friendships_command();
+    //echo "(<b>ok</b>)<br>"; 
+    
+    echo "[exec] make_curl_friendships_command_str() ==> ";
+    //$this->InstaClient_lib->make_curl_friendships_command_str();
+    //echo "(<b>ok</b>)<br>"; 
+    
+    echo "[exec] make_curl_chaining_str() ==> ";
+    //$this->InstaClient_lib->make_curl_chaining_str();
+    //echo "(<b>ok</b>)<br>"; 
+    
+    echo "[exec] obtine_cookie_value() ==> ";
+    //$this->InstaClient_lib->obtine_cookie_value();
+    //echo "(<b>ok</b>)<br>"; 
+    
+    echo "[exec] get_cookies_value() ==> ";
+    //$this->InstaClient_lib->get_cookies_value();
+    //echo "(<b>ok</b>)<br>"; 
+    
+    echo "[exec] make_post() ==> ";
+    //$this->InstaClient_lib->make_post();
+    //echo "(<b>ok</b>)<br>"; 
+    
+    echo "[exec] get_insta_csrftoken() ==> ";
+    //$this->InstaClient_lib->get_insta_csrftoken();
+    //echo "(<b>ok</b>)<br>"; 
+    
+    echo "[exec] verify_cookies() ==> ";
+    //$this->InstaClient_lib->verify_cookies();
+    //echo "(<b>ok</b>)<br>"; 
+    
+    echo "[exec] like_fist_post() ==> ";
+    //$this->InstaClient_lib->like_fist_post();
+    //echo "(<b>ok</b>)<br>"; 
+    
+    echo "[exec] curlResponseHeaderCallback() ==> ";
+    //$this->InstaClient_lib->curlResponseHeaderCallback();
+    //echo "(<b>ok</b>)<br>"; 
+    
+    echo "[exec] checkpoint_requested() ==> ";
+    //$this->InstaClient_lib->checkpoint_requested();
+    //echo "(<b>ok</b>)<br>"; 
+    
+    echo "[exec] get_challenge_data() ==> ";
+    //$this->InstaClient_lib->get_challenge_data();
+    //echo "(<b>ok</b>)<br>"; 
+    
+    echo "[exec] make_checkpoint() ==> ";
+    //$this->InstaClient_lib->make_checkpoint();
+    //echo "(<b>ok</b>)<br>"; 
+    
+    echo "[exec] TurnOn_Logs() ==> ";
+    //$this->InstaClient_lib->TurnOn_Logs();
+    //echo "(<b>ok</b>)<br>"; 
+    
+    echo "[exec] TurnOff_Logs() ==> ";
+    //$this->InstaClient_lib->TurnOff_Logs();
+    //echo "(<b>ok</b>)<br>"; 
+    
     //$result = new ApiInstaWeb\Responses\LoginResponse();
     //
     //var_dump($result);
     //echo "(<b>ok</b>)<br>";
     
     //======= INSTA_PROFILE_LIST-LIB =======//
-     echo "<h2>Test InstaProfileList Library</h2>";
-    //echo "[exec] () ==> ";
+    echo "<h2>Test InstaProfileList Library</h2>";
+    echo "[load] InstaProfileList_lib ==> ";
+    $this->load->library("APIInstaWeb/InstaProfileList_lib", null, 'InstaProfileList_lib');
+    echo "(<b>ok</b>)<br>";
     
+    echo "[exec] get_list_from_insta_follower_list() ==> ";
+    //$this->InstaProfileList_lib->get_list_from_insta_follower_list();
     //echo "(<b>ok</b>)<br>";
     
     //======= MEDIA-LIB =======//
-     echo "<h2>Test Media Library</h2>";
+    echo "<h2>Test Media Library</h2>";
+    echo "[load] Media_lib ==> ";
+    $this->load->library("APIInstaWeb/Media_lib", null, 'Media_lib');
+    echo "(<b>ok</b>)<br>";
+     
     //echo "[exec] () ==> ";
-    
+    //$this->Media_lib->
     //echo "(<b>ok</b>)<br>";
    
     //======= PROXY-LIB =======//
+    echo "<h2>Test Proxy Library</h2>";
+    echo "[load] Proxy_lib ==> ";
+    $this->load->library("APIInstaWeb/Proxy_lib", null, 'Proxy_lib');
+    echo "(<b>ok</b>)<br>";
     
     //echo "[exec] () ==> ";
-    
+    //$this->Proxy_lib->
     //echo "(<b>ok</b>)<br>";
+    
     echo "</pre>";
   }
 }

@@ -68,7 +68,7 @@ namespace ApiInstaWeb {
       return $output;*/
     }
 
-    private function make_curl_friendships_command_str(string $url) {
+    public function make_curl_friendships_command_str(string $url) {
       /*if (!$this->verify_cookies($cookies))
         throw new Exceptions\CookiesWrongSyntaxException("The cookies are wrong");
       $proxy_str = "";
@@ -118,7 +118,7 @@ namespace ApiInstaWeb {
       return FALSE;*/
     }
 
-    private function make_curl_chaining_str(string $insta_id, int $N, string $cursor = NULL) {
+    public function make_curl_chaining_str(string $insta_id, int $N, string $cursor = NULL) {
       /*$query = "bd0d6d184eefd4d0ce7036c11ae58ed9";
       $variables = "{\"id\":\"$insta_id\",\"first\":$N";
       if ($cursor != NULL && $cursor != "NULL") {
@@ -131,7 +131,7 @@ namespace ApiInstaWeb {
       return $curl_str;*/
     }
 
-    private static function obtine_cookie_value($cookies, string $name) {
+    public static function obtine_cookie_value($cookies, string $name) {
       /*oreach ($cookies as $key => $object) {
         //print_r($object + "<br>");
         if ($object->name == $name) {
@@ -141,7 +141,7 @@ namespace ApiInstaWeb {
       return null;*/
     }
 
-    private function get_cookies_value(string $key) {
+    public function get_cookies_value(string $key) {
       /*$value = NULL;
       global $cookies;
       foreach ($cookies as $index => $cookie) {
@@ -156,11 +156,11 @@ namespace ApiInstaWeb {
       }*/
     }
 
-    private function make_post() {
+    public function make_post() {
       //$url = InstaURLs::MakePost;
     }
 
-    private function get_insta_csrftoken($ch) {
+    public function get_insta_csrftoken($ch) {
       /*curl_setopt($ch, CURLOPT_URL, InstaURLs::Instagram);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
       curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
@@ -189,11 +189,8 @@ namespace ApiInstaWeb {
 
     public function make_login(string $login, string $pass, Proxy $proxy = null) {
       $instaAPI = new InstaApi();
-      try {
-        $result = $instaAPI->login($login, $pass, $proxy);
-      } catch (\Exception $exc) {
-        throw $exc;
-      }
+      $result = $instaAPI->login($login, $pass, $proxy);
+      
       return $result;
     }
 

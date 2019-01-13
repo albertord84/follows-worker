@@ -19,7 +19,7 @@ namespace ApiInstaWeb {
       $this->tag_query = "ded47faa9a1aaded10161a2ff32abb6b";
     }
 
-    protected function process_insta_prof_data(\stdClass $content) {
+    public function process_insta_prof_data(\stdClass $content) {
       $Profile = NULL;
       if (is_object($content) && $content->status === 'ok') {
         $tags = $content->hashtags;

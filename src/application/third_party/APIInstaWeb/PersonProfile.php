@@ -19,7 +19,7 @@ namespace ApiInstaWeb {
       $this->tag_query = "37479f2b8209594dde7facb0d904896a";
     }
 
-    protected function process_insta_prof_data(\stdClass $content) {
+    public function process_insta_prof_data(\stdClass $content) {
       $Profile = NULL;
       if (is_object($content) && $content->status === 'ok') {
         $users = $content->users;
@@ -68,7 +68,7 @@ namespace ApiInstaWeb {
       return $follower_list;
     }
 
-    private function get_insta_followers_list(\stdClass $cookies = NULL, int $N = 15, string& $cursor = NULL, Proxy $proxy = NULL) {
+    public function get_insta_followers_list(\stdClass $cookies = NULL, int $N = 15, string& $cursor = NULL, Proxy $proxy = NULL) {
 
       try {
         $variables = "{\"id\":\"$this->insta_id\",\"first\":$N";
@@ -120,28 +120,22 @@ namespace ApiInstaWeb {
       
     }
 
-    //end ReferenceProfile
-
-    protected function make_curl_following_str(\stdClass $cookies, int $N, string $cursor = NULL, Proxy $proxy = NULL) {
+    public function make_curl_following_str(\stdClass $cookies, int $N, string $cursor = NULL, Proxy $proxy = NULL) {
       
     }
 
-    //pasar para InstaPRofile as static function
-    private function parse_follow_count($follow_count_str) {
+    public function parse_follow_count($follow_count_str) {
       
     }
 
-    //pasar para InstaProfile
     public function get_insta_following_count() {
       
     }
 
-    //pasar para InstaProfile
     public function get_reference_data(\stdClass $cookies, string $referense_name) {
       
     }
 
-    //pasar para InstaProfile
     public function exists_profile(string $profile_name, ProfileType $type, string $insta_id = NULL, \stdClass $cookies = NULL, Proxy $proxy = NULL) {
       
     }

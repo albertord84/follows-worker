@@ -21,7 +21,7 @@ class HashProfile_lib {
     $this->HashProfile = new HashProfile();
   }
    
-  protected function process_insta_prof_data(\stdClass $content) {
+  public function process_insta_prof_data(\stdClass $content) {
     $this->HashProfile->process_insta_prof_data($content);
   }
 
