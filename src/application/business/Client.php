@@ -149,7 +149,7 @@ namespace business {
      */
     function __construct() {
       parent::__construct();
-      
+
       $this->CI->load->model('db_model');
       $this->CI->load->library("APIInstaWeb/InstaApi_lib", null, 'InstaApi_lib');
     }
@@ -157,7 +157,7 @@ namespace business {
     /**
      * 
      * @return type
-     */        
+     */
     public function get_clients() {
       return $this->CI->db_model->get_clients_data();
     }
@@ -171,7 +171,55 @@ namespace business {
       $client_data = $this->CI->db_model->get_client_data($id);
       $this->fill_client_data($client_data);
     }
-    
+
+    /**
+     * 
+     * @todo
+     * @param type
+     * @return
+     * 
+     */
+    private function fill_client_data($client_data) {
+
+      /*
+        $credit_card_number;
+        $credit_card_status_id;
+        $credit_card_cvc;
+        $credit_card_name;
+        $pay_day;
+        $plane_id;
+        $insta_id;
+        $status_date;
+        $insta_followers_ini;
+        $insta_following;
+        $HTTP_SERVER_VARS;
+        $cookies;
+        $to_follow;
+        $reference_profiles = array();
+        $paused;
+        $Proxy;
+       */
+
+      $this->id = $client_data->user_id;
+      $this->name = $client_data->name;
+      $this->login = $client_data->login;
+      $this->pass = $client_data->pass;
+      $this->email = $client_data->email;
+      $this->insta_id = $client_data->insta_id;
+      $this->plane_id = $client_data->plane_id;
+      $this->to_follow = isset($client_data->to_follow) ? $client_data->to_follow : 0;
+      $this->status_id = $client_data->status_id;
+      $this->insta_following = $client_data->insta_following;
+      $this->cookies = $client_data->cookies;
+      $this->paused = $client_data->paused;
+      $this->HTTP_SERVER_VARS = $client_data->HTTP_SERVER_VARS;
+      $this->init_date = $client_data->init_date;
+      $this->last_access = $client_data->last_access;
+      //$this->get_reference_profiles($this->id);
+      //$this->Proxy = new Proxy();
+      //$this->Proxy->load($client_data->proxy_id);
+    }
+
     /**
      *
      * @param type $offset
@@ -184,7 +232,7 @@ namespace business {
       //$Client = $this->fill_client_data($client_data);
       //return $Client;
     }
-    
+
     /**
      * 
      * @param type $client_id
@@ -216,7 +264,7 @@ namespace business {
         echo $exc->getTraceAsString();
       }
     }
-    
+
     /**
      * 
      * @todo
@@ -312,34 +360,6 @@ namespace business {
       } catch (Exception $exc) {
         echo $exc->getTraceAsString();
       }
-    }
-
-    /**
-     * 
-     * @todo
-     * @param type
-     * @return
-     * 
-     */
-    private function fill_client_data($client_data) {
-      $this->id = $client_data->user_id;
-      $this->name = $client_data->name;
-      $this->login = $client_data->login;
-      $this->pass = $client_data->pass;
-      $this->email = $client_data->email;
-      $this->insta_id = $client_data->insta_id;
-      $this->plane_id = $client_data->plane_id;
-      $this->to_follow = isset($client_data->to_follow) ? $client_data->to_follow : 0;
-      $this->status_id = $client_data->status_id;
-      $this->insta_following = $client_data->insta_following;
-      $this->cookies = $client_data->cookies;
-      $this->paused = $client_data->paused;
-      $this->HTTP_SERVER_VARS = $client_data->HTTP_SERVER_VARS;
-      $this->init_date = $client_data->init_date;
-      $this->last_access = $client_data->last_access;
-      //$this->get_reference_profiles($this->id);
-      //$this->Proxy = new Proxy();
-      //$this->Proxy->load($client_data->proxy_id);
     }
 
     /**

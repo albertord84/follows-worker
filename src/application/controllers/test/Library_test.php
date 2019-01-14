@@ -244,7 +244,7 @@ class Library_test extends CI_Controller {
     //echo "(<b>ok</b>)<br>"; 
     
     echo "[exec] like_first_post() ==> ";
-    $this->InstaClient_lib->like_first_post();
+    //$this->InstaClient_lib->like_first_post();
     //echo "(<b>ok</b>)<br>"; 
     
     echo "[exec] curlResponseHeaderCallback() ==> ";
