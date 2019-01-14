@@ -1,6 +1,7 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 use business\Client;
+use business\CookiesRequest;
 
 class Library_test extends CI_Controller {
 
@@ -9,6 +10,7 @@ class Library_test extends CI_Controller {
 
     require_once config_item('db-exception-class');
     require_once config_item('business-client-class');
+    require_once config_item('business-cookies_request-class');
   }
 
   public function index() {
@@ -103,7 +105,7 @@ class Library_test extends CI_Controller {
     echo "(<b>ok</b>)<br>";
    
     echo "[exec] get_insta_followers() ==> ";
-    $this->GeoProfile_lib->get_insta_followers();
+    //$this->GeoProfile_lib->get_insta_followers();
     //echo "(<b>ok</b>)<br>";
     
     echo "[exec] get_insta_media() ==> ";
@@ -203,9 +205,12 @@ class Library_test extends CI_Controller {
     echo "(<b>ok</b>)<br>";
      
     echo "[exec] make_login() ==> ";
+    $client = new Client();
+    $client->load_from_db(30864);
     $result = $this->InstaClient_lib->make_login("alberto_test", "alberto2");
-    echo "(<b>ok</b>)<br>"; var_dump($result);
-     
+    echo "(<b>ok</b>)<br>"; //var_dump($result);
+
+    
     echo "[exec] make_insta_friendships_command() ==> ";
     //$this->InstaClient_lib->make_insta_friendships_command();
     //echo "(<b>ok</b>)<br>"; 
@@ -238,8 +243,8 @@ class Library_test extends CI_Controller {
     //$this->InstaClient_lib->verify_cookies();
     //echo "(<b>ok</b>)<br>"; 
     
-    echo "[exec] like_fist_post() ==> ";
-    //$this->InstaClient_lib->like_fist_post();
+    echo "[exec] like_first_post() ==> ";
+    $this->InstaClient_lib->like_first_post();
     //echo "(<b>ok</b>)<br>"; 
     
     echo "[exec] curlResponseHeaderCallback() ==> ";

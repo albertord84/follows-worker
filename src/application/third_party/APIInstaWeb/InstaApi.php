@@ -67,12 +67,6 @@ namespace ApiInstaWeb {
           $verificationCode = trim(fgets(STDIN));
           $ig->finishTwoFactorLogin($verificationCode, $twoFactorIdentifier);
         }
-
-        /*$Cookies = array();
-        $Cookies['sessionid'] = $ig->client->getCookie('sessionid')->getValue();
-        $Cookies['csrftoken'] = $ig->client->getCookie('csrftoken')->getValue();
-        $Cookies['ds_user_id'] = $ig->client->getCookie('ds_user_id')->getValue();
-        $Cookies['mid'] = $ig->client->getCookie('mid')->getValue();*/
         
         $sessionid = $ig->client->getCookie('sessionid')->getValue();
         $csrftoken = $ig->client->getCookie('csrftoken')->getValue();
@@ -109,7 +103,7 @@ namespace ApiInstaWeb {
       }
     }
 
-    public function make_query(string $query, string $variables, \stdClass $cookies, Proxy $proxy = NULL) {
+    public static function make_query(string $query, string $variables, \stdClass $cookies, Proxy $proxy = NULL) {
       $variables = urlencode($variables);
       $graphquery_url = InstaURLs::GraphqlQuery;
       $url = "$graphquery_url?query_hash=$query&variables=$variables";

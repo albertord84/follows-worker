@@ -167,12 +167,9 @@ namespace business {
      * @param int $client_id
      * @return DataSet  
      */
-    public function get_client(int $client_id) {
-      $client_data = $this->CI->db_model->get_client_data($client_id);
-      return $client_data;
-      
-      //$Client = $this->fill_client_data($client_data);
-      //return $Client;
+    public function load_from_db(int $id) {
+      $client_data = $this->CI->db_model->get_client_data($id);
+      $this->fill_client_data($client_data);
     }
     
     /**
@@ -324,32 +321,25 @@ namespace business {
      * @return
      * 
      */
-    public function fill_client_data($client_data) {
-      $Client = NULL;
-      if ($client_data) {
-        $Client = new Client();
-        //print_r($client_data);
-        // Update Client Data
-        $Client->id = $client_data->user_id;
-        $Client->name = $client_data->name;
-        $Client->login = $client_data->login;
-        $Client->pass = $client_data->pass;
-        $Client->email = $client_data->email;
-        $Client->insta_id = $client_data->insta_id;
-        $Client->plane_id = $client_data->plane_id;
-        $Client->to_follow = isset($client_data->to_follow) ? $client_data->to_follow : 0;
-        $Client->status_id = $client_data->status_id;
-        $Client->insta_following = $client_data->insta_following;
-        $Client->cookies = $client_data->cookies;
-        $Client->paused = $client_data->paused;
-        $Client->HTTP_SERVER_VARS = $client_data->HTTP_SERVER_VARS;
-        $Client->init_date = $client_data->init_date;
-        $Client->last_access = $client_data->last_access;
-        $Client->get_reference_profiles($Client->id);
-        $Client->Proxy = new Proxy();
-        $Client->Proxy->load($client_data->proxy_id);
-      }
-      return $Client;
+    private function fill_client_data($client_data) {
+      $this->id = $client_data->user_id;
+      $this->name = $client_data->name;
+      $this->login = $client_data->login;
+      $this->pass = $client_data->pass;
+      $this->email = $client_data->email;
+      $this->insta_id = $client_data->insta_id;
+      $this->plane_id = $client_data->plane_id;
+      $this->to_follow = isset($client_data->to_follow) ? $client_data->to_follow : 0;
+      $this->status_id = $client_data->status_id;
+      $this->insta_following = $client_data->insta_following;
+      $this->cookies = $client_data->cookies;
+      $this->paused = $client_data->paused;
+      $this->HTTP_SERVER_VARS = $client_data->HTTP_SERVER_VARS;
+      $this->init_date = $client_data->init_date;
+      $this->last_access = $client_data->last_access;
+      //$this->get_reference_profiles($this->id);
+      //$this->Proxy = new Proxy();
+      //$this->Proxy->load($client_data->proxy_id);
     }
 
     /**

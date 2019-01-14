@@ -56,8 +56,8 @@ class Business_test extends CI_Controller {
     $obj = new Proxy();
     echo "[new] Proxy_business ==> (<b>ok</b>)<br>";
 
-    $obj->load();
-    echo "[load] load() ==> (<b>ok</b>)";
+    $obj->load_from_db(1);
+    echo "[load] load() ==> (<b>ok</b>)"; var_dump($obj);
 
     //======= PROXY-MANAGER =======//
     echo "<h2>Test ProxyManager Business</h2>";

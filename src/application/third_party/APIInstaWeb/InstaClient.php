@@ -2,6 +2,10 @@
 
 namespace ApiInstaWeb {
   
+  require_once config_item('business-cookies_request-class');
+  
+  use business\CookiesRequest;
+  
   /**
    * @category CodeIgniter-Library: InstaApiLib
    * 
@@ -17,7 +21,7 @@ namespace ApiInstaWeb {
     public $proxy;
     private $has_logs;
 
-    public function __construct(string $insta_id, \stdClass $cookies, Proxy $proxy) {
+    public function __construct(string $insta_id, CookiesRequest $cookies, Proxy $proxy) {
       //require_once config_item('composer_autoload');
       require_once config_item('thirdparty-insta_api-resource');
       require_once config_item('cookies_wrong_syntax-exception-class');
@@ -94,43 +98,6 @@ namespace ApiInstaWeb {
       return $curl_str;
     }
 
-    public function get_insta_chaining(string $insta_id, int $N = 1, string $cursor = NULL) {
-
-      /*$curl_str = $this->make_curl_chaining_str($insta_id, $N, $cursor);
-      if ($curl_str === NULL) {
-        if ($this->has_logs) {
-          var_dump("error in cookies line 708 function get_insta_chaining \n");
-        }
-        return NULL;
-      }
-
-      exec($curl_str, $output, $status);
-      $json = json_decode($output[0]);
-
-      if (isset($json->data->user->edge_owner_to_timeline_media) && isset($json->data->user->edge_owner_to_timeline_media->edges)) {
-        return $json->data->user->edge_owner_to_timeline_media->edges;
-      }
-      if ($this->has_logs) {
-        echo "Message Error in get_insta_chaining</br>\n";
-        var_dump($output);
-        var_dump($curl_str);
-      }
-      return FALSE;*/
-    }
-
-    public function make_curl_chaining_str(string $insta_id, int $N, string $cursor = NULL) {
-      /*$query = "bd0d6d184eefd4d0ce7036c11ae58ed9";
-      $variables = "{\"id\":\"$insta_id\",\"first\":$N";
-      if ($cursor != NULL && $cursor != "NULL") {
-        $variables .= ",\"after\":\"$cursor\"";
-      }
-      $variables .= "}";
-
-      $curl_str = InstaApi::make_query($query, $variables, $this->cookies, $this->proxy);
-
-      return $curl_str;*/
-    }
-
     public static function obtine_cookie_value($cookies, string $name) {
       /*oreach ($cookies as $key => $object) {
         //print_r($object + "<br>");
@@ -194,9 +161,9 @@ namespace ApiInstaWeb {
       return $result;
     }
 
-    public function like_fist_post(string $fromClient_ista_id) {
+    public function like_first_post(string $fromClient_ista_id) {
 
-      /*try {
+      try {
         $result = $this->get_insta_chaining($fromClient_ista_id, 1, NULL);
         //print_r($result);
         $error = true;
@@ -225,9 +192,47 @@ namespace ApiInstaWeb {
         return $result;
       } catch (\Exception $exc) {
         throw $exc; //melhorar esse return
-      }*/
+      }
     }
 
+    
+    public function get_insta_chaining(string $insta_id, int $N = 1, string $cursor = NULL) {
+
+      $curl_str = $this->make_curl_chaining_str($insta_id, $N, $cursor);
+      if ($curl_str === NULL) {
+        if ($this->has_logs) {
+          var_dump("error in cookies line 708 function get_insta_chaining \n");
+        }
+        return NULL;
+      }
+
+      exec($curl_str, $output, $status);
+      $json = json_decode($output[0]);
+
+      if (isset($json->data->user->edge_owner_to_timeline_media) && isset($json->data->user->edge_owner_to_timeline_media->edges)) {
+        return $json->data->user->edge_owner_to_timeline_media->edges;
+      }
+      if ($this->has_logs) {
+        echo "Message Error in get_insta_chaining</br>\n";
+        var_dump($output);
+        var_dump($curl_str);
+      }
+      return FALSE;
+    }
+    
+    public function make_curl_chaining_str(string $insta_id, int $N, string $cursor = NULL) {
+      $query = "bd0d6d184eefd4d0ce7036c11ae58ed9";
+      $variables = "{\"id\":\"$insta_id\",\"first\":$N";
+      if ($cursor != NULL && $cursor != "NULL") {
+        $variables .= ",\"after\":\"$cursor\"";
+      }
+      $variables .= "}";
+
+      $curl_str = InstaApi::make_query($query, $variables, $this->cookies, $this->proxy);
+
+      return $curl_str;
+    }
+    
     public function curlResponseHeaderCallback($ch, string $headerLine) {
       /*global $cookies;
       if (preg_match('/^Set-Cookie:\s*([^;]*)/mi', $headerLine, $cookie) == 1)

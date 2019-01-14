@@ -2,15 +2,18 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+  
 use ApiInstaWeb\Proxy;
 use ApiInstaWeb\InstaURLs;
 use ApiInstaWeb\InstaClient;
 use ApiInstaWeb\VerificationChoice;
 use ApiInstaWeb\Responses\LoginResponse;
 use ApiInstaWeb\Exceptions\InstaException;
+use ApiInstaWeb\Responses\CookiesResponse;
 use ApiInstaWeb\Exceptions\CurlNertworkException;
 use ApiInstaWeb\Exceptions\IncorrectPasswordException;
 use ApiInstaWeb\Exceptions\InstaCheckpointRequiredException;
+use business\CookiesRequest;
 
 /**
  * @category CodeIgniter-Library: InstaApiLib
@@ -29,11 +32,13 @@ class InstaClient_lib {
     require_once config_item('thirdparty-insta_client-resource');
     require_once config_item('thirdparty-verification_choice-resource');
     require_once config_item('insta_checkpoint_required-exception-class');
+    require_once config_item('cookies-response-class');
+    require_once config_item('business-cookies_request-class');
 
     $this->CI = &get_instance();
     $this->CI->load->model("db_model");
 
-    $this->InstaClient = new InstaClient("", new \stdClass(), new Proxy("", "", "", ""));
+    $this->InstaClient = new InstaClient("", new CookiesRequest(null, null, null, null), new Proxy("", "", "", ""));
   }
 
   public function make_login(string $login, string $pass) {
@@ -91,9 +96,9 @@ class InstaClient_lib {
     $this->InstaClient->verify_cookies($cookies);
   }
 
-  public function like_fist_post(string $fromClient_ista_id) {
+  public function like_first_post(string $fromClient_ista_id) {
 
-    $this->InstaClient->like_fist_post($fromClient_ista_id);
+    $this->InstaClient->like_first_post($fromClient_ista_id);
   }
 
   public function curlResponseHeaderCallback($ch, string $headerLine) {

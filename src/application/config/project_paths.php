@@ -20,6 +20,7 @@
   $config['business-ref_profile-class'] = getcwd().'/application/business/BusinessRefProfile.php';
   $config['business-class'] = getcwd().'/application/business/Business.php';
   $config['business-client-class'] = getcwd().'/application/business/Client.php';  
+  $config['business-cookies_request-class'] = getcwd().'/application/business/CookiesRequest.php';
   $config['business-own_exception-class'] = getcwd().'/application/business/OwnException.php';
   $config['business-proxy-class'] = getcwd().'/application/business/Proxy.php';
   $config['business-proxy_manager-class'] = getcwd().'/application/business/ProxyManager.php';
@@ -29,7 +30,7 @@
   $config['business-user_role-class'] = getcwd().'/application/business/UserRole.php';
   $config['business-user_status-class'] = getcwd().'/application/business/UserStatus.php';
   $config['business-washdog_type-class'] = getcwd().'/application/business/WashdogType.php';
-  
+   
   //Clases del negocio del Worker
   $config['business-daily_work-class'] = getcwd().'/application/business/Worker/DailyWork.php';
   $config['business-error_type-class'] = getcwd().'/application/business/Worker/ErrorType.php';
