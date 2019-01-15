@@ -12,7 +12,7 @@ namespace business {
    * @todo Define an Admin business class.
    * 
    */
-  class Admin extends Business {
+  /*class Admin extends Business {
 
     function __construct() {
       parent::__construct();
@@ -30,7 +30,7 @@ namespace business {
       
     }
 
-  }
+  }*/
 
 }
 

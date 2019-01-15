@@ -10,7 +10,7 @@ namespace business {
    * @todo Define business base class.
    * 
    */
-  class Business {
+  abstract class Business {
 
     /**
      * 

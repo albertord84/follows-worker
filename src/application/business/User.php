@@ -30,14 +30,6 @@ namespace business {
      * @var type
      *  
      */
-    protected $name;
-
-    /**
-     * 
-     * @access public
-     * @var type
-     *  
-     */
     public $login;
 
     /**

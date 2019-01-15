@@ -13,6 +13,7 @@ namespace business {
    * 
    */
   class Client extends User {
+    public $aaa = 3;
 
     /**
      * 
@@ -173,10 +174,10 @@ namespace business {
     public function load_from_db(int $id) {
       $client_data = $this->CI->db_model->get_client_data($id);
       
-      $this->id = $client_data->user_id;
-      $this->name = $client_data->name;
+      //$this->id = $client_data->user_id;
+      //$this->name = $client_data->name;
       
-      //$this->fill_client_data($client_data);
+      $this->fill_client_data($client_data);
     }
 
     /**
@@ -186,7 +187,7 @@ namespace business {
      * @return
      * 
      */
-    public function fill_client_data($data) {
+    public function fill_client_data(\stdClass $data) {
 
       /*
         $credit_card_number;

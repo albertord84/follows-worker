@@ -4,7 +4,7 @@ if (!defined('BASEPATH'))
   exit('No direct script access allowed');
 
 use business\Proxy;
-use business\Admin;
+//use business\Admin;
 use business\Attendent;
 use business\SystemConfig;
 use business\Client;
@@ -17,7 +17,7 @@ class Business_test extends CI_Controller {
     parent::__construct();
 
     require_once config_item('business-proxy-class');
-    require_once config_item('business-admin-class');
+    //require_once config_item('business-admin-class');
     require_once config_item('business-attendent-class');
     require_once config_item('business-system_config-class');
     require_once config_item('business-client-class');
@@ -79,9 +79,9 @@ class Business_test extends CI_Controller {
     echo "[new] StatusProfiles_business ==> (<b>ok</b>)";
 
     //======= ADMIN =======//
-    echo "<h2>Test Admin Business</h2>";
+    /*echo "<h2>Test Admin Business</h2>";
     $obj = new Admin();
-    echo "[new] Admin_business ==> (<b>ok</b>)";
+    echo "[new] Admin_business ==> (<b>ok</b>)";*/
 
     //======= ATTENDENT =======//
     echo "<h2>Test Attendent Business</h2>";

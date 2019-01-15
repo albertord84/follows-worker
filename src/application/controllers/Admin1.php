@@ -4,7 +4,7 @@ ini_set('xdebug.var_display_max_depth', 256);
 ini_set('xdebug.var_display_max_children', 256);
 ini_set('xdebug.var_display_max_data', 1024);
 
-class Admin extends CI_Controller {
+class Admin1 extends CI_Controller {
 
     public function index() {
         var_dump(strpos("Worker Inited...!<br>","Worker")!==FALSE);

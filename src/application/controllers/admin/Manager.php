@@ -10,4 +10,11 @@ class Manager extends CI_Controller {
     echo "Controller: <b>" . __CLASS__ . "</b> cargado.";
   }
 
+  public function curl() {
+    echo "Aqui se hara la gestion de las curl";
+  }
+  
+  public function protocol() {
+    echo "Aqui se hara la gestion de las curl";
+  }
 }
