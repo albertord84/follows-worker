@@ -57,7 +57,7 @@ class Business_test extends CI_Controller {
     echo "[new] Proxy_business ==> (<b>ok</b>)<br>";
 
     $obj->load_from_db(1);
-    echo "[load] load() ==> (<b>ok</b>)"; //var_dump($obj);
+    echo "[load] load() ==> (<b>ok</b>)"; var_dump($obj);
 
     //======= PROXY-MANAGER =======//
     echo "<h2>Test ProxyManager Business</h2>";
@@ -93,6 +93,8 @@ class Business_test extends CI_Controller {
     $obj = new SystemConfig();
     echo "[new] SystemConfig_business ==> (<b>ok</b>)";
     echo "</pre>";
+    
+    echo "<h2>"; print_r(memory_get_usage()); echo '<br>'; echo "</h2>";
   }
 
 }

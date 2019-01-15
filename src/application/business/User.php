@@ -22,7 +22,7 @@ namespace business {
      * @var type
      *  
      */
-    public $id;
+    protected $id;
 
     /**
      * 
@@ -30,7 +30,7 @@ namespace business {
      * @var type
      *  
      */
-    public $name;
+    protected $name;
 
     /**
      * 
