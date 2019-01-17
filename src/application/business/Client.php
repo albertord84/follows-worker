@@ -226,21 +226,21 @@ namespace business {
      * @param type $rows
      * @return type
      */
-    public function get_begginer_client($offset = 0, $rows = 0) {
+   //DELETE FUNTION
+   /* public function get_begginer_client($offset = 0, $rows = 0) {
       $client_data = $this->CI->db_model->get_biginner_data($offset, $rows);
       return $client_data;
       //$Client = $this->fill_client_data($client_data);
       //return $Client;
-    }
+    }*/  
 
     /**
-     * 
+     * Obtiene 
      * @param type $client_id
      */
     public function get_reference_profiles($client_id = NULL) {
       try {
         $client_id = $client_id ? $client_id : $this->id;
-        //$DB = new \follows\cls\DB();
         $ref_profs_data = $this->CI->db_model->get_reference_profiles_data($client_id);
         while ($prof_data = $ref_profs_data->fetch_object()) {
           //CONCERTAR quitar follows...
@@ -564,23 +564,12 @@ namespace business {
     public function make_checkpoint(string $login, string $code) {
       //las cookies son las actualizadas de la BD
       $login_data = json_decode($this->cookies);
-      $proxy = $this->GetProxy();
-      $client = new \ApiInstaWeb\InstaClient($this->insta_id, $login_data, $proxy);
+      //$proxy = $this->GetProxy();
+      $client = new \ApiInstaWeb\InstaClient($this->insta_id, $login_data, $this->Proxy);
       $res = $client->make_checkpoint($login, $code);
       $this->cookies = json_encode($client->cookies);
       //guardar las cookies en la Base de Datos
       return $res;
-    }
-
-    /**
-     * 
-     * @todo
-     * @param type
-     * @return
-     * 
-     */
-    public function GetProxy() {
-      
     }
 
   }

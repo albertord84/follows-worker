@@ -41,10 +41,7 @@ class Business_test extends CI_Controller {
 
     $array = $obj->load_from_db(1);
     echo "[get] load_from_db() => result: " . count($array) . " ==> (<b>ok</b>)<br>"; //var_dump($array);
-    
-    //$array = $obj->get_begginer_client(0, 5);
-    //echo "[get] get_begginer_client() => result: ".count($array)."<br>"; var_dump($array);
-    //
+     
     //$array = $obj->get_reference_profiles();
     //echo "[insert] get_reference_profiles() => result: ".count($array)."<br>";
     //
