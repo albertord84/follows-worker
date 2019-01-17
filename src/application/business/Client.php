@@ -13,6 +13,7 @@ namespace business {
    * 
    */
   class Client extends User {
+    public $aaa = 3;
 
     /**
      * 
@@ -142,6 +143,9 @@ namespace business {
      */
     public $Proxy;
 
+    /*public $Id;
+    public $Name;*/
+    
     /**
      * 
      * @todo Class constructor.
@@ -169,6 +173,10 @@ namespace business {
      */
     public function load_from_db(int $id) {
       $client_data = $this->CI->db_model->get_client_data($id);
+      
+      //$this->id = $client_data->user_id;
+      //$this->name = $client_data->name;
+      
       $this->fill_client_data($client_data);
     }
 
@@ -179,7 +187,7 @@ namespace business {
      * @return
      * 
      */
-    private function fill_client_data($client_data) {
+    public function fill_client_data(\stdClass $data) {
 
       /*
         $credit_card_number;
@@ -200,9 +208,11 @@ namespace business {
         $Proxy;
        */
 
-      $this->id = $client_data->user_id;
-      $this->name = $client_data->name;
-      $this->login = $client_data->login;
+      $this->id = $data->user_id;
+      $this->name = $data->name;
+      //$this->Id = $data->user_id;
+      //$this->Name = $data->name;
+      /*$this->login = $client_data->login;
       $this->pass = $client_data->pass;
       $this->email = $client_data->email;
       $this->insta_id = $client_data->insta_id;
@@ -214,7 +224,7 @@ namespace business {
       $this->paused = $client_data->paused;
       $this->HTTP_SERVER_VARS = $client_data->HTTP_SERVER_VARS;
       $this->init_date = $client_data->init_date;
-      $this->last_access = $client_data->last_access;
+      $this->last_access = $client_data->last_access;*/
       //$this->get_reference_profiles($this->id);
       //$this->Proxy = new Proxy();
       //$this->Proxy->load($client_data->proxy_id);

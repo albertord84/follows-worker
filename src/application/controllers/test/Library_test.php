@@ -208,7 +208,7 @@ class Library_test extends CI_Controller {
     $client = new Client();
     $client->load_from_db(30864);
     $result = $this->InstaClient_lib->make_login("alberto_test", "alberto2");
-    echo "(<b>ok</b>)<br>"; //var_dump($result);
+    echo "(<b>ok</b>)<br>"; var_dump($result);
 
     
     echo "[exec] make_insta_friendships_command() ==> ";

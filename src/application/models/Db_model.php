@@ -161,17 +161,14 @@ class Db_model extends CI_Model {
 
   public function get_client_data($client_id) {
     try {
-      $result = $this->db->query(""
+      $sql = ""
               . "SELECT * FROM users "
               . "     INNER JOIN clients ON clients.user_id = users.id "
               . "     INNER JOIN plane ON plane.id = clients.plane_id "
-              . "WHERE users.id = $client_id; "
-      );
-
-      //$query = $this->db->query($sql);
-      //return $query->result();
-
-      return $result ? $result->result_object() : NULL;
+              . "WHERE users.id = $client_id; ";
+      $query = $this->db->query($sql);
+      
+      return $query->row();
     } catch (Error $e) {
       if ($this->db->error()['code'] != 0) {
         throw new Db_Exception($this->db->error(), $e);

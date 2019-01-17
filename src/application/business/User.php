@@ -22,15 +22,7 @@ namespace business {
      * @var type
      *  
      */
-    public $id;
-
-    /**
-     * 
-     * @access public
-     * @var type
-     *  
-     */
-    public $name;
+    protected $id;
 
     /**
      * 
