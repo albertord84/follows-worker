@@ -2,26 +2,74 @@
 
 namespace ApiInstaWeb {
   
+  use stdClass;
+  
+  
   /**
+   * 
+   * Define enum for Instagram Actions
+   * 
    * @category Third-Party Instagram API
    * 
    * @access public
-   *
-   * @todo .
+   *.
+   * 
+   */
+  class InstaProfileType {
+    public static $PERSON= 1;
+    public static $HASHTAG = 2;
+    public static $GEOLOCALIZATION= 3;
+  }
+  
+   class InstaActionType {
+    public static $LOGIN = 1;
+    public static $LIKE = 2;
+    public static $FOLLOW= 3;
+    public static $UNFOLLOW = 4;
+    public static $GET_FOLLOWERS = 5;
+    public static $GET_RPOFILE = 6;
+    public static $GET_POST = 7;
+  }
+  
+  /**
+   * 
+   * Define
+   * 
+   * @category Third-Party Instagram API
+   * 
+   * @access public
+   *.
    * 
    */
   class InstaCurlMgr {
-
-
-    protected $has_logs = TRUE;
-
-    public function __construct() {
+    private $Config;
+    
+    private $ActionType;
+    private $ProfileType;
+    
+    private const 
+    
+    public function __construct(InstaProfileType $profile, InstaActionType $action) {
       require_once config_item('');
+      
+      $this->$ActionType = $action;
+      $this->ProfileType = $profile;
+              
+      $ci = &get_instance();
+    }
+
+    public static function make_curl(Proxy $proxy, stdClass $cookies = NULL) {
 
     }
 
-    public static function make_query(string $query, string $variables, \stdClass $cookies, Proxy $proxy = NULL) {
-      $variables = urlencode($variables);
+    
+    private function action_instagram ()
+    {
+      
+    }
+    
+    /*
+     * $variables = urlencode($variables);
       $graphquery_url = InstaURLs::GraphqlQuery;
       $url = "$graphquery_url?query_hash=$query&variables=$variables";
       $proxy_str = $proxy->ToString();
@@ -41,14 +89,15 @@ namespace ApiInstaWeb {
       //$curl_str .= "-H 'User-Agent: $cnf->CURL_USER_AGENT' ";
       $curl_str .= "-H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:49.0) Gecko/20100101 Firefox/49.0' ";
       $curl_str .= "-H 'X-Requested-with: XMLHttpRequest' ";
-      $curl_str .= "-H 'content-type: application/x-www-form-urlencoded' ";
-      $curl_str .= "-H 'Accept: */*' ";
-      $curl_str .= "-H 'Referer: https://www.instagram.com/' ";
+      $curl_str .= "-H 'content-type: application/x-www-form-urlencoded' ";*/
+      //$curl_str .= "-H 'Accept: */*' ";
+      /*$curl_str .= "-H 'Referer: https://www.instagram.com/' ";
       $curl_str .= "-H 'Authority: www.instagram.com' ";
       $curl_str .= "--compressed ";
       return $curl_str;
-    }
-
+     */
+    
+    
   }
 
 }
