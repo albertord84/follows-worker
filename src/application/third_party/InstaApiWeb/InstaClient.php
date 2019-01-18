@@ -1,6 +1,6 @@
 <?php
 
-namespace ApiInstaWeb {
+namespace InstaApiWeb {
   
   require_once config_item('business-cookies_request-class');
   

@@ -1,6 +1,6 @@
 <?php
 
-namespace ApiInstaWeb\Exceptions {
+namespace InstaApiWeb\Exceptions {
 
   require_once 'ExceptionCode.php';
   require_once 'InstaException.php';

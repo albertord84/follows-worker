@@ -1,6 +1,6 @@
 <?php
 
-namespace ApiInstaWeb {
+namespace InstaApiWeb {
 
   /**
    * Description of VerificationChoice

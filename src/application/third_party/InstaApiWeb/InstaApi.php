@@ -1,13 +1,13 @@
 <?php
 
-namespace ApiInstaWeb {
+namespace InstaApiWeb {
   
-  use ApiInstaWeb\Responses\LoginResponse;
-  use ApiInstaWeb\Responses\CookiesResponse;
-  use ApiInstaWeb\Exceptions\InstaException;
-  use ApiInstaWeb\Exceptions\CurlNertworkException;
-  use ApiInstaWeb\Exceptions\IncorrectPasswordException;
-  use ApiInstaWeb\Exceptions\InstaCheckpointRequiredException;
+  use InstaApiWeb\Responses\LoginResponse;
+  use InstaApiWeb\Responses\CookiesResponse;
+  use InstaApiWeb\Exceptions\InstaException;
+  use InstaApiWeb\Exceptions\CurlNertworkException;
+  use InstaApiWeb\Exceptions\IncorrectPasswordException;
+  use InstaApiWeb\Exceptions\InstaCheckpointRequiredException;
   
   /**
    * @category Third-Party Instagram API
@@ -32,10 +32,10 @@ namespace ApiInstaWeb {
 
     public function __construct() {
       require_once config_item('composer_autoload');
-      require_once config_item('login-response-class');
-      require_once config_item('cookies-response-class');
       require_once config_item('insta-exception-class');
       require_once config_item('curl_nertwork-exception-class');
+      require_once config_item('thirdparty-login_response-class');
+      require_once config_item('thirdparty-cookies_response-class');
       require_once config_item('incorrect_password-exception-class');
       require_once config_item('cookies_wrong_syntax-exception-class');
       require_once config_item('insta_checkpoint_required-exception-class');

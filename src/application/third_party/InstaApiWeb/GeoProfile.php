@@ -1,8 +1,8 @@
 <?php
 
-namespace ApiInstaWeb {
+namespace InstaApiWeb {
 
-  use ApiInstaWeb\InstaApi;
+  use InstaApiWeb\InstaApi;
   
   require_once 'ReferenceProfile.php';
 

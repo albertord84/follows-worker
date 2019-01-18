@@ -3,16 +3,16 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
   
-use ApiInstaWeb\Proxy;
-use ApiInstaWeb\InstaURLs;
-use ApiInstaWeb\InstaClient;
-use ApiInstaWeb\VerificationChoice;
-use ApiInstaWeb\Responses\LoginResponse;
-use ApiInstaWeb\Exceptions\InstaException;
-use ApiInstaWeb\Responses\CookiesResponse;
-use ApiInstaWeb\Exceptions\CurlNertworkException;
-use ApiInstaWeb\Exceptions\IncorrectPasswordException;
-use ApiInstaWeb\Exceptions\InstaCheckpointRequiredException;
+use InstaApiWeb\Proxy;
+use InstaApiWeb\InstaURLs;
+use InstaApiWeb\InstaClient;
+use InstaApiWeb\VerificationChoice;
+use InstaApiWeb\Responses\LoginResponse;
+use InstaApiWeb\Exceptions\InstaException;
+use InstaApiWeb\Responses\CookiesResponse;
+use InstaApiWeb\Exceptions\CurlNertworkException;
+use InstaApiWeb\Exceptions\IncorrectPasswordException;
+use InstaApiWeb\Exceptions\InstaCheckpointRequiredException;
 use business\CookiesRequest;
 
 /**
@@ -26,13 +26,13 @@ use business\CookiesRequest;
 class InstaClient_lib {
 
   public function __construct() {
-    require_once config_item('login-response-class');
     require_once config_item('thirdparty-proxy-resource');
     require_once config_item('thirdparty-insta_url-resource');
+    require_once config_item('thirdparty-login_response-class');
     require_once config_item('thirdparty-insta_client-resource');
+    require_once config_item('thirdparty-cookies_response-class');
     require_once config_item('thirdparty-verification_choice-resource');
     require_once config_item('insta_checkpoint_required-exception-class');
-    require_once config_item('cookies-response-class');
     require_once config_item('business-cookies_request-class');
 
     $this->CI = &get_instance();

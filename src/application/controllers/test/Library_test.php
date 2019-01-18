@@ -271,7 +271,7 @@ class Library_test extends CI_Controller {
     //$this->InstaClient_lib->TurnOff_Logs();
     //echo "(<b>ok</b>)<br>"; 
     
-    //$result = new ApiInstaWeb\Responses\LoginResponse();
+    //$result = new InstaApiWeb\Responses\LoginResponse();
     //
     //var_dump($result);
     //echo "(<b>ok</b>)<br>";

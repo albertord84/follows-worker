@@ -1,8 +1,8 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-use ApiInstaWeb\Proxy;
-use ApiInstaWeb\ProfileType;
-use ApiInstaWeb\PersonProfile;
+use InstaApiWeb\Proxy;
+use InstaApiWeb\ProfileType;
+use InstaApiWeb\PersonProfile;
 
 /**
  * @category CodeIgniter-Library: X

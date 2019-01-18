@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-use ApiInstaWeb\Media;
+use InstaApiWeb\Media;
 
 /**
  * @category CodeIgniter-Library: Media_lib

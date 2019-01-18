@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-use ApiInstaWeb\InstaURLs;
-use ApiInstaWeb\InstaProfile;
+use InstaApiWeb\InstaURLs;
+use InstaApiWeb\InstaProfile;
 
 /**
  * @category CodeIgniter-Library: InstaApiLib

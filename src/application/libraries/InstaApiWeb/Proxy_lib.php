@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-use ApiInstaWeb\Proxy;
+use InstaApiWeb\Proxy;
 
 /**
  * @category CodeIgniter-Library: X

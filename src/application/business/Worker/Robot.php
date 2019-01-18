@@ -7,9 +7,9 @@ namespace business\worker {
   require_once config_item('business-class');
   
      /*
-    require_once '../APIInstaWeb';
-    require_once '../APIInstaWeb/Exception';
-    require_once '../APIInstaWeb/Response';
+    require_once '../InstaApiWeb';
+    require_once '../InstaApiWeb/Exception';
+    require_once '../InstaApiWeb/Response';
        
     require_once 'DB.php';
     require_once 'Gmail.php';
@@ -38,7 +38,7 @@ namespace business\worker {
           parent::__construct();
       
           $this->CI->load->model('db_model');
-          $this->CI->load->library("APIInstaWeb/InstaApi_lib", null, 'InstaApi_lib');
+          $this->CI->load->library("InstaApiWeb/InstaApi_lib", null, 'InstaApi_lib');
             
         /*  $config = parse_ini_file(dirname(__FILE__) . $conf_file, true);
             $this->IPS = $config["IPS"];

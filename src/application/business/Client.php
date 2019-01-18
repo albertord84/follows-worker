@@ -155,7 +155,7 @@ namespace business {
       parent::__construct();
 
       $this->CI->load->model('db_model');
-      $this->CI->load->library("APIInstaWeb/InstaApi_lib", null, 'InstaApi_lib');
+      $this->CI->load->library("InstaApiWeb/InstaApi_lib", null, 'InstaApi_lib');
     }
 
     /**
@@ -554,10 +554,10 @@ namespace business {
      * @return
      * 
      */
-    public function checkpoint_requested(string $login, string $pass, \ApiInstaWeb\VerificationChoice $choise = \ApiInstaWeb\VerificationChoice::Email) {
+    public function checkpoint_requested(string $login, string $pass, \InstaApiWeb\VerificationChoice $choise = \InstaApiWeb\VerificationChoice::Email) {
       $login_data = json_decode($this->cookies);
       $proxy = $this->GetProxy();
-      $client = new \ApiInstaWeb\InstaClient($this->insta_id, $login_data, $proxy);
+      $client = new \InstaApiWeb\InstaClient($this->insta_id, $login_data, $proxy);
       $res = $client->checkpoint_requested($login, $pass, $choise);
       $this->cookies = json_encode($client->cookies);
       //guardar las cookies en la Base de Datos
@@ -575,7 +575,7 @@ namespace business {
       //las cookies son las actualizadas de la BD
       $login_data = json_decode($this->cookies);
       //$proxy = $this->GetProxy();
-      $client = new \ApiInstaWeb\InstaClient($this->insta_id, $login_data, $this->Proxy);
+      $client = new \InstaApiWeb\InstaClient($this->insta_id, $login_data, $this->Proxy);
       $res = $client->make_checkpoint($login, $code);
       $this->cookies = json_encode($client->cookies);
       //guardar las cookies en la Base de Datos

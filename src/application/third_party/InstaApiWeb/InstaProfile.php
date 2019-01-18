@@ -1,7 +1,7 @@
 <?php
 
-namespace ApiInstaWeb {
-  //require_once \ApiInstaWeb\Responses;
+namespace InstaApiWeb {
+  //require_once \InstaApiWeb\Responses;
 
   /**
    * Description of InstaProfile

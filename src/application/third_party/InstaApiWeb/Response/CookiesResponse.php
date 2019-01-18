@@ -1,9 +1,9 @@
 <?php
 
-namespace ApiInstaWeb\Responses {
+namespace InstaApiWeb\Responses {
 
    /**
-   * @category ApiInstaWeb Third-Party Class
+   * @category InstaApiWeb Third-Party Class
    * 
    * @access public
    *

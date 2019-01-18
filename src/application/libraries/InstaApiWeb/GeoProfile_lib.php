@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-use ApiInstaWeb\Proxy;
-use ApiInstaWeb\GeoProfile;
+use InstaApiWeb\Proxy;
+use InstaApiWeb\GeoProfile;
 
 /**
  * @category CodeIgniter-Library: InstaApiLib

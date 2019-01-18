@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-use ApiInstaWeb\HashProfile;
-use ApiInstaWeb\Proxy;
+use InstaApiWeb\HashProfile;
+use InstaApiWeb\Proxy;
 
 /**
  * @category CodeIgniter-Library: InstaApiLib

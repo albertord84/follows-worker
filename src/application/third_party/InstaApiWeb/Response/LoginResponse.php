@@ -1,11 +1,11 @@
 <?php
 
-namespace ApiInstaWeb\Responses {
+namespace InstaApiWeb\Responses {
   
-  require_once config_item('cookies-response-class');
+  require_once config_item('thirdparty-cookies_response-class');
   
   /**
-   * @category ApiInstaWeb Third-Party Class
+   * @category InstaApiWeb Third-Party Class
    * 
    * @access public
    *

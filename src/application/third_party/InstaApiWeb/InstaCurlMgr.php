@@ -1,9 +1,8 @@
 <?php
 
-namespace ApiInstaWeb {
+namespace InstaApiWeb {
   
   use stdClass;
-  
   
   /**
    * 
@@ -47,14 +46,16 @@ namespace ApiInstaWeb {
     private $ActionType;
     private $ProfileType;
     
-    private const 
+    private $Headers = array(array());
     
     public function __construct(InstaProfileType $profile, InstaActionType $action) {
       require_once config_item('');
       
-      $this->$ActionType = $action;
+      $this->ActionType = $action;
       $this->ProfileType = $profile;
-              
+             
+      $Headers['Origin'] = "-H 'Origin: https://www.instagram.com' ";
+      
       $ci = &get_instance();
     }
 
