@@ -63,8 +63,7 @@
   $config['thirdparty-insta_url-resource'] = getcwd().'/application/third_party/InstaApiWeb/InstaURLs.php';
   $config['thirdparty-profile_type-resource'] = getcwd().'/application/third_party/InstaApiWeb/ProfileType.php';  
   $config['thirdparty-verification_choice-resource'] = getcwd().'/application/third_party/InstaApiWeb/VerificationChoice.php'; 
- 
-  
+
 /*
 |--------------------------------------------------------------------------
 | Paths de las Clases Exception

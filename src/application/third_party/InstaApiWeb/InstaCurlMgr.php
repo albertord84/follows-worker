@@ -15,19 +15,19 @@ namespace InstaApiWeb {
    * 
    */
   class InstaProfileType {
-    public static $PERSON= 1;
-    public static $HASHTAG = 2;
-    public static $GEOLOCALIZATION= 3;
+    const PERSON = 1;
+    const HASHTAG = 2;
+    const GEOLOCALIZATION = 3;
   }
   
    class InstaActionType {
-    public static $LOGIN = 1;
-    public static $LIKE = 2;
-    public static $FOLLOW= 3;
-    public static $UNFOLLOW = 4;
-    public static $GET_FOLLOWERS = 5;
-    public static $GET_RPOFILE = 6;
-    public static $GET_POST = 7;
+    const LOGIN = 1;
+    const LIKE = 2;
+    const FOLLOW= 3;
+    const UNFOLLOW = 4;
+    const GET_FOLLOWERS = 5;
+    const GET_RPOFILE = 6;
+    const GET_POST = 7;
   }
   
   /**
