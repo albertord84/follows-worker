@@ -3,6 +3,7 @@
 namespace InstaApiWeb {
   
   use stdClass;
+  //use SplE
   
   /**
    * 
@@ -14,13 +15,18 @@ namespace InstaApiWeb {
    *.
    * 
    */
-  class InstaProfileType {
+  //class InstaProfileType {
+  class InstaProfileType extends SplEnum {
+    const __default = self::PERSON;
+    
     const PERSON = 1;
     const HASHTAG = 2;
     const GEOLOCALIZATION = 3;
+
   }
   
-   class InstaActionType {
+  class InstaActionType {
+  //class InstaActionType extends SplEnum {
     const LOGIN = 1;
     const LIKE = 2;
     const FOLLOW= 3;
@@ -28,6 +34,7 @@ namespace InstaApiWeb {
     const GET_FOLLOWERS = 5;
     const GET_RPOFILE = 6;
     const GET_POST = 7;
+ 
   }
   
   /**

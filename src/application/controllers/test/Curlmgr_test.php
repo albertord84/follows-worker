@@ -17,8 +17,12 @@ class CurlMgr_test extends CI_Controller {
   }
 
   public function run() {
-    $obj = new InstaCurlMgr(InstaProfileType::PERSON, InstaActionType::LIKE);
-    var_dump($obj);
+    //$obj = new InstaCurlMgr(InstaProfileType::PERSON, InstaActionType::LIKE);
+    
+    //$obj = new InstaProfileType(InstaProfileType::PERSON);
+    //var_dump($obj);
+    
+    echo "ok";
   }
 
 }
