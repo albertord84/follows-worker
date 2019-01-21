@@ -13,6 +13,7 @@ namespace business {
    * 
    */
   class Client extends User {
+
     public $aaa = 3;
 
     /**
@@ -143,19 +144,19 @@ namespace business {
      */
     public $Proxy;
 
-    /*public $Id;
-    public $Name;*/
-    
+    /* public $Id;
+      public $Name; */
+
     /**
      * 
      * @todo Class constructor.
      * 
      */
     function __construct() {
-      parent::__construct();
+      $ci = &get_instance();
 
-      $this->CI->load->model('db_model');
-      $this->CI->load->library("InstaApiWeb/InstaApi_lib", null, 'InstaApi_lib');
+      $ci->load->model('db_model');
+      $ci->load->library("InstaApiWeb/InstaApi_lib", null, 'InstaApi_lib');
     }
 
     /**
@@ -163,7 +164,8 @@ namespace business {
      * @return type
      */
     public function get_clients() {
-      return $this->CI->db_model->get_clients_data();
+      $ci = &get_instance();
+      return $ci->db_model->get_clients_data();
     }
 
     /**
@@ -172,11 +174,12 @@ namespace business {
      * @return DataSet  
      */
     public function load_from_db(int $id) {
-      $client_data = $this->CI->db_model->get_client_data($id);
-      
+      $ci = &get_instance();
+      $client_data = $ci->db_model->get_client_data($id);
+
       //$this->id = $client_data->user_id;
       //$this->name = $client_data->name;
-      
+
       $this->fill_client_data($client_data);
     }
 
@@ -212,19 +215,19 @@ namespace business {
       $this->name = $data->name;
       //$this->Id = $data->user_id;
       //$this->Name = $data->name;
-      /*$this->login = $client_data->login;
-      $this->pass = $client_data->pass;
-      $this->email = $client_data->email;
-      $this->insta_id = $client_data->insta_id;
-      $this->plane_id = $client_data->plane_id;
-      $this->to_follow = isset($client_data->to_follow) ? $client_data->to_follow : 0;
-      $this->status_id = $client_data->status_id;
-      $this->insta_following = $client_data->insta_following;
-      $this->cookies = $client_data->cookies;
-      $this->paused = $client_data->paused;
-      $this->HTTP_SERVER_VARS = $client_data->HTTP_SERVER_VARS;
-      $this->init_date = $client_data->init_date;
-      $this->last_access = $client_data->last_access;*/
+      /* $this->login = $client_data->login;
+        $this->pass = $client_data->pass;
+        $this->email = $client_data->email;
+        $this->insta_id = $client_data->insta_id;
+        $this->plane_id = $client_data->plane_id;
+        $this->to_follow = isset($client_data->to_follow) ? $client_data->to_follow : 0;
+        $this->status_id = $client_data->status_id;
+        $this->insta_following = $client_data->insta_following;
+        $this->cookies = $client_data->cookies;
+        $this->paused = $client_data->paused;
+        $this->HTTP_SERVER_VARS = $client_data->HTTP_SERVER_VARS;
+        $this->init_date = $client_data->init_date;
+        $this->last_access = $client_data->last_access; */
       //$this->get_reference_profiles($this->id);
       //$this->Proxy = new Proxy();
       //$this->Proxy->load($client_data->proxy_id);
@@ -236,22 +239,23 @@ namespace business {
      * @param type $rows
      * @return type
      */
-   //DELETE FUNTION
-   /* public function get_begginer_client($offset = 0, $rows = 0) {
-      $client_data = $this->CI->db_model->get_biginner_data($offset, $rows);
+    //DELETE FUNTION
+    /* public function get_begginer_client($offset = 0, $rows = 0) {
+      $client_data = $ci->db_model->get_biginner_data($offset, $rows);
       return $client_data;
       //$Client = $this->fill_client_data($client_data);
       //return $Client;
-    }*/  
+      } */
 
     /**
      * Obtiene 
      * @param type $client_id
      */
     public function get_reference_profiles($client_id = NULL) {
+      $ci = &get_instance();
       try {
         $client_id = $client_id ? $client_id : $this->id;
-        $ref_profs_data = $this->CI->db_model->get_reference_profiles_data($client_id);
+        $ref_profs_data = $ci->db_model->get_reference_profiles_data($client_id);
         while ($prof_data = $ref_profs_data->fetch_object()) {
           //CONCERTAR quitar follows...
           $Ref_Prof = new \follows\cls\Reference_profile();
@@ -283,14 +287,15 @@ namespace business {
      * 
      */
     public function insert_clients_daily_report() {
+      $ci = &get_instance();
       try {
         $Clients = array();
         //$DB = new \follows\cls\DB();
-        $clients_data = $this->CI->db_model->get_clients_data_for_report();
+        $clients_data = $ci->db_model->get_clients_data_for_report();
         while ($client_data = $clients_data->fetch_object()) {
           $profile_data = (new Reference_profile())->get_insta_ref_prof_data($client_data->login, $client_data->id);
           if ($profile_data) {
-            $result = $this->CI->db_model->insert_client_daily_report($client_data->id, $profile_data);
+            $result = $ci->db_model->insert_client_daily_report($client_data->id, $profile_data);
             var_dump($client_data->login);
             var_dump("Cantidad de follows = " . $profile_data->follower_count);
             echo '<br><br><br>';
@@ -312,11 +317,12 @@ namespace business {
      * 
      */
     public function dumbu_statistics() {
+      $ci = &get_instance();
       try {
         $Clients = array();
         //$DB = new \follows\cls\DB();
         $time = strtotime(date("Y-m-d H:00:00"));
-        $datas = $this->CI->db_model->get_dumbu_statistics();
+        $datas = $ci->db_model->get_dumbu_statistics();
         $arr = '(';
         $cols = '(';
         foreach ($datas as $value) {
@@ -358,7 +364,7 @@ namespace business {
           $arr .= $value['cnt'] . ',';
         }
 
-        $datas2 = $this->CI->db_model->get_dumbu_paying_customers();
+        $datas2 = $ci->db_model->get_dumbu_paying_customers();
         foreach ($datas2 as $value) {
           $cols .= "PAYING_CUSTOMERS,";
           $arr .= $value['cnt'] . ',';
@@ -366,7 +372,7 @@ namespace business {
 
         $cols .= 'date)';
         $arr .= $time . ')';
-        $this->CI->db_model->insert_dumbu_statistics($cols, $arr);
+        $ci->db_model->insert_dumbu_statistics($cols, $arr);
       } catch (Exception $exc) {
         echo $exc->getTraceAsString();
       }
@@ -380,7 +386,7 @@ namespace business {
      * 
      */
     public function create_daily_work($client_id) {
-      //$DB = new DB();
+      $ci = &get_instance();
       $Client = $this->get_client($client_id);
       if (count($Client->reference_profiles) > 0) {
         $DIALY_REQUESTS_BY_CLIENT = $Client->to_follow;
@@ -391,7 +397,7 @@ namespace business {
         $to_unfollow = $to_follow_unfollow;
         foreach ($Client->reference_profiles as $Ref_Prof) { // For each reference profile
 //$Ref_prof_data = $this->Robot->get_insta_ref_prof_data($Ref_Prof->insta_name);
-          $this->CI->db_model->insert_daily_work($Ref_Prof->id, $to_follow, $to_unfollow, $Client->cookies);
+          $ci->db_model->insert_daily_work($Ref_Prof->id, $to_follow, $to_unfollow, $Client->cookies);
         }
       } else {
         echo "Not reference profiles: $Client->login <br>\n<br>\n";
@@ -406,6 +412,7 @@ namespace business {
      * 
      */
     public function rp_workable_count() {
+      $ci = &get_instance();
       $count = 0;
       $Robot = new Robot();
       $proxy = $Robot->get_proxy_str($this);
@@ -414,11 +421,11 @@ namespace business {
       if ($this->reference_profiles) {
         foreach ($this->reference_profiles as $ref_prof) {
           if ($ref_prof->deleted && $ref_prof->status != $status->DELETED) {
-            $this->CI->db_model->UpdateReferenceProfileStatus($status->DELETED, $ref_prof->id);
+            $ci->db_model->UpdateReferenceProfileStatus($status->DELETED, $ref_prof->id);
           } else if ($ref_prof->end_date != NULL && $ref_prof->status != $status->ENDED) {
-            $this->CI->db_model->UpdateReferenceProfileStatus($status->ENDED, $ref_prof->id);
+            $ci->db_model->UpdateReferenceProfileStatus($status->ENDED, $ref_prof->id);
           } else if (!$Robot->exist_reference_profile($ref_prof->insta_name, $ref_prof->type, $ref_prof->insta_id, json_decode($this->cookies), $proxy) && $ref_prof->status != $status->LOCKED) {
-            $this->CI->db_model->UpdateReferenceProfileStatus($status->LOCKED, $ref_prof->id);
+            $ci->db_model->UpdateReferenceProfileStatus($status->LOCKED, $ref_prof->id);
           } else if ($ref_prof->status == $status->ACTIVE) {
             $count++;
           }
@@ -435,8 +442,8 @@ namespace business {
      * 
      */
     public function delete_daily_work($client_id) {
-      //$DB = new DB();
-      $this->CI->db_model->delete_daily_work_client($client_id);
+      $ci = &get_instance();
+      $ci->db_model->delete_daily_work_client($client_id);
     }
 
     /**
@@ -447,10 +454,9 @@ namespace business {
      * 
      */
     public function sign_in($Client) {
-      //$DB = new DB();
-
+      $ci = &get_instance();
       try {
-        $login_data = $this->CI->InstaApiLib->login($this->login, $this->pass, $this->Proxy);
+        $login_data = $ci->InstaApiLib->login($this->login, $this->pass, $this->Proxy);
       } catch (Exception $exc) {
         //CONCERTAR myDB
         $myDB->InsertEventToWashdog($Client->id, $exc->getMessage(), $source);
@@ -479,9 +485,9 @@ namespace business {
             }
           } else
           if ($login_data->json_response->message == 'problem_with_your_request') {
-            $this->CI->db_model->InsertEventToWashdog($Client->id, washdog_type::PROBLEM_WITH_YOUR_REQUEST, 1, 0, "Unknow error with your request");
+            $ci->db_model->InsertEventToWashdog($Client->id, washdog_type::PROBLEM_WITH_YOUR_REQUEST, 1, 0, "Unknow error with your request");
           } else {
-            $this->CI->db_model->InsertEventToWashdog($Client->id, washdog_type::PROBLEM_WITH_YOUR_REQUEST, 1, 0, $login_data->json_response->message);
+            $ci->db_model->InsertEventToWashdog($Client->id, washdog_type::PROBLEM_WITH_YOUR_REQUEST, 1, 0, $login_data->json_response->message);
           }
         }
         $this->set_client_cookies($Client->id, NULL);
@@ -508,11 +514,12 @@ namespace business {
      * 
      */
     public function set_client_cookies($client_id = NULL, $cookies = NULL) {
+      $ci = &get_instance();
       try {
         $client_id = $client_id ? $client_id : $this->id;
         $cookies = $cookies ? $cookies : $this->cookies;
         //$DB = new \follows\cls\DB();
-        $result = $this->CI->db_model->set_client_cookies($client_id, $cookies);
+        $result = $ci->db_model->set_client_cookies($client_id, $cookies);
         /* if ($result) {
           //print "Client $client_id cookies changed!!!";
           } else {
@@ -532,11 +539,12 @@ namespace business {
      * 
      */
     public function set_client_status($client_id = NULL, $status_id = NULL) {
+      $ci = &get_instance();
       try {
         $client_id = $client_id ? $client_id : $this->id;
         $status_id = $status_id ? $status_id : $this->status_id;
         //$DB = new \follows\cls\DB();
-        $result = $this->CI->db_model->set_client_status($client_id, $status_id);
+        $result = $ci->db_model->set_client_status($client_id, $status_id);
         if ($result) {
           print "Client $client_id to status $status_id!!!";
         } else {
@@ -556,8 +564,8 @@ namespace business {
      */
     public function checkpoint_requested(string $login, string $pass, \InstaApiWeb\VerificationChoice $choise = \InstaApiWeb\VerificationChoice::Email) {
       $login_data = json_decode($this->cookies);
-      $proxy = $this->GetProxy();
-      $client = new \InstaApiWeb\InstaClient($this->insta_id, $login_data, $proxy);
+      //$proxy = $this->GetProxy();
+      $client = new \InstaApiWeb\InstaClient($this->insta_id, $login_data, $this->Proxy);
       $res = $client->checkpoint_requested($login, $pass, $choise);
       $this->cookies = json_encode($client->cookies);
       //guardar las cookies en la Base de Datos

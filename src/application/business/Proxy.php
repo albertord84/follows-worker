@@ -13,7 +13,6 @@ namespace business {
    * 
    */
   class Proxy extends Business {
-//  class Proxy {
     public $Id;
     public $Ip;
     public $Port;
@@ -21,10 +20,7 @@ namespace business {
     public $Password;
     public $IsReserved;
 
-    function __construct() {
-      //parent::__construct();
-      //$this->CI->load->model('proxy_model');
-      
+    function __construct() {      
       $ci = &get_instance();
       $ci->load->model('proxy_model');
     }
@@ -32,7 +28,6 @@ namespace business {
     public function load_from_db(int $id) {
         $ci = &get_instance();
         $proxy_data = $ci->proxy_model->get_by_id($id);
-        //$proxy_data = $this->CI->proxy_model->get_by_id($id);
         
         $this->Id = $proxy_data->idProxy;
         $this->Ip = $proxy_data->proxy;

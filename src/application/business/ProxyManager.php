@@ -15,17 +15,17 @@ namespace business {
   class ProxyManager extends Business {
 
     function __construct() {
-      parent::__construct();
-      $this->CI->load->model('db_model');
-      //$this->CI->load_model("client_model"); NO SE USA AQUI
+      $ci = &get_instance();
+      $ci->load->model('db_model');
     }
 
     public function UpdateUserProxy() {
-      /* $clients = $this->CI->db_model->GetClientWithouProxy();
-        $proxies = $this->CI->db_model->GetNotResrevedProxyList();
+      /*$ci = &get_instance();
+        $clients = $ci->db_model->GetClientWithouProxy();
+        $proxies = $ci->db_model->GetNotResrevedProxyList();
         $proxiesLst = array();
         while (($proxy = $proxies->fetch_object())) {
-        $proxy->cnt = $this->db_model->GetProxyClientCounts($proxy->proxy)->fetch_object()->cnt;
+        $proxy->cnt = $ci->db_model->GetProxyClientCounts($proxy->proxy)->fetch_object()->cnt;
         array_push($proxiesLst, $proxy);
         }
         while (($client = $clients->fetch_object())) {
@@ -38,7 +38,7 @@ namespace business {
         break;
         }
         }
-        $res = $this->CI->db_model->SetProxyToClient($client->user_id, $min_proxy->idProxy);
+        $res = $ci->db_model->SetProxyToClient($client->user_id, $min_proxy->idProxy);
         $min_proxy->cnt++;
         } */
     }

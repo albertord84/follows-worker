@@ -15,11 +15,12 @@ namespace business {
   class StatusProfiles extends Business {
 
     public function __construct() {
-      parent::__construct();
+      $ci = &get_instance();
+      $ci->load->model('db_model');
 
-      $this->CI->load->model('db_model');
-      $result = $this->CI->db_model->GetReferenceProfileStatus();
-      if (count($result) != 0) {
+        $result = $ci->db_model->GetReferenceProfileStatus();
+      
+            if (count($result) != 0) {
         foreach ($result as $item) {
           $this->{$item->status} = $item->id;
         }
