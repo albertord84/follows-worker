@@ -108,7 +108,7 @@ namespace InstaApiWeb {
       $ci = &get_instance();
     }
 
-    public function make_curl(Proxy $proxy, CookiesRequest $cookies = NULL) {
+    public function make_curl_str(Proxy $proxy, CookiesRequest $cookies = NULL) {
       $str = sprintf("%s %s %s %s %s %s %s %s %s %s", 
         $this->Headers['Origin'],
         $this->Headers['AcceptEncoding'], 
@@ -124,6 +124,9 @@ namespace InstaApiWeb {
       return $str;
     }
 
+    public function make_curl_obj(Proxy $proxy, CookiesRequest $cookies = NULL) {
+      
+    }
     
     private function action_instagram ()
     {

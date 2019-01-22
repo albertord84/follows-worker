@@ -41,7 +41,7 @@ namespace InstaApiWeb {
       require_once config_item('insta_checkpoint_required-exception-class');
     }
 
-    public function login(string $username, string $password, Proxy $proxy = null) {
+   /* public function login(string $username, string $password, Proxy $proxy = null) {
       $debug = false;
       $truncatedDebug = true;
       //////////////////////
@@ -101,7 +101,7 @@ namespace InstaApiWeb {
           throw new InstaException($e->getMessage(), $e->getCode());
         }
       }
-    }
+    }*/
 
     public static function make_query(string $query, string $variables, \stdClass $cookies, Proxy $proxy = NULL) {
       $variables = urlencode($variables);
