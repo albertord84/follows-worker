@@ -31,7 +31,7 @@ class CurlMgr_test extends CI_Controller {
     
     $obj = new InstaCurlMgr(new EnumProfile(EnumProfile::PERSON), new EnumAction(EnumAction::FOLLOW));
     var_dump($obj);
-    echo $obj->make_curl(new Proxy(), new CookiesRequest("", "", "", ""));
+    echo $obj->make_curl_str(new Proxy(), new CookiesRequest("", "", "", ""));
     
     //$obj = new InstaProfileType(InstaProfileType::PERSON);
     //var_dump($obj);

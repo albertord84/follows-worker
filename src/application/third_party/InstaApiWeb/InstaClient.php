@@ -37,7 +37,7 @@ namespace InstaApiWeb {
 
 
     public function make_insta_friendships_command(string $resource_id, string $command = 'follow', string $objetive_url = 'web/friendships') {
-      /*$insta = InstaURLs::Instagram;
+      $insta = InstaURLs::Instagram;
       $curl_str = $this->make_curl_friendships_command_str("'$insta/$objetive_url/$resource_id/$command/'");
 
       exec($curl_str, $output, $status);
@@ -69,15 +69,15 @@ namespace InstaApiWeb {
         var_dump($curl_str);
       }
 
-      return $output;*/
+      return $output;
     }
 
     public function make_curl_friendships_command_str(string $url) {
       /*if (!$this->verify_cookies($cookies))
         throw new Exceptions\CookiesWrongSyntaxException("The cookies are wrong");
-      $proxy_str = "";
+      $proxy_str = "";*/
       if ($proxy != NULL)
-        $proxy_str = $proxy->ToString();*/
+        $proxy_str = $proxy->ToString();
       $curl_str = "curl $proxy_str  $url ";
       $curl_str .= "-X POST ";
       $curl_str .= "-H 'Cookie: mid=$mid; sessionid=$sessionid;  csrftoken=$csrftoken; ds_user_id=$ds_user_id' ";
