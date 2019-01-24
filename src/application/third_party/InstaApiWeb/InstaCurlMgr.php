@@ -135,7 +135,8 @@ namespace InstaApiWeb {
       $this->Headers['UserAgent']        = "-H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:49.0) Gecko/20100101 Firefox/49.0'";
       $this->Headers['X-Requested']      = "-H 'X-Requested-with: XMLHttpRequest'";
       $this->Headers['ContentType']      = "-H 'content-type: application/x-www-form-urlencoded'";
-      $this->Headers['Accept']           = "-H 'Accept: */*'";
+      $this->Headers['AcceptAll']        = "-H 'Accept: */*'";
+      $this->Headers['AcceptJson']       = "-H 'Accept: application/json'";
       $this->Headers['Referer']          = "-H 'Referer: https://www.instagram.com/'";
       $this->Headers['Authority']        = "-H 'Authority: www.instagram.com'";
       $this->Headers['X-CSRFToken']      = "-H 'X-CSRFToken: %s'";
@@ -182,6 +183,10 @@ namespace InstaApiWeb {
       
     }
     
+    public function setChallengeData (){
+      
+    }
+    
     public function make_curl_str(Proxy $proxy, CookiesRequest $cookies = NULL) {
       $str = sprintf("%s %s %s %s %s %s %s %s %s %s", 
         $this->Headers['Origin'],
@@ -200,11 +205,88 @@ namespace InstaApiWeb {
 
     public function make_curl_obj(Proxy $proxy, CookiesRequest $cookies = NULL) {
       
+      
     }
     
-    private function action_instagram ()
-    {
+    private function checkpoint () {
+      // INSTACLIENT - make_checkpoint
+      $csrftoken = $this->cookies->csrftoken;
+      $mid = $this->cookies->mid;
+      $url = $this->InstaURL['Base'] . "/" . $this->cookies->checkpoint_url;
+      $ch = curl_init($this->InstaURL['Base']);
       
+      $postinfo = "security_code=$code";
+      
+      $headers = array();
+      $headers[] = $this->Headers['Origin'];
+      $headers[] = $this->Headers['UserAgent'];
+      $headers[] = $this->Headers['AcceptAll'];
+      $headers[] = $this->Headers['AcceptLanguage'];
+      $headers[] = $this->Headers['AcceptEncoding'];
+      $headers[] = "Referer: $url";
+      $headers[] = "X-CSRFToken: $csrftoken";
+      $headers[] = "X-Instagram-AJAX: 1";
+      $headers[] = "Content-Type: application/x-www-form-urlencoded";
+//            $headers[] = "Content-Type: application/json";
+      $headers[] = "X-Requested-With: XMLHttpRequest";
+      $headers[] = "Cookie: mid=$mid; csrftoken=$csrftoken";
+
+      curl_setopt($ch, CURLOPT_URL, $url);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+      //curl_setopt($ch, CURLOPT_POST, true);
+      //            curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie);
+      //            curl_setopt($ch, CURLOPT_COOKIEFILE, $cookie);
+      curl_setopt($ch, CURLOPT_POSTFIELDS, $postinfo);
+      curl_setopt($ch, CURLOPT_HEADER, 1);
+      curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+      curl_setopt($ch, CURLOPT_HEADERFUNCTION, array($this, "curlResponseHeaderCallback"));
+      
+      return $ch;
+    }
+    
+    private function challenge ()
+    {
+      $ch = curl_init(InstaURLs::Instagram);
+      $csrftoken = $this->get_insta_csrftoken($ch);
+      $urlgen = $this->get_cookies_value('urlgen');
+      $mid = $this->get_cookies_value('mid');
+      $rur = $this->get_cookies_value('rur');
+      $ig_vw = $this->get_cookies_value('ig_vw');
+      $ig_pr = $this->get_cookies_value('ig_pr');
+      $ig_vh = $this->get_cookies_value('ig_vh');
+      $ig_or = $this->get_cookies_value('ig_or');
+
+      $url = InstaURLs::Instagram;
+      $url .= "/" . $challenge;
+
+      $cookies = new \stdClass();
+      $cookies->csrftoken = $csrftoken;
+      $cookies->mid = $mid;
+      $cookies->checkpoint_url = $challenge;
+
+      $headers = array();
+      $headers[] = "Origin: https://www.instagram.com";
+      $headers[] = "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0' -H 'Accept: */*";
+      $headers[] = "Accept-Language: en-US,en;q=0.5";
+      $headers[] = "Referer: $url";
+      $headers[] = "X-CSRFToken: $csrftoken";
+      $headers[] = "X-Instagram-AJAX: 1";
+      $headers[] = "Content-Type: application/x-www-form-urlencoded";
+      $headers[] = "X-Requested-With: XMLHttpRequest";
+      $headers[] = "Cookie: csrftoken=$csrftoken; mid=$mid; rur=$rur; ig_vw=$ig_vw; ig_pr=$ig_pr; ig_vh=$ig_vh; ig_or=$ig_or";
+      $headers[] = "Connection: keep-alive";
+      $postinfo = "choice=$choice";
+
+      curl_setopt($ch, CURLOPT_URL, $url);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+      //curl_setopt($ch, CURLOPT_POST, true);
+      //            curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie);
+      //            curl_setopt($ch, CURLOPT_COOKIEFILE, $cookie);
+      curl_setopt($ch, CURLOPT_POSTFIELDS, $postinfo);
+      curl_setopt($ch, CURLOPT_HEADER, 1);
+      curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+      
+      return $ch;
     }
     
     /*
