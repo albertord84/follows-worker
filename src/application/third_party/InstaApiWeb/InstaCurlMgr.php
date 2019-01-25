@@ -34,15 +34,34 @@ namespace InstaApiWeb {
   
   class EnumEntity extends EnumBase {
     
-    const PERSON = 1;
-    const HASHTAG = 2;
-    const GEOLOCALIZATION = 3;
-    const CLIENT = 4;
+    const GEO     = 1;
+    const PERSON  = 2;
+    const HASHTAG = 3;
+    const CLIENT  = 4;
 
+    private $TagQuery = array(array());
+    
     public function __construct(int $value) {
-      parent::__construct($value);     
+      parent::__construct($value);  
+      
+      /* Instagram Hash-query definitions*/
+      $this->TagQuery['Geo']     = "ac38b90f0f3981c42092016a37c59bf7";
+      $this->TagQuery['Person']  = "37479f2b8209594dde7facb0d904896a";
+      $this->TagQuery['HashTag'] = "ded47faa9a1aaded10161a2ff32abb6b";
     }
   
+    public function getHashQuery () {
+      $hash = null;
+      switch ($this->enumValue){
+        case EnumEntity::GEO    : $hash = $this->TagQuery['Geo'];     break;
+        case EnumEntity::PERSON : $hash = $this->TagQuery['Person'];  break;
+        case EnumEntity::HASHTAG: $hash = $this->TagQuery['HashTag']; break;
+      }
+      
+      return $hash;
+    }
+      
+    
     function __toString(){      
       switch ($this->enumValue)
       {
@@ -113,8 +132,7 @@ namespace InstaApiWeb {
     private $MediaStr; 
     private $Headers = array(array());
     private $InstaURL = array(array());
-    private $TagQuery = array(array());
-    
+        
     public function __construct(EnumEntity $profile, EnumAction $action) {
       
       $this->MediaStr = null;
@@ -142,13 +160,7 @@ namespace InstaApiWeb {
       $this->Headers['X-CSRFToken']      = "-H 'X-CSRFToken: %s'";
       $this->Headers['X-Instagram-Ajax'] = "-H 'X-Instagram-Ajax: dad8d866382b'";
       $this->Headers['ContentLength']    = "-H 'Content-Length: 0'";  
-      $this->Headers['compressed']       = "--compressed";      
-      
-      /* Instagram Hash-query definitions*/
-      $this->TagQuery['Geo']     = "ac38b90f0f3981c42092016a37c59bf7";
-      $this->TagQuery['HashTag'] = "ded47faa9a1aaded10161a2ff32abb6b";
-      $this->TagQuery['Person']  = "37479f2b8209594dde7facb0d904896a";
-        
+      $this->Headers['compressed']       = "--compressed";              
            
       // Singlenton CI
       //$ci = &get_instance();
@@ -187,20 +199,63 @@ namespace InstaApiWeb {
       
     }
     
-    public function make_curl_str(Proxy $proxy, CookiesRequest $cookies = NULL) {
-      $str = sprintf("%s %s %s %s %s %s %s %s %s %s", 
-        $this->Headers['Origin'],
-        $this->Headers['AcceptEncoding'], 
-        $this->Headers['AcceptLanguage'], 
-        $this->Headers['UserAgent'], 
-        $this->Headers['XRequested'],
-        $this->Headers['ContentType'],
-        $this->Headers['Accept'],
-        $this->Headers['Referer'],
-        $this->Headers['Authority'],
-        $this->Headers['compressed']);
+    public function make_curl_str(Proxy $proxy, CookiesRequest $cookies = NULL) {            
+      // Paso 1. configuracion inicial de la curl
+      $curl_str = sprintf("curl %s '%s?query_hash=%s&variables=%s'", $proxy->ToString(), 
+        $this->InstaURL['Graphql'], $this->ProfileType->getHashQuery(), urlencode($this->MediaStr));
       
-      return $str;
+      // Paso 2. agregando la cookies a la curl
+      $curl_str = sprintf("%s -H 'Cookie: mid=%s; sessionid=%s; s_network=; ig_pr=1; ig_vw=1855; csrftoken=%s; ds_user_id=%s'", 
+        $curl_str, $cookies->mid, $cookies->sessionid, $cookies->csrftoken, $cookies->ds_user_id);
+      $curl_str = sprintf("%s -H 'X-CSRFToken: %s'", $curl_str, $cookies->csrftoken);
+      
+      // Paso 3. agregando el resto de los headers
+      $curl_str = sprintf("%s %s %s %s %s %s %s %s %s %s", 
+        $curl_str); // ME QUEDE AQUI!!!---- 11:00pm
+      
+      //- EJMPLOOO-----
+      /*$variables = urlencode($variables);
+      $graphquery_url = InstaURLs::GraphqlQuery;
+      $url = "$graphquery_url?query_hash=$query&variables=$variables";
+      $proxy_str = $proxy->ToString();
+      $curl_str = "curl $proxy_str '$url' ";*/
+            
+      /*if ($cookies !== NULL) {
+        if ($cookies->mid == NULL || $cookies->csrftoken == NULL || $cookies->sessionid == NULL ||
+          $cookies->ds_user_id == NULL)
+          return NULL;
+        $curl_str .= "-H 'Cookie: mid=$cookies->mid; sessionid=$cookies->sessionid; s_network=; ig_pr=1; ig_vw=1855; csrftoken=$cookies->csrftoken; ds_user_id=$cookies->ds_user_id' ";
+        $curl_str .= "-H 'X-CSRFToken: $cookies->csrftoken' ";
+      }*/
+
+      //$cnf = new \follows\cls\system_config();
+      $curl_str .= "-H 'Origin: https://www.instagram.com' ";
+      $curl_str .= "-H 'Accept-Encoding: gzip, deflate' ";
+      $curl_str .= "-H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' ";
+      //$curl_str .= "-H 'User-Agent: $cnf->CURL_USER_AGENT' ";
+      $curl_str .= "-H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:49.0) Gecko/20100101 Firefox/49.0' ";
+      $curl_str .= "-H 'X-Requested-with: XMLHttpRequest' ";
+      $curl_str .= "-H 'content-type: application/x-www-form-urlencoded' ";
+      //$curl_str .= "-H 'Accept: */*' ";
+      $curl_str .= "-H 'Referer: https://www.instagram.com/' ";
+      $curl_str .= "-H 'Authority: www.instagram.com' ";
+      $curl_str .= "--compressed ";
+      return $curl_str;
+      
+      
+      /*$str = sprintf("%s %s %s %s %s %s %s %s %s %s", 
+      $this->Headers['Origin'],
+      $this->Headers['AcceptEncoding'], 
+      $this->Headers['AcceptLanguage'], 
+      $this->Headers['UserAgent'], 
+      $this->Headers['XRequested'],
+      $this->Headers['ContentType'],
+      $this->Headers['Accept'],
+      $this->Headers['Referer'],
+      $this->Headers['Authority'],
+      $this->Headers['compressed']);*/
+      //return $str;
+      
     }
 
     public function make_curl_obj(Proxy $proxy, CookiesRequest $cookies = NULL) {
