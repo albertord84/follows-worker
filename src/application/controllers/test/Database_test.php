@@ -12,7 +12,7 @@ class Database_test extends CI_Controller {
     echo "Controller: <b>" . __CLASS__ . "</b> cargado.";
   }
 
-  public function db_model() {
+  public function db_exception (){
     $this->load->model('db_model');
     //$this->db_model->myFunc();
 
@@ -28,6 +28,17 @@ class Database_test extends CI_Controller {
     }
   }
 
+  // ISE!!!... con este controlador puedes probar el db_model.
+  // Fijate la forma de invocarlos y luego haces var_dump() del resultado.
+  public function db_model() {
+     $this->load->model('db_model');
+     
+     //$this->db_model->get_clients_data();
+     
+     $obj = $this->db_model->get_client_data(1);
+     var_dump($obj);
+  }
+  
   public function entity($param, $action, $id) {
     echo "<b>Param: </b>" . $param . "<br><b>Action: </b>" . $action . "<br><br>";
 

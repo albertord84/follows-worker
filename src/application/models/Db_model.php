@@ -22,11 +22,11 @@ class Db_model extends CI_Model {
                       INNER JOIN clients ON clients.user_id = users.id 
                       INNER JOIN plane ON plane.id = clients.plane_id 
                       WHERE users.status_id = '%d' AND user_id > '%d'", $user_status, $uid);
-
       $query = $this->db->query($sql);
-
-      return $query->result();
-    } catch (Error $e) {
+      
+      return $query->rows();
+    } 
+    catch (Error $e) {
       if ($this->db->error()['code'] != 0) {
         throw new Db_Exception($this->db->error(), $e);
       } else {
