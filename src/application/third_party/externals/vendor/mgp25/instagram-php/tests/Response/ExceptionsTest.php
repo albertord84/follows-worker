@@ -7,7 +7,7 @@ use InstagramAPI\Exception\AccountDisabledException;
 use InstagramAPI\Exception\ChallengeRequiredException;
 use InstagramAPI\Exception\CheckpointRequiredException;
 use InstagramAPI\Exception\FeedbackRequiredException;
-use InstagramAPI\Exception\IncorrectPasswordException;
+use InstagramAPI\Exception\InstaPasswordException;
 use InstagramAPI\Exception\InvalidSmsCodeException;
 use InstagramAPI\Exception\InvalidUserException;
 use InstagramAPI\Exception\LoginRequiredException;
@@ -61,9 +61,9 @@ class ExceptionsTest extends TestCase
         ServerMessageThrower::autoThrow(null, $response->getMessage(), $response);
     }
 
-    public function testIncorrectPasswordException()
+    public function testInstaPasswordException()
     {
-        $this->expectException(IncorrectPasswordException::class);
+        $this->expectException(InstaPasswordException::class);
         $this->expectExceptionMessageRegExp('/password.*incorrect/i');
         $response = $this->_makeResponse('{"message":"The password you entered is incorrect. Please try again.","invalid_credentials":true,"error_title":"Incorrect password for WUT","buttons":[{"title":"Try Again","action":"dismiss"}],"status":"fail","error_type":"bad_password"}');
         ServerMessageThrower::autoThrow(null, $response->getMessage(), $response);

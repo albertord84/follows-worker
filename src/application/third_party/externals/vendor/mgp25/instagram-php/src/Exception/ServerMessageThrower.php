@@ -62,7 +62,7 @@ class ServerMessageThrower
         ],
         'ChallengeRequiredException'   => ['challenge_required'],
         'FeedbackRequiredException'    => ['feedback_required'],
-        'IncorrectPasswordException'   => [
+        'InstaPasswordException'   => [
             // "The password you entered is incorrect".
             '/password(.*?)incorrect/', // message
             'bad_password', // error_type

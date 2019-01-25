@@ -6,6 +6,13 @@ namespace InstaApiWeb {
   
   use business\CookiesRequest;
   
+  use InstaApiWeb\Responses\LoginResponse;
+  use InstaApiWeb\Responses\CookiesResponse;
+  use InstaApiWeb\Exceptions\InstaException;
+  use InstaApiWeb\Exceptions\CurlNertworkException;
+  use InstaApiWeb\Exceptions\InstaPasswordException;
+  use InstaApiWeb\Exceptions\InstaCheckpointException;
+  
   /**
    * @category CodeIgniter-Library: InstaApiLib
    * 
@@ -22,19 +29,17 @@ namespace InstaApiWeb {
     private $has_logs;
 
     public function __construct(string $insta_id, CookiesRequest $cookies, Proxy $proxy) {
-      //require_once config_item('composer_autoload');
-      require_once config_item('cookies_wrong_syntax-exception-class');
-      
       require_once config_item('composer_autoload');
       require_once config_item('insta-exception-class');
+      require_once config_item('insta-cookies-exception-class');      
       require_once config_item('curl_nertwork-exception-class');
+      require_once config_item('insta-password-exception-class');
       require_once config_item('thirdparty-login_response-class');
+      require_once config_item('insta-checkpoint-exception-class');
       require_once config_item('thirdparty-cookies_response-class');
-      require_once config_item('incorrect_password-exception-class');
-      require_once config_item('insta_checkpoint_required-exception-class');
       
       /*if (!InstaClient::verify_cookies($cookies)) {
-        throw new Exceptions\CookiesWrongSyntaxException('the cookies you are passing are incompleate or wrong');
+        throw new Exceptions\InstaCookiesException('the cookies you are passing are incompleate or wrong');
       }
       $this->insta_id = $insta_id;
       $this->cookies = $cookies;
@@ -81,7 +86,7 @@ namespace InstaApiWeb {
 
     public function make_curl_friendships_command_str(string $url) {
       /*if (!$this->verify_cookies($cookies))
-        throw new Exceptions\CookiesWrongSyntaxException("The cookies are wrong");
+        throw new Exceptions\InstaCookiesException("The cookies are wrong");
       $proxy_str = "";
       if ($proxy != NULL)
         $proxy_str = $proxy->ToString();*/
@@ -206,14 +211,14 @@ namespace InstaApiWeb {
         if (isset($id) && $id !== NULL && $id !== 0) $source = 1;
 
         if ((strpos($e->getMessage(), 'Challenge required') !== FALSE) || (strpos($e->getMessage(), 'Checkpoint required') !== FALSE) || (strpos($e->getMessage(), 'challenge_required') !== FALSE)) {
-          $res = $e->getResponse()->getChallenge()->getApiPath();//Jose
-          throw new InstaCheckpointRequiredException($e->getMessage(), $e->getPrevious(), $res);
+          //$res = $e->getResponse()->getChallenge()->getApiPath();//Jose
+          throw new InstaCheckpointException($e->getMessage(), $e->getPrevious(), $res);
         } 
         else if (strpos($e->getMessage(), 'Network: CURL error 28') !== FALSE) { // Time out by bad proxy
           throw new CurlNertworkException($e->getMessage(), $e);
         } 
         else if (strpos($e->getMessage(), 'password you entered is incorrect') !== FALSE) {
-          throw new IncorrectPasswordException($e->getMessage(), $e);
+          throw new InstaPasswordException($e->getMessage(), $e);
         } 
         else if (strpos($e->getMessage(), 'there was a problem with your request') !== FALSE) {
           throw new InstaException('problem_with_your_request', $e->getCode());
@@ -309,7 +314,7 @@ namespace InstaApiWeb {
         $instaAPI = new \follows\cls\InstaAPI();
         $result2 = $instaAPI->login($login, $pass, $this->proxy);
         return $result2;
-      } catch (Exceptions\InstaCheckpointRequiredException $exc) {
+      } catch (Exceptions\InstaCheckpointException $exc) {
         $res = $exc->GetChallenge();
         $response = $this->get_challenge_data($res, $login, $Client);
         if (isset($response->challenge->challengeType) && ($response->challenge->challengeType == "SelectVerificationMethodForm")) {

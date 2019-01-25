@@ -6,18 +6,18 @@ namespace InstaApiWeb\Exceptions {
   require_once 'InstaException.php';
 
   /**
-   * Description of CookiesWrongSyntaxException
+   * Description of InstaCookiesException
    *
    * @author jose
    */
-  class CookiesWrongSyntaxException extends InstaException {
+  class InstaCookiesException extends InstaException {
 
     public function __construct($message = "", Throwable $previous = null) {
-      parent::__construct($message, ExceptionCode::CookiesWrongSyntax, $previous);
+      parent::__construct($message, ExceptionCode::IstaCookies, $previous);
     }
 
     public function Code() {
-      return ExceptionCode::CookiesWrongSyntax;
+      return ExceptionCode::IstaCookies;
     }
   }
 

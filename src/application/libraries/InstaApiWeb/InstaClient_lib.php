@@ -11,8 +11,8 @@ use InstaApiWeb\Responses\LoginResponse;
 use InstaApiWeb\Exceptions\InstaException;
 use InstaApiWeb\Responses\CookiesResponse;
 use InstaApiWeb\Exceptions\CurlNertworkException;
-use InstaApiWeb\Exceptions\IncorrectPasswordException;
-use InstaApiWeb\Exceptions\InstaCheckpointRequiredException;
+use InstaApiWeb\Exceptions\InstaPasswordException;
+use InstaApiWeb\Exceptions\InstaCheckpointException;
 use business\CookiesRequest;
 
 /**
@@ -32,7 +32,7 @@ class InstaClient_lib {
     require_once config_item('thirdparty-insta_client-resource');
     require_once config_item('thirdparty-cookies_response-class');
     require_once config_item('thirdparty-verification_choice-resource');
-    require_once config_item('insta_checkpoint_required-exception-class');
+    require_once config_item('insta-checkpoint-exception-class');
     require_once config_item('business-cookies_request-class');
 
     $this->CI = &get_instance();
@@ -45,7 +45,7 @@ class InstaClient_lib {
     try {
       $result = $this->InstaClient->make_login($login, $pass);
     } 
-    catch (InstaCheckpointRequiredException $e) {
+    catch (InstaCheckpointException $e) {
       $result = new LoginResponse('ok', false, $e->getMessage(), NULL, $e->GetChallange());
     } 
     catch (InstaException $e) {
