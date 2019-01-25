@@ -37,7 +37,10 @@ class CurlMgr_test extends CI_Controller {
     
     $obj = new InstaCurlMgr(new EnumEntity(EnumEntity::HASHTAG), new EnumAction(EnumAction::CMD_FOLLOW));
     $obj->setMediaData($id, $N, $cursor);
+    //$obj->make_curl_str($proxy, $cookies);
     
+    //$obj = new EnumAction(EnumAction::CMD_LOGIN);
+    //echo "<br>".$obj;
   }
 
   public function run() {

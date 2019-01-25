@@ -34,10 +34,10 @@ namespace InstaApiWeb {
   
   class EnumEntity extends EnumBase {
     
-    const GEO     = 1;
-    const PERSON  = 2;
-    const HASHTAG = 3;
-    const CLIENT  = 4;
+    const GEO = 1;
+    const PERSON = 2;
+    const HASHTAG = 4;
+    const CLIENT = 8;
 
     private $TagQuery = array(array());
     
@@ -61,14 +61,13 @@ namespace InstaApiWeb {
       return $hash;
     }
       
-    
     function __toString(){      
       switch ($this->enumValue)
       {
-        case 1: $str = "PERSON"; break;
-        case 2: $str = "HASHTAG"; break;
-        case 3: $str = "GEOLOCALIZATION"; break;
-        case 4: $str = "CLIENT"; break;
+        case EnumEntity::GEO    : $str = "GEOLOCALIZATION"; break;
+        case EnumEntity::PERSON : $str = "PERSON"; break;
+        case EnumEntity::HASHTAG: $str = "HASHTAG"; break;
+        case EnumEntity::CLIENT : $str = "CLIENT"; break;
       }
       
       return $str;
@@ -78,17 +77,17 @@ namespace InstaApiWeb {
   
   class EnumAction extends EnumBase {
  
-    const CMD_LOGIN = 1;
-    const CMD_LIKE = 2;
-    const CMD_FOLLOW= 3;
+    //const CMD_LOGIN = 1;
+    const CMD_LIKE = 1;
+    const CMD_FOLLOW= 2;
     const CMD_UNFOLLOW = 4;
-    const CMD_CHECKPOINT = 5;
-    const GET_POST = 6;
-    const GET_FIRST_POST = 7;
-    const GET_FOLLOWERS = 8;
-    const GET_USER_INFO_POST = 9;
-    const GET_PROFILE_INFO = 10;
-    const GET_CHALLENGE_CODE = 11;
+    const CMD_CHECKPOINT = 8;
+    const GET_POST = 16;
+    const GET_FIRST_POST = 32;
+    const GET_FOLLOWERS = 64;
+    const GET_USER_INFO_POST = 128;
+    const GET_PROFILE_INFO = 256;
+    const GET_CHALLENGE_CODE = 512;
  
     public function __construct(int $value) {
       parent::__construct($value);     
@@ -97,17 +96,17 @@ namespace InstaApiWeb {
     function __toString(){            
       switch ($this->enumValue)
       {
-        case 1: $str = "CMD_LOGIN"; break;
-        case 2: $str = "CMD_LIKE"; break;
-        case 3: $str = "CMD_FOLLOW"; break;
-        case 4: $str = "CMD_UNFOLLOW"; break;
-        case 5: $str = "CMD_CHECKPOINT"; break;
-        case 6: $str = "GET_POST"; break;
-        case 7: $str = "GET_FIRST_POST"; break;
-        case 8: $str = "GET_FOLLOWERS"; break;
-        case 9: $str = "GET_USER_INFO_POST"; break;
-        case 10: $str = "GET_PROFILE_INFO"; break;
-        case 11: $str = "GET_CHALLENGE_CODE"; break;
+        case EnumAction::CMD_LOGIN         : $str = "CMD_LOGIN"; break;
+        case EnumAction::CMD_LIKE          : $str = "CMD_LIKE"; break;
+        case EnumAction::CMD_FOLLOW        : $str = "CMD_FOLLOW"; break;
+        case EnumAction::CMD_UNFOLLOW      : $str = "CMD_UNFOLLOW"; break;
+        case EnumAction::CMD_CHECKPOINT    : $str = "CMD_CHECKPOINT"; break;
+        case EnumAction::GET_POST          : $str = "GET_POST"; break;
+        case EnumAction::GET_FIRST_POST    : $str = "GET_FIRST_POST"; break;
+        case EnumAction::GET_FOLLOWERS     : $str = "GET_FOLLOWERS"; break;
+        case EnumAction::GET_USER_INFO_POST: $str = "GET_USER_INFO_POST"; break;
+        case EnumAction::GET_PROFILE_INFO  : $str = "GET_PROFILE_INFO"; break;
+        case EnumAction::GET_CHALLENGE_CODE: $str = "GET_CHALLENGE_CODE"; break;
       }
       
       return $str;
@@ -181,7 +180,7 @@ namespace InstaApiWeb {
         }
         $variables .= "}";
         
-      // INSTA-CLIENTE.make_curl_chaining_str()
+      // INSTA-CLIENT.make_curl_chaining_str()
       $variables = "{\"id\":\"$insta_id\",\"first\":$N";
       if ($cursor != NULL && $cursor != "NULL") {
         $variables .= ",\"after\":\"$cursor\"";
@@ -199,7 +198,28 @@ namespace InstaApiWeb {
       
     }
     
-    public function make_curl_str(Proxy $proxy, CookiesRequest $cookies = NULL) {            
+    public function make_curl_str(Proxy $proxy, CookiesRequest $cookies = NULL) {
+      $profile = $this->ProfileType->getEnumValue();
+      $action = $this->ActionType->getEnumValue();
+      
+      switch ($profile + $action){
+        case EnumEntity::HASHTAG + EnumAction::GET_POST:
+          $str_cur = $this->get_post($proxy, $cookies);
+        break;
+      
+        default:
+          echo "aqui lanzar una exception";
+      }
+      
+      return $str_cur;
+    }
+
+    public function make_curl_obj(Proxy $proxy, CookiesRequest $cookies = NULL) {
+      
+      
+    }
+    
+    private function get_post (Proxy $proxy, CookiesRequest $cookies = NULL){
       // Paso 1. configuracion inicial de la curl
       $curl_str = sprintf("curl %s '%s?query_hash=%s&variables=%s'", $proxy->ToString(), 
         $this->InstaURL['Graphql'], $this->ProfileType->getHashQuery(), urlencode($this->MediaStr));
@@ -255,12 +275,6 @@ namespace InstaApiWeb {
       $this->Headers['Authority'],
       $this->Headers['compressed']);*/
       //return $str;
-      
-    }
-
-    public function make_curl_obj(Proxy $proxy, CookiesRequest $cookies = NULL) {
-      
-      
     }
     
     private function checkpoint () {
