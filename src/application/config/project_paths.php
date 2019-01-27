@@ -72,8 +72,7 @@
   //Exception de la BD
   $config['db-exception-class'] = getcwd().'/application/business/OwnException.php';
   
-  //Exception de la InstaApiWeb
-  
+  //Exception de la InstaApiWeb  
   $config['curl_nertwork-exception-class'] = getcwd().'/application/third_party/InstaApiWeb/Exception/CurlNertworkException.php';
   $config['end_cursor-exception-class'] = getcwd().'/application/third_party/InstaApiWeb/Exception/EndCursorException.php';
   $config['code-exception-class'] = getcwd().'/application/third_party/InstaApiWeb/Exception/ExceptionCode.php';
@@ -83,6 +82,8 @@
   $config['insta-checkpoint-exception-class'] = getcwd().'/application/third_party/InstaApiWeb/Exception/InstaCheckpointException.php';
   $config['insta-exception-class'] = getcwd().'/application/third_party/InstaApiWeb/Exception/InstaException.php';
   //$config['wrong_end_cursor-exception-class'] = getcwd().'/application/third_party/InstaApiWeb/Exception/WrongEndCursorException.php';
+  
+  $config['insta-curl-exception-class'] = getcwd().'/application/third_party/InstaApiWeb/Exception/InstaCurlException.php';
   
   /*
 |--------------------------------------------------------------------------

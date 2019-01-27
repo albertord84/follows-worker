@@ -4,9 +4,13 @@ namespace InstaApiWeb {
   
   require_once config_item('business-proxy-class');
   require_once config_item('business-cookies_request-class');
+  require_once config_item('insta-curl-exception-class');
   
   use business\Proxy;
   use business\CookiesRequest;
+  use InstaApiWeb\Exceptions\InstaCurlMediaException;
+  use InstaApiWeb\Exceptions\InstaCurlActionException;
+  use InstaApiWeb\Exceptions\InstaCurlArgumentException;
   
   /**
    * 
@@ -42,6 +46,10 @@ namespace InstaApiWeb {
     private $TagQuery = array(array());
     
     public function __construct(int $value) {
+      if ($value != EnumEntity::GEO && $value != EnumEntity::PERSON && 
+          $value != EnumEntity::HASHTAG && $value != EnumEntity::CLIENT)
+        throw new InstaCurlArgumentException("El valor de EnumEntity ($value) proporcionado es incorrecto");
+      
       parent::__construct($value);  
       
       /* Instagram Hash-query definitions*/
@@ -90,13 +98,20 @@ namespace InstaApiWeb {
     const GET_CHALLENGE_CODE = 512;
  
     public function __construct(int $value) {
+      if ($value != EnumAction::CMD_LIKE && $value != EnumAction::CMD_FOLLOW &&
+          $value != EnumAction::CMD_UNFOLLOW && $value != EnumAction::CMD_CHECKPOINT &&
+          $value != EnumAction::GET_POST && $value != EnumAction::GET_FIRST_POST &&
+          $value != EnumAction::GET_FOLLOWERS && $value != EnumAction::GET_USER_INFO_POST &&
+          $value != EnumAction::GET_PROFILE_INFO && $value != EnumAction::GET_CHALLENGE_CODE)
+        throw new InstaCurlArgumentException("El valor de EnumAction ($value) proporcionado es incorrecto");
+      
       parent::__construct($value);     
     }
     
     function __toString(){            
       switch ($this->enumValue)
       {
-        case EnumAction::CMD_LOGIN         : $str = "CMD_LOGIN"; break;
+        //case EnumAction::CMD_LOGIN         : $str = "CMD_LOGIN"; break;
         case EnumAction::CMD_LIKE          : $str = "CMD_LIKE"; break;
         case EnumAction::CMD_FOLLOW        : $str = "CMD_FOLLOW"; break;
         case EnumAction::CMD_UNFOLLOW      : $str = "CMD_UNFOLLOW"; break;
@@ -190,7 +205,7 @@ namespace InstaApiWeb {
       $tag = ($this->ProfileType->getEnumValue() == EnumEntity::HASHTAG) ? "tag_name" : "id";
       $str_cur = ($cursor != null) ? sprintf(",\"after\":\"%s\"", $cursor) : "";
       $this->MediaStr = sprintf("{\"%s\":\"%s\",\"first\":\"%s\"%s}", $tag, $id, $first, $str_cur); 
-      echo "<br>".$this->MediaStr;
+      //echo "<br>".$this->MediaStr;
       
     }
     
@@ -204,40 +219,63 @@ namespace InstaApiWeb {
       
       switch ($profile + $action){
         case EnumEntity::CLIENT + EnumAction::CMD_FOLLOW:
+          //
         break;
 
         case EnumEntity::CLIENT + EnumAction::CMD_UNFOLLOW:
+          //
         break;
         
         case EnumEntity::CLIENT + EnumAction::CMD_LIKE:
+          //
         break;
-      
+            
         case EnumEntity::GEO + EnumAction::GET_USER_INFO_POST:
         case EnumEntity::HASHTAG + EnumAction::GET_USER_INFO_POST:
+          //
         break;
         
-      case EnumEntity::GEO + EnumAction::GET_POST:
+        case EnumEntity::GEO + EnumAction::GET_POST:
         case EnumEntity::PERSON + EnumAction::GET_POST:
         case EnumEntity::HASHTAG + EnumAction::GET_POST:
           $str_cur = $this->get_post($proxy, $cookies);
-        break;
-      
+        break;           
       
         default:
-          echo "aqui lanzar una exception";
+          throw new InstaCurlActionException("La accion solicitada: ($this->ActionType) no es aplicable a: ($this->ProfileType)");
       }
       
       return $str_cur;
     }
 
     public function make_curl_obj(Proxy $proxy, CookiesRequest $cookies = NULL) {
+      $profile = $this->ProfileType->getEnumValue();
+      $action = $this->ActionType->getEnumValue();
       
+      switch ($profile + $action){      
+        case EnumEntity::CLIENT + EnumAction::CMD_CHECKPOINT:
+          //
+        break;
       
+        case EnumEntity::CLIENT + EnumAction::GET_CHALLENGE_CODE:
+          //
+        break;
+      
+        case EnumEntity::GEO + EnumAction::GET_PROFILE_INFO:
+        case EnumEntity::PERSON + EnumAction::GET_PROFILE_INFO:
+        case EnumEntity::HASHTAG + EnumAction::GET_PROFILE_INFO:
+          //
+        break;
+      
+        default:
+          throw new InstaCurlActionException("La accion solicitada: ($this->ActionType) no es aplicable a: ($this->ProfileType)");
+      }
     }
     
     private function get_post (Proxy $proxy, CookiesRequest $cookies){
       // Paso 0. compruebo validez del MediaStr
       if ($this->MediaStr == null)
+        throw new InstaCurlMediaException("No se han establecido los parametros <id, cursor, first> del media-cUrl");
 
       // Paso 1. configuracion inicial de la curl
       $curl_str = sprintf("curl %s '%s?query_hash=%s&variables=%s'", $proxy->ToString(), 

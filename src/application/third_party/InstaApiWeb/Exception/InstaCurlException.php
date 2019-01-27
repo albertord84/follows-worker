@@ -12,7 +12,7 @@ namespace InstaApiWeb\Exceptions {
    * @todo Define Instagram Curl Exception.
    * 
    */
-  class InstaCurlMediaException extends InstaException {
+  class InstaCurlArgumentException extends InstaException {
 
     public function __construct(string $message, int $code = 0, Throwable $previous = null) {
       parent::__construct($message, $code, $previous);
@@ -28,14 +28,14 @@ namespace InstaApiWeb\Exceptions {
    * @todo Define Instagram Curl Exception.
    * 
    */
-  class InstaCurlArgumentException extends InstaException {
+  class InstaCurlActionException extends InstaException {
 
     public function __construct(string $message, int $code = 0, Throwable $previous = null) {
       parent::__construct($message, $code, $previous);
     }
     
   }
-
+  
   /**
    * @category Third-Party InstaApiWeb Exception
    * 
@@ -44,7 +44,23 @@ namespace InstaApiWeb\Exceptions {
    * @todo Define Instagram Curl Exception.
    * 
    */
-  class InstaCurlActiontException extends InstaException {
+  class InstaCurlMediaException extends InstaException {
+
+    public function __construct(string $message, int $code = 0, Throwable $previous = null) {
+      parent::__construct($message, $code, $previous);
+    }
+    
+  }
+ 
+    /**
+   * @category Third-Party InstaApiWeb Exception
+   * 
+   * @access public
+   *
+   * @todo Define Instagram Curl Exception.
+   * 
+   */
+  class InstaCurlChallengeException extends InstaException {
 
     public function __construct(string $message, int $code = 0, Throwable $previous = null) {
       parent::__construct($message, $code, $previous);
