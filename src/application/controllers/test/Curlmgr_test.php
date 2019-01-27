@@ -43,19 +43,22 @@ class CurlMgr_test extends CI_Controller {
     //echo "<br>".$obj;
   }
 
-  public function run() {
-    $obj = new EnumEntity(EnumEntity::PERSON);
-    var_dump($obj);
-    echo "<h3>EnumProfile: ".$obj."</h3>";
+  public function run() {    
+    echo "<h2>GEO + GET_POST</h2>";
+    $obj = new InstaCurlMgr(new EnumEntity(EnumEntity::GEO), new EnumAction(EnumAction::GET_POST));         
+    echo $obj->make_curl_str(new Proxy(), new CookiesRequest("", "", "", ""));
+    //var_dump($obj);
     
-    $obj = new EnumAction(EnumAction::CMD_FOLLOW);
-    var_dump($obj);
-    echo "<h3>EnumAction: ".$obj."</h3>";
+    echo "<h2>HASHTAG + GET_POST</h2>";
+    $obj = new InstaCurlMgr(new EnumEntity(EnumEntity::HASHTAG), new EnumAction(EnumAction::GET_POST));         
+    echo $obj->make_curl_str(new Proxy(), new CookiesRequest("", "", "", ""));
+    //var_dump($obj);
     
-    $obj = new InstaCurlMgr(new EnumEntity(EnumEntity::PERSON), new EnumAction(EnumAction::CMD_FOLLOW));
-    var_dump($obj);
-    echo $obj->make_curl(new Proxy(), new CookiesRequest("", "", "", ""));
-    
+    echo "<h2>PERSON + GET_POST</h2>";
+    $obj = new InstaCurlMgr(new EnumEntity(EnumEntity::PERSON), new EnumAction(EnumAction::GET_POST));         
+    echo $obj->make_curl_str(new Proxy(), new CookiesRequest("", "", "", ""));
+    //var_dump($obj);
+    //
     //$obj = new InstaProfileType(InstaProfileType::PERSON);
     //var_dump($obj);
     
