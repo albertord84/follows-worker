@@ -52,7 +52,7 @@ namespace InstaApiWeb\Exceptions {
     
   }
  
-    /**
+  /**
    * @category Third-Party InstaApiWeb Exception
    * 
    * @access public
@@ -66,5 +66,22 @@ namespace InstaApiWeb\Exceptions {
       parent::__construct($message, $code, $previous);
     }
     
+  }
+  
+   /**
+   * @category Third-Party InstaApiWeb Exception
+   * 
+   * @access public
+   *
+   * @todo Define Instagram Curl Exception.
+   * 
+   */
+  class CurlNertworkException extends InstaException {
+
+    public function __construct(string $message = "", Throwable $previous = null) {
+      parent::__construct($message, ExceptionCode::CurlNertworkError, $previous);
+    }
+
+    //put your code here
   }
 }
