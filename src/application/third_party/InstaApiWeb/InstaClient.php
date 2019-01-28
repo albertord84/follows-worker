@@ -9,7 +9,7 @@ namespace InstaApiWeb {
   use InstaApiWeb\Responses\LoginResponse;
   use InstaApiWeb\Responses\CookiesResponse;
   use InstaApiWeb\Exceptions\InstaException;
-  use InstaApiWeb\Exceptions\CurlNertworkException;
+  use InstaApiWeb\Exceptions\InstaCurlException;
   use InstaApiWeb\Exceptions\InstaPasswordException;
   use InstaApiWeb\Exceptions\InstaCheckpointException;
   
@@ -215,7 +215,7 @@ namespace InstaApiWeb {
           throw new InstaCheckpointException($e->getMessage(), $e->getPrevious(), $res);
         } 
         else if (strpos($e->getMessage(), 'Network: CURL error 28') !== FALSE) { // Time out by bad proxy
-          throw new CurlNertworkException($e->getMessage(), $e);
+          throw new InstaCurlException($e->getMessage(), $e);
         } 
         else if (strpos($e->getMessage(), 'password you entered is incorrect') !== FALSE) {
           throw new InstaPasswordException($e->getMessage(), $e);
