@@ -5,7 +5,7 @@ namespace InstaApiWeb {
   use InstaApiWeb\Responses\LoginResponse;
   use InstaApiWeb\Responses\CookiesResponse;
   use InstaApiWeb\Exceptions\InstaException;
-  use InstaApiWeb\Exceptions\CurlNertworkException;
+  use InstaApiWeb\Exceptions\InstaCurlNetworkException;
   use InstaApiWeb\Exceptions\InstaPasswordException;
   use InstaApiWeb\Exceptions\InstaCheckpointException;
   

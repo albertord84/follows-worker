@@ -76,7 +76,7 @@ namespace InstaApiWeb\Exceptions {
    * @todo Define Instagram Curl Exception.
    * 
    */
-  class CurlNertworkException extends InstaException {
+  class InstaCurlNetworkException extends InstaException {
 
     public function __construct(string $message = "", Throwable $previous = null) {
       parent::__construct($message, ExceptionCode::CurlNertworkError, $previous);
