@@ -10,7 +10,7 @@ use InstaApiWeb\VerificationChoice;
 use InstaApiWeb\Responses\LoginResponse;
 use InstaApiWeb\Exceptions\InstaException;
 use InstaApiWeb\Responses\CookiesResponse;
-use InstaApiWeb\Exceptions\CurlNertworkException;
+use InstaApiWeb\Exceptions\InstaCurlNetworkException;
 use InstaApiWeb\Exceptions\InstaPasswordException;
 use InstaApiWeb\Exceptions\InstaCheckpointException;
 use business\CookiesRequest;

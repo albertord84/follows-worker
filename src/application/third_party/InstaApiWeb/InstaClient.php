@@ -32,7 +32,7 @@ namespace InstaApiWeb {
       require_once config_item('composer_autoload');
       require_once config_item('insta-exception-class');
       require_once config_item('insta-cookies-exception-class');      
-      require_once config_item('curl_nertwork-exception-class');
+      require_once config_item('insta-curl-exception-class');
       require_once config_item('insta-password-exception-class');
       require_once config_item('thirdparty-login_response-class');
       require_once config_item('insta-checkpoint-exception-class');
