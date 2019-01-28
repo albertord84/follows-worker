@@ -14,13 +14,12 @@ namespace InstaApiWeb {
   
   /**
    * 
-   * Define enum for Instagram Actions
+   * Define a abstract base enum for Instagram Concepts.
    * 
    * @category Third-Party Instagram API
    * 
    * @access public
-   *.
-   * 
+   *
    */
   abstract class EnumBase
   {
@@ -36,6 +35,15 @@ namespace InstaApiWeb {
   
   }
   
+  /**
+   * 
+   * Define a enum for Instagram Entity.
+   * 
+   * @category Third-Party Instagram API
+   * 
+   * @access public
+   *.
+   */
   class EnumEntity extends EnumBase {
     
     const GEO = 1;
@@ -45,6 +53,11 @@ namespace InstaApiWeb {
 
     private $TagQuery = array(array());
     
+    /**
+     * 
+     * @param int $value
+     * @throws InstaCurlArgumentException
+     */
     public function __construct(int $value) {
       if ($value != EnumEntity::GEO && $value != EnumEntity::PERSON && 
           $value != EnumEntity::HASHTAG && $value != EnumEntity::CLIENT)
@@ -58,6 +71,10 @@ namespace InstaApiWeb {
       $this->TagQuery['HashTag'] = "ded47faa9a1aaded10161a2ff32abb6b";
     }
   
+    /**
+     * 
+     * @return type
+     */
     public function getHashQuery () {
       $hash = null;
       switch ($this->enumValue){
@@ -68,7 +85,11 @@ namespace InstaApiWeb {
       
       return $hash;
     }
-      
+    
+    /**
+     * 
+     * @return string
+     */
     function __toString(){      
       switch ($this->enumValue)
       {
@@ -83,9 +104,17 @@ namespace InstaApiWeb {
     
   }
   
+  /**
+   * 
+   * Define a enum for Instagram Actions.
+   * 
+   * @category Third-Party Instagram API
+   * 
+   * @access public
+   *.
+   */
   class EnumAction extends EnumBase {
  
-    //const CMD_LOGIN = 1;
     const CMD_LIKE = 1;
     const CMD_FOLLOW= 2;
     const CMD_UNFOLLOW = 4;
@@ -97,6 +126,11 @@ namespace InstaApiWeb {
     const GET_PROFILE_INFO = 256;
     const GET_CHALLENGE_CODE = 512;
  
+    /**
+     * 
+     * @param int $value
+     * @throws InstaCurlArgumentException
+     */
     public function __construct(int $value) {
       if ($value != EnumAction::CMD_LIKE && $value != EnumAction::CMD_FOLLOW &&
           $value != EnumAction::CMD_UNFOLLOW && $value != EnumAction::CMD_CHECKPOINT &&
@@ -107,11 +141,52 @@ namespace InstaApiWeb {
       
       parent::__construct($value);     
     }
+   
+    /**
+     * 
+     * @return string
+     */
+    public function getCmdSubQuery (){
+      switch ($this->enumValue)
+      {
+        case EnumAction::CMD_LIKE    : $str = "like"; break;
+        case EnumAction::CMD_FOLLOW  : $str = "follow"; break;
+        case EnumAction::CMD_UNFOLLOW: $str = "unfollow"; break;      
+        default: $str = "NO_ACTION_DEFINED!!!";
+      }
+      
+      return $str;
+    }
     
+    /**
+     * 
+     * @return string
+     */
+    public function getObjetiveUrl (){
+      switch ($this->enumValue)
+      {
+        case EnumAction::CMD_LIKE:
+          $str = "web/likes"; 
+        break;
+      
+        case EnumAction::CMD_FOLLOW: 
+        case EnumAction::CMD_UNFOLLOW: 
+          $str = "web/friendships"; 
+        break;
+        
+        default: $str = "NO_OBJETIVE_DEFINED!!!";
+      }
+      
+      return $str;
+    }
+    
+    /**
+     * 
+     * @return string
+     */
     function __toString(){            
       switch ($this->enumValue)
       {
-        //case EnumAction::CMD_LOGIN         : $str = "CMD_LOGIN"; break;
         case EnumAction::CMD_LIKE          : $str = "CMD_LIKE"; break;
         case EnumAction::CMD_FOLLOW        : $str = "CMD_FOLLOW"; break;
         case EnumAction::CMD_UNFOLLOW      : $str = "CMD_UNFOLLOW"; break;
@@ -126,6 +201,7 @@ namespace InstaApiWeb {
       
       return $str;
     }
+       
   }
   
   /**
@@ -136,7 +212,6 @@ namespace InstaApiWeb {
    * 
    * @access public
    *.
-   * 
    */
   class InstaCurlMgr {
     private $Config;
@@ -146,7 +221,12 @@ namespace InstaApiWeb {
     private $MediaStr; 
     private $Headers = array(array());
     private $InstaURL = array(array());
-        
+     
+    /**
+     * 
+     * @param \InstaApiWeb\EnumEntity $profile
+     * @param \InstaApiWeb\EnumAction $action
+     */
     public function __construct(EnumEntity $profile, EnumAction $action) {
       
       $this->MediaStr = null;
@@ -155,12 +235,12 @@ namespace InstaApiWeb {
            
       /* Instagram Base URLs */
       $this->InstaURL['Base']      = "https://www.instagram.com";
-      $this->InstaURL['Graphql']   = "https://www.instagram.com/graphql/query/";
-      $this->InstaURL['TopSearch'] = "https://www.instagram.com/web/search/topsearch/";
+      $this->InstaURL['Graphql']   = "https://www.instagram.com/graphql/query";
+      $this->InstaURL['TopSearch'] = "https://www.instagram.com/web/search/topsearch";
       
       /* Instagram cUrl Headers definitions */
       $this->Headers['X-Post']           = "-X POST";
-      $this->Headers['Cookie']           = "-H 'Cookie: mid=%s; sessionid=%s;  csrftoken=%s; ds_user_id=%s'";
+      $this->Headers['Cookie']           = "-H 'Cookie: mid=%s; sessionid=%s; csrftoken=%s; ds_user_id=%s'";
       $this->Headers['Origin']           = "-H 'Origin: https://www.instagram.com'";
       $this->Headers['AcceptEncoding']   = "-H 'Accept-Encoding: gzip, deflate'";
       $this->Headers['AcceptLanguage']   = "-H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4'";
@@ -180,6 +260,12 @@ namespace InstaApiWeb {
       //$ci = &get_instance();
     }
 
+    /**
+     * 
+     * @param string $id
+     * @param int $first
+     * @param string $cursor
+     */
     public function setMediaData (string $id, int $first, string $cursor) {
       /*// GEO-PROFILE
       $variables = "{\"id\":\"$this->insta_id\",\"first\":$N\"";
@@ -209,25 +295,30 @@ namespace InstaApiWeb {
       
     }
     
+    /**
+     * 
+     */
     public function setChallengeData (){
       
     }
     
-    public function make_curl_str(Proxy $proxy, CookiesRequest $cookies = NULL) {
+    /**
+     * 
+     * @param Proxy $proxy
+     * @param CookiesRequest $cookies
+     * @param string $resource_id
+     * @return type
+     * @throws InstaCurlActionException
+     */
+    public function make_curl_str(Proxy $proxy, CookiesRequest $cookies, string $resource_id = "") {
       $profile = $this->ProfileType->getEnumValue();
       $action = $this->ActionType->getEnumValue();
       
       switch ($profile + $action){
-        case EnumEntity::CLIENT + EnumAction::CMD_FOLLOW:
-          //
-        break;
-
-        case EnumEntity::CLIENT + EnumAction::CMD_UNFOLLOW:
-          //
-        break;
-        
         case EnumEntity::CLIENT + EnumAction::CMD_LIKE:
-          //
+        case EnumEntity::CLIENT + EnumAction::CMD_FOLLOW:
+        case EnumEntity::CLIENT + EnumAction::CMD_UNFOLLOW:
+          $str_cur = $this->cmd_friendships($proxy, $cookies, $resource_id);
         break;
             
         case EnumEntity::GEO + EnumAction::GET_USER_INFO_POST:
@@ -272,13 +363,17 @@ namespace InstaApiWeb {
       }
     }
     
+    /**
+     * Funcion de Utileria.
+     * Construye cUrl tipo GET para obtener un post para los perfiles de Instagram ==> [Geo, HashTag, Person]  
+     */
     private function get_post (Proxy $proxy, CookiesRequest $cookies){
       // Paso 0. compruebo validez del MediaStr
       if ($this->MediaStr == null)
         throw new InstaCurlMediaException("No se han establecido los parametros <id, cursor, first> del media-cUrl");
 
       // Paso 1. configuracion inicial de la curl
-      $curl_str = sprintf("curl %s '%s?query_hash=%s&variables=%s'", $proxy->ToString(), 
+      $curl_str = sprintf("curl %s '%s/?query_hash=%s&variables=%s'", $proxy->ToString(), 
         $this->InstaURL['Graphql'], $this->ProfileType->getHashQuery(), urlencode($this->MediaStr));
       
       // Paso 2. agregando la cookies a la curl
@@ -288,7 +383,7 @@ namespace InstaApiWeb {
       
       // Paso 3. agregando el resto de los headers
       $curl_str = sprintf("%s %s %s %s %s %s %s %s %s %s %s", $curl_str, 
-        $this->Headers['Origin'],
+        $this->Headers['Origin'], 
         $this->Headers['AcceptEncoding'], 
         $this->Headers['AcceptLanguage'], 
         $this->Headers['UserAgent'],
@@ -330,6 +425,58 @@ namespace InstaApiWeb {
       $curl_str .= "-H 'Authority: www.instagram.com' ";
       $curl_str .= "--compressed ";
       return $curl_str;*/
+    }
+    
+    /**
+     * Funcion de Utileria.
+     * Construye cUrl tipo CMD para las acciones de los friendship ==> [Follow, Unfollow, Like].
+     */
+    private function cmd_friendships (Proxy $proxy, CookiesRequest $cookies, string $resource_id) {
+      // Paso 1. configuracion inicial de la curl
+      $curl_str = sprintf("curl %s %s/%s-%s-%s-", $proxy->ToString(), 
+        $this->InstaURL['Base'],
+        $this->ActionType->getObjetiveUrl(), 
+        $resource_id, "ojo");
+        //$this->ActionType->getCmdSubQuery());
+       
+      // Paso 2. agregando la cookies a la curl
+      $curl_str = sprintf("%s %s", $curl_str, $this->Headers['X-Post']);
+      $curl_str = sprintf("%s %s", $curl_str, $this->Headers['Cookie']);
+      
+      // Paso 3. agregando el resto de los headers
+      
+      return $curl_str;
+      
+      //EXEMPLO-----------------------------------------  
+      //--FOLLOW--
+      //make_insta_friendships_command($resource_id, 'follow', 'web/friendships');
+      
+      //--UNFOLLOW--
+      //make_insta_friendships_command($login_data, $Profile->followed_id, 'unfollow', 'web/friendships', $Client, $curl_str);
+    
+      //--LIKE--
+      //make_insta_friendships_command($result[0]->node->id, 'like', 'web/likes');
+      
+      // param: $url
+      //$insta = InstaURLs::Instagram;
+      //make_curl_friendships_command_str("'$insta/$objetive_url/$resource_id/$command/'");
+      
+      $curl_str = "curl $proxy_str  $url ";
+      $curl_str .= "-X POST ";
+      $curl_str .= "-H 'Cookie: mid=$mid; sessionid=$sessionid; csrftoken=$csrftoken; ds_user_id=$ds_user_id' ";
+      $curl_str .= "-H 'origin: www.instagram.com' ";
+      $curl_str .= "-H 'Accept-Encoding: gzip, deflate' ";
+      $curl_str .= "-H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4' ";
+      $curl_str .= "-H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:49.0) Gecko/20100101 Firefox/49.0' ";
+      $curl_str .= "-H 'X-Requested-with: XMLHttpRequest' ";
+      $curl_str .= "-H 'X-CSRFToken: $csrftoken' ";
+      $curl_str .= "-H 'X-Instagram-Ajax: dad8d866382b' ";
+      $curl_str .= "-H 'Content-Type: application/x-www-form-urlencoded' ";
+      $curl_str .= "-H 'Accept: */*' ";
+      $curl_str .= "-H 'Referer: https://www.instagram.com/' ";
+      $curl_str .= "-H 'Authority: www.instagram.com' ";
+      $curl_str .= "-H 'Content-Length: 0' ";
+      $curl_str .= "--compressed ";
     }
     
     private function get_user_info_post () {
@@ -416,21 +563,6 @@ namespace InstaApiWeb {
       
       return $ch;
     }
-    
-    /*
-     * $variables = urlencode($variables);
-      $graphquery_url = InstaURLs::GraphqlQuery;
-      $url = "$graphquery_url?query_hash=$query&variables=$variables";
-      $proxy_str = $proxy->ToString();
-      $curl_str = "curl $proxy_str '$url' ";
-      if ($cookies !== NULL) {
-        if ($cookies->mid == NULL || $cookies->csrftoken == NULL || $cookies->sessionid == NULL ||
-          $cookies->ds_user_id == NULL)
-          return NULL;
-        $curl_str .= "-H 'Cookie: mid=$cookies->mid; sessionid=$cookies->sessionid; s_network=; ig_pr=1; ig_vw=1855; csrftoken=$cookies->csrftoken; ds_user_id=$cookies->ds_user_id' ";
-        $curl_str .= "-H 'X-CSRFToken: $cookies->csrftoken' ";
-      }*/
-    
     
   }
 

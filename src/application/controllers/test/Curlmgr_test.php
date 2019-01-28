@@ -48,6 +48,10 @@ class CurlMgr_test extends CI_Controller {
 
   public function run() {    
     try {
+      echo "<h2>CLIENT + LIKE</h2>";
+      $obj = new InstaCurlMgr(new EnumEntity(EnumEntity::CLIENT), new EnumAction(EnumAction::CMD_LIKE)); 
+      echo $obj->make_curl_str(new Proxy(), new CookiesRequest("", "", "", ""), "my-id-123");
+      
       echo "<h2>GEO + GET_POST</h2>";
       $obj = new InstaCurlMgr(new EnumEntity(EnumEntity::GEO), new EnumAction(EnumAction::GET_POST));         
       $obj->setMediaData("AAA", "111", "AA-cursor-11");
@@ -64,8 +68,8 @@ class CurlMgr_test extends CI_Controller {
       $obj = new InstaCurlMgr(new EnumEntity(EnumEntity::PERSON), new EnumAction(EnumAction::GET_POST));         
       $obj->setMediaData("CCC", "3", "CC-cursor-33");
       echo $obj->make_curl_str(new Proxy(), new CookiesRequest("", "", "", ""));
-      //var_dump($obj);
-      //
+      //var_dump($obj);      
+      
       //$obj = new InstaProfileType(InstaProfileType::PERSON);
       //var_dump($obj);
     }
