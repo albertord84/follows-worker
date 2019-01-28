@@ -38,7 +38,7 @@ namespace business\worker {
           $ci = &get_instance();
       
           $ci->load->model('db_model');
-          $ci->load->library("InstaApiWeb/InstaApi_lib", null, 'InstaApi_lib');
+          //$ci->load->library("InstaApiWeb/InstaApi_lib", null, 'InstaApi_lib');
             
         /*  $config = parse_ini_file(dirname(__FILE__) . $conf_file, true);
             $this->IPS = $config["IPS"];

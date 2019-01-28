@@ -9,7 +9,7 @@ namespace InstaApiWeb {
   use InstaApiWeb\Responses\LoginResponse;
   use InstaApiWeb\Responses\CookiesResponse;
   use InstaApiWeb\Exceptions\InstaException;
-  use InstaApiWeb\Exceptions\InstaCurlNetworkException;
+  use InstaApiWeb\Exceptions\InstaCurlException;
   use InstaApiWeb\Exceptions\InstaPasswordException;
   use InstaApiWeb\Exceptions\InstaCheckpointException;
   
@@ -32,7 +32,7 @@ namespace InstaApiWeb {
       require_once config_item('composer_autoload');
       require_once config_item('insta-exception-class');
       require_once config_item('insta-cookies-exception-class');      
-      require_once config_item('curl_nertwork-exception-class');
+      require_once config_item('insta-curl-exception-class');
       require_once config_item('insta-password-exception-class');
       require_once config_item('thirdparty-login_response-class');
       require_once config_item('insta-checkpoint-exception-class');
@@ -215,7 +215,7 @@ namespace InstaApiWeb {
           throw new InstaCheckpointException($e->getMessage(), $e->getPrevious(), $res);
         } 
         else if (strpos($e->getMessage(), 'Network: CURL error 28') !== FALSE) { // Time out by bad proxy
-          throw new InstaCurlNetworkException($e->getMessage(), $e);
+          throw new InstaCurlException($e->getMessage(), $e);
         } 
         else if (strpos($e->getMessage(), 'password you entered is incorrect') !== FALSE) {
           throw new InstaPasswordException($e->getMessage(), $e);

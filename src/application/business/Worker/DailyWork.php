@@ -54,7 +54,7 @@ class DailyWork extends Business{
           $ci = &get_instance();
       
           $ci->load->model('db_model');
-          $ci->load->library("InstaApiWeb/InstaApi_lib", null, 'InstaApi_lib');
+          //$ci->load->library("InstaApiWeb/InstaApi_lib", null, 'InstaApi_lib');
           
           $this->Client = new Client();
         }

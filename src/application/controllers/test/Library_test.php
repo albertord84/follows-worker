@@ -51,11 +51,12 @@ class Library_test extends CI_Controller {
     $count++;
     
     // -OK-
-    echo "<br>[load] InstaApi_lib ==> ";
+ /* echo "<br>[load] InstaApi_lib ==> ";
     $this->load->library("InstaApiWeb/InstaApi_lib", null, 'InstaApi_lib');
     //$this->load->library("InstaApiWeb/InstaApi_lib", $params, 'InstaApi_lib');
     echo "(<b>ok</b>)";
     $count++;
+  */
 
     // -OK-
     echo "<br>[load] InstaClient_lib ==> ";
@@ -183,21 +184,7 @@ class Library_test extends CI_Controller {
     echo "[exec] exists_profile() ==> ";
     //$this->PersonProfile_lib->exists_profile();
     //echo "(<b>ok</b>)<br>";
-    
-    //======= INSTA_API-LIB =======//
-    echo "<h2>Test InstaApi Library</h2>";
-    echo "[load] InstaApi_lib ==> ";
-    $this->load->library("InstaApiWeb/InstaApi_lib", null, 'InstaApi_lib');
-    echo "(<b>ok</b>)<br>";
-    
-    echo "[exec] login() ==> ";
-    //$this->InstaApi_lib->login();
-    //echo "(<b>ok</b>)<br>";
-    
-    echo "[exec] make_query() ==> ";
-    //$this->InstaApi_lib->make_query();
-    //echo "(<b>ok</b>)<br>";
-    
+       
     //======= INSTA_API_CLIENT-LIB =======//
     echo "<h2>Test InstaApiClient Library</h2>";
     echo "[load] InstaClient_lib ==> ";
@@ -276,6 +263,24 @@ class Library_test extends CI_Controller {
     //var_dump($result);
     //echo "(<b>ok</b>)<br>";
     
+    
+    //---------------------------------DEPRECATED--------------------------------------//
+    
+    
+    //======= INSTA_API-LIB =======//
+/*  echo "<h2>Test InstaApi Library</h2>";
+    echo "[load] InstaApi_lib ==> ";
+    $this->load->library("InstaApiWeb/InstaApi_lib", null, 'InstaApi_lib');
+    echo "(<b>ok</b>)<br>";
+    
+    echo "[exec] login() ==> ";
+    //$this->InstaApi_lib->login();
+    //echo "(<b>ok</b>)<br>";
+    
+    echo "[exec] make_query() ==> ";
+    //$this->InstaApi_lib->make_query();
+    //echo "(<b>ok</b>)<br>";
+    
     //======= INSTA_PROFILE_LIST-LIB =======//
     echo "<h2>Test InstaProfileList Library</h2>";
     echo "[load] InstaProfileList_lib ==> ";
@@ -305,7 +310,9 @@ class Library_test extends CI_Controller {
     //echo "[exec] () ==> ";
     //$this->Proxy_lib->
     //echo "(<b>ok</b>)<br>";
+*/    
     
+       
     echo "</pre>";
   }
 }
