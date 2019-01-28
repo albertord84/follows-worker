@@ -33,10 +33,15 @@ class Database_test extends CI_Controller {
   public function db_model() {
      $this->load->model('db_model');
      
-     //$this->db_model->get_clients_data();
-     
      $obj = $this->db_model->get_client_data(1);
      var_dump($obj);
+     
+     $array = $this->db_model->get_clients_data();
+     var_dump($array);
+     
+     $array = $this->db_model->get_reference_profiles_data(1);
+     var_dump($array);
+     
   }
   
   public function entity($param, $action, $id) {
