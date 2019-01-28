@@ -18,7 +18,7 @@ class Db_model extends CI_Model {
 
   function get_clients_by_status($user_status, $uid = 0) {
     try {
-      $sql = sprintf("SELECT * FROM users
+      $sql = sprintf("SELECT * FROM users1
                       INNER JOIN clients ON clients.user_id = users.id 
                       INNER JOIN plane ON plane.id = clients.plane_id 
                       WHERE users.status_id = '%d' AND user_id > '%d'", $user_status, $uid);
