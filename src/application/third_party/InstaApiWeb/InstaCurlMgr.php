@@ -61,7 +61,7 @@ namespace InstaApiWeb {
     public function __construct(int $value) {
       if ($value != EnumEntity::GEO && $value != EnumEntity::PERSON && 
           $value != EnumEntity::HASHTAG && $value != EnumEntity::CLIENT)
-        throw new InstaCurlArgumentException("El valor de EnumEntity ($value) proporcionado es incorrecto");
+        throw new InstaCurlArgumentException("The EnumEntity value ($value) provided is ilegal!!!.");
       
       parent::__construct($value);  
       
@@ -137,7 +137,7 @@ namespace InstaApiWeb {
           $value != EnumAction::GET_POST && $value != EnumAction::GET_FIRST_POST &&
           $value != EnumAction::GET_FOLLOWERS && $value != EnumAction::GET_USER_INFO_POST &&
           $value != EnumAction::GET_PROFILE_INFO && $value != EnumAction::GET_CHALLENGE_CODE)
-        throw new InstaCurlArgumentException("El valor de EnumAction ($value) proporcionado es incorrecto");
+        throw new InstaCurlArgumentException("The EnumAction value ($value) provided is ilegal!!!.");
       
       parent::__construct($value);     
     }
@@ -240,7 +240,8 @@ namespace InstaApiWeb {
       
       /* Instagram cUrl Headers definitions */
       $this->Headers['X-Post']           = "-X POST";
-      $this->Headers['Cookie']           = "-H 'Cookie: mid=%s; sessionid=%s; csrftoken=%s; ds_user_id=%s'";
+      $this->Headers['Cookie-small']     = "-H 'Cookie: mid=%s; sessionid=%s; csrftoken=%s; ds_user_id=%s'";
+      $this->Headers['Cookie-big']       = "-H 'Cookie: mid=%s; sessionid=%s; s_network=; ig_pr=1; ig_vw=1855; csrftoken=%s; ds_user_id=%s'";
       $this->Headers['Origin']           = "-H 'Origin: https://www.instagram.com'";
       $this->Headers['AcceptEncoding']   = "-H 'Accept-Encoding: gzip, deflate'";
       $this->Headers['AcceptLanguage']   = "-H 'Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4'";
@@ -254,7 +255,7 @@ namespace InstaApiWeb {
       $this->Headers['X-CSRFToken']      = "-H 'X-CSRFToken: %s'";
       $this->Headers['X-Instagram-Ajax'] = "-H 'X-Instagram-Ajax: dad8d866382b'";
       $this->Headers['ContentLength']    = "-H 'Content-Length: 0'";  
-      $this->Headers['compressed']       = "--compressed";              
+      $this->Headers['compressed']       = "--compressed";                   
            
       // Singlenton CI
       //$ci = &get_instance();
@@ -333,7 +334,7 @@ namespace InstaApiWeb {
         break;           
       
         default:
-          throw new InstaCurlActionException("La accion solicitada: ($this->ActionType) no es aplicable a: ($this->ProfileType)");
+          throw new InstaCurlActionException("The action required: ($this->ActionType) is not applied to: ($this->ProfileType)!!!.");
       }
       
       return $str_cur;
@@ -359,7 +360,7 @@ namespace InstaApiWeb {
         break;
       
         default:
-          throw new InstaCurlActionException("La accion solicitada: ($this->ActionType) no es aplicable a: ($this->ProfileType)");
+          throw new InstaCurlActionException("The action required: ($this->ActionType) is not applied to: ($this->ProfileType)!!!.");
       }
     }
     
@@ -370,16 +371,20 @@ namespace InstaApiWeb {
     private function get_post (Proxy $proxy, CookiesRequest $cookies){
       // Paso 0. compruebo validez del MediaStr
       if ($this->MediaStr == null)
-        throw new InstaCurlMediaException("No se han establecido los parametros <id, cursor, first> del media-cUrl");
+        throw new InstaCurlMediaException("The media-cUrl parameters (id, cursor, first) have not been established!!!.");
 
       // Paso 1. configuracion inicial de la curl
       $curl_str = sprintf("curl %s '%s/?query_hash=%s&variables=%s'", $proxy->ToString(), 
         $this->InstaURL['Graphql'], $this->ProfileType->getHashQuery(), urlencode($this->MediaStr));
       
       // Paso 2. agregando la cookies a la curl
-      $curl_str = sprintf("%s -H 'Cookie: mid=%s; sessionid=%s; s_network=; ig_pr=1; ig_vw=1855; csrftoken=%s; ds_user_id=%s'", 
-        $curl_str, $cookies->mid, $cookies->sessionid, $cookies->csrftoken, $cookies->ds_user_id);
-      $curl_str = sprintf("%s -H 'X-CSRFToken: %s'", $curl_str, $cookies->csrftoken);
+      $ck = sprintf("%s", $this->Headers['Cookie-big']);
+      $ck = sprintf($ck, $cookies->Mid, $cookies->SessionId, $cookies->CsrfToken, $cookies->DsUserId);
+      $curl_str = sprintf("%s %s", $curl_str, $ck);
+      
+      $csrf = sprintf("%s", $this->Headers['X-CSRFToken']);
+      $csrf = sprintf($csrf, $cookies->CsrfToken);
+      $curl_str = sprintf("%s %s", $curl_str, $csrf);     
       
       // Paso 3. agregando el resto de los headers
       $curl_str = sprintf("%s %s %s %s %s %s %s %s %s %s %s", $curl_str, 
@@ -432,16 +437,21 @@ namespace InstaApiWeb {
      * Construye cUrl tipo CMD para las acciones de los friendship ==> [Follow, Unfollow, Like].
      */
     private function cmd_friendships (Proxy $proxy, CookiesRequest $cookies, string $resource_id) {
+      // Paso 0. compruebo validez del Resource_Id
+      if($resource_id == "")
+        throw new InstaCurlArgumentException("The parameter (resource_id) was not given!!!.");
+      
       // Paso 1. configuracion inicial de la curl
-      $curl_str = sprintf("curl %s %s/%s-%s-%s-", $proxy->ToString(), 
+      $curl_str = sprintf("curl %s %s/%s/%s/%s/", $proxy->ToString(), 
         $this->InstaURL['Base'],
         $this->ActionType->getObjetiveUrl(), 
-        $resource_id, "ojo");
-        //$this->ActionType->getCmdSubQuery());
+        $resource_id,
+        $this->ActionType->getCmdSubQuery());
        
       // Paso 2. agregando la cookies a la curl
       $curl_str = sprintf("%s %s", $curl_str, $this->Headers['X-Post']);
-      $curl_str = sprintf("%s %s", $curl_str, $this->Headers['Cookie']);
+      $curl_str = sprintf("%s %s", $curl_str, $this->Headers['Cookie-small']);
+      $curl_str = sprintf($curl_str, $cookies->Mid, $cookies->SessionId, $cookies->CsrfToken, $cookies->DsUserId);
       
       // Paso 3. agregando el resto de los headers
       
