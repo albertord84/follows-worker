@@ -2,9 +2,12 @@
 
 namespace InstaApiWeb {
 
-  use InstaApiWeb\InstaApi;
-  
-  require_once 'ReferenceProfile.php';
+use stdClass;
+use InstaApiWeb\InstaApi;
+use InstaApiWeb\InstaCurlMgr;
+use InstaApiWeb\ReferenceProfile;
+
+require_once 'ReferenceProfile.php';
 
   /**
    * Description of GeoProfile
@@ -20,12 +23,15 @@ namespace InstaApiWeb {
 
     public function __construct() {
       parent::__construct();
+      $this->insta_id = 235572176;
       require_once config_item('thirdparty-insta_api-resource');
+      require_once config_item('thirdparty-insta_curl_mgr-resource');
       
-      $this->tag_query = "ac38b90f0f3981c42092016a37c59bf7";
+      // Deprecated!!!
+      //$this->tag_query = "ac38b90f0f3981c42092016a37c59bf7";
     }
 
-    public function process_insta_prof_data(\stdClass $content) {
+    public function process_insta_prof_data(stdClass $content) {
       $Profile = NULL;
       if (is_object($content) && $content->status === 'ok') {
         $places = $content->places;
@@ -46,7 +52,7 @@ namespace InstaApiWeb {
       return $Profile;
     }
 
-    public function get_insta_followers(\stdClass $cookies = NULL, int $N = 15, string& $cursor = NULL, Proxy $proxy = NULL) {
+    public function get_insta_followers(stdClass $cookies = NULL, int $N = 15, string& $cursor = NULL, Proxy $proxy = NULL) {
 
       $json_response = $this->get_insta_media($cookies, $N, $cursor, $proxy);
       $profiles = new InstaProfileList();
@@ -69,50 +75,68 @@ namespace InstaApiWeb {
       return new \InstaException("unknown exception");
     }
 
-    public function get_insta_media(\stdClass $cookies = NULL, int $N = 15, string $cursor = NULL, Proxy $proxy = NULL) {
+    /**
+     * 
+     * @param int $N
+     * @param string $cursor
+     * @param \stdClass $cookies
+     * @param \InstaApiWeb\Proxy $proxy
+     */
+    public function get_insta_media(int $N, string $cursor = NULL, \stdClass $cookies = NULL, Proxy $proxy = NULL) {
       try {
+        $mngr = new InstaCurlMgr(new EnumEntity(EnumEntity::GEO), new EnumAction(EnumAction::GET_POST));
+        $mngr->setMediaData($this->insta_id, $N, $cursor);
+        $curl_str = $mngr->make_curl_str();
+        var_dump($curl_str);
+        exec($curl_str, $output, $status);
+        var_dump($output);
+      } catch (Exception $e) {
+        var_dump($e);
+      }
+      
+      /*
         $variables = "{\"id\":\"$this->insta_id\",\"first\":$N";
         if ($cursor != NULL && $cursor != "NULL") {
-          $variables .= ",\"after\":\"$cursor\"";
+        $variables .= ",\"after\":\"$cursor\"";
         }
         $variables .= "}";
 
         $api = new InstaApi();
         $curl_str = $api->make_query($this->tag_query, $variables, $cookies, $proxy);
         if ($curl_str === NULL)
-          return NULL;
+        return NULL;
         exec($curl_str, $output, $status);
         if (count($output) > 0 && isset($output[0])) {
-          $json = json_decode($output[0]);
-          if (isset($json->data->location->edge_location_to_media) && isset($json->data->location->edge_location_to_media->page_info)) {
-            $cursor = $json->data->location->edge_location_to_media->page_info->end_cursor;
-            if (count($json->data->location->edge_location_to_media->edges) == 0) {
-              if ($this->has_logs) {
-                echo ("<br>\n No nodes!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-              }
-              $cursor = NULL;
-            }
-          } else if (isset($json->data) && $json->data->location == NULL) {
-            //var_dump($output);
-            if ($this->has_logs) {
-              print_r($curl_str);
-            }
-            $cursor = NULL;
-          } else if ($this->has_logs) {
-            var_dump($output);
-            print_r($curl_str);
-            echo ("<br>\n Untrated error!!!");
-          }
-          return $json;
+        $json = json_decode($output[0]);
+        if (isset($json->data->location->edge_location_to_media) && isset($json->data->location->edge_location_to_media->page_info)) {
+        $cursor = $json->data->location->edge_location_to_media->page_info->end_cursor;
+        if (count($json->data->location->edge_location_to_media->edges) == 0) {
+        if ($this->has_logs) {
+        echo ("<br>\n No nodes!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        }
+        $cursor = NULL;
+        }
+        } else if (isset($json->data) && $json->data->location == NULL) {
+        //var_dump($output);
+        if ($this->has_logs) {
+        print_r($curl_str);
+        }
+        $cursor = NULL;
         } else if ($this->has_logs) {
-          var_dump($output);
-          print_r($curl_str);
+        var_dump($output);
+        print_r($curl_str);
+        echo ("<br>\n Untrated error!!!");
+        }
+        return $json;
+        } else if ($this->has_logs) {
+        var_dump($output);
+        print_r($curl_str);
         }
         return NULL;
-      } catch (\Exception $exc) {
+        } catch (\Exception $exc) {
         if ($this->has_logs)
-          echo $exc->getTraceAsString();
-      }
+        echo $exc->getTraceAsString();
+        } */
     }
 
     public function get_post_user_info($post_reference, \stdClass $cookies = NULL, Proxy $proxy = NULL) {

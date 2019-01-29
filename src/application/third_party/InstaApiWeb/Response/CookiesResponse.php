@@ -12,6 +12,7 @@ namespace InstaApiWeb\Responses {
    */
   class CookiesResponse {
 
+    
     /**
      * 
      * @access public

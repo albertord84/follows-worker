@@ -113,7 +113,7 @@ namespace InstaApiWeb {
       }
     }
 
-    public function get_insta_media(\stdClass $cookies = NULL, int $N = 15, string $cursor = NULL, Proxy $proxy = NULL) {
+    public function get_insta_media(int $N, string $cursor = NULL, \stdClass $cookies = NULL, Proxy $proxy = NULL) {
       
     }
 
