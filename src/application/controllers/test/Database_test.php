@@ -12,7 +12,7 @@ class Database_test extends CI_Controller {
     echo "Controller: <b>" . __CLASS__ . "</b> cargado.";
   }
 
-  public function db_model() {
+  public function db_exception (){
     $this->load->model('db_model');
     //$this->db_model->myFunc();
 
@@ -28,6 +28,69 @@ class Database_test extends CI_Controller {
     }
   }
 
+  // ISE!!!... con este controlador puedes probar el db_model.
+  // Fijate la forma de invocarlos y luego haces var_dump() del resultado.
+  public function db_model() {
+    
+     $this->load->model('db_model');
+     
+     echo "<pre>";
+     echo "<h2>Test Db_model </h2>";
+     
+     $obj = $this->db_model->get_client_data(1);
+     echo "[get] get_client_data => result: " . count($obj) . " ==> (<b>ok</b>)<br>";
+     //var_dump($obj);
+     
+     $array = $this->db_model->get_clients_data();
+     echo "[get] get_clients_data  => result: " . count($array) . " ==> (<b>ok</b>)<br>";
+     //var_dump($array);
+     
+     $array = $this->db_model->get_reference_profiles_data(1);
+     echo "[get] get_reference_profiles_data  => result: " . count($array) . " ==> (<b>ok</b>)<br>";
+     //var_dump($array);
+     
+     
+     $array = $this->db_model->get_biginner_data(0,10);
+     echo "[get] get_biginner_data  => result: " . count($array) . " ==> (<b>ok</b>)<br>";
+     //var_dump($array);
+     
+     $array = $this->db_model->get_clients_data_for_report();
+     echo "[get] get_clients_data_for_report  => result: " . count($array) . " ==> (<b>ok</b>)<br>";
+     //var_dump($array);
+     
+     
+     $array = $this->db_model->get_unfollow_clients_data();
+     echo "[get] get_unfollow_clients_data  => result: " . count($array) . " ==> (<b>ok</b>)<br>";
+     //var_dump($array);
+     
+     
+     $obj = $this->db_model->get_gateway_plane_id(2);
+     echo "[get] get_gateway_plane_id  => result: " . count($obj) . " ==> (<b>ok</b>)<br>";
+     //var_dump($obj);
+     
+     
+     $obj = $this->db_model->get_client_payment_data(1);
+     echo "[get] get_client_payment_data  => result: " . count($obj) . " ==> (<b>ok</b>)<br>";
+     //var_dump($obj);
+     
+     $obj = $this->db_model->get_client_login_data(1);
+     echo "[get] get_client_login_data  => result: " . count($obj) . " ==> (<b>ok</b>)<br>";
+     //var_dump($obj);
+     
+     
+     $obj = $this->db_model->get_client_data_bylogin("riveauxmerino");
+     echo "[get] get_client_data_bylogin  => result: " . count($obj) . " ==> (<b>ok</b>)<br>";
+     //var_dump($obj);
+     
+     
+     $obj = $this->db_model->get_client_proxy(1);
+     echo "[get] get_client_proxy  => result: " . count($obj) . " ==> (<b>ok</b>)<br>";
+     //var_dump($obj);
+     
+     echo "</pre>";
+     
+  }
+  
   public function entity($param, $action, $id) {
     echo "<b>Param: </b>" . $param . "<br><b>Action: </b>" . $action . "<br><br>";
 

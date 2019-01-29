@@ -70,18 +70,18 @@ namespace InstaApiWeb {
 
      public function get_insta_prof_data(\stdClass $cookies=NULL, Proxy $proxy = NULL)
      {
-           try {
-              $Profile = NULL;
-              $content = ReferenceProfile::get_insta_data_from_client($this->insta_name, $cookies, $proxy);
-              $Profile = $this->process_insta_prof_data($content);
-              return $Profile;
-          } catch (\Exception $ex) {
-              if($this->has_logs)
-              {
-                  print_r($ex->message);
-              }
-              return NULL;
+        try {
+          $Profile = NULL;
+          $content = ReferenceProfile::get_insta_data_from_client($this->insta_name, $cookies, $proxy);
+          $Profile = $this->process_insta_prof_data($content);
+          return $Profile;
+        } catch (\Exception $ex) {
+          if($this->has_logs)
+          {
+              print_r($ex->message);
           }
+          return NULL;
+        }
       }
 
      abstract protected function  process_insta_prof_data(\stdClass $content);   

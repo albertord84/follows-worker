@@ -5,9 +5,9 @@ namespace InstaApiWeb {
   use InstaApiWeb\Responses\LoginResponse;
   use InstaApiWeb\Responses\CookiesResponse;
   use InstaApiWeb\Exceptions\InstaException;
-  use InstaApiWeb\Exceptions\CurlNertworkException;
-  use InstaApiWeb\Exceptions\IncorrectPasswordException;
-  use InstaApiWeb\Exceptions\InstaCheckpointRequiredException;
+  use InstaApiWeb\Exceptions\InstaCurlNetworkException;
+  use InstaApiWeb\Exceptions\InstaPasswordException;
+  use InstaApiWeb\Exceptions\InstaCheckpointException;
   
   /**
    * @category Third-Party Instagram API
@@ -36,13 +36,14 @@ namespace InstaApiWeb {
       require_once config_item('curl_nertwork-exception-class');
       require_once config_item('thirdparty-login_response-class');
       require_once config_item('thirdparty-cookies_response-class');
-      require_once config_item('incorrect_password-exception-class');
-      require_once config_item('cookies_wrong_syntax-exception-class');
-      require_once config_item('insta_checkpoint_required-exception-class');
+      require_once config_item('insta-password-exception-class');
+      require_once config_item('insta-cookies-exception-class');
+      require_once config_item('insta-checkpoint-exception-class');
     }
 
-    public function login(string $username, string $password, Proxy $proxy = null) {
-      $debug = true;
+   /* public function login(string $username, string $password, Proxy $proxy = null) {
+      $debug = false;
+>>>>>>> develop-isela:src/application/third_party/InstaApiWeb/InstaApi (deprecated).php
       $truncatedDebug = true;
       //////////////////////
 
@@ -88,13 +89,13 @@ namespace InstaApiWeb {
 
         if ((strpos($e->getMessage(), 'Challenge required') !== FALSE) || (strpos($e->getMessage(), 'Checkpoint required') !== FALSE) || (strpos($e->getMessage(), 'challenge_required') !== FALSE)) {
           $res = $e->getResponse()->getChallenge()->getApiPath();
-          throw new InstaCheckpointRequiredException($e->getMessage(), $e->getPrevious(), $res);
+          throw new InstaCheckpointException($e->getMessage(), $e->getPrevious(), $res);
         } 
         else if (strpos($e->getMessage(), 'Network: CURL error 28') !== FALSE) { // Time out by bad proxy
           throw new CurlNertworkException($e->getMessage(), $e);
         } 
         else if (strpos($e->getMessage(), 'password you entered is incorrect') !== FALSE) {
-          throw new IncorrectPasswordException($e->getMessage(), $e);
+          throw new InstaPasswordException($e->getMessage(), $e);
         } 
         else if (strpos($e->getMessage(), 'there was a problem with your request') !== FALSE) {
           throw new InstaException('problem_with_your_request', $e->getCode());
@@ -103,7 +104,7 @@ namespace InstaApiWeb {
           throw new InstaException($e->getMessage(), $e->getCode());
         }
       }
-    }
+    }*/
 
     public static function make_query(string $query, string $variables, \stdClass $cookies, Proxy $proxy = NULL) {
       $variables = urlencode($variables);

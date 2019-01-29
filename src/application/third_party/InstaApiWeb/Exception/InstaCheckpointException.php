@@ -6,11 +6,11 @@ namespace InstaApiWeb\Exceptions {
   require_once 'InstaException.php';
   
   /**
-   * Description of InstaCheckpointRequiredException
+   * Description of InstaCheckpointException
    *
    * @author jose
    */
-  class InstaCheckpointRequiredException extends InstaException {
+  class InstaCheckpointException extends InstaException {
 
     //put your code here
     private $challange;

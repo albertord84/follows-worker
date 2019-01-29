@@ -40,6 +40,10 @@ namespace business {
     public function save_to_db() {
       
     }
+    
+    public function ToString() {
+      return "--proxy '$this->User:$this->Password@$this->Ip:$this->Port'";
+    }
   }
 
 }    

@@ -50,18 +50,18 @@
   //Recursos de la InstaApiWeb que viraron tambien librerias (nombreRecurso_lib)
   $config['thirdparty-geo_profile-resource'] = getcwd().'/application/third_party/InstaApiWeb/GeoProfile.php';
   $config['thirdparty-has_profile-resource'] = getcwd().'/application/third_party/InstaApiWeb/HashProfile.php';
-  $config['thirdparty-insta_api-resource'] = getcwd().'/application/third_party/InstaApiWeb/InstaApi.php';
+  $config['thirdparty-insta_api-resource'] = getcwd().'/application/third_party/InstaApiWeb/InstaApi (deprecated).php';
   $config['thirdparty-insta_curl_mgr-resource'] = getcwd().'/application/third_party/InstaApiWeb/InstaCurlMgr.php';
   $config['thirdparty-insta_client-resource'] = getcwd().'/application/third_party/InstaApiWeb/InstaClient.php';
-  $config['thirdparty-insta_profile_list-resource'] = getcwd().'/application/third_party/InstaApiWeb/InstaProfileList.php';
+  $config['thirdparty-insta_profile_list-resource'] = getcwd().'/application/third_party/InstaApiWeb/InstaProfileList (deprecated).php';
   $config['thirdparty-insta_profile-resource'] = getcwd().'/application/third_party/InstaApiWeb/InstaProfile.php';  
-  $config['thirdparty-media-resource'] = getcwd().'/application/third_party/InstaApiWeb/Media.php';
+  $config['thirdparty-media-resource'] = getcwd().'/application/third_party/InstaApiWeb/Media (deprecated).php';
   $config['thirdparty-person_profile-resource'] = getcwd().'/application/third_party/InstaApiWeb/PersonProfile.php';  
   $config['thirdparty-proxy-resource'] = getcwd().'/application/third_party/InstaApiWeb/Proxy.php';
 
   //Recursos solamente de la InstaApiWeb
-  $config['thirdparty-insta_url-resource'] = getcwd().'/application/third_party/InstaApiWeb/InstaURLs.php';
-  $config['thirdparty-profile_type-resource'] = getcwd().'/application/third_party/InstaApiWeb/ProfileType.php';  
+  $config['thirdparty-insta_url-resource'] = getcwd().'/application/third_party/InstaApiWeb/InstaURLs (deprecated).php';
+  $config['thirdparty-profile_type-resource'] = getcwd().'/application/third_party/InstaApiWeb/ProfileType (deprecated).php';  
   $config['thirdparty-verification_choice-resource'] = getcwd().'/application/third_party/InstaApiWeb/VerificationChoice.php'; 
 
 /*
@@ -72,15 +72,18 @@
   //Exception de la BD
   $config['db-exception-class'] = getcwd().'/application/business/OwnException.php';
   
-  //Exception de la InstaApiWeb
-  $config['cookies_wrong_syntax-exception-class'] = getcwd().'/application/third_party/InstaApiWeb/Exception/CookiesWrongSyntaxException.php';
-  $config['curl_nertwork-exception-class'] = getcwd().'/application/third_party/InstaApiWeb/Exception/CurlNertworkException.php';
+  //Exception de la InstaApiWeb  
+  $config['curl_nertwork-exception-class'] = getcwd().'/application/third_party/InstaApiWeb/Exception/CurlNertworkException (deprecated).php';
   $config['end_cursor-exception-class'] = getcwd().'/application/third_party/InstaApiWeb/Exception/EndCursorException.php';
   $config['code-exception-class'] = getcwd().'/application/third_party/InstaApiWeb/Exception/ExceptionCode.php';
-  $config['incorrect_password-exception-class'] = getcwd().'/application/third_party/InstaApiWeb/Exception/IncorrectPasswordException.php';
-  $config['insta_checkpoint_required-exception-class'] = getcwd().'/application/third_party/InstaApiWeb/Exception/InstaCheckpointRequiredException.php';
+  
+  $config['insta-cookies-exception-class'] = getcwd().'/application/third_party/InstaApiWeb/Exception/InstaCookiesException.php';
+  $config['insta-password-exception-class'] = getcwd().'/application/third_party/InstaApiWeb/Exception/InstaPasswordException.php';
+  $config['insta-checkpoint-exception-class'] = getcwd().'/application/third_party/InstaApiWeb/Exception/InstaCheckpointException.php';
   $config['insta-exception-class'] = getcwd().'/application/third_party/InstaApiWeb/Exception/InstaException.php';
-  $config['wrong_end_cursor-exception-class'] = getcwd().'/application/third_party/InstaApiWeb/Exception/WrongEndCursorException.php';
+  //$config['wrong_end_cursor-exception-class'] = getcwd().'/application/third_party/InstaApiWeb/Exception/WrongEndCursorException.php';
+  
+  $config['insta-curl-exception-class'] = getcwd().'/application/third_party/InstaApiWeb/Exception/InstaCurlException.php';
   
   /*
 |--------------------------------------------------------------------------
@@ -90,6 +93,7 @@
   $config['thirdparty-cookies_response-class'] = getcwd().'/application/third_party/InstaApiWeb/Response/CookiesResponse.php';
   $config['thirdparty-insta_response-class'] = getcwd().'/application/third_party/InstaApiWeb/Response/InstaResponse.php';
   $config['thirdparty-login_response-class'] = getcwd().'/application/third_party/InstaApiWeb/Response/LoginResponse.php';
+  $config['thirdparty-end_cursor_response-class'] = getcwd().'/application/third_party/InstaApiWeb/Response/EndCursorResponse.php';
   
   /*
 |--------------------------------------------------------------------------
