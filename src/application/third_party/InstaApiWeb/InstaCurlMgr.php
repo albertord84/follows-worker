@@ -297,7 +297,7 @@ namespace InstaApiWeb {
      * @param int $first
      * @param string $cursor
      */
-    public function setMediaData (string $id, int $first, string $cursor) {
+    public function setMediaData (string $id, int $first, string $cursor = null) {
       /*// GEO-PROFILE
       $variables = "{\"id\":\"$this->insta_id\",\"first\":$N\"";
         if ($cursor != NULL && $cursor != "NULL") {
@@ -341,7 +341,7 @@ namespace InstaApiWeb {
      * @return type
      * @throws InstaCurlActionException
      */
-    public function make_curl_str(Proxy $proxy, CookiesRequest $cookies) {
+    public function make_curl_str(Proxy $proxy = null, CookiesRequest $cookies = null) {
       $profile = $this->ProfileType->getEnumValue();
       $action = $this->ActionType->getEnumValue();
       
@@ -388,7 +388,7 @@ namespace InstaApiWeb {
       return $str_cur;
     }
 
-    public function make_curl_obj(Proxy $proxy, CookiesRequest $cookies) {
+    public function make_curl_obj(Proxy $proxy = null, CookiesRequest $cookies = null) {
       $profile = $this->ProfileType->getEnumValue();
       $action = $this->ActionType->getEnumValue();
       
@@ -416,19 +416,22 @@ namespace InstaApiWeb {
      * Funcion de Utileria.
      * Construye cUrl tipo GET para obtener un post para los perfiles de Instagram ==> [Geo, HashTag, Person]  
      */
-    private function get_post (Proxy $proxy, CookiesRequest $cookies, string $media_str) {           
+    private function get_post (Proxy $proxy = null, CookiesRequest $cookies = null, string $media_str) {           
       // Paso 1. configuracion inicial de la curl
-      $curl_str = sprintf("curl %s '%s/?query_hash=%s&variables=%s'", $proxy->ToString(), 
+      $curl_str = sprintf("curl %s '%s/?query_hash=%s&variables=%s'", 
+        ($proxy != null) ? $proxy->ToString() : "", 
         $this->InstaURL['Graphql'], $this->ProfileType->getHashQuery(), urlencode($media_str));
       
       // Paso 2. agregando la cookies a la curl
-      $ck = sprintf("%s", $this->Headers['Cookie-big']);
-      $ck = sprintf($ck, $cookies->Mid, $cookies->SessionId, $cookies->CsrfToken, $cookies->DsUserId);
-      $curl_str = sprintf("%s %s", $curl_str, $ck);
+      if ($cookies != null){
+        $ck = sprintf("%s", $this->Headers['Cookie-big']);
+        $ck = sprintf($ck, $cookies->Mid, $cookies->SessionId, $cookies->CsrfToken, $cookies->DsUserId);
+        $curl_str = sprintf("%s %s", $curl_str, $ck);
       
-      $csrf = sprintf("%s", $this->Headers['X-CSRFToken']);
-      $csrf = sprintf($csrf, $cookies->CsrfToken);
-      $curl_str = sprintf("%s %s", $curl_str, $csrf);     
+        $csrf = sprintf("%s", $this->Headers['X-CSRFToken']);
+        $csrf = sprintf($csrf, $cookies->CsrfToken);
+        $curl_str = sprintf("%s %s", $curl_str, $csrf);     
+      }
       
       // Paso 3. agregando el resto de los headers
       $curl_str = sprintf("%s %s %s %s %s %s %s %s %s %s %s", $curl_str, 
@@ -483,17 +486,20 @@ namespace InstaApiWeb {
      */
     private function cmd_friendships (Proxy $proxy, CookiesRequest $cookies, string $resource_id) {     
       // Paso 1. configuracion inicial de la curl
-      $curl_str = sprintf("curl %s %s/%s/%s/%s/", $proxy->ToString(), 
+      $curl_str = sprintf("curl %s %s/%s/%s/%s/", 
+        ($proxy != null) ? $proxy->ToString() : "", 
         $this->InstaURL['Base'], $this->ActionType->getObjetiveUrl(), $resource_id, $this->ActionType->getCmdSubQuery());
        
       // Paso 2. agregando la cookies a la curl
-      $curl_str = sprintf("%s %s", $curl_str, $this->Headers['X-Post']);
-      $curl_str = sprintf("%s %s", $curl_str, $this->Headers['Cookie-small']);
-      $curl_str = sprintf($curl_str, $cookies->Mid, $cookies->SessionId, $cookies->CsrfToken, $cookies->DsUserId);
+      if ($cookies != null){
+        $curl_str = sprintf("%s %s", $curl_str, $this->Headers['X-Post']);
+        $curl_str = sprintf("%s %s", $curl_str, $this->Headers['Cookie-small']);
+        $curl_str = sprintf($curl_str, $cookies->Mid, $cookies->SessionId, $cookies->CsrfToken, $cookies->DsUserId);
       
-      $csrf = sprintf("%s", $this->Headers['X-CSRFToken']);
-      $csrf = sprintf($csrf, $cookies->CsrfToken);
-      $curl_str = sprintf("%s %s", $curl_str, $csrf);
+        $csrf = sprintf("%s", $this->Headers['X-CSRFToken']);
+        $csrf = sprintf($csrf, $cookies->CsrfToken);
+        $curl_str = sprintf("%s %s", $curl_str, $csrf);
+      }
       
       // Paso 3. agregando el resto de los headers
       $curl_str = sprintf("%s %s %s %s %s %s %s %s %s %s %s %s %s", $curl_str, 

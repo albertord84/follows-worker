@@ -21,7 +21,7 @@ namespace InstaApiWeb {
       protected $tag_query;
 
       public function __construct() {
-
+            $this->insta_id = 212673249;
       }
     
       protected static function get_insta_data_from_client($ref_prof, \stdClass $cookies, $proxy = NULL) {
@@ -88,7 +88,7 @@ namespace InstaApiWeb {
 
      abstract public function get_insta_followers(\stdClass $cookies = NULL, int $N = 15, string& $cursor = NULL, Proxy $proxy = NULL);
 
-     abstract public function get_insta_media(\stdClass $cookies = NULL, int $N = 15, string $cursor = NULL, Proxy $proxy = NULL);
+     abstract public function get_insta_media(int $N, string $cursor = NULL, \stdClass $cookies = NULL, Proxy $proxy = NULL);
 
      //Debe ser pasada para una clase de Post
      abstract public function get_post_user_info($post_reference, \stdClass  $cookies = NULL, Proxy $proxy = NULL);

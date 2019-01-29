@@ -29,8 +29,8 @@ class HashProfile_lib {
     $this->HashProfile->get_insta_followers($cookies, $N, $cursor, $proxy);
   }
 
-  public function get_insta_media(\stdClass $cookies = NULL, int $N = 15, string $cursor = NULL, \business\cls\Proxy $proxy = NULL) {
-    $this->HashProfile->get_insta_media($cookies, $N, $cursor, $proxy);
+  public function get_insta_media(int $N, string $cursor = NULL, \stdClass $cookies = NULL, Proxy $proxy = NULL) {
+    $this->HashProfile->get_insta_media($N, $cursor, $cookies, $proxy);
   }
 
   public function get_post_user_info($post_reference, \stdClass $cookies = NULL, \business\cls\Proxy $proxy = NULL) {
