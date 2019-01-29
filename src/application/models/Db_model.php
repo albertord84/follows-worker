@@ -61,7 +61,7 @@ class Db_model extends CI_Model {
               . "ORDER BY users.id; ";
 
       $query = $this->db->query($sql);
-
+      
       return $query->result();
     } catch (Error $e) {
       if ($this->db->error()['code'] != 0) {
