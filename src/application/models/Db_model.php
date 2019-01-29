@@ -72,7 +72,46 @@ class Db_model extends CI_Model {
     }
   }
 
-  public function get_biginner_data($offset = 0, $rows = 0) {
+   public function get_client_data($client_id) {
+    try {
+      $sql = ""
+              . "SELECT * FROM users "
+              . "     INNER JOIN clients ON clients.user_id = users.id "
+              . "     INNER JOIN plane ON plane.id = clients.plane_id "
+              . "WHERE users.id = $client_id; ";
+      $query = $this->db->query($sql);
+      
+      return $query->row();
+    } catch (Error $e) {
+      if ($this->db->error()['code'] != 0) {
+        throw new Db_Exception($this->db->error(), $e);
+      } else {
+        throw $e;
+      }
+    }
+  }
+  
+    public function get_reference_profiles_data($client_id) {
+    try {
+
+      $sql = ""
+              . "SELECT * FROM reference_profile "
+              . "WHERE client_id = " . $client_id . ";";
+//            . "  AND (reference_profile.deleted <> TRUE)"               
+//            . "  (reference_profile.client_id = $client_id) AND "
+              
+      $query = $this->db->query($sql);
+      return $query->result();
+    } catch (Error $e) {
+      if ($this->db->error()['code'] != 0) {
+        throw new Db_Exception($this->db->error(), $e);
+      } else {
+        throw $e;
+      }
+    }
+  }
+  
+  public function get_biginner_data($offset = 0, $rows = 50) {
     try {
 
       $BEGINNER = UserStatus::BEGINNER;
@@ -84,13 +123,15 @@ class Db_model extends CI_Model {
               . "WHERE users.role_id = $CLIENT "
               . "     AND (clients.unfollow_total IS NULL OR clients.unfollow_total <> 1) "
               . "     AND  users.status_id = $BEGINNER "
-              . "ORDER BY users.id; ";
+              . "ORDER BY users.id "
+              . "LIMIT $offset, $rows; ";
 
-      //$this->db->limit($offset, $rows);
+      $this->db->limit($offset, $rows);
       $query = $this->db->query($sql);
-
+    //  var_dump($query);
       return $query->result();
     } catch (Error $e) {
+      var_dump($e);
       if ($this->db->error()['code'] != 0) {
         throw new Db_Exception($this->db->error(), $e);
       } else {
@@ -159,38 +200,18 @@ class Db_model extends CI_Model {
     }
   }
 
-  public function get_client_data($client_id) {
-    try {
-      $sql = ""
-              . "SELECT * FROM users "
-              . "     INNER JOIN clients ON clients.user_id = users.id "
-              . "     INNER JOIN plane ON plane.id = clients.plane_id "
-              . "WHERE users.id = $client_id; ";
-      $query = $this->db->query($sql);
-      
-      return $query->row();
-    } catch (Error $e) {
-      if ($this->db->error()['code'] != 0) {
-        throw new Db_Exception($this->db->error(), $e);
-      } else {
-        throw $e;
-      }
-    }
-  }
-
   public function get_gateway_plane_id($dumbu_plane_id) {
     try {
 
-      $result = $this->db->query(""
+      $query = $this->db->query(""
               . "SELECT gateway_plane_id FROM plane "
               . "WHERE plane.id = $dumbu_plane_id; "
       );
 
-      //$query = $this->db->query($sql);
-      //return $query->result();
+      return $query->row();
 
-      $object = $result ? $result->result_object() : NULL;
-      return isset($object->gateway_plane_id) ? $object->gateway_plane_id : 0;
+      //$object = $result ? $result->result_object() : NULL;
+      //return isset($object->gateway_plane_id) ? $object->gateway_plane_id : 0;
     } catch (Error $e) {
       if ($this->db->error()['code'] != 0) {
         throw new Db_Exception($this->db->error(), $e);
@@ -203,14 +224,14 @@ class Db_model extends CI_Model {
   public function get_client_payment_data($client_id) {
     try {
 
-      $result = $this->db->query(""
+      $query = $this->db->query(""
               . "SELECT * FROM users "
               . "     INNER JOIN clients ON clients.user_id = users.id "
               . "     INNER JOIN client_payment ON client_payment.dumbu_client_id = clients.user_id "
               . "     INNER JOIN plane ON plane.id = client_payment.dumbu_plane_id "
               . "WHERE users.id = $client_id; "
       );
-      return $result ? $result->result_object() : NULL;
+      return $query->row();
     } catch (Error $e) {
       if ($this->db->error()['code'] != 0) {
         throw new Db_Exception($this->db->error(), $e);
@@ -228,7 +249,7 @@ class Db_model extends CI_Model {
               . "     INNER JOIN clients ON clients.user_id = users.id "
               . "WHERE users.id = $client_id; "
       );
-      return $result ? $result->result_object() : NULL;
+      return $result->row();
     } catch (Error $e) {
       if ($this->db->error()['code'] != 0) {
         throw new Db_Exception($this->db->error(), $e);
@@ -245,7 +266,7 @@ class Db_model extends CI_Model {
               . "SELECT insta_id FROM clients "
               . "WHERE user_id = $client_id; "
       );
-      return $result ? $result->result_object() : NULL;
+      return $result->row();
     } catch (Error $e) {
       if ($this->db->error()['code'] != 0) {
         throw new Db_Exception($this->db->error(), $e);
@@ -265,7 +286,7 @@ class Db_model extends CI_Model {
               . "ORDER BY user_id DESC "
               . "LIMIT 1; ";
       $result = $this->db->query($sql);
-      return $result ? $result->result_object() : NULL;
+      return $result->row();
     } catch (Error $e) {
       if ($this->db->error()['code'] != 0) {
         throw new Db_Exception($this->db->error(), $e);
@@ -283,7 +304,7 @@ class Db_model extends CI_Model {
               . "     INNER JOIN Proxy ON clients.proxy = Proxy.idProxy "
               . "WHERE user_id LIKE '$client_id';";
       $result = $this->db->query($sql);
-      return $result ? $result->result_object() : NULL;
+      return $result->row();
     } catch (Error $e) {
       if ($this->db->error()['code'] != 0) {
         throw new Db_Exception($this->db->error(), $e);
@@ -389,26 +410,6 @@ class Db_model extends CI_Model {
       //else
       // print "<br>NOT UPDATED client_cookies!!!<br> $sql <br>";
       return $result;
-    } catch (Error $e) {
-      if ($this->db->error()['code'] != 0) {
-        throw new Db_Exception($this->db->error(), $e);
-      } else {
-        throw $e;
-      }
-    }
-  }
-
-  public function get_reference_profiles_data($client_id) {
-    try {
-
-      $sql = ""
-              . "SELECT * FROM reference_profile "
-              . "WHERE client_id = " . $client_id . ";";
-//            . "  AND (reference_profile.deleted <> TRUE)"               
-//            . "  (reference_profile.client_id = $client_id) AND "
-              
-      $query = $this->db->query($sql);
-      return $query->result();
     } catch (Error $e) {
       if ($this->db->error()['code'] != 0) {
         throw new Db_Exception($this->db->error(), $e);

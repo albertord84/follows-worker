@@ -49,6 +49,44 @@ class Database_test extends CI_Controller {
      echo "[get] get_reference_profiles_data  => result: " . count($array) . " ==> (<b>ok</b>)<br>";
      //var_dump($array);
      
+     
+     $array = $this->db_model->get_biginner_data(0,10);
+     echo "[get] get_biginner_data  => result: " . count($array) . " ==> (<b>ok</b>)<br>";
+     //var_dump($array);
+     
+     $array = $this->db_model->get_clients_data_for_report();
+     echo "[get] get_clients_data_for_report  => result: " . count($array) . " ==> (<b>ok</b>)<br>";
+     //var_dump($array);
+     
+     
+     $array = $this->db_model->get_unfollow_clients_data();
+     echo "[get] get_unfollow_clients_data  => result: " . count($array) . " ==> (<b>ok</b>)<br>";
+     //var_dump($array);
+     
+     
+     $obj = $this->db_model->get_gateway_plane_id(2);
+     echo "[get] get_gateway_plane_id  => result: " . count($obj) . " ==> (<b>ok</b>)<br>";
+     //var_dump($obj);
+     
+     
+     $obj = $this->db_model->get_client_payment_data(1);
+     echo "[get] get_client_payment_data  => result: " . count($obj) . " ==> (<b>ok</b>)<br>";
+     //var_dump($obj);
+     
+     $obj = $this->db_model->get_client_login_data(1);
+     echo "[get] get_client_login_data  => result: " . count($obj) . " ==> (<b>ok</b>)<br>";
+     //var_dump($obj);
+     
+     
+     $obj = $this->db_model->get_client_data_bylogin("riveauxmerino");
+     echo "[get] get_client_data_bylogin  => result: " . count($obj) . " ==> (<b>ok</b>)<br>";
+     //var_dump($obj);
+     
+     
+     $obj = $this->db_model->get_client_proxy(1);
+     echo "[get] get_client_proxy  => result: " . count($obj) . " ==> (<b>ok</b>)<br>";
+     //var_dump($obj);
+     
      echo "</pre>";
      
   }

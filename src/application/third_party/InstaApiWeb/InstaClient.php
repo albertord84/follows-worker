@@ -38,18 +38,18 @@ namespace InstaApiWeb {
       require_once config_item('insta-checkpoint-exception-class');
       require_once config_item('thirdparty-cookies_response-class');
       
-      /*if (!InstaClient::verify_cookies($cookies)) {
+      if (!InstaClient::verify_cookies($cookies)) {
         throw new Exceptions\InstaCookiesException('the cookies you are passing are incompleate or wrong');
       }
       $this->insta_id = $insta_id;
       $this->cookies = $cookies;
       $this->proxy = $proxy;
-      $this->has_log = TRUE;*/
+      $this->has_log = TRUE;
     }
 
 
     public function make_insta_friendships_command(string $resource_id, string $command = 'follow', string $objetive_url = 'web/friendships') {
-      /*$insta = InstaURLs::Instagram;
+      $insta = InstaURLs::Instagram;
       $curl_str = $this->make_curl_friendships_command_str("'$insta/$objetive_url/$resource_id/$command/'");
 
       exec($curl_str, $output, $status);
@@ -81,15 +81,16 @@ namespace InstaApiWeb {
         var_dump($curl_str);
       }
 
-      return $output;*/
+      return $output;
     }
 
     public function make_curl_friendships_command_str(string $url) {
       /*if (!$this->verify_cookies($cookies))
-        throw new Exceptions\InstaCookiesException("The cookies are wrong");
-      $proxy_str = "";
+        throw new Exceptions\CookiesWrongSyntaxException("The cookies are wrong");
+      $proxy_str = "";*/
+
       if ($proxy != NULL)
-        $proxy_str = $proxy->ToString();*/
+        $proxy_str = $proxy->ToString();
       $curl_str = "curl $proxy_str  $url ";
       $curl_str .= "-X POST ";
       $curl_str .= "-H 'Cookie: mid=$mid; sessionid=$sessionid;  csrftoken=$csrftoken; ds_user_id=$ds_user_id' ";
@@ -167,7 +168,7 @@ namespace InstaApiWeb {
     }
 
        
-    public function make_login(string $username, string $password, Proxy $proxy = null) {
+    public function make_login(string $username, string $password) {
       $debug = false;
       $truncatedDebug = true;
       //////////////////////
@@ -180,8 +181,8 @@ namespace InstaApiWeb {
 
         //$ig->setOutputInterface("191.252.110.140");
         //$ig->setProxy(['proxy'=>'tcp://70.39.250.32:23128']);
-        if ($proxy)
-          $ig->setProxy("http://" . $proxy->ToString());
+        if ($this->proxy)
+          $ig->setProxy("http://" . $this->proxy->ToString());
         //$ig->setProxy("http://albertreye9917:3r4rcz0b1v@207.188.155.18:21316");
 
         $loginIGResponse = $ig->login($username, $password);
@@ -310,9 +311,9 @@ namespace InstaApiWeb {
     }
 
     public function checkpoint_requested(string $login, string $pass, VerificationChoice $choise = VerificationChoice::Email) {
-      /*try {
+      try {
         $instaAPI = new \follows\cls\InstaAPI();
-        $result2 = $instaAPI->login($login, $pass, $this->proxy);
+        $result2 = $this->make_login($login, $pass, $this->proxy);
         return $result2;
       } catch (Exceptions\InstaCheckpointException $exc) {
         $res = $exc->GetChallenge();
@@ -321,7 +322,7 @@ namespace InstaApiWeb {
           $response = $this->get_challenge_data($res, $login, $choise);
         }
         return $response;
-      }*/
+      }
     }
 
     public function get_challenge_data(string $challenge, string $login, VerificationChoice $choice = VerificationChoice::Email) {

@@ -43,12 +43,14 @@ namespace InstaApiWeb {
 
    /* public function login(string $username, string $password, Proxy $proxy = null) {
       $debug = false;
+>>>>>>> develop-isela:src/application/third_party/InstaApiWeb/InstaApi (deprecated).php
       $truncatedDebug = true;
       //////////////////////
 
       \InstagramAPI\Instagram::$allowDangerousWebUsageAtMyOwnRisk = true;
 
       try {
+          
         $ig = new \InstagramAPI\Instagram($debug, $truncatedDebug);
 
 
@@ -81,6 +83,7 @@ namespace InstaApiWeb {
       } catch (\Exception $e) {
         //echo '<br>Something went wrong: ' . $e->getMessage() . "\n</br>";
         //echo $e->getTraceAsString();                
+          ///opt/lampp/htdocs/follows-worker/src/application/third_party/externals/vendor/mgp25/instagram-php/src/../sessions"
         $source = 0;
         if (isset($id) && $id !== NULL && $id !== 0) $source = 1;
 
