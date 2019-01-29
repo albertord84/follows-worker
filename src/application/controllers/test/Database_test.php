@@ -31,12 +31,26 @@ class Database_test extends CI_Controller {
   // ISE!!!... con este controlador puedes probar el db_model.
   // Fijate la forma de invocarlos y luego haces var_dump() del resultado.
   public function db_model() {
+    
      $this->load->model('db_model');
      
-     //$this->db_model->get_clients_data();
+     echo "<pre>";
+     echo "<h2>Test Db_model </h2>";
      
      $obj = $this->db_model->get_client_data(1);
-     var_dump($obj);
+     echo "[get] get_client_data => result: " . count($obj) . " ==> (<b>ok</b>)<br>";
+     //var_dump($obj);
+     
+     $array = $this->db_model->get_clients_data();
+     echo "[get] get_clients_data  => result: " . count($array) . " ==> (<b>ok</b>)<br>";
+     //var_dump($array);
+     
+     $array = $this->db_model->get_reference_profiles_data(1);
+     echo "[get] get_reference_profiles_data  => result: " . count($array) . " ==> (<b>ok</b>)<br>";
+     //var_dump($array);
+     
+     echo "</pre>";
+     
   }
   
   public function entity($param, $action, $id) {

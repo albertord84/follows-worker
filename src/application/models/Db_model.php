@@ -401,14 +401,14 @@ class Db_model extends CI_Model {
   public function get_reference_profiles_data($client_id) {
     try {
 
-      $result = $this->db->query(""
+      $sql = ""
               . "SELECT * FROM reference_profile "
-              . "WHERE "
-              . "  (reference_profile.client_id = $client_id) "
-//                        . "  AND (reference_profile.deleted <> TRUE)"               
-//                        . "  (reference_profile.client_id = $client_id) AND "
-      );
-      return $result;
+              . "WHERE client_id = " . $client_id . ";";
+//            . "  AND (reference_profile.deleted <> TRUE)"               
+//            . "  (reference_profile.client_id = $client_id) AND "
+              
+      $query = $this->db->query($sql);
+      return $query->result();
     } catch (Error $e) {
       if ($this->db->error()['code'] != 0) {
         throw new Db_Exception($this->db->error(), $e);
