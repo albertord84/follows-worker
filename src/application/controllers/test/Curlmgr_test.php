@@ -22,9 +22,9 @@ class CurlMgr_test extends CI_Controller {
   public function index() {
     echo "Controller: <b>" . __CLASS__ . "</b> cargado.";
     
-    //$str = "<br><br>mi nombre es: <b>%s</b>. Esta es una cadena formateada de forma avanzada";
-    //$str = sprintf($str, "Carlos");    
-    //echo $str;
+    $str = "<br><br>mi nombre es: <b>%s</b>. Esta es una cadena formateada de forma avanzada";
+    $str = sprintf($str, "Carlos");    
+    echo $str;
     
     $id = 123;
     $N = 1;
@@ -38,8 +38,8 @@ class CurlMgr_test extends CI_Controller {
     
     echo "<br><br>".$variables."<br>"; echo urlencode($variables);*/
     
-    $obj = new InstaCurlMgr(new EnumEntity(EnumEntity::HASHTAG), new EnumAction(EnumAction::CMD_FOLLOW));
-    $obj->setMediaData($id, $N, $cursor);
+    //$obj = new InstaCurlMgr(new EnumEntity(EnumEntity::HASHTAG), new EnumAction(EnumAction::CMD_FOLLOW));
+    //$obj->setMediaData($id, $N, $cursor);
     //$obj->make_curl_str($proxy, $cookies);
     
     //$obj = new EnumAction(EnumAction::CMD_LOGIN);
@@ -64,12 +64,15 @@ class CurlMgr_test extends CI_Controller {
       $obj->setResourceId("my-id-333");
       echo $obj->make_curl_str(new Proxy(), new CookiesRequest("AAA", "BBB", "CCC", "DDD"));
       echo "</div>";
+      //------------------------------------------------------------------------------------
       
       echo "<div style='border: solid 2px;padding:5px;;padding-top:0px;margin-top:10px;'>";
       $obj = new InstaCurlMgr(new EnumEntity(EnumEntity::GEO), new EnumAction(EnumAction::GET_USER_INFO_POST));
-      $obj->setReferencePost("123");
+      $obj->setInstaId("123");
+      $obj->setReferencePost("999");
       echo $obj->make_curl_str(new Proxy(), new CookiesRequest("AAA", "BBB", "CCC", "DDD"));
       echo "</div>";
+      //------------------------------------------------------------------------------------
       
       echo "<div style='border: solid 2px;padding:5px;;padding-top:0px;margin-top:10px;'>";
       echo "<h2>GEO + GET_POST</h2>";

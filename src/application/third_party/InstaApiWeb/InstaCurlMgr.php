@@ -193,7 +193,7 @@ namespace InstaApiWeb {
         case EnumAction::CMD_CHECKPOINT    : $str = "CMD_CHECKPOINT"; break;
         case EnumAction::GET_POST          : $str = "GET_POST"; break;
         case EnumAction::GET_FIRST_POST    : $str = "GET_FIRST_POST"; break;
-        case EnumAction::GET_FOLLOWERS      : $str = "GET_FOLLOWERS"; break;
+        case EnumAction::GET_FOLLOWERS     : $str = "GET_FOLLOWERS"; break;
         case EnumAction::GET_USER_INFO_POST: $str = "GET_USER_INFO_POST"; break;
         case EnumAction::GET_PROFILE_INFO  : $str = "GET_PROFILE_INFO"; break;
         case EnumAction::GET_CHALLENGE_CODE: $str = "GET_CHALLENGE_CODE"; break;
@@ -216,10 +216,11 @@ namespace InstaApiWeb {
   class InstaCurlMgr {
     private $Config;
     
-    private $ActionType;
-    private $ProfileType; 
+    private $InstaId; 
     private $MediaStr; 
+    private $ActionType;
     private $ResourceId;
+    private $ProfileType; 
     private $ReferencePost;
     private $Headers = array(array());
     private $InstaURL = array(array());
@@ -231,6 +232,7 @@ namespace InstaApiWeb {
      */
     public function __construct(EnumEntity $profile, EnumAction $action) {
       
+      $this->InstaId = null;
       $this->MediaStr = null;
       $this->ResourceId = null;
       $this->ReferencePost = null;
@@ -265,6 +267,14 @@ namespace InstaApiWeb {
       //$ci = &get_instance();
     }
 
+    /**
+     * 
+     * @param string $insta_id
+     */
+    public function setInstaId (string $insta_id){
+      $this->InstaId = $insta_id;      
+    }
+    
     /**
      * 
      * @param string $rsrc_id
@@ -340,24 +350,33 @@ namespace InstaApiWeb {
         case EnumEntity::CLIENT + EnumAction::CMD_FOLLOW:
         case EnumEntity::CLIENT + EnumAction::CMD_UNFOLLOW:  
           if($this->ResourceId == null){
-            throw new InstaCurlArgumentException("The parameter (resource_id) was not given!!!.");
+            throw new InstaCurlArgumentException("The parameter (resource_id) was not given!!!. Use: setResourceId(string).");
           }
           $str_cur = $this->cmd_friendships($proxy, $cookies, $this->ResourceId);
         break;
-            
-        case EnumEntity::GEO + EnumAction::GET_USER_INFO_POST:
+                    
         case EnumEntity::HASHTAG + EnumAction::GET_USER_INFO_POST:
           if($this->ReferencePost == null){
-            throw new InstaCurlArgumentException("The parameter (reference_post) was not given!!!.");
+            throw new InstaCurlArgumentException("The parameter (reference_post) was not given!!!. Use: setReferencePost(string).");
           }
-          $str_cur = $this->get_user_info_post();
+          $str_cur = $this->get_user_info_post($proxy, $cookies, $this->ReferencePost);
         break;
         
+        case EnumEntity::GEO + EnumAction::GET_USER_INFO_POST:
+          if($this->ReferencePost == null){
+            throw new InstaCurlArgumentException("The parameter (reference_post) was not given!!!.Use: setReferencePost(string).");
+          }
+          if($this->InstaId == null){
+            throw new InstaCurlArgumentException("The parameter (insta_id) was not given!!!.Use: setInstaId(string).");
+          }
+          $str_cur = $this->get_user_info_post($proxy, $cookies, $this->ReferencePost, $this->InstaId);
+        break;
+      
         case EnumEntity::GEO + EnumAction::GET_POST:
         case EnumEntity::PERSON + EnumAction::GET_POST:
         case EnumEntity::HASHTAG + EnumAction::GET_POST:
           if ($this->MediaStr == null){
-            throw new InstaCurlMediaException("The media-cUrl parameters (id, cursor, first) have not been established!!!.");
+            throw new InstaCurlMediaException("The media-cUrl parameters (id, cursor, first) have not been established!!!. Use: setMediaData(string, int, string).");
           }
           $str_cur = $this->get_post($proxy, $cookies, $this->MediaStr);
         break;           
@@ -369,7 +388,7 @@ namespace InstaApiWeb {
       return $str_cur;
     }
 
-    public function make_curl_obj(Proxy $proxy, CookiesRequest $cookies = NULL) {
+    public function make_curl_obj(Proxy $proxy, CookiesRequest $cookies) {
       $profile = $this->ProfileType->getEnumValue();
       $action = $this->ActionType->getEnumValue();
       
@@ -426,6 +445,7 @@ namespace InstaApiWeb {
       
       return $curl_str;
       
+      // TOMADO DE: get_insta_media() | HashProfile.php => line:69 | GeoProfile
       //- EJEMPLO PARA PASO 2-----
       /*$variables = urlencode($variables);
       $graphquery_url = InstaURLs::GraphqlQuery;
@@ -525,9 +545,17 @@ namespace InstaApiWeb {
       $curl_str .= "--compressed ";*/
     }
     
-    private function get_user_info_post () {
+    private function get_user_info_post (Proxy $proxy, CookiesRequest $cookies, string $reference_post, string $insta_id = "") {
+      // Paso 1. configuracion inicial de la curl
+      //$subUrl = ($this->ProfileType->getEnumValue() == EnumEntity::HASHTAG)
+              
+      $curl_str = sprintf("curl %s '%s'", $proxy->ToString(), $this->InstaURL['Base']);
       
-      return "estoy trabajando en get_user_info_post()";
+      // Paso 2. agregando la cookies a la curl
+      
+      // Paso 3. agregando el resto de los headers
+      
+      return $curl_str;
       
       // EXEMPLO:HASHprofile -------------------------------------
       $url = "https://www.instagram.com/p/$post_reference/?__a=1";
