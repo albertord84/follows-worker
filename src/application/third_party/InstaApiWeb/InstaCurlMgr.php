@@ -115,16 +115,16 @@ namespace InstaApiWeb {
    */
   class EnumAction extends EnumBase {
  
-    const CMD_LIKE = 1;
-    const CMD_FOLLOW= 2;
-    const CMD_UNFOLLOW = 4;
-    const CMD_CHECKPOINT = 8;
-    const GET_POST = 16;
-    const GET_FIRST_POST = 32;
-    const GET_FOLLOWERS = 64;
-    const GET_USER_INFO_POST = 128;
-    const GET_PROFILE_INFO = 256;
-    const GET_CHALLENGE_CODE = 512;
+    const CMD_LIKE = 16;
+    const CMD_FOLLOW= 32;
+    const CMD_UNFOLLOW = 64;
+    const CMD_CHECKPOINT = 128;
+    const GET_POST = 256;
+    const GET_FIRST_POST = 512;
+    const GET_FOLLOWERS = 1024;
+    const GET_USER_INFO_POST = 2048;
+    const GET_PROFILE_INFO = 4096;
+    const GET_CHALLENGE_CODE = 9182;
  
     /**
      * 

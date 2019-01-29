@@ -1,4 +1,7 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+if (!defined('BASEPATH'))
+  exit('No direct script access allowed');
 
 class Database_test extends CI_Controller {
 
@@ -12,7 +15,7 @@ class Database_test extends CI_Controller {
     echo "Controller: <b>" . __CLASS__ . "</b> cargado.";
   }
 
-  public function db_exception (){
+  public function db_exception() {
     $this->load->model('db_model');
     //$this->db_model->myFunc();
 
@@ -31,66 +34,93 @@ class Database_test extends CI_Controller {
   // ISE!!!... con este controlador puedes probar el db_model.
   // Fijate la forma de invocarlos y luego haces var_dump() del resultado.
   public function db_model() {
+
+    $this->load->model('db_model');
+
+    echo "<pre>";
+    echo "<h2>Test Db_model </h2>";
+    echo "//===========================>GET<============================//<br><br>";
     
-     $this->load->model('db_model');
-     
-     echo "<pre>";
-     echo "<h2>Test Db_model </h2>";
-     
-     $obj = $this->db_model->get_client_data(1);
-     echo "[get] get_client_data => result: " . count($obj) . " ==> (<b>ok</b>)<br>";
-     //var_dump($obj);
-     
-     $array = $this->db_model->get_clients_data();
-     echo "[get] get_clients_data  => result: " . count($array) . " ==> (<b>ok</b>)<br>";
-     //var_dump($array);
-     
-     $array = $this->db_model->get_reference_profiles_data(1);
-     echo "[get] get_reference_profiles_data  => result: " . count($array) . " ==> (<b>ok</b>)<br>";
-     //var_dump($array);
-     
-     
-     $array = $this->db_model->get_biginner_data(0,10);
-     echo "[get] get_biginner_data  => result: " . count($array) . " ==> (<b>ok</b>)<br>";
-     //var_dump($array);
-     
-     $array = $this->db_model->get_clients_data_for_report();
-     echo "[get] get_clients_data_for_report  => result: " . count($array) . " ==> (<b>ok</b>)<br>";
-     //var_dump($array);
-     
-     
-     $array = $this->db_model->get_unfollow_clients_data();
-     echo "[get] get_unfollow_clients_data  => result: " . count($array) . " ==> (<b>ok</b>)<br>";
-     //var_dump($array);
-     
-     
-     $obj = $this->db_model->get_gateway_plane_id(2);
-     echo "[get] get_gateway_plane_id  => result: " . count($obj) . " ==> (<b>ok</b>)<br>";
-     //var_dump($obj);
-     
-     
-     $obj = $this->db_model->get_client_payment_data(1);
-     echo "[get] get_client_payment_data  => result: " . count($obj) . " ==> (<b>ok</b>)<br>";
-     //var_dump($obj);
-     
-     $obj = $this->db_model->get_client_login_data(1);
-     echo "[get] get_client_login_data  => result: " . count($obj) . " ==> (<b>ok</b>)<br>";
-     //var_dump($obj);
-     
-     
-     $obj = $this->db_model->get_client_data_bylogin("riveauxmerino");
-     echo "[get] get_client_data_bylogin  => result: " . count($obj) . " ==> (<b>ok</b>)<br>";
-     //var_dump($obj);
-     
-     
-     $obj = $this->db_model->get_client_proxy(1);
-     echo "[get] get_client_proxy  => result: " . count($obj) . " ==> (<b>ok</b>)<br>";
-     //var_dump($obj);
-     
-     echo "</pre>";
-     
+    //FUNC 0
+    $array = $this->db_model->get_clients_by_status(8,0,10);
+    echo "FUNC 0-[get] get_clients_by_status  => result: " . count($array) . " ==> (<b>ok</b>)<br><br>";
+    //var_dump($array);
+    
+    //FUNC 1
+    $array = $this->db_model->get_clients_data();
+    echo "FUNC 1-[get] get_clients_data  => result: " . count($array) . " ==> (<b>ok</b>)<br><br>";
+    //var_dump($array); 
+    
+    //FUNC 2
+    $obj = $this->db_model->get_client_data(1);
+    echo "FUNC 2-[get] get_client_data => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    //var_dump($obj);
+    
+    //FUNC 3
+    $array = $this->db_model->get_reference_profiles_data(1);
+    echo "FUNC 3-[get] get_reference_profiles_data  => result: " . count($array) . " ==> (<b>ok</b>)<br><br>";
+    //var_dump($array);
+    
+    //FUNC 4
+    $array = $this->db_model->get_biginner_data(0, 10);
+    echo "FUNC 4-[get] get_biginner_data  => result: " . count($array) . " ==> (<b>ok</b>)<br><br>";
+    //var_dump($array);
+    
+    //FUNC 5
+    $array = $this->db_model->get_clients_data_for_report();
+    echo "FUNC 5-[get] get_clients_data_for_report  => result: " . count($array) . " ==> (<b>ok</b>)<br><br>";
+    //var_dump($array);
+    
+    //FUNC 6
+    $array = $this->db_model->get_unfollow_clients_data();
+    echo "FUNC 6-[get] get_unfollow_clients_data  => result: " . count($array) . " ==> (<b>ok</b>)<br><br>";
+    //var_dump($array);
+    
+    //FUNC 7
+    $obj = $this->db_model->get_gateway_plane_id(2);
+    echo "FUNC 7-[get] get_gateway_plane_id  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    //var_dump($obj);
+    
+    //FUNC 8
+    $obj = $this->db_model->get_client_payment_data(1);
+    echo "FUNC 8-[get] get_client_payment_data  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    //var_dump($obj);
+    
+    //FUNC 9
+    $obj = $this->db_model->get_client_login_data(1);
+    echo "FUNC 9-[get] get_client_login_data  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    //var_dump($obj);
+    
+    //FUNC 10
+    $obj = $this->db_model->get_client_data_bylogin("riveauxmerino");
+    echo "FUNC 10-[get] get_client_data_bylogin  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    //var_dump($obj);
+    
+    //FUNC 11
+    $obj = $this->db_model->get_client_proxy(1);
+    echo "FUNC 11-[get] get_client_proxy  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    //var_dump($obj);
+    
+    //FUNC 12
+    $obj = $this->db_model->get_client_instaid_data(1);
+    echo "FUNC 12-[get] get_client_instaid_data  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    //var_dump($obj);
+    
+    echo "//===========================>SET<============================//<br><br>";
+    
+    //FUNC X
+    //$obj = $this->db_model->set_client_status();
+    echo "FUNC X-[set] set_client_status  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    //var_dump($obj);
+        
+    //FUNC Y
+    //$obj = $this->db_model->set_client_status_by_login();
+    echo "FUNC Y-[set] set_client_status_by_login  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    //var_dump($obj);
+    
+    echo "</pre>";
   }
-  
+
   public function entity($param, $action, $id) {
     echo "<b>Param: </b>" . $param . "<br><b>Action: </b>" . $action . "<br><br>";
 
