@@ -41,7 +41,7 @@ namespace business {
     public $Mid;
     
     
-    public function __construct($session_id, $csrf_token, $dsuser_id, $mid) {          
+    public function __construct(string $session_id, string $csrf_token, string $dsuser_id, string $mid) {          
       $this->SessionId = $session_id;
       $this->CsrfToken = $csrf_token;
       $this->DsUserId = $dsuser_id;
