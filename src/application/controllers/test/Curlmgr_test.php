@@ -1,10 +1,10 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-use InstaApiWeb\InstaCurlMgr;
-use InstaApiWeb\EnumAction;
-use InstaApiWeb\EnumEntity;
 use business\Proxy;
 use business\CookiesRequest;
+use InstaApiWeb\EnumEntity;
+use InstaApiWeb\EnumAction;
+use InstaApiWeb\InstaCurlMgr;
 use InstaApiWeb\Exceptions\InstaException;
 use InstaApiWeb\Exceptions\InstaCurlMediaException;
 
@@ -48,33 +48,54 @@ class CurlMgr_test extends CI_Controller {
 
   public function run() {    
     try {
+      echo "<div style='border: solid 2px;padding:5px;padding-top:0px;'>";
       echo "<h2>CLIENT + LIKE</h2>";
       $obj = new InstaCurlMgr(new EnumEntity(EnumEntity::CLIENT), new EnumAction(EnumAction::CMD_LIKE)); 
-      echo $obj->make_curl_str(new Proxy(), new CookiesRequest("", "", "", ""), "my-id-123");
+      $obj->setResourceId("my-id-111");
+      echo $obj->make_curl_str(new Proxy(), new CookiesRequest("AAA", "BBB", "CCC", "DDD"));
       
+      echo "<h2>CLIENT + FOLLOW</h2>";
+      $obj = new InstaCurlMgr(new EnumEntity(EnumEntity::CLIENT), new EnumAction(EnumAction::CMD_FOLLOW)); 
+      $obj->setResourceId("my-id-222");
+      echo $obj->make_curl_str(new Proxy(), new CookiesRequest("AAA", "BBB", "CCC", "DDD"));
+      
+      echo "<h2>CLIENT + UNFOLLOW</h2>";
+      $obj = new InstaCurlMgr(new EnumEntity(EnumEntity::CLIENT), new EnumAction(EnumAction::CMD_UNFOLLOW)); 
+      $obj->setResourceId("my-id-333");
+      echo $obj->make_curl_str(new Proxy(), new CookiesRequest("AAA", "BBB", "CCC", "DDD"));
+      echo "</div>";
+      
+      echo "<div style='border: solid 2px;padding:5px;;padding-top:0px;margin-top:10px;'>";
+      $obj = new InstaCurlMgr(new EnumEntity(EnumEntity::GEO), new EnumAction(EnumAction::GET_USER_INFO_POST));
+      $obj->setReferencePost("123");
+      echo $obj->make_curl_str(new Proxy(), new CookiesRequest("AAA", "BBB", "CCC", "DDD"));
+      echo "</div>";
+      
+      echo "<div style='border: solid 2px;padding:5px;;padding-top:0px;margin-top:10px;'>";
       echo "<h2>GEO + GET_POST</h2>";
       $obj = new InstaCurlMgr(new EnumEntity(EnumEntity::GEO), new EnumAction(EnumAction::GET_POST));         
       $obj->setMediaData("AAA", "111", "AA-cursor-11");
-      echo $obj->make_curl_str(new Proxy(), new CookiesRequest("", "", "", ""));
+      echo $obj->make_curl_str(new Proxy(), new CookiesRequest("AAA", "BBB", "CCC", "DDD"));
       //var_dump($obj);
     
       echo "<h2>HASHTAG + GET_POST</h2>";
       $obj = new InstaCurlMgr(new EnumEntity(EnumEntity::HASHTAG), new EnumAction(EnumAction::GET_POST));         
       $obj->setMediaData("BBB", "2", "BB-cursor-22");
-      echo $obj->make_curl_str(new Proxy(), new CookiesRequest("", "", "", ""));
+      echo $obj->make_curl_str(new Proxy(), new CookiesRequest("AAA", "BBB", "CCC", "DDD"));
       //var_dump($obj);
 
       echo "<h2>PERSON + GET_POST</h2>";
       $obj = new InstaCurlMgr(new EnumEntity(EnumEntity::PERSON), new EnumAction(EnumAction::GET_POST));         
       $obj->setMediaData("CCC", "3", "CC-cursor-33");
-      echo $obj->make_curl_str(new Proxy(), new CookiesRequest("", "", "", ""));
+      echo $obj->make_curl_str(new Proxy(), new CookiesRequest("AAA", "BBB", "CCC", "DDD"));
       //var_dump($obj);      
+      echo "</div>";
       
       //$obj = new InstaProfileType(InstaProfileType::PERSON);
       //var_dump($obj);
     }
     catch (InstaException $e){
-      echo "Exception Msg: ".$e->getMessage();
+      echo $e->getMessage();
     }
   }
 

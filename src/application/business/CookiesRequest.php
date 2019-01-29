@@ -17,21 +17,21 @@ namespace business {
      * @access public
      * 
      */
-    public $Session_id;
+    public $SessionId;
     
     /**
      * 
      * @access public
      * 
      */
-    public $Csrf_Token;
+    public $CsrfToken;
     
     /**
      * 
      * @access public
      * 
      */
-    public $DsUser_id;
+    public $DsUserId;
     
     /**
      * 
@@ -41,10 +41,10 @@ namespace business {
     public $Mid;
     
     
-    public function __construct($session_id, $csrf_token, $dsuser_id, $mid) {          
-      $this->Session_id = $session_id;
-      $this->Csrf_Token = $csrf_token;
-      $this->DsUser_id = $dsuser_id;
+    public function __construct(string $session_id, string $csrf_token, string $dsuser_id, string $mid) {          
+      $this->SessionId = $session_id;
+      $this->CsrfToken = $csrf_token;
+      $this->DsUserId = $dsuser_id;
       $this->Mid = $mid;
     }
 
