@@ -36,10 +36,10 @@ class Business_test extends CI_Controller {
     $obj = new Client();
     echo "[new] Client_business ==> (<b>ok</b>)<br>";
 
-    $array = $obj->get_clients();
+    $array = $obj->get_clients(); 
     echo "[get] get_clients() => result: " . count($array) . " ==> (<b>ok</b>)<br>"; //var_dump($array)
 
-    $array = $obj->load_from_db(1);
+    $array = $obj->load_data(1); var_dump($obj); echo "<h1>$obj->Id</h1>";
     echo "[get] load_from_db() => result: " . count($array) . " ==> (<b>ok</b>)<br>"; //var_dump($array);
      
     //$array = $obj->get_reference_profiles();
@@ -54,7 +54,7 @@ class Business_test extends CI_Controller {
     echo "[new] Proxy_business ==> (<b>ok</b>)<br>";
 
     $obj->load_from_db(1);
-    echo "[load] load() ==> (<b>ok</b>)"; var_dump($obj);
+    echo "[load] load() ==> (<b>ok</b>)"; //var_dump($obj);
 
     //======= PROXY-MANAGER =======//
     echo "<h2>Test ProxyManager Business</h2>";

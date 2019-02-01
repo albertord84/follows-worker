@@ -245,7 +245,8 @@ namespace InstaApiWeb {
       $this->InstaURL['TopSearch'] = "https://www.instagram.com/web/search/topsearch";
       
       /* Instagram cUrl Headers definitions */
-      $this->Headers['X-Post']           = "-X POST";
+      $this->Headers['X-Post']           = "-X POST";     
+      $this->Headers['Cookie-public']    = "-H 'cookie: mid=W1ZcJgAEAAFqS5yqkDU8yMWgOgsB; csrftoken=gcEQPaqCjzgQ944fOec5QYec86aKVfGU'";
       $this->Headers['Cookie-small']     = "-H 'Cookie: mid=%s; sessionid=%s; csrftoken=%s; ds_user_id=%s'";
       $this->Headers['Cookie-big']       = "-H 'Cookie: mid=%s; sessionid=%s; s_network=; ig_pr=1; ig_vw=1855; csrftoken=%s; ds_user_id=%s'";
       $this->Headers['Origin']           = "-H 'Origin: https://www.instagram.com'";

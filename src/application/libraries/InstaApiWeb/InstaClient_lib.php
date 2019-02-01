@@ -49,7 +49,7 @@ class InstaClient_lib {
       $result = new LoginResponse('ok', false, $e->getMessage(), NULL, $e->GetChallange());
     } 
     catch (InstaException $e) {
-      $this->db_model->InsertEventToWashdog($Client->id, $e->getMessage(), $source);
+      $this->db_model->insert_event_to_washdog($Client->id, $e->getMessage(), $source);
 
       $result = new LoginResponse('ok', false, $e->getMessage(), NULL);
     }
