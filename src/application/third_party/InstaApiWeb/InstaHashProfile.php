@@ -2,7 +2,7 @@
 
 namespace InstaApiWeb {
 
-  require_once 'ReferenceProfile.php';
+  require_once 'InstaReferenceProfile.php';
   
   /**
    * Description of HashProfile

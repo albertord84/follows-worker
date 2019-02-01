@@ -13,11 +13,11 @@ namespace InstaApiWeb\Exceptions {
   class InstaCookiesException extends InstaException {
 
     public function __construct($message = "", Throwable $previous = null) {
-      parent::__construct($message, ExceptionCode::IstaCookies, $previous);
+      parent::__construct($message, ExceptionCode::CookiesWrongSyntax, $previous);
     }
 
     public function Code() {
-      return ExceptionCode::IstaCookies;
+      return ExceptionCode::CookiesWrongSyntax;
     }
   }
 

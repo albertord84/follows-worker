@@ -12,13 +12,13 @@ use InstaApiWeb\PersonProfile;
  * @todo Define a codeigniter library for X
  * 
  */
-class PersonProfile_lib {
+class InstaPersonProfile_lib {
 
   public function __construct ()
   {
     require_once config_item('thirdparty-proxy-resource');
     require_once config_item('thirdparty-profile_type-resource');
-    require_once config_item('thirdparty-person_profile-resource');
+    require_once config_item('thirdparty-insta_person_profile-resource');
     
     $this->PersonProfile = new PersonProfile();
   }

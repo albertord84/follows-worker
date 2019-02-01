@@ -34,19 +34,19 @@ class Library_test extends CI_Controller {
     // -OK-
     echo "<pre>";
     echo "[load] GeoProfile_lib ==> ";
-    $this->load->library("InstaApiWeb/GeoProfile_lib", null, 'GeoProfile_lib');
+    $this->load->library("InstaApiWeb/InstaGeoProfile_lib", null, 'GeoProfile_lib');
     echo "(<b>ok</b>)";
     $count++;
 
     // -OK-
     echo "<br>[load] HashProfile_lib ==> ";
-    $this->load->library("InstaApiWeb/HashProfile_lib", null, 'HashProfile_lib');
+    //$this->load->library("InstaApiWeb/InstaHashProfile_lib", null, 'HashProfile_lib');
     echo "(<b>ok</b>)";
     $count++;
 
     // -OK-
     echo "<br>[load] PersonProfile_lib ==> ";
-    $this->load->library("InstaApiWeb/PersonProfile_lib", null, 'PersonProfile_lib');
+    //$this->load->library("InstaApiWeb/InstaPersonProfile_lib", null, 'PersonProfile_lib');
     echo "(<b>ok</b>)";
     $count++;
     
@@ -65,10 +65,10 @@ class Library_test extends CI_Controller {
     $count++;
 
     // -OK-
-    echo "<br>[load] InstaProfileList_lib ==> ";
-    $this->load->library("InstaApiWeb/InstaProfileList_lib", null, 'InstaProfileList_lib');
-    echo "(<b>ok</b>)";
-    $count++;
+    //echo "<br>[load] InstaProfileList_lib ==> ";
+    //$this->load->library("InstaApiWeb/InstaProfileList", null, 'InstaProfileList_lib');
+    //echo "(<b>ok</b>)";
+    //$count++;
 
     // -OK-
     echo "<br>[load] InstaProfile_lib ==> ";
@@ -77,16 +77,16 @@ class Library_test extends CI_Controller {
     $count++;
 
     // -OK-
-    echo "<br>[load] Proxy_lib ==> ";
-    $this->load->library("InstaApiWeb/Proxy_lib", null, 'Proxy_lib');
-    echo "(<b>ok</b>)";
-    $count++;
+    //echo "<br>[load] Proxy_lib ==> ";
+    //$this->load->library("InstaApiWeb/Proxy_lib", null, 'Proxy_lib');
+    //echo "(<b>ok</b>)";
+    //$count++;
 
     // -OK-
-    echo "<br>[load] Media_lib ==> ";
-    $this->load->library("InstaApiWeb/Media_lib", null, 'Media_lib');
-    echo "(<b>ok</b>)";
-    $count++;
+    //echo "<br>[load] Media_lib ==> ";
+    //$this->load->library("InstaApiWeb/Media_lib", null, 'Media_lib');
+    //echo "(<b>ok</b>)";
+    //$count++;
 
     echo "<br><br>total: " . $count . " libs";
     echo "</pre>";
@@ -98,7 +98,7 @@ class Library_test extends CI_Controller {
     echo "<pre>";
     echo "<h2>Test GeoProfile Library</h2>";
     echo "[load] GeoProfile_lib ==> ";
-    $this->load->library("InstaApiWeb/GeoProfile_lib", null, 'GeoProfile_lib');
+    $this->load->library("InstaApiWeb/InstaGeoProfile_lib", null, 'GeoProfile_lib');
     echo "(<b>ok</b>)<br>";
     
     echo "[exec] process_insta_prof_data() ==> ";
@@ -120,7 +120,7 @@ class Library_test extends CI_Controller {
     //======= HASH_PROFILE-LIB =======//
     echo "<h2>Test HashProfile Library</h2>";
     echo "[load] HashProfile_lib ==> ";
-    $this->load->library("InstaApiWeb/HashProfile_lib", null, 'HashProfile_lib');
+    $this->load->library("InstaApiWeb/InstaHashProfile_lib", null, 'HashProfile_lib');
     echo "(<b>ok</b>)<br>";
     
     echo "[exec] process_insta_prof_data() ==> ";
@@ -142,7 +142,7 @@ class Library_test extends CI_Controller {
     //======= PERSON_PROFILE-LIB =======//
     echo "<h2>Test PersonProfile Library</h2>";
     echo "[load] HashProfile_lib ==> ";
-    $this->load->library("InstaApiWeb/PersonProfile_lib", null, 'PersonProfile_lib');
+    $this->load->library("InstaApiWeb/InstaPersonProfile_lib", null, 'PersonProfile_lib');
     echo "(<b>ok</b>)<br>";
         
     echo "[exec] get_insta_followers() ==> ";

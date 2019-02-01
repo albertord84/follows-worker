@@ -38,9 +38,9 @@ namespace InstaApiWeb {
       require_once config_item('insta-checkpoint-exception-class');
       require_once config_item('thirdparty-cookies_response-class');
       
-      if (!InstaClient::verify_cookies($cookies)) {
+      /*if (!InstaClient::verify_cookies($cookies)) {
         throw new Exceptions\InstaCookiesException('the cookies you are passing are incompleate or wrong');
-      }
+      }*/
       $this->insta_id = $insta_id;
       $this->cookies = $cookies;
       $this->proxy = $proxy;
@@ -156,7 +156,7 @@ namespace InstaApiWeb {
       return $csrftoken;*/
     }
 
-    public static function verify_cookies(\stdClass $cookies) {
+    public static function verify_cookies(CookiesRequest $cookies) {
       /*if ($cookies != NULL) {
         return (isset($cookies->csrftoken) && $cookies->csrftoken !== NULL && $cookies->csrftoken !== '' &&
                 isset($cookies->mid) && $cookies->mid !== NULL && $cookies->mid !== '' &&
@@ -181,8 +181,8 @@ namespace InstaApiWeb {
 
         //$ig->setOutputInterface("191.252.110.140");
         //$ig->setProxy(['proxy'=>'tcp://70.39.250.32:23128']);
-        if ($this->proxy)
-          $ig->setProxy("http://" . $this->proxy->ToString());
+        //if ($this->proxy)
+        //  $ig->setProxy("http://" . $this->proxy->ToString());
         //$ig->setProxy("http://albertreye9917:3r4rcz0b1v@207.188.155.18:21316");
 
         $loginIGResponse = $ig->login($username, $password);

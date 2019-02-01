@@ -38,7 +38,7 @@ class InstaClient_lib {
     $this->CI = &get_instance();
     $this->CI->load->model("db_model");
 
-    $this->InstaClient = new InstaClient("", new CookiesRequest(null, null, null, null), new Proxy("", "", "", ""));
+    $this->InstaClient = new InstaClient("", new CookiesRequest("", "", "", ""), new Proxy("", "", "", ""));
   }
 
   public function make_login(string $login, string $pass) {
@@ -49,7 +49,7 @@ class InstaClient_lib {
       $result = new LoginResponse('ok', false, $e->getMessage(), NULL, $e->GetChallange());
     } 
     catch (InstaException $e) {
-      $this->db_model->insert_event_to_washdog($Client->id, $e->getMessage(), $source);
+      //$this->db_model->insert_event_to_washdog($Client->id, $e->getMessage(), $source);
 
       $result = new LoginResponse('ok', false, $e->getMessage(), NULL);
     }

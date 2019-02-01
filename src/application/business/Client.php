@@ -3,7 +3,9 @@
 namespace business {
 
   require_once config_item('business-user-class');
+  require_once config_item('business-user-class');
 
+  
   /**
    * @category Business class
    * 
@@ -311,6 +313,7 @@ namespace business {
       parent::__construct();
       
       $ci = &get_instance();
+      $ci->load->model('clients_model');
       $ci->load->model('db_model');
       
       //$ci->load->library("InstaApiWeb/InstaApi_lib", null, 'InstaApi_lib');
@@ -325,7 +328,8 @@ namespace business {
       parent::load_data($id);
       
       $ci = &get_instance();
-      $data = $ci->db_model->get_client_data($id);
+      $data = $ci->clients_model->get_by_id($id);
+      //$data = $ci->db_model->get_client_data($id);
 
       $this->fill_data($data);
     }
@@ -378,10 +382,10 @@ namespace business {
      */
     public function set_client_cookies($client_id = NULL, $cookies = NULL) {
       $ci = &get_instance();
-        $client_id = $client_id ? $client_id : $this->id;
-        $cookies = $cookies ? $cookies : $this->cookies;
-        $result = $ci->db_model->set_client_cookies($client_id, $cookies);
-        return $result;
+      $client_id = $client_id ? $client_id : $this->id;
+      $cookies = $cookies ? $cookies : $this->cookies;
+      $result = $ci->db_model->set_client_cookies($client_id, $cookies);
+      return $result;
     }
 
     /**
@@ -422,12 +426,17 @@ namespace business {
      * Obtiene 
      * @param type $client_id
      */
-    public function get_reference_profiles($client_id = NULL) {
+    //public function get_reference_profiles($client_id) {
+    public function get_reference_profiles() {
       $ci = &get_instance();
-      try {
-        $client_id = $client_id ? $client_id : $this->id;
-        $ref_profs_data = $ci->db_model->get_reference_profiles_data($client_id);
-        while ($prof_data = $ref_profs_data->fetch_object()) {
+        //$client_id = $client_id ? $client_id : $this->id;
+        //$ref_profs_data = $ci->db_model->get_reference_profiles_data($client_id);
+        $rows = $ci->db_model->get_reference_profiles_data($this->Id);
+        foreach ($rows as $item){
+          
+        }
+        
+        /*while ($prof_data = $ref_profs_data->fetch_object()) {
           //CONCERTAR quitar follows...
           $Ref_Prof = new \follows\cls\Reference_profile();
           //print_r($prof_data);
@@ -443,11 +452,8 @@ namespace business {
           $Ref_Prof->end_date = $prof_data->end_date;
           $Ref_Prof->status = $prof_data->status_id;
           array_push($this->reference_profiles, $Ref_Prof);
-//                    }
-        }
-      } catch (Exception $exc) {
-        echo $exc->getTraceAsString();
-      }
+        }*/
+
     }
     
 

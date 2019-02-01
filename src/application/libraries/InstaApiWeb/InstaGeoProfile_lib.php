@@ -11,11 +11,11 @@ use InstaApiWeb\GeoProfile;
  * @todo Define a codeigniter library for X
  * 
  */
-class GeoProfile_lib {
+class InstaGeoProfile_lib {
   
   public function __construct() {
     require_once config_item('thirdparty-proxy-resource');
-    require_once config_item('thirdparty-geo_profile-resource');
+    require_once config_item('thirdparty-insta_geo_profile-resource');
     
     $this->GeoProfile = new GeoProfile();
   }

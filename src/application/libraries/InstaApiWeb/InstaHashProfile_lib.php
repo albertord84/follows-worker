@@ -11,12 +11,12 @@ use InstaApiWeb\Proxy;
  * @todo Define a codeigniter library for X
  * 
  */
-class HashProfile_lib {
+class InstaHashProfile_lib {
   
   public function __construct ()
   {
     require_once config_item('thirdparty-proxy-resource');
-    require_once config_item('thirdparty-has_profile-resource');
+    require_once config_item('thirdparty-insta_hash_profile-resource');
     
     $this->HashProfile = new HashProfile();
   }

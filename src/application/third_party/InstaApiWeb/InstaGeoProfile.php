@@ -7,7 +7,7 @@ use InstaApiWeb\InstaApi;
 use InstaApiWeb\InstaCurlMgr;
 use InstaApiWeb\ReferenceProfile;
 
-require_once 'ReferenceProfile.php';
+require_once 'InstaReferenceProfile.php';
 
   /**
    * Description of GeoProfile

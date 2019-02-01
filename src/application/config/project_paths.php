@@ -48,16 +48,16 @@
 */
   
   //Recursos de la InstaApiWeb que viraron tambien librerias (nombreRecurso_lib)
-  $config['thirdparty-geo_profile-resource'] = getcwd().'/application/third_party/InstaApiWeb/GeoProfile.php';
-  $config['thirdparty-has_profile-resource'] = getcwd().'/application/third_party/InstaApiWeb/HashProfile.php';
+  $config['thirdparty-insta_geo_profile-resource'] = getcwd().'/application/third_party/InstaApiWeb/InstaGeoProfile.php';
+  $config['thirdparty-insta_hash_profile-resource'] = getcwd().'/application/third_party/InstaApiWeb/InstaHashProfile.php';
+  $config['thirdparty-insta_person_profile-resource'] = getcwd().'/application/third_party/InstaApiWeb/InstaPersonProfile.php';  
+  $config['thirdparty-media-resource'] = getcwd().'/application/third_party/InstaApiWeb/Media (deprecated).php';
+  $config['thirdparty-proxy-resource'] = getcwd().'/application/third_party/InstaApiWeb/Proxy.php';
   $config['thirdparty-insta_api-resource'] = getcwd().'/application/third_party/InstaApiWeb/InstaApi (deprecated).php';
   $config['thirdparty-insta_curl_mgr-resource'] = getcwd().'/application/third_party/InstaApiWeb/InstaCurlMgr.php';
   $config['thirdparty-insta_client-resource'] = getcwd().'/application/third_party/InstaApiWeb/InstaClient.php';
   $config['thirdparty-insta_profile_list-resource'] = getcwd().'/application/third_party/InstaApiWeb/InstaProfileList (deprecated).php';
   $config['thirdparty-insta_profile-resource'] = getcwd().'/application/third_party/InstaApiWeb/InstaProfile.php';  
-  $config['thirdparty-media-resource'] = getcwd().'/application/third_party/InstaApiWeb/Media (deprecated).php';
-  $config['thirdparty-person_profile-resource'] = getcwd().'/application/third_party/InstaApiWeb/PersonProfile.php';  
-  $config['thirdparty-proxy-resource'] = getcwd().'/application/third_party/InstaApiWeb/Proxy.php';
 
   //Recursos solamente de la InstaApiWeb
   $config['thirdparty-insta_url-resource'] = getcwd().'/application/third_party/InstaApiWeb/InstaURLs (deprecated).php';
