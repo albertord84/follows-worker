@@ -1,0 +1,55 @@
+
+GEO LOCALIZACION----- (sin cursor)
+
+curl 'https://www.instagram.com/explore/locations/2025533807715574/la-habana-vieja/?__a=1' 
+-H 'cookie: mid=W1ZcJgAEAAFqS5yqkDU8yMWgOgsB; csrftoken=gcEQPaqCjzgQ944fOec5QYec86aKVfGU' 
+-H 'accept-encoding: gzip, deflate, br' 
+-H 'accept-language: es-ES,es;q=0.9,en;q=0.8' 
+-H 'user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36' 
+-H 'accept: */*' 
+-H 'referer: https://www.instagram.com/explore/locations/2025533807715574/la-habana-vieja/' 
+-H 'authority: www.instagram.com' 
+-H 'x-requested-with: XMLHttpRequest' 
+-H 'x-instagram-gis: c364f46db4279153a9b14e2464d40ae6' 
+--compressed
+
+(con cursor)
+curl 'https://www.instagram.com/graphql/query/?query_hash=1b84447a4d8b6d6d0426fefb34514485&variables=%7B%22id%22%3A%222025533807715574%22%2C%22first%22%3A12%2C%22after%22%3A%221968972351766115481%22%7D' 
+-H 'cookie: mid=W1ZcJgAEAAFqS5yqkDU8yMWgOgsB; csrftoken=gcEQPaqCjzgQ944fOec5QYec86aKVfGU' 
+-H 'accept-encoding: gzip, deflate, br' 
+-H 'accept-language: es-ES,es;q=0.9,en;q=0.8' 
+-H 'user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36' 
+-H 'accept: */*' 
+-H 'referer: https://www.instagram.com/explore/locations/2025533807715574/la-habana-vieja/' 
+-H 'authority: www.instagram.com'
+-H 'x-requested-with: XMLHttpRequest' 
+-H 'x-instagram-gis: 33157a90e27a1fd5b45131f7034a4ea0' 
+--compressed
+
+HASHTAG-----
+
+curl 'https://www.instagram.com/explore/tags/casagrande/?__a=1' 
+-H 'cookie: mid=W1ZcJgAEAAFqS5yqkDU8yMWgOgsB; csrftoken=gcEQPaqCjzgQ944fOec5QYec86aKVfGU' 
+-H 'accept-encoding: gzip, deflate, br' 
+-H 'accept-language: es-ES,es;q=0.9,en;q=0.8' 
+-H 'user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36' 
+-H 'accept: */*' 
+-H 'referer: https://www.instagram.com/explore/tags/casagrande/' 
+-H 'authority: www.instagram.com' 
+-H 'x-requested-with: XMLHttpRequest' -H 'x-instagram-gis: bcb831aef4e0fd1096ad0d53465a201f' 
+--compressed
+
+
+----IMPORTANTE, revisa el showranked false. es importante qe lo tenga
+
+curl 'https://www.instagram.com/graphql/query/?query_hash=f92f56d47dc7a55b606908374b43a314&variables=%7B%22tag_name%22%3A%22casagrande%22%2C%22show_ranked%22%3Afalse%2C%22first%22%3A2%2C%22after%22%3A%22QVFDZzFMZWRZQTFwUllWVmhuZmtkRXBmaWRPOUI3UEZLb05mZHZwRmJUUTY4cFc5RVJkWmhvNWJUaGJVbExJUjR1ZmNnN1lMbk45V0pWQ3JPcTBTVWczdQ%3D%3D%22%7D' 
+-H 'cookie: mid=W1ZcJgAEAAFqS5yqkDU8yMWgOgsB; csrftoken=gcEQPaqCjzgQ944fOec5QYec86aKVfGU 
+-H 'accept-encoding: gzip, deflate, br' 
+-H 'accept-language: es-ES,es;q=0.9,en;q=0.8' 
+-H 'user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36' 
+-H 'accept: */*' 
+-H 'referer: https://www.instagram.com/explore/tags/casagrande/' 
+-H 'authority: www.instagram.com' 
+-H 'x-requested-with: XMLHttpRequest' 
+-H 'x-instagram-gis: 09b7c102caab10bc1dfbddb17a0764c3' 
+--compressed

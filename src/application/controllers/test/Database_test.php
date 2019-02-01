@@ -31,12 +31,9 @@ class Database_test extends CI_Controller {
     }
   }
 
-  // ISE!!!... con este controlador puedes probar el db_model.
-  // Fijate la forma de invocarlos y luego haces var_dump() del resultado.
-  public function db_model() {
-
+  public function db_model($func = -1) {
     $this->load->model('db_model');
-
+  
     echo "<pre>";
     echo "<h2>Test Db_model </h2>";
     echo "//===========================>GET<============================//<br><br>";
@@ -44,67 +41,67 @@ class Database_test extends CI_Controller {
     //FUNC 0
     $array = $this->db_model->get_clients_by_status(8,0,10);
     echo "FUNC 0-[get] get_clients_by_status  => result: " . count($array) . " ==> (<b>ok</b>)<br><br>";
-    //var_dump($array);
+    if ($func == 0) var_dump($array);
     
     //FUNC 1
     $array = $this->db_model->get_clients_data();
     echo "FUNC 1-[get] get_clients_data  => result: " . count($array) . " ==> (<b>ok</b>)<br><br>";
-    //var_dump($array); 
+    if ($func == 1) var_dump($array); 
     
     //FUNC 2
     $obj = $this->db_model->get_client_data(1);
     echo "FUNC 2-[get] get_client_data => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
-    //var_dump($obj);
+    if ($func == 2) var_dump($obj);
     
     //FUNC 3
     $array = $this->db_model->get_reference_profiles_data(1);
     echo "FUNC 3-[get] get_reference_profiles_data  => result: " . count($array) . " ==> (<b>ok</b>)<br><br>";
-    //var_dump($array);
+    if ($func == 3) var_dump($array);
     
     //FUNC 4
     $array = $this->db_model->get_biginner_data(0, 10);
     echo "FUNC 4-[get] get_biginner_data  => result: " . count($array) . " ==> (<b>ok</b>)<br><br>";
-    //var_dump($array);
+    if ($func == 4) var_dump($array);
     
     //FUNC 5
     $array = $this->db_model->get_clients_data_for_report();
     echo "FUNC 5-[get] get_clients_data_for_report  => result: " . count($array) . " ==> (<b>ok</b>)<br><br>";
-    //var_dump($array);
+    if ($func == 5) var_dump($array);
     
     //FUNC 6
     $array = $this->db_model->get_unfollow_clients_data();
     echo "FUNC 6-[get] get_unfollow_clients_data  => result: " . count($array) . " ==> (<b>ok</b>)<br><br>";
-    //var_dump($array);
+    if ($func == 6) var_dump($array);
     
     //FUNC 7
     $obj = $this->db_model->get_gateway_plane_id(2);
     echo "FUNC 7-[get] get_gateway_plane_id  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
-    //var_dump($obj);
+    if ($func == 7) var_dump($obj);
     
     //FUNC 8
     $obj = $this->db_model->get_client_payment_data(1);
     echo "FUNC 8-[get] get_client_payment_data  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
-    //var_dump($obj);
+    if ($func == 8) var_dump($obj);
     
     //FUNC 9
     $obj = $this->db_model->get_client_login_data(1);
     echo "FUNC 9-[get] get_client_login_data  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
-    //var_dump($obj);
+    if ($func == 9) var_dump($obj);
     
     //FUNC 10
     $obj = $this->db_model->get_client_data_bylogin("riveauxmerino");
     echo "FUNC 10-[get] get_client_data_bylogin  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
-    //var_dump($obj);
+    if ($func == 10) var_dump($obj);
     
     //FUNC 11
     $obj = $this->db_model->get_client_proxy(1);
     echo "FUNC 11-[get] get_client_proxy  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
-    //var_dump($obj);
+    if ($func == 11) var_dump($obj);
     
     //FUNC 12
     $obj = $this->db_model->get_client_instaid_data(1);
     echo "FUNC 12-[get] get_client_instaid_data  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
-    //var_dump($obj);
+    if ($func == 12) var_dump($obj);
     
     echo "//===========================>SET<============================//<br><br>";
     

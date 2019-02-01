@@ -18,7 +18,7 @@ namespace business {
       $ci = &get_instance();
       $ci->load->model('db_model');
 
-        $result = $ci->db_model->GetReferenceProfileStatus();
+        $result = $ci->db_model->get_reference_profile_status();
       
             if (count($result) != 0) {
         foreach ($result as $item) {

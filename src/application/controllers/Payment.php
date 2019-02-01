@@ -668,13 +668,13 @@ class Payment extends CI_Controller {
             $payment_data['pay_day'] = strtotime("+1 month", $client->pay_day);
             $response = $payment->check_recurrency_mundipagg_credit_card($payment_data, 0);
             $order_key = $resp->getData()->OrderResult->OrderKey;
-            $DB->SetClientOrderKey($client['user_id'], $order_key, $payment_data['pay_day']);
+            $DB->set_client_order_key($client['user_id'], $order_key, $payment_data['pay_day']);
         }
         //Fallo en crear a arecurrencia -> notificar ao cliente e bloquear por pagamento
         else {
             $this->user_model->update_user($client['user_id'], array('status_id' => user_status::BLOCKED_BY_PAYMENT, 'status_date' => time()));
             $this->send_payment_email($client, 0);
-            $DB->InsertEventToWashdog($client['user_id'], 'BLOQUED BY PAYMENT', 0);
+            $DB->insert_event_to_washdog($client['user_id'], 'BLOQUED BY PAYMENT', 0);
         }
         //Creo a recurren ia -> continua ativo
         //if(!isset($client->))

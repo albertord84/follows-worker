@@ -111,7 +111,7 @@ namespace follows\cls {
                 $result = $this->DB->delete_daily_work_client($daily_work->client_id);
                 //$this->DB->set_client_cookies($daily_work->client_id);
                 $this->DB->set_client_status($daily_work->client_id, user_status::BLOCKED_BY_TIME);
-                $this->DB->InsertEventToWashdog($daily_work->client_id, washdog_type::BLOCKED_BY_TIME, 1, $this->id, "Respuesta incompleta: $curl_str");
+                $this->DB->insert_event_to_washdog($daily_work->client_id, washdog_type::BLOCKED_BY_TIME, 1, $this->id, "Respuesta incompleta: $curl_str");
                 $error = TRUE;
                 var_dump($curl_str);
                 var_dump("Error in do_follow_unfollow_work!!! cookies wrong");
@@ -203,7 +203,7 @@ namespace follows\cls {
                                 }
                                 $following_me = (isset($Profile_data->user->follows_viewer)) ? $Profile_data->user->follows_viewer : false;
                                 // TODO: BUSCAR EN BD QUE NO HALLA SEGUIDO ESA PERSONA
-                                $followed_in_db = $this->DB->is_profile_followed_db2($daily_work->client_id, $Profile->id);
+                                $followed_in_db = $this->DB->cmd_is_profile_followed($daily_work->client_id, $Profile->id);
                                 //$followed_in_db = NULL;
                                 if (!$followed_in_db && !$following_me && $valid_profile) { // Si no lo he seguido en BD y no me está siguiendo
                                     // Do follow request
@@ -405,13 +405,13 @@ namespace follows\cls {
                 case 1: // "Com base no uso anterior deste recurso, sua conta foi impedida temporariamente de executar essa ação. Esse bloqueio expirará em há 23 horas."
                     print "<br>\n Unautorized Client (id: $client_id) set to BLOCKED_BY_INSTA!!! <br>\n";
                     $result = $this->DB->delete_daily_work_client($client_id);
-                    $this->DB->InsertEventToWashdog($client_id, washdog_type::BLOCKED_BY_TIME, 1, $this->id);
+                    $this->DB->insert_event_to_washdog($client_id, washdog_type::BLOCKED_BY_TIME, 1, $this->id);
                     $this->DB->set_client_status($client_id, user_status::BLOCKED_BY_TIME);
                     break;
                 case 2: // "Você atingiu o limite máximo de contas para seguir. É necessário deixar de seguir algumas para começar a seguir outras."
                     $result = $this->DB->delete_daily_work_client($client_id);
                     var_dump($result);
-                    $this->DB->InsertEventToWashdog($client_id, washdog_type::SET_TO_UNFOLLOW, 1, $this->id);
+                    $this->DB->insert_event_to_washdog($client_id, washdog_type::SET_TO_UNFOLLOW, 1, $this->id);
                     $this->DB->set_client_status($client_id, user_status::UNFOLLOW);
                     print "<br>\n Client (id: $client_id) set to UNFOLLOW!!! <br>\n";
 //                    print "<br>\n Client (id: $client_id) MUST set to UNFOLLOW!!! <br>\n";
@@ -426,7 +426,7 @@ namespace follows\cls {
                     var_dump($result);
                     $this->DB->set_client_status($client_id, user_status::BLOCKED_BY_TIME);
                     print "<br>\n Unautorized Client (id: $client_id) set to BLOCKED_BY_TIME!!! <br>\n";
-                    $this->DB->InsertEventToWashdog($client_id, washdog_type::BLOCKED_BY_TIME, 1, $this->id);
+                    $this->DB->insert_event_to_washdog($client_id, washdog_type::BLOCKED_BY_TIME, 1, $this->id);
                     // Alert when insta block by IP
                     $result = $this->DB->get_clients_by_status(user_status::BLOCKED_BY_TIME);
                     $rows_count = $result->num_rows;
@@ -441,7 +441,7 @@ namespace follows\cls {
                     $result = $this->DB->delete_daily_work_client($client_id);
                     var_dump($result);
                     $this->DB->set_client_status($client_id, user_status::VERIFY_ACCOUNT);
-                    $this->DB->InsertEventToWashdog($client_id, washdog_type::ROBOT_VERIFY_ACCOUNT, 1, $this->id);
+                    $this->DB->insert_event_to_washdog($client_id, washdog_type::ROBOT_VERIFY_ACCOUNT, 1, $this->id);
                     $this->DB->set_client_cookies($client_id, NULL);
                     print "<br>\n Unautorized Client (id: $client_id) set to VERIFY_ACCOUNT!!! <br>\n";
                     break;
@@ -461,10 +461,10 @@ namespace follows\cls {
 
                     //$new_proxy = ($proxy->idProxy + rand(0, 6)) % 8 + 1;
                     $new_proxy = ($proxy->idProxy) % 8 + 1;
-                    $this->DB->InsertEventToWashdog($client_id, washdog_type::SET_PROXY, 1, $this->id, "proxy set from proxy $proxy->idProxy to $new_proxy");
+                    $this->DB->insert_event_to_washdog($client_id, washdog_type::SET_PROXY, 1, $this->id, "proxy set from proxy $proxy->idProxy to $new_proxy");
 
                     var_dump("Set Proxy ($proxy->idProxy) of client ($client_id) to proxy ($new_proxy)\n");
-                    $this->DB->SetProxyToClient($client_id, $new_proxy);
+                    $this->DB->set_proxy_to_client($client_id, $new_proxy);
 
                     // $this->DB->Increase_Client_Last_Access($client_id, 1);
                     //$result = $this->DB->get_clients_by_status(user_status::BLOCKED_BY_TIME);
@@ -478,7 +478,7 @@ namespace follows\cls {
                     break;
                 case 8: // "Esta mensagem contém conteúdo que foi bloqueado pelos nossos sistemas de segurança." 
                     $result = $this->DB->delete_daily_work_client($client_id);
-                    $this->DB->InsertEventToWashdog($client_id, washdog_type::BLOCKED_BY_TIME, 1, $this->id);
+                    $this->DB->insert_event_to_washdog($client_id, washdog_type::BLOCKED_BY_TIME, 1, $this->id);
                     $this->DB->set_client_status($client_id, user_status::BLOCKED_BY_TIME);
                     //var_dump($result);
                     print "<br>\n Esta mensagem contém conteúdo que foi bloqueado pelos nossos sistemas de segurança. (ref_prof_id: $ref_prof_id)!!! <br>\n";
@@ -491,10 +491,10 @@ namespace follows\cls {
                     $proxy = $this->DB->get_client_proxy($client_id);
 
                     $new_proxy = ($proxy->idProxy) % 8 + 1;
-                    $this->DB->InsertEventToWashdog($client_id, washdog_type::SET_PROXY, 1, $this->id, "proxy set from proxy $proxy->idProxy to $new_proxy");
+                    $this->DB->insert_event_to_washdog($client_id, washdog_type::SET_PROXY, 1, $this->id, "proxy set from proxy $proxy->idProxy to $new_proxy");
 
                     var_dump("Set Proxy ($proxy->idProxy) of client ($client_id) to proxy ($new_proxy)\n");
-                    $this->DB->SetProxyToClient($client_id, $new_proxy);
+                    $this->DB->set_proxy_to_client($client_id, $new_proxy);
                     /*
                       $time = $GLOBALS['sistem_config']->INCREASE_CLIENT_LAST_ACCESS;
                       $this->DB->InsertEventToWashdog($client_id, washdog_type::BLOCKED_BY_TIME, 1, $this->id, "access incresed in $time");
@@ -2462,10 +2462,10 @@ namespace follows\cls {
             if (isset($result->json_response->message)) {
                 if ($result->json_response->message == 'checkpoint_required') {
                     $this->DB->set_client_status($client->id, user_status::VERIFY_ACCOUNT);
-                    $this->DB->InsertEventToWashdog($client->id, washdog_type::ROBOT_VERIFY_ACCOUNT, 1, $this->id);
+                    $this->DB->insert_event_to_washdog($client->id, washdog_type::ROBOT_VERIFY_ACCOUNT, 1, $this->id);
                 } else if ($result->json_response->message == 'incorrect_password') {
                     $this->DB->set_client_status($client->id, user_status::BLOCKED_BY_INSTA);
-                    $this->DB->InsertEventToWashdog($client->id, washdog_type::BLOCKED_BY_INSTA, 1, $this->id);
+                    $this->DB->insert_event_to_washdog($client->id, washdog_type::BLOCKED_BY_INSTA, 1, $this->id);
                 }
             }
             return $result;
@@ -2479,7 +2479,7 @@ namespace follows\cls {
                 if ($json_response === NULL) {
                     $this->DB->update_reference_cursor($daily_work->reference_id, NULL);
                     $this->DB->delete_daily_work($daily_work->reference_id);
-                    $this->DB->InsertEventToWashdog($client_id, washdog_type::ERROR_IN_PR, 1, $this->id, "unexistence reference profile or may be the reference profile is block ing the client");
+                    $this->DB->insert_event_to_washdog($client_id, washdog_type::ERROR_IN_PR, 1, $this->id, "unexistence reference profile or may be the reference profile is block ing the client");
                 } else if (isset($json_response->status) && $json_response->status == 'ok') {
                     return $json_response;
                 }

@@ -72,7 +72,7 @@ namespace follows\cls {
                             //Jose R: si tiene los 4 parametros de las cookies, devemos intentar hacer una operacion (coger 10 seguidores de qq RP)
                             //para chekear que esas cookies estan correctas, si no, bloquear por ssenha errada  status_id=3
 
-                            $this->DB->Create_Followed($Client->id);
+                            $this->DB->cmd_create_followed($Client->id);
                             print("<br>\nAutenticated Client: $Client->login <br>\n<br>\n");
                             $Client->set_client_status($Client->id, user_status::ACTIVE);
                             // Distribute work between clients
@@ -113,7 +113,7 @@ namespace follows\cls {
                         {
                             $this->DB->set_client_cookies($Client->id);
                             $this->DB->set_client_status($Client->id, user_status::VERIFY_ACCOUNT);                    
-                            $this->DB->InsertEventToWashdog($Client->client_id, washdog_type::ROBOT_VERIFY_ACCOUNT, 1, 0, "Cookies incompletas when prepare_daily_work");
+                            $this->DB->insert_event_to_washdog($Client->client_id, washdog_type::ROBOT_VERIFY_ACCOUNT, 1, 0, "Cookies incompletas when prepare_daily_work");
 
                         }
                     } 
@@ -168,7 +168,7 @@ namespace follows\cls {
                             //Jose R: si tiene los 4 parametros de las cookies, devemos intentar hacer una operacion (coger 10 seguidores de qq RP)
                             //para chekear que esas cookies estan correctas, si no, bloquear por ssenha errada  status_id=3
 
-                            $this->DB->Create_Followed($Client->id);
+                            $this->DB->cmd_create_followed($Client->id);
                             print("<br>\nAutenticated Client: $Client->login <br>\n<br>\n");
                             $Client->set_client_status($Client->id, user_status::ACTIVE);
                             // Distribute work between clients
@@ -208,7 +208,7 @@ namespace follows\cls {
                         {
                             $this->DB->set_client_cookies($Client->id);
                             $this->DB->set_client_status($Client->id, user_status::VERIFY_ACCOUNT);                    
-                            $this->DB->InsertEventToWashdog($Client->client_id, washdog_type::ROBOT_VERIFY_ACCOUNT, 1, 0, "Cookies incompletas when prepare_daily_work");
+                            $this->DB->insert_event_to_washdog($Client->client_id, washdog_type::ROBOT_VERIFY_ACCOUNT, 1, 0, "Cookies incompletas when prepare_daily_work");
 
                         }
                     } 
@@ -426,13 +426,13 @@ namespace follows\cls {
         // PASADA!!!
         function delete_daily_work($ref_prof_id) {
             //$DB = new \follows\cls\DB();
-            $this->DB->truncate_daily_work($ref_prof_id);
+            $this->DB->cmd_truncate_daily_work($ref_prof_id);
         }
 
         // PASADA!!!
         function truncate_daily_work() {
             //$DB = new \follows\cls\DB();
-            $this->DB->truncate_daily_work();
+            $this->DB->cmd_truncate_daily_work();
         }
 
     }

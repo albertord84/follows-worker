@@ -102,7 +102,7 @@ namespace business\worker {
                   isset($cookies->mid) && $cookies->mid != NULL && $cookies->mid != "") {//enejkefnjknl o
             //Jose R: si tiene los 4 parametros de las cookies, devemos intentar hacer una operacion (coger 10 seguidores de qq RP)
             //para chekear que esas cookies estan correctas, si no, bloquear por ssenha errada  status_id=3
-            $ci->db_model->Create_Followed($Client->id);
+            $ci->db_model->cmd_create_followed($Client->id);
             print("<br>\nAutenticated Client: $Client->login <br>\n<br>\n");
             $Client->set_client_status($Client->id, user_status::ACTIVE);
             // Distribute work between clients
@@ -141,7 +141,7 @@ namespace business\worker {
           else if ($Client->status_id === user_status::ACTIVE) {
             $ci->db_model->set_client_cookies($Client->id);
             $ci->db_model->set_client_status($Client->id, user_status::VERIFY_ACCOUNT);
-            $ci->db_model->InsertEventToWashdog($Client->client_id, washdog_type::ROBOT_VERIFY_ACCOUNT, 1, 0, "Cookies incompletas when prepare_daily_work");
+            $ci->db_model->insert_event_to_washdog($Client->client_id, washdog_type::ROBOT_VERIFY_ACCOUNT, 1, 0, "Cookies incompletas when prepare_daily_work");
           }
         } elseif (!$Client->paused) {
           // TODO: do something in Client autentication error
@@ -324,13 +324,13 @@ namespace business\worker {
     // LISTA!!!
     private function delete_daily_work(int $ref_prof_id) {
       $ci = &get_instance();
-      $ci->db_model->truncate_daily_work($ref_prof_id);
+      $ci->db_model->cmd_truncate_daily_work($ref_prof_id);
     }
 
     // LISTA!!!
     public function truncate_daily_work() {
       $ci = &get_instance();
-      $ci->db_model->truncate_daily_work();
+      $ci->db_model->cmd_truncate_daily_work();
     }
 
   }

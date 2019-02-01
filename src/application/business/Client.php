@@ -14,55 +14,29 @@ namespace business {
    */
   class Client extends User {
 
-    public $aaa = 3;
-
-    /**
-     * 
-     * @access public
-     * @var type 
-     * 
-     */
-    public $credit_card_number;
-
-    /**
-     * 
-     * @access public
-     * @var type 
-     * 
-     */
-    public $credit_card_status_id;
-
-    /**
-     * 
-     * @access public
-     * @var type 
-     * 
-     */
-    public $credit_card_cvc;
-
-    /**
-     * 
-     * @access public
-     * @var type 
-     * 
-     */
-    public $credit_card_name;
-
-    /**
-     * 
-     * @access public
-     * @var type 
-     * 
-     */
-    public $pay_day;
-
     /**
      * 
      * @access public
      * @var type
      *  
      */
-    public $plane_id;
+    public $Plane_id;
+    
+    /**
+     * 
+     * @access public
+     * @var type 
+     * 
+     */
+    public $Insta_id;
+    
+    /**
+     * 
+     * @access public
+     * @var type 
+     * 
+     */
+    public $Credit_card_number;
 
     /**
      * 
@@ -70,7 +44,7 @@ namespace business {
      * @var type 
      * 
      */
-    public $insta_id;
+    public $Credit_card_status_id;
 
     /**
      * 
@@ -78,7 +52,7 @@ namespace business {
      * @var type 
      * 
      */
-    public $status_date;
+    public $Credit_card_cvc;
 
     /**
      * 
@@ -86,7 +60,23 @@ namespace business {
      * @var type 
      * 
      */
-    public $insta_followers_ini;
+    public $Credit_card_name;
+    
+    /**
+     * 
+     * @access public
+     * @var type 
+     * 
+     */
+    public $Credit_card_exp_month;
+    
+    /**
+     * 
+     * @access public
+     * @var type 
+     * 
+     */
+    public $Credit_card_exp_year;
 
     /**
      * 
@@ -94,7 +84,55 @@ namespace business {
      * @var type 
      * 
      */
-    public $insta_following;
+    public $Pay_day;
+    
+    /**
+     * 
+     * @access public
+     * @var type 
+     * 
+     */
+    public $Initial_order_key;
+    
+    /**
+     * 
+     * @access public
+     * @var type 
+     * 
+     */
+    public $Order_key;
+    
+    /**
+     * 
+     * @access public
+     * @var type 
+     * 
+     */
+    public $Pending_Order_key;
+    
+    /**
+     * 
+     * @access public
+     * @var type 
+     * 
+     */
+    public $Actual_payment_data;
+    
+    /**
+     * 
+     * @access public
+     * @var type 
+     * 
+     */
+    public $Insta_followers_ini;
+
+    /**
+     * 
+     * @access public
+     * @var type 
+     * 
+     */
+    public $Insta_following;
 
     /**
      * 
@@ -103,6 +141,30 @@ namespace business {
      * 
      */
     public $HTTP_SERVER_VARS;
+    
+    /**
+     * 
+     * @access public
+     * @var type 
+     * 
+     */
+    public $Foults;
+    
+    /**
+     * 
+     * @access public
+     * @var type 
+     * 
+     */
+    public $Last_access;
+    
+    /**
+     * 
+     * @access public
+     * @var type 
+     * 
+     */
+    public $Cookies;
 
     /**
      * 
@@ -110,7 +172,7 @@ namespace business {
      * @var type 
      * 
      */
-    public $cookies;
+    public $Utm_source;
 
     /**
      * 
@@ -118,7 +180,39 @@ namespace business {
      * @var type 
      * 
      */
-    public $to_follow;
+    public $Unfollow;
+    
+    /**
+     * 
+     * @access public
+     * @var type 
+     * 
+     */
+    public $Observation;
+    
+    /**
+     * 
+     * @access public
+     * @var type 
+     * 
+     */
+    public $Unfollow_total;
+    
+    /**
+     * 
+     * @access public
+     * @var type 
+     * 
+     */
+    public $Like_first;
+    
+    /**
+     * 
+     * @access public
+     * @var type 
+     * 
+     */
+    public $Paused;
 
     /**
      * 
@@ -126,16 +220,56 @@ namespace business {
      * @var type 
      * 
      */
-    public $reference_profiles = array();
-
+    public $Ticket_peixe_urbano;
+    
     /**
      * 
      * @access public
      * @var type 
      * 
      */
-    public $paused;
-
+    public $Ticket_peixe_urbano_status_id;
+    
+    /**
+     * 
+     * @access public
+     * @var type 
+     * 
+     */
+    public $Purchase_counter;
+    
+    /**
+     * 
+     * @access public
+     * @var type 
+     * 
+     */
+    public $Retry_payment_counter;
+    
+    /**
+     * 
+     * @access public
+     * @var type 
+     * 
+     */
+    public $Purchase_access_token;
+    
+    /**
+     * 
+     * @access public
+     * @var type 
+     * 
+     */
+    public $Ticket_access_token;
+    
+    /**
+     * 
+     * @access public
+     * @var type 
+     * 
+     */
+    public $Retry_registration_counter;
+    
     /**
      * 
      * @access public
@@ -143,9 +277,30 @@ namespace business {
      * 
      */
     public $Proxy;
+    
+    /**
+     * 
+     * @access public
+     * @var type 
+     * 
+     */
+    public $Mundi_to_vindi;
+    
+    /**
+     * 
+     * @access public
+     * @var type 
+     * 
+     */
+    public $Status_date;
 
-    /* public $Id;
-      public $Name; */
+    /**
+     * 
+     * @access public
+     * @var type 
+     * 
+     */
+    public $Reference_profiles = array();
 
     /**
      * 
@@ -153,34 +308,80 @@ namespace business {
      * 
      */
     function __construct() {
+      parent::__construct();
+      
       $ci = &get_instance();
-
       $ci->load->model('db_model');
+      
       //$ci->load->library("InstaApiWeb/InstaApi_lib", null, 'InstaApi_lib');
     }
 
-    /**
-     * 
-     * @return type
-     */
-    public function get_clients() {
-      $ci = &get_instance();
-      return $ci->db_model->get_clients_data();
-    }
-
-    /**
+        /**
      * Get client data
      * @param int $client_id
      * @return DataSet  
      */
-    public function load_from_db(int $id) {
+    public function load_data(int $id) {
+      parent::load_data($id);
+      
       $ci = &get_instance();
-      $client_data = $ci->db_model->get_client_data($id);
+      $data = $ci->db_model->get_client_data($id);
 
-      //$this->id = $client_data->user_id;
-      //$this->name = $client_data->name;
-
-      $this->fill_client_data($client_data);
+      $this->fill_data($data);
+    }
+    
+    private function fill_data(\stdClass $data) {
+      $this->Plane_id = $data->plane_id;
+      $this->Insta_id = $data->insta_id;
+      $this->Credit_card_number = $data->credit_card_number;
+      $this->Credit_card_status_id = $data->credit_card_status_id;
+      $this->Credit_card_cvc = $data->credit_card_cvc;
+      $this->Credit_card_name = $data->credit_card_name;
+      $this->Credit_card_exp_month = $data->credit_card_exp_month;
+      $this->Credit_card_exp_year = $data->credit_card_exp_year;
+      $this->Pay_day = $data->pay_day;
+      $this->Initial_order_key = $data->initial_order_key;
+      $this->Order_key = $data->order_key;
+      $this->Pending_Order_key = $data->pending_Order_key;
+      $this->Actual_payment_data = $data->actual_payment_data;
+      $this->Insta_followers_ini = $data->insta_followers_ini;
+      $this->Insta_following = $data->insta_following;
+      $this->HTTP_SERVER_VARS = $data->HTTP_SERVER_VARS;
+      $this->Foults = $data->foults;
+      $this->Last_access = $data->last_access;
+      $this->Cookies = $data->cookies;
+      $this->Utm_source = $data->utm_source;
+      $this->Unfollow = $data->unfollow;
+      $this->Observation = $data->observation;
+      $this->Unfollow_total = $data->unfollow_total;
+      $this->Like_first = $data->like_first;
+      $this->Paused = $data->paused;
+      $this->Ticket_peixe_urbano = $data->ticket_peixe_urbano;
+      $this->Ticket_peixe_urbano_status_id = $data->ticket_peixe_urbano_status_id;
+      $this->Purchase_counter = $data->purchase_counter;
+      $this->Retry_payment_counter = $data->retry_payment_counter;
+      $this->Purchase_access_token = $data->purchase_access_token;
+      $this->Ticket_access_token = $data->ticket_access_token;
+      $this->Retry_registration_counter = $data->retry_registration_counter;
+      $this->Proxy = $data->proxy;
+      $this->Mundi_to_vindi = $data->mundi_to_vindi;
+      $this->Status_date = $data->status_date;
+      $this->Reference_profiles = array();
+    }
+    
+    /**
+     * 
+     * @todo
+     * @param type
+     * @return
+     * 
+     */
+    public function set_client_cookies($client_id = NULL, $cookies = NULL) {
+      $ci = &get_instance();
+        $client_id = $client_id ? $client_id : $this->id;
+        $cookies = $cookies ? $cookies : $this->cookies;
+        $result = $ci->db_model->set_client_cookies($client_id, $cookies);
+        return $result;
     }
 
     /**
@@ -190,63 +391,33 @@ namespace business {
      * @return
      * 
      */
-    public function fill_client_data(\stdClass $data) {
-
-      /*
-        $credit_card_number;
-        $credit_card_status_id;
-        $credit_card_cvc;
-        $credit_card_name;
-        $pay_day;
-        $plane_id;
-        $insta_id;
-        $status_date;
-        $insta_followers_ini;
-        $insta_following;
-        $HTTP_SERVER_VARS;
-        $cookies;
-        $to_follow;
-        $reference_profiles = array();
-        $paused;
-        $Proxy;
-       */
-
-      $this->id = $data->user_id;
-      $this->name = $data->name;
-      //$this->Id = $data->user_id;
-      //$this->Name = $data->name;
-      /* $this->login = $client_data->login;
-        $this->pass = $client_data->pass;
-        $this->email = $client_data->email;
-        $this->insta_id = $client_data->insta_id;
-        $this->plane_id = $client_data->plane_id;
-        $this->to_follow = isset($client_data->to_follow) ? $client_data->to_follow : 0;
-        $this->status_id = $client_data->status_id;
-        $this->insta_following = $client_data->insta_following;
-        $this->cookies = $client_data->cookies;
-        $this->paused = $client_data->paused;
-        $this->HTTP_SERVER_VARS = $client_data->HTTP_SERVER_VARS;
-        $this->init_date = $client_data->init_date;
-        $this->last_access = $client_data->last_access; */
-      //$this->get_reference_profiles($this->id);
-      //$this->Proxy = new Proxy();
-      //$this->Proxy->load($client_data->proxy_id);
+    public function set_client_status($client_id = NULL, $status_id = NULL) {
+      $ci = &get_instance();
+      try {
+        $client_id = $client_id ? $client_id : $this->id;
+        $status_id = $status_id ? $status_id : $this->status_id;
+        //$DB = new \follows\cls\DB();
+        $result = $ci->db_model->set_client_status($client_id, $status_id);
+        if ($result) {
+          print "Client $client_id to status $status_id!!!";
+        } else {
+          print "FAIL CHANGING Client $client_id to status $status_id!!!";
+        }
+      } catch (Exception $exc) {
+        echo $exc->getTraceAsString();
+      }
     }
-
+    
     /**
-     *
-     * @param type $offset
-     * @param type $rows
+     * 
      * @return type
      */
-    //DELETE FUNTION
-    /* public function get_begginer_client($offset = 0, $rows = 0) {
-      $client_data = $ci->db_model->get_biginner_data($offset, $rows);
-      return $client_data;
-      //$Client = $this->fill_client_data($client_data);
-      //return $Client;
-      } */
+    public function get_clients() {
+      $ci = &get_instance();
+      return $ci->db_model->get_clients_data();
+    }
 
+    
     /**
      * Obtiene 
      * @param type $client_id
@@ -278,7 +449,22 @@ namespace business {
         echo $exc->getTraceAsString();
       }
     }
+    
 
+    /**
+     *
+     * @param type $offset
+     * @param type $rows
+     * @return type
+     */
+    //DELETE FUNTION
+    /* public function get_begginer_client($offset = 0, $rows = 0) {
+      $client_data = $ci->db_model->get_biginner_data($offset, $rows);
+      return $client_data;
+      //$Client = $this->fill_client_data($client_data);
+      //return $Client;
+      } */
+    
     /**
      * 
      * @todo
@@ -421,11 +607,11 @@ namespace business {
       if ($this->reference_profiles) {
         foreach ($this->reference_profiles as $ref_prof) {
           if ($ref_prof->deleted && $ref_prof->status != $status->DELETED) {
-            $ci->db_model->UpdateReferenceProfileStatus($status->DELETED, $ref_prof->id);
+            $ci->db_model->update_reference_profile_status($status->DELETED, $ref_prof->id);
           } else if ($ref_prof->end_date != NULL && $ref_prof->status != $status->ENDED) {
-            $ci->db_model->UpdateReferenceProfileStatus($status->ENDED, $ref_prof->id);
+            $ci->db_model->update_reference_profile_status($status->ENDED, $ref_prof->id);
           } else if (!$Robot->exist_reference_profile($ref_prof->insta_name, $ref_prof->type, $ref_prof->insta_id, json_decode($this->cookies), $proxy) && $ref_prof->status != $status->LOCKED) {
-            $ci->db_model->UpdateReferenceProfileStatus($status->LOCKED, $ref_prof->id);
+            $ci->db_model->update_reference_profile_status($status->LOCKED, $ref_prof->id);
           } else if ($ref_prof->status == $status->ACTIVE) {
             $count++;
           }
@@ -459,7 +645,7 @@ namespace business {
         $login_data = $ci->InstaApiLib->login($this->login, $this->pass, $this->Proxy);
       } catch (Exception $exc) {
         //CONCERTAR myDB
-        $myDB->InsertEventToWashdog($Client->id, $exc->getMessage(), $source);
+        $myDB->insert_event_to_washdog($Client->id, $exc->getMessage(), $source);
         echo $exc->getTraceAsString();
       }
 
@@ -485,9 +671,9 @@ namespace business {
             }
           } else
           if ($login_data->json_response->message == 'problem_with_your_request') {
-            $ci->db_model->InsertEventToWashdog($Client->id, washdog_type::PROBLEM_WITH_YOUR_REQUEST, 1, 0, "Unknow error with your request");
+            $ci->db_model->insert_event_to_washdog($Client->id, washdog_type::PROBLEM_WITH_YOUR_REQUEST, 1, 0, "Unknow error with your request");
           } else {
-            $ci->db_model->InsertEventToWashdog($Client->id, washdog_type::PROBLEM_WITH_YOUR_REQUEST, 1, 0, $login_data->json_response->message);
+            $ci->db_model->insert_event_to_washdog($Client->id, washdog_type::PROBLEM_WITH_YOUR_REQUEST, 1, 0, $login_data->json_response->message);
           }
         }
         $this->set_client_cookies($Client->id, NULL);
@@ -504,55 +690,6 @@ namespace business {
      */
     public function check_insta_user() {
       
-    }
-
-    /**
-     * 
-     * @todo
-     * @param type
-     * @return
-     * 
-     */
-    public function set_client_cookies($client_id = NULL, $cookies = NULL) {
-      $ci = &get_instance();
-      try {
-        $client_id = $client_id ? $client_id : $this->id;
-        $cookies = $cookies ? $cookies : $this->cookies;
-        //$DB = new \follows\cls\DB();
-        $result = $ci->db_model->set_client_cookies($client_id, $cookies);
-        /* if ($result) {
-          //print "Client $client_id cookies changed!!!";
-          } else {
-          print "FAIL CHANGING Client $client_id cookies!!!";
-          } */
-        return $result;
-      } catch (Exception $exc) {
-        echo $exc->getTraceAsString();
-      }
-    }
-
-    /**
-     * 
-     * @todo
-     * @param type
-     * @return
-     * 
-     */
-    public function set_client_status($client_id = NULL, $status_id = NULL) {
-      $ci = &get_instance();
-      try {
-        $client_id = $client_id ? $client_id : $this->id;
-        $status_id = $status_id ? $status_id : $this->status_id;
-        //$DB = new \follows\cls\DB();
-        $result = $ci->db_model->set_client_status($client_id, $status_id);
-        if ($result) {
-          print "Client $client_id to status $status_id!!!";
-        } else {
-          print "FAIL CHANGING Client $client_id to status $status_id!!!";
-        }
-      } catch (Exception $exc) {
-        echo $exc->getTraceAsString();
-      }
     }
 
     /**
