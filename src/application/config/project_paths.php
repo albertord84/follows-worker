@@ -64,6 +64,9 @@
   $config['thirdparty-profile_type-resource'] = getcwd().'/application/third_party/InstaApiWeb/ProfileType (deprecated).php';  
   $config['thirdparty-verification_choice-resource'] = getcwd().'/application/third_party/InstaApiWeb/VerificationChoice.php'; 
 
+  //Otros recursos dentro de InstaApiWeb
+   $config['thirdparty-cookies'] = getcwd().'/application/third_party/InstaApiWeb/CookiesRequest.php';
+   
 /*
 |--------------------------------------------------------------------------
 | Paths de las Clases Exception
@@ -107,8 +110,9 @@
   //Librerias de Payment
   $config['payment-mundipagg-libraries'] = getcwd().'/application/libraries/Payment/Mundipagg.php'; 
   $config['payment-vindi-libraries'] = getcwd().'/application/libraries/Payment/Vindi.php'; 
-   
-   
+  
+  //Librerias Api Web
+   $config['reference-profile_libraries'] = getcwd(). '/application/libraries/InstaApiWeb/ReferenceProfile_lib.php';
   
 ?>
 

@@ -1,8 +1,10 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
+require_once config_item('reference-profile_libraries'); 
+
 use InstaApiWeb\HashProfile;
 use InstaApiWeb\Proxy;
-
+use InstaApiWeb\CookiesRequest;
 /**
  * @category CodeIgniter-Library: InstaApiLib
  * 
@@ -11,13 +13,13 @@ use InstaApiWeb\Proxy;
  * @todo Define a codeigniter library for X
  * 
  */
-class InstaHashProfile_lib {
+class InstaHashProfile_lib extends ReferenceProfile_lib{
   
   public function __construct ()
   {
-    require_once config_item('thirdparty-proxy-resource');
+     parent::__construct();
     require_once config_item('thirdparty-insta_hash_profile-resource');
-    
+
     $this->HashProfile = new HashProfile();
   }
    
@@ -30,6 +32,7 @@ class InstaHashProfile_lib {
   }
 
   public function get_insta_media(int $N, string $cursor = NULL, \stdClass $cookies = NULL, Proxy $proxy = NULL) {
+    $cookies = new CookiesRequest($cookies);
     $this->HashProfile->get_insta_media($N, $cursor, $cookies, $proxy);
   }
 

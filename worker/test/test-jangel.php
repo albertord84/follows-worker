@@ -127,12 +127,12 @@ $result = new \stdClass();
 //$result = $Robot->bot_login('alberto_test', 'alberto2');
 //var_dump($result);
 
-$DB = new \follows\cls\DB();
-$DB->InsertEventToWashdog(30864, \follows\cls\washdog_type::SET_PROXY, 1, 1, "proxy set");
-$proxy = $DB->get_client_proxy(30864);
-$new_proxy = ($proxy->idProxy + rand(0,6)) % 8 + 1;
-var_dump("Set Proxy ($proxy->idProxy) of client (30864) to proxy ($new_proxy)\n" );
-$DB->SetProxyToClient(30864,$proxy->idProxy); 
+//$DB = new \follows\cls\DB();
+//$DB->InsertEventToWashdog(30864, \follows\cls\washdog_type::SET_PROXY, 1, 1, "proxy set");
+//$proxy = $DB->get_client_proxy(30864);
+//$new_proxy = ($proxy->idProxy + rand(0,6)) % 8 + 1;
+//var_dump("Set Proxy ($proxy->idProxy) of client (30864) to proxy ($new_proxy)\n" );
+//$DB->SetProxyToClient(30864,$proxy->idProxy); 
 /*
 $payment = new \Payment();
 $client = new \stdClass();
@@ -182,8 +182,9 @@ var_dump($res);*/
 //$Robot->id = 1;
 //$Robot->process_follow_error($json_response);
 
-/*
+
 $Client = (new \follows\cls\Client())->get_client(20565);
+var_dump($Client);
 $daily_work = new \stdClass();
 $daily_work->rp_type = 1;
 $daily_work->cookies = $Client->cookies; 
@@ -193,36 +194,39 @@ $daily_work->insta_name = 'lovecats';
 $daily_work->rp_insta_id = 220021938;
 $daily_work->client_id = 20565;
 
-$query_hash_tag = 'ded47faa9a1aaded10161a2ff32abb6b';
-$query_hash_loc = '951c979213d7e7a1cf1d73e2f661cbd1';
-$query_hash_people = '37479f2b8209594dde7facb0d904896a';
-
-$variables_loc = '{"id":"220021938","first":5,"after":"1742734290348619057"}';
-$variables_tag = '{"tag_name":"casa","first":2,"after":"AQDtqk6w08rRUwIh171RaVDS0IPYVbYaQ2T0QDmgUcp42VjDyumZ2a3kLSzgwiDqmvLhv5VJXX0xXr1lwmf2f4EMj1znzGKFHxH_U0gqrpEdmw"}';
-$variables_people = '{"id":"2023444583","first":5}';
-
+//$query_hash_tag = 'ded47faa9a1aaded10161a2ff32abb6b';
+//$query_hash_loc = '951c979213d7e7a1cf1d73e2f661cbd1';
+//$query_hash_people = '37479f2b8209594dde7facb0d904896a';
+//
+//$variables_loc = '{"id":"220021938","first":5,"after":"1742734290348619057"}';
+//$variables_tag = '{"tag_name":"casa","first":2,"after":"AQDtqk6w08rRUwIh171RaVDS0IPYVbYaQ2T0QDmgUcp42VjDyumZ2a3kLSzgwiDqmvLhv5VJXX0xXr1lwmf2f4EMj1znzGKFHxH_U0gqrpEdmw"}';
+//$variables_people = '{"id":"2023444583","first":5}';
+//
 $Robot = new \follows\cls\Robot();
     $error = FALSE;
-$res = $Robot->get_profiles_to_follow($daily_work, $error, $page_info);
+    
+$res = $Robot->get_insta_geomedia(json_decode($Client->cookies), "220021938", 2);
 echo json_encode($res);
-$cnt = count($res);
-echo "<br></br><br>Peoples: $cnt</br><br></br>";
-
-$daily_work->rp_type = 0;
-$daily_work->rp_insta_id = 2023444583;
-$daily_work->insta_follower_cursor = NULL;
-$res = $Robot->get_profiles_to_follow($daily_work, $error, $page_info);
-var_dump($res);
-echo json_encode($res);
-$cnt = count($res);
-echo "<br></br><br>Peoples: $cnt</br><br></br>";
-
-$daily_work->rp_type = 2;
-$daily_work->insta_follower_cursor = NULL;
-$res = $Robot->get_profiles_to_follow($daily_work, $error, $page_info);
-echo json_encode($res);
-var_dump($res);
-echo "<br></br><br>Peoples: $cnt</br><br></br>";
+//$res = $Robot->get_profiles_to_follow($daily_work, $error, $page_info);
+//echo json_encode($res);
+//$cnt = count($res);
+//echo "<br></br><br>Peoples: $cnt</br><br></br>";
+//
+//$daily_work->rp_type = 0;
+//$daily_work->rp_insta_id = 2023444583;
+//$daily_work->insta_follower_cursor = NULL;
+//$res = $Robot->get_profiles_to_follow($daily_work, $error, $page_info);
+//var_dump($res);
+//echo json_encode($res);
+//$cnt = count($res);
+//echo "<br></br><br>Peoples: $cnt</br><br></br>";
+//
+//$daily_work->rp_type = 2;
+//$daily_work->insta_follower_cursor = NULL;
+//$res = $Robot->get_profiles_to_follow($daily_work, $error, $page_info);
+//echo json_encode($res);
+//var_dump($res);
+//echo "<br></br><br>Peoples: $cnt</br><br></br>";
 
 /*
 $result_people =  $Robot->make_curl_followers_query($query_hash_people, $variables_people, json_decode($daily_work->cookies));

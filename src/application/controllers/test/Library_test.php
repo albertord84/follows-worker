@@ -322,7 +322,15 @@ class Library_test extends CI_Controller {
     echo "<h2>Test GeoProfile Library</h2>";
     echo "[load] GeoProfile_lib ==> ";
     $this->load->library("InstaApiWeb/GeoProfile_lib", null, 'GeoProfile_lib');
-    $this->GeoProfile_lib->get_insta_media(15);
+    $cookies = json_decode('{"json_response":{"authenticated":true,"user":true,"status":"ok"},"csrftoken":"kToHKxaPB4iPuVY7t2XzQdi3GeyxrI7D","sessionid":"5453435354%3AVg6DjXraZlISez%3A15","ds_user_id":"5453435354","mid":"W-SbgAAEAAGuwWxQcdNcdZ0xa8Mi"}');
+    $this->GeoProfile_lib->get_insta_media(15,NULL,$cookies);
+    echo "(<b>ok</b>)<br>";
+    
+    echo "<pre>";
+    echo "<h2>Test HashProfile Library</h2>";
+    echo "[load] HashProfile_lib ==> ";
+    $this->load->library("InstaApiWeb/HashProfile_lib", null, 'HashProfile_lib');
+    $this->HashProfile_lib->get_insta_media(15,NULL,$cookies);
     echo "(<b>ok</b>)<br>";
     
   }

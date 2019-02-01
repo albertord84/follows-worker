@@ -16,8 +16,10 @@ namespace InstaApiWeb {
     /* protected function make_curl_str(\stdClass $cookies, int $N, string $cursor = NULL, Proxy $proxy = NULL) {
 
       } */
-    public function __construct() {
+    public function __construct()  {
+      parent::__construct();
       $this->tag_query = "37479f2b8209594dde7facb0d904896a";
+      
     }
 
     public function process_insta_prof_data(\stdClass $content) {
@@ -113,7 +115,7 @@ namespace InstaApiWeb {
       }
     }
 
-    public function get_insta_media(int $N, string $cursor = NULL, \stdClass $cookies = NULL, Proxy $proxy = NULL) {
+    public function get_insta_media(int $N, string $cursor = NULL, CookiesRequest $cookies = NULL, Proxy $proxy = NULL) {
       
     }
 
