@@ -16,6 +16,7 @@ namespace InstaApiWeb {
 
       } */
     public function __construct() {
+      parent::__construct();
       $this->tag_query = "ded47faa9a1aaded10161a2ff32abb6b";
     }
 
@@ -66,8 +67,19 @@ namespace InstaApiWeb {
       return new \InstaException("unknown exception");
     }
 
-    public function get_insta_media(int $N, string $cursor = NULL, \stdClass $cookies = NULL, Proxy $proxy = NULL) {
+    public function get_insta_media(int $N, string $cursor = NULL, CookiesRequest $cookies = NULL, Proxy $proxy = NULL) {
       try {
+        $mngr = new InstaCurlMgr(new EnumEntity(EnumEntity::HASHTAG), new EnumAction(EnumAction::GET_POST));
+        $mngr->setMediaData(/*$this->insta_name*/'cuba', $N, $cursor);
+        $curl_str = $mngr->make_curl_str($proxy, $cookies);
+        var_dump($curl_str);
+        exec($curl_str, $output, $status);
+        var_dump($output);
+      } catch (Exception $e) {
+        var_dump($e);
+      }
+            
+      /*try {
 
         $variables = "{\"tag_name\":\"$tag\",\"first\":2";
         if ($cursor != NULL && $cursor != "NULL") {
@@ -105,7 +117,7 @@ namespace InstaApiWeb {
       } catch (\Exception $exc) {
         if (!$without_log)
           echo $exc->getTraceAsString();
-      }
+      }*/
     }
 
     public function get_post_user_info($post_reference, \stdClass $cookies = NULL, Proxy $proxy = NULL) {

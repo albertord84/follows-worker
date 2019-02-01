@@ -3,9 +3,10 @@
 namespace InstaApiWeb {
 
 use stdClass;
-use InstaApiWeb\InstaApi;
+//use InstaApiWeb\InstaApi;
 use InstaApiWeb\InstaCurlMgr;
 use InstaApiWeb\ReferenceProfile;
+use InstaApiWeb\CookiesRequest;
 
 require_once 'ReferenceProfile.php';
 
@@ -24,8 +25,7 @@ require_once 'ReferenceProfile.php';
     public function __construct() {
       parent::__construct();
       $this->insta_id = 235572176;
-      require_once config_item('thirdparty-insta_api-resource');
-      require_once config_item('thirdparty-insta_curl_mgr-resource');
+    
       
       // Deprecated!!!
       //$this->tag_query = "ac38b90f0f3981c42092016a37c59bf7";
@@ -82,11 +82,11 @@ require_once 'ReferenceProfile.php';
      * @param \stdClass $cookies
      * @param \InstaApiWeb\Proxy $proxy
      */
-    public function get_insta_media(int $N, string $cursor = NULL, \stdClass $cookies = NULL, Proxy $proxy = NULL) {
+    public function get_insta_media(int $N, string $cursor = NULL, CookiesRequest $cookies = NULL, Proxy $proxy = NULL) {
       try {
         $mngr = new InstaCurlMgr(new EnumEntity(EnumEntity::GEO), new EnumAction(EnumAction::GET_POST));
         $mngr->setMediaData($this->insta_id, $N, $cursor);
-        $curl_str = $mngr->make_curl_str();
+        $curl_str = $mngr->make_curl_str($proxy, $cookies);
         var_dump($curl_str);
         exec($curl_str, $output, $status);
         var_dump($output);

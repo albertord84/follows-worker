@@ -6,8 +6,8 @@ namespace InstaApiWeb {
   require_once config_item('business-cookies_request-class');
   require_once config_item('insta-curl-exception-class');
   
-  use business\Proxy;
-  use business\CookiesRequest;
+  use InstaApiWeb\Proxy;
+  use InstaApiWeb\CookiesRequest;
   use InstaApiWeb\Exceptions\InstaCurlMediaException;
   use InstaApiWeb\Exceptions\InstaCurlActionException;
   use InstaApiWeb\Exceptions\InstaCurlArgumentException;
@@ -298,7 +298,7 @@ namespace InstaApiWeb {
      * @param string $cursor
      */
     public function setMediaData (string $id, int $first, string $cursor = null) {
-      /*// GEO-PROFILE
+      // GEO-PROFILE
       $variables = "{\"id\":\"$this->insta_id\",\"first\":$N\"";
         if ($cursor != NULL && $cursor != "NULL") {
           $variables .= ",\"after\":\"$cursor\"";
@@ -317,7 +317,7 @@ namespace InstaApiWeb {
       if ($cursor != NULL && $cursor != "NULL") {
         $variables .= ",\"after\":\"$cursor\"";
       }
-      $variables .= "}";*/
+      $variables .= "}";
       
       $tag = ($this->ProfileType->getEnumValue() == EnumEntity::HASHTAG) ? "tag_name" : "id";
       $str_cur = ($cursor != null) ? sprintf(",\"after\":\"%s\"", $cursor) : "";

@@ -1,7 +1,13 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
+
+require_once config_item('reference-profile_libraries');  
+
 use InstaApiWeb\Proxy;
 use InstaApiWeb\GeoProfile;
+use InstaApiWeb\CookiesRequest;
+//use \ReferenceProfile_lib;
+
 
 /**
  * @category CodeIgniter-Library: InstaApiLib
@@ -11,12 +17,11 @@ use InstaApiWeb\GeoProfile;
  * @todo Define a codeigniter library for X
  * 
  */
-class GeoProfile_lib {
+class GeoProfile_lib extends ReferenceProfile_lib{
   
   public function __construct() {
-    require_once config_item('thirdparty-proxy-resource');
-    require_once config_item('thirdparty-geo_profile-resource');
-    
+    parent::__construct();
+    require_once config_item('thirdparty-geo_profile-resource');    
     $this->GeoProfile = new GeoProfile();
   }
 
@@ -28,7 +33,8 @@ class GeoProfile_lib {
      $this->GeoProfile->get_insta_followers($cookies, $N, $cursor, $proxy);
   }
 
-  public function get_insta_media(int $N, string $cursor = NULL, \stdClass $cookies = NULL, Proxy $proxy = NULL) {
+  public function get_insta_media(int $N, string $cursor = NULL, \stdClass  $cookies = NULL, Proxy $proxy = NULL) {
+   $cookies = new CookiesRequest($cookies);
     $this->GeoProfile->get_insta_media($N, $cursor, $cookies, $proxy);
   }
 
