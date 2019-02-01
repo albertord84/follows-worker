@@ -5,7 +5,6 @@ require_once config_item('reference-profile_libraries');
 
 use InstaApiWeb\Proxy;
 use InstaApiWeb\GeoProfile;
-use InstaApiWeb\CookiesRequest;
 //use \ReferenceProfile_lib;
 
 
@@ -22,9 +21,9 @@ class GeoProfile_lib extends ReferenceProfile_lib{
   public function __construct() {
     parent::__construct();
     require_once config_item('thirdparty-geo_profile-resource');    
-    $this->GeoProfile = new GeoProfile();
+    $this->ReferencePriofile = new GeoProfile();
   }
-
+/*
   public function process_insta_prof_data(\stdClass $content) {
      $this->GeoProfile->process_insta_prof_data($content);
   }
@@ -40,6 +39,6 @@ class GeoProfile_lib extends ReferenceProfile_lib{
 
   public function get_post_user_info($post_reference, \stdClass $cookies = NULL, Proxy $proxy = NULL) {
     $this->GeoProfile->get_post_user_info($post_reference, $cookies, $proxy);
-  }
+  }*/
 
 }

@@ -1,5 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
+require_once config_item('reference-profile_libraries'); 
+
 use InstaApiWeb\Proxy;
 use InstaApiWeb\ProfileType;
 use InstaApiWeb\PersonProfile;
@@ -12,17 +14,15 @@ use InstaApiWeb\PersonProfile;
  * @todo Define a codeigniter library for X
  * 
  */
-class PersonProfile_lib {
+class PersonProfile_lib extends ReferenceProfile_lib{
 
   public function __construct ()
   {
-    require_once config_item('thirdparty-proxy-resource');
-    require_once config_item('thirdparty-profile_type-resource');
-    require_once config_item('thirdparty-person_profile-resource');
-    
-    $this->PersonProfile = new PersonProfile();
+    parent::__construct();
+    require_once config_item('thirdparty-person_profile-resource');    
+    $this->ReferencePriofile = new PersonProfile();
   }
-
+  /*
   public function get_insta_followers(\stdClass $cookies = NULL, int $N = 15, string& $cursor = NULL, Proxy $proxy = NULL) {
     
     $this->PersonProfile->get_insta_followers($cookies, $N, $cursor, $proxy);
@@ -34,7 +34,7 @@ class PersonProfile_lib {
     $this->PersonProfile->get_insta_followers_list($cookies, $N,  $cursor, $proxy);
 
   }
-
+  
   public function get_insta_media(int $N, string $cursor = NULL, \stdClass $cookies = NULL, Proxy $proxy = NULL){
     
     $this->PersonProfile->get_insta_media($N, $cursor, $cookies, $proxy);
@@ -45,7 +45,7 @@ class PersonProfile_lib {
     
     $this->PersonProfile->get_post_user_info($post_reference, $cookies, $proxy);
     
-  }
+  }*/
 
   public function get_insta_following_count() {
     

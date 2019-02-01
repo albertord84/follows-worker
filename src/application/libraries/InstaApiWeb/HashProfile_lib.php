@@ -19,9 +19,9 @@ class HashProfile_lib extends ReferenceProfile_lib{
   {
      parent::__construct();
     require_once config_item('thirdparty-has_profile-resource');
-    $this->HashProfile = new HashProfile();
+    $this->ReferencePriofile = new HashProfile();
   }
-   
+   /*
   public function process_insta_prof_data(\stdClass $content) {
     $this->HashProfile->process_insta_prof_data($content);
   }
@@ -38,7 +38,7 @@ class HashProfile_lib extends ReferenceProfile_lib{
   public function get_post_user_info($post_reference, \stdClass $cookies = NULL, \business\cls\Proxy $proxy = NULL) {
     $this->HashProfile->get_post_user_info($post_reference, $cookies, $proxy);
   }
-
+*/
   // Funcion temporal para comprobar que se cargo la lib.
   public function Msg ()
   {
