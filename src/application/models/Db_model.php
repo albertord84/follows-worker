@@ -329,115 +329,6 @@ class Db_model extends CI_Model {
     }
   }
   
-  //======================>SET<=======================//
-  
-  public function set_client_status($client_id, $status_id) {
-    try {
-
-      $status_date = time();
-      $sql = "UPDATE users "
-              . "SET "
-              . "      users.status_id   = $status_id, "
-              . "      users.status_date = '$status_date' "
-              . "WHERE users.id = $client_id; ";
-
-      $result = $this->db->query($sql);
-//                if ($result)
-//                    print "<br>Update client_status! status_date: $status_date <br>";
-//                else
-//                    print "<br>NOT UPDATED client_status!!!<br> $sql <br>";
-      return $result;
-    } catch (Error $e) {
-      if ($this->db->error()['code'] != 0) {
-        throw new Db_Exception($this->db->error(), $e);
-      } else {
-        throw $e;
-      }
-    }
-  }
-
-  public function set_client_status_by_login($login, $status_id) {
-    try {
-
-      $status_date = time();
-      $sql = "UPDATE users "
-              . "SET "
-              . "      users.status_id   = $status_id, "
-              . "      users.status_date = '$status_date' "
-              . "WHERE users.login = '$login' "
-              . "ORDER BY id DESC "
-              . "LIMIT 1; ";
-
-      $result = $this->db->query($sql);
-//                if ($result)
-//                    print "<br>Update client_status! status_date: $status_date <br>";
-//                else
-//                    print "<br>NOT UPDATED client_status!!!<br> $sql <br>";
-      return $result;
-    } catch (Error $e) {
-      if ($this->db->error()['code'] != 0) {
-        throw new Db_Exception($this->db->error(), $e);
-      } else {
-        throw $e;
-      }
-    }
-  }
-  
-  //======================>INSERT<=======================//
-
-  /**
-   * 
-   * @param type $client_id
-   * @param type $profile_data Data from this client as profile
-   * @return type
-   */
-  public function insert_client_daily_report($client_id, $profile_data) {
-    try {
-
-      $date = time();
-      $sql = "INSERT INTO daily_report "
-              . "(client_id, followings, followers, date) "
-              . "VALUES "
-              . "($client_id, '$profile_data->following', '$profile_data->follower_count', '$date');";
-
-      $result = $this->db->query($sql);
-      return $result;
-    } catch (Error $e) {
-      if ($this->db->error()['code'] != 0) {
-        throw new Db_Exception($this->db->error(), $e);
-      } else {
-        throw $e;
-      }
-    }
-  }
-
-  /* public function save_curl($client_id, $curl, $robot_id = NULL) {
-    $this->InsertEventToWashdog($client_id, "CURL_ERROR", 1, $robot_id, $curl);
-   */
-
-  public function set_client_cookies($client_id, $cookies = NULL) {
-    try {
-
-      $sql = "UPDATE clients "
-              . "SET ";
-      $sql .= $cookies ? " clients.cookies   = '$cookies' " : " clients.cookies   = NULL ";
-      $sql .= "WHERE clients.user_id = '$client_id'; ";
-
-      $result = $this->db->query($sql);
-      //if ($result)
-      // print "<br>Update client_cookies! <br>";
-      //else
-      // print "<br>NOT UPDATED client_cookies!!!<br> $sql <br>";
-      return $result;
-    } catch (Error $e) {
-      if ($this->db->error()['code'] != 0) {
-        throw new Db_Exception($this->db->error(), $e);
-      } else {
-        throw $e;
-      }
-    }
-  }
-
   public function get_client_id_from_reference_profile_id($ref_prof_id) {
     try {
 
@@ -527,56 +418,6 @@ class Db_model extends CI_Model {
                 . "SET reference_profile.last_access = '$time' "
                 . "WHERE reference_profile.id = $object->rp_id; ";
         $result2 = $this->db->query($sql2);
-      }
-      return $object;
-    } catch (Error $e) {
-      if ($this->db->error()['code'] != 0) {
-        throw new Db_Exception($this->db->error(), $e);
-      } else {
-        throw $e;
-      }
-    }
-  }
-
-  public function get_follow_work2() {
-    //$Elapsed_time_limit = $GLOBALS['sistem_config']->MIN_NEXT_ATTEND_TIME;
-    try {
-      // Get daily work
-      $sql = ""
-              . "SELECT *, "
-              . "   daily_work.cookies as cookies, "
-              . "   users.id as users_id, "
-              . "   clients.cookies as client_cookies, "
-              . "   reference_profile.insta_id as rp_insta_id, "
-              . "   reference_profile.type as rp_type, "
-              . "   reference_profile.id as rp_id "
-              . "FROM daily_work "
-              . "INNER JOIN reference_profile ON reference_profile.id = daily_work.reference_id "
-              . "INNER JOIN clients ON clients.user_id = reference_profile.client_id "
-              . "INNER JOIN users ON users.id = clients.user_id "
-              . "WHERE ((daily_work.to_follow  > 0) "
-              . "   OR  (daily_work.to_unfollow  > 0)) "
-              . "   AND (reference_profile.deleted <> TRUE || daily_work.to_unfollow  > 0) "
-              //. "WHERE (now - daily_work.last_access) >= $Elapsed_time_limit "
-              . "ORDER BY clients.last_access ASC, "
-              . "         daily_work.to_follow DESC "
-              . "LIMIT 1;";
-
-      $result = $this->db->query($sql);
-      $object = $result->result_object();
-
-      // Update daily work time
-      if ($object && (!isset($object->last_access) || intval($object->last_access) < time())) {
-        //$ref_prof_id = $object->rp_insta_id;
-        $time = time();
-        $sql2 = ""
-                . "UPDATE clients "
-                . "SET clients.last_access = '$time' "
-                . "WHERE clients.user_id = $object->users_id; ";
-        $result2 = $this->db->query($sql2);
-        if (!$result2) {
-          var_dump($sql2);
-        }
       }
       return $object;
     } catch (Error $e) {
@@ -694,36 +535,7 @@ class Db_model extends CI_Model {
       }
     }
   }
-
-  public function has_work($client_id, $rp = NULL) {
-    //$Elapsed_time_limit = $GLOBALS['sistem_config']->MIN_NEXT_ATTEND_TIME;
-    try {
-      // Get daily work
-      $sql = ""
-              . "SELECT * "
-              . "FROM daily_work "
-              . "INNER JOIN reference_profile ON reference_profile.id = daily_work.reference_id "
-              . "INNER JOIN clients ON clients.user_id = reference_profile.client_id "
-              . "INNER JOIN users ON users.id = clients.user_id ";
-      if ($rp == NULL) {
-        $sql .= "WHERE daily_work.reference_id IN (SELECT id FROM reference_profile WHERE reference_profile.client_id = $client_id);";
-      } else {
-        $sql .= "WHERE daily_work.reference_id = $rp;";
-      }
-
-      $result = $this->db->query($sql);
-      $object = $result->result_object();
-
-      return $object != NULL;
-    } catch (Error $e) {
-      if ($this->db->error()['code'] != 0) {
-        throw new Db_Exception($this->db->error(), $e);
-      } else {
-        throw $e;
-      }
-    }
-  }
-
+  
   public function get_unfollow_work($client_id) {
     try {
       // Get profiles to unfollow today for this Client... 
@@ -748,307 +560,7 @@ class Db_model extends CI_Model {
       }
     }
   }
-
-  /**
-   * True is it was followed by this client
-   * @param type $client_id
-   * @param type $followed_id
-   * @return type
-   */
-  public function is_profile_followed($client_id, $followed_id) {
-    try {
-      $result = $this->db->query(""
-              . "SELECT * FROM followed "
-              . "WHERE followed.client_id   = $client_id "
-              . "  AND followed.followed_id = $followed_id; "
-      );
-      //print "\nClient: $followed_id " . mysqli_num_rows($result) . "  ";
-      return mysqli_num_rows($result);
-    } catch (Error $e) {
-      if ($this->db->error()['code'] != 0) {
-        throw new Db_Exception($this->db->error(), $e);
-      } else {
-        throw $e;
-      }
-    }
-  }
-
-  /**
-   * True is it was followed by this client
-   * @param type $client_id
-   * @param type $followed_id
-   * @return type
-   */
-  public function is_profile_followed_db2($client_id, $followed_id) {
-    try {
-      $result = mysqli_query($this->fConnection, ""
-              . "SELECT id FROM `dumbudb.followed`.`$client_id` "
-              . "WHERE `$client_id`.followed_id = $followed_id; "
-      );
-      //print "\nClient: $followed_id " . mysqli_num_rows($result) . "  ";
-      return mysqli_num_rows($result);
-    } catch (Error $e) {
-      if ($this->db->error()['code'] != 0) {
-        throw new Db_Exception($this->db->error(), $e);
-      } else {
-        throw $e;
-      }
-    }
-  }
-
-  public function save_unfollow_work($Followeds_to_unfollow) {
-    try {
-      foreach ($Followeds_to_unfollow as $unfollowed) {
-        if ($unfollowed->unfollowed) {
-
-          $result = $this->db->query(""
-                  . "UPDATE followed "
-                  . "SET followed.unfollowed = TRUE "
-                  . "WHERE followed.id = $unfollowed->id; "
-          );
-        }
-      }
-
-      // TODO: UNCOMMENT
-//                $sql = ""
-//                        . "DELETE FROM followed "
-//                        . "WHERE id = $unfollowed->id; ";
-//                $result = $this->db->query($sql);
-
-      return TRUE;
-    } catch (Error $e) {
-      if ($this->db->error()['code'] != 0) {
-        throw new Db_Exception($this->db->error(), $e);
-      } else {
-        throw $e;
-      }
-    }
-  }
-
-  public function save_unfollow_work_db2($Followeds_to_unfollow, $client_id) {
-    try {
-      foreach ($Followeds_to_unfollow as $unfollowed) {
-        if ($unfollowed->unfollowed) {
-
-          $result = mysqli_query($this->fConnection, ""
-                  . "UPDATE `dumbudb.followed`.`$client_id` "
-                  . "SET unfollowed = TRUE "
-                  . "WHERE followed_id = $unfollowed->followed_id; "
-          );
-        }
-      }
-
-      // TODO: UNCOMMENT
-//                $sql = ""
-//                        . "DELETE FROM followed "
-//                        . "WHERE id = $unfollowed->id; ";
-//                $result = $this->db->query($sql);
-
-      return TRUE;
-    } catch (Error $e) {
-      if ($this->db->error()['code'] != 0) {
-        throw new Db_Exception($this->db->error(), $e);
-      } else {
-        throw $e;
-      }
-    }
-  }
-
-  public function save_follow_work($Ref_profile_follows, $daily_work) {
-    try {
-      //daily work: reference_id 	to_follow 	last_access 	id 	insta_name 	insta_id 	client_id 	insta_follower_cursor 	user_id 	credit_card_number 	credit_card_status_id 	credit_card_cvc 	credit_card_name 	pay_day 	insta_id 	insta_followers_ini 	insta_following 	id 	name 	login 	pass 	email 	telf 	role_id 	status_id 	languaje 
-      foreach ($Ref_profile_follows as $follow) {
-
-        $time = time();
-        $requested = ($follow->requested_by_viewer == 'requested') ? 'TRUE' : 'FALSE';
-        /* $sql = ""
-          . "INSERT INTO followed "
-          . "(followed_id, client_id, reference_id, requested, date, unfollowed) "
-          . "VALUES "
-          . "($follow->id, $daily_work->client_id, $daily_work->reference_id, $requested, $time, FALSE);"; */
-
-        $sql2 = ""
-                . "INSERT INTO `dumbudb.followed`.`$daily_work->client_id`"
-                . "(followed_id, reference_id, date, unfollowed, followed_login) "
-                . "VALUES "
-                . "($follow->id, $daily_work->reference_id, $time, FALSE, '$follow->username');";
-        //$result = $this->db->query($sql);
-        $result2 = mysqli_query($this->fConnection, $sql2);
-      }
-
-      $f_count = count($Ref_profile_follows);
-      $sql = ""
-              . "UPDATE reference_profile "
-              . "	SET reference_profile.follows = reference_profile.follows + $f_count "
-              . "WHERE reference_profile.id = $daily_work->reference_id; ";
-      $result = $this->db->query($sql);
-
-      return TRUE;
-    } catch (Error $e) {
-      if ($this->db->error()['code'] != 0) {
-        throw new Db_Exception($this->db->error(), $e);
-      } else {
-        throw $e;
-      }
-    }
-  }
-
-  public function insert_daily_work($ref_prof_id, $to_follow, $to_unfollow, $login_data) {
-    try {
-      $sql = ""
-              . "INSERT INTO daily_work "
-              . "(reference_id, to_follow, to_unfollow, cookies) "
-              . "VALUES "
-              . "($ref_prof_id, $to_follow, $to_unfollow, '$login_data');";
-
-      $result = $this->db->query($sql);
-
-      return $result;
-    } catch (Error $e) {
-      if ($this->db->error()['code'] != 0) {
-        throw new Db_Exception($this->db->error(), $e);
-      } else {
-        throw $e;
-      }
-    }
-  }
-
-  public function delete_daily_work($ref_prof_id) {
-    try {
-      $sql = ""
-              . "DELETE FROM daily_work "
-              . "WHERE reference_id = $ref_prof_id; ";
-      $result = $this->db->query($sql);
-
-      return $result;
-    } catch (Error $e) {
-      if ($this->db->error()['code'] != 0) {
-        throw new Db_Exception($this->db->error(), $e);
-      } else {
-        throw $e;
-      }
-    }
-  }
-
-  public function delete_daily_work_client($client_id) {
-    try {
-      $sql = ""
-              . "DELETE FROM daily_work WHERE daily_work.reference_id IN "
-              . "(SELECT reference_profile.id "
-              . "FROM reference_profile "
-              . "INNER JOIN clients ON clients.user_id = reference_profile.client_id "
-              . "WHERE clients.user_id = $client_id); ";
-      $result = $this->db->query($sql);
-
-      return $result;
-    } catch (Error $e) {
-      if ($this->db->error()['code'] != 0) {
-        throw new Db_Exception($this->db->error(), $e);
-      } else {
-        throw $e;
-      }
-    }
-  }
-
-  public function update_daily_work($ref_prof_id, $follows, $unfollows, $faults = 0) {
-    try {
-      $sql = ""
-              . "UPDATE daily_work "
-              . "SET daily_work.to_follow   = (daily_work.to_follow   - $follows), "
-              . "    daily_work.to_unfollow = (daily_work.to_unfollow - $unfollows) "
-              . "WHERE daily_work.reference_id = $ref_prof_id; ";
-
-      $result1 = $this->db->query($sql);
-      // Record Client last access and foults
-      $time = time();
-      $sql = ""
-              . "UPDATE clients "
-              . "INNER JOIN reference_profile ON clients.user_id = reference_profile.client_id "
-              . "SET clients.last_access = '$time', "
-              . "    clients.foults = clients.foults + $faults "
-              . "WHERE reference_profile.id = $ref_prof_id; ";
-      $result2 = $this->db->query($sql);
-      //    if ($result2) {
-      //    }
-      //$affected = mysqli_num_rows($result);
-      if ($result1) {
-        print "<br>Update daily_work! follows: $follows | unfollows: $unfollows <br>";
-      } else
-        print "<br>NOT UPDATED daily_work!!!<br> $sql <br>";
-      return TRUE;
-    } catch (Error $e) {
-      if ($this->db->error()['code'] != 0) {
-        throw new Db_Exception($this->db->error(), $e);
-      } else {
-        throw $e;
-      }
-    }
-  }
-
-  public function truncate_daily_work() {
-    try {
-      $sql = "TRUNCATE daily_work;";
-
-      $result = $this->db->query($sql);
-
-      return $result;
-    } catch (Error $e) {
-      if ($this->db->error()['code'] != 0) {
-        throw new Db_Exception($this->db->error(), $e);
-      } else {
-        throw $e;
-      }
-    }
-  }
-
-  public function reset_preference_profile_cursors() {
-    try {
-      $sql = ""
-              . "UPDATE reference_profile "
-              . "SET reference_profile.insta_follower_cursor = null;  ";
-      $result = $this->db->query($sql);
-
-      return $result;
-    } catch (Error $e) {
-      if ($this->db->error()['code'] != 0) {
-        throw new Db_Exception($this->db->error(), $e);
-      } else {
-        throw $e;
-      }
-    }
-  }
-
-  public function update_reference_cursor($reference_id, $end_cursor) {
-    $date = ($end_cursor == '' || $end_cursor == NULL) ? time() : NULL;
-    $ended_status = (new reference_profiles_status())->ENDED;
-    try {
-      $sql = ""
-              . "UPDATE reference_profile "
-              . "SET "
-              . "     reference_profile.insta_follower_cursor = '$end_cursor', "
-              . "     reference_profile.end_date = '$date' ";
-      if ($date !== NULL) {
-        $sql .= ", reference_profile.status_id = $ended_status ";
-      }
-      $sql .= "WHERE reference_profile.id = $reference_id; ";
-
-      $result = $this->db->query($sql);
-
-//                if ($result)
-//                    print "<br>Updated reference_cursor! reference_id: $reference_id <br>";
-//                else
-//                    print "<br>NOT UPDATED reference_cursor!!!<br> $sql <br>";
-
-      return $result;
-    } catch (Error $e) {
-      if ($this->db->error()['code'] != 0) {
-        throw new Db_Exception($this->db->error(), $e);
-      } else {
-        throw $e;
-      }
-    }
-  }
-
+  
   public function get_system_config_vars() {
     try {
 
@@ -1148,166 +660,12 @@ class Db_model extends CI_Model {
       }
     }
   }
-
-  public function InsertEventToWashdog($user_id, $action, $source = 0, $robot_id = NULL, $metadata = NULL) {
-    try {
-      //mysqli_real_escape_string($escapestr)
-      $action = mysqli_real_escape_string($this->connection, $action);
-      $sql = "SELECT * FROM dumbudb.washdog_type WHERE action = '$action' AND source = '$source';";
-      $time = time();
-      $result = $this->db->query($sql);
-      if ($result->num_rows == 0) {
-        $sql = "INSERT INTO dumbudb.washdog_type (action, source) VALUE ('$action', '$source');";
-        $result = $this->db->query($sql);
-        //var_dump($result);
-        $sql = "SELECT * FROM dumbudb.washdog_type WHERE action = '$action' AND source = '$source';";
-        $time = time();
-        $result = $this->db->query($sql);
-      }
-
-      $obj = $result->result_object();
-      if (isset($robot_id) == true) {
-        $sql = "INSERT INTO dumbudb.washdog1 (user_id, type, date, robot, metadata) VALUE ('$user_id','$obj->id', '$time', $robot_id, '$metadata');";
-      } else {
-        $sql = "INSERT INTO dumbudb.washdog1 (user_id, type, date, robot, metatdata) VALUE ('$user_id','$obj->id', '$time', NULL, '$metadata');";
-      }
-      $result = $this->db->query($sql);
-      return $result;
-    } catch (Error $e) {
-      if ($this->db->error()['code'] != 0) {
-        throw new Db_Exception($this->db->error(), $e);
-      } else {
-        throw $e;
-      }
-    }
-  }
-
+  
   public function get_client_with_orderkey($orderkey) {
 
     try {
       $sql = "SELECT * FROM  clients "
               . "WHERE  clients.order_key = '$orderkey';";
-      $result = $this->db->query($sql);
-      return $result;
-    } catch (Error $e) {
-      if ($this->db->error()['code'] != 0) {
-        throw new Db_Exception($this->db->error(), $e);
-      } else {
-        throw $e;
-      }
-    }
-  }
-
-  public function set_cookies_to_null($client_id) {
-    try {
-      $sql = "UPDATE dumbudb.clients SET cookies=NULL WHERE user_id=$client_id";
-      $result = $this->db->query($sql);
-      return $result;
-    } catch (Error $e) {
-      if ($this->db->error()['code'] != 0) {
-        throw new Db_Exception($this->db->error(), $e);
-      } else {
-        throw $e;
-      }
-    }
-  }
-
-  public function Add_Observation($client_id, $observation) {
-    try {
-      $observation = mysqli_real_escape_string($this->connection, $observation);
-      $sql = "UPDATE dumbudb.clients SET observation='$observation' WHERE user_id=$client_id";
-      $result = $this->db->query($sql);
-      return $result;
-    } catch (Error $e) {
-      if ($this->db->error()['code'] != 0) {
-        throw new Db_Exception($this->db->error(), $e);
-      } else {
-        throw $e;
-      }
-    }
-  }
-
-  public function SetPasword($client_id, $password) {
-    try {
-      $sql = "UPDATE dumbudb.users SET pass='$password' WHERE id=$client_id";
-      $result = $this->db->query($sql);
-      return $result;
-    } catch (Error $e) {
-      if ($this->db->error()['code'] != 0) {
-        throw new Db_Exception($this->db->error(), $e);
-      } else {
-        throw $e;
-      }
-    }
-  }
-
-  public function Create_Followed($client_id) {
-    try {
-      $sql = "CREATE TABLE IF NOT EXISTS `dumbudb.followed`.`$client_id` (
-                                `id` INT NOT NULL AUTO_INCREMENT,
-                                `followed_id` VARCHAR(20) NULL,
-                                `reference_id` INT(1) NOT NULL,
-                                `date` VARCHAR(20) NULL,
-                                `unfollowed` TINYINT(1) NULL,
-                                `followed_login` VARCHAR(100) NULL DEFAULT NULL,
-                                PRIMARY KEY (`id`, `reference_ingd`),
-                                INDEX `fk__1_idx` (`reference_id` ASC),
-                                CONSTRAINT `fk__$client_id`
-                                  FOREIGN KEY (`reference_id`)
-                                  REFERENCES `dumbudb`.`reference_profile` (`id`)
-                                  ON DELETE NO ACTION
-                                  ON UPDATE NO ACTION);";
-      $result = mysqli_query($this->fConnection, $sql);
-      return $result;
-    } catch (Error $e) {
-      if ($this->db->error()['code'] != 0) {
-        throw new Db_Exception($this->db->error(), $e);
-      } else {
-        throw $e;
-      }
-    }
-  }
-
-  public function SaveHttpServerVars($client_id, $HTTP_SERVER_VARS) {
-    try {
-      $sql = "UPDATE dumbudb.clients SET HTTP_SERVER_VARS='$HTTP_SERVER_VARS' WHERE user_id=$client_id";
-      $result = $this->db->query($sql);
-      return $result;
-    } catch (Error $e) {
-      if ($this->db->error()['code'] != 0) {
-        throw new Db_Exception($this->db->error(), $e);
-      } else {
-        throw $e;
-      }
-    }
-  }
-
-  /**
-   * Increase_Client_Last_Access
-   * @param type $client_id
-   * @param type $hours to add to client
-   */
-  public function Increase_Client_Last_Access($client_id, $hours = 1) {
-    try {
-      $timestamp = strtotime("+$hours hours", time());
-      $this->Set_Client_Last_Access($client_id, $timestamp);
-    } catch (Error $e) {
-      if ($this->db->error()['code'] != 0) {
-        throw new Db_Exception($this->db->error(), $e);
-      } else {
-        throw $e;
-      }
-    }
-  }
-
-  /**
-   * Increase_Client_Last_Access
-   * @param type $client_id
-   * @param type $hours to add to client
-   */
-  public function Set_Client_Last_Access($client_id, $timestamp) {
-    try {
-      $sql = "UPDATE dumbudb.clients SET last_access='$timestamp' WHERE user_id=$client_id";
       $result = $this->db->query($sql);
       return $result;
     } catch (Error $e) {
@@ -1370,37 +728,7 @@ class Db_model extends CI_Model {
       }
     }
   }
-
-  public function reset_referecne_prof($reference_id) {
-    try {
-
-      $result = $this->db->query("UPDATE `dumbudb`.`reference_profile` "
-              . "SET `insta_follower_cursor`=NULL, `end_date`=NULL "
-              . "WHERE `id`=$referece_id;");
-      return $result;
-    } catch (Error $e) {
-      if ($this->db->error()['code'] != 0) {
-        throw new Db_Exception($this->db->error(), $e);
-      } else {
-        throw $e;
-      }
-    }
-  }
-
-  public function SetClientOrderKey($client_id, $order_key, $pay_day) {
-    try {
-      $sql = "UPDATE `dumbudb`.`clients` SET `pay_day`='$pay_day', `order_key`='$order_key' WHERE `user_id`=$client_id;";
-      $result = $this->db->query($sql);
-      return $result;
-    } catch (Error $e) {
-      if ($this->db->error()['code'] != 0) {
-        throw new Db_Exception($this->db->error(), $e);
-      } else {
-        throw $e;
-      }
-    }
-  }
-
+  
   public function GetNotResrevedProxyList() {
     try {
       $sql = "SELECT * FROM Proxy WHERE isReserved = FALSE;";
@@ -1465,21 +793,7 @@ class Db_model extends CI_Model {
       }
     }
   }
-
-  public function SetProxyToClient($client_id, $proxy_id) {
-    try {
-      $sql = "UPDATE clients SET clients.proxy = $proxy_id WHERE clients.user_id = $client_id;";
-      $result = $this->db->query($sql);
-      return $result;
-    } catch (Error $e) {
-      if ($this->db->error()['code'] != 0) {
-        throw new Db_Exception($this->db->error(), $e);
-      } else {
-        throw $e;
-      }
-    }
-  }
-
+  
   public function get_dumbu_statistics() {
     try {
       //clientes por status
@@ -1509,7 +823,255 @@ class Db_model extends CI_Model {
       }
     }
   }
+  
+  public function GetReferenceProfileStatus() {
+    try {
+      //clientes por status
+      $sql = "SELECT *  FROM reference_profiles_status;";
+      $query = $this->db->query($sql);
+      return $query->result();
+    } catch (Error $e) {
+      if ($this->db->error()['code'] != 0) {
+        throw new Db_Exception($this->db->error(), $e);
+      } else {
+        throw $e;
+      }
+    }
+  }
+  
+  //======================>SET<=======================//
+  
+  public function set_client_status($client_id, $status_id) {
+    try {
 
+      $status_date = time();
+      $sql = "UPDATE users "
+              . "SET "
+              . "      users.status_id   = $status_id, "
+              . "      users.status_date = '$status_date' "
+              . "WHERE users.id = $client_id; ";
+
+      $result = $this->db->query($sql);
+//                if ($result)
+//                    print "<br>Update client_status! status_date: $status_date <br>";
+//                else
+//                    print "<br>NOT UPDATED client_status!!!<br> $sql <br>";
+      return $result;
+    } catch (Error $e) {
+      if ($this->db->error()['code'] != 0) {
+        throw new Db_Exception($this->db->error(), $e);
+      } else {
+        throw $e;
+      }
+    }
+  }
+
+  public function set_client_status_by_login($login, $status_id) {
+    try {
+
+      $status_date = time();
+      $sql = "UPDATE users "
+              . "SET "
+              . "      users.status_id   = $status_id, "
+              . "      users.status_date = '$status_date' "
+              . "WHERE users.login = '$login' "
+              . "ORDER BY id DESC "
+              . "LIMIT 1; ";
+
+      $result = $this->db->query($sql);
+//                if ($result)
+//                    print "<br>Update client_status! status_date: $status_date <br>";
+//                else
+//                    print "<br>NOT UPDATED client_status!!!<br> $sql <br>";
+      return $result;
+    } catch (Error $e) {
+      if ($this->db->error()['code'] != 0) {
+        throw new Db_Exception($this->db->error(), $e);
+      } else {
+        throw $e;
+      }
+    }
+  }
+  
+  public function set_client_cookies($client_id, $cookies = NULL) {
+    try {
+
+      $sql = "UPDATE clients "
+              . "SET ";
+      $sql .= $cookies ? " clients.cookies   = '$cookies' " : " clients.cookies   = NULL ";
+      $sql .= "WHERE clients.user_id = '$client_id'; ";
+
+      $result = $this->db->query($sql);
+      //if ($result)
+      // print "<br>Update client_cookies! <br>";
+      //else
+      // print "<br>NOT UPDATED client_cookies!!!<br> $sql <br>";
+      return $result;
+    } catch (Error $e) {
+      if ($this->db->error()['code'] != 0) {
+        throw new Db_Exception($this->db->error(), $e);
+      } else {
+        throw $e;
+      }
+    }
+  }
+  
+  public function SetPasword($client_id, $password) {
+    try {
+      $sql = "UPDATE dumbudb.users SET pass='$password' WHERE id=$client_id";
+      $result = $this->db->query($sql);
+      return $result;
+    } catch (Error $e) {
+      if ($this->db->error()['code'] != 0) {
+        throw new Db_Exception($this->db->error(), $e);
+      } else {
+        throw $e;
+      }
+    }
+  }
+  
+  public function set_cookies_to_null($client_id) {
+    try {
+      $sql = "UPDATE dumbudb.clients SET cookies=NULL WHERE user_id=$client_id";
+      $result = $this->db->query($sql);
+      return $result;
+    } catch (Error $e) {
+      if ($this->db->error()['code'] != 0) {
+        throw new Db_Exception($this->db->error(), $e);
+      } else {
+        throw $e;
+      }
+    }
+  }
+  
+  /**
+   * Increase_Client_Last_Access
+   * @param type $client_id
+   * @param type $hours to add to client
+   */
+  public function Set_Client_Last_Access($client_id, $timestamp) {
+    try {
+      $sql = "UPDATE dumbudb.clients SET last_access='$timestamp' WHERE user_id=$client_id";
+      $result = $this->db->query($sql);
+      return $result;
+    } catch (Error $e) {
+      if ($this->db->error()['code'] != 0) {
+        throw new Db_Exception($this->db->error(), $e);
+      } else {
+        throw $e;
+      }
+    }
+  }
+  
+  public function SetClientOrderKey($client_id, $order_key, $pay_day) {
+    try {
+      $sql = "UPDATE `dumbudb`.`clients` SET `pay_day`='$pay_day', `order_key`='$order_key' WHERE `user_id`=$client_id;";
+      $result = $this->db->query($sql);
+      return $result;
+    } catch (Error $e) {
+      if ($this->db->error()['code'] != 0) {
+        throw new Db_Exception($this->db->error(), $e);
+      } else {
+        throw $e;
+      }
+    }
+  }
+
+  public function SetProxyToClient($client_id, $proxy_id) {
+    try {
+      $sql = "UPDATE clients SET clients.proxy = $proxy_id WHERE clients.user_id = $client_id;";
+      $result = $this->db->query($sql);
+      return $result;
+    } catch (Error $e) {
+      if ($this->db->error()['code'] != 0) {
+        throw new Db_Exception($this->db->error(), $e);
+      } else {
+        throw $e;
+      }
+    }
+  }
+  
+  //=======================>INSERT<========================//
+  
+  /**
+   * 
+   * @param type $client_id
+   * @param type $profile_data Data from this client as profile
+   * @return type
+   */
+  public function insert_client_daily_report($client_id, $profile_data) {
+    try {
+
+      $date = time();
+      $sql = "INSERT INTO daily_report "
+              . "(client_id, followings, followers, date) "
+              . "VALUES "
+              . "($client_id, '$profile_data->following', '$profile_data->follower_count', '$date');";
+
+      $result = $this->db->query($sql);
+      return $result;
+    } catch (Error $e) {
+      if ($this->db->error()['code'] != 0) {
+        throw new Db_Exception($this->db->error(), $e);
+      } else {
+        throw $e;
+      }
+    }
+  }
+  
+  public function insert_daily_work($ref_prof_id, $to_follow, $to_unfollow, $login_data) {
+    try {
+      $sql = ""
+              . "INSERT INTO daily_work "
+              . "(reference_id, to_follow, to_unfollow, cookies) "
+              . "VALUES "
+              . "($ref_prof_id, $to_follow, $to_unfollow, '$login_data');";
+
+      $result = $this->db->query($sql);
+
+      return $result;
+    } catch (Error $e) {
+      if ($this->db->error()['code'] != 0) {
+        throw new Db_Exception($this->db->error(), $e);
+      } else {
+        throw $e;
+      }
+    }
+  }
+  
+  public function InsertEventToWashdog($user_id, $action, $source = 0, $robot_id = NULL, $metadata = NULL) {
+    try {
+      //mysqli_real_escape_string($escapestr)
+      $action = mysqli_real_escape_string($this->connection, $action);
+      $sql = "SELECT * FROM dumbudb.washdog_type WHERE action = '$action' AND source = '$source';";
+      $time = time();
+      $result = $this->db->query($sql);
+      if ($result->num_rows == 0) {
+        $sql = "INSERT INTO dumbudb.washdog_type (action, source) VALUE ('$action', '$source');";
+        $result = $this->db->query($sql);
+        //var_dump($result);
+        $sql = "SELECT * FROM dumbudb.washdog_type WHERE action = '$action' AND source = '$source';";
+        $time = time();
+        $result = $this->db->query($sql);
+      }
+
+      $obj = $result->result_object();
+      if (isset($robot_id) == true) {
+        $sql = "INSERT INTO dumbudb.washdog1 (user_id, type, date, robot, metadata) VALUE ('$user_id','$obj->id', '$time', $robot_id, '$metadata');";
+      } else {
+        $sql = "INSERT INTO dumbudb.washdog1 (user_id, type, date, robot, metatdata) VALUE ('$user_id','$obj->id', '$time', NULL, '$metadata');";
+      }
+      $result = $this->db->query($sql);
+      return $result;
+    } catch (Error $e) {
+      if ($this->db->error()['code'] != 0) {
+        throw new Db_Exception($this->db->error(), $e);
+      } else {
+        throw $e;
+      }
+    }
+  }
+  
   public function insert_dumbu_statistics($cols, $arr) {
     try {
       $sql = "INSERT INTO dumbudb.dumbu_statistic " . $cols . " VALUE " . $arr . ";";
@@ -1523,13 +1085,66 @@ class Db_model extends CI_Model {
       }
     }
   }
-
-  public function GetReferenceProfileStatus() {
+  
+  //=======================>UPDATE<========================//
+  
+  public function update_daily_work($ref_prof_id, $follows, $unfollows, $faults = 0) {
     try {
-      //clientes por status
-      $sql = "SELECT *  FROM reference_profiles_status;";
-      $query = $this->db->query($sql);
-      return $query->result();
+      $sql = ""
+              . "UPDATE daily_work "
+              . "SET daily_work.to_follow   = (daily_work.to_follow   - $follows), "
+              . "    daily_work.to_unfollow = (daily_work.to_unfollow - $unfollows) "
+              . "WHERE daily_work.reference_id = $ref_prof_id; ";
+
+      $result1 = $this->db->query($sql);
+      // Record Client last access and foults
+      $time = time();
+      $sql = ""
+              . "UPDATE clients "
+              . "INNER JOIN reference_profile ON clients.user_id = reference_profile.client_id "
+              . "SET clients.last_access = '$time', "
+              . "    clients.foults = clients.foults + $faults "
+              . "WHERE reference_profile.id = $ref_prof_id; ";
+      $result2 = $this->db->query($sql);
+      //    if ($result2) {
+      //    }
+      //$affected = mysqli_num_rows($result);
+      if ($result1) {
+        print "<br>Update daily_work! follows: $follows | unfollows: $unfollows <br>";
+      } else
+        print "<br>NOT UPDATED daily_work!!!<br> $sql <br>";
+      return TRUE;
+    } catch (Error $e) {
+      if ($this->db->error()['code'] != 0) {
+        throw new Db_Exception($this->db->error(), $e);
+      } else {
+        throw $e;
+      }
+    }
+  }
+
+  public function update_reference_cursor($reference_id, $end_cursor) {
+    $date = ($end_cursor == '' || $end_cursor == NULL) ? time() : NULL;
+    $ended_status = (new reference_profiles_status())->ENDED;
+    try {
+      $sql = ""
+              . "UPDATE reference_profile "
+              . "SET "
+              . "     reference_profile.insta_follower_cursor = '$end_cursor', "
+              . "     reference_profile.end_date = '$date' ";
+      if ($date !== NULL) {
+        $sql .= ", reference_profile.status_id = $ended_status ";
+      }
+      $sql .= "WHERE reference_profile.id = $reference_id; ";
+
+      $result = $this->db->query($sql);
+
+//                if ($result)
+//                    print "<br>Updated reference_cursor! reference_id: $reference_id <br>";
+//                else
+//                    print "<br>NOT UPDATED reference_cursor!!!<br> $sql <br>";
+
+      return $result;
     } catch (Error $e) {
       if ($this->db->error()['code'] != 0) {
         throw new Db_Exception($this->db->error(), $e);
@@ -1548,6 +1163,327 @@ class Db_model extends CI_Model {
       $sql = "UPDATE $table SET $table.$field = $value $query;";
       $result = $this->db->query($sql);
       return $result;
+    } catch (Error $e) {
+      if ($this->db->error()['code'] != 0) {
+        throw new Db_Exception($this->db->error(), $e);
+      } else {
+        throw $e;
+      }
+    }
+  }
+
+  //======================>DELETED<========================//
+  
+  public function delete_daily_work($ref_prof_id) {
+    try {
+      $sql = ""
+              . "DELETE FROM daily_work "
+              . "WHERE reference_id = $ref_prof_id; ";
+      $result = $this->db->query($sql);
+
+      return $result;
+    } catch (Error $e) {
+      if ($this->db->error()['code'] != 0) {
+        throw new Db_Exception($this->db->error(), $e);
+      } else {
+        throw $e;
+      }
+    }
+  }
+
+  public function delete_daily_work_client($client_id) {
+    try {
+      $sql = ""
+              . "DELETE FROM daily_work WHERE daily_work.reference_id IN "
+              . "(SELECT reference_profile.id "
+              . "FROM reference_profile "
+              . "INNER JOIN clients ON clients.user_id = reference_profile.client_id "
+              . "WHERE clients.user_id = $client_id); ";
+      $result = $this->db->query($sql);
+
+      return $result;
+    } catch (Error $e) {
+      if ($this->db->error()['code'] != 0) {
+        throw new Db_Exception($this->db->error(), $e);
+      } else {
+        throw $e;
+      }
+    }
+  }
+  
+  //========================>SAVE<=========================//
+  
+  public function save_unfollow_work($Followeds_to_unfollow) {
+    try {
+      foreach ($Followeds_to_unfollow as $unfollowed) {
+        if ($unfollowed->unfollowed) {
+
+          $result = $this->db->query(""
+                  . "UPDATE followed "
+                  . "SET followed.unfollowed = TRUE "
+                  . "WHERE followed.id = $unfollowed->id; "
+          );
+        }
+      }
+
+      // TODO: UNCOMMENT
+//                $sql = ""
+//                        . "DELETE FROM followed "
+//                        . "WHERE id = $unfollowed->id; ";
+//                $result = $this->db->query($sql);
+
+      return TRUE;
+    } catch (Error $e) {
+      if ($this->db->error()['code'] != 0) {
+        throw new Db_Exception($this->db->error(), $e);
+      } else {
+        throw $e;
+      }
+    }
+  }
+
+  public function save_unfollow_work_db2($Followeds_to_unfollow, $client_id) {
+    try {
+      foreach ($Followeds_to_unfollow as $unfollowed) {
+        if ($unfollowed->unfollowed) {
+
+          $result = mysqli_query($this->fConnection, ""
+                  . "UPDATE `dumbudb.followed`.`$client_id` "
+                  . "SET unfollowed = TRUE "
+                  . "WHERE followed_id = $unfollowed->followed_id; "
+          );
+        }
+      }
+
+      // TODO: UNCOMMENT
+//                $sql = ""
+//                        . "DELETE FROM followed "
+//                        . "WHERE id = $unfollowed->id; ";
+//                $result = $this->db->query($sql);
+
+      return TRUE;
+    } catch (Error $e) {
+      if ($this->db->error()['code'] != 0) {
+        throw new Db_Exception($this->db->error(), $e);
+      } else {
+        throw $e;
+      }
+    }
+  }
+
+  public function save_follow_work($Ref_profile_follows, $daily_work) {
+    try {
+      //daily work: reference_id 	to_follow 	last_access 	id 	insta_name 	insta_id 	client_id 	insta_follower_cursor 	user_id 	credit_card_number 	credit_card_status_id 	credit_card_cvc 	credit_card_name 	pay_day 	insta_id 	insta_followers_ini 	insta_following 	id 	name 	login 	pass 	email 	telf 	role_id 	status_id 	languaje 
+      foreach ($Ref_profile_follows as $follow) {
+
+        $time = time();
+        $requested = ($follow->requested_by_viewer == 'requested') ? 'TRUE' : 'FALSE';
+        /* $sql = ""
+          . "INSERT INTO followed "
+          . "(followed_id, client_id, reference_id, requested, date, unfollowed) "
+          . "VALUES "
+          . "($follow->id, $daily_work->client_id, $daily_work->reference_id, $requested, $time, FALSE);"; */
+
+        $sql2 = ""
+                . "INSERT INTO `dumbudb.followed`.`$daily_work->client_id`"
+                . "(followed_id, reference_id, date, unfollowed, followed_login) "
+                . "VALUES "
+                . "($follow->id, $daily_work->reference_id, $time, FALSE, '$follow->username');";
+        //$result = $this->db->query($sql);
+        $result2 = mysqli_query($this->fConnection, $sql2);
+      }
+
+      $f_count = count($Ref_profile_follows);
+      $sql = ""
+              . "UPDATE reference_profile "
+              . "	SET reference_profile.follows = reference_profile.follows + $f_count "
+              . "WHERE reference_profile.id = $daily_work->reference_id; ";
+      $result = $this->db->query($sql);
+
+      return TRUE;
+    } catch (Error $e) {
+      if ($this->db->error()['code'] != 0) {
+        throw new Db_Exception($this->db->error(), $e);
+      } else {
+        throw $e;
+      }
+    }
+  }
+  
+  public function SaveHttpServerVars($client_id, $HTTP_SERVER_VARS) {
+    try {
+      $sql = "UPDATE dumbudb.clients SET HTTP_SERVER_VARS='$HTTP_SERVER_VARS' WHERE user_id=$client_id";
+      $result = $this->db->query($sql);
+      return $result;
+    } catch (Error $e) {
+      if ($this->db->error()['code'] != 0) {
+        throw new Db_Exception($this->db->error(), $e);
+      } else {
+        throw $e;
+      }
+    }
+  }
+  
+  /* public function save_curl($client_id, $curl, $robot_id = NULL) {
+    $this->InsertEventToWashdog($client_id, "CURL_ERROR", 1, $robot_id, $curl);
+  */
+  
+  //=======================>RESET<========================//
+  
+  public function reset_preference_profile_cursors() {
+    try {
+      $sql = ""
+              . "UPDATE reference_profile "
+              . "SET reference_profile.insta_follower_cursor = null;  ";
+      $result = $this->db->query($sql);
+
+      return $result;
+    } catch (Error $e) {
+      if ($this->db->error()['code'] != 0) {
+        throw new Db_Exception($this->db->error(), $e);
+      } else {
+        throw $e;
+      }
+    }
+  }
+  
+  public function reset_referecne_prof($reference_id) {
+    try {
+
+      $result = $this->db->query("UPDATE `dumbudb`.`reference_profile` "
+              . "SET `insta_follower_cursor`=NULL, `end_date`=NULL "
+              . "WHERE `id`=$referece_id;");
+      return $result;
+    } catch (Error $e) {
+      if ($this->db->error()['code'] != 0) {
+        throw new Db_Exception($this->db->error(), $e);
+      } else {
+        throw $e;
+      }
+    }
+  }
+  
+  //=======================>OTHERS<========================//
+  
+  /**
+   * True is it was followed by this client
+   * @param type $client_id
+   * @param type $followed_id
+   * @return type
+   */
+  public function is_profile_followed_db2($client_id, $followed_id) {
+    try {
+      $result = mysqli_query($this->fConnection, ""
+              . "SELECT id FROM `dumbudb.followed`.`$client_id` "
+              . "WHERE `$client_id`.followed_id = $followed_id; "
+      );
+      //print "\nClient: $followed_id " . mysqli_num_rows($result) . "  ";
+      return mysqli_num_rows($result);
+    } catch (Error $e) {
+      if ($this->db->error()['code'] != 0) {
+        throw new Db_Exception($this->db->error(), $e);
+      } else {
+        throw $e;
+      }
+    }
+  }
+  
+  public function has_work($client_id, $rp = NULL) {
+    //$Elapsed_time_limit = $GLOBALS['sistem_config']->MIN_NEXT_ATTEND_TIME;
+    try {
+      // Get daily work
+      $sql = ""
+              . "SELECT * "
+              . "FROM daily_work "
+              . "INNER JOIN reference_profile ON reference_profile.id = daily_work.reference_id "
+              . "INNER JOIN clients ON clients.user_id = reference_profile.client_id "
+              . "INNER JOIN users ON users.id = clients.user_id ";
+      if ($rp == NULL) {
+        $sql .= "WHERE daily_work.reference_id IN (SELECT id FROM reference_profile WHERE reference_profile.client_id = $client_id);";
+      } else {
+        $sql .= "WHERE daily_work.reference_id = $rp;";
+      }
+
+      $result = $this->db->query($sql);
+      $object = $result->result_object();
+
+      return $object != NULL;
+    } catch (Error $e) {
+      if ($this->db->error()['code'] != 0) {
+        throw new Db_Exception($this->db->error(), $e);
+      } else {
+        throw $e;
+      }
+    }
+  }
+  
+  public function truncate_daily_work() {
+    try {
+      $sql = "TRUNCATE daily_work;";
+
+      $result = $this->db->query($sql);
+
+      return $result;
+    } catch (Error $e) {
+      if ($this->db->error()['code'] != 0) {
+        throw new Db_Exception($this->db->error(), $e);
+      } else {
+        throw $e;
+      }
+    }
+  }
+
+  public function Add_Observation($client_id, $observation) {
+    try {
+      $observation = mysqli_real_escape_string($this->connection, $observation);
+      $sql = "UPDATE dumbudb.clients SET observation='$observation' WHERE user_id=$client_id";
+      $result = $this->db->query($sql);
+      return $result;
+    } catch (Error $e) {
+      if ($this->db->error()['code'] != 0) {
+        throw new Db_Exception($this->db->error(), $e);
+      } else {
+        throw $e;
+      }
+    }
+  }
+
+  public function Create_Followed($client_id) {
+    try {
+      $sql = "CREATE TABLE IF NOT EXISTS `dumbudb.followed`.`$client_id` (
+                                `id` INT NOT NULL AUTO_INCREMENT,
+                                `followed_id` VARCHAR(20) NULL,
+                                `reference_id` INT(1) NOT NULL,
+                                `date` VARCHAR(20) NULL,
+                                `unfollowed` TINYINT(1) NULL,
+                                `followed_login` VARCHAR(100) NULL DEFAULT NULL,
+                                PRIMARY KEY (`id`, `reference_ingd`),
+                                INDEX `fk__1_idx` (`reference_id` ASC),
+                                CONSTRAINT `fk__$client_id`
+                                  FOREIGN KEY (`reference_id`)
+                                  REFERENCES `dumbudb`.`reference_profile` (`id`)
+                                  ON DELETE NO ACTION
+                                  ON UPDATE NO ACTION);";
+      $result = mysqli_query($this->fConnection, $sql);
+      return $result;
+    } catch (Error $e) {
+      if ($this->db->error()['code'] != 0) {
+        throw new Db_Exception($this->db->error(), $e);
+      } else {
+        throw $e;
+      }
+    }
+  }
+
+  /**
+   * Increase_Client_Last_Access
+   * @param type $client_id
+   * @param type $hours to add to client
+   */
+  public function Increase_Client_Last_Access($client_id, $hours = 1) {
+    try {
+      $timestamp = strtotime("+$hours hours", time());
+      $this->Set_Client_Last_Access($client_id, $timestamp);
     } catch (Error $e) {
       if ($this->db->error()['code'] != 0) {
         throw new Db_Exception($this->db->error(), $e);
