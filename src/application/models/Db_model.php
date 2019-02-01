@@ -234,14 +234,14 @@ class Db_model extends CI_Model {
   //FUNC 8 OK
   public function get_client_payment_data($client_id) {
     try {
-
-      $query = $this->db->query(""
-              . "SELECT * FROM users "
-              . "     INNER JOIN clients ON clients.user_id = users.id "
-              . "     INNER JOIN client_payment ON client_payment.dumbu_client_id = clients.user_id "
-              . "     INNER JOIN plane ON plane.id = client_payment.dumbu_plane_id "
-              . "WHERE users.id = $client_id; "
-      );
+      
+      $sql = "SELECT * FROM users "
+            . "     INNER JOIN clients ON clients.user_id = users.id "
+            . "     INNER JOIN client_payment ON client_payment.dumbu_client_id = clients.user_id "
+            . "     INNER JOIN plane ON plane.id = client_payment.dumbu_plane_id "
+            . "WHERE users.id = $client_id; ";
+      
+      $query = $this->db->query($sql);
       return $query->row();
     } catch (Error $e) {
       if ($this->db->error()['code'] != 0) {
@@ -259,8 +259,8 @@ class Db_model extends CI_Model {
       $result = $this->db->query(""
               . "SELECT id, login, pass, insta_id FROM users "
               . "     INNER JOIN clients ON clients.user_id = users.id "
-              . "WHERE users.id = $client_id; "
-      );
+              . "WHERE users.id = $client_id; ");
+      
       return $result->row();
     } catch (Error $e) {
       if ($this->db->error()['code'] != 0) {

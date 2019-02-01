@@ -433,7 +433,7 @@ namespace business {
         //$ref_profs_data = $ci->db_model->get_reference_profiles_data($client_id);
         $rows = $ci->db_model->get_reference_profiles_data($this->Id);
         foreach ($rows as $item){
-          
+          array_push($this->reference_profiles, $Ref_Prof);
         }
         
         /*while ($prof_data = $ref_profs_data->fetch_object()) {

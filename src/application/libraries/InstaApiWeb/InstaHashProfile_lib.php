@@ -18,9 +18,9 @@ class InstaHashProfile_lib extends ReferenceProfile_lib{
   public function __construct ()
   {
      parent::__construct();
-    require_once config_item('thirdparty-insta_hash_profile-resource');
+     require_once config_item('thirdparty-insta_hash_profile-resource');
 
-    $this->HashProfile = new HashProfile();
+     $this->HashProfile = new HashProfile();
   }
    
   public function process_insta_prof_data(\stdClass $content) {
