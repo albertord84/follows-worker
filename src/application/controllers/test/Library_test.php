@@ -315,4 +315,15 @@ class Library_test extends CI_Controller {
        
     echo "</pre>";
   }
+  
+  public function curl()
+  {
+    echo "<pre>";
+    echo "<h2>Test GeoProfile Library</h2>";
+    echo "[load] GeoProfile_lib ==> ";
+    $this->load->library("InstaApiWeb/GeoProfile_lib", null, 'GeoProfile_lib');
+    $this->GeoProfile_lib->get_insta_media(15);
+    echo "(<b>ok</b>)<br>";
+    
+  }
 }

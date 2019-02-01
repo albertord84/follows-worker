@@ -3,27 +3,33 @@
 namespace InstaApiWeb {
 
   /**
-   * Description of Proxy
-   *
-   * @author jose
+   * 
+   * Define
+   * 
+   * @category Third-Party Instagram API
+   * 
+   * @access public
+   *.
    */
   class Proxy {
 
     //put your code here
-    public $ip;
-    public $port;
-    public $user;
-    public $password;
+    public $Id;
+    public $Ip;
+    public $Port;
+    public $User;
+    public $Password;
+    public $IsReserved;
 
     public function __construct(string $ip, string $port, string $user, string $password) {
-      $this->ip = $ip;
-      $this->port = $port;
-      $this->user = $user;
-      $this->password = $password;
+      $this->Ip = $ip;
+      $this->Port = $port;
+      $this->User = $user;
+      $this->Password = $password;
     }
 
     public function ToString() {
-      return "--proxy '$user:$password@$ip:$port'";
+      return "--proxy '$this->User:$this->Password@$this->Ip:$this->Port'";
     }
   }
 

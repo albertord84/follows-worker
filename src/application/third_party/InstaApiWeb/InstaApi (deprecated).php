@@ -106,6 +106,7 @@ namespace InstaApiWeb {
       }
     }*/
 
+    //deprecated
     public static function make_query(string $query, string $variables, \stdClass $cookies, Proxy $proxy = NULL) {
       $variables = urlencode($variables);
       $graphquery_url = InstaURLs::GraphqlQuery;
