@@ -103,17 +103,164 @@ class Database_test extends CI_Controller {
     echo "FUNC 12-[get] get_client_instaid_data  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
     if ($func == 12) var_dump($obj);
     
+    //FUNC 13
+    $obj = $this->db_model->get_client_id_from_reference_profile_id(20850);
+    echo "FUNC 13-[get] get_client_id_from_reference_profile_id  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    if ($func == 13) var_dump($obj);
+    
+    //FUNC 14
+    $obj = $this->db_model->get_reference_profiles_follows(20850);
+    echo "FUNC 14-[get] get_reference_profiles_follows  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    if ($func == 14) var_dump($obj);
+    
+    //FUNC 15
+    $obj = $this->db_model->get_follow_work();
+    echo "FUNC 15-[get] get_follow_work  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    if ($func == 15) var_dump($obj);
+    
+    //FUNC 16
+    $obj = $this->db_model->get_follow_work_by_id(51323);
+    echo "FUNC 16-[get] get_follow_work_by_id  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    if ($func == 16) var_dump($obj);
+    
+    //FUNC 17
+    //$obj = $this->db_model->get_follow_work_by_client_id(1);
+    //echo "FUNC 17-[get] get_follow_work_by_client_id  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    if ($func == 17) var_dump($obj);
+    
+    //FUNC 18
+    //$obj = $this->db_model->get_unfollow_work(1);
+    //echo "FUNC 18-[get] get_unfollow_work  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    if ($func == 18) var_dump($obj);
+    
+    //FUNC 19
+    $obj = $this->db_model->get_system_config_vars();
+    echo "FUNC 19-[get] get_system_config_vars  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    if ($func == 19) var_dump($obj);
+    
+    //FUNC 20 
+    $obj = $this->db_model->get_white_list(20481);
+    echo "FUNC 20-[get] get_white_list  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    if ($func == 20) var_dump($obj);
+    
+    //FUNC 21
+    $obj = $this->db_model->get_white_list_paged(20481,0,20);
+    echo "FUNC 21-[get] get_white_list_paged  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    if ($func == 21) var_dump($obj);
+    
+    //FUNC 22
+    $obj = $this->db_model->get_black_list(28751);
+    echo "FUNC 22-[get] get_black_list  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    if ($func == 22) var_dump($obj);
+    
+    //FUNC 23
+    $obj = $this->db_model->get_client_with_white_list();
+    echo "FUNC 23-[get] get_client_with_white_list  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    if ($func == 23) var_dump($obj);
+        
+    //FUNC 24
+    $obj = $this->db_model->get_client_with_orderkey(hhh555hhh555hhh555hhh);
+    echo "FUNC 24-[get] get_client_with_orderkey  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    if ($func == 24) var_dump($obj);
+        
+    //FUNC 25
+    $obj = $this->db_model->get_number_followed_today(28751);
+    echo "FUNC 25-[get] get_number_followed_today  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    if ($func == 25) var_dump($obj);
+        
+    //FUNC 26
+    $obj = $this->db_model->get_reference_profiles_with_problem(1);
+    echo "FUNC 26-[get] get_client_instaid_data  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    if ($func == 26) var_dump($obj);
+        
+    //FUNC 27
+    $obj = $this->db_model->get_not_reserved_proxy_list();
+    echo "FUNC 27-[get] get_not_reserved_proxy_list  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    if ($func == 27) var_dump($obj);
+        
+    //FUNC 28
+    $obj = $this->db_model->get_proxy(8);
+    echo "FUNC 28-[get] get_proxy  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    if ($func == 28) var_dump($obj);
+        
+    //FUNC 29
+    $obj = $this->db_model->get_proxy_plient_counts('172.84.73.213');
+    echo "FUNC 29-[get] get_proxy_plient_counts  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    if ($func == 29) var_dump($obj);
+        
+    //FUNC 30
+    $obj = $this->db_model->get_client_withou_proxy();
+    echo "FUNC 30-[get] get_client_withou_proxy  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    if ($func == 30) var_dump($obj);
+        
+    //FUNC 31
+    $obj = $this->db_model->get_dumbu_statistics();
+    echo "FUNC 31-[get] get_dumbu_statistics  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    if ($func == 31) var_dump($obj);
+        
+    //FUNC 32
+    $obj = $this->db_model->get_dumbu_paying_customers();
+    echo "FUNC 32-[get] get_dumbu_paying_customers  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    if ($func == 32) var_dump($obj);
+        
+    //FUNC 33
+    $obj = $this->db_model->get_reference_profile_status();
+    echo "FUNC 33-[get] get_reference_profile_status  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    if ($func == 33) var_dump($obj);
+    
     echo "//===========================>SET<============================//<br><br>";
     
-    //FUNC X
-    //$obj = $this->db_model->set_client_status();
-    echo "FUNC X-[set] set_client_status  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    //FUNC 34
+    //$obj = $this->db_model->set_client_status($client_id, $status_id);
+    echo "FUNC 34-[set] set_client_status  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
     //var_dump($obj);
         
-    //FUNC Y
-    //$obj = $this->db_model->set_client_status_by_login();
-    echo "FUNC Y-[set] set_client_status_by_login  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    //FUNC 35
+    //$obj = $this->db_model->set_set_client_status_by_login($login, $status_id);
+    echo "FUNC 35-[set] set_client_status_by_login  => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
     //var_dump($obj);
+    
+    //FUNC 36
+    //$obj = $this->db_model-> set_client_cookies($client_id, $cookies = NULL);
+    echo "FUNC 36 -[set] set_client_cookies => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    //var_dump($obj);
+    
+    //FUNC 37
+    //$obj = $this->db_model-> set_pasword($client_id, $password);
+    echo "FUNC 37-[set] => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    //var_dump($obj);
+        
+    //FUNC 38
+    //$obj = $this->db_model-> set_cookies_to_null($client_id);
+    echo "FUNC 38-[set] set_pasword => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    //var_dump($obj);
+    
+    //FUNC 39
+    //$obj = $this->db_model->set_client_last_access($client_id, $timestamp); 
+    echo "FUNC 39-[set] set_client_last_access => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    //var_dump($obj);
+    
+    //FUNC 40
+    $obj = $this->db_model->set_client_order_key($client_id, $order_key, $pay_day);
+    echo "FUNC 40-[set] set_client_order_key => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    //var_dump($obj);
+    
+    //FUNC 41
+    //$obj = $this->db_model-> set_proxy_to_client($client_id, $proxy_id);
+    echo "FUNC 41-[set] set_proxy_to_client => result: " . count($obj) . " ==> (<b>ok</b>)<br><br>";
+    //var_dump($obj);
+     
+    echo "//==========================>INSERT<==========================//<br><br>";
+    
+    echo "//==========================>UPDATE<==========================//<br><br>";
+    
+    echo "//==========================>DELETED<=========================//<br><br>";
+    
+    echo "//===========================>SAVE<===========================//<br><br>";
+    
+    echo "//===========================>RESET<==========================//<br><br>";
+    
+    echo "//===========================>OTHERS<=========================//<br><br>";
     
     echo "</pre>";
   }
