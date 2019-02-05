@@ -35,7 +35,6 @@ abstract class ReferenceProfile_lib {
   }
 
   public function get_insta_media(int $N, string $cursor = NULL, \stdClass $cookies = NULL, Proxy $proxy = NULL) {
-
     if ($this->ReferencePriofile == null) {
       throw new Exception("Null reference exception in ReferenceProfile variable");
     }
