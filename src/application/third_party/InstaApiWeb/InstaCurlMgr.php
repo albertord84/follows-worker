@@ -221,6 +221,7 @@ namespace InstaApiWeb {
     private $ActionType;
     private $ResourceId;
     private $ProfileType; 
+    private $Challenge; 
     private $ReferencePost;
     private $Headers = array(array());
     private $InstaURL = array(array());
@@ -236,6 +237,7 @@ namespace InstaApiWeb {
       $this->MediaStr = null;
       $this->ResourceId = null;
       $this->ReferencePost = null;
+      $this->Challenge = null;
       $this->ProfileType = $profile;
       $this->ActionType = $action;
            
@@ -330,8 +332,8 @@ namespace InstaApiWeb {
     /**
      * 
      */
-    public function setChallengeData (){
-      
+    public function setChallengeData (string $challenge){
+      $this->Challenge = $challenge;
     }
     
     /**
@@ -353,7 +355,7 @@ namespace InstaApiWeb {
           if($this->ResourceId == null){
             throw new InstaCurlArgumentException("The parameter (resource_id) was not given!!!. Use: setResourceId(string).");
           }
-          $str_cur = $this->cmd_friendships($proxy, $cookies, $this->ResourceId);
+          $str_cur = $this->cmd_friendships($cookies, $this->ResourceId,$proxy);
         break;
                     
         case EnumEntity::HASHTAG + EnumAction::GET_USER_INFO_POST:
@@ -485,7 +487,7 @@ namespace InstaApiWeb {
      * Funcion de Utileria.
      * Construye cUrl tipo CMD para las acciones de los friendship ==> [Follow, Unfollow, Like].
      */
-    private function cmd_friendships (Proxy $proxy, CookiesRequest $cookies, string $resource_id) {     
+    private function cmd_friendships (CookiesRequest $cookies, string $resource_id, Proxy $proxy=null) {     
       // Paso 1. configuracion inicial de la curl
       $curl_str = sprintf("curl %s %s/%s/%s/%s/", 
         ($proxy != null) ? $proxy->ToString() : "", 
@@ -631,7 +633,7 @@ namespace InstaApiWeb {
       return $ch;
     }
     
-    private function challenge ()
+    private function challenge (CookiesRequest &$cookies)
     {
       $ch = curl_init(InstaURLs::Instagram);
       $csrftoken = $this->get_insta_csrftoken($ch);
@@ -644,12 +646,12 @@ namespace InstaApiWeb {
       $ig_or = $this->get_cookies_value('ig_or');
 
       $url = InstaURLs::Instagram;
-      $url .= "/" . $challenge;
+      $url .= "/" . $this->Challenge;
 
       $cookies = new \stdClass();
-      $cookies->csrftoken = $csrftoken;
-      $cookies->mid = $mid;
-      $cookies->checkpoint_url = $challenge;
+      $cookies->CsrfToken = $csrftoken;
+      $cookies->Mid = $mid;
+      $cookies->checkpoint_url = $this->challenge;
 
       $headers = array();
       $headers[] = "Origin: https://www.instagram.com";
@@ -660,7 +662,7 @@ namespace InstaApiWeb {
       $headers[] = "X-Instagram-AJAX: 1";
       $headers[] = "Content-Type: application/x-www-form-urlencoded";
       $headers[] = "X-Requested-With: XMLHttpRequest";
-      $headers[] = "Cookie: csrftoken=$csrftoken; mid=$mid; rur=$rur; ig_vw=$ig_vw; ig_pr=$ig_pr; ig_vh=$ig_vh; ig_or=$ig_or";
+      $headers[] = "Cookie: csrftoken=$csrftoken; mid=$mid";//; rur=$rur; ig_vw=$ig_vw; ig_pr=$ig_pr; ig_vh=$ig_vh; ig_or=$ig_or";
       $headers[] = "Connection: keep-alive";
       $postinfo = "choice=$choice";
 

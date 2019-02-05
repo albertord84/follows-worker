@@ -116,7 +116,16 @@ namespace InstaApiWeb {
     }
 
     public function get_insta_media(int $N, string $cursor = NULL, CookiesRequest $cookies = NULL, Proxy $proxy = NULL) {
-      
+      try {
+        $mngr = new InstaCurlMgr(new EnumEntity(EnumEntity::PERSON), new EnumAction(EnumAction::GET_POST));
+        $mngr->setMediaData($this->insta_id, $N, $cursor);
+        $curl_str = $mngr->make_curl_str($proxy, $cookies);
+        var_dump($curl_str);
+        exec($curl_str, $output, $status);
+        var_dump($output);
+      } catch (Exception $e) {
+        var_dump($e);
+      }
     }
 
     public function get_post_user_info($post_reference, \stdClass $cookies = NULL, Proxy $proxy = NULL) {

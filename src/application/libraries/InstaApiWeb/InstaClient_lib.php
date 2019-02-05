@@ -2,7 +2,6 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-  
 use InstaApiWeb\Proxy;
 use InstaApiWeb\InstaURLs;
 use InstaApiWeb\InstaClient;
@@ -25,7 +24,7 @@ use business\CookiesRequest;
  */
 class InstaClient_lib {
 
-  public function __construct() {
+  public function __construct(array $params) {
     require_once config_item('thirdparty-proxy-resource');
     require_once config_item('thirdparty-insta_url-resource');
     require_once config_item('thirdparty-login_response-class');
@@ -38,33 +37,55 @@ class InstaClient_lib {
     $this->CI = &get_instance();
     $this->CI->load->model("db_model");
 
-    $this->InstaClient = new InstaClient("", new CookiesRequest("", "", "", ""), new Proxy("", "", "", ""));
+    if (!array_key_exists("insta_id", $params )) {
+      throw new Exception("The params insta_id was not found");
+    }
+    if (!array_key_exists("cookies", $params)) {
+      throw new Exception("The params cookies was not found");
+    }
+    $insta_id = $params["insta_id"];
+    $cookies = $params["cookies"];
+    $proxy = NULL;
+    if (array_key_exists( "proxy",$params))
+      $proxy = $params["proxy"];
+    $this->InstaClient = new InstaClient($insta_id, $cookies, $proxy);
   }
 
   public function make_login(string $login, string $pass) {
     try {
       $result = $this->InstaClient->make_login($login, $pass);
-    } 
-    catch (InstaCheckpointException $e) {
+    } catch (InstaCheckpointException $e) {
       $result = new LoginResponse('ok', false, $e->getMessage(), NULL, $e->GetChallange());
-    } 
-    catch (InstaException $e) {
-      //$this->db_model->insert_event_to_washdog($Client->id, $e->getMessage(), $source);
+    } catch (InstaException $e) {
+      $this->db_model->insert_event_to_washdog($Client->id, $e->getMessage(), $source);
 
       $result = new LoginResponse('ok', false, $e->getMessage(), NULL);
     }
     return $result;
   }
-  
-  public function make_insta_friendships_command(string $resource_id, string $command = 'follow', string $objetive_url = 'web/friendships') {
+
+  public function follow(string $resource_id) {
+    $this->InstaClient->follow($resource_id);
+  }
+
+  public function unfollow(string $resource_id) {
+    $this->InstaClient->unfollow($resource_id);
+  }
+
+  public function like_post(string $resource_id) {
+    $this->InstaClient->like_post($resource_id);
+  }
+
+  /* public function make_insta_friendships_command(string $resource_id, string $command = 'follow', string $objetive_url = 'web/friendships') {
 
     $this->InstaClient->make_insta_friendships_command($resource_id, $command, $objetive_url);
-  }
+    }
 
-  public function make_curl_friendships_command_str(string $url) {
+    public function make_curl_friendships_command_str(string $url) {
 
     $this->InstaClient->make_curl_friendships_command_str($url);
-  }
+    }
+   */
 
   public function make_curl_chaining_str(string $insta_id, int $N, string $cursor = NULL) {
 
@@ -133,7 +154,7 @@ class InstaClient_lib {
 
   // Funcion temporal para comprobar que se cargo la lib.
   public function Msg() {
-    echo __CLASS__."->".__FUNCTION__."() invocado (<b>ok</b>)";
+    echo __CLASS__ . "->" . __FUNCTION__ . "() invocado (<b>ok</b>)";
   }
 
 }
